@@ -27,7 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-
+gem 'ZenTest'
 
 # Add Foundation Here
 #gem 'compass-rails' # you need this or you get an err
@@ -57,10 +57,14 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rspec-rails'
+  gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
 end
 
 group :test do
     gem 'rspec'
+    gem 'autotest'
+    gem 'autotest-growl'
+    gem 'autotest-fsevent'
 end
 
