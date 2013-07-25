@@ -27,6 +27,14 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+
+
+# Add Foundation Here
+#gem 'compass-rails' # you need this or you get an err
+gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
+gem 'zurb-foundation', '~> 4.0.0'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -48,11 +56,11 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'rspec-rails'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
 end
 
+group :test do
+    gem 'rspec'
+end
 
-
-
-# Add Foundation Here
-gem 'compass-rails' # you need this or you get an err
-gem 'zurb-foundation', '~> 4.0.0'
