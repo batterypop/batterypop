@@ -31,9 +31,13 @@ gem 'ZenTest'
 
 # Add Foundation Here
 #gem 'compass-rails' # you need this or you get an err
-gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
-gem 'zurb-foundation', '~> 4.0.0'
+# gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
+# gem 'zurb-foundation', '~> 4.0.0'
 
+
+gem 'bootstrap-sass', '~> 2.3.2.1' 
+
+gem 'devise'           
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
