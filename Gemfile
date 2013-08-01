@@ -35,7 +35,10 @@ gem 'ZenTest'
 # gem 'zurb-foundation', '~> 4.0.0'
 
 
-gem 'bootstrap-sass', '~> 2.3.2.1' 
+# gem 'bootstrap-sass', '~> 2.3.2.1' 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
 
 gem 'devise'           
 
