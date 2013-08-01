@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 05c1923ce02c9d6c9320745c608476b62e437d96
+  branch: 3.0.0
+  specs:
+    anjlab-bootstrap-rails (3.0.0.rc1)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 3224f84d8c31fcb0894e9a43f6c3ac67e3aa0d71
   specs:
@@ -47,8 +56,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     builder (3.1.4)
     callsite (0.0.11)
     coderay (1.0.9)
@@ -169,12 +176,12 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  anjlab-bootstrap-rails!
   autotest
   autotest-fsevent
   autotest-growl
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.3.2.1)
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 1.2)
