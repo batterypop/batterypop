@@ -40,7 +40,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
 
-gem 'devise'           
+gem 'devise' 
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
