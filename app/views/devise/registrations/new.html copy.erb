@@ -1,0 +1,87 @@
+<div class="clearfix"></div>
+<div class="container">
+	<div class="row ">
+		<div class="col-lg-10 col-offset-1">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h1 class="panel-title">Sign Up!</h1>
+				</div>
+
+				<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+				  <%= devise_error_messages! %>
+
+				<div class="row">
+					<!-- row 1 -->
+					<div class="col-lg-6">
+						<%= f.label "Pick A Username:" %><br />
+						<%= f.email_field :username  %>
+					</div>
+					<div class="col-lg-6">
+						Avatar Select
+					</div>
+				</div>
+				<div class="row">
+					<!-- row 2 -->
+					<div class="col-lg-6">
+						<%= f.label :password %><br />
+						<%= f.password_field :password %>
+					</div>
+
+					<div class="col-lg-6">
+						<%= f.label :password_confirmation %><br />
+						<%= f.password_field :password_confirmation %>
+					</div>
+				</div>
+				<div class="row">
+					<!-- row 3 -->
+
+					<div class="col-lg-6">
+						<%= f.label :firtname %><br />
+						<%= f.email_field :firstname %>
+					</div>
+
+					<div class="col-lg-6">
+						<%= f.label :lastname %><br />
+						<%= f.email_field :lastname  %>
+					</div>
+				</div>
+				<div class="row">
+					<!-- row 4 -->
+
+					<div class="col-lg-6">
+						<%= f.label :email %><br />
+						<%= f.email_field :email, :autofocus => true %>
+					</div>
+
+					<div class="col-lg-6">
+						<%= f.label :birthday %><br />
+						<%= f.date_select :birthday, 
+									:prompt => { :day => 'Select day', :month => 'Select month', 
+									:year => 'Select year' }, :date_separator => '/', 
+									:order => [:month, :day, :year], :start_year => Time.now.year, 
+									:end_year => Time.now.year-80  %>
+					</div>
+				</div>
+
+				<div class="row">
+				<div><%= f.label :gender %><br />
+				<%= radio_button_tag(:gender, "male") %>
+				<%= label_tag(:gender_male, "I am a boy") %>
+				<%= radio_button_tag(:gender, "female") %>
+				<%= label_tag(:gender_female, "I am a girl") %></div>
+				</div>		
+
+
+				
+
+				 <div class="panel-footer"> 
+				 	<%= f.submit "Sign up", class: "btn btn-primary pull-right" %>
+
+					 <%= render "devise/shared/links" %>
+					 <% end %>
+				 </div>
+				
+			</div>
+		</div>
+	</div>
+</div>
