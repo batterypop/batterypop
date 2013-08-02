@@ -2,8 +2,15 @@
 	<div class="row ">
 		<div class="col-lg-2 col-offset-6 col-push-4">
 			<div class="btn-group">
-			  <button type="button" class="btn btn-primary btn-small">Login</button>
-			  <button type="button" class="btn btn-primary btn-small">Register</button>
+			<% if user_signed_in? %>
+				<%= link_to "Log Out", destroy_user_session_path, :id => "signup", :class => "btn btn-primary btn-small" %>
+				<%= link_to "Profile", edit_user_registration_path, :id => "login", :class => "btn btn-primary btn-small" %>
+			<% else %>
+			<!--   <a href="" class="btn btn-primary btn-small">Login</a> -->
+				<%= link_to "Log In", new_user_session_path, :id => "login", :class => "btn btn-primary btn-small" %>
+				<%= link_to "Sign Up", new_user_registration_path, :id => "signup", :class => "btn btn-primary btn-small" %>
+			 
+			<% end %>
 			</div>
 		</div>
 		<div class="col-lg-4 col-sm-12 col-pull-8">
@@ -12,6 +19,7 @@
 
 	</div>
 	
+	<%= render 'layouts/messages' %>
 	
 	<div class="row">
 		<div class="col-lg-12">
