@@ -66,6 +66,7 @@ group :development do
   gem 'rspec-rails'
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'annotate'
 end
 
 group :test do
