@@ -1,5 +1,9 @@
 Batterypopv2::Application.routes.draw do
 
+  resources :episodes
+
+  resources :shows
+
   get "pages/home"
   get "pages/contact"
   get "pages/about"

@@ -4,8 +4,10 @@ class CreateCreators < ActiveRecord::Migration
       t.string :username
       t.string :displayname
       t.string :email
-      t.string :password
+      t.string :encrypted_password
       t.text :bio
+
+
 
       t.timestamps
     end

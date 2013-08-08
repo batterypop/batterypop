@@ -23,4 +23,19 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  has_many :children, class_name: "User",  foreign_key: "parent_id"
+ 
+  belongs_to :parent, class_name: "User"
+
+
+ def user_params
+ 	params.require(:user).permit(:username)
+ end
+
+
+ def create
+ 	@user = User.create(user_params)
+ end
 end

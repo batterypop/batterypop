@@ -12,7 +12,7 @@
 				<div class="row"><!-- row 1 -->
 					<div class="col-lg-6" >
 						<%= f.label "Pick a User Name:" %><br />
-						<%= f.email_field :username, :class =>"form-control", :placeholder => "Pick A Username!", :autofocus => true, "data-toggle" => "popover",  "data-content" => "We know you already have a name, but here's your chance to pick how you'll be known on the site! You can be named 'CaptainCool' or 'sunshine'; as long as no one has that username already...",  "data-original-title" => "Your user name:" %>
+						<%= f.text_field :username, :class =>"form-control" %>
 					</div>
 
 
@@ -39,23 +39,25 @@
 				<div class="row"><!-- row 3 -->
 					<div class="col-lg-6">
 						<%= f.label "First Name:" %><br />
-						<%= f.email_field :firstname, :class =>"form-control", :placeholder => "What's your first name?"  %>
+						<%= f.text_field :firstname, :class =>"form-control", :placeholder => "What's your first name?"  %>
 					</div>
 
 					<div class="col-lg-6">
 						<%= f.label "Last Name:"%><br />
-						<%= f.email_field :lastname, :class =>"form-control", :placeholder => "What's your last name?"   %>
+						<%= f.text_field :lastname, :class =>"form-control", :placeholder => "What's your last name?"   %>
 					</div>
 				</div>
 
 				<div class="row"> <!-- row 4 -->
 					<div class="col-lg-8 col-offset-1">
-						<%= f.label :birthday %><br />
-						<%= f.date_select :birthday, 
-									:prompt => { :day => 'Select day', :month => 'Select month', 
-									:year => 'Select year' }, :date_separator => '/', 
-									:order => [:month, :day, :year], :start_year => Time.now.year, 
-									:end_year => Time.now.year-80  %>
+						<div class="control-group">
+							<%= f.label :birthday %><br />
+							<%= f.date_select :birthday, 
+										{:prompt => { :day => 'Select day', :month => 'Select month', 
+										:year => 'Select year' }, :date_separator => '/', 
+										:order => [:month, :day, :year], :start_year => Time.now.year, 
+										:end_year => Time.now.year-80}, :class => "controls" %>
+						</div>
 					</div>
 				</div>
 
