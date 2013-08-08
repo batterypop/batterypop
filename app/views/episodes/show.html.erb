@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @episode.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @episode.description %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @episode.approved %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @episode.creator_id %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @episode.show_id %>
+</p>
+
+<p>
+  <strong>Video type:</strong>
+  <%= @episode.video_type %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @episode.video_id %>
+</p>
+
+<%= link_to 'Edit', edit_episode_path(@episode) %> |
+<%= link_to 'Back', episodes_path %>

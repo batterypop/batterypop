@@ -1,20 +1,42 @@
 <div class="container">
 	<div class="row ">
-		<div class="col-lg-2 col-offset-6 col-push-4">
+		<!-- <div class="col-lg-2 col-sm-12 col-offset-6 col-push-4"> -->
+		<div class="col-lg-2 col-offset-8 col-sm-12 pull-right">
 			<div class="btn-group">
 			<% if user_signed_in? %>
-				<%= link_to "Log Out", destroy_user_session_path, :id => "signup", :class => "btn btn-primary btn-small" %>
+				<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small" %>
 				<%= link_to "Profile", edit_user_registration_path, :id => "login", :class => "btn btn-primary btn-small" %>
+
 			<% else %>
+
+
 			<!--   <a href="" class="btn btn-primary btn-small">Login</a> -->
-				<%= link_to "Log In", new_user_session_path, :id => "login", :class => "btn btn-primary btn-small" %>
+				<button type="button" id="popover_login" class="btn btn-primary btn-small" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
+					<div id="login-popover-content"  class="hidden">
+					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+						<div><%= f.label :email %><br />
+						<%= f.email_field :email, :autofocus => true, :class =>"form-control" %></div>
+
+						<div><%= f.label :password %><br />
+						<%= f.password_field :password, :class =>"form-control" %></div>
+
+						<% if devise_mapping.rememberable? -%>
+						<div><%= f.check_box :remember_me %> <%= f.label :remember_me, :class =>"form-control" %></div>
+						<% end -%>
+
+						<div><%= f.submit "Sign in" %></div>
+					<% end %>
+					</div>
+
 				<%= link_to "Sign Up", new_user_registration_path, :id => "signup", :class => "btn btn-primary btn-small" %>
 			 
 			<% end %>
 			</div>
 		</div>
-		<div class="col-lg-4 col-sm-12 col-pull-8">
-			<%= image_tag "loading-logo.png" %> 
+		</div><div class="row">
+		<!-- <div class="col-lg-4 col-sm-12 col-pull-8"> -->
+		<div class="col-12">
+			<a href="/"><%= image_tag "loading-logo.png" %></a>
 		</div>
 
 	</div>
@@ -36,3 +58,21 @@
 	
 
 </div>
+
+
+
+<script>  
+$(function (){ 
+	$("#popover_login").popover({ 
+		html : true,
+		container: 'body', 
+		content: function(){return $("#login-popover-content").html();}
+	});  
+});  
+</script> 
+
+
+<!--
+
+= link_to "Log In", new_user_session_path, :id => "login", :class => "btn btn-primary btn-small ", "data-toggle" => "popover", "data-placement" => "bottom", "data-content" => "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.","data-original-title" => "", title => '' %>
+-->

@@ -41,6 +41,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :branch => '3.0.0'
 
 gem 'devise' 
+gem 'devise_security_extension', :github => 'phatworx/devise_security_extension' # security questions
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
