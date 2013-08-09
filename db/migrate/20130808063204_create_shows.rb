@@ -4,9 +4,9 @@ class CreateShows < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.boolean :approved
-      # t.integer :creator_id
-      t.belongs_to :creator
-      t.has_many :episodes
+      t.integer :creator_id
+      # t.belongs_to :creator
+      # t.has_many :episodes
 
       t.timestamps
     end

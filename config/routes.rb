@@ -8,12 +8,14 @@ Batterypopv2::Application.routes.draw do
   get "pages/contact"
   get "pages/about"
   
+ 
   root :to => "pages#home"
 
 
-
-
-    devise_for :users
+  devise_for :users
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

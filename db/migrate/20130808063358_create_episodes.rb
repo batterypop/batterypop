@@ -5,10 +5,10 @@ class CreateEpisodes < ActiveRecord::Migration
       t.text :description
       t.boolean :approved
       t.integer :creator_id
-      # t.integer :show_id
+      t.integer :show_id
       t.integer :video_type
       t.string :video_id
-      t.belongs_to :show
+      # t.belongs_to :show
 
       t.timestamps
     end
