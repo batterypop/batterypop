@@ -22,13 +22,26 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:username] 
 
 
   has_many :children, class_name: "User",  foreign_key: "parent_id"
- 
   belongs_to :parent, class_name: "User"
 
+  validates_uniqueness_of :username
+  validates_presence_of :username
+
+
+
+
+  def index
+    redirect_to :root
+  end
+
+
+  def email_required?
+    false
+  end
 
  def user_params
  	params.require(:user).permit(:username)
@@ -38,4 +51,6 @@ class User < ActiveRecord::Base
  def create
  	@user = User.create(user_params)
  end
+
+
 end

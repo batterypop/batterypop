@@ -61,19 +61,13 @@
 					</div>
 				</div>
 
-				<!-- <div class="row">
-					<%= f.label :gender %><br />
-					<%= radio_button_tag(:gender, "male") %>
-					<%= label_tag(:gender_male, "I am a boy") %>
-					<%= radio_button_tag(:gender, "female") %>
-					<%= label_tag(:gender_female, "I am a girl") %>
-				</div>	 -->	
+			
 				
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="input-group">
 							<span class="input-group-addon">
-								<%= radio_button_tag(:gender, "male") %>
+								<%= radio_button_tag('user[gender]', "male") %>
 							</span>
 							<span class="form-control">I am a Boy!</span>
 						</div><!-- /input-group -->
@@ -81,7 +75,7 @@
 					<div class="col-lg-6">
 						<div class="input-group">
 							<span class="input-group-addon">
-								<%= radio_button_tag(:gender, "female") %>
+								<%= radio_button_tag('user[gender]', "female") %>
 							</span>
 							<span type="text" class="form-control">I am a Girl!</span>
 						</div><!-- /input-group -->

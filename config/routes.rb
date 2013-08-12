@@ -1,5 +1,7 @@
 Batterypopv2::Application.routes.draw do
 
+  resources :categories
+
   resources :episodes
 
   resources :shows
@@ -12,7 +14,8 @@ Batterypopv2::Application.routes.draw do
   root :to => "pages#home"
 
 
-  devise_for :users
+  devise_for :users,
+    :controllers => { :registrations => "devise/custom/registrations" }
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
