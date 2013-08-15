@@ -34,6 +34,10 @@ gem 'ZenTest'
 # gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 # gem 'zurb-foundation', '~> 4.0.0'
 
+gem 'paperclip',  '>= 3.4.0'  # image upload
+gem 'aws-sdk'
+
+
 
 # gem 'bootstrap-sass', '~> 2.3.2.1' 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
@@ -42,6 +46,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 
 gem 'devise' 
 gem 'devise_security_extension', :github => 'phatworx/devise_security_extension' # security questions
+
 
 # administration
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'

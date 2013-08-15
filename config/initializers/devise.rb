@@ -243,4 +243,8 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  # security_question integration for recover form
+  # this automatically enables captchas (captcha_for_recover, as fallback)
+  config.security_question_for_recover = true
 end

@@ -32,8 +32,8 @@ ActiveAdmin.setup do |config|
   #
   # To set no namespace by default, use:
   #   config.default_namespace = false
-  #
-  # Default:
+  
+#  # Default:
   # config.default_namespace = :admin
   #
   # You can customize the settings for each namespace by using
@@ -122,8 +122,9 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  # config.before_filter :do_something_awesome
-  
+  config.before_filter do
+    params.permit!
+  end
   
   # == Setting a Favicon
   #
