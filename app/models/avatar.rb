@@ -37,21 +37,6 @@ class Avatar < ActiveRecord::Base
 
 
 
- def create
-  @avatar = Avatar.create(avatar_params)
- end
 
-def update
-  puts params.inspect
-end
-
-  def avatar_params
-    # params.require(:avatar).permit(:image, :name)
-    puts " *** START ***"
-    puts params.inspect
-    puts " **** END "
-    params.require(:avatar).permit(:transaction_id, :name, :image => [:tempfile, :original_filename, :content_type, :headers])
-
-   end
 
 end

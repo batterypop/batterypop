@@ -54,6 +54,11 @@ gem 'ransack',             github: 'ernie/ransack',         branch: 'rails-4'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 
+
+# gem "rich", github: 'bastiaanterhorst/rich'
+
+gem 'active_admin_editor'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
