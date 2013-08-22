@@ -59,6 +59,8 @@ gem "rich", github: 'bastiaanterhorst/rich'
 
 # gem 'active_admin_editor'
 
+gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
