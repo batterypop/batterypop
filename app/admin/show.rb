@@ -4,7 +4,7 @@ ActiveAdmin.register Show do
 		f.inputs "Show Details" do
 			f.input :creator, :as => :select, :member_label => :displayname, :required => true
 			f.input :title, :label => "Show Title", :required => true
-			f.input :description,  :label => "Description"
+			f.input :description,  :label => "Description", :as => :rich
 			f.input :single, :label => "Single episode?", :hint => "Set to true for short or non-episodic video."
 			f.input :approved, :label => "BatteryPOP approved."
 		end

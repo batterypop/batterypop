@@ -8,6 +8,19 @@ GIT
       sass (>= 3.2)
 
 GIT
+  remote: git://github.com/bastiaanterhorst/rich.git
+  revision: 576de34652ee87fc3cd69384d2b9ec81a3af1f3f
+  specs:
+    rich (1.4.7)
+      jquery-rails
+      kaminari
+      mime-types
+      paperclip
+      rack-raw-upload
+      rails (>= 3.2.0)
+      sass-rails
+
+GIT
   remote: git://github.com/ernie/ransack.git
   revision: 8db7a3c1f4242305488a541267dd87c5397f5707
   branch: rails-4
@@ -80,10 +93,6 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    active_admin_editor (1.1.0)
-      activeadmin (>= 0.4.0)
-      ejs
-      rails (>= 3.0.0)
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -144,7 +153,6 @@ GEM
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
-    ejs (1.1.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -190,6 +198,8 @@ GEM
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
+    rack-raw-upload (1.1.1)
+      multi_json
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -268,7 +278,6 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
-  active_admin_editor
   activeadmin!
   anjlab-bootstrap-rails!
   annotate
@@ -289,6 +298,7 @@ DEPENDENCIES
   paperclip (>= 3.4.0)
   rails (= 4.0.0)
   ransack!
+  rich!
   rspec
   rspec-rails
   sass-rails (~> 4.0.0)

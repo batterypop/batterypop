@@ -1,5 +1,6 @@
 Batterypopv2::Application.routes.draw do
 
+  mount Rich::Engine => '/rich', :as => 'rich'
   resources :categories
 
   resources :episodes
