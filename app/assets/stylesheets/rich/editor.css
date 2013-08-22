@@ -1,0 +1,26 @@
+/*	
+	This file defines the default set of CSS styles available in the Rich editor
+*/
+
+
+div.cke p.caption {
+	font-style: italic;
+	color: grey;
+}
+
+div.cke span.highlight {
+	background: yellow;
+}
+
+div.cke img.left {
+	float: left;
+}
+
+div.cke img.right {
+	float: right;
+}
+
+form ol li div.cke{
+	width: 78%;
+	display: inline-block;
+}

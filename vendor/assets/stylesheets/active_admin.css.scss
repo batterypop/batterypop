@@ -13,5 +13,27 @@
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+
+
+form ol li div.cke{
+	width: 78%;
+	display: inline-block;
+}
+
+
+div.cke p.caption {
+	font-style: italic;
+	color: grey;
+}
+
+div.cke span.highlight {
+	background: yellow;
+}
+
+div.cke img.left {
+	float: left;
+}
+
+div.cke img.right {
+	float: right;
+}

@@ -4,7 +4,7 @@ ActiveAdmin.register Episode do
 	form :html => { :multipart => true } do |f|
 		f.inputs "Episode Details" do
 			f.input :title
-			f.input :description
+			f.input :description, :as => :rich
 			f.input :approved, :label => "BatteryPOP approved"
 			# f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
 			# f.input :category,  :as => :select, :collection => Category.all, :input_html => { :multiple => true } 
