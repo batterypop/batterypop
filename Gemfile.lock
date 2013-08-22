@@ -73,6 +73,13 @@ GIT
       rails (>= 4.0.0)
 
 GIT
+  remote: git://github.com/runtimerevolution/survey.git
+  revision: 292921d18f72ac1b78906a14b167c3ee603dcde5
+  specs:
+    survey (0.1)
+      rails
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 3224f84d8c31fcb0894e9a43f6c3ac67e3aa0d71
   specs:
@@ -306,5 +313,6 @@ DEPENDENCIES
   spork
   spork-rails!
   sqlite3
+  survey!
   turbolinks
   uglifier (>= 1.3.0)
