@@ -2,19 +2,28 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  firstname       :string(255)
-#  lastname        :string(255)
-#  email           :string(255)
-#  username        :string(255)
-#  password        :string(255)
-#  gender          :string(255)
-#  birthday        :date
-#  secret_question :integer
-#  secret_answer   :string(255)
-#  avatar_id       :integer
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id                       :integer          not null, primary key
+#  firstname                :string(255)
+#  lastname                 :string(255)
+#  email                    :string(255)      default("")
+#  username                 :string(255)      default(""), not null
+#  encrypted_password       :string(255)
+#  gender                   :string(255)
+#  birthday                 :date
+#  security_question_id     :integer
+#  security_question_answer :string(255)
+#  avatar_id                :integer
+#  created_at               :datetime
+#  updated_at               :datetime
+#  reset_password_token     :string(255)
+#  reset_password_sent_at   :datetime
+#  remember_created_at      :datetime
+#  sign_in_count            :integer          default(0)
+#  current_sign_in_at       :datetime
+#  last_sign_in_at          :datetime
+#  current_sign_in_ip       :string(255)
+#  last_sign_in_ip          :string(255)
+#  parent_id                :integer          default(0), not null
 #
 
 class User < ActiveRecord::Base

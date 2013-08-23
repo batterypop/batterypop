@@ -61,6 +61,9 @@ gem "rich", github: 'bastiaanterhorst/rich'
 
 gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 
+# voting
+gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
