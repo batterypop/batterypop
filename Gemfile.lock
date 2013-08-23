@@ -80,6 +80,12 @@ GIT
       rails
 
 GIT
+  remote: git://github.com/ryanto/acts_as_votable.git
+  revision: a816347760cde0bf4c54fd79f79870310a66ed07
+  specs:
+    acts_as_votable (0.6.0)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 3224f84d8c31fcb0894e9a43f6c3ac67e3aa0d71
   specs:
@@ -286,6 +292,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   activeadmin!
+  acts_as_votable!
   anjlab-bootstrap-rails!
   annotate
   autotest
