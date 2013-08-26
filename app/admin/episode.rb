@@ -3,6 +3,7 @@ ActiveAdmin.register Episode do
 
 	form :html => { :multipart => true } do |f|
 		f.inputs "Episode Details" do
+			f.input :show, :as => :select, :member_label => :title, :required => true
 			f.input :title
 			f.input :description, :as => :rich
 			f.input :approved, :label => "BatteryPOP approved"
@@ -17,5 +18,6 @@ ActiveAdmin.register Episode do
 		end
 		f.buttons
 	end
+
 
 end
