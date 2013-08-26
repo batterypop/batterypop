@@ -44,7 +44,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
 
-gem 'devise' 
+gem 'devise',  github: 'plataformatec/devise'
 gem 'devise_security_extension', :github => 'phatworx/devise_security_extension' # security questions
 
 
@@ -62,7 +62,8 @@ gem "rich", github: 'bastiaanterhorst/rich'
 gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 
 # voting
-gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
+# gem 'acts_as_votable', github: 'ryanto/acts_as_votable' 
+gem "acts_as_votable", "~> 0.7.1"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

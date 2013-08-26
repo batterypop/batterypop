@@ -15,6 +15,7 @@
 #
 
 class Episode < ActiveRecord::Base
+	acts_as_votable
 
 	belongs_to :show
 	has_one :creator, :through => :show
