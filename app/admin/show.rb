@@ -1,4 +1,8 @@
 ActiveAdmin.register Show do
+
+	before_filter :only => [:show, :destroy] do
+		@show = Show.friendly.find(params[:id])
+	end
 	
 	form  do |f|  
 		f.inputs "Show Details" do

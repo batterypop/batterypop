@@ -65,6 +65,8 @@ gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 # gem 'acts_as_votable', github: 'ryanto/acts_as_votable' 
 gem "acts_as_votable", "~> 0.7.1"
 
+gem 'friendly_id', '5.0.0.beta4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

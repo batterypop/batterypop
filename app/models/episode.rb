@@ -15,10 +15,26 @@
 #
 
 class Episode < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :slug_candidates, use: :slugged
+
 	acts_as_votable
 
 	belongs_to :show
 	has_one :creator, :through => :show
+	belongs_to :embed
 	has_and_belongs_to_many :categories, :join_table => :categories_episodes
+
+
+	def slug_candidates
+		[
+			[show.title,  title],
+			title
+
+		]
+	end
+	# def should_generate_new_friendly_id?
+	# 	new_record?
+	# end
 
 end
