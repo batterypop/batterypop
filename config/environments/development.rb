@@ -37,5 +37,8 @@ Batterypopv2::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+
+  BetterErrors.editor = :sublime
   
 end

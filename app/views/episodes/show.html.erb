@@ -17,22 +17,26 @@
 
 <p>
   <strong>Creator:</strong>
-  <%= @episode.creator_id %>
+  <%= @episode.creator.displayname %>
 </p>
 
 <p>
   <strong>Show:</strong>
-  <%= @episode.show_id %>
+  <%= @episode.show.title %>
 </p>
 
 <p>
-  <strong>Video type:</strong>
-  <%= @episode.video_type %>
+  <strong>Provider:</strong>
+  <%= @episode.embed.provider %>
 </p>
 
 <p>
   <strong>Video:</strong>
-  <%= @episode.video_id %>
+  <%= @episode.video %>
+</p>
+<p>
+  <strong>Embed:</strong>
+  <%= @episode.embed.code %>
 </p>
 
 <%= link_to 'Edit', edit_episode_path(@episode) %> |
