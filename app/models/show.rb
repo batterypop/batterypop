@@ -20,5 +20,16 @@ class Show < ActiveRecord::Base
 	belongs_to :creator
 
 	has_many :episodes
+	has_and_belongs_to_many :channels, :join_table => :channels_shows
+
+	accepts_nested_attributes_for :episodes
+		# :reject_if => ->(e) { e[:title].blank? }, :allow_destroy => true
+
+
+	private
+
+	def show_params
+		params.require(:show).permit(:title, :description, :single, :slug, :episodes_attributes)
+	end
 
 end

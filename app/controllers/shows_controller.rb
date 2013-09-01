@@ -13,13 +13,13 @@ class ShowsController < ApplicationController
   end
 
   # GET /shows/new
-  def new
-    @show = Show.new
-  end
+  # def new
+  #   @show = Show.new
+  # end
 
   # GET /shows/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /shows
   # POST /shows.json
