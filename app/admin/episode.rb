@@ -1,6 +1,7 @@
 ActiveAdmin.register Episode do
-	 menu :parent => "Shows"
+	menu :parent => "BatteryPOP Shows"
 
+	 belongs_to :show
 
 	 before_filter :only => [:show] do
         @episode = Episode.friendly.find(params[:id])
@@ -8,7 +9,7 @@ ActiveAdmin.register Episode do
 
 	form :html => { :multipart => true } do |f|
 		f.inputs "Episode Details" do
-			f.input :show, :as => :select, :member_label => :title, :required => true
+			# f.input :show, :as => :select, :member_label => :title, :required => true
 			f.input :title
 			f.input :description, :as => :rich
 			f.input :embed, :as => :select, :label => "Provider", :member_label => :provider,  :required => true
