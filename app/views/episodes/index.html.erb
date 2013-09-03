@@ -22,10 +22,10 @@
         <td><%= episode.title %></td>
         <td><%= episode.description %></td>
         <td><%= episode.approved %></td>
-        <td><%= episode.creator_id %></td>
+        <td><%= episode.creator.displayname %></td>
         <td><%= episode.show_id %></td>
-        <td><%= episode.video_type %></td>
-        <td><%= episode.video_id %></td>
+        <td><%= episode.embed.provider %></td>
+        <td><%= episode.embed.code %></td>
         <td><%= link_to 'Show', episode %></td>
         <td><%= link_to 'Edit', edit_episode_path(episode) %></td>
         <td><%= link_to 'Destroy', episode, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,14 +1,14 @@
 ActiveAdmin.register Show do
 	menu :parent => "BatteryPOP Shows"
 
-	before_filter :only => [:show, :destroy] do
+	before_filter :only => [:show, :destroy, :edit, :update] do
 		@show = Show.friendly.find(params[:id])
 	end
 	
 	form  do |f|  
 		f.inputs "Show Details" do
 			f.input :creator, :as => :select, :member_label => :displayname, :required => true
-			f.input :title, :label => "Show Title", :required => true
+			f.input :title, :label => "Show Title", :required => true 
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :single, :label => "Single episode?", :hint => "Set to true for short or non-episodic video."
 			f.input :approved, :label => "BatteryPOP approved."
@@ -25,7 +25,6 @@ ActiveAdmin.register Show do
 		 f.inputs "Show Channels" do
 			f.input :channels, :as => :check_boxes, :input_html => { :multiple => true } 
 		end
-		f.buttons
 		f.buttons
 	end
 
