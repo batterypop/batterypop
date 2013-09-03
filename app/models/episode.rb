@@ -16,24 +16,25 @@
 
 class Episode < ActiveRecord::Base
 	extend FriendlyId
-	friendly_id :slug_candidates, use: :slugged
+	friendly_id :slug_candidates, use: :slugged, :use => :scoped, :scope => :show
 
 	acts_as_votable
+
 
 	belongs_to :show
 	has_one :creator, :through => :show
 	belongs_to :embed
 
 
+	private
+
 	def slug_candidates
 		[
 			[show.title,  title],
-			title
+			[show.title, title,  Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
 
 		]
 	end
-	# def should_generate_new_friendly_id?
-	# 	new_record?
-	# end
+	
 
 end
