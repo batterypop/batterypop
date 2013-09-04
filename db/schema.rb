@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831235320) do
+ActiveRecord::Schema.define(version: 20130903185124) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(version: 20130831235320) do
   end
 
   add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true
+
+  create_table "features", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
