@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   
   def home
     @title = "Home"
+    @features = Feature.all
   end
 
   def contact
