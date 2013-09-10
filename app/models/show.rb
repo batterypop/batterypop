@@ -26,9 +26,31 @@ class Show < ActiveRecord::Base
 		# :reject_if => ->(e) { e[:title].blank? }, :allow_destroy => true
 
 
+	has_attached_file :image,
+	    :styles => { large: "864x486>", :thumb => "150x150>" },
+	    storage: :s3,
+	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/:class/:id/:attachment/:style/:filename",
+	    bucket: S3_BUCKET,
+	    default_url: "/assets/missing.png"
+
+	has_attached_file :background,
+	    :styles => { background: "1600x1100>", large: "864x486>", thumb: "150x150>" },
+	    storage: :s3,
+	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/:class/:id/:attachment/:style/:filename",
+	    bucket: S3_BUCKET,
+	    default_url: "/assets/missing.png"
+
+
+
+
+	
 
 
 	private
+	
+
 	def slug_candidates
 		[
 			title,
@@ -37,7 +59,7 @@ class Show < ActiveRecord::Base
 	end
 
 	def show_params
-		params.require(:show).permit(:title, :description, :single, :slug, :episodes_attributes)
+		params.require(:show).permit(:title, :description, :single, :slug, :episodes_attributes, :image, :background)
 	end
 
 	

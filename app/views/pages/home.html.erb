@@ -6,7 +6,70 @@
 			
 			<%= render 'layouts/most_popped' %>
 			
+			<div class="row">
+				<div class="col-lg-8">
+					<%= render 'layouts/promoted' %>
+				</div>
+				<div class="col-lg-4">
+				</div>
+			</div>
 			
 		</div>
 	</div>
 </div>
+
+
+<!-- home items inited -->
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('.home-featured').bxSlider({
+		  	auto: true,
+	  		video: true,
+	  		responsive: true,
+	  		touchEnabled: true, 
+	  		pager: false
+		  }
+	  	);
+	  $('.home-side-carousel').bxSlider({
+		  	nextSelector: '#home-carousel-next',
+			prevSelector: '#home-carousel-prev',
+			nextText: 'DOWN', prevText: 'UP',
+	  		responsive: true,
+	  		touchEnabled: true,
+	  		mode: 'vertical',
+			slideMargin: 10,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+	  	});
+
+	  $('.home-most-popped').bxSlider({
+		  	nextSelector: '#home-mostpopped-next',
+			prevSelector: '#home-mostpopped-prev',
+			nextText: 'NEXT', prevText: 'PREV',
+		  	minSlides: 2,
+			maxSlides: 2,
+			responsive: true,
+	  		touchEnabled: true,
+	  		slideMargin: 10,
+			minSlides: 3,
+			moveSlides: 2,
+			pager: false
+	  	});
+
+	  $('.home-promoted').bxSlider({
+	  		nextSelector: '#home-promoted-next',
+			prevSelector: '#home-promoted-prev',
+			nextText: 'NEXT', prevText: 'PREV',
+		  	minSlides: 2,
+			maxSlides: 4,
+			slideWidth: 170,
+			responsive: true,
+	  		touchEnabled: true,
+	  		slideMargin: 10,
+			moveSlides: 2,
+			pager: false
+	  	});
+
+	});
+</script>

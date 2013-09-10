@@ -1,11 +1,14 @@
 Batterypopv2::Application.routes.draw do
 
   mount Rich::Engine => '/rich', :as => 'rich'
+  
   resources :channels
 
-  resources :episodes
+  # resources :episodes
 
-  resources :shows
+  resources :shows do
+    resources :episodes
+  end
 
   get "pages/home"
   get "pages/contact"

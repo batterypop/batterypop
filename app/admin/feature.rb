@@ -1,4 +1,5 @@
 ActiveAdmin.register Feature do
+	menu :parent => "BatteryPOP Home"
 
 	form do |f|
 		f.inputs "BatteryPOP Feature" do

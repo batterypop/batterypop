@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903185124) do
+ActiveRecord::Schema.define(version: 20130906214912) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -107,6 +107,10 @@ ActiveRecord::Schema.define(version: 20130903185124) do
     t.string   "video"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true
@@ -153,6 +157,15 @@ ActiveRecord::Schema.define(version: 20130903185124) do
     t.datetime "updated_at"
     t.boolean  "single"
     t.string   "slug"
+    t.string   "subtitle"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

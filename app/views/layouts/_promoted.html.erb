@@ -1,0 +1,18 @@
+<div class="row bpop-slider-header">
+	<div class="col-lg-12 text-center ">
+		<div id="home-promoted-next" class="pull-right"></div>
+		<div id="home-promoted-prev" class="pull-left"></div>
+		<h4>Promoted</h4>
+	</div>
+</div>
+<div class="row bpop-slider">
+	<div class="col-lg-12">
+		<ul class="bxslider home-promoted">
+				<% @shows.each do |show| %>
+					<li>
+					  <%= render partial: "layouts/vertical_slide", :locals => {:slide_title => show.title, :slide_text => show.description, :slide_image => show.image, :slide_url => show_path(Show.friendly.find(show.id))} %>
+					</li>
+				<% end %>
+		</ul>
+  </div>
+</div>

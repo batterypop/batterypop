@@ -8,21 +8,18 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @show.title %>
+  <%= @channel.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @show.description %>
+  <%= @channel.description %>
 </p>
 
-<p>
-  <strong>Approved:</strong>
-  <%= @show.approved %>
-</p>
 
-<%= link_to 'Edit', edit_show_path(@show) %> |
-<%= link_to 'Back', shows_path %>
+
+<%= link_to 'Edit', edit_channel_path(@channel) %> |
+<%= link_to 'Back', channels_path %>
 
 
 		</div>

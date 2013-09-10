@@ -2,65 +2,40 @@
 <div class="row">
 	<!-- large image right slideshow -->
 	<div class="col-lg-9 col-push-3">
-		<%= render 'layouts/featured' %>
+		
+		<ul class="bxslider home-featured">
+			<% @features.each do |feature| %>
+				<li><%= feature.content.html_safe %></li>
+			<% end %>
+
+		</ul>
 	</div>
 	<!-- end large image right slideshow -->
 	
-	<!-- start show promo -->
-	<!-- <div class="col-lg-3 col-pull-9">
-		<div class="list-group">
-			<a href="#" class="list-group-item"> 
-				<div clas="row">
-					<h5 class="list-group-item-heading">List group item heading</h5> 
-					<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> 
-				</div>
-			</a>
-			<a href="#" class="list-group-item"> 
-				<h4 class="list-group-item-heading">List group item heading</h4> 
-				<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> 
-			</a>
-			<a href="#" class="list-group-item"> 
-				<h4 class="list-group-item-heading">List group item heading</h4> 
-				<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> 
-			</a>
-		</div>
-	</div> -->
+
+	
 		
 	<div class="col-lg-3 col-pull-9">
-		<ul class="media-list list-group">
-			<li class="media list-group-item">
-				<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x64&amp;text=[img]"></a>
-				<div class="media-body">
-					<h5 class="media-heading">Video Title
-					</h5><small>Short description of video.</small>
-				</div>
-			</li>
-	
-			<li class="media list-group-item">
-				<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x64&amp;text=[img]"></a>
-				<div class="media-body">
-					<h5 class="media-heading">Video Title
-					</h5><small>Short description of video.</small>
-				</div>
-			</li>
-			
-			<li class="media list-group-item">
-				<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x64&amp;text=[img]"></a>
-				<div class="media-body">
-					<h5 class="media-heading">Video Title
-					</h5><small>Short description of video.</small>
-				</div>
-			</li>
-			<li class="media list-group-item">
-				<a class="pull-left" href="#"><img class="media-object" src="http://placehold.it/64x64&amp;text=[img]"></a>
-				<div class="media-body">
-					<h5 class="media-heading">Video Title
-					</h5><small>Short description of video.</small>
-				</div>
-			</li>
+		<div class="col-lg-12">
+			<span id="home-carousel-prev"></span> | <span id="home-carousel-next"></span>
+		</div>
+		<ul class="bxslider home-side-carousel">
+			<% @shows.each do |show| %>
+				<li>
+					<div class="media" style="height: 90px;">
+						<a class="pull-left" href="#">
+							<img class="media-object img-responsive" src="<%= show.image %>" width="80" height="80" />
+						</a>
+						<div class="media-body">
+							<h5 class="media-heading"><%= show.title %></h5>
+							<small><%= show.subtitle %></small>
+						</div>
+					</div>
+				</li>
+			<% end %>
 		</ul>
+		
 		
 	</div>
 	<!-- end show promo -->
 </div>
-

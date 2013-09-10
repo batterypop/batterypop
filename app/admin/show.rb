@@ -9,6 +9,9 @@ ActiveAdmin.register Show do
 		f.inputs "Show Details" do
 			f.input :creator, :as => :select, :member_label => :displayname, :required => true
 			f.input :title, :label => "Show Title", :required => true 
+			f.input :subtitle, :label => "Show Subtitle", :required => true 
+			f.input :image, hint: "Main show image."
+			f.input :background, hint: "Main show page background if overridden."
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :single, :label => "Single episode?", :hint => "Set to true for short or non-episodic video."
 			f.input :approved, :label => "BatteryPOP approved."
@@ -17,6 +20,7 @@ ActiveAdmin.register Show do
 		 	f.has_many :episodes do |e|
 		 		e.input :title, :required => true
 				e.input :description, :as => :rich
+				e.input :image
 				e.input :embed, :as => :select, :member_label => :provider, :required => true
 				e.input :video, :label => "Video Code"
 		 	end
