@@ -1,5 +1,5 @@
 <!-- name.downcase.gsub(" ", "-")  -->
-<div class="main">
+<div class="main channel">
   <div class="container">
     <div class="content">
 <!-- page header; break off? -->
@@ -17,16 +17,23 @@
 
 
 <% @channels.each do |channel| %>
-      <div class="row bpop-slider-header channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-        <div class="col-lg-12 text-center ">
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>-next" class="pull-right"></div>
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>-prev" class="pull-left"></div>
-          <h4 class="page-title"><%= channel.title %></h4>
+      <div class="row bpop-slider-header ">
+        <div class="col-lg-12 text-center channel-header channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next" class="channel-next pull-right"></div>
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev" class="channel-prev pull-left"></div>
+          <!-- <h4 class="page-title"><%= channel.title %></h4> -->
+          <%=  image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "img-responsive channel-icon") %>
+          <small><%= channel.description.html_safe %></small>
         </div>
       </div>
-      <div class="row bpop-slider">
-        <div class="col-lg-12">
-          <ul class="bxslider slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>">
+      <div class="row bpop-slider ">
+        <div class="col-lg-12 channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
+          <ul class="bxslider  slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
+          <% channel.shows.each do |show| %>
+            <li>
+              <%= render partial: "layouts/vertical_slide", :locals => {:slide_title => show.title, :slide_text => show.description, :slide_image => show.image, :slide_url => show_path(Show.friendly.find(show.id))} %>
+            </li>
+          <% end %>
              
           </ul>
         </div>
@@ -41,35 +48,21 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  <% @channels.each do |channel| %>
+    $('.slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>').bxSlider({
+        nextSelector: '#<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next',
+        prevSelector: '#<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev',
+        nextText: 'NEXT', prevText: 'PREV',
+        minSlides: 2,
+        maxSlides: 5,
+        slideWidth: 200,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        moveSlides: 2,
+        pager: false
+      });
+  <% end %>
 
-<h1>Listing channel</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-     
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @channels.each do |channel| %>
-      <tr>
-        <td><%= channel.title %></td>
-        <td><%= channel.description %></td>
-        
-        <td><%= link_to 'Show', channel %></td>
-        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
-        <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New channel', new_channel_path %>
+</script>
