@@ -9,5 +9,60 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bxslider
  *= require_tree .
  */
+
+
+body {
+	background: url(/assets/background/background_orange_boxes.jpg) no-repeat center center;
+}
+
+
+
+h4.page-title{
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+.channel-page-header{
+	background-color: #28a0cd;
+	height: 100px;
+}
+
+
+.circle .image-wrap {
+	-webkit-border-radius: 45em;
+	-moz-border-radius: 45em;
+	border-radius: 45em;
+}
+
+/* fix for active admin highlight form */
+#active_admin_content .highlight{
+	background-color: transparent !important; 
+}
+
+
+/* main slider items */
+.bpop-slider-header{
+	background-color: #ffffff; 
+	height: 65px;
+}
+.bpop-slider{
+	background-color: #ffffff; 
+	margin-top: 0px !important;
+}
+
+/* circular slides */
+
+.vertical-slide{
+	width: 165px;
+	height: 300px;
+}
+
+.vertical-slide img{
+	width: 135px;
+	height: 135px;
+}
+
+/* channel backgrounds

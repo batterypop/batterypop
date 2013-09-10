@@ -7,24 +7,16 @@ ActiveAdmin.register Episode do
         @episode = Episode.friendly.find(params[:id])
       end
 
-	form :html => { :multipart => true } do |f|
-		f.inputs "Episode Details" do
+	form :html => { :multipart => true } do |e|
+		e.inputs "Episode Details" do
 			# f.input :show, :as => :select, :member_label => :title, :required => true
-			f.input :title
-			f.input :description, :as => :rich
-			f.input :embed, :as => :select, :label => "Provider", :member_label => :provider,  :required => true
-			f.input :video, :required=> true
-			f.input :approved, :label => "BatteryPOP approved"
-			# f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
-			# f.input :category,  :as => :select, :collection => Category.all, :input_html => { :multiple => true } 
-			  # f.input :category, :as => :check_boxes, :label_method => Proc.new { |category| category.name }  # yes / no ?
-			 # f.input :categories, :as => :check_boxes
-			# f.input :cateogry_id, :as => :select, :collection => Category.all, :input_html => { :multiple => true } 
+			e.input :title, :required => true
+			e.input :description, :as => :rich
+			e.input :image
+			e.input :embed, :as => :select, :member_label => :provider, :required => true
+			e.input :video, :label => "Video Code"
 		end
-		f.inputs "Episode Categories" do
-			f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
-		end
-		f.buttons
+		e.buttons
 	end
 
 

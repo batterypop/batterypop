@@ -1,0 +1,75 @@
+<!-- name.downcase.gsub(" ", "-")  -->
+<div class="main">
+  <div class="container">
+    <div class="content">
+<!-- page header; break off? -->
+      <div class="row">
+        <div class="col-lg-12 text-center channel-page-header">
+          <div class="channel-icon pull-right"></div>
+          <div class="channel-icon pull-left"></div>
+          <h4 class="channel-header page-title">All the channels all the time.</h4>
+        </div>
+      </div>
+<!-- page header end; break off? -->
+  
+<!-- repeat channels -->
+
+
+
+<% @channels.each do |channel| %>
+      <div class="row bpop-slider-header channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
+        <div class="col-lg-12 text-center ">
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>-next" class="pull-right"></div>
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>-prev" class="pull-left"></div>
+          <h4 class="page-title"><%= channel.title %></h4>
+        </div>
+      </div>
+      <div class="row bpop-slider">
+        <div class="col-lg-12">
+          <ul class="bxslider slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "") %>">
+             
+          </ul>
+        </div>
+      </div>
+
+<% end %>
+
+
+<!-- end repeat channels -->
+
+    </div>
+  </div>
+</div>
+
+
+<h1>Listing channel</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+     
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @channels.each do |channel| %>
+      <tr>
+        <td><%= channel.title %></td>
+        <td><%= channel.description %></td>
+        
+        <td><%= link_to 'Show', channel %></td>
+        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
+        <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New channel', new_channel_path %>

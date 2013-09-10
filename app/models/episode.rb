@@ -25,6 +25,14 @@ class Episode < ActiveRecord::Base
 	has_one :creator, :through => :show
 	belongs_to :embed
 
+	has_attached_file :image,
+	    :styles => { large: "864x486>", :thumb => "150x150>" },
+	    storage: :s3,
+	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/:class/:id/:attachment/:style/:filename",
+	    bucket: S3_BUCKET,
+	    default_url: "/assets/missing.png"
+
 
 	private
 
@@ -34,6 +42,10 @@ class Episode < ActiveRecord::Base
 			[show.title, title,  Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
 
 		]
+	end
+
+	def episode_params
+		params.require(:episode).permit(:title, :description, :approved, :show_id, :slug)
 	end
 	
 

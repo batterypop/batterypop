@@ -67,6 +67,10 @@ gem "acts_as_votable", "~> 0.7.1"
 
 gem 'friendly_id', '5.0.0.beta4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
+gem "bxslider-rails", "~> 4.1.0"
+
+gem 'truncato'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
