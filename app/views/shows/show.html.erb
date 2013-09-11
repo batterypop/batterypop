@@ -1,8 +1,64 @@
-<div class="main">
+<div class="main show">
 	<div class="container">
 		<div class="content">
 
-<p id="notice"><%= notice %></p>
+			<div class="row">
+				<div class="col-lg-12">
+					<p id="notice"><%= notice %></p>
+				</div>
+			</div>
+			
+
+<!-- top most / breadcrumb area -->
+			<div class="row bpop-breadcrumb slight-shadow">
+				<div class="col-lg-3 bpop-show-title text-right"><h3><%= @show.title %></h3></div> 
+				<div class="col-lg-6 bpop-show-description"><%= @show.description.html_safe %></div>
+				<div class="col-lg-3 bpop-show-action">
+				</div>
+			</div>
+<!-- end top most / breadcrumb area -->
+			
+<!-- mid section player / carousel -->
+			<div class="row">
+				<!-- video player area -->
+				<div class="col-lg-9 show-player">
+				</div>
+				<!-- vertical carousel -->
+				<div class="col-lg-3 show-popped-carousel">
+					<div class="col-lg-12 show-most-popped-header"></div>
+					<div class="col-lg-12 show-most-popped-controls">
+						<span id="home-carousel-prev"></span> | <span id="home-carousel-next"></span>
+					</div>
+					<ul class="bxslider show-most-popped-carousel">
+					</ul>
+				</div>
+			</div>
+<!-- end mid section player / carousel -->
+
+
+<!-- lower listings -->
+			<div class="row show-bottom-section">
+
+				<div class="col-lg-8 show-lower-left">
+					
+					<div class="media-list list-group">
+						<% @show.episodes.each do |episode| %>
+							<%= render partial: "layouts/horizontal_slide", :locals => {
+								:slide_badge => 23333,
+								:slide_title => episode.title, 
+							 	:slide_text => episode.description.html_safe, 
+								:slide_image => image_tag(episode.image, :alt => episode.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+								:slide_url => show_path(Episode.friendly.find(episode.id))} %>
+						<% end %>
+
+					</div>
+				</div>
+
+				<div class="col-lg-4 show-lower-right">
+				</div>
+			</div>
+
+<!-- end lower listings -->
 
 
 

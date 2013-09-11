@@ -1,8 +1,21 @@
-<div class="main">
+<div class="main channel">
 	<div class="container">
 		<div class="content">
 
-<p id="notice"><%= notice %></p>
+			<div class="row">
+				<div class="col-lg-12">
+					<p id="notice"><%= notice %></p>
+				</div>
+			</div>
+			
+
+<!-- top most / breadcrumb area -->
+			<div class="row bpop-breadcrumb slight-shadow">
+				<div class="col-lg-3 bpop-show-title text-right"><h3><%= @channel.title %></h3></div> 
+				<div class="col-lg-6 bpop-show-description"><%= @channel.description.html_safe %></div>
+				<div class="col-lg-3 bpop-show-action">
+				</div>
+			</div>
 
 
 
