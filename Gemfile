@@ -69,7 +69,7 @@ gem 'friendly_id', '5.0.0.beta4' # Note: You MUST use 5.0.0 or greater for Rails
 
 gem "bxslider-rails", "~> 4.1.0"
 
-gem 'truncato'
+gem  'truncate_html'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

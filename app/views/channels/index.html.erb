@@ -31,7 +31,11 @@
           <ul class="bxslider  slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
           <% channel.shows.each do |show| %>
             <li>
-              <%= render partial: "layouts/vertical_slide", :locals => {:slide_title => show.title, :slide_text => show.description, :slide_image => show.image, :slide_url => show_path(Show.friendly.find(show.id))} %>
+              <%= render partial: "layouts/vertical_slide", :locals => {
+                :slide_title => show.title, 
+                :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                :slide_image => show.image, 
+                :slide_url => show_path(Show.friendly.find(show.id))} %>
             </li>
           <% end %>
              

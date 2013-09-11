@@ -22,7 +22,7 @@
 		<ul class="bxslider home-side-carousel">
 			<% @shows.each do |show| %>
 				<li>
-					<div class="media" style="height: 90px;">
+					<!-- <div class="media" style="height: 90px;">
 						<a class="pull-left" href="#">
 							<img class="media-object img-responsive" src="<%= show.image %>" width="80" height="80" />
 						</a>
@@ -30,7 +30,14 @@
 							<h5 class="media-heading"><%= show.title %></h5>
 							<small><%= show.subtitle %></small>
 						</div>
-					</div>
+					</div> -->
+
+					<%= render partial: "layouts/horizontal_slide", :locals => {
+								:slide_title => show.title, 
+							 	:slide_text => show.subtitle, 
+								:slide_image => image_tag(show.image, :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+								:slide_url => show_path(Show.friendly.find(show.id))} %>
+
 				</li>
 			<% end %>
 		</ul>

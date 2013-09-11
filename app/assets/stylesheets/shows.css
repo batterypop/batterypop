@@ -1,0 +1,18 @@
+.show .bpop-breadcrumb{
+	background-color: #428BCA;
+	padding: 0px;
+}
+
+.bpop-show-title{
+	color: #428BCA;
+	padding-left: 150px;
+	background-color: #FFFFFF;
+	height: 100%;
+}
+
+.bpop-show-description{
+	padding: 10px 10px 10px 30px;
+	color: #ffffff;
+	background-color: #428BCA;
+	height: 100px;
+}

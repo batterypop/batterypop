@@ -2,6 +2,6 @@
 	<a href="<%= slide_url %>"><img class="img-responsive img-circle" src="<%= slide_image %>"></a>
 	<div class="caption">
 	  <h4><%= slide_title %></h4>
-		  <small><p><%= truncate_html(strip_tags(slide_text), length: 100, omission: '<b>...(more)</b>') %></p></small>
+		  <small><p><%= slide_text %></p></small>
 	  </div>
 </div>

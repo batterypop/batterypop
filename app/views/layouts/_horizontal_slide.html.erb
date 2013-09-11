@@ -1,0 +1,10 @@
+<a href="<%= slide_url %>" class="media list-group-item ">
+	<%= slide_image %>
+	<% if !(local_assigns[:slide_badge].nil?) %>
+	<span class="badge bpop-badge"><%= slide_badge %><%= image_tag("/assets/ui/bpop-badge-below.png") %></span>
+	<% end %>
+	<div class="media-body">
+		<h4 class="media-heading"><%= slide_title %></h4>
+		<% if !(local_assigns[:slide_text].nil?) %><%= slide_text %><% end %>
+	</div>
+</a>

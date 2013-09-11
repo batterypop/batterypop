@@ -27,6 +27,41 @@ body .container{
 	box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
 }
 
+
+/* breadcrumb */
+ .bpop-breadcrumb{
+ 	height: 100px;
+	border-style: none;
+	border-bottom: 1px solid aqua;
+	border-top: 4px solid #ececec;
+	background-color: #428BCA;
+	padding: 0px;
+}
+
+
+.bpop-show-title{
+	color: #428BCA;
+	padding-left: 150px;
+	background-color: #FFFFFF;
+	height: 100%;
+}
+
+.bpop-show-description{
+	padding: 10px 10px 10px 30px;
+	color: #ffffff;
+	background-color: #428BCA;
+	height: 100px;
+}
+
+
+.bpop-breadcrumb .bpop-show-description{
+	background: url(/assets/ui/breadcrumb-mid-left-edge.png) no-repeat;
+}
+
+.home .home-side-carousel{
+	margin-left: -40px;
+}
+
 .container .row{
 	padding: 15px;
 }
@@ -77,6 +112,18 @@ h4.page-title{
    box-shadow:         inset 0 0 10px #000000;
 }
 
+.slight-shadow {
+	-moz-box-shadow: 2px 2px 2px rgba(68,68,68,0.6);
+	-webkit-box-shadow: 2px 2px 2px rgba(68,68,68,0.6);
+	box-shadow: 2px 2px 2px rgba(68,68,68,0.6);
+}
+
+.shadow {
+	-moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+	-webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+	box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+}
+
 /* circular slides */
 
 .vertical-slide{
@@ -95,4 +142,22 @@ h4.page-title{
 	   -webkit-box-shadow: inset 0 0 10px #000000;
 	   box-shadow:         inset 0 0 10px #000000;
 }
-/* channel backgrounds
+
+
+
+/*  horizontal items */
+.bpop-badge{
+	border-radius: 0px !important;
+	background-color: #e90006 !important;
+	width: 50px !important;
+}
+.bpop-badge img{
+	position: relative;
+	display: block;
+	top: 4px;
+	left: -7px;
+}
+
+.bpop-badge-below{
+	background-image: url(/assets/ui/bpop-badge-below.png);
+}
