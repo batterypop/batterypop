@@ -22,6 +22,11 @@ class EpisodesController < ApplicationController
   def edit
   end
 
+
+  def get_embed!(episode)
+    'hi'
+  end
+
   # POST /episodes
   # POST /episodes.json
   # def create

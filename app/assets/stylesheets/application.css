@@ -18,6 +18,9 @@ body {
 	background: url(/assets/background/background_orange_boxes.jpg) repeat;
 }
 
+.show-player{
+	height: 384px;
+}
 
 
 body .container{
