@@ -26,26 +26,6 @@
 	height: 65px;
 }
 
-/** buttons for slideshow **/
-.channel-next a, .channel-prev a{
-	width: 52px !important;
-	height: 56px !important;	
-	position: absolute;
-	top: 50%;
-	margin-top: -28px;
-	text-indent: -9999px;
-	z-index: 9999;
-}
-
-.channel-prev a{
-	background: url(/assets/ui/channel-slider-back.png) no-repeat;
-	margin-left: -10px;
-	
-}
-.channel-next a{
-	background: url(/assets/ui/channel-slider-next.png) no-repeat;
-	margin-left: -35px;
-}
 
 
 .channel-music{

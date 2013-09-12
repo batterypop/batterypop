@@ -103,6 +103,34 @@ h4.page-title{
 	margin-top: 0px !important;
 }
 
+/** buttons for slideshow **/
+.slider-next a, .slider-prev a{
+	width: 52px !important;
+	height: 56px !important;	
+	position: absolute;
+	top: 50%;
+	margin-top: -28px;
+	text-indent: -9999px;
+	z-index: 9999;
+}
+
+.slider-prev a{
+	background: url(/assets/ui/channel-slider-back.png) no-repeat;
+}
+
+.slider-next a{
+	background: url(/assets/ui/channel-slider-next.png) no-repeat;
+	margin-right: 0px;
+}
+
+/** slider control colors **/
+.home-most-popped-header a{
+	background-color: #57307f !important;
+}
+
+.home-promoted-header a{
+	background-color: #feb409 !important;
+}
 
 
 /** shadow inward **/
