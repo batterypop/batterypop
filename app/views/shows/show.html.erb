@@ -44,11 +44,13 @@
 					<div class="media-list list-group">
 						<% @show.episodes.each do |episode| %>
 							<%= render partial: "layouts/horizontal_slide", :locals => {
-								:slide_badge => 23333,
+								:slide_badge => '23,333',
 								:slide_title => episode.title, 
 							 	:slide_text => episode.description.html_safe, 
 								:slide_image => image_tag(episode.image, :alt => episode.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
-								:slide_url => show_path(Episode.friendly.find(episode.id))} %>
+								# :slide_url => show_path(Episode.friendly.find(episode.id))
+								:slide_url => show_episode_path(@show, Episode.friendly.find(episode.id))
+								} %>
 						<% end %>
 
 					</div>
@@ -62,23 +64,8 @@
 
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @show.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @show.description %>
-</p>
 
-<p>
-  <strong>Approved:</strong>
-  <%= @show.approved %>
-</p>
-
-<%= link_to 'Edit', edit_show_path(@show) %> |
-<%= link_to 'Back', shows_path %>
 
 
 		</div>

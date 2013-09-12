@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     @title = "Home"
     @features = Feature.all
     @shows = Show.all
+    @episodes = Episode.all
   end
 
   def contact

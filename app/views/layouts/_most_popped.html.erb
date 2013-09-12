@@ -1,26 +1,21 @@
 <div class="row bpop-slider-header">
-	<div class="col-lg-12 text-center ">
-		<div id="home-mostpopped-next" class="pull-right"></div>
-		<div id="home-mostpopped-prev" class="pull-left"></div>
+	<div class="col-lg-12 text-center home-most-popped-header">
+		<div id="home-mostpopped-next" class="slider-next pull-right"></div>
+		<div id="home-mostpopped-prev" class="slider-prev pull-left"></div>
 		<h4>Most Popped Videos</h4>
 	</div>
 </div>
 <div class="row bpop-slider">
 	<div class="col-lg-12">
 		<ul class="bxslider home-most-popped">
-			<% @shows.each do |show| %>
+			<% @episodes.each do |episode| %>
 				<li>
-				<div class="col-lg-3">
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="<%= show.image %>" width="90" height="100%" />
-						</a>
-						<div class="media-body">
-							<h5 class="media-heading"><%= show.title %></h5>
-							<small><%= show.subtitle %></small>
-						</div>
-					</div>
-					</div>
+				
+					 <%= render partial: "layouts/horizontal_slide", :locals => {
+								:slide_title => episode.title, 
+							 	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+								:slide_image => image_tag(episode.image, :alt => episode.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '94', :height => '125'), 
+								:slide_url => show_path(Episode.friendly.find(episode.id))} %>
 				</li>
 			<% end %>
 		</ul>
