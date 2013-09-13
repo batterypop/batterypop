@@ -10,6 +10,9 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    if(@episode.nil?) 
+       @episode = @show.episodes.first
+    end
   end
 
   # GET /shows/new
@@ -60,6 +63,9 @@ class ShowsController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
