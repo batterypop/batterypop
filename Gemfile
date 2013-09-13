@@ -44,6 +44,9 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
 
+gem "therubyracer"
+gem "less-rails"
+
 gem 'devise',  github: 'plataformatec/devise'
 gem 'devise_security_extension', :github => 'phatworx/devise_security_extension' # security questions
 

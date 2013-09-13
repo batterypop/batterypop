@@ -25,10 +25,6 @@ class EpisodesController < ApplicationController
   end
 
 
-  def get_embed!(episode)
-    'hi'
-  end
-
   # POST /episodes
   # POST /episodes.json
   # def create

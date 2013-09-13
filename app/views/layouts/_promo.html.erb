@@ -1,5 +1,5 @@
-<!-- start promo --	>
-<div class="row">
+<!-- promo start -->
+<div class="row bpop-promo">
 	<!-- large image right slideshow -->
 	<div class="col-lg-9 col-push-3">
 		
@@ -14,10 +14,11 @@
 	
 
 	
-		
-	<div class="col-lg-3 col-pull-9">
+	<!-- begin vertical carousel -->	
+	<div class="col-lg-3 col-pull-9 home-carousel">
 		<div class="col-lg-12">
-			<span id="home-carousel-prev"></span> | <span id="home-carousel-next"></span>
+			<div id="home-carousel-down" class="slider-down pull-right"></div>
+			<div id="home-carousel-up" class="slider-up pull-left"></div>
 		</div>
 		<ul class="bxslider home-side-carousel">
 			<% @shows.each do |show| %>
@@ -34,7 +35,7 @@
 			<% end %>
 		</ul>
 		
-		
+		<!-- end of vertical carousel -->
 	</div>
-	<!-- end show promo -->
 </div>
+<!-- end show promo -->
