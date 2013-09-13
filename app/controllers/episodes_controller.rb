@@ -11,6 +11,8 @@ class EpisodesController < ApplicationController
   # GET /episodes/1.json
   def show
      # @episode = Episode.friendly.find(params[:id])
+     @show = @episode.show
+     render 'shows/show'
   end
 
   # GET /episodes/new
