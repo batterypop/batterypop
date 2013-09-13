@@ -3,7 +3,6 @@
 		<div class="content">
 			
 			<%= render 'layouts/promo' %>
-			
 			<%= render 'layouts/most_popped' %>
 			
 			<div class="row">
@@ -11,6 +10,7 @@
 					<%= render 'layouts/promoted' %>
 				</div>
 				<div class="col-lg-4">
+					
 				</div>
 			</div>
 			
@@ -33,8 +33,8 @@
 		  }
 	  	);
 	  $('.home-side-carousel').bxSlider({
-		  	nextSelector: '#home-carousel-next',
-			prevSelector: '#home-carousel-prev',
+		  	nextSelector: '#home-carousel-down',
+			prevSelector: '#home-carousel-up',
 			nextText: 'DOWN', prevText: 'UP',
 	  		responsive: true,
 	  		touchEnabled: true,
@@ -50,10 +50,11 @@
 			prevSelector: '#home-mostpopped-prev',
 			nextText: 'NEXT', prevText: 'PREV',
 		  	minSlides: 2,
-			maxSlides: 2,
+			maxSlides: 4,
 			responsive: true,
 	  		touchEnabled: true,
 	  		slideMargin: 10,
+	  		slideWidth: 260,
 			moveSlides: 2,
 			pager: false
 	  	});
