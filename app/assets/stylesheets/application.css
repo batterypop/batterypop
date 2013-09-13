@@ -107,6 +107,9 @@ h4.page-title{
 }
 
 /** buttons for slideshow **/
+.slider-next, .slider-prev{
+
+}
 .slider-next a, .slider-prev a{
 	width: 52px !important;
 	height: 56px !important;	
@@ -119,11 +122,12 @@ h4.page-title{
 
 .slider-prev a{
 	background: url(/assets/ui/channel-slider-back.png) no-repeat;
+	
 }
 
 .slider-next a{
 	background: url(/assets/ui/channel-slider-next.png) no-repeat;
-	margin-right: 0px;
+	margin-left: -52px;
 }
 
 /** slider control colors **/

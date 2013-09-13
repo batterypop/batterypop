@@ -22,7 +22,7 @@
           <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next" class="slider-next pull-right"></div>
           <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev" class="slider-prev pull-left"></div>
           <!-- <h4 class="page-title"><%= channel.title %></h4> -->
-          <%=  image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "img-responsive channel-icon") %>
+          <%=  link_to image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "img-responsive channel-icon"), channel_path(channel) %>
           <small><%= channel.description.html_safe %></small>
         </div>
       </div>
