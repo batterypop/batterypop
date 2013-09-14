@@ -22,6 +22,8 @@ module Batterypopv2
     # config.i18n.default_locale = :de
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts" 
+
+    config.assets.initialize_on_precompile = false
     
     config.action_controller.include_all_helpers = false
   end

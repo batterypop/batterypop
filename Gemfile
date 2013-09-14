@@ -27,10 +27,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'ZenTest'
 
-# Add Foundation Here
-#gem 'compass-rails' # you need this or you get an err
-# gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
-# gem 'zurb-foundation', '~> 4.0.0'
 
 gem 'paperclip',  '>= 3.4.0'  # image upload
 gem 'aws-sdk'
@@ -72,7 +68,7 @@ gem "bxslider-rails", "~> 4.1.0"
 
 gem  'truncate_html'
 
-gem 'pg'
+
 
 
 group :doc do
@@ -100,14 +96,17 @@ group :development do
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
+  gem 'sqlite3'
 end
 
 
 group :production do
+  gem 'pg'
   gem 'rails_12factor'
 end
 
 group :test do
+    gem 'sqlite3'
     gem 'rspec'
     gem 'autotest'
     gem 'autotest-growl'
