@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130906214912) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "username",               default: "", null: false
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  add_index "admin_users", ["username"], name: "index_admin_users_on_username", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["username"], name: "index_admin_users_on_username", unique: true, using: :btree
 
   create_table "avatars", force: true do |t|
     t.string   "name"
@@ -113,7 +116,7 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "image_updated_at"
   end
 
-  add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true
+  add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true, using: :btree
 
   create_table "features", force: true do |t|
     t.string   "title"
@@ -130,10 +133,10 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "rich_rich_files", force: true do |t|
     t.datetime "created_at"
@@ -168,7 +171,7 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "background_updated_at"
   end
 
-  add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true
+  add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true, using: :btree
 
   create_table "survey_answers", force: true do |t|
     t.integer  "attempt_id"
@@ -237,10 +240,10 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.integer  "parent_id",                default: 0,  null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["parent_id"], name: "index_users_on_parent_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["parent_id"], name: "index_users_on_parent_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"
@@ -253,7 +256,7 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end
