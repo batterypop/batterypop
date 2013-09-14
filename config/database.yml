@@ -26,7 +26,7 @@ development:
   username: jbsfmhvondnfrz
   password: zTqrmKavM8svE5gmPbUIS7n1_X
   post: 5432
-  encoding: UTF8
+  encoding: unicode
 
 test:
   adapter: sqlite3
