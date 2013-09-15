@@ -20,7 +20,7 @@
 #   pool: 5
 #   timeout: 5000
 
-development:
+production:
   adapter: postgresql
   database: dakuok3re64cjs
   username: jbsfmhvondnfrz
@@ -34,7 +34,7 @@ test:
   pool: 5
   timeout: 5000
 
-production:
+development:
   adapter: sqlite3
   database: db/test.sqlite3
   pool: 5
