@@ -24,6 +24,20 @@ class EpisodesController < ApplicationController
   def edit
   end
 
+# voting
+def popUnPop
+  # @picture = Picture.find(params[:id])
+  # @episode.liked_by current_user
+  # redirect_to @episode
+  if(!current_user.nil?)
+    if(current_user.voted_for? @episode)
+      @episode.liked_by current_user
+    else
+      @episode.disliked_by current_user
+  end
+end
+
+
 
   # POST /episodes
   # POST /episodes.json

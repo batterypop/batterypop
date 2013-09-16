@@ -15,6 +15,20 @@ class ShowsController < ApplicationController
     end
   end
 
+
+  def get_most_popped
+    "HELLO"
+  end
+
+  helper_method :get_most_popped
+
+
+
+
+   ## Scopes for calculating relative users
+  # scope :created_yesterday, lambda { where(:created_at.gte => (Time.now - 1.day)) }
+  # scope :created_last_week, lambda { where(:created_at.gte => (Time.now - 1.week)) }
+
   # GET /shows/new
   # def new
   #   @show = Show.new

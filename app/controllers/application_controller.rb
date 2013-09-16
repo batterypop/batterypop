@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  def most_popped
+    @most_popped  ||= Show.first
+  end
+helper_method :most_popped
 
 
   protected
@@ -15,5 +19,6 @@ class ApplicationController < ActionController::Base
       super # Use the default one
     end
   end
+
 
 end

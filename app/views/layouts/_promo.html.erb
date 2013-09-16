@@ -22,19 +22,16 @@
 		</div>
 		<ul class="bxslider home-side-carousel">
 			<% @shows.each do |show| %>
-				<li>
-					
+			<li>
+				<%= render partial: "layouts/horizontal_slide", :locals => {
+							:slide_title => show.title, 
+						 	:slide_text => show.subtitle, 
+							:slide_image => image_tag(show.image, :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+							:slide_url => show_path(Show.friendly.find(show.id))} %>
 
-					<%= render partial: "layouts/horizontal_slide", :locals => {
-								:slide_title => show.title, 
-							 	:slide_text => show.subtitle, 
-								:slide_image => image_tag(show.image, :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
-								:slide_url => show_path(Show.friendly.find(show.id))} %>
-
-				</li>
+			</li>
 			<% end %>
 		</ul>
-		
 		<!-- end of vertical carousel -->
 	</div>
 </div>

@@ -43,9 +43,13 @@ class Show < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 
+scope :created_between, lambda { |start_time, end_time| where(:created_at => (start_time...end_time)) }
+scope :created_yesterday, created_between((Time.zone.now-1.day).beginning_of_day, (Time.zone.now-1.day).end_of_day)
+scope :created_last_week, created_between((Time.zone.now-1.week).beginning_of_day, Time.zone.now)
+scope :created_last_month, created_between((Time.zone.now-1.month).beginning_of_day, Time.zone.now)
+scope :created_last_year, created_between((Time.zone.now-1.year).beginning_of_day, Time.zone.now)
 
 
-	
 
 
 	private
