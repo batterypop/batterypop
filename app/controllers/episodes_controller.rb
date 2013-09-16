@@ -34,6 +34,7 @@ def popUnPop
       @episode.liked_by current_user
     else
       @episode.disliked_by current_user
+    end
   end
 end
 
