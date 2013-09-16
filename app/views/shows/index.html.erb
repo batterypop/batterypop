@@ -1,3 +1,55 @@
+<div class="main channel">
+  <div class="container">
+    <div class="content">
+
+<!-- top most / breadcrumb area -->
+      <div class="row bpop-breadcrumb slight-shadow">
+        <div class="col-lg-3 bpop-show-title text-right"><h3>Our<br />Shows</h3></div> 
+        <div class="col-lg-6 bpop-show-description">All the shows fit to watch.</div>
+        <div class="col-lg-3 bpop-show-action">
+        </div>
+      </div>
+<!-- end top most / breadcrumb area -->
+
+<!-- lower listings -->
+      <div class="row show-bottom-section">
+
+        <div class="col-lg-8 show-lower-left">
+          
+          <div class="media-list list-group">
+            <% @shows.each do |show| %>
+               <%= render partial: "layouts/horizontal_slide", :locals => {
+                          :slide_badge => '23,333',
+                          :slide_title => show.title, 
+                          :slide_text => show.description.html_safe, 
+                          :slide_image => image_tag(show.image, :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+                          :slide_url => show_path(Show.friendly.find(show.id))
+                          } %>
+                      <% end %>
+          </div>
+        </div>
+
+        <div class="col-lg-4 show-lower-right">
+        </div>
+      </div>
+
+<!-- end lower listings -->
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- 
+
 <h1>Listing shows</h1>
 
 <table>
@@ -28,4 +80,4 @@
 
 <br>
 
-<%= link_to 'New Show', new_show_path %>
+<%= link_to 'New Show', new_show_path %> -->

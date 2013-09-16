@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906214912) do
+ActiveRecord::Schema.define(version: 20130915203328) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -111,8 +111,16 @@ ActiveRecord::Schema.define(version: 20130906214912) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_score", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
   end
 
+  add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down"
+  add_index "episodes", ["cached_votes_score"], name: "index_episodes_on_cached_votes_score"
+  add_index "episodes", ["cached_votes_total"], name: "index_episodes_on_cached_votes_total"
+  add_index "episodes", ["cached_votes_up"], name: "index_episodes_on_cached_votes_up"
   add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true
 
   create_table "features", force: true do |t|
