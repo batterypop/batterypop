@@ -1,0 +1,109 @@
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-md-push-9 col-xs-12">
+					<div class="row" id="login-bar">
+					<% if user_signed_in? %>
+
+						<div class="col-md-5 col-md-offset-2 col-xs-12" id="signin">
+							<p><%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy" %></p>
+						</div>
+						<div class="col-md-5 col-xs-12" id="signup">
+							<p><%= link_to "Profile", edit_user_registration_path, :id => "login" %></p>
+						</div>
+
+
+					<% else %>
+
+						<!-- <div class="row" id="login-bar"> -->
+						<div class="col-md-5 col-md-offset-2 col-xs-12" id="signin">
+							<p><a href="#"  id="popover_login" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Sign In</a></p>
+							
+
+
+							<div id="login-popover-content"  class="hidden">
+								<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+									<div><%= f.label :username %><br />
+									<%= f.email_field :username, :autofocus => true, :class =>"form-control" %></div>
+
+									<div><%= f.label :password %><br />
+									<%= f.password_field :password, :class =>"form-control" %></div>
+
+									<% if devise_mapping.rememberable? -%><br />
+									<div class="input-group">
+										<span class="input-group-addon">
+											<%= f.check_box :remember_me %> 
+										</span>
+										<%= f.label :remember_me, :class =>"form-control" %>
+									</div><br />
+
+
+									<% end -%>
+
+									<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
+								<% end %>
+							</div>
+
+
+
+						</div>
+
+						
+
+						<div class="col-md-5 col-xs-12" id="signup">
+							<p><a href="#signup">Sign Up</a></p>
+						</div>
+
+
+					<% end %>
+					</div>
+					<div class="row" id="search">
+						<div class="col-md-12 col-xs-12">
+							<form role="search">
+						      <div class="form-group">
+						        <input type="text" class="form-control" placeholder="Search">
+						      </div>
+						    </form>
+						</div>	
+					</div>	
+				</div>
+			</div>
+			<div class="row">
+					<div class="col-md-6 col-xs-12" id="branding">
+						<a href="/">
+							<%= image_tag "header-bg.png", :id =>"logoback" %>
+							<%= image_tag "header-logo.png", :id=>"logo" %>
+						</a>
+					</div>
+			</div>
+			<div class="row">
+				<nav role="navigation">
+					<div class="col-md-10 col-md-push-1 col-xs-12">
+						<ul id="menu" class="clearfix">
+							<li class="col-md-3 col-md-offset-1 col-xs-12 shows">
+								<p><a href="#shows">Shows</a></p>
+							</li>
+							<li class="col-md-4 col-xs-12 channels">
+								<p><a href="#channels">Channels</a></p>
+							</li>
+							<li class="col-md-3 col-xs-12 newest">
+								<p><a href="#newest">Newest</a></p>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>	
+
+
+
+<script type="text/javascript">
+$(function (){ 
+	$("#popover_login").popover({ 
+		html : true,
+		container: 'body', 
+		content: function(){return $("#login-popover-content").html();}
+	});  
+});  
+</script> 
