@@ -13,26 +13,34 @@
  *= require_tree .
  */
 
-$icon-font-path:          "/" !default;
-$icon-font-name:          "glyphicons-halflings-regular" !default;
 
 
 /* fonts */
-@font-face{
-font-family: RobotoSlab;
-src: url('/RobotoSlab-Bold.ttf'),
-     url('RobotoSlab-Light.ttf'),
-     url('RobotoSlab-Regular.ttf'),
-     url('RobotoSlab-Thin.ttf')
+
+@font-face {
+  font-family: 'RobotoSlab';
+  src: 
+      url('RobotoSlab-Bold.ttf') format('truetype'), 
+      url('RobotoSlab-Light.ttf') format('truetype'), 
+      url('RobotoSlab-Regular.ttf') format('truetype'), 
+      url('RobotoSlab-Thin.ttf') format('truetype');
 }
 
-@font-face{
-font-family: Anchor;
-src: url('/assets/anchor_complete_ot/RobotoSlab-Black.ttf'),
-     url('/assets/anchor_complete_ot/RobotoSlab-Bold.ttf'),
-     url('/assets/anchor_complete_ot/RobotoSlab-Medium.ttf'),
-     url('/assets/anchor_complete_ot/RobotoSlab-Semibold.ttf')
+
+
+@font-face {
+	font-family: 'Anchor';
+	src: 
+		url(font-path('Anchor-Black.otf')),  
+		url(font-path('Anchor-Bold.otf')), 
+		url(font-path('Anchor-Medium.otf')), 
+		url(font-path('Anchor-Semibold.otf'));
 }
+
+
+
+
+
 
 
 body {
@@ -42,10 +50,12 @@ body {
 
 /* login / signup buttons*/
 
+
 .btn-login{
 	font-family: 'RobotoSlab';
 	font-weight: 200;
 }
+
 .btn-login-group{
 	width: 150px !important;
 }
@@ -247,6 +257,11 @@ h4.page-title{
 
 
 /*  horizontal items */
+
+h4.media-heading{
+	font-family: Anchor-Semibold !important;
+}
+
 .bpop-badge{
 	color: #FFFFFF !important;
 	border-radius: 0px !important;

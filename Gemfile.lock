@@ -1,9 +1,8 @@
 GIT
   remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: addb7143365f97f938e3bdbb2ccfc52591230eda
-  branch: 3.0.0
+  revision: 7987fa1fa9195c5803e7ee3bb53ddc4a84c563c0
   specs:
-    anjlab-bootstrap-rails (3.0.0.rc2)
+    anjlab-bootstrap-rails (3.0.0.2)
       railties (>= 3.0)
       sass (>= 3.2)
 
@@ -73,7 +72,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: acefa2f7614673c7fd13c7c37a490e11288d75b4
+  revision: c323065b57277e175af21a693a115c55f98936e6
   specs:
     devise (3.1.0)
       bcrypt-ruby (~> 3.0)
@@ -214,7 +213,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    pg (0.16.0)
+    pg (0.17.0)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
