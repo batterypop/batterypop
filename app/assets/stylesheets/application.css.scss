@@ -47,7 +47,8 @@ body {
 	font-family: 'Varela', sans-serif !important;
 }
 
-/*.pipe-left{
+/*
+.pipe-left{
 	background: url(/assets/background/background_pipes_left_300.png) repeat-y left top;
 	float: left;
 	display: none;
@@ -65,7 +66,8 @@ body {
 	height: 100%;
 	width: 100%;
 	clear: both;
-}*/
+}
+*/
 
 /* login / signup buttons*/
 
@@ -106,6 +108,7 @@ body .container{
 
 
 /* breadcrumb */
+
  .bpop-breadcrumb{
  	height: 100px;
 	border-style: none;
@@ -293,6 +296,3 @@ h4.media-heading{
 .bpop-badge-below{
 	background-image: url(/assets/ui/bpop-badge-below.png);
 }
-
-
-
