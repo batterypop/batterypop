@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   has_surveys
   acts_as_voter
+  acts_as_messageable
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -67,5 +68,9 @@ class User < ActiveRecord::Base
  	@user = User.create(user_params)
  end
 
+# mailboxer
+  def mailboxer_email(object)
+    return nil
+  end
 
 end

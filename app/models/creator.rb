@@ -22,6 +22,8 @@
 
 class Creator < ActiveRecord::Base
 
+	acts_as_messageable
+
 	has_many :shows
 	has_many :episodes, :through => :shows
 
@@ -41,5 +43,11 @@ class Creator < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+
+
+# mailboxer
+  def mailboxer_email(object)
+    return nil
+  end
 
 end
