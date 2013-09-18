@@ -31,10 +31,10 @@
 @font-face {
 	font-family: 'Anchor';
 	src: 
-		url(font-path('Anchor-Black.otf')),  
-		url(font-path('Anchor-Bold.otf')), 
-		url(font-path('Anchor-Medium.otf')), 
-		url(font-path('Anchor-Semibold.otf'));
+		url('Anchor-Black.otf'),  
+		url('Anchor-Bold.otf'), 
+		url('Anchor-Medium.otf'), 
+		url('Anchor-Semibold.otf');
 }
 
 
