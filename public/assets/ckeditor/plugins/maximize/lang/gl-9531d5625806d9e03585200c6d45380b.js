@@ -1,0 +1,1 @@
+CKEDITOR.plugins.setLang("maximize","gl",{maximize:"Maximize",minimize:"Minimize"});
