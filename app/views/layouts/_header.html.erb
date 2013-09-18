@@ -1,3 +1,5 @@
+<div class="pipe-left"></div>
+<div class="pipe-right"></div>
 <div class="container">
 	<div class="row ">
 		<!-- <div class="col-lg-2 col-sm-12 col-offset-6 col-push-4"> -->
@@ -15,7 +17,7 @@
 					<div id="login-popover-content"  class="hidden">
 					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 						<div><%= f.label :username %><br />
-						<%= f.email_field :username, :autofocus => true, :class =>"form-control" %></div>
+						<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
 
 						<div><%= f.label :password %><br />
 						<%= f.password_field :password, :class =>"form-control" %></div>

@@ -42,10 +42,12 @@
 
 
 
+
 body {
 	background: url(/assets/background/background_orange_boxes.jpg) repeat;
 	font-family: 'Varela', sans-serif !important;
 }
+
 
 /*.pipe-left{
 	background: url(/assets/background/background_pipes_left_300.png) repeat-y left top;
@@ -67,12 +69,17 @@ body {
 	clear: both;
 }*/
 
+
 /* login / signup buttons*/
 
 
 .btn-login{
 	font-family: 'RobotoSlab';
 	font-weight: 200;
+}
+
+.btn-login-group{
+	width: 150px !important;
 }
 
 h1,

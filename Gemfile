@@ -69,6 +69,8 @@ gem "bxslider-rails", "~> 4.1.0"
 gem  'truncate_html'
 
 
+gem 'mailboxer'  # messaging
+
 
 
 group :doc do

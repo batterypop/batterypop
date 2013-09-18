@@ -10,6 +10,9 @@ Batterypopv2::Application.routes.draw do
     resources :episodes
   end
 
+  resources :messages 
+  resources :conversations
+
 #attempt at voting on episode not within shows nesting
 put '/episodes/:id/:action' => 'episodes#popUnPop'
 
