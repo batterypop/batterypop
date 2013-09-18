@@ -17,6 +17,8 @@
 
 /* fonts */
 
+/* fonts weren't working for me */
+
 @font-face {
   font-family: 'RobotoSlab';
   src: 
@@ -54,10 +56,6 @@ body {
 .btn-login{
 	font-family: 'RobotoSlab';
 	font-weight: 200;
-}
-
-.btn-login-group{
-	width: 150px !important;
 }
 
 h1,
