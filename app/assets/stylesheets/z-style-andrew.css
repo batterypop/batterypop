@@ -269,126 +269,157 @@ nav {
 
 
 /* ------------------------
-   --- bx-slider resets ---
+   -- bx-slider general  --
    ------------------------
-
-
-ul.bx-slider {
-	margin:0;
-	padding:0;
-}
-
-ul.bx-slider li {
-	list-style-type:none;
-}
 */
 
-/* ------------------------
-   -- home side carousel --
-   ------------------------
 
-
-#home-side-carousel {
-	background-color:#f8f8f8;
+ul.bxslider {
+	padding:5px;
 }
 
-.slide-item {
+ul.bxslider li {
 	border-width:0 1px 1px 0;
 	padding:5px;
 	border-color:#ececec;
 	border-style:solid;
 	box-shadow:0px 1px 3px #ccc;
 	background-color:#f8f8f8;
-	height:90px;
 }
 
-.slide-item a {
+ul.bxslider li a {
 	padding:0;
 	margin:0;
 }
 
-.slide-item img {
+
+ul.bxslider li h4 {
+	font-color:#28a0cd;
+}
+
+ul.bxslider li p {
+	font-color:#888888;
+}
+
+/* ------------------------
+   ---- channel headers ----
+   ------------------------
+*/
+
+div.bpop-slider-header > div div.channel-header-title {
+	height:55px;
+}
+
+div.bpop-slider-header > div div.channel-header-title,
+div.bpop-slider-header > div div.channel-header-title img {
+	margin-left:auto;
+	margin-right:auto;
+	width:auto;
+	overflow: visible;
+	display:inline-block;
+	padding:5px;
+	box-shadow:0px 2px 5px #333;
+}
+
+
+
+/* ------------------------
+   -- home side carousel --
+   ------------------------
+*/
+
+.home-side-carousel {
+	background-color:#f8f8f8;
+}
+
+ul.home-side-carousel li {
+	margin:1px auto;
+	clear:left;
+	height:90px;
+}
+
+ul.home-side-carousel li img {
 	height:80px;
 	width:80px;
 	float:left;
+}
+
+ul.home-side-carousel li div {
+	height:80px;
+}
+
+ul.home-side-carousel li img {
 	margin-right: 5px;
 }
 
-.slide-item div {
+ul.home-side-carousel li div {
 	margin-left:5px;
-	height:80px;
 	padding:5px 0;
 	background-color:white;
 }
 
-.slide-item  h4 {
-	font-color:#28a0cd;
-}
-
-.slide-item p {
-	font-color:#888888;
-}
-
-#home-side-carousel .slide-item {
-	margin:1px auto;
-	clear:left;
-}
-*/
 
 /* ------------------------
-   -- bx-slider controls --
+   --- vertical slides ----
    ------------------------
+*/
 
-
-
-
-.bx-prev,
-.bx-next,
-.button {
-	display:inline-block;
-	background-repeat:no-repeat;
-	background-position: 50% 50%;
+div.vertical-slide img.img-circle {
+	margin-left:auto;
+	margin-right:auto;
 }
 
-.v-slider .button {
-	width:30px;
-	height:30px;
-	-webkit-border-radius:15px;
-	-moz-border-radius:15px;
-	-o-border-radius:15px;
-	border-radius:15px;
-	margin:5px;
-}
-
-.h-slider .button {
-	width:50px;
-	height:60px;
-}
-
-
-.button a {
-	height:100%;
-	width:100%;
-}
-
-.v-slider .button.up {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMCAYAAACA0IaCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAP1JREFUeNqkkt1qwkAQRrO50JRabaG9N4IVfQbf/xnsfe8KNdYm/m7WM/BFUolG6MLHsJOZk5mdcSGEqO0452Liyra4+A7QK2aOffwXDMALZoRyNOX+cDP+WpskPmOG6AftUYKsug9ytnfDAA0wKVqiNTqiDjJ/Dy3I27W2KZBVlKECHdSm2V9pQlxyE0ZAX6CVQN5AVOEF9ILZt3fiu40wgVK9UQXKqpXAHvWTUq0XqrDzB4bjqQbKL0HV4X6oAa3CTR0Ya9zjWvmlQL5pYvj3AnpVaPeZ02Yb/UsPbKNdXgM1ACPBPvGF82oAfsN8t4EuBmZdJeTYCkUnAQYA9KCDg3teS7YAAAAASUVORK5CYII=);
-}
-
-.v-slider .button.down {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMCAYAAACA0IaCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAP1JREFUeNqUk8kOwjAMRElKEV1oy3aDMwf+/1dAgATcObAJUThQxmWKoq4QaWRn8auduCpJkpYMpVQfJsb83vpxIMaCGSDmIHPNxRFMBIXwO3+AhpADf5rC4CjYCZRBGoEESSUSa0NjrDk6+dS5IKwHWXVAgiJW5UI+tJHrScuE84RZScrc1ATaOZAmSIAeFEA7xF+/d5YDuswwA7ZLQK4BumQMbX4ZGw+YtZF+mgFL8wxQCO1NUAFGYMwMfcomyCYoIuhcuM+sz0ouugszg27Sf3yggKBTaUwVjEB5kLkkzBLl1Y5V53VdP/FvWLLMbR2oMTOzJXDu1XTuLcAAt9NicQb1TkwAAAAASUVORK5CYII=);
-}
-
-.h-slider .button.left {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATCAYAAACk9eypAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARFJREFUeNqMk01PwkAYhFlYQSQqJt7Vi8STB///3/Co3tUEcQWi1voMmepaaO0mk7cfz0zf7e6Gsix7/43AKA32O8BDyjX1VPexAzxDK3TIfRFb4FEGv/rxOjbA+5RLtEQJFeiFabzHhuQKVvJXBW/Nwckzp6Y6/McAPHZyqrXxkYdGwxPKFZoLQoLegD/rLfeBtRY3SAuzRvp82gVvDLxQn7dogIb+6oGDtsamJUxPWhQuz9y7/tAez+YO/P0x+V4CmFLOPZelzTIVPy3lbl4IvEfHasttTgka7DTYpL/0YNPEppPKFJq2N8AR5QIt3J7A59B2HjJT8tqsWs8DYUq/c3s6Q4+h44kbw2mb974FGACo+YCLXmmwrQAAAABJRU5ErkJggg==);
+div.vertical-slide {
 	
 }
 
-.h-slider .button.right {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAATCAYAAACk9eypAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPdJREFUeNqEk9kKwjAQRZtu2NalRX30B3zy///BD1DB5V1wA61FjXfgVkKZ1sClE3JPkplJjbXWk2GMSRA/vD/DCADzDPEU2mB+6wRoTKAI6kM7QNcuIIDGjFNo2AXVVxKogHwoI7TH2kUFmLRAOU+Uk0Ya9ANaoJzQWQUI+Q1IrnqA76QCDpSxcgJPoC28R1+rBBY++NyhF1RBb2guG4Vq6YwJnRN6LPlSNtJyiFihgI0Uretn06xSTLPvmFfwlFofXPOAFRLzU+t03LhGymuU2ltKaPa4c6Lt7AIFax1TYq5a3zdzkMYsBJB5l9ykJbb//rivAAMAAb+aEQPu+foAAAAASUVORK5CYII=);
-}
+
+/*
+---------------------------
+------ Breadcrumbs  -------
+---------------------------
 */
 
+div.bpop-breadcrumb {
+	height:auto;
+}
+
+
+div.bpop-breadcrumb > div{
+	height:auto;
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:0;
+	padding-bottom:0;
+	display:table;
+	height:114px;
+}
+
+div.bpop-breadcrumb > .bpop-show-title > h3,
+div.bpop-breadcrumb > .bpop-show-description > div,
+div.bpop-breadcrumb > .bpop-show-action > img {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+
+div.bpop-breadcrumb > div.bpop-show-title:after{
+	content:"";
+	border-style:solid;
+	border-top-width: 57px;
+	border-bottom-width: 57px;
+	border-right-width: 0;
+	border-left-width: 15px;
+	border-color: transparent white;
+	position:absolute;
+	top:0;
+	right:-15px;
+	z-index:1;
+}
+
+.bpop-breadcrumb .bpop-show-description {
+	background:#428BCA;
+}
 /*
 ---------------------------
 --- Universal Helpers -----
