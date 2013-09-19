@@ -17,7 +17,7 @@
 					<div class="col-xs-6 col-md-6" id="signin">
 						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
 					</div>
-					<div id="login-popover-content"  class="hidden">
+					<div id="login-popover-content"  class="hidden" >
 						<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 							<div><%= f.label :username %><br />
 							<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
@@ -41,7 +41,7 @@
 						</div>
 
 						<div class="col-xs-6 col-md-6" id="signup">
-							<%= link_to "Sign Up", new_user_registration_path, :id => "signup", :class => "btn btn-primary btn-small btn-login" %>
+							<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
 						</div>
 				 <!-- end sign in / sign up buttons -->
 				<% end %>
@@ -98,18 +98,47 @@
 			<%= render 'layouts/messages' %>
 		</div>
 	</div>
+
+
+
+
+<!-- modal sign up -->
+<div class="row">
+
+	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<%= render 'layouts/signup_modal' %>
+	</div>
+</div>
+
+<!-- end of modal sign up -->
+
+
+
+
 </header>
 
 
 
-<script>  
+<script type="text/javascript">
 $(function (){ 
+
 	$("#popover_login").popover({ 
 		html : true,
 		container: 'body', 
 		content: function(){return $("#login-popover-content").html();}
 	});  
 });  
+
+$(':not(#anything)').on('click', function (e) {
+    $('.popover-link').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
 </script> 
 
 

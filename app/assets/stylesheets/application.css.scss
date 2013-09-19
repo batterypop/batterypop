@@ -17,7 +17,7 @@
 
 
 // change colors
-$link-color: red;
+/*$link-color: red;*/
 
 // import original bootstrap
 @import "twitter/bootstrap";
@@ -85,6 +85,12 @@ body {
 	font-family: 'RobotoSlab';
 	font-weight: 200;
 }
+
+#login-popover-content{
+	z-index: 999999;
+}
+
+
 
 h1,
 h2,
