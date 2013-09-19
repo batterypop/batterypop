@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917091439) do
+ActiveRecord::Schema.define(version: 20130919180739) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20130917091439) do
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
+    t.string   "slug"
   end
 
   create_table "embeds", force: true do |t|
@@ -283,6 +284,7 @@ ActiveRecord::Schema.define(version: 20130917091439) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "parent_id",                default: 0,  null: false
+    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

@@ -15,7 +15,7 @@
 
 				<!-- sign in / sign up buttons -->
 					<div class="col-xs-6 col-md-6" id="signin">
-						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
+						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login popover-link" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
 					</div>
 					<div id="login-popover-content"  class="hidden" >
 						<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -127,18 +127,22 @@ $(function (){
 		container: 'body', 
 		content: function(){return $("#login-popover-content").html();}
 	});  
+
+	$(':not(#anything)').on('click', function (e) { 
+	    $('.popover-link').each(function () {
+	        //the 'is' for buttons that trigger popups
+	        //the 'has' for icons and other elements within a button that triggers a popup
+	        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+	            $(this).popover('hide');
+	            return;
+	        }
+	    });
+	});
+
+
 });  
 
-$(':not(#anything)').on('click', function (e) {
-    $('.popover-link').each(function () {
-        //the 'is' for buttons that trigger popups
-        //the 'has' for icons and other elements within a button that triggers a popup
-        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-            $(this).popover('hide');
-            return;
-        }
-    });
-});
+
 </script> 
 
 

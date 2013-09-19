@@ -25,6 +25,7 @@ put '/episodes/:id/:action' => 'episodes#popUnPop'
  
   root :to => "pages#home"
 
+  resources :creators
 
   devise_for :users,
     :controllers => { :registrations => "devise/custom/registrations" }
