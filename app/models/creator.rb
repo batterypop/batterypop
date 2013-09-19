@@ -21,6 +21,8 @@
 #
 
 class Creator < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :slug_candidates, use: :slugged
 
 	acts_as_messageable
 
@@ -48,6 +50,19 @@ class Creator < ActiveRecord::Base
 # mailboxer
   def mailboxer_email(object)
     return nil
+  end
+
+
+  	private
+	
+
+	def slug_candidates
+		[
+			displayname
+		]
+	end
+
+  def creator_params
   end
 
 end
