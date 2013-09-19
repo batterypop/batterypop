@@ -1,78 +1,104 @@
-<div class="pipe-left"></div>
-<div class="pipe-right"></div>
-<div class="container">
-	<div class="row ">
-		<!-- <div class="col-lg-2 col-sm-12 col-offset-6 col-push-4"> -->
-		<div class="col-lg-2 col-offset-8 col-sm-12 pull-right">
-			<div class="btn-group btn-login-group">
-			<% if user_signed_in? %>
-				<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
-				<%= link_to "Profile", edit_user_registration_path, :id => "login", :class => "btn btn-primary btn-small btn-login" %>
-
-			<% else %>
-
-
-			<!--   <a href="" class="btn btn-primary btn-small">Login</a> -->
-				<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
-					<div id="login-popover-content"  class="hidden">
-					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-						<div><%= f.label :username %><br />
-						<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
-
-						<div><%= f.label :password %><br />
-						<%= f.password_field :password, :class =>"form-control" %></div>
-
-						<% if devise_mapping.rememberable? -%><br />
-						<div class="input-group">
-							<span class="input-group-addon">
-								<%= f.check_box :remember_me %> 
-							</span>
-							<%= f.label :remember_me, :class =>"form-control" %>
-						</div><br />
-
-
-						<% end -%>
-
-						<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
-					<% end %>
+<header class="container">
+	<div class="row fill bottom padding margin">
+		 <div class="col-md-3 col-md-push-9 col-xs-12 clearfix" style="z-index:1;">
+			<div class="btn-login-group">
+				<% if user_signed_in? %>
+				<!-- this should be replaced with profile controls -->
+					<div class="col-xs-6 col-md-offset-2 col-md-5" >
+					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
 					</div>
+					<div class="col-xs-6 col-md-5" >
+					<%= link_to "Profile", edit_user_registration_path, :id => "login", :class => "btn btn-primary btn-small btn-login" %>
+					</div>
+				<!-- end profile controls -->
+				<% else %>
 
-				<%= link_to "Sign Up", new_user_registration_path, :id => "signup", :class => "btn btn-primary btn-small btn-login" %>
-			 
-			<% end %>
+				<!-- sign in / sign up buttons -->
+					<div class="col-xs-6 col-md-6" id="signin">
+						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
+					</div>
+					<div id="login-popover-content"  class="hidden">
+						<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+							<div><%= f.label :username %><br />
+							<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
+
+							<div><%= f.label :password %><br />
+							<%= f.password_field :password, :class =>"form-control" %></div>
+
+							<% if devise_mapping.rememberable? -%><br />
+							<div class="input-group">
+								<span class="input-group-addon">
+									<%= f.check_box :remember_me %> 
+								</span>
+								<%= f.label :remember_me, :class =>"form-control" %>
+							</div><br />
+
+
+							<% end -%>
+
+							<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
+						<% end %>
+						</div>
+
+						<div class="col-xs-6 col-md-6" id="signup">
+							<%= link_to "Sign Up", new_user_registration_path, :id => "signup", :class => "btn btn-primary btn-small btn-login" %>
+						</div>
+				 <!-- end sign in / sign up buttons -->
+				<% end %>
+			</div>
+
+
+			<div class="row">
+				<div class="col-xs-12 col-md-12" id="search">
+					<form role="search">
+					     <div class="form-group">
+					       <input type="text" class="form-control" placeholder="Search">
+					     </div>
+				   </form>
+				</div>
 			</div>
 		</div>
-		</div><div class="row">
-		<!-- <div class="col-lg-4 col-sm-12 col-pull-8"> -->
-		<div class="col-12">
-			<a href="/"><%= image_tag "loading-logo.png" %></a>
-		</div>
+	<!-- </div>
 
-	</div>
-	
-	<%= render 'layouts/messages' %>
-	
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="bs-example"> 
-				<ul class="nav nav-pills nav-justified"> 
-					<li class="active"><a href="/shows">Shows</a></li> 
-					<li><a href="/channels">Channels</a></li> 
-					<li><a href="#">Newest</a></li> 
-				</ul> 
+	<div class="row fill"> -->
+		<div class="col-md-12 col-xs-12" id="branding">
+			<div>
+				<a href="/">
+					<%= image_tag "header-bg.png", :id=>'logoback' %>
+					<%= image_tag "header-logo.png" %>
+				</a>
 			</div>
 		</div>
 	</div>
+
+
+	<nav class="row nav fill bottom padding margin" role="navigation">
+		<div class="col-md-10 col-md-push-1 col-xs-12">
+			<ul id="menu" class="clearfix">
+				<li class="col-md-3 col-md-offset-1 col-xs-12 shows">
+					<p><a href="/shows">Shows</a></p>
+				</li>
+				<li class="col-md-4 col-xs-12 channels">
+					<p><a href="/channels">Channels</a></p>
+				</li>
+				<li class="col-md-3 col-xs-12 newest">
+					<p><a href="/newest">Newest</a></p>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
 	
+
 
 
 	<div class="row">
 		<div class="col-lg-12">
-			<p id="notice"><%= notice %></p>
+			<!-- <p id="notice"><%= notice %></p> -->
+			<%= render 'layouts/messages' %>
 		</div>
 	</div>
-
-</div>
+</header>
 
 
 
@@ -88,6 +114,7 @@ $(function (){
 
 
 <!--
-
+<div class="pipe-left"></div>
+<div class="pipe-right"></div>
 = link_to "Log In", new_user_session_path, :id => "login", :class => "btn btn-primary btn-small ", "data-toggle" => "popover", "data-placement" => "bottom", "data-content" => "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.","data-original-title" => "", title => '' %>
 -->
