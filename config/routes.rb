@@ -20,6 +20,7 @@ put '/episodes/:id/:action' => 'episodes#popUnPop'
   get "pages/home"
   get "pages/contact"
   get "pages/about"
+  get "pages/newest"
   
  
   root :to => "pages#home"
