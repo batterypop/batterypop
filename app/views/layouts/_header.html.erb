@@ -1,6 +1,6 @@
 <header class="container">
 	<div class="row fill bottom padding margin">
-		 <div class="col-md-3 col-md-push-9 col-xs-12 clearfix" style="z-index:1;">
+		 <div class="col-md-3 col-md-push-9 col-xs-12 clearfix fill bottom padding margin" style="z-index:1;">
 			<div class="btn-login-group">
 				<% if user_signed_in? %>
 				<!-- this should be replaced with profile controls -->
@@ -15,7 +15,7 @@
 
 				<!-- sign in / sign up buttons -->
 					<div class="col-xs-6 col-md-6" id="signin">
-						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login popover-link" data-toggle="popover" data-placement="bottom" data-original-title="Log In:" title="">Login</button>
+						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Sign In:" title="">Sign In</button>
 					</div>
 					<div id="login-popover-content"  class="hidden" >
 						<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -48,8 +48,8 @@
 			</div>
 
 
-			<div class="row">
-				<div class="col-xs-12 col-md-12" id="search">
+			<div class="row fill bottom padding margin">
+				<div class="col-xs-12 col-md-12 row fill top bottom padding" id="search">
 					<form role="search">
 					     <div class="form-group">
 					       <input type="text" class="form-control" placeholder="Search">
@@ -61,11 +61,16 @@
 	<!-- </div>
 
 	<div class="row fill"> -->
-		<div class="col-md-12 col-xs-12" id="branding">
-			<div>
+		<div class="col-md-6 col-xs-12 fill top padding margin" id="branding">
+			<div class="desktop hidden-xs">
 				<a href="/">
 					<%= image_tag "header-bg.png", :id=>'logoback' %>
 					<%= image_tag "header-logo.png" %>
+				</a>
+			</div>
+			<div class="mobile hidden-lg hidden-md hidden-sm">
+				<a href="/">
+					<%= image_tag "header-mob.png" %>
 				</a>
 			</div>
 		</div>
