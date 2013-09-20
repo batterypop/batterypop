@@ -21,10 +21,10 @@
 	<div class="channel-slider channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
       <div class="bpop-slider-header ">
         <div class="text-center channel-header channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next" class="col-xs-3 col-sm-1 slider-next pull-right"></div>
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev" class="col-xs-3 col-sm-1 slider-prev pull-left"></div>
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next" class="col-xs-1  slider-next pull-right"></div>
+          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev" class="col-xs-1 slider-prev pull-left"></div>
           <!-- <h4 class="page-title"><%= channel.title %></h4> -->
-			<div class="col-xs-6 col-sm-10 channel-icon-header">
+			<div class="col-xs-12 channel-icon-header">
 	          <%=  link_to image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "img-responsive channel-icon"), channel_path(channel) %>
 	          <small><%= channel.description.html_safe %></small>
 			</div>
