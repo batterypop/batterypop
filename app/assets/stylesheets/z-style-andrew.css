@@ -418,19 +418,23 @@ div.bpop-breadcrumb {
 }
 
 
-div.bpop-breadcrumb > div{
+div.bpop-breadcrumb > div {
 	height:auto;
 	margin-top:0;
 	margin-bottom:0;
 	padding-top:0;
 	padding-bottom:0;
-	display:table;
 	height:114px;
 }
 
-div.bpop-breadcrumb > .bpop-show-title > h3,
-div.bpop-breadcrumb > .bpop-show-description > div,
-div.bpop-breadcrumb > .bpop-show-action > img {
+div.bpop-breadcrumb > div > div {
+	display:table;
+	height:100%;
+}
+
+div.bpop-breadcrumb > .bpop-show-title  h3,
+div.bpop-breadcrumb > .bpop-show-description > div > div,
+div.bpop-breadcrumb > .bpop-show-action > div > img {
 	display:table-cell;
 	vertical-align:middle;
 }
@@ -449,6 +453,15 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	right:-15px;
 	z-index:1;
 }
+
+.bpop-show-title > div {
+	float:right;
+}
+
+.bpop-show-title {
+	padding-left:0;
+}
+
 
 .bpop-breadcrumb .bpop-show-description {
 	background:#428BCA;
