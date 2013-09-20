@@ -384,29 +384,6 @@ ul.home-side-carousel li div {
 	background-color:white;
 }
 
-
-/* ------------------------
-   --- vertical slides ----
-   ------------------------
-*/
-
-.channel div.vertical-slide img.img-circle {
-	margin: 20px auto;
-	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
-	/* webkit, moz, o */
-}
-
-.channel div.vertical-slide {
-	height:280px;
-	background:url('/assets/channel-li-bg.png') center top no-repeat;
-	text-align:center;
-	width: 190px !important;
-}
-
-.channel div.vertical-slide h4 {
-	margin: 5px;
-}
-
 /*
 ---------------------------
 ------ Breadcrumbs  -------
