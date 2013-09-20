@@ -7,7 +7,10 @@
 <!-- top most / breadcrumb area -->
 			<div class="row bpop-breadcrumb slight-shadow">
 				<div class="col-lg-3 bpop-show-title text-right"><h3><%= @show.title %></h3></div> 
-				<div class="col-lg-6 bpop-show-description"><%= @show.description.html_safe %></div>
+				<div class="col-lg-6 bpop-show-description">
+					CREATOR: <a href="<%= creator_path(@show.creator)  %>"><%= @show.creator.displayname %></a>
+					<%= @show.description.html_safe %>
+				</div>
 				<div class="col-lg-3 bpop-show-action">
 				</div>
 			</div>
