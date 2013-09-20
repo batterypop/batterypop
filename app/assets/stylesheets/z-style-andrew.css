@@ -54,43 +54,58 @@ header {
 	text-align:center;
 	overflow-y:hidden;
 }
-
+/*
 header > .row {
 	background-color:white;
 	padding-top:0 !important;
 	box-shadow:0px 0px 3px #CCC;
 }
-
+*/
 #branding {
-	margin-top: 20px;
-	height:130px;
+	height:auto;
 }
 
-#branding > div {
-	height: 125px;
+#branding > .desktop {
+	height: 175px;
 	width: 100%;
 	overflow: visible;
-	position: absolute;
-	bottom: 35%;
+	position: relative;
+	display: table;
+	margin-top: -65px;
 }
 
-#branding img {
+
+#branding .desktop img {
 	position: absolute;
+	display: table-cell;
 	left: 0;
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	max-width:100%;
+	max-width: 100%;
 }
 
 #logo {
-	top: 28px;
 	z-index:1;
 }
 
 #logoback {
-	top: 0;
 	z-index:0;
+}
+
+#branding > .mobile {
+	margin-top: -30px;
+	margin-bottom: -15px;
+}
+
+#branding > .mobile {
+	height:auto;
+	max-width: 100%;
+}
+
+#branding > .mobile img {
+	height:auto;
+	max-width: 100%;
 }
 
 /*
@@ -267,11 +282,20 @@ nav {
 	border-bottom:solid 2px #28a0cd;
 }
 
+/* ------------------------
+   -- bx-slider resets  --
+   ------------------------
+*/
+
+.bx-wrapper .bx-viewport {
+	background:none;
+}
+
+
 
 /* ------------------------
    -- bx-slider general  --
    ------------------------
-*/
 
 
 ul.bxslider {
@@ -300,6 +324,8 @@ ul.bxslider li h4 {
 ul.bxslider li p {
 	font-color:#888888;
 }
+*/
+
 
 /* ------------------------
    ---- channel headers ----
@@ -364,15 +390,22 @@ ul.home-side-carousel li div {
    ------------------------
 */
 
-div.vertical-slide img.img-circle {
-	margin-left:auto;
-	margin-right:auto;
+.channel div.vertical-slide img.img-circle {
+	margin: 20px auto;
+	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	/* webkit, moz, o */
 }
 
-div.vertical-slide {
-	
+.channel div.vertical-slide {
+	height:280px;
+	background:url('/assets/channel-li-bg.png') center top no-repeat;
+	text-align:center;
+	width: 190px !important;
 }
 
+.channel div.vertical-slide h4 {
+	margin: 5px;
+}
 
 /*
 ---------------------------
