@@ -19,14 +19,14 @@
 	z-index: 1000;
 	position: relative;
 	display: inline-block;
-	max-width: 90% !important;
+	max-width: 75% !important;
+	min-width: 200px !important;
+	width: auto !important;
 }
 
 .channel-header{
 	height: 65px;
 }
-
-
 
 .channel-slider.channel-music{
 	background-color: #684389 !important;
