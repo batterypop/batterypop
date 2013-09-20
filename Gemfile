@@ -73,7 +73,8 @@ gem  'truncate_html'
 
 gem 'mailboxer'  # messaging
 
-
+# https://github.com/tcocca/acts_as_follower
+gem "acts_as_follower", "~> 0.2.0"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_surveys
   acts_as_voter
   acts_as_messageable
+  acts_as_followable
+  acts_as_follower
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
