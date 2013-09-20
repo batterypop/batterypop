@@ -19,61 +19,154 @@
 	z-index: 1000;
 	position: relative;
 	display: inline-block;
-	max-width: 90% !important;
+	max-width: 75% !important;
+	min-width: 200px !important;
+	width: auto !important;
 }
 
 .channel-header{
 	height: 65px;
 }
 
-
-
-.channel-music{
+.channel-slider.channel-music{
 	background-color: #684389 !important;
 }
-.channel-music img{
+
+.channel-slider.channel-music h4,
+.channel-slider.channel-music p{
+	color: #684389 !important;
+}
+
+.channel-music .channel-icon-header img{
 	max-width: 200px !important;
 	top: -14px;
 }
 
 
-.channel-cartoons{
+.channel-slider.channel-cartoons{
 	background-color: #2cb0e1 !important;
 }
 
-.channel-cartoons img{
+.channel-slider.channel-cartoons h4,
+.channel-slider.channel-cartoons p{
+	color: #2cb0e1 !important;
+}
+
+.channel-cartoons .channel-icon-header img{
 	margin-top: -20px;
 }
 
-.channel-comedy{
+.channel-slider.channel-comedy{
 	background-color: #fbbb01 !important;
 }
 
-.channel-comedy img{
+.channel-slider.channel-comedy h4,
+.channel-slider.channel-comedy p{
+	color: #fbbb01 !important;
+}
+
+.channel-comedy .channel-icon-header img{
 	margin-top: -20px;
 	max-width: 250px;
 }
 
-.channel-video-games{
+.channel-slider.channel-video-games{
 	background-color: #d6552d !important;
 }
-.channel-video-games img{
+
+
+.channel-slider.channel-video-games h4,
+.channel-slider.channel-video-games p{
+	color: #d6552d !important;
+}
+
+.channel-video-games .channel-icon-header img{
 	max-width: 515px;
 }
 
-.channel-action-adventure{
+.channel-slider.channel-action-adventure{
 	background-color: #457a21 !important;
 }
 
-.channel-science-math{
-	background-color: #457a21 !important;
+
+.channel-slider.channel-action-adventure h4,
+.channel-slider.channel-action-adventure p{
+	color: #457a21 !important;
 }
 
-.channel-international{
+.channel-slider.channel-science-math{
+	background-color: #1b6681 !important;
+}
+
+.channel-slider.channel-science-math h4,
+.channel-slider.channel-science-math p{
+	color: #1b6681 !important;
+}
+
+.channel-slider.channel-international{
 	background-color: #c90000 !important;
 }
 
-.channel-international img{
+.channel-slider.channel-international h4,
+.channel-slider.channel-international p{
+	color: #c90000 !important;
+}
+
+.channel-international .channel-icon-header img{
 	max-width: 380px;
 	margin-top: -15px;
+}
+
+
+div.channel-icon-header {
+	height:inherit;
+}
+
+.channel-slider,
+.channel-slider * {
+	background-color: transparent !important;
+}
+
+.channel div.vertical-slide img.img-circle {
+	margin: 20px auto;
+	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	/* webkit, moz, o */
+}
+
+.channel div.vertical-slide {
+	height:280px;
+	background:url('/assets/channel-li-bg.png') center top no-repeat;
+	text-align:center;
+	width: 190px !important;
+	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	/* webkit, moz, o */
+}
+
+.channel div.vertical-slide h4 {
+	margin: 5px;
+}
+
+.thumbnail.vertical-slide {
+	border:none;
+	border-radius:0;
+	/* webkit, moz, o */
+	margin-bottom:0;
+}
+.channel .bx-wrapper {
+	margin-bottom:5px;
+}
+
+.channel .bx-wrapper .bx-viewport {
+	border:none;
+	box-shadow:none;
+	border-radius:0;
+	left:0;
+}
+
+.channel-slider {
+	padding:10px;
+}
+
+.thumbnail .caption {
+	padding:5px;
 }
