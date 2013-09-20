@@ -2,22 +2,14 @@
   <div class="container">
     <div class="content">
 
-<!-- top most / breadcrumb area -->
-      <div class="row bpop-breadcrumb slight-shadow">
-        <div class="col-lg-3 bpop-show-title text-right">
-				<h3>Our<br />Shows</h3>
-		</div> 
-        <div class="col-lg-6 bpop-show-description">
-			<div>
-				<h4>Show Description</h4>
-				<p>All the shows fit to watch.</p>
-			</div>
-		</div>
-        <div class="col-lg-3 bpop-show-action">
-				<!--<img> -->
-        </div>
-      </div>
-<!-- end top most / breadcrumb area -->
+
+
+<%= render partial: "layouts/breadcrumb", :locals => {
+        :crumb_title => "<h3>Our<br />Shows</h3>".html_safe, 
+        :crumb_text => "<h4>Show Description</h4> <p>All the shows fit to watch.</p>".html_safe } %>
+
+
+
 
 <!-- lower listings -->
       <div class="row show-bottom-section">

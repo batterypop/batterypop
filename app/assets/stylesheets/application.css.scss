@@ -86,8 +86,8 @@ body {
 	font-weight: 200;
 }
 
-#login-popover-content{
-	z-index: 999999;
+#login-popover-content, div.modal, .popover{
+	z-index: 99999;
 }
 
 
@@ -217,7 +217,7 @@ h4.page-title{
 	top: 50%;
 	margin-top: -28px;
 	text-indent: -9999px;
-	z-index: 9999;
+	z-index: 9999; 
 }
 
 .slider-up a{

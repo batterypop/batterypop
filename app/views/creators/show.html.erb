@@ -1,1 +1,14 @@
-<h3>Show the Creator</h3>
+<div class="main channel">
+  <div class="container">
+    <div class="content">
+
+
+
+<%= render partial: "layouts/breadcrumb", :locals => {
+        :crumb_title => "#{}<h3>#{ @creator.displayname }</h3>".html_safe, 
+        :crumb_text => "#{ @creator.bio }".html_safe,
+        :crumb_action =>  image_tag(@creator.image, :alt => @creator.displayname, :class => "img-responsive thumbnail shadow", :width => '125') } %>
+
+		</div>
+	</div>
+</div>
