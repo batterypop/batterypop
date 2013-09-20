@@ -61,7 +61,7 @@
 	<!-- </div>
 
 	<div class="row fill"> -->
-		<div class="col-md-6 col-xs-12 fill top padding margin" id="branding">
+		<div class="col-md-6 col-xs-12 fill top padding margin left right" id="branding">
 			<div class="desktop hidden-xs">
 				<a href="/">
 					<%= image_tag "header-bg.png", :id=>'logoback' %>
@@ -97,7 +97,7 @@
 
 
 
-	<div class="row">
+	<div class="row"> <!-- This row is causing spacing issues when not in use -->
 		<div class="col-lg-12">
 			<!-- <p id="notice"><%= notice %></p> -->
 			<%= render 'layouts/messages' %>
@@ -108,7 +108,7 @@
 
 
 <!-- modal sign up -->
-<div class="row">
+<div class="row"> <!-- This row is causing spacing issues when not in use -->
 
 	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<%= render 'layouts/signup_modal' %>
