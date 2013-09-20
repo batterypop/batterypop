@@ -190,15 +190,17 @@ h4.page-title{
 /* main slider items */
 
 .bpop-slider-header{
-	background-color: #ffffff; 
-	height: 65px !important;
+	background-color: inherit; 
+	height: 53px !important;
 	max-height: 65px;
 	color: #000000;
 	margin-bottom: 0px;
 	padding: 0px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
+
 .bpop-slider{
-	background-color: #ffffff; 
+	background-color: inherit; 
 	margin-top: 0px !important;
 	padding-top: 0px;
 }
@@ -215,7 +217,7 @@ h4.page-title{
 	height: 56px;
 	position: absolute;
 	top: 50%;
-	margin-top: -28px;
+	margin-top: -30px;
 	text-indent: -9999px;
 	z-index: 9999; 
 }
@@ -229,12 +231,12 @@ h4.page-title{
 
 .slider-prev a{
 	background: url(/assets/ui/channel-slider-back.png) no-repeat;
-	
+	margin-left: -25px;
 }
 
 .slider-next a{
 	background: url(/assets/ui/channel-slider-next.png) no-repeat;
-	margin-left: -52px;
+	margin-left: -25px;
 }
 
 /* slider control colors */
