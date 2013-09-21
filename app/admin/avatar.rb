@@ -1,5 +1,7 @@
 ActiveAdmin.register Avatar do
 
+  menu :parent => "Users"
+
   form :html => { :multipart => true } do |f|
     f.inputs "Details" do
       f.input :name,  hint: "Only used internally."

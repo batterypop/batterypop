@@ -26,7 +26,7 @@ class Episode < ActiveRecord::Base
 	belongs_to :embed
 
 	has_attached_file :image,
-	    :styles => { large: "864x486>", :thumb => "150x150>" },
+	    :styles => { large: "864x486>", :thumb => "150x150#" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/:class/:id/:attachment/:style/:filename",
@@ -38,8 +38,8 @@ class Episode < ActiveRecord::Base
 
 	def slug_candidates
 		[
-			[show.title,  title],
-			[show.title, title,  Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
+			[title],
+			[title,  Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
 
 		]
 	end

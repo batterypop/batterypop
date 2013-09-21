@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920190344) do
+ActiveRecord::Schema.define(version: 20130921163734) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20130920190344) do
     t.integer  "cached_votes_score", default: 0
     t.integer  "cached_votes_up",    default: 0
     t.integer  "cached_votes_down",  default: 0
+    t.integer  "episode"
   end
 
   add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down"

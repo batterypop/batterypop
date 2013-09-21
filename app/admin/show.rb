@@ -1,5 +1,5 @@
 ActiveAdmin.register Show do
-	menu :parent => "BatteryPOP Shows"
+	menu :parent => "BatteryPOP Shows", :priority => 1
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 		@show = Show.friendly.find(params[:id])
@@ -18,11 +18,13 @@ ActiveAdmin.register Show do
 		end
 		 f.inputs "Episodes" do
 		 	f.has_many :episodes do |e|
+		 		e.input :episode, :label => "Episode Number", :hint => "Not required for non-episodic show."
 		 		e.input :title, :required => true
 				e.input :description, :as => :rich
 				e.input :image
 				e.input :embed, :as => :select, :member_label => :provider, :required => true
 				e.input :video, :label => "Video Code"
+				e.input :approved, :label => "BatteryPOP approved."
 		 	end
 
 		 end

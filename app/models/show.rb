@@ -22,12 +22,12 @@ class Show < ActiveRecord::Base
 	has_many :episodes
 	has_and_belongs_to_many :channels, :join_table => :channels_shows
 
-	accepts_nested_attributes_for :episodes
-		# :reject_if => ->(e) { e[:title].blank? }, :allow_destroy => true
+	accepts_nested_attributes_for :episodes, :allow_destroy => true
+		#:reject_if => ->(e) { e[:title].blank? }, :allow_destroy => true
 
 
 	has_attached_file :image,
-	    :styles => { large: "864x486>", :thumb => "150x150>" },
+	    :styles => { large: "864x486>", :thumb => "150x150#" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/:class/:id/:attachment/:style/:filename",
@@ -35,7 +35,7 @@ class Show < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 	has_attached_file :background,
-	    :styles => { background: "1600x1100>", large: "864x486>", thumb: "150x150>" },
+	    :styles => { background: "1600x1100>", large: "864x486>", thumb: "150x150#" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/:class/:id/:attachment/:style/:filename",

@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
 
   def most_popped
-    @most_popped  ||= Show.first
+    #@most_popped  ||= Show.first
+    @most_popped ||= "This is a test"
   end
 helper_method :most_popped
 
