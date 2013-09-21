@@ -13,7 +13,7 @@
 					  <%= render partial: "layouts/vertical_slide", :locals => {
 					  	:slide_title => show.title, 
 					  	:slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'), 
-					  	:slide_image => show.image, 
+					  	:slide_image => show.image(:thumb), 
 					  	:slide_url => show_path(Show.friendly.find(show.id))} %>
 					</li>
 				<% end %>

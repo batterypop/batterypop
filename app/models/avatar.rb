@@ -17,7 +17,7 @@ class Avatar < ActiveRecord::Base
 	has_many :users
 	
 	has_attached_file :image,
-    :styles => { large: "300x300>", node: "250x250>", :thumb => "100x100>" },
+    :styles => { large: "300x300>", node: "250x250#", :thumb => "100x100#" },
     storage: :s3,
     s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
     path: "images/avatars/:id/:attachment/:style/:filename",

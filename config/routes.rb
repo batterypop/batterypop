@@ -27,6 +27,13 @@ put '/episodes/:id/:action' => 'episodes#popUnPop'
 
   resources :creators
 
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
+
   devise_for :users,
     :controllers => { :registrations => "devise/custom/registrations" }
   
