@@ -523,3 +523,47 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 .clearfix:after {
   clear: both;
 }
+
+
+
+
+
+/*  home most popped */
+
+
+.home-most-popped-slider .bpop-slider-header {
+	overflow-y: hidden;
+}
+
+.bpop-slider-header {
+	height: 53px;
+}
+
+.home-most-popped-slider .bpop-slider-header {
+	background-color:#57307f;
+}
+.bpop-slider-header h4 {
+	margin:0;
+	line-height:53px;
+	color:white;
+}
+
+.bpop-slider-header h4 .glyphicon {
+	padding: 8px;
+	margin-left: 15px;
+	margin-top:5px;
+	border-radius: 50%;
+	border: 2px solid white;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+}
+
+.bpop-slider-header h4 .glyphicon:first-child {
+	margin-right:15px;
+}
+
+
+.bpop-slider {
+	width:100%;
+}
