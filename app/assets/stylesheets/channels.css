@@ -25,9 +25,31 @@
 }
 
 .channel-header{
-	height: 65px;
+	height: 65px;	
 }
 
+.bpop-slider-header {
+	position:relative;
+}
+
+.channel-slider .bpop-slider-header:after {
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNrM1V0LgjAUBuBNLaK86uOui/r/fy2jiwgz8/QOjjSWOXem4IEXK9zZw4GtTH0r4SyQFbJGcqQgoouKLK216X1GCLkjJfJEaqTh31VmrWn4+XJ67dAMJiqmxrigPtQBTZUEFYLpArkoHYPyYczYTU8fyEZV0kkNwXSty3p6ilFSjA8kQsVghoD6UHs+fVcHc5JihoL+nT7TfAuE2ejGmCO/+5BgQkAt4N3xPQfGbLrhzSuGVKEYCUgxgngS5nOKLHl6JSNqCSYUZKMa62JLrPuqcfJzz/gqFf4bkJV2Um9reuTewFODXJiKhYwFGr1mB9KBh2DySuY2oY8AAwBq5sK63MNKzQAAAABJRU5ErkJggg==);
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 0;
+	height: 0;
+	content: "";
+	z-index: 4;
+	padding: 0 11px 13px;
+	right: 0;
+	margin: 0 auto;
+	background-position: top center;
+}
+
+
+.channel-slider.channel-music .bpop-slider-header:after,
 .channel-slider.channel-music{
 	background-color: #684389 !important;
 }
@@ -42,7 +64,7 @@
 	top: -14px;
 }
 
-
+.channel-slider.channel-cartoons .bpop-slider-header:after,
 .channel-slider.channel-cartoons{
 	background-color: #2cb0e1 !important;
 }
@@ -56,6 +78,7 @@
 	margin-top: -20px;
 }
 
+.channel-slider.channel-comedy .bpop-slider-header:after,
 .channel-slider.channel-comedy{
 	background-color: #fbbb01 !important;
 }
@@ -70,6 +93,7 @@
 	max-width: 250px;
 }
 
+.channel-slider.channel-video-games .bpop-slider-header:after,
 .channel-slider.channel-video-games{
 	background-color: #d6552d !important;
 }
@@ -84,6 +108,7 @@
 	max-width: 515px;
 }
 
+.channel-slider.channel-action-adventure .bpop-slider-header:after,
 .channel-slider.channel-action-adventure{
 	background-color: #457a21 !important;
 }
@@ -94,6 +119,7 @@
 	color: #457a21 !important;
 }
 
+.channel-slider.channel-science-math .bpop-slider-header:after,
 .channel-slider.channel-science-math{
 	background-color: #1b6681 !important;
 }
@@ -103,6 +129,7 @@
 	color: #1b6681 !important;
 }
 
+.channel-slider.channel-international .bpop-slider-header:after,
 .channel-slider.channel-international{
 	background-color: #c90000 !important;
 }
