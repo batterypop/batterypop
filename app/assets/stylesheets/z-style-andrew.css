@@ -532,15 +532,15 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 
 .home-most-popped-slider .bpop-slider-header {
-	overflow-y: hidden;
 }
 
 .bpop-slider-header {
-	height: 53px;
 }
 
-.home-most-popped-slider .bpop-slider-header {
+.home-most-popped-header {
 	background-color:#57307f;
+	height: 53px;
+	overflow-y: hidden;
 }
 .bpop-slider-header h4 {
 	margin:0;
