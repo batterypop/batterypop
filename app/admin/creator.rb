@@ -2,6 +2,11 @@ ActiveAdmin.register Creator do
 
   menu :parent => "Users"
 
+  before_filter :only => [:show, :destroy, :edit, :update] do
+    @creator = Creator.friendly.find(params[:id])
+  end
+  
+
   form  do |f|
   	f.inputs "Creator Details" do
   		f.input :username, hint: "Unique sign in name, no spaces.", :required => true

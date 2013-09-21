@@ -22,14 +22,14 @@ production:
   access_key_id: AKIAIHNUUZXLOQ6NANDA
   secret_access_key: 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
 development:
-  bucket: batterypop-v2-prod
-  access_key_id: AKIAIHNUUZXLOQ6NANDA
-  secret_access_key: 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
+  bucket: batterypop-v2-dev
+  access_key_id: AKIAI7I56B3HSKHO3IAA
+  secret_access_key: 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
 staging:
   bucket: batterypop-v2-prod
   access_key_id: AKIAIHNUUZXLOQ6NANDA
   secret_access_key: 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
 test:
-  bucket: batterypop-v2-prod
-  access_key_id: AKIAIHNUUZXLOQ6NANDA
-  secret_access_key: 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
+  bucket: batterypop-v2-dev
+  access_key_id: AKIAI7I56B3HSKHO3IAA
+  secret_access_key: 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
