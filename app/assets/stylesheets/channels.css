@@ -8,7 +8,7 @@
 }
 
 .channel .bpop-slider{
-	padding-top: 0px;
+	padding-top: 15px;
 }
 
 .channel .bpop-slider .col-lg-12{
@@ -19,7 +19,7 @@
 	z-index: 1000;
 	position: relative;
 	display: inline-block;
-	max-width: 75% !important;
+	max-width: 90% !important;
 	min-width: 200px !important;
 	width: auto !important;
 }
@@ -105,7 +105,7 @@
 }
 
 .channel-video-games .channel-icon-header img{
-	max-width: 515px;
+	margin-top: -5px;
 }
 
 .channel-slider.channel-action-adventure .bpop-slider-header:after,
@@ -119,6 +119,10 @@
 	color: #457a21 !important;
 }
 
+.channel-action-adventure .channel-icon-header img{
+	margin-top: -2px;
+}
+
 .channel-slider.channel-science-math .bpop-slider-header:after,
 .channel-slider.channel-science-math{
 	background-color: #1b6681 !important;
@@ -127,6 +131,10 @@
 .channel-slider.channel-science-math h4,
 .channel-slider.channel-science-math p{
 	color: #1b6681 !important;
+}
+
+.channel-science-math .channel-icon-header img{
+	margin-top: -6px;
 }
 
 .channel-slider.channel-international .bpop-slider-header:after,
@@ -196,4 +204,11 @@ div.channel-icon-header {
 
 .thumbnail .caption {
 	padding:5px;
+}
+
+.main.channel .container .row {
+	background-color: white;
+	margin: 10px 5px;
+	padding: 5px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }

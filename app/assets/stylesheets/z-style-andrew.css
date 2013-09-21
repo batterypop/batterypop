@@ -1,3 +1,6 @@
+body {
+	background-color:#fefefe;
+}
 /*
 
 ----------------------------
@@ -566,4 +569,41 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 .bpop-slider {
 	width:100%;
+}
+
+.border-wrap {
+	background-color: white;
+	margin: 5px;
+	padding: 5px;
+}
+
+
+
+header {
+	position:relative;
+	overflow:visible;
+}
+
+header:before {
+	background: url('/assets/pipes-left.jpg') no-repeat left top;
+	padding: 0 0 2990px 250px;
+	left:-250px;
+}
+header:after {
+	background: url('/assets/pipes-right.jpg') no-repeat right top;
+	padding: 0 250px 2982px 0;
+	right:-250px;
+	
+}
+
+header:before,
+header:after {
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 0;
+	z-index: -1;
+	margin-left:0;
+	margin-right:0;
+	display:block !important;
 }
