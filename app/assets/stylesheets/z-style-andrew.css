@@ -578,26 +578,29 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 }
 
 
+html,
+body{
+	width:100%;
+	overflow-x:hidden;
+}
 
-header {
+body {
+	overflow-y:hidden;
+}
+
+.pipes-container {
+	height:100%;
+	position:relative;
+}
+
+.pipes {
 	position:relative;
 	overflow:visible;
+	height:100%;
 }
 
-header:before {
-	background: url('/assets/pipes-left.jpg') no-repeat left top;
-	padding: 0 0 2990px 250px;
-	left:-250px;
-}
-header:after {
-	background: url('/assets/pipes-right.jpg') no-repeat right top;
-	padding: 0 250px 2982px 0;
-	right:-250px;
-	
-}
-
-header:before,
-header:after {
+.pipes:before,
+.pipes:after {
 	position: absolute;
 	top: 0;
 	width: 0;
@@ -606,4 +609,19 @@ header:after {
 	margin-left:0;
 	margin-right:0;
 	display:block !important;
+	padding: 0;
+	padding-bottom:3000px;
+}
+
+
+.pipes:before {
+	background: url('/assets/pipes-left.jpg') no-repeat left top;
+	padding-left: 250px;
+	left:-250px;
+}
+.pipes:after {
+	background: url('/assets/pipes-right.jpg') no-repeat right top;
+	padding-right: 250px;
+	right:-250px;
+	
 }
