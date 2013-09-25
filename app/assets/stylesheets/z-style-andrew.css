@@ -68,13 +68,17 @@ h4 {
 	line-height:17px;
 }
 
-.media-body small,
 p {
 	font-family: Helvetica, "Roboto", Arial, sans-serif !important;
 	font-size:11px;
 	line-height:15px;
 	font-weight:normal;
 }
+
+.media-body p {
+	margin-bottom:0;
+}
+
 
 /*		
 p {
@@ -87,12 +91,6 @@ p {
 .btn-login-group a,
 .btn-login-group button{
 	font-family: 'Roboto Slab', Courier, serif;
-}
-
-h4 { 
-	font-weight:bold;
-	font-size:18px;
-	line-height:17px;
 }
 
 
@@ -226,11 +224,13 @@ header > .row {
 }
 
 #signin button,
+#signin button:visited,
 #signin button:hover{
 	background-color:#28a0cd;
 }
 
 #signup a,
+#signup a:visited,
 #signup a:hover{
 	background-color:#684389;
 }
@@ -307,7 +307,6 @@ nav {
 }
 
 #menu p {
-
 	font-size: 30px;
 	line-height: 30px;
 	margin-bottom:0;
@@ -323,10 +322,10 @@ nav {
 	
 }
 
-#menu li.active p {
+#menu li.active a {
 	color:#684389;
 	padding-bottom:8px;
-	border-top:solid 2px #684389;
+	border-top:solid 3px #684389;
 }
 
 
@@ -432,8 +431,8 @@ ul.home-side-carousel li div {
 	padding:5px 0;
 }
 
-.media-list-group img {
-	margin-bottom:0;
+.media-list-group-item img {
+	margin-bottom:0 !important;
 }
 
 /*
