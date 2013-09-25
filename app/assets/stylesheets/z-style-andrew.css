@@ -1,3 +1,24 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700);
+
+@font-face {
+    font-family: 'AnchorSemibold';
+    src: url('/assets/anchor-semibold.eot');
+    src: url('/assets/anchor-semibold.eot') format('embedded-opentype'),
+         url('/assets/anchor-semibold.woff') format('woff'),
+         url('/assets/anchor-semibold.ttf') format('truetype'),
+         url('/assets/anchor-semibold.svg#AnchorSemibold') format('svg');
+}
+
+@font-face {
+    font-family: 'AnchorMedium';
+    src: url('/assets/anchor-medium.eot');
+    src: url('/assets/anchor-medium.eot') format('embedded-opentype'),
+         url('/assets/anchor-medium.woff') format('woff'),
+         url('/assets/anchor-medium.ttf') format('truetype'),
+         url('/assets/anchor-medium.svg#AnchorMedium') format('svg');
+}
+
+
 body {
 	background-color:#fefefe;
 }
@@ -12,8 +33,8 @@ body {
 
 h1,
 #menu a {
-	font-family:"Anchor", Helvetica, Arial, sans-serif !important;
-	font-weight:medium;
+	font-family:"AnchorMedium", Helvetica, Arial, sans-serif !important;
+	font-weight:normal;
 }
 
 
@@ -21,7 +42,7 @@ h2,
 h3,
 h4,
 h5 {
-	font-family:"Anchor Semi Bold", Helvetica, Arial, sans-serif;
+	font-family:"AnchorSemibold", Helvetica, Arial, sans-serif;
 	font-weight:normal;
 }
 
@@ -271,19 +292,12 @@ nav {
 }
 
 #menu li.active p {
+	color:#684389;
 	padding-bottom:8px;
-	border-bottom:solid 2px #28a0cd;
+	border-top:solid 2px #684389;
 }
 
-#menu:hover li p {
-	border-bottom:none;
-	text-decoration:none;
-}
 
-#menu li:hover p {
-	padding-bottom:8px;
-	border-bottom:solid 2px #28a0cd;
-}
 
 /* ------------------------
    -- bx-slider resets  --
