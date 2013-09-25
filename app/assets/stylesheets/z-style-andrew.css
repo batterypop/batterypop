@@ -624,15 +624,15 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 .bpop-slider-header .glyphicon {
 	padding: 8px;
 	color:white;
-	font-size:18px;
-	line-height:18px;
 	margin-left: 15px;
 	border-radius: 50%;
 	border: 2px solid white;
-	width: 40px;
-	height: 40px;
 	text-align: center;
-	top: -5px;
+	width: 35px;
+	height: 35px;
+	font-size: 16px;
+	line-height: 12px;
+	top: -6px;
 }
 
 .bpop-slider-header .home-promoted-header h4 {
@@ -646,14 +646,6 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 .bpop-slider-header .glyphicon:first-child {
 	margin-right:15px;
 	margin-left:0;
-}
-
-.home-promoted-header .glyphicon {
-	width: 35px;
-	height: 35px;
-	font-size: 16px;
-	line-height: 12px;
-	top: -6px;
 }
 
 .bpop-slider {
