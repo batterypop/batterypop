@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-  before_action :set_show, only: [:show, :edit, :update, :destroy]
+  before_action :set_show, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
   # GET /shows
   # GET /shows.json
@@ -18,29 +18,39 @@ class ShowsController < ApplicationController
 
 
   def follow
-    @user = find(params[:id])
-    if current_user
-      if current_user == @user
-          flash[:error] = "You cannot follow yourself."
-        else
-          current_user.follow(@user)
-          RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
-          flash[:notice] = "You are now following #{@user.monniker}."
-        end
-    else
-       flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.monniker}.".html_safe
-    end
+      current_user.follow(@show)
+      respond_to do |format|
+        format.js {render :action=>"follow"}
+      end
   end
 
   def unfollow
-    @user = User.find(params[:id])
-    if current_user
-      current_user.stop_following(@user)
-      flash[:notice] = "You are no longer following #{@user.monniker}."
-    else
-      flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.monniker}.".html_safe
+    # @sh = Show.find(params[:id])
+    current_user.stop_following(@show)
+    respond_to do |format|
+      format.js {render :action=>"unfollow"}
     end
   end
+
+  # def follow
+  #   if current_user
+  #     current_user.follow(@show)
+  #     # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+  #     flash[:notice] = "You are now following #{@show.title}."
+   
+  #   else
+  #      flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@show.title}.".html_safe
+  #   end
+  # end
+
+  # def unfollow
+  #   if current_user
+  #     current_user.stop_following(@show)
+  #     flash[:notice] = "You are no longer following #{@show.title}."
+  #   else
+  #     flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@show.title}.".html_safe
+  #   end
+  # end
 
 
   # def create
@@ -52,13 +62,6 @@ class ShowsController < ApplicationController
   #   @user = User.find(params[:user_id])
   #   current_user.stop_following(@user)
   # end
-
-  def get_most_popped
-    "HELLO"
-  end
-
-  helper_method :get_most_popped
-
 
 
 

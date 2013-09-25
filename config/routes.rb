@@ -7,15 +7,30 @@ Batterypopv2::Application.routes.draw do
   # resources :episodes
 
   resources :shows do
-    resources :episodes
+    member do
+      get :follow
+      get :unfollow
+    end
+     resources :episodes 
   end
+
+  resources :episodes do
+    member do
+      get :pop
+      get :unpop
+    end
+  end
+
+ 
 
   resources :messages 
   resources :conversations
 
 #attempt at voting on episode not within shows nesting
-put '/episodes/:id/:action' => 'episodes#popUnPop'
+# put '/episodes/:id/:action' => 'episodes#popunpop'
 
+
+# put '/shows/:id/:action' => 'shows#followToggle'
 
   get "pages/home"
   get "pages/contact"

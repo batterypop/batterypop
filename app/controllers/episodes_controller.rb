@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-  before_action :set_episode, only: [:show, :edit, :update, :destroy]
+  before_action :set_episode, only: [:show, :edit, :update, :destroy, :pop, :unpop ]
 
   # GET /episodes
   # GET /episodes.json
@@ -25,18 +25,20 @@ class EpisodesController < ApplicationController
   end
 
 # voting
-def popUnPop
-  # @picture = Picture.find(params[:id])
-  # @episode.liked_by current_user
-  # redirect_to @episode
-  if(!current_user.nil?)
-    if(current_user.voted_for? @episode)
-      @episode.liked_by current_user
-    else
-      @episode.disliked_by current_user
+  def pop
+    unless current_user.nil?
+       @episode.liked_by current_user
     end
+
+
   end
-end
+
+  def unpop
+    unless current_user.nil?
+       @episode.unliked_by current_user
+     end
+  end
+
 
 
 
