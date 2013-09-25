@@ -1,0 +1,25 @@
+<% unless current_user.nil? %>
+<div id="follow_show-<%=@show.id%>">
+  <% if current_user.following?(show) %>
+    <%= link_to(unfollow_show_path(show), 
+        :remote => true, 
+        :class => 'btn btn-primary', 
+        :title => "Stop Following '#{show.title}'", 
+        :data => {:toggle=>"tooltip"} ) do %>
+
+      <span class="glyphicon glyphicon-plus follow"></span>
+
+    <% end %>
+  <% else %>
+    <%= link_to(follow_show_path(show),
+        :remote => true, 
+        :class => 'btn btn-primary', 
+        :title => "Follow '#{show.title}'", 
+        :data => {:toggle=>"tooltip"}) do %>
+
+      <span class="glyphicon glyphicon-plus"></span>
+      
+    <%end%>
+  <% end %>
+</div>
+<% end %>

@@ -296,6 +296,38 @@ h4.media-heading{
 	left: -7px;
 }
 
-.bpop-badge-below{
-	background-image: url(/assets/ui/bpop-badge-below.png);
+.bpop-badge .badge-box{
+	position: relative;
+	display: block;
+	top: 4px;
+	left: -7px;
+	width: 52px;
+	height: 46px;
+	background-image: url(/assets/ui/bpop-badge-below-blank.png);
 }
+
+.bpop-badge .badge-box .glyphicon{
+	display: block;
+	height: 100%;
+	width: 100%;
+	zoom: 2;
+	top: 5px;
+	color: #3576be;
+}
+// .bpop-badge .badge-box .glyphshadow{
+// 	height: 100%;
+// 	width: 100%;
+// 	zoom: 2;
+// 	display: block;
+// }
+
+
+/*  voting + popping */
+.pop, .follow{
+	color: #E5E614 !important;
+}
+.unpop, .unfollow{
+	color: transparent;
+}
+
+

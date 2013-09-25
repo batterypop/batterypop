@@ -1,0 +1,3 @@
+$('#pop_episode-<%=@episode.id%>').replaceWith('<%= escape_javascript(render :partial => "episodes/popunpop", :locals => {:episode => @episode}) %>');
+$('#episode-badge-flash-<%=@episode.id%>').addClass('pop');
+$('#episode-badge-vote-<%=@episode.id%>').html('<%= @episode.likes.size %>');

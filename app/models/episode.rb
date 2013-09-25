@@ -34,6 +34,11 @@ class Episode < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 
+	def self.mostpopped(lim=nil)
+		@episodes = Episode.order('cached_votes_up DESC').limit(lim)
+	end
+
+
 	private
 
 	def slug_candidates
