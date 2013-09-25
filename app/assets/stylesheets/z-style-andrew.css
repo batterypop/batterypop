@@ -579,23 +579,8 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 
 
-/*  home most popped */
+/*  home Sliders */
 
-
-.home-most-popped-slider .bpop-slider-header {
-}
-
-.bpop-slider-header {
-}
-
-.home-most-popped-header {
-	overflow-y:visible;
-	overflow-x:hidden;
-	}
-
-.home-promoted-header {
-	
-}
 
 .header-bg {
 	position: absolute;
