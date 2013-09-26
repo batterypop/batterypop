@@ -402,20 +402,62 @@ div.bpop-slider-header > div div.channel-header-title img {
    ------------------------
 */
 
+
+.bpop-slider .bx-wrapper,
+.home-carousel .bx-wrapper {
+	padding: 5px 7px;
+}
+
+.bpop-slider .home-most-popped li,
+.home-carousel .home-side-carousel li {
+	width:auto !important;
+	padding:0px 7px;
+	border:none !important;
+	border-top:1px solid #ececec;
+}
+
+.home-carousel .home-side-carousel li {
+	height:80px;
+	clear:left;
+	margin:12px 0 !important;
+}
+
+.bpop-slider .home-most-popped li{
+	height:124px;
+	width:240px;
+	margin:0px 12px !important;
+}
+
+
+.bx-wrapper li img.pull-left.show-episode-image {
+	margin:0 10px 0 0 !important;
+	border:none !important;
+	border-radius:0 !important;
+	padding:0 !important;
+}
+
+.bx-wrapper li a.list-group-item {
+	border-radius:0 !important;
+	padding:0 !important;
+	margin:0 !important;
+	border:none !important;
+}
+
+.bx-wrapper li a.list-group-item:hover {
+	background-color:#e9e9e9 !important;
+}
+
+.bx-wrapper li a.list-group-item p {
+	line-height:10px;
+}
+
+.bx-wrapper li a.list-group-item:hover p,
+.bx-wrapper li a.list-group-item:hover h4 {
+	text-shadow:0 0 5px white;
+}
+
 .home-side-carousel {
 	background-color:#f8f8f8;
-}
-
-ul.home-side-carousel li {
-	margin:1px auto;
-	clear:left;
-	height:90px;
-}
-
-ul.home-side-carousel li img {
-	height:80px;
-	width:80px;
-	float:left;
 }
 
 ul.home-side-carousel li div {
@@ -426,12 +468,16 @@ ul.home-side-carousel li img {
 	margin-right: 5px;
 }
 
-ul.home-side-carousel li div {
+ul.bxslider li div.media-body {
 	padding: 10px 5px 10px 0;
 }
 
 .list-group-item img {
 	margin-bottom:0 !important;
+}
+
+.bpop-slider .bx-viewport {
+	height:134px !important;
 }
 
 /*
@@ -716,37 +762,3 @@ body {
 	right:-250px;
 	
 }
-
-/* 
-
-------------------------
--- Home side Carousel --
-------------------------
-*/
-
-.home-carousel .bx-wrapper {
-	padding: 5px 7px;
-}
-
-.home-carousel .home-side-carousel li {
-	width:auto !important;
-	margin:6px 0 !important;
-	padding:6px 7px;
-	border-bottom:1px solid #ececec;
-	height:80px;
-	clear:left;
-}
-
-.home-carousel li img.pull-left.show-episode-image {
-	margin:0 10px 0 0 !important;
-	border:none !important;
-	border-radius:0 !important;
-	padding:0 !important;
-}
-
-.home-carousel li a.list-group-item {
-	border-radius:0 !important;
-	padding:0 !important;
-	margin:0 !important;
-}
-
