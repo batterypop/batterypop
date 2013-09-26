@@ -27,6 +27,8 @@
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
 
   has_surveys
   acts_as_voter
@@ -73,6 +75,13 @@ class User < ActiveRecord::Base
 # mailboxer
   def mailboxer_email(object)
     return nil
+  end
+
+  private 
+  def slug_candidates
+    [
+      username
+    ]
   end
 
 end
