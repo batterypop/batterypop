@@ -18,7 +18,7 @@
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
 									:slide_title => episode.title, 
 								 	:slide_text => truncate_html(strip_tags(episode.description), length: 50, omission: '<b>...(more)</b>'), 
-									:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '94', :height => '94'), 
+									:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '94', :height => '124'), 
 									:slide_url => show_episode_path(episode.show, Episode.friendly.find(episode.id))} %>
 					</li>
 				<% end %>
