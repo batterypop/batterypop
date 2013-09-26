@@ -43,7 +43,6 @@ class Show < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 
-scope :created_between, lambda { |start_time, end_time| where(:created_at => (start_time...end_time)) }
 # scope :created_yesterday, created_between((Time.zone.now-1.day).beginning_of_day, (Time.zone.now-1.day).end_of_day)
 # scope :created_last_week, created_between((Time.zone.now-1.week).beginning_of_day, Time.zone.now)
 # scope :created_last_month, created_between((Time.zone.now-1.month).beginning_of_day, Time.zone.now)
@@ -66,9 +65,20 @@ def self.created_last_year
 	created_between((Time.zone.now-1.year).beginning_of_day, Time.zone.now)
 end
 
+scope :created_between, lambda { |start_time, end_time| where(:created_at => (start_time...end_time)) }
+
+
 
 scope :approved, where(:approved => true)
 scope :not_approved, where(:approved => false)
+
+# scope :promoted, where (:promote => true)
+scope :promoted, where(:promote => true )
+
+# scope :showlist, where(:skiplist => false, :skiplist => nil, :approved => true)
+scope :showlist, where("skiplist != false")
+scope :blurb, where(:skiplist => !(true) )
+scope :blurb2, where(:skiplist => nil)
 
 
 	private
@@ -77,7 +87,15 @@ scope :not_approved, where(:approved => false)
 	def slug_candidates
 		[
 			title,
-			[ title, Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
+			[title, 2],
+			[title, 3],
+			[title, 4],
+			[title, 5],
+			[title, 6],
+			[title, 7],
+			[title, 8],
+			[title, 9],
+			[title,  Time.now.strftime('%M:%S') ]
 		]
 	end
 

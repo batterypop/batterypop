@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921163734) do
+ActiveRecord::Schema.define(version: 20130925175654) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -229,6 +229,8 @@ ActiveRecord::Schema.define(version: 20130921163734) do
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
+    t.boolean  "promote"
+    t.boolean  "skiplist"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

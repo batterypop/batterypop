@@ -22,7 +22,7 @@
                           :slide_badge => '23,333',
                           :slide_title => show.title, 
                           :slide_text => show.description.html_safe, 
-                          :slide_image => image_tag(show.image, :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+                          :slide_image => image_tag(show.image(:thumbnail), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
                           :slide_url => show_path(Show.friendly.find(show.id))
                           } %>
                       <% end %>

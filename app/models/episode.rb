@@ -34,7 +34,7 @@ class Episode < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 
-	def self.mostpopped(lim=nil)
+	def self.mostpopped(lim=nil	)
 		@episodes = Episode.order('cached_votes_up DESC').limit(lim)
 	end
 
@@ -44,7 +44,15 @@ class Episode < ActiveRecord::Base
 	def slug_candidates
 		[
 			[title],
-			[title,  Time.now.strftime('%Y-%m-%d-%H:%M:%S ') ]
+			[title, 2],
+			[title, 3],
+			[title, 4],
+			[title, 5],
+			[title, 6],
+			[title, 7],
+			[title, 8],
+			[title, 9],
+			[title,  Time.now.strftime('%M:%S') ]
 
 		]
 	end
