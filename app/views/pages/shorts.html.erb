@@ -1,0 +1,46 @@
+<div class="main channel">
+  <div class="container">
+    <div class="content shorts">
+
+<!-- page header; break off? -->
+      <div class="row red">
+        <div class="col-lg-12 text-center shorts-page-header">
+          <h1 class="channel-header page-title">Shorts</h1>
+        </div>
+      </div>
+<!-- page header end; break off? -->
+
+
+	<!-- getting groups, chunked of shorts to display -->
+
+<% @groups.each do |group| %>
+
+	<div class="row">
+
+	<% group.each do |short| %>
+
+		<div class="col-lg-4">
+
+			<%= render partial: "layouts/vertical_slide", :locals => {
+				:slide_title => short.title, 
+				:slide_text => short.description.html_safe, 
+				:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+				:slide_url => episode_path(Episode.friendly.find(short.episodes.first.id))} %>
+
+
+		</div>
+
+	<% end %>
+
+	</div>
+
+<% end %>
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
