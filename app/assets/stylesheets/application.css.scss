@@ -72,6 +72,11 @@ h6,
 }
 
 
+.avatar-slider-parent .bx-viewport{
+	height: auto !important;
+}
+
+
 body .container{
 	background-color: #ffffff;
 	-moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
@@ -197,6 +202,17 @@ h4.page-title{
 	margin-left: -25px;
 }
 
+.slider-prev a{
+	background: url(/assets/ui/channel-slider-back.png) no-repeat;
+	margin-left: -25px;
+}
+
+.slider-next a{
+	background: url(/assets/ui/channel-slider-next.png) no-repeat;
+	margin-left: -25px;
+}
+
+
 /* slider control colors */
 
 .home-most-popped-header a{
@@ -251,6 +267,11 @@ h4.page-title{
 	 -moz-box-shadow:    inset 0 0 10px #000000;
 	   -webkit-box-shadow: inset 0 0 10px #000000;
 	   box-shadow:         inset 0 0 10px #000000;
+}
+
+
+.show-episodes .bx-prev, .show-episodes .bx-next{
+	margin-top: -135px !important;
 }
 
 

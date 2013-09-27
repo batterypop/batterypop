@@ -37,14 +37,32 @@
 		
 
 			<div class="row"> <!-- row 4 -->
-				<div class="col-lg-8 col-offset-1">
+				<div class="col-lg-6">
 					<div class="control-group">
-						<%= f.label :birthday %><br />
+						<%= f.label "When's Your Birthday?" %><br />
 						<%= f.date_select :birthday, 
 									{:prompt => { :day => 'Select day', :month => 'Select month', 
-									:year => 'Select year' }, :date_separator => '/', 
+									:year => 'Select year' }, :date_separator => '<p></p>', 
 									:order => [:month, :day, :year], :start_year => Time.now.year, 
 									:end_year => Time.now.year-80}, :class => "controls" %>
+					</div>
+				</div>
+
+
+				<div class="col-lg-6">
+					<div class="avatar-slider-parent">
+						<%= f.label "Choose your avatar!" %><br />
+						<% @avatars = get_avatars %>
+						<%= f.hidden_field :avatar_id, :id => 'avatar_id', :value => @avatars.first.id %>
+						<div id="avatar-next" class="col-xs-1 slider-next pull-right"></div>
+						<div id="avatar-prev" class="col-xs-1 slider-prev pull-left"></div>
+						<ul class="bxslider avatar-slider ">
+							<% @avatars.each do |avatar| %>
+								<li data="<%= avatar.id %>">
+									<%=  image_tag(avatar.image, :width => '120', :class => "img-responsive  avatar-image data-id=#{avatar.id}") %>
+								</li>
+							<% end %>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -81,3 +99,28 @@
 		
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.avatar-slider').bxSlider({
+		onSlideAfter: function(item){
+		   $('input[name="user[avatar_id]"]').val(item[0].getAttribute('data'));
+		},
+
+		nextSelector: '#avatar-next',
+		prevSelector: '#avatar-prev',
+		auto: false,
+  		responsive: true,
+  		touchEnabled: true, 
+  		pager: false,
+  		minSlides: 1,
+  		maxSlides: 1,
+  		slideWidth: 120,
+  		infiniteLoop: false,
+	 	hideControlOnEnd: true
+	})
+})
+</script>
+
