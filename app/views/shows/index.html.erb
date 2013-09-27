@@ -2,7 +2,8 @@
   <div class="container">
     <div class="content">
 
-
+<% colors = ['purple', 'blue', 'yellow', 'tangerine', 'aqua', 'red']
+pos = 0 %>
 
 <%= render partial: "layouts/breadcrumb", :locals => {
         :crumb_title => "<h3>Our<br />Shows</h3>".html_safe, 
@@ -10,31 +11,58 @@
 
 
 
+<% @shows.each_with_index do |show| %>
+<%  
+  #{'pos ' pos}
+  if(pos > (colors.count-1)) 
+    pos =0 
+  else
+    pos = pos + 1
+  end
+    
+%>
+
 
 <!-- lower listings -->
-      <div class="row show-bottom-section">
+    <div class="row no-padding show-bottom-section <%= colors[pos] %>">
 
-        <div class="col-lg-8 show-lower-left">
-          
-          <div class="media-list list-group">
-            <% @shows.each do |show| %>
-               <%= render partial: "layouts/horizontal_slide", :locals => {
-                          :slide_badge => '23,333',
-                          :slide_title => show.title, 
-                          :slide_text => show.description.html_safe, 
-                          :slide_image => image_tag(show.image(:thumbnail), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
-                          :slide_url => show_path(Show.friendly.find(show.id))
-                          } %>
-                      <% end %>
-          </div>
-        </div>
-
-        <div class="col-lg-4 show-lower-right">
-        </div>
+      <div class="col-lg-5 show-lower-left no-padding">
+        <h1><%= show.title %></h1>
+         <%= render partial: "layouts/horizontal_slide", :locals => {
+                    :slide_title => "by #{show.creator.displayname}", 
+                    :slide_text => show.description.html_safe, 
+                    :slide_image => image_tag(show.image(:thumbnail), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+                    :slide_url => show_path(Show.friendly.find(show.id))
+                    } %>
+                
+       
       </div>
 
-<!-- end lower listings -->
+      <div class="col-lg-7 show-episodes no-padding">
 
+<!-- episode slider -->
+       <!--  <div class="row bpop-slider"> -->
+            <ul class="bxslider show-episodes-slider">
+                <% show.episodes.each do |episode| %>
+                  <li>
+                    <%= render partial: "layouts/vertical_slide", :locals => {
+                      :slide_title => episode.title, 
+                      :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+                      :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+                      :slide_url => episode_path(Episode.friendly.find(episode.id))} %>
+                  </li>
+                <% end %>
+            </ul>
+       <!--  </div>        -->
+<!-- end episode slider -->
+
+
+
+      </div>
+    </div>
+
+<!-- end lower listings -->
+<% end %>
 
 
 
@@ -42,42 +70,29 @@
   </div>
 </div>
 
-
-
-
-
-
-
 <!-- 
+nextSelector: '#home-promoted-next',
+prevSelector: '#home-promoted-prev',
+nextText: 'NEXT', prevText: 'PREV',
+-->
 
-<h1>Listing shows</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Approved</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<!-- home items inited -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-episodes-slider').bxSlider({
+        minSlides: 2,
+        maxSlides: 4,
+        slideWidth: 170,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        moveSlides: 2,
+        infiniteLoop: false,
+        hideControlOnEnd: true,
+        slideMargin: 0, 
+        pager: false
+      });
 
-  <tbody>
-    <% @shows.each do |show| %>
-      <tr>
-        <td><%= show.title %></td>
-        <td><%= show.description %></td>
-        <td><%= show.approved %></td>
-        <td><%= link_to 'Show', show %></td>
-        <td><%= link_to 'Edit', edit_show_path(show) %></td>
-        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Show', new_show_path %> -->
+  });
+</script>

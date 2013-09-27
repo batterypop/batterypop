@@ -50,7 +50,7 @@
 
 
 .channel-slider.channel-music .bpop-slider-header:after,
-.channel-slider.channel-music{
+.channel-slider.channel-music, .purple{
 	background-color: #684389 !important;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .channel-slider.channel-cartoons .bpop-slider-header:after,
-.channel-slider.channel-cartoons{
+.channel-slider.channel-cartoons, .blue{
 	background-color: #2cb0e1 !important;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .channel-slider.channel-comedy .bpop-slider-header:after,
-.channel-slider.channel-comedy{
+.channel-slider.channel-comedy, .yellow{
 	background-color: #fbbb01 !important;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .channel-slider.channel-video-games .bpop-slider-header:after,
-.channel-slider.channel-video-games{
+.channel-slider.channel-video-games, .tangerine{
 	background-color: #d6552d !important;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .channel-slider.channel-action-adventure .bpop-slider-header:after,
-.channel-slider.channel-action-adventure{
+.channel-slider.channel-action-adventure, .green{
 	background-color: #457a21 !important;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .channel-slider.channel-science-math .bpop-slider-header:after,
-.channel-slider.channel-science-math{
+.channel-slider.channel-science-math, .aqua{
 	background-color: #1b6681 !important;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .channel-slider.channel-international .bpop-slider-header:after,
-.channel-slider.channel-international{
+.channel-slider.channel-international, .red{
 	background-color: #c90000 !important;
 }
 

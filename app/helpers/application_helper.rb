@@ -21,4 +21,9 @@ module ApplicationHelper
   		@devise_mapping ||= Devise.mappings[:user]
   	end
 
+
+    def get_avatars
+      Avatar.all
+    end
+
 end

@@ -42,15 +42,24 @@ Batterypopv2::Application.routes.draw do
 
   resources :creators
 
-  resources :users do
+  # resources :users do
+  #   member do
+  #     get :follow
+  #     get :unfollow
+  #   end
+  # end
+
+  devise_for :users,
+    :controllers => { :registrations => "devise/custom/registrations" }
+
+resources :users do
     member do
       get :follow
       get :unfollow
     end
   end
 
-  devise_for :users,
-    :controllers => { :registrations => "devise/custom/registrations" }
+    
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

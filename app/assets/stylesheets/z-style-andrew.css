@@ -535,6 +535,9 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 --- Universal Helpers -----
 ---------------------------
 */
+.no-padding{  /* gar added; wanted simple; you can fix */
+	padding: 0px;
+}
 
 .fill.top.padding.margin {
 	padding-top:0 !important;
