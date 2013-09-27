@@ -13,13 +13,11 @@ pos = 0 %>
 
 <% @shows.each_with_index do |show| %>
 <%  
-  #{'pos ' pos}
-  if(pos > (colors.count-1)) 
+  if(pos >= (colors.count-1)) 
     pos =0 
   else
     pos = pos + 1
   end
-    
 %>
 
 
@@ -27,7 +25,7 @@ pos = 0 %>
     <div class="row no-padding show-bottom-section <%= colors[pos] %>">
 
       <div class="col-lg-5 show-lower-left no-padding">
-        <h1><%= show.title %></h1>
+        <h1 class="page-title"><%= show.title %></h1>
          <%= render partial: "layouts/horizontal_slide", :locals => {
                     :slide_title => "by #{show.creator.displayname}", 
                     :slide_text => show.description.html_safe, 

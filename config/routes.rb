@@ -36,6 +36,8 @@ Batterypopv2::Application.routes.draw do
   get "pages/contact"
   get "pages/about"
   get "pages/newest"
+  get "pages/shorts"
+  get "shorts", :to => "pages#shorts"
   
  
   root :to => "pages#home"

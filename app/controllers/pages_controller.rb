@@ -18,5 +18,11 @@ class PagesController < ApplicationController
   def shows
     @title = "Shows"
   end
-  
+
+  def shorts
+    @title = "Shorts"
+    @shorts = Show.where(:single => true)
+    @groups = @shorts.each_slice(4).to_a
+  end
+
 end
