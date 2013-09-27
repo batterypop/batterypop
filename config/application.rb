@@ -31,6 +31,6 @@ module Batterypopv2
 
     # config.assets.initialize_on_precompile = false
     
-    config.action_controller.include_all_helpers = false
+    config.action_controller.include_all_helpers = true
   end
 end
