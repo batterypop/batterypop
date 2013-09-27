@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   def shorts
     @title = "Shorts"
     @shorts = Show.where(:single => true)
-    @groups = @shorts.each_slice(4).to_a
+    @groups = @shorts.each_slice(6).to_a
   end
 
 end
