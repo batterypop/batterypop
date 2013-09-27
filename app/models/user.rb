@@ -63,9 +63,9 @@ class User < ActiveRecord::Base
     false
   end
 
- def user_params
- 	params.require(:user).permit(:username)
- end
+ # def user_params
+ # 	params.require(:user).permit(:username, :password_confirmation, :avatar_id)
+ # end
 
 
  def create
