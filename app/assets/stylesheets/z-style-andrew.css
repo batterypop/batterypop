@@ -367,7 +367,13 @@ div.bpop-slider-header > div div.channel-header-title img {
    ------------------------
 */
 
+.home-carousel .home-side-carousel h4 {
+	color:#28a0cd;
+}
 
+.home-carousel .home-side-carousel h4 {
+	color:#717171
+}
 .bpop-slider .bx-wrapper,
 .home-carousel .bx-wrapper {
 	padding: 5px 7px;
