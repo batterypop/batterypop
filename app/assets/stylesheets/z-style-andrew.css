@@ -479,7 +479,7 @@ div.bpop-breadcrumb > div > div {
 }
 
 div.bpop-breadcrumb > .bpop-show-title  h3,
-div.bpop-breadcrumb > .bpop-show-description > h3,
+div.bpop-breadcrumb > .bpop-show-description h3,
 div.bpop-breadcrumb > .bpop-show-action > div > img {
 	display:table-cell;
 	vertical-align:middle;
@@ -492,6 +492,7 @@ div.bpop-breadcrumb > .bpop-show-title  h3 {
 
 div.bpop-breadcrumb > .bpop-show-description h3 {
 	font-size:18px;
+	text-transform:none;
 }
 
 div.bpop-breadcrumb > .bpop-show-description h3 p {
