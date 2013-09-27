@@ -394,7 +394,7 @@ div.bpop-slider-header > div div.channel-header-title img {
 }
 
 
-.home-side-carousel li img.pull-left.show-episode-image.
+.home-side-carousel li img.pull-left.show-episode-image,
 .home-most-popped li img.pull-left.show-episode-image,
 .home-promoted li img.pull-left.show-episode-image {
 	margin:0 10px 0 0 !important;
