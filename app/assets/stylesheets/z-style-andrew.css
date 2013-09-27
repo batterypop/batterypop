@@ -384,13 +384,15 @@ div.bpop-slider-header > div div.channel-header-title img {
 .home-carousel .home-side-carousel li {
 	height:80px;
 	clear:left;
-	margin:0 0 12px!important;
+	margin:0 0 12px !important;
+	padding: 6px 0 !important;
 }
 
 .bpop-slider .home-most-popped li{
 	height:124px;
 	width:240px;
-	margin:0px 12px !important;
+	margin: 0 12px !important;
+	padding: 6px 0 !important;
 }
 
 
@@ -448,6 +450,13 @@ ul.home-side-carousel li img {
 .list-group-item img {
 	margin-bottom:0 !important;
 }
+
+
+.bpop-slider .vertical-slide .caption h4 {
+	text-align:center;
+}
+	
+	
 /*
 .home-most-popped .bx-viewport {
 	height:134px !important;
