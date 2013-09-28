@@ -22,6 +22,14 @@
 body {
 	background-color:#fefefe;
 }
+
+body .container {
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	-o-box-shadow:none;
+	box-shadow:none;
+}
+
 /*
 
 ----------------------------
@@ -369,8 +377,12 @@ nav {
 
 .bx-wrapper .bx-viewport {
 	background:none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 0;
+	left: 0;
 }
-
 
 /* ------------------------
    ---- channel headers ----
@@ -414,15 +426,14 @@ div.bpop-slider-header > div div.channel-header-title img {
 .bpop-slider .home-most-popped li,
 .home-carousel .home-side-carousel li {
 	width:auto !important;
-	padding:0px 7px;
 	border:none !important;
-	border-top:1px solid #ececec;
+	border-bottom:1px solid #ececec;
 }
 
 .home-carousel .home-side-carousel li {
-	height:80px;
+	height:92px;
 	clear:left;
-	margin:0 0 12px !important;
+	margin:5px 7px 6px !important;
 	padding: 6px 0 !important;
 }
 
@@ -797,6 +808,11 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	top:0;
 }
 
+.home-featured-wrapper {
+	margin-right:-42px;
+}
+
+/* homepage pop-out elements in mobile */
 @media all and (max-width: 996px) {
 
 	.home-carousel-prewrapper{
@@ -805,6 +821,10 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 	.home-carousel-wrapper{
 		margin-left:0px !important;
+	}
+	
+	.home-featured-wrapper {
+		margin-right:0 !important;
 	}
 	
 }
