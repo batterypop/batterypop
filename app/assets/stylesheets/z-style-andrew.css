@@ -745,7 +745,69 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 }
 
 
+/*
 
+-------------------------------
+------- Home Featured ---------
+-------------------------------
+
+*/
+
+.home-featured ul {
+	margin-bottom:0;
+}
+
+.home-featured li {
+	left:0;
+}
+
+
+.home-carousel-prewrapper{
+	border:10px solid #3d3d3d;
+	border-right-width:0;
+	border-left-width:0;
+	margin:0 0 0 -42px !important;
+	padding:0 !important;
+}
+	
+.home-carousel-wrapper{
+	background-color:white;
+	margin:0 0 0 -5px !important;
+}
+
+.home-carousel-wrapper .bx-wrapper {
+	margin-bottom:0;
+}
+
+.home-carousel-header {
+	height:56px;
+	border-bottom:solid 1px #e6e6e6;
+}
+
+.home-carousel-controls {
+	width:auto;
+	display:block;
+	margin:0 auto;
+	width:110px;
+}
+
+#home-carousel-down a,
+#home-carousel-up a {
+	margin-top:0;
+	top:0;
+}
+
+@media all and (max-width: 996px) {
+
+	.home-carousel-prewrapper{
+		margin-left: 0px !important;
+	}
+
+	.home-carousel-wrapper{
+		margin-left:0px !important;
+	}
+	
+}
 
 /*
 
