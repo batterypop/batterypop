@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925175654) do
+ActiveRecord::Schema.define(version: 20130928060225) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -209,6 +209,11 @@ ActiveRecord::Schema.define(version: 20130925175654) do
     t.integer  "owner_id"
     t.text     "uri_cache"
     t.string   "simplified_type",        default: "file"
+  end
+
+  create_table "security_questions", force: true do |t|
+    t.string "locale", null: false
+    t.string "name",   null: false
   end
 
   create_table "shows", force: true do |t|

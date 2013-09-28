@@ -1,6 +1,6 @@
 ActiveAdmin.register Avatar do
 
-  menu :parent => "Users"
+  menu :parent => "Users", :priority => 1
 
   form :html => { :multipart => true } do |f|
     f.inputs "Details" do
