@@ -2,12 +2,14 @@
 <div class="row bpop-promo">
 	<!-- large image right slideshow -->
 	<div class="col-lg-9 col-lg-push-3 col-md-8 col-md-push-4">
-		<ul class="bxslider home-featured">
-			<% @features.each do |feature| %>
-				<li><%= feature.content.html_safe %></li>
-			<% end %>
+		<div class="home-featured-wrapper">
+			<ul class="bxslider home-featured">
+				<% @features.each do |feature| %>
+					<li><%= feature.content.html_safe %></li>
+				<% end %>
 
-		</ul>
+			</ul>
+		</div>
 	</div>
 	<!-- end large image right slideshow -->
 	
