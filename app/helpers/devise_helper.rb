@@ -17,4 +17,9 @@ module DeviseHelper
 
     html.html_safe
   end
+
+  def devise_security_questions
+    SecurityQuestion.all
+  end
+
 end
