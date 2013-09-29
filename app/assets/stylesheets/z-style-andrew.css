@@ -1033,8 +1033,9 @@ body {
 	overflow-y:hidden;
 }
 
-.show-episodes .bx-viewport {
+.show-episodes .bx-viewport li {
 	margin-top:-12px;
+	height: 255px
 }
 
 .show-episodes h4 {
