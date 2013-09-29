@@ -23,13 +23,15 @@ pos = 0 %>
 
 <!-- lower listings -->
     <div class="row show-name-episodes-section <%= colors[pos] %>">
-
+<a href="#{show_path(Show.friendly.find(show.id))}">
       <div class="col-xs-12 col-md-6 show-name">
 			<div class="show-metadata">
 				<div class="show-icon-border">
-					<div class="show-icon-container <%= colors[pos] %>">
-						<%= image_tag(show.image(:thumbnail), :alt => show.title, :class => "img-responsive thumbnail media-object show-episode-image", :width => '160') %>
-					</div>
+          
+  					<div class="show-icon-container <%= colors[pos] %>">
+  						<%= image_tag(show.image(:thumbnail), :alt => show.title, :class => "img-responsive thumbnail media-object show-episode-image", :width => '160') %>
+  					</div>
+         
 				</div>
 
 				<h2><%= "#{show.title}" %></h2>
@@ -41,7 +43,7 @@ pos = 0 %>
            <%= render :partial => "shows/follow_show", :locals => {:show => show} %>
 				</div>
 			</div>
- 	  </div>
+ 	  </div></a>
 
       <div class="col-xs-12 col-md-6 show-episodes">
 
