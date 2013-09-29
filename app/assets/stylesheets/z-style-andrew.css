@@ -451,7 +451,7 @@ div.bpop-slider-header > div div.channel-header-title img {
 }
 
 
-.home-side-carousel li img.pull-left.show-episode-image,
+.home-side-carousel li, img.pull-left.show-episode-image,
 .home-most-popped li img.pull-left.show-episode-image,
 .home-promoted li img.pull-left.show-episode-image {
 	margin:-10px 10px 0 0 !important;
@@ -530,6 +530,7 @@ ul.home-side-carousel li img {
 
 div.bpop-breadcrumb {
 	height:auto;
+	border-bottom:0 !important;
 }
 
 
@@ -604,13 +605,13 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 --- Universal Helpers -----
 ---------------------------
 */
-.no-padding{  /* gar added; wanted simple; you can fix */
-	padding: 0px;
+
+.no-padding{
+	padding: 0px !important;
 }
 
-.fill.top.padding.margin {
-	padding-top:0 !important;
-	margin-top:0 !important;
+.no-margin {
+	margin:0 !important;
 }
 
 .fill.top.margin {
@@ -621,11 +622,6 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	padding-top:0 !important;
 }
 
-.fill.left.padding.margin {
-	padding-left:0 !important;
-	margin-left:0 !important;
-}
-
 .fill.left.margin {
 	margin-left:0 !important;
 }
@@ -634,22 +630,12 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	padding-left:0 !important;
 }
 
-.fill.right.padding.margin {
-	padding-right:0 !important;
-	margin-right:0 !important;
-}
-
 .fill.right.margin {
 	margin-right:0 !important;
 }
 
 .fill.right.padding {
 	padding-right:0 !important;
-}
-
-.fill.bottom.padding.margin {
-	padding-bottom:0 !important;
-	margin-bottom:0 !important;
 }
 
 .fill.bottom.margin {
@@ -953,9 +939,6 @@ body {
 	padding-bottom:3000px;
 }
 
-
-
-
 .pipes:before {
 	background: url('/assets/pipes-left.jpg') no-repeat left top;
 	padding-left: 250px;
@@ -976,3 +959,211 @@ body {
 	background: url('/assets/home-pipes-right.jpg') no-repeat left top;
 }
 
+/*
+
+-----------------------
+------- Shows ---------
+-----------------------
+
+*/
+
+.show-name-episodes-section .row {
+	-webkit-box-shadow:none !important;
+	-moz-box-shadow:none !important;
+	-o-box-shadow:none !important;
+	box-shadow:none !important;
+}
+
+.show-name-episodes-section{
+	padding:18px !important;
+}
+
+.show-name{
+	display:table;
+	background:white;
+}
+
+.show-name img {
+	border:none !important;
+	border-radius:50% !important;
+	padding:0 !important;
+}
+
+
+.show-icon-container img {
+	background:black;
+	border-radius:50%;
+	margin:0!important;
+}
+
+.show-icon-container{
+	padding:12px 14px;
+}
+
+.show-metadata {
+	margin: 30px 15px;
+}
+
+.show-icon-border {
+	padding-right:30px;
+	width:auto;
+	float:left;
+	margin:18px 0 18px;
+	border-right:1px solid #dedede;
+}
+
+.show-name-episodes-section .show-name,
+.show-name-episodes-section .show-episodes {
+	height:243px;
+	border:none !important;
+}
+
+.show-name h4 {
+	font-size:30px;
+	line-height:30px;
+}
+
+.show-name p {
+	font-size:12px;
+	line-height:15px;
+	color:#878787 !important;
+}
+
+.show-episodes {
+	overflow-y:hidden;
+}
+
+.show-episodes .bx-viewport {
+	margin-top:-12px;
+}
+
+.show-episodes h4 {
+	font-size:24px;
+	line-height:21px;
+}
+
+.show-name-episodes-section a:hover{
+	text-decoration:none !important;
+}
+
+
+
+/*
+
+-----------------------
+------- Colors ---------
+-----------------------
+
+*/
+
+.aqua h1,
+.aqua h2,
+.aqua h3,
+.aqua h4,
+.aqua h5,
+.aqua h6,
+.aqua p {
+	color:#2cb0e2;
+}
+
+.aqua {
+	background-color:#2cb0e2 !important;
+}
+
+.purple h1,
+.purple h2,
+.purple h3,
+.purple h4,
+.purple h5,
+.purple h6,
+.purple p {
+	color:#684389;
+}
+
+.purple {
+	background-color:#684389 !important;
+}
+
+.gold h1,
+.gold h2,
+.gold h3,
+.gold h4,
+.gold h5,
+.gold h6,
+.gold p {
+	color:#fabb00;
+}
+
+.gold {
+	background-color:#fabb00 !important;
+}
+
+.orangered h1,
+.orangered h2,
+.orangered h3,
+.orangered h4,
+.orangered h5,
+.orangered h6,
+.orangered p {
+	color:#d6552d;
+}
+
+.orangered {
+	background-color:#d6552d !important;
+}
+
+.green h1,
+.green h2,
+.green h3,
+.green h4,
+.green h5,
+.green h6,
+.green p {
+	color:#457a21;
+}
+
+.green {
+	background-color:#457a21 !important;
+}
+
+.steelblue h1,
+.steelblue h2,
+.steelblue h3,
+.steelblue h4,
+.steelblue h5,
+.steelblue h6,
+.steelblue p {
+color:#1b6581;
+}
+
+.steelblue {
+	background-color:#1b6581 !important;
+}
+
+.red h1,
+.red h2,
+.red h3,
+.red h4,
+.red h5,
+.red h6,
+.red p {
+color:#CC0000;
+}
+
+.red {
+	background-color:#CC0000 !important;
+}
+
+.mint h1,
+.mint h2,
+.mint h3,
+.mint h4,
+.mint h5,
+.mint h6,
+.mint p {
+color:#96d7c8;
+}
+
+.mint {
+	background-color:#96d7c8 !important;
+}
