@@ -1,5 +1,5 @@
 <%  if(!current_user.nil? && !episode.nil?) %>
-	<div id="pop_episode-<%= @episode.id %>">
+	<div class="pop_episode-<%= @episode.id %>">
 		<% if(current_user.voted_up_on? episode) %>
 			<%= link_to(unpop_episode_path(episode), 
 					:remote => true, 
