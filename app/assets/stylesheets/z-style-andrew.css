@@ -1001,15 +1001,15 @@ body {
 }
 
 .show-metadata {
-	margin: 30px 15px;
 }
 
 .show-icon-border {
 	padding-right:30px;
 	width:auto;
 	float:left;
-	margin:18px 0 18px;
+	margin-top:-20px;
 	border-right:1px solid #dedede;
+	margin-right: 30px;
 }
 
 .show-name-episodes-section .show-name,
@@ -1018,9 +1018,16 @@ body {
 	border:none !important;
 }
 
+.show-name-episodes-section .show-name {
+	padding:29px;
+	margin:0;
+}
+
+
 .show-name h4 {
 	font-size:30px;
 	line-height:30px;
+	margin-top:12px;
 }
 
 .show-name p {
@@ -1035,7 +1042,8 @@ body {
 
 .show-episodes .bx-viewport li {
 	margin-top:-12px;
-	height: 255px
+	height: 255px;
+	margin-right:6px
 }
 
 .show-episodes h4 {
@@ -1167,4 +1175,53 @@ color:#96d7c8;
 
 .mint {
 	background-color:#96d7c8 !important;
+}
+
+
+/*
+
+---------------------
+--- VOTING ICONS ----
+---------------------
+
+*/
+
+button.flash,
+button.plus {
+	height:26px;
+	width:26px;
+	margin:0 3px;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-o-border-radius:50%;
+	border-radius:50%;
+	background-image:url('/assets/lightning-plus-sprite.png');
+	background-repeat:no-repeat;
+	background-color:white;
+	border:0;
+	outline:0;
+}
+
+button.flash {
+	background-position: -2px -2px
+}
+
+button.plus {
+	background-position: -32px -2px	
+}
+
+
+button.flash.voted,
+button.plus.voted {
+	background-color:#ffec6e;
+}
+
+button.flash:hover,
+button.plus:hover {
+	background-color:#2cb0e2;
+}
+
+.logged-out button.flash,
+.logged-out button.plus {
+	background-color:#878787;
 }
