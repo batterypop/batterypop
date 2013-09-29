@@ -1,1 +1,34 @@
-<h2>USERS</h2>
+<div class="main users">
+  <div class="container">
+    <div class="content">
+
+<% @groups.each do |group| %>
+
+	<div class="row">
+
+	<% group.each do |user| %>
+
+		<div class="col-lg-4">
+
+			<%= render partial: "layouts/horizontal_slide", :locals => {
+				:slide_title => user.username, 
+				:slide_text =>  "<b>Following:</b> #{user.following_users} <br />
+								 <b>Followers:</b>  <br />
+								 <b>Likes:</b> ".html_safe, 
+				:slide_image => image_tag(user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ),
+				:slide_url => user_path(User.friendly.find(user.id))} %>
+
+
+		</div>
+
+	<% end %>
+
+	</div>
+
+<% end %>
+
+
+
+		</div>
+	</div>
+</div>

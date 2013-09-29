@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-lg-12 control-group">
 					<%= f.label "Security Question:" %><br />
-					<%= f.select :security_question_id, options_from_collection_for_select(SecurityQuestion.all, :id, :name), :class =>"controls"%>
+					<%= f.select :security_question_id, ('<option value="">Please Select</option>' +options_from_collection_for_select(SecurityQuestion.all, :id, :name)).html_safe, :class =>"controls"%>
 				</div>
 				<div class="col-lg-12">
 					<%= f.label "Your Answer:" %><br />
