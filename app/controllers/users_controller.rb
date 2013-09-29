@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
+		@groups = @users.each_slice(4).to_a
 	end
 
 
@@ -18,6 +19,9 @@ class UsersController < ApplicationController
 
 
 def follow
+	puts ''
+	puts '  #########  follow  #########'
+	puts ''
 	current_user.follow(@show)
 	respond_to do |format|
 		format.js {render :action=>"follow"}
@@ -25,6 +29,9 @@ def follow
 end
 
 def unfollow
+	puts ''
+	puts '  #########  UN follow  #########'
+	puts ''
 # @sh = Show.find(params[:id])
 	current_user.stop_following(@show)
 	respond_to do |format|
