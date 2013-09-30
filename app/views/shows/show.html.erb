@@ -69,7 +69,17 @@
 					</div>
 					<div class="row no-margin no-padding">
 						<div class="col-xs-12 no-margin no-padding">
-							<ul class="bxslider show-most-popped-carousel"></ul>
+							<ul class="bxslider show-most-popped-carousel">
+							<% Episode.mostpopped(10).each do |most| %>
+								<li>
+								<%= render partial: "layouts/horizontal_slide", :locals => {
+										:slide_title => most.title, 
+									 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
+										:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+										:slide_url => episode_path(Episode.friendly.find(most.id))} %>
+								</li>
+							<% end %>	
+							</ul>
 						</div>
 						<div class="col-xs-12 no-margin no-padding show-most-popped-footer">
 							<div class="medium-lightning purple center"></div>
@@ -131,3 +141,23 @@
 		</div>
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('.show-most-popped-carousel').bxSlider({
+	  		nextSelector: '#home-carousel-down',
+			prevSelector: '#home-carousel-up',
+			// nextText: 'DOWN', prevText: 'UP',
+	  		responsive: true,
+	  		touchEnabled: true,
+	  		mode: 'vertical',
+			slideMargin: 2,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+		  }
+	  	);
+  	});
+</script>
