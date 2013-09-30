@@ -669,15 +669,9 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
   clear: both;
 }
 
-.table-wrap {
-	display:table;
-}
 
-div.center {
-	display:block;
-	margin-left:auto;
-	margin-right:auto;
-}
+
+
 
 /*  home Sliders */
 
@@ -883,7 +877,26 @@ div.center {
 	padding-right:0;
 }
 
+/* homepage pop-out elements in mobile */
+@media all and (max-width: 996px) {
+
+	.home-carousel-prewrapper{
+		margin-left: 0px !important;
+	}
+
+	.home-carousel-wrapper{
+		margin-left:0px !important;
+		border-left-width:1px;
+	}
+	
+	.home-featured-wrapper {
+		margin-right:0 !important;
+	}
+	
+}
+
 /*
+
 -----------------------
 ------- Pipes ---------
 -----------------------
@@ -988,14 +1001,6 @@ body {
 }
 
 .show-metadata {
-	margin:12px auto;
-	height:161px;
-}
-
-.show-metadata .flash-plus-voting {
-	position: absolute;
-	bottom: 42px;
-	left: 276px;	
 }
 
 .show-icon-border {
@@ -1022,7 +1027,7 @@ body {
 .show-name h2 {
 	font-size:30px;
 	line-height:30px;
-	margin-top:0px;
+	margin-top:12px;
 }
 
 .show-name p {
@@ -1181,8 +1186,8 @@ color:#96d7c8;
 
 */
 
-.pop-button > .flash,
-.pop-button > .plus {
+button.flash,
+button.plus {
 	height:26px;
 	width:26px;
 	margin:0 3px;
@@ -1195,197 +1200,33 @@ color:#96d7c8;
 	background-color:white;
 	border:0;
 	outline:0;
-	display:inline-block;
 }
 
-.pop-button > .flash {
-	background-position: -2px -2px;
+button.flash {
+	background-position: -2px -2px
 }
 
-.pop-button > .plus {
-	background-position: -32px -2px;
+button.plus {
+	background-position: -32px -2px	
 }
 
 
-a.followed>.flash,
-a.followed>.plus {
+button.flash.voted,
+button.plus.voted {
 	background-color:#ffec6e;
 }
 
-.pop-button > .flash:hover,
-.pop-button > .plus:hover {
+button.flash.disable,
+button.plus.disable {
+	background-color:#858585;
+}
+
+button.flash:hover,
+button.plus:hover {
 	background-color:#2cb0e2;
 }
 
-.logged-out .pop-button > .flash,
-.logged-out .pop-button > .plus {
+.logged-out button.flash,
+.logged-out button.plus {
 	background-color:#878787;
-}
-
-.show-player-popover-follow-pop .follow-show,
-.show-player-popover-follow-pop .pop-episode {
-	width:auto;
-	display:inline-block;
-	}
-
-.follow-pop-wrap {
-	display:block;
-	width:68px;
-	margin: 13px auto 0;
-}
-
-
-.show-player-popover-follow-pop .pop-button > .flash {
-	background-position: -2px -32px;
-	background-color:#684389;
-}
-
-.show-player-popover-follow-pop .pop-button > .plus {
-	background-position: -32px -32px;
-	background-color:#684389;
-}
-
-.show-player-popover-follow-pop .pop-button > .flash:hover,
-.show-player-popover-follow-pop .pop-button > .plus:hover {
-	background-color:#2cb0e2;
-}
-
-.badge-box .pop-button > .flash{
-	heigth: 50px;
-	background-color:#684389 !important;
-	zoom: 1.6;
-}
-
-.show-player-popover-follow-pop .pop-button > .voted{
-	background-color:#fabb00 !important;
-}
-
-.badge-box .pop-button, .pop-button .voted{
-	heigth: 50px;
-	/*background-color:#684389 !important;*/
-}
-
-/*
-------------------------
---- Show Page Player ---
-------------------------
-*/
-
-.show-player-popover {
-/*	This one is for when the video-site titles are removed
-	background-color:rgba(0,0,0,0.4); */
-/*	This one is for until the video-site titles are removed */
-	background-color:black; 
-	position:absolute;
-	top:0;
-	height:72px;
-	padding:10px 0 !important;
-}
-
-.show-player-wrapper {
-	margin-left:-20px;
-	height: inherit;
-}
-
-.show-player-popover p,
-.show-player-popover h4 {
-	color:rgba(255,255,255,0.7);
-	display:table-cell;
-	vertical-align:middle;
-}
-
-.show-player-popover .table-wrap {
-	height:52px;
-	width:100%;
-}
-
-.show-player-episode-description .table-wrap {
-	margin-left:-15px;
-	padding-left:13px;
-	border-width:0 0 0 2px;
-	border-color:rgba(255,255,255,0.7);
-	border-style:solid;
-}
-
-.show-player-popover h4 {
-	text-align:right;
-	font-size:22px;
-	line-height:21px;
-	margin:0;
-	padding-top:1px;
-}
-
-
-.show-most-popped-wrap{
-	margin-right:-25px;
-	height: inherit;
-	border-bottom:19px solid #3d3d3d;
-}
-
-.show-most-popped-inner-wrap {
-	margin-right:-10px;
-	height: inherit;
-}
-
-
-.small-header-bg {
-	position: absolute;
-	top: -20px;
-	height:71px;
-	margin-left:auto;
-	margin-right:auto;
-	background-color:#684389;
-	width:100%;
-}
-
-.small-header-bg img {
-	max-width:100%;
-}
-
-.show-most-popped-header h1 {
-	color:white;
-	z-index: 2;
-	position: relative;
-	left: -3px;
-}
-
-.show-most-popped-wrap {
-}
-
-.show-most-popped-controls {
-	height:40px;
-}
-
-div.medium-lightning {
-	height:30px;
-	width:30px;
-	background:url('/assets/lightning-plus-sprite.png') no-repeat 0 -60px;
-}
-
-
-@media all and (max-width: 996px) {
-
-
-	.home-carousel-prewrapper{
-		margin-left: 0px !important;
-	}
-
-	.home-carousel-wrapper{
-		margin-left:0px !important;
-		border-left-width:1px;
-	}
-	
-	.home-featured-wrapper {
-		margin-right:0 !important;
-	}
-
-	.show-player-wrapper {
-		margin-left:0;
-	}
-	
-	.show-most-popped-wrap,
-	.show-most-popped-inner-wrap {
-		margin-right:0;
-	}
-	
 }

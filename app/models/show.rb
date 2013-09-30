@@ -76,6 +76,7 @@ scope :not_approved, where(:approved => false)
 scope :promoted, where(:promote => true )
 
 # scope :showlist, where(:skiplist => false, :skiplist => nil, :approved => true)
+scope :shorts, where(:single => true, :approved => true)
 scope :showlist, where("skiplist != false")
 scope :blurb, where(:skiplist => !(true) )
 scope :blurb2, where(:skiplist => nil)

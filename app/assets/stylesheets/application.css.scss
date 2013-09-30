@@ -125,9 +125,9 @@ body .container{
 }
 
 
-h1.page-title, h2.page-title, h3.page-title, .h4.page-title{
+h1.page-title, h2.page-title, h3.page-title, h4.page-title{
 	text-transform: uppercase;
-	color: #ffffff;
+	color: #ffffff !important;
 	text-shadow: black 0 1px 7px;
 }
 
@@ -331,4 +331,9 @@ h4.media-heading{
 
 .user-image{
 	margin:-10px 10px 0 0 !important;
+}
+
+
+footer{
+	min-height: 50px;
 }

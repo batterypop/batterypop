@@ -28,7 +28,7 @@
 			<div class="row"><!-- row 2 -->
 				<div class="col-lg-6">
 					<%= f.label :password %><br />
-					<%= f.password_field :password, :class =>"form-control", :placeholder => "Enter A Password..."  %>
+					<%= f.password_field :password,  :placeholder => "Enter A Password..."  %>
 				</div>
 
 				<div class="col-lg-6">
@@ -42,8 +42,9 @@
 			<div class="row">
 				<div class="col-lg-12 control-group">
 					<%= f.label "Security Question:" %><br />
-					<%= f.select :security_question_id, ('<option value="">Please Select</option>' +options_from_collection_for_select(SecurityQuestion.all, :id, :name)).html_safe, :class =>"controls"%>
+					<%= f.select  :security_question_id, ('<option value="">Please Select</option>' +options_from_collection_for_select(SecurityQuestion.all, :id, :name)).html_safe, {}, {:class =>"controls form-control"}  %>
 				</div>
+				
 				<div class="col-lg-12">
 					<%= f.label "Your Answer:" %><br />
 					<%= f.text_field :security_question_answer,  :placeholder => "Enter security answer.", :class =>"form-control" %>
@@ -60,7 +61,7 @@
 									{:prompt => { :day => 'Select day', :month => 'Select month', 
 									:year => 'Select year' }, :date_separator => '<p></p>', 
 									:order => [:month, :day, :year], :start_year => Time.now.year, 
-									:end_year => Time.now.year-80}, :class => "controls" %>
+									:end_year => Time.now.year-80}, :class => "controls form-control" %>
 					</div>
 				</div>
 

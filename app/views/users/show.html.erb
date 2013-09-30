@@ -2,11 +2,60 @@
   <div class="container">
     <div class="content">
 
-<h1>User show </h1>
-<%= @user.username %>
+
+<%= render partial: "layouts/breadcrumb", :locals => {
+				:crumb_title => "</h2><h3>#{ @user.username }</h3>".html_safe, 
+			 	:crumb_text => "#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe } %>
+
 
 
 <%= render :partial => "users/follow_user", :locals => {:user => @user} %>
+
+<!-- shows you're following -->
+			<div class="row">
+
+
+	<div class="user-slider ">
+      <div class="bpop-slider-header ">
+        <div class="text-center user-header ">
+          <div id="<%= @user.username.gsub(" ", "-") %>-next" class="col-xs-1  slider-next pull-right"></div>
+          <div id="<%= @user.username.gsub(" ", "-") %>-prev" class="col-xs-1 slider-prev pull-left"></div><h4 class="page-title">Shows Following</h4> -->
+			
+        </div>
+      </div>
+      <div class="bpop-slider ">
+        <div class="col-xs-12 user %>">
+          <ul class="bxslider ">
+          <% @user.follows_by_type('Show').concat.each do |show| %>
+            <li>
+              <%= render partial: "layouts/vertical_slide", :locals => {
+                :slide_title => show.title, 
+                :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                # :slide_image => show.image(:thumb), 
+                :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
+                :slide_url => show_path(Show.friendly.find(show.id))} %>
+            </li>
+          <% end %>
+             
+          </ul>
+        </div>
+		</div>
+      </div>
+
+
+
+			</div>
+<!-- end shows you're following -->
+
+<!-- users following -->
+			<div class="row">
+			</div>
+<!-- end users following -->
+
+<!-- users following you-->
+			<div class="row">
+			</div>
+<!-- end users following you-->		
 
 		</div>
 	</div>
