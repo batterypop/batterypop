@@ -4,18 +4,20 @@
 			<% if current_user.following?(user) %>
 				<%= link_to(unfollow_user_path(user), 
 		            :remote => true, 
+		            :class => 'btn btn-primary', 
 		            :title => "Stop Following '#{user.username}'", 
 		            :data => {:toggle=>"tooltip"} ) do %>
-						 <button class="plus voted"></button>
+						<span class="glyphicon glyphicon-plus follow"></span>
 				<% end %>						
 
 			<% else %>
 				<%= link_to(follow_user_path(user),
 		            :remote => true, 
-		             :title => "Follow '#{user.username}'", 
+		            :class => 'btn btn-primary', 
+		            :title => "Follow '#{user.username}'", 
 		            :data => {:toggle=>"tooltip"}) do %>
 
-		          <button class="plus"></button>
+		          <span class="glyphicon glyphicon-plus"></span>
 		        <% end %>
 			
 			<% end %>
