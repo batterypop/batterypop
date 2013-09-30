@@ -7,22 +7,38 @@
 
 <%= render partial: "layouts/breadcrumb", :locals => {
 				:crumb_title => "</h2><h3>#{ @show.title }</h3>".html_safe, 
-			 	:crumb_text => "<h3>Creator: #{ @show.creator.displayname}<br />#{ @show.description }".html_safe } %>
+			 	:crumb_text => "<h3>CREATOR: #{ @show.creator.displayname}<br />#{ @show.description }".html_safe } %>
 
 
-
-
- 
+<div class="flash-plus-voting"> 
     <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 
 	<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-	
+</div>
 
 			
 <!-- mid section player / carousel -->
       <div class="row">
         <!-- video player area -->
-        <div class="col-lg-9 show-player">
+        <div class="col-lg-9 show-player no-margin no-padding">
+			<div class="row no-padding no-margin show-player-popover">
+				<div class="col-sm-2 col-xs-4 show-player-popover-follow-pop">
+					<div class="follow-pop-wrap">
+						<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+					    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
+					</div>
+				</div>
+				<div class="col-sm-2 col-xs-8 show-player-episode-title">
+					<div class="table-wrap">
+						<h4>EPISODE TITLE</h4>
+					</div>
+				</div>
+				<div class="col-sm-8 col-xs-hidden show-player-episode-description">
+					<div class="table-wrap">
+						<p>EPISODE DESCRIPTION Lorem popsum dolor sit battery, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud</p>
+					</div>
+				</div>
+			</div>
 		<% if !(@episode).nil? %>
 			<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
 		<% end %>
@@ -48,7 +64,7 @@
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
 				                :slide_active => (@episode == ep),
-				                :slide_badge => "<span class='badge bpop-badge'><span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span><div class='badge-box'><span id='episode-badge-flash-#{ep.id}'  class='glyphicon glyphicon-flash #{(current_user && (current_user.voted_up_on? ep))  ? "pop" : ""}'></span></div></span>".html_safe,
+				                :slide_badge => "<span class='badge bpop-badge pull-right'><span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span><div class='badge-box'><span id='episode-badge-flash-#{ep.id}'  class='glyphicon glyphicon-flash #{(current_user && (current_user.voted_up_on? ep))  ? "pop" : ""}'></span></div></span>".html_safe,
 				                :slide_title => ep.title, 
 				                :slide_text => ep.description.html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 

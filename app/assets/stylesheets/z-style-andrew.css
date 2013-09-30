@@ -669,7 +669,9 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
   clear: both;
 }
 
-
+.table-wrap {
+	display:table;
+}
 
 
 
@@ -1001,6 +1003,14 @@ body {
 }
 
 .show-metadata {
+	margin:12px auto;
+	height:161px;
+}
+
+.show-metadata .flash-plus-voting {
+	position: absolute;
+	bottom: 42px;
+	left: 276px;	
 }
 
 .show-icon-border {
@@ -1027,7 +1037,7 @@ body {
 .show-name h2 {
 	font-size:30px;
 	line-height:30px;
-	margin-top:12px;
+	margin-top:0px;
 }
 
 .show-name p {
@@ -1186,8 +1196,8 @@ color:#96d7c8;
 
 */
 
-button.flash,
-button.plus {
+.pop-button > .flash,
+.pop-button > .plus {
 	height:26px;
 	width:26px;
 	margin:0 3px;
@@ -1200,28 +1210,104 @@ button.plus {
 	background-color:white;
 	border:0;
 	outline:0;
+	display:inline-block;
 }
 
-button.flash {
-	background-position: -2px -2px
+.pop-button > .flash {
+	background-position: -2px -2px;
 }
 
-button.plus {
-	background-position: -32px -2px	
+.pop-button > .plus {
+	background-position: -32px -2px;
 }
 
 
-button.flash.voted,
-button.plus.voted {
+a.followed>.flash,
+a.followed>.plus {
 	background-color:#ffec6e;
 }
 
-button.flash:hover,
-button.plus:hover {
+.pop-button > .flash:hover,
+.pop-button > .plus:hover {
 	background-color:#2cb0e2;
 }
 
-.logged-out button.flash,
-.logged-out button.plus {
+.logged-out .pop-button > .flash,
+.logged-out .pop-button > .plus {
 	background-color:#878787;
+}
+
+.show-player-popover-follow-pop .follow-show,
+.show-player-popover-follow-pop .pop-episode {
+	width:auto;
+	display:inline-block;
+	}
+
+.follow-pop-wrap {
+	display:block;
+	width:68px;
+	margin: 13px auto 0;
+}
+
+
+.show-player-popover-follow-pop .pop-button > .flash {
+	background-position: -2px -32px;
+	background-color:#fabb00;
+}
+
+.show-player-popover-follow-pop .pop-button > .plus {
+	background-position: -32px -32px;
+	background-color:#684389;
+}
+
+.show-player-popover-follow-pop .pop-button > .flash:hover,
+.show-player-popover-follow-pop .pop-button > .plus:hover {
+	background-color:#2cb0e2;
+}
+
+
+/*
+------------------------
+--- Show Page Player ---
+------------------------
+*/
+
+.show-player-popover {
+/*	This one is for when the video-site titles are removed
+	background-color:rgba(0,0,0,0.4); */
+/*	This one is for until the video-site titles are removed */
+	background-color:black; 
+	position:absolute;
+	top:0;
+	width:100%;
+	height:72px;
+	padding:10px 0 !important;
+}
+
+.show-player-popover p,
+.show-player-popover h4 {
+	color:rgba(255,255,255,0.7);
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.show-player-popover .table-wrap {
+	height:52px;
+	width:100%;
+}
+
+.show-player-episode-description .table-wrap {
+	margin-left:-15px;
+	padding-left:13px;
+	border-width:0 0 0 2px;
+	border-color:rgba(255,255,255,0.7);
+	border-style:solid;
+}
+
+.show-player-popover h4 {
+	text-align:right;
+	font-size:22px;
+	line-height:21px;
+	margin:0;
+	padding-top:1px;
 }

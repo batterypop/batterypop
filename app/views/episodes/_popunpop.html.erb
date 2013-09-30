@@ -1,22 +1,21 @@
 <%  if(!current_user.nil? && !episode.nil?) %>
-	<div id="pop_episode-<%= @episode.id %>">
+	<div id="pop_episode-<%= @episode.id %>" class="pop-episode">
 		<% if(current_user.voted_up_on? episode) %>
 			<%= link_to(unpop_episode_path(episode), 
 					:remote => true, 
-					:class => 'btn btn-primary', 
+			        :class => 'pop-button followed', 
 					:data => {:toggle=>"tooltip"} ) do %>
+					<div class="flash"></div>
 
-				<span class="glyphicon glyphicon-flash pop"></span>
 			<%end%>
 
 		<% else %>
 
 			<%= link_to(pop_episode_path(episode), 
 					:remote => true, 
-					:class => 'btn btn-primary', 
+			        :class => 'pop-button', 
 					:data => {:toggle=>"tooltip"} ) do %>
-					
-				<span class="glyphicon glyphicon-flash "></span>
+					<div class="flash"></div>
 			<% end %>
 
 		<% end %>
