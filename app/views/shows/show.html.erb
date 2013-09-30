@@ -20,39 +20,61 @@
 <!-- mid section player / carousel -->
       <div class="row">
         <!-- video player area -->
-        <div class="col-lg-9 show-player no-margin no-padding">
-			<div class="row no-padding no-margin show-player-popover">
-				<div class="col-sm-2 col-xs-4 show-player-popover-follow-pop">
-					<div class="follow-pop-wrap">
-						<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-					    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
+        <div class="col-md-9 show-player no-margin no-padding">
+			<div class="show-player-wrapper">
+				<div class="row no-padding no-margin show-player-popover">
+					<div class="col-sm-2 col-xs-4 show-player-popover-follow-pop">
+						<div class="follow-pop-wrap">
+							<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+						    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
+						</div>
+					</div>
+					<div class="col-sm-2 col-xs-8 show-player-episode-title">
+						<div class="table-wrap">
+							<h4>EPISODE TITLE</h4>
+						</div>
+					</div>
+					<div class="col-sm-8 col-xs-hidden show-player-episode-description">
+						<div class="table-wrap">
+							<p>EPISODE DESCRIPTION Lorem popsum dolor sit battery, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud</p>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-2 col-xs-8 show-player-episode-title">
-					<div class="table-wrap">
-						<h4>EPISODE TITLE</h4>
+			<% if !(@episode).nil? %>
+				<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
+			<% end %>
+	        </div>
+		</div>
+        <!-- vertical carousel -->
+		<div class="col-md-3 show-popped-carousel no-margin no-padding">
+			<div class="show-most-popped-wrap">
+				<div class="row no-margin no-padding">
+					<div class="col-xs-12 show-most-popped-header no-margin no-padding text-center">
+						<div class="small-header-bg">
+							<img src="/assets/shows-popped-header.png">
+						</div>
+						<h1>
+							Most Popped
+						</h1>
 					</div>
 				</div>
-				<div class="col-sm-8 col-xs-hidden show-player-episode-description">
-					<div class="table-wrap">
-						<p>EPISODE DESCRIPTION Lorem popsum dolor sit battery, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud</p>
+				<div class="show-most-popped-inner-wrap">
+					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">			<div class="center">
+							<div id="show-popped-up" class="slider-up"><a class="bx-prev" href=""><img src="/assets/shows-popped-up-button.png"></a></div>
+							<div id="show-popped-down" class="slider-down"><a class="bx-next" href=""><img src="/assets/shows-popped-down-button.png"></a></div>
+						</div>
+					</div>
+					<div class="row no-margin no-padding">
+						<div class="col-xs-12 no-margin no-padding">
+							<ul class="bxslider show-most-popped-carousel"></ul>
+						</div>
+						<div class="col-xs-12 no-margin no-padding show-most-popped-footer">
+							<div class="medium-lightning purple center"></div>
+						</div>
 					</div>
 				</div>
 			</div>
-		<% if !(@episode).nil? %>
-			<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
-		<% end %>
-        </div>
-        <!-- vertical carousel -->
-        <div class="col-lg-3 show-popped-carousel">
-          <div class="col-lg-12 show-most-popped-header"></div>
-          <div class="col-lg-12 show-most-popped-controls">
-            <span id="home-carousel-prev"></span> | <span id="home-carousel-next"></span>
-          </div>
-          <ul class="bxslider show-most-popped-carousel">
-          </ul>
-        </div>
-      </div>
+		</div>
 <!-- end mid section player / carousel -->
 
 

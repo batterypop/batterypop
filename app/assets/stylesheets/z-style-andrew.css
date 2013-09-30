@@ -673,7 +673,11 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	display:table;
 }
 
-
+div.center {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
 
 /*  home Sliders */
 
@@ -879,26 +883,7 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	padding-right:0;
 }
 
-/* homepage pop-out elements in mobile */
-@media all and (max-width: 996px) {
-
-	.home-carousel-prewrapper{
-		margin-left: 0px !important;
-	}
-
-	.home-carousel-wrapper{
-		margin-left:0px !important;
-		border-left-width:1px;
-	}
-	
-	.home-featured-wrapper {
-		margin-right:0 !important;
-	}
-	
-}
-
 /*
-
 -----------------------
 ------- Pipes ---------
 -----------------------
@@ -1279,9 +1264,13 @@ a.followed>.plus {
 	background-color:black; 
 	position:absolute;
 	top:0;
-	width:100%;
 	height:72px;
 	padding:10px 0 !important;
+}
+
+.show-player-wrapper {
+	margin-left:-20px;
+	height: inherit;
 }
 
 .show-player-popover p,
@@ -1310,4 +1299,79 @@ a.followed>.plus {
 	line-height:21px;
 	margin:0;
 	padding-top:1px;
+}
+
+
+.show-most-popped-wrap{
+	margin-right:-25px;
+	height: inherit;
+	border-bottom:19px solid #3d3d3d;
+}
+
+.show-most-popped-inner-wrap {
+	margin-right:-10px;
+	height: inherit;
+}
+
+
+.small-header-bg {
+	position: absolute;
+	top: -20px;
+	height:71px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#684389;
+	width:100%;
+}
+
+.small-header-bg img {
+	max-width:100%;
+}
+
+.show-most-popped-header h1 {
+	color:white;
+	z-index: 2;
+	position: relative;
+	left: -3px;
+}
+
+.show-most-popped-wrap {
+}
+
+.show-most-popped-controls {
+	height:40px;
+}
+
+div.medium-lightning {
+	height:30px;
+	width:30px;
+	background:url('/assets/lightning-plus-sprite.png') no-repeat 0 -60px;
+}
+
+
+@media all and (max-width: 996px) {
+
+
+	.home-carousel-prewrapper{
+		margin-left: 0px !important;
+	}
+
+	.home-carousel-wrapper{
+		margin-left:0px !important;
+		border-left-width:1px;
+	}
+	
+	.home-featured-wrapper {
+		margin-right:0 !important;
+	}
+
+	.show-player-wrapper {
+		margin-left:0;
+	}
+	
+	.show-most-popped-wrap,
+	.show-most-popped-inner-wrap {
+		margin-right:0;
+	}
+	
 }
