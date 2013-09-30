@@ -22,7 +22,7 @@ def follow
 	puts ''
 	puts '  #########  follow  #########'
 	puts ''
-	current_user.follow(@user)
+	current_user.follow(@show)
 	respond_to do |format|
 		format.js {render :action=>"follow"}
 	end
@@ -33,7 +33,7 @@ def unfollow
 	puts '  #########  UN follow  #########'
 	puts ''
 # @sh = Show.find(params[:id])
-	current_user.stop_following(@user)
+	current_user.stop_following(@show)
 	respond_to do |format|
 		format.js {render :action=>"unfollow"}
 	end
