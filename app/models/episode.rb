@@ -35,7 +35,9 @@ class Episode < ActiveRecord::Base
 
 
 	def self.mostpopped(lim=nil	)
-		@episodes = Episode.order('cached_votes_up DESC').limit(lim)
+		# @episodes = Episode.where(:approved => true).order('cached_votes_up DESC').limit(lim)
+		# @episodes = Episode.where(:approved => true).joins(:show).where(:approved => true).order('cached_votes_up DESC').limit(lim)
+		@episodes = Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim)
 	end
 
 
