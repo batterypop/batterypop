@@ -9,10 +9,14 @@
 				:crumb_title => "</h2><h3>#{ @show.title }</h3>".html_safe, 
 			 	:crumb_text => "<h3>CREATOR: #{ @show.creator.displayname}<br />#{ @show.description }".html_safe } %>
 
+<div class="flash-plus-voting"> 
+    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 
 
 	
 
+	<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+</div>
 			
 <!-- mid section player / carousel -->
       <div class="row">
@@ -62,6 +66,7 @@
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
 				                :slide_active => (@episode == ep),
 				                :slide_badge => "<span class='badge bpop-badge'><span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span><div class='badge-box'><span id='episode-badge-flash-#{ep.id}'  class='glyphicon glyphicon-flash #{(current_user && (current_user.voted_up_on? ep))  ? "pop" : ""}'></span></div></span>".html_safe,
+				                :slide_badge => "<span class='badge bpop-badge pull-right'><span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span><div class='badge-box'><span id='episode-badge-flash-#{ep.id}'  class='glyphicon glyphicon-flash #{(current_user && (current_user.voted_up_on? ep))  ? "pop" : ""}'></span></div></span>".html_safe,
 				                :slide_title => ep.title, 
 				                :slide_text => ep.description.html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
