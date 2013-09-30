@@ -1,4 +1,5 @@
 <% unless current_user.nil? %>
+<<<<<<< HEAD
 <div id="follow_show-<%=@show.id%>" class="follow-show">
   <% if current_user.following?(show) %>
     <%= link_to(unfollow_show_path(show), 
@@ -7,15 +8,34 @@
         :title => "Stop Following '#{show.title}'", 
         :data => {:toggle=>"tooltip"} ) do %>
 		<div class="plus"></div>
+=======
+<div id="follow_show-<%=show.id%>">
+  <% if current_user.following?(show) %>
+    <%= link_to(unfollow_show_path(show), 
+        :remote => true, 
+        :title => "Stop Following '#{show.title}'", 
+        :data => {:toggle=>"tooltip"} ) do %>
+
+      <button class="plus voted"></button>
+
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
     <% end %>
   <% else %>
     <%= link_to(follow_show_path(show),
         :remote => true, 
+<<<<<<< HEAD
         :class => 'pop-button', 
         :title => "Follow '#{show.title}'", 
         :data => {:toggle=>"tooltip"}) do %>
 
 		<div class="plus"></div>
+=======
+        :title => "Follow '#{show.title}'", 
+        :data => {:toggle=>"tooltip"}) do %>
+
+      <button class="plus"></button>
+      
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
     <%end%>
   <% end %>
 </div>

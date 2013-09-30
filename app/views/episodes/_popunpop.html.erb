@@ -1,21 +1,38 @@
 <%  if(!current_user.nil? && !episode.nil?) %>
+<<<<<<< HEAD
 	<div id="pop_episode-<%= @episode.id %>" class="pop-episode">
 		<% if(current_user.voted_up_on? episode) %>
 			<%= link_to(unpop_episode_path(episode), 
 					:remote => true, 
 			        :class => 'pop-button followed', 
+=======
+	<div class="pop_episode-<%= @episode.id %>">
+		<% if(current_user.voted_up_on? episode) %>
+			<%= link_to(unpop_episode_path(episode), 
+					:remote => true, 
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
 					:data => {:toggle=>"tooltip"} ) do %>
 					<div class="flash"></div>
 
+<<<<<<< HEAD
+=======
+				 <button class="flash voted"></button>
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
 			<%end%>
 
 		<% else %>
 
 			<%= link_to(pop_episode_path(episode), 
 					:remote => true, 
+<<<<<<< HEAD
 			        :class => 'pop-button', 
 					:data => {:toggle=>"tooltip"} ) do %>
 					<div class="flash"></div>
+=======
+					:data => {:toggle=>"tooltip"} ) do %>
+					
+				 <button class="flash"></button>
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
 			<% end %>
 
 		<% end %>
