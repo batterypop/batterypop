@@ -12,10 +12,19 @@
 
 			<%= render partial: "layouts/horizontal_slide", :locals => {
 				:slide_title => user.username, 
+<<<<<<< HEAD
 				:slide_text =>  "<b>Following:</b> #{user.following_users} <br />
 								 <b>Followers:</b>  <br />
 								 Has #{user.follow_count} followers <br />
 								 <b>Likes:</b> ".html_safe, 
+=======
+				:slide_text =>  "<b>Following:</b><br />\ 
+								#{pluralize(user.following_by_type('User').count, 'user')} | #{pluralize(user.following_by_type('Show').count, 'show')}
+								<br />
+								 Has #{ pluralize( user.followers.count, 'follower')} 
+								 <br />
+								 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe, 
+>>>>>>> 51ba2f0d7d64be6a7d7471d7434d44e0f824b316
 				:slide_image => image_tag(user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ),
 				:slide_url => user_path(User.friendly.find(user.id))} %>
 
