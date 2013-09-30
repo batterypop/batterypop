@@ -5,9 +5,16 @@
 <% colors = ["aqua","purple","gold","orangered","green","steelblue","red","mint"]
 pos = 0 %>
 
-<%= render partial: "layouts/breadcrumb", :locals => {
-        :crumb_title => "<h3>Our<br />Shows</h3>".html_safe, 
-        :crumb_text => "<h4>Show Description</h4> <p>All the shows fit to watch.</p>".html_safe } %>
+<!-- page header; break off? -->
+      <div class="row">
+        <div class="col-lg-12 text-center channel-page-header">
+          <div class="channel-icon pull-right"></div>
+          <div class="channel-icon pull-left"></div>
+          <h1 class="page-title">SHOWS</h1>
+          <h4 class="page-title fill top bottom left right margin padding ">The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends.</h4>
+        </div>
+      </div>
+<!-- page header end; break off? -->
 
 
 
@@ -23,7 +30,7 @@ pos = 0 %>
 
 <!-- lower listings -->
     <div class="row show-name-episodes-section <%= colors[pos] %>">
-
+  <a href="<%= show_path(show) %>">
       <div class="col-xs-12 col-md-6 show-name">
 			<div class="show-metadata">
 				<div class="show-icon-border">
@@ -42,7 +49,7 @@ pos = 0 %>
 				</div>
 			</div>
  	  </div>
-
+   </a>
       <div class="col-xs-12 col-md-6 show-episodes">
 
 <!-- episode slider -->

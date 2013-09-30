@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
   def shorts
     @title = "Shorts"
-    @shorts = Show.where(:single => true)
+    @shorts = Show.where(:single => true, :approved => true)
     @groups = @shorts.each_slice(6).to_a
   end
 
