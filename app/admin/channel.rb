@@ -7,6 +7,7 @@ ActiveAdmin.register Channel do
 
 	form do |f|
 		f.inputs "BatteryPOP Channel" do
+			f.input :position, :label => "Channel Position", :required => true
 			f.input :title, :label => "Channel Title", :required => true 
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :parent, :as => :select, :member_label => :title
