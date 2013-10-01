@@ -8,6 +8,12 @@
 
 	<% group.each do |user| %>
 
+	<% unless(user.avatar.nil?) 
+		@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' )
+	else
+		@img = image_tag("missing.png", :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124')
+		end %>
+
 		<div class="col-lg-4">
 
 			<%= render partial: "layouts/horizontal_slide", :locals => {
@@ -18,7 +24,7 @@
 								 Has #{ pluralize( user.followers.count, 'follower')} 
 								 <br />
 								 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe, 
-				:slide_image => image_tag(user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ),
+				:slide_image => @img,
 				:slide_url => user_path(User.friendly.find(user.id))} %>
 
 
