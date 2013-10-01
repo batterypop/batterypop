@@ -1,5 +1,14 @@
-<%  if(!current_user.nil? && !episode.nil?) %>
-	<div class="pop-button pop-episode pop_episode-<%= @episode.id %>">
+<% if !(local_assigns[:id].nil?) %><b><%= id %></b><% end %>
+
+
+<%   if(current_user.nil? && !episode.nil?) %>
+	<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
+		<a class="pop-button disabled" data-toggle="modal" href="#becomeMember"><div class="flash"></div></a>
+	</div>
+<% end %>
+
+<%	if(!current_user.nil? && !episode.nil?) %>
+	<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
 		<% if(current_user.voted_up_on? episode) %>
 			<%= link_to(unpop_episode_path(episode), 
 					:remote => true, 

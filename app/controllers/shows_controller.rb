@@ -4,7 +4,8 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
-    @shows = Show.all
+    # @shows = Show.all
+    @shows=Show.where(:approved => true, :single => false)
   end
 
   # GET /shows/1
@@ -13,6 +14,7 @@ class ShowsController < ApplicationController
     if(@episode.nil?) 
        @episode = @show.episodes.first
     end
+   
   end
 
 
@@ -31,6 +33,8 @@ class ShowsController < ApplicationController
       format.js {render :action=>"unfollow"}
     end
   end
+
+
 
   # def follow
   #   if current_user
