@@ -41,9 +41,6 @@ class EpisodesController < ApplicationController
 
 
   def refresh
-    puts "   $$$$   I GOT REFRESH"
-    puts params.inspect
-    puts "   !!!!"
     @episode = Episode.find(params[:id]);
   end
 

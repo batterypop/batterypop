@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
 	  before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
   def index
-    @channels = Channel.all
+    @channels = Channel.all.order('position ASC')
   end
 
   
