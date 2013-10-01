@@ -6,7 +6,7 @@
 
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-				:crumb_title => "#{image_tag(@show.creator.image(:thumb), :alt => @show.creator.displayname, :class => "img-responsive ", :width => '120')}</h2><h3>#{ @show.title }</h3>".html_safe, 
+				:crumb_title => "<div class='col-lg-12'>#{image_tag(@show.image, :alt => @show.creator.displayname, :class => "img-responsive img-thumbnail pull-left")}<h3>#{ @show.title }</h3></div>".html_safe, 
 			 	:crumb_text => "<h3>#{ @show.creator.displayname}<br />#{ @show.description }".html_safe
 			 	} %>
 
@@ -111,12 +111,12 @@
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
 				                :slide_active => (@episode == ep),
-				                :slide_badge => "<span class='badge bpop-badge pull-right'><span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span>
-				                <div class='badge-box'>
-									<div  class='pop-button pop-episode pop_episode-#{@episode.id }'>
-										<div class='flash'></div>
-									</div>
-				                </div></span>".html_safe,
+				                :slide_badge => "<span class='badge bpop-badge pull-right'>
+						            <span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span>
+						            <div class='badge-box'>
+						            <div class='pop-button pop-episode pop_episode-#{ep.id}'  data-episode='#{ep.id}'>
+						            <div class='flash'></div>
+						            </div></div></span>".html_safe,
 				                :slide_title => ep.title, 
 				                :slide_text => ep.description.html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
@@ -146,6 +146,17 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+	$("[data-episode]").each(function(){
+		$.ajax({
+		      type : 'POST',
+		      url : '/refresh',
+		      data: {id: $(this).attr("data-episode")}
+		   });
+	});
+
+
+
 	  $('.show-most-popped-carousel').bxSlider({
 	  		nextSelector: '#home-carousel-down',
 			prevSelector: '#home-carousel-up',

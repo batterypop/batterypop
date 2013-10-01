@@ -1,0 +1,2 @@
+$('.badge-box .pop_episode-<%=@episode.id%>').replaceWith('<%= escape_javascript(render :partial => "episodes/popunpop", :locals => {:episode => @episode}) %>');
+$(alert("episode CALLED"));

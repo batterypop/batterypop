@@ -40,7 +40,12 @@ class EpisodesController < ApplicationController
   end
 
 
-
+  def refresh
+    puts "   $$$$   I GOT REFRESH"
+    puts params.inspect
+    puts "   !!!!"
+    @episode = Episode.find(params[:id]);
+  end
 
   # POST /episodes
   # POST /episodes.json

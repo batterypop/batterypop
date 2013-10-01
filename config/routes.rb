@@ -18,10 +18,11 @@ Batterypopv2::Application.routes.draw do
     member do
       get :pop
       get :unpop
+      post :refresh
     end
   end
 
- 
+ post "/refresh", :to => "episodes#refresh"
 
   resources :messages 
   resources :conversations

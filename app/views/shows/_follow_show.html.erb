@@ -1,5 +1,8 @@
-<% unless current_user.nil? %>
 <div id="follow_show-<%= show.id %>" class="follow-show">
+<% if current_user.nil? %>
+    <a class="pop-button disabled" data-toggle="modal" href="#becomeMember"><div class="plus"></div></a>
+<% else %>
+
   <% if current_user.following?(show) %>
     <%= link_to(unfollow_show_path(show), 
         :remote => true, 
@@ -17,5 +20,5 @@
 		<div class="plus"></div>
     <%end%>
   <% end %>
-</div>
 <% end %>
+</div>

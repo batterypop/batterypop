@@ -125,9 +125,9 @@ body .container{
 }
 
 
-h1.page-title, h2.page-title, h3.page-title, h4.page-title{
+h1.page-title, h2.page-title, h3.page-title, .h4.page-title, .h5.page-title{
 	text-transform: uppercase;
-	color: #ffffff !important;
+	color: #ffffff;
 	text-shadow: black 0 1px 7px;
 }
 
@@ -313,6 +313,9 @@ h4.media-heading{
 	top: 5px;
 	color: #3576be;
 }
+
+
+
 // .bpop-badge .badge-box .glyphshadow{
 // 	height: 100%;
 // 	width: 100%;
@@ -333,13 +336,6 @@ h4.media-heading{
 	margin:-10px 10px 0 0 !important;
 }
 
-
 footer{
 	min-height: 50px;
-}
-
-
-
-.row .channel-page-header .channel-icon{
-	background-image: url(/assets/channel_headers/tv.png);
 }
