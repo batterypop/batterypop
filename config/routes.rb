@@ -38,7 +38,17 @@ Batterypopv2::Application.routes.draw do
   get "pages/about"
   get "pages/newest"
   get "pages/shorts"
+  get "pages/creators"
+  get "pages/privacy"
+  get "pages/terms"
+  get "pages/advertise"
+
   get "shorts", :to => "pages#shorts"
+  get "about/creators", :to => "pages#creators"
+  get "about/privacy", :to => "pages#privacy"
+  get "about/terms", :to => "pages#terms"
+  get "about/advertise", :to => "pages#advertise"
+
   
  
   root :to => "pages#home"
@@ -66,6 +76,10 @@ resources :users do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+
+
+  get '*path' => redirect('/')
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
