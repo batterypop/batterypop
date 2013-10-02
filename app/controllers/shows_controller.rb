@@ -12,6 +12,7 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
     if(@episode.nil?) 
+      
        @episode = @show.episodes.first
     end
    

@@ -19,7 +19,7 @@ class Show < ActiveRecord::Base
 	acts_as_followable
 	belongs_to :creator
 
-	has_many :episodes
+	has_many :episodes, :order => 'episode ASC'
 	has_and_belongs_to_many :channels, :join_table => :channels_shows
 
 	accepts_nested_attributes_for :episodes, :allow_destroy => true
