@@ -1283,6 +1283,7 @@ a.disabled>.plus {
 }
 
 .show-player-wrapper {
+	background-color:black !important;
 	margin-left:-20px;
 	height: inherit;
 }

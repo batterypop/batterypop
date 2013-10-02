@@ -146,6 +146,19 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+
+
+		$("div.show-player-wrapper").bind("mouseenter", function()
+		{
+		  $('div.show-player-popover').stop(true).fadeIn(600); //$('#select'), not ('#select')
+		});
+
+		$("div.show-player-wrapper").bind("mouseleave", function()
+		{
+		  $('div.show-player-popover').stop(true).fadeOut(600); //$('#select'), not ('#select')
+		});
+
+
 		
 	$("[data-episode]").each(function(){
 		$.ajax({
