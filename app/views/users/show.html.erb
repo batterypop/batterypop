@@ -11,6 +11,9 @@
 
 <%= render :partial => "users/follow_user", :locals => {:user => @user} %>
 
+
+
+
 <!-- shows you're following -->
 			<div class="row fill top bottom padding">
       	<div class="user-show-slider              purple ">
@@ -18,13 +21,13 @@
               <div class="text-center user-header ">
                 <div id="users-show-next" class="col-xs-1  slider-next pull-right"></div>
                 <div id="users-show-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title">Shows You Follow</h4> 
+                <h4 class="page-title">Shows <%= (current_user == @user) ? "You" : @user.username %> Follow</h4> 
               </div>
             </div>
 
 <% if(@user.following_shows.count < 1) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title">You're not following any; <a href="/shows">go find some shows!</h3></a>
+            <h4 class="page-title"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
             </div>
 <% else %>
 
@@ -59,13 +62,13 @@
               <div class="text-center user-header ">
                 <div id="users-video-next" class="col-xs-1  slider-next pull-right"></div>
                 <div id="users-video-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title">Videos You LIke</h4> 
+                <h4 class="page-title">Videos<%= (current_user == @user) ? " You Like" : " #{@user.username} Likes" %></h4> 
               </div>
             </div>
 
 <% if(@user.votes.up.votables.count < 1) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title">You haven't liked any yet; go watch some videos!</h4>
+            <h4 class="page-title"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
             </div>
 <% else %>
 
@@ -106,14 +109,14 @@
             <div class="text-center user-header ">
               <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title">Users You're Following</h4> 
+              <h4 class="page-title">Users <%= (current_user == @user) ? "You're Following" : " #{@user.username} Is Following" %></h4> 
             </div>
           </div>
 
 
 <% if(@user.following_users.count < 1) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title">You're not follow anyone; <a href="/users">go find some users!</a></h4>
+            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; <a href='/users'>go find some users!</a>" : " #{@user.username} isn't anyone at this time." %></h4>
             </div>
 <% else %> 
 
@@ -152,7 +155,7 @@
             <div class="text-center user-header ">
               <div id="users-following-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-following-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title">Users Following You</h4> 
+              <h4 class="page-title">Users Following <%= (current_user == @user) ? "You" : @user.username %></h4> 
             </div>
           </div>
 
