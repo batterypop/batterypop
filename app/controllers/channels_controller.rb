@@ -2,11 +2,13 @@ class ChannelsController < ApplicationController
 	  before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
   def index
+     @active="channels"
     @channels = Channel.all.order('position ASC')
   end
 
   
   def show
+     @active="channels"
   end
 
   # def new

@@ -4,6 +4,7 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
+    @active="shows"
     # @shows = Show.all
     @shows=Show.where(:approved => true, :single => false)
   end
@@ -11,8 +12,8 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+     @active="shows"
     if(@episode.nil?) 
-      
        @episode = @show.episodes.first
     end
    
