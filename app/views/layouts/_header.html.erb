@@ -84,16 +84,17 @@
 	</div>
 
 
+
 	<nav class="row nav fill bottom padding margin" role="navigation">
 		<div class="col-md-10 col-md-push-1 col-xs-12">
 			<ul id="menu" class="clearfix">
-				<li class="col-sm-3 col-sm-offset-1 col-xs-12 shows">
+				<li class="col-sm-3 col-sm-offset-1 col-xs-12 shows <% if(@active=='shows') %> active<% end %>">
 					<p><a href="/shows">Shows</a></p>
 				</li>
-				<li class="col-sm-4 col-xs-12 channels">
+				<li class="col-sm-4 col-xs-12 channels <% if(@active=='channels') %> active <% end %>">
 					<p><a href="/channels">Channels</a></p>
 				</li>
-				<li class="col-sm-3 col-xs-12 newest">
+				<li class="col-sm-3 col-xs-12 newest <% if(@active=='shorts') %> active <% end %>">
 					<p><a href="/shorts">Shorts</a></p>
 				</li>
 			</ul>
