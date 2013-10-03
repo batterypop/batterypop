@@ -14,7 +14,7 @@
 					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
 					</div>
 					<div class="col-xs-6 col-md-5" >
-					<%= link_to "Profile", edit_user_registration_path, :id => "login", :class => "btn btn-primary btn-small btn-login" %>
+					<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-primary btn-small btn-login" %>
 					</div>
 				<!-- end profile controls -->
 				<% else %>
@@ -82,6 +82,8 @@
 			</div>
 		</div>
 	</div>
+
+
 
 
 

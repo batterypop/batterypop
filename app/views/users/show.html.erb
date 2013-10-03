@@ -1,4 +1,4 @@
-<div class="main user">
+<div class="main show">
   <div class="container">
     <div class="content">
 
@@ -12,51 +12,227 @@
 <%= render :partial => "users/follow_user", :locals => {:user => @user} %>
 
 <!-- shows you're following -->
-			<div class="row">
-
-
-	<div class="user-slider ">
-      <div class="bpop-slider-header ">
-        <div class="text-center user-header ">
-          <div id="<%= @user.username.gsub(" ", "-") %>-next" class="col-xs-1  slider-next pull-right"></div>
-          <div id="<%= @user.username.gsub(" ", "-") %>-prev" class="col-xs-1 slider-prev pull-left"></div><h4 class="page-title">Shows Following</h4> -->
-			
+			<div class="row fill top bottom padding">
+      	<div class="user-show-slider              purple ">
+            <div class="bpop-slider-header ">
+              <div class="text-center user-header ">
+                <div id="users-show-next" class="col-xs-1  slider-next pull-right"></div>
+                <div id="users-show-prev" class="col-xs-1 slider-prev pull-left"></div>
+                <h4 class="page-title">Shows You Follow</h4> 
+              </div>
+            </div>
+            <div class="bpop-slider     ">
+              <div class="col-xs-12 user">
+                <ul class="bxslider " id="user-show-slider">
+                  <% @user.following_shows.each do |show| %>
+                    <li>
+                        <%= render partial: "layouts/horizontal_slide", :locals => {
+                            :slide_title => show.title, 
+                            :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                            :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+                            :slide_url => show_path(Show.friendly.find(show.id))} %>
+                    </li>
+                  <% end %>
+                   
+                </ul>
+              </div>
+      		</div>
         </div>
-      </div>
-      <div class="bpop-slider ">
-        <div class="col-xs-12 user %>">
-          <ul class="bxslider ">
-          <% @user.follows_by_type('Show').concat.each do |show| %>
-            <li>
-              <%= render partial: "layouts/vertical_slide", :locals => {
-                :slide_title => show.title, 
-                :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
-                # :slide_image => show.image(:thumb), 
-                :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
-                :slide_url => show_path(Show.friendly.find(show.id))} %>
-            </li>
-          <% end %>
-             
-          </ul>
-        </div>
-		</div>
-      </div>
-
-
 
 			</div>
 <!-- end shows you're following -->
 
+
+<!-- episodes you liked -->
+<!-- assuming voting of only one type: Episode. need to change if other voting -->
+      <div class="row fill top bottom padding">
+        <div class="user-video-slider              yellow">
+            <div class="bpop-slider-header ">
+              <div class="text-center user-header ">
+                <div id="users-video-next" class="col-xs-1  slider-next pull-right"></div>
+                <div id="users-video-prev" class="col-xs-1 slider-prev pull-left"></div>
+                <h4 class="page-title">Videos You LIke</h4> 
+              </div>
+            </div>
+            <div class="bpop-slider     ">
+              <div class="col-xs-12 user">
+                <ul class="bxslider " id="user-video-slider">
+                  <% @user.votes.up.votables.each do |episode| %>
+                    <li>
+
+                        <%= render partial: "layouts/vertical_slide", :locals => {
+                            :slide_title => episode.title, 
+                            :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'),
+                            # :slide_image => show.image(:thumb), 
+                            :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
+                            :slide_url => episode_path(Episode.friendly.find(episode.id))} %>
+
+
+                    </li>
+                  <% end %>
+                   
+                </ul>
+              </div>
+          </div>
+        </div>
+
+      </div>
+<!-- videos you liked  -->
+
+
+
+
 <!-- users following -->
-			<div class="row">
+			<div class="row fill top bottom padding">
+        <div class="users-followed-slider    tangerine">
+          <div class="bpop-slider-header ">
+            <div class="text-center user-header ">
+              <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
+              <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
+              <h4 class="page-title">Users You're Following</h4> 
+            </div>
+          </div>
+
+    
+          <div class="bpop-slider    ">
+              <div class="col-xs-12 user">
+                <ul class="bxslider " id="users-followed-slider">
+                  <% @user.following_users.each do |user| %>
+                    <% unless(user.avatar.nil?) 
+                      @img = user.avatar.image(:thumb)
+                    else
+                      @img = "missing.png"
+                    end %>
+                    <li>
+                       <%= render partial: "layouts/vertical_slide", :locals => {
+                            :slide_title => user.username, 
+                            :slide_text => '',
+                            :slide_image => image_tag(@img, :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+                            :slide_url => user_path(User.friendly.find(user.id))} %>
+                    </li>
+                  <% end %>
+                   
+                </ul>
+              </div>
+          </div>
+
+
+
+        </div>
 			</div>
 <!-- end users following -->
 
 <!-- users following you-->
-			<div class="row">
-			</div>
+      <div class="row fill top bottom padding ">
+        <div class="users-following-slider green">
+          <div class="bpop-slider-header ">
+            <div class="text-center user-header ">
+              <div id="users-following-next" class="col-xs-1  slider-next pull-right"></div>
+              <div id="users-following-prev" class="col-xs-1 slider-prev pull-left"></div>
+              <h4 class="page-title">Users Following You</h4> 
+            </div>
+          </div>
+
+    
+          <div class="bpop-slider      green">
+              <div class="col-xs-12 user">
+                <ul class="bxslider " id="users-following-slider">
+                  <% @user.following_users.each do |user| %>
+                  <% unless(user.avatar.nil?) 
+                    @img = user.avatar.image(:thumb)
+                  else
+                    @img = "missing.png"
+                  end %>
+                    <li>
+                       <%= render partial: "layouts/vertical_slide", :locals => {
+                            :slide_title => user.username, 
+                            :slide_text => '',
+                            :slide_image => image_tag(@img, :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+                            :slide_url => user_path(User.friendly.find(user.id))} %>
+                    </li>
+                  <% end %>
+                   
+                </ul>
+              </div>
+          </div>
+
+
+
+        </div>
+      </div>
 <!-- end users following you-->		
 
 		</div>
 	</div>
 </div>
+
+
+
+
+
+<!-- home items inited -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#user-show-slider').bxSlider({
+        nextSelector: '#users-show-next',
+        prevSelector: '#users-show-prev',
+        minSlides: 1,
+        maxSlides: 4,
+        slideWidth: 280,
+        speed: 1000,
+        auto: true,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 5,
+        pager: false
+      }
+    );
+
+    $('#user-video-slider').bxSlider({
+        nextSelector: '#users-video-next',
+        prevSelector: '#users-video-prev',
+        speed: 1300,
+        auto: true,
+        minSlides: 2,
+        maxSlides: 5,
+        slideWidth: 200,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        pager: false
+      }
+    );
+
+    $('#users-followed-slider').bxSlider({
+        nextSelector: '#users-followed-next',
+        prevSelector: '#users-followed-prev',
+        speed: 1000,
+        auto: true,
+        minSlides: 2,
+        maxSlides: 5,
+        slideWidth: 200,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        pager: false
+      }
+    );
+
+    $('#users-following-slider').bxSlider({
+        nextSelector: '#users-following-next',
+        prevSelector: '#users-following-prev',
+        speed: 1300,
+        auto: true,
+        minSlides: 2,
+        maxSlides: 5,
+        slideWidth: 200,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        pager: false
+      }
+    );
+
+  });
+</script>
+
