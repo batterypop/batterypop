@@ -62,9 +62,9 @@
 					</div>
 				</div>
 				<div class="show-most-popped-inner-wrap">
-					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">			<div class="center">
-							<div id="show-popped-up" class="slider-up"></div>
-							<div id="show-popped-down" class="slider-down"></div>
+					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">			<div class="center" >
+							<div id="show-popped-down" class="slider-down pull-right"></div>
+							<div id="show-popped-up" class="slider-up pull-left"></div>
 						</div>
 					</div>
 					<div class="row no-margin no-padding">
@@ -148,6 +148,9 @@
 	$(document).ready(function(){
 
 		$('.show-most-popped-carousel').bxSlider({
+			nextSelector: '#show-popped-down',
+			prevSelector: '#show-popped-up',
+			nextText: 'DOWN', prevText: 'UP',
 	  		responsive: true,
 	  		touchEnabled: true,
 	  		mode: 'vertical',
