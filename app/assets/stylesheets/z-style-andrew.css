@@ -473,14 +473,8 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border:none !important;
 }
 
-.show-popped-carousel .bx-wrapper,
 .home-carousel .bx-wrapper {
-	height: inherit;
 	background-color:white;
-}
-
-.show-popped-carousel .bx-viewport,
-.home-carousel .bx-viewport {
 	height: inherit !important;
 	margin-top: -5px;
 }
@@ -1589,6 +1583,35 @@ img.user-image {
 	padding-left:0;
 }
 
+/*
+---------------------------------------
+--- Show Single Page Most Popped ---
+---------------------------------------
+
+*/
+
+.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
+	height:203px !important;
+	/*
+	When FitVidsJS comes aboard, we're gonna want to change the height because the aspect will shore itself up.
+
+	16:9 will put it the video at about 490px high, so it'll need to be want it at 310px.
+
+	In the media queries at the bottom, it'll want to change it for medium desktop, too.
+	
+	*/
+	background-color:white;
+}
+
+div.show-popped-carousel{
+	height: 384px !important;
+}
+
+.show-most-popped-controls .center{
+	width: 36% !important; 
+	margin-top: 5px !important; 
+	margin-left: 30% !important;
+}
 
 @media all and (max-width: 1200px) {
 	.home-carousel-slider {
@@ -1648,24 +1671,5 @@ img.user-image {
 		padding-left:5px;
 		padding-right:5px;
 	}
-
-/*
----------------------------------------
---- Show Single Page Most Popped ---
----------------------------------------
-*/
-
-div.show-popped-carousel{
-	height: 384px !important;
-}
-
-.show-most-popped-controls .center{
-	width: 36% !important; 
-	margin-top: 5px !important; 
-	margin-left: 30% !important;
-}
-
-
-
 
 }
