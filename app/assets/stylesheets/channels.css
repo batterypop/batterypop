@@ -212,3 +212,7 @@ div.channel-icon-header {
 	padding: 5px;
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
+
+.channel-slider .channel-icon-header h4.channel-name{
+	color:white !important;
+}
