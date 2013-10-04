@@ -381,6 +381,7 @@ nav {
 	border-top:solid 3px transparent;	
 }
 
+#menu li:hover p,
 #menu li.active p {
 	color:#28a0cd;
 	border-top:solid 3px #28a0cd;
@@ -465,6 +466,15 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border:none !important;
 }
 
+.home-carousel .bx-wrapper {
+	height: inherit;
+}
+
+.home-carousel .bx-viewport {
+	height: inherit !important;
+	margin-top: -5px;
+}
+
 .home-carousel .home-side-carousel li {
 	clear:left;
 	margin: 0px 7px 0px 0 !important;
@@ -472,13 +482,6 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border-style: solid !important;
 	border-color: #ececec !important;
 	border-width: 0 1px 1px 0 !important;
-}
-
-.bpop-slider .home-most-popped li{
-	height:100px;
-	width:240px;
-	margin: 0 12px !important;
-	padding: 6px 0 !important;
 }
 
 
@@ -1500,6 +1503,70 @@ img.user-image {
 	background-position: top center;
 }
 
+.home-promoted-slider .vertical-slide,
+.home-most-popped .vertical-slide{
+	width: 195px !important;
+	background-color: white !important;
+}
+
+.home-promoted-slider.bpop-slider,
+.home-most-popped-body.bpop-slider{
+	padding-top: 15px;
+}
+
+.home-promoted-slider h4,
+.home-promoted-slider p,
+.home-most-popped-slider h4,
+.home-most-popped-slider p{
+	color: white !important;
+}
+
+.home-promoted-slider div.vertical-slide img.img-circle,
+.home-most-popped-slider div.vertical-slide img.img-circle {
+	margin: 20px auto;
+	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	/* webkit, moz, o */
+}
+
+.home-promoted-slider div.vertical-slide,
+.home-most-popped-slider div.vertical-slide {
+	height:280px;
+	background:url('/assets/channel-li-bg-neg.png') center top no-repeat;
+	text-align:center;
+	width: 190px !important;
+	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	/* webkit, moz, o */
+}
+
+.home-most-popped-slider div.vertical-slide {
+	background-color:#684389 !important;
+}
+
+.home-promoted-slider div.vertical-slide{
+	background-color:#ffc000 !important;
+}
+
+.home-promoted-slider div.vertical-slide h4,
+.home-most-popped-slider div.vertical-slide h4 {
+	margin: 5px;
+}
+
+.home-promoted-slider .bx-wrapper,
+.home-most-popped-slider .bx-wrapper {
+	margin-bottom:5px;
+}
+
+.home-promoted-slider .bx-wrapper .bx-viewport,
+.home-most-popped-slider .bx-wrapper .bx-viewport {
+	border:none;
+	box-shadow:none;
+	border-radius:0;
+	left:0;
+}
+
+.bx-slider a:hover {
+	text-decoration:none !important;
+}
 
 @media all and (max-width: 1200px) {
 	.home-carousel-slider {
