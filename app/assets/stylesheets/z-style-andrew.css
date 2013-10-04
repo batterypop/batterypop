@@ -249,6 +249,7 @@ header {
 	z-index:10;
 }
 
+.btn-login-group a:hover,
 #signin button:hover,
 #signup button:hover{
 	text-shadow:0 0 10px #999;
@@ -259,6 +260,7 @@ header {
 	box-shadow: 0px 0px 15px #333;
 }
 
+.btn-login-group a:active,
 #signin button:active,
 #signup button:active{
 	text-shadow:0 0 0px black;
@@ -269,24 +271,41 @@ header {
 	box-shadow: 0px 0px 1px #999;
 }
 
+
+#destroy,
+#destroy:hover,
+#destroy:visited,
 #signin button,
 #signin button:visited,
 #signin button:hover{
 	background-color:#28a0cd;
 }
 
+
+a#login,
+a#login:hover,
+a#login:visited,
 #signup button,
 #signup button:visited,
 #signup button:hover{
 	background-color:#684389 !important;
 }
 
+#destroy,
 #signin {
 	padding-right:5px;
 }
 
+a#login,
 #signup {
 	padding-left:5px;
+}
+
+#destroy,
+a#login {
+padding-left: 10px !important;
+padding-right: 10px !important;
+width: auto;
 }
 
 #search {
@@ -410,6 +429,7 @@ div.bpop-slider-header > div div.channel-header-title img {
    -- home side carousel --
    ------------------------
 */
+
 
 .home-carousel .home-side-carousel h4 {
 	color:#28a0cd;
@@ -1362,6 +1382,77 @@ div.medium-lightning {
 	width:30px;
 	background:url('/assets/lightning-plus-sprite.png') no-repeat 0 -60px;
 }
+
+
+
+/* USER PAGE */
+
+img.user-image {
+	border:none !important;
+	border-radius:0 !important;
+	padding:0 !important;
+}
+
+.user-header h4 {
+	color:white;
+}
+
+
+/* larger rectangle slider cards */
+
+
+.user li a,
+.user img {
+	border:none !important;
+	border-radius:0 !important;
+	padding:0 !important;
+}
+
+.user li a {
+	margin:0 !important;
+}
+
+.user {
+	width:100%;
+}
+
+.user li .media-body{
+	padding: 10px 10px 10px 0;
+	
+}
+
+.user li {
+	margin: 0px 7px 0px 0 !important;
+	padding: 6px 7px 6px !important;
+	border-style: solid !important;
+	border-color: #ececec !important;
+	border-width: 0 1px 1px 0 !important;
+	float:left;
+}
+
+.user li .mediabody img{
+	margin:-10px 10px 0 0 !important;
+}
+
+
+.user li .media-body{
+	height:138px;
+}
+
+.user li .media-body p{
+	line-height:14px;
+	font-size:13px;
+}
+
+.user li .media-body h4{
+	line-height:19px;
+	font-size:20px;
+}
+
+.user li .media-body img {
+	margin: 0 10px 0 0 !important;
+}
+
 
 
 @media all and (max-width: 996px) {
