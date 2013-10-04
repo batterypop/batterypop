@@ -484,6 +484,16 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border-width: 0 1px 1px 0 !important;
 }
 
+<<<<<<< HEAD
+=======
+.bpop-slider .home-most-popped li{
+	/*height:100px;*/
+	width:240px;
+	margin: 0 12px !important;
+	padding: 6px 0 !important;
+}
+
+>>>>>>> 0c081802230f2421d776fe1d90d63c07f334029d
 
 .home-side-carousel li, img.pull-left.show-episode-image,
 .home-most-popped li img.pull-left.show-episode-image,
