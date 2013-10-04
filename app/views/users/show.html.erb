@@ -16,12 +16,12 @@
 
 <!-- shows you're following -->
 			<div class="row fill top bottom padding">
-      	<div class="user-show-slider              purple ">
+      	<div class="user-show-slider purple ">
             <div class="bpop-slider-header ">
               <div class="text-center user-header ">
                 <div id="users-show-next" class="col-xs-1  slider-next pull-right"></div>
                 <div id="users-show-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title">Shows <%= (current_user == @user) ? "You" : @user.username %> Follow</h4> 
+                <h4 class="page-title">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h4> 
               </div>
             </div>
 
@@ -31,8 +31,8 @@
             </div>
 <% else %>
 
-            <div class="bpop-slider     ">
-              <div class="col-xs-12 user">
+            <div class="bpop-slider ">
+              <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="user-show-slider">
                   <% @user.following_shows.each do |show| %>
                     <li>
@@ -57,7 +57,7 @@
 <!-- episodes you liked -->
 <!-- assuming voting of only one type: Episode. need to change if other voting -->
       <div class="row fill top bottom padding">
-        <div class="user-video-slider              yellow">
+        <div class="user-video-slider yellow">
             <div class="bpop-slider-header ">
               <div class="text-center user-header ">
                 <div id="users-video-next" class="col-xs-1  slider-next pull-right"></div>
@@ -73,8 +73,8 @@
 <% else %>
 
 
-            <div class="bpop-slider     ">
-              <div class="col-xs-12 user">
+            <div class="bpop-slider">
+              <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="user-video-slider">
                   <% @user.votes.up.votables.each do |episode| %>
                     <li>
@@ -104,7 +104,7 @@
 
 <!-- users following -->
 			<div class="row fill top bottom padding">
-        <div class="users-followed-slider    tangerine">
+        <div class="users-followed-slider tangerine">
           <div class="bpop-slider-header ">
             <div class="text-center user-header ">
               <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
@@ -120,8 +120,8 @@
             </div>
 <% else %> 
 
-          <div class="bpop-slider    ">
-              <div class="col-xs-12 user">
+          <div class="bpop-slider">
+              <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="users-followed-slider">
                   <% @user.following_users.each do |user| %>
                     <% unless(user.avatar.nil?) 
@@ -161,7 +161,7 @@
 
     
           <div class="bpop-slider      green">
-              <div class="col-xs-12 user">
+              <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="users-following-slider">
                   <% @user.following_users.each do |user| %>
                   <% unless(user.avatar.nil?) 

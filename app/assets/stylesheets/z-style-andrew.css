@@ -305,7 +305,7 @@ a#login,
 a#login {
 padding-left: 10px !important;
 padding-right: 10px !important;
-width: auto;
+width: 100%;
 }
 
 #search {
@@ -378,16 +378,27 @@ nav {
 	padding:10px 0px;
 	width:100%;
 	background-color:#fff;
-	border-top:solid 3px #28a0cd;	
+	border-top:solid 3px transparent;	
 }
 
+#menu li.active p {
+	color:#28a0cd;
+	border-top:solid 3px #28a0cd;
+}
+
+#menu li:hover p,
+#menu li:hover a,
 #menu li.active a {
-	color:#684389;
-	padding-bottom:8px;
-	border-top:solid 3px #684389;
+	color:#28a0cd;
 }
 
+#logofront {
+	z-index:1;
+}
 
+header:hover #logofront {
+	z-index:0;
+}
 
 /* ------------------------
    -- bx-slider resets  --
@@ -1401,59 +1412,73 @@ img.user-image {
 /* larger rectangle slider cards */
 
 
-.user li a,
-.user img {
+.user-show-slider li a,
+.user-show-slider img {
 	border:none !important;
 	border-radius:0 !important;
 	padding:0 !important;
 }
 
-.user li a {
+.user-show-slider li a {
 	margin:0 !important;
 }
 
-.user {
+.user-show-slider {
 	width:100%;
 }
 
-.user li .media-body{
+.user-show-slider li .media-body{
 	padding: 10px 10px 10px 0;
 	
 }
 
-.user li {
+.user-show-slider li {
 	margin: 0px 7px 0px 0 !important;
 	padding: 6px 7px 6px !important;
 	border-style: solid !important;
 	border-color: #ececec !important;
 	border-width: 0 1px 1px 0 !important;
 	float:left;
+	background-color:#f8f8f8;
 }
 
-.user li .mediabody img{
+.user-show-slider li .mediabody img{
 	margin:-10px 10px 0 0 !important;
 }
 
 
-.user li .media-body{
+.user-show-slider li .media-body{
 	height:138px;
 }
 
-.user li .media-body p{
+.user-show-slider li .media-body p{
 	line-height:14px;
 	font-size:13px;
 }
 
-.user li .media-body h4{
+.user-show-slider li .media-body h4{
 	line-height:19px;
 	font-size:20px;
 }
 
-.user li .media-body img {
-	margin: 0 10px 0 0 !important;
+.user-show-slider li .media-body img {
+	height:138px;
+	width:138px;
 }
 
+.bx-wrapper {
+	width:100% !important;
+	max-width:1200px !important;
+	margin:0 !important;
+}
 
+.bx-viewport {
+	width:100% !important;
+}
+
+.user-show-slider .bpop-slider {
+	background-color:white;
+}
 
 @media all and (max-width: 996px) {
 
@@ -1480,4 +1505,28 @@ img.user-image {
 		margin-right:0;
 	}
 	
+}
+
+@media all and (max-width: 768px) {
+	
+	#menu p a {
+		font-size:24px;
+		line-height:24px;
+		margin-left:auto;
+		margin-right:auto;
+		padding-left:20px;
+		padding-right:20px;
+	}
+}
+
+@media all and (max-width: 480px) {
+
+	#menu p a {
+		font-size:18px;
+		line-height:18px;
+		padding-left:5px;
+		padding-right:5px;
+	}
+
+
 }
