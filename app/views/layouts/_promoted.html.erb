@@ -10,9 +10,9 @@
 </div>
 
 <div class="row bpop-slider home-promoted-slider">
-	<div class="col-lg-12">
+	<div class="col-lg-12 no-padding">
 		<ul class="bxslider home-promoted">
-				<% @shows.each do |show| %>
+				<% @promoted.each do |show| %>
 					<li>
 					  <%= render partial: "layouts/vertical_slide", :locals => {
 					  	:slide_title => show.title, 

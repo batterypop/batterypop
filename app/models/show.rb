@@ -69,22 +69,23 @@ scope :created_between, lambda { |start_time, end_time| where(:created_at => (st
 
 
 
-def self.showlist
-	# where()
-	# Client.where("created_at >= :start_date AND created_at <= :end_date", {start_date: params[:start_date], end_date: params[:end_date]})
-end
 
 
-
-scope :approved, where(:approved => true)
-scope :not_approved, where(:approved => false)
+scope :approved,  -> {where(:approved => true)}
+scope :not_approved,  ->  {where(:approved => false)}
 
 
 # scope :promoted, where (:promote => true)
-scope :promoted, where(:promote => true )
+scope :promoted,  ->  {where(:promote => true )}
 
-# scope :showlist, where(:skiplist => false, :skiplist => nil, :approved => true)
-scope :shorts, where(:single => true, :approved => true)
+#not sure how best to deal with nul values
+scope :skiplistnil, -> {where(:skiplist => nil)}
+scope :skiplisttrue, ->{where(:skiplist => true)}
+scope :skiplistfalse, ->{where(:skiplist => false)}
+
+scope :showlist, -> {where(:skiplist => [false, nil])}
+
+scope :shorts,  -> {where(:single => true, :approved => true)}
 # scope :showlist, where("skiplist != false")
 
 

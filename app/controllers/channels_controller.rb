@@ -3,7 +3,8 @@ class ChannelsController < ApplicationController
 
   def index
      @active="channels"
-    @channels = Channel.all.order('position ASC')
+    # @channels = Channel.all.order('position ASC')
+    @channels = Channel.get_channels
   end
 
   

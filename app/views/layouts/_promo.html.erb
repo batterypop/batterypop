@@ -27,7 +27,7 @@
 				</div>
 				<div class="col-xs-12 home-carousel-slider">
 					<ul class="bxslider home-side-carousel">
-						<% @shows.each do |show| %>
+						<% @showlist.each do |show| %>
 						<li>
 							<%= render partial: "layouts/horizontal_slide", :locals => {
 										:slide_title => show.title, 
@@ -45,3 +45,22 @@
 	<!-- end of vertical carousel -->
 </div>
 <!-- end show promo -->
+
+
+<!--
+
+$('.show-most-popped-carousel').bxSlider({
+	  		nextSelector: '#show-popped-down',
+			prevSelector: '#show-popped-up',
+			// nextText: 'DOWN', prevText: 'UP',
+	  		responsive: true,
+	  		touchEnabled: true,
+	  		mode: 'vertical',
+			slideMargin: 2,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+		  }
+	  	);
+
+-->

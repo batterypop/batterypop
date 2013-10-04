@@ -9,6 +9,14 @@ class Channel < ActiveRecord::Base
   	
 
 
+  	def self.get_channels
+  		Channel.includes(:shows).order('channels.position')
+  	end
+
+  	def self.get_channels_approved
+  		Channel.order('channels.position').includes(:shows).where(shows:{approved: true})
+  	end
+
 	private
 	def slug_candidates
 		[
