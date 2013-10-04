@@ -1659,7 +1659,11 @@ div.show-popped-carousel{
 	height: 384px !important;
 }
 
-
+.show-most-popped-controls .center{
+	width: 36% !important; 
+	margin-top: 5px !important; 
+	margin-left: 30% !important;
+}
 
 
 
