@@ -10,10 +10,10 @@
 			<div class="btn-login-group">
 				<% if user_signed_in? %>
 				<!-- this should be replaced with profile controls -->
-					<div class="col-xs-6 col-md-offset-2 col-md-5" >
+				<div class="col-xs-6 col-md-6" id="signin">
 					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
 					</div>
-					<div class="col-xs-6 col-md-5" >
+					<div class="col-xs-6 col-md-6" id="signup">
 					<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-primary btn-small btn-login" %>
 					</div>
 				<!-- end profile controls -->
@@ -54,7 +54,7 @@
 			</div>
 
 
-			<div class="row fill bottom padding margin">
+			<div class="row fill top bottom padding margin">
 				<div class="col-xs-12 col-md-12 fill top bottom padding" id="search">
 					<form role="search">
 					     <div class="form-group">
@@ -72,7 +72,7 @@
 				<div style="height:0px; margin: 10px 0;" class="hidden-md hidden-lg"></div>
 				<a href="/">
 					<%= image_tag "header-bg.png", :id=>'logoback' %>
-					<%= image_tag "header-logo.png" %>
+					<%= image_tag "header-logo.png", :id=>'logofront' %>
 				</a>
 			</div>
 			<div class="mobile hidden-lg hidden-md hidden-sm">
@@ -90,13 +90,13 @@
 	<nav class="row nav fill bottom padding margin" role="navigation">
 		<div class="col-md-10 col-md-push-1 col-xs-12">
 			<ul id="menu" class="clearfix">
-				<li class="col-sm-3 col-sm-offset-1 col-xs-12 shows <% if(@active=='shows') %> active<% end %>">
+				<li class="col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-0 shows <% if(@active=='shows') %> active<% end %>">
 					<p><a href="/shows">Shows</a></p>
 				</li>
-				<li class="col-sm-4 col-xs-12 channels <% if(@active=='channels') %> active <% end %>">
+				<li class="col-sm-4 col-xs-4 channels <% if(@active=='channels') %> active <% end %>">
 					<p><a href="/channels">Channels</a></p>
 				</li>
-				<li class="col-sm-3 col-xs-12 newest <% if(@active=='shorts') %> active <% end %>">
+				<li class="col-sm-3 col-xs-4 newest <% if(@active=='shorts') %> active <% end %>">
 					<p><a href="/shorts">Shorts</a></p>
 				</li>
 			</ul>
