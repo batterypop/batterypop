@@ -464,7 +464,7 @@ div.bpop-slider-header > div div.channel-header-title img {
 }
 
 .bpop-slider .home-most-popped li{
-	height:100px;
+	/*height:100px;*/
 	width:240px;
 	margin: 0 12px !important;
 	padding: 6px 0 !important;
