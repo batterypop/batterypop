@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   def home
     @title = "Home"
     @features = Feature.all
-    @shows = Show.all
-    @episodes = Episode.all
+    @showlist = Show.showlist.approved
+    @popped = Episode.mostpopped(10) 
+    @promoted = Show.where(:promote => true)
   end
 
   def contact

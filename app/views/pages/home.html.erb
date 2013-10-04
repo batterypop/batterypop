@@ -6,7 +6,7 @@
 			<%= render 'layouts/most_popped' %>
 			
 			<div class="row fill bottom margin padding">
-				<div class="col-lg-8">
+				<div class="col-lg-8 no-padding">
 					<%= render 'layouts/promoted' %>
 				</div>
 				<div class="col-lg-4">
@@ -40,6 +40,7 @@
 			nextText: 'DOWN', prevText: 'UP',
 	  		responsive: true,
 	  		touchEnabled: true,
+	  		infiniteLoop: false,
 	  		mode: 'vertical',
 			slideMargin: 10,
 			minSlides: 3,
@@ -52,11 +53,11 @@
 			prevSelector: '#home-mostpopped-prev',
 			nextText: 'NEXT', prevText: 'PREV',
 		  	minSlides: 2,
-			maxSlides: 4,
+			maxSlides: 5,
 			responsive: true,
 	  		touchEnabled: true,
-	  		slideMargin: 10,
-	  		slideWidth: 260,
+	  		slideMargin: 6,
+	  		slideWidth: 220,
 			moveSlides: 2,
 			pager: false
 	  	});
@@ -65,6 +66,7 @@
 	  		nextSelector: '#home-promoted-next',
 			prevSelector: '#home-promoted-prev',
 			nextText: 'NEXT', prevText: 'PREV',
+			infiniteLoop: false, 
 		  	minSlides: 2,
 			maxSlides: 4,
 			slideWidth: 170,
