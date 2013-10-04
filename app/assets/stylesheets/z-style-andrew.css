@@ -912,6 +912,8 @@ div.center {
 	margin-right:0;
 	padding-left:0;
 	padding-right:0;
+    height: 426px;
+
 }
 
 /*
@@ -1478,6 +1480,32 @@ img.user-image {
 
 .user-show-slider .bpop-slider {
 	background-color:white;
+}
+
+
+.bpop-slider-header:after {
+	background-repeat: no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNrM1V0LgjAUBuBNLaK86uOui/r/fy2jiwgz8/QOjjSWOXem4IEXK9zZw4GtTH0r4SyQFbJGcqQgoouKLK216X1GCLkjJfJEaqTh31VmrWn4+XJ67dAMJiqmxrigPtQBTZUEFYLpArkoHYPyYczYTU8fyEZV0kkNwXSty3p6ilFSjA8kQsVghoD6UHs+fVcHc5JihoL+nT7TfAuE2ejGmCO/+5BgQkAt4N3xPQfGbLrhzSuGVKEYCUgxgngS5nOKLHl6JSNqCSYUZKMa62JLrPuqcfJzz/gqFf4bkJV2Um9reuTewFODXJiKhYwFGr1mB9KBh2DySuY2oY8AAwBq5sK63MNKzQAAAABJRU5ErkJggg==);
+	position: absolute;
+	background-color:inherit;
+	left: 0;
+	top: 100%;
+	width: 0;
+	height: 0;
+	content: "";
+	z-index: 4;
+	padding: 0 11px 13px;
+	right: 0;
+	margin: 0 auto;
+	background-position: top center;
+}
+
+
+@media all and (max-width: 1200px) {
+	.home-carousel-slider {
+		height:298px;
+	}
+
 }
 
 @media all and (max-width: 996px) {
