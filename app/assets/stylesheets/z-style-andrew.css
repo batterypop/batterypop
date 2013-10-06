@@ -1588,16 +1588,15 @@ img.user-image {
 	background-color: white !important;
 }
 
-<<<<<<< HEAD
+
 .user-show-slider .bpop-slider-header:after{
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);
 	
 }
 
-=======
+
 .show-followers-slider.bpop-slider,
 .show-liked-slider.bpop-slider,
->>>>>>> 8746ee11d41efa65ace46fd7d989a8da4c47df32
 .home-promoted-slider.bpop-slider,
 .home-most-popped-body.bpop-slider{  /* needed these for viewport */
 	padding-top: 15px;
