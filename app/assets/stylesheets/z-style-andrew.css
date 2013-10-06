@@ -389,6 +389,7 @@ nav {
 
 #menu li:hover p,
 #menu li:hover a,
+#menu li a,
 #menu li.active a {
 	color:#28a0cd;
 }
@@ -609,6 +610,24 @@ div.bpop-breadcrumb > .bpop-show-description h3 p {
 	text-transform:none;
 }
 
+.show-breadcrumb {
+	background-color:white;
+}
+
+.show-breadcrumb h1,
+.show-breadcrumb h4 {
+	color:white !important;
+	margin-top:0;
+}
+
+.show-breadcrumb h1 {
+	padding-top:20px;
+}
+
+.show-breadcrumb h4{
+	padding-bottom:20px;
+}
+
 
 
 div.bpop-breadcrumb > div.bpop-show-title:after{
@@ -637,6 +656,8 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 .bpop-breadcrumb .bpop-show-description {
 	background:#428BCA;
 }
+
+
 /*
 ---------------------------
 --- Universal Helpers -----
@@ -706,10 +727,21 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
   clear: both;
 }
 
+.vert-middle-wrap,
 .table-wrap {
 	display:table;
+	height:auto;
+	width:100%;
 }
 
+.vert-middle,
+.table-cell{
+	display:table-cell;
+	height:auto;
+	width:100%;
+}
+
+img.center,
 div.center {
 	display:block;
 	margin-left:auto;
@@ -1057,6 +1089,34 @@ body {
 	margin:0;
 }
 
+.show-name-episodes-section .show-episodes li,
+.show-name-episodes-section .show-episodes .vertical-slide {
+	height: 255px;
+}
+
+/*
+.show-episodes .vertical-slide .caption:after{
+	position: absolute;
+	right: 8px;
+	width: 25%;
+	height: 10px;
+	padding-bottom:15px;
+	background-image: linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+	background-image: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+	background-image: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+	background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+	background-image: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+	bottom: 0;
+	text-align:right;
+	background-color:inherit;
+	content: "...";
+}
+*/
+
+.show-name-episodes-section .vertical-slide .caption {
+	height:69px;
+	overflow-y:hidden;
+}
 
 .show-name h2 {
 	font-size:30px;
@@ -1211,6 +1271,19 @@ color:#96d7c8;
 	background-color:#96d7c8 !important;
 }
 
+.turquoise h1,
+.turquoise h2,
+.turquoise h3,
+.turquoise h4,
+.turquoise h5,
+.turquoise h6,
+.turquoise p {
+	color:#28a0cd;
+}
+
+.turquoise {
+	background-color:#28a0cd !important;
+}
 
 /*
 
@@ -1511,6 +1584,11 @@ img.user-image {
 .home-most-popped .vertical-slide{
 	/*width: 195px !important;*/
 	background-color: white !important;
+}
+
+.user-show-slider .bpop-slider-header:after{
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);
+	
 }
 
 .home-promoted-slider.bpop-slider,
