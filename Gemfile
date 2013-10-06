@@ -34,6 +34,7 @@ gem 'paperclip',  '>= 3.4.0'  # image upload
 gem 'aws-sdk'
 
 
+gem 'unicorn'
 
 # gem 'bootstrap-sass', '~> 2.3.2.1' 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
