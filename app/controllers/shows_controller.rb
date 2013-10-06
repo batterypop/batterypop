@@ -19,7 +19,7 @@ class ShowsController < ApplicationController
        @episode = @show.episodes.first
     end
     
-    @likers = @episode.votes.up.by_type(User).voters
+    @likers = @episode.votes.up.by_type(User).voters.compact!
 
   end
 
