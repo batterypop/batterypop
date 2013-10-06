@@ -1507,12 +1507,16 @@ img.user-image {
 	background-position: top center;
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider .vertical-slide,
 .home-most-popped .vertical-slide{
 	/*width: 195px !important;*/
 	background-color: white !important;
 }
 
+.show-followers-slider.bpop-slider,
+.show-liked-slider.bpop-slider,
 .home-promoted-slider.bpop-slider,
 .home-most-popped-body.bpop-slider{  /* needed these for viewport */
 	padding-top: 15px;
@@ -1522,6 +1526,10 @@ img.user-image {
 	margin-right: 0px;
 }
 
+.show-followers-slider h4,
+.show-followers-slider p,
+.show-liked-slider h4,
+.show-liked-slider p,
 .home-promoted-slider h4,
 .home-promoted-slider p,
 .home-most-popped-slider h4,
@@ -1529,6 +1537,8 @@ img.user-image {
 	color: white !important;
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider div.vertical-slide img.img-circle,
 .home-most-popped-slider div.vertical-slide img.img-circle {
 	margin: 20px auto;
@@ -1536,6 +1546,8 @@ img.user-image {
 	/* webkit, moz, o */
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider div.vertical-slide,
 .home-most-popped-slider div.vertical-slide {
 	height:280px;
@@ -1546,6 +1558,7 @@ img.user-image {
 	/* webkit, moz, o */
 }
 
+.show-liked-slider div.vertical-slide,
 .home-most-popped-slider div.vertical-slide {
 	background-color:#684389 !important;
 }
@@ -1554,6 +1567,7 @@ img.user-image {
 	background-color:#ffc000 !important;
 }
 
+.show-liked-slider div.vertical-slide h4,
 .home-promoted-slider div.vertical-slide h4,
 .home-most-popped-slider div.vertical-slide h4 {
 	margin: 5px;

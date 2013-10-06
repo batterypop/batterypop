@@ -62,7 +62,8 @@
 					</div>
 				</div>
 				<div class="show-most-popped-inner-wrap">
-					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">			<div class="center" >
+					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">
+						<div class="center" >
 							<div id="show-popped-down" class="slider-down pull-right"></div>
 							<div id="show-popped-up" class="slider-up pull-left"></div>
 						</div>
@@ -126,7 +127,100 @@
 
 <!-- end of episodes area -->
 			</div>
-			<div class="col-lg-4 show-lower-right">
+			<div class="col-lg-4 show-lower-right no-padding">
+<% if @followers.count %>			
+				<div class="row fill bottom margin padding show-followers-slider">
+					<div class="bpop-slider-header">
+						<div class="text-center show-followers-slider-header green">
+							
+							<div id="show-followers-next" class="col-xs-1 slider-next pull-right"></div>
+							<div id="show-followers-prev" class="col-xs-1 slider-prev pull-left"></div>
+							<div class="col-xs-12 slider-title">
+								<h4 class="page-title"><span class="glyphicon glyphicon-plus"></span>Followed By<span class="glyphicon glyphicon-plus"></span></h4>
+							</div>
+						</div>
+					</div>
+					<div class="row bpop-slider show-followers-slider">
+						<div class="col-lg-12 no-padding">
+							<ul class="bxslider show-followers-carousel">
+								<% @followers.each do |user| %>
+									<% unless(user.avatar.nil?) 
+										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
+									else
+										@img = image_tag("missing.png", :class => "img-responsive img-circle")
+									end %>
+									<li>
+										 <%= render partial: "layouts/vertical_slide", :locals => {
+											  	:slide_title => user.username, 
+											  	:slide_text => '', 
+											  	:slide_image => @img,
+												:slide_url => user_path(User.friendly.find(user.id))} %>
+									
+									</li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+<% end %>
+
+
+
+<% if @likers.count %>	
+						<div class="row no-margin no-padding">
+							<div class="col-xs-12 show-most-popped-header no-margin no-padding text-center">
+								<div class="small-header-bg">
+									<img src="/assets/shows-popped-header.png">
+								</div>
+								<h1>Liked By</h1>
+							</div>
+						</div>
+						<div class="show-most-popped-inner-wrap">
+							<div class="col-xs-12 show-most-popped-controls no-margin no-padding">
+								<div class="center" >
+									<div id="show-liked-next" class="slider-down pull-right"></div>
+									<div id="show-liked-prev" class="slider-up pull-left"></div>
+								</div>
+							</div>
+							<div class="row no-margin no-padding show-liked-slider">
+								<div class="col-xs-12 no-margin no-padding">
+									<ul class="bxslider show-liked-carousel">
+								
+
+									<% @likers.each do |user| %>
+										<% unless(user.avatar.nil?) 
+											@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
+										else
+											@img = image_tag("missing.png", :class => "img-responsive img-circle")
+										end %>
+										<li>
+											 <%= render partial: "layouts/vertical_slide", :locals => {
+												  	:slide_title => user.username, 
+												  	:slide_text => '', 
+												  	:slide_image => @img,
+													:slide_url => user_path(User.friendly.find(user.id))} %>
+										
+										</li>
+									<% end %>
+
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+			
+<% end %>
+
+
+
+
+
+
+
+
+				</div>
 			</div>
 		</div>
 
@@ -147,6 +241,32 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+		$('.show-followers-carousel').bxSlider({
+			nextSelector: '#show-followers-next',
+			prevSelector: '#show-followers-prev',
+	  		responsive: true,
+	  		touchEnabled: true,
+			slideMargin: 2,
+			slideWidth: 170,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+		  }
+	  	);
+
+	  	$('.show-liked-carousel').bxSlider({
+			nextSelector: '#show-liked-next',
+			prevSelector: '#show-liked-prev',
+	  		responsive: true,
+	  		touchEnabled: true,
+			slideMargin: 2,
+			slideWidth: 170,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+		  }
+	  	);
+
 		$('.show-most-popped-carousel').bxSlider({
 			nextSelector: '#show-popped-down',
 			prevSelector: '#show-popped-up',
@@ -154,8 +274,10 @@
 	  		responsive: true,
 	  		touchEnabled: true,
 	  		mode: 'vertical',
-			slideMargin: 2,
+			slideMargin: 10,
+			slideWidth: 165,
 			minSlides: 3,
+			maxSlides: 3,
 			moveSlides: 1,
 			pager: false
 		  }

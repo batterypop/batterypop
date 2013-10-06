@@ -62,6 +62,7 @@ gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 
 # voting
 # gem 'acts_as_votable', github: 'ryanto/acts_as_votable' 
+# https://github.com/ryanto/acts_as_votable
 gem "acts_as_votable", "~> 0.7.1"
 
 gem 'friendly_id', '5.0.0.beta4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
@@ -75,6 +76,9 @@ gem 'mailboxer'  # messaging
 
 # https://github.com/tcocca/acts_as_follower
 gem "acts_as_follower", "~> 0.2.0"
+
+# https://github.com/grosser/random_records
+gem "random_record"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
