@@ -1463,6 +1463,22 @@ a.disabled>.plus {
 	left: -3px;
 }
 
+.avatar-slider-parent .bx-wrapper{
+	width: 120px !important;
+	height:120px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.avatar-slider-parent .bx-wrapper .bx-viewport {
+	height:120px !important;
+	width:120px !important;
+}
+
+.avatar-slider-parent .bx-wrapper ul {
+	padding:0 !important;
+	height:120px;
+}
+
 .show-most-popped-wrap {
 }
 
