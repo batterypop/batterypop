@@ -1580,17 +1580,24 @@ img.user-image {
 	background-position: top center;
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider .vertical-slide,
 .home-most-popped .vertical-slide{
 	/*width: 195px !important;*/
 	background-color: white !important;
 }
 
+<<<<<<< HEAD
 .user-show-slider .bpop-slider-header:after{
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);
 	
 }
 
+=======
+.show-followers-slider.bpop-slider,
+.show-liked-slider.bpop-slider,
+>>>>>>> 8746ee11d41efa65ace46fd7d989a8da4c47df32
 .home-promoted-slider.bpop-slider,
 .home-most-popped-body.bpop-slider{  /* needed these for viewport */
 	padding-top: 15px;
@@ -1600,6 +1607,10 @@ img.user-image {
 	margin-right: 0px;
 }
 
+.show-followers-slider h4,
+.show-followers-slider p,
+.show-liked-slider h4,
+.show-liked-slider p,
 .home-promoted-slider h4,
 .home-promoted-slider p,
 .home-most-popped-slider h4,
@@ -1607,6 +1618,8 @@ img.user-image {
 	color: white !important;
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider div.vertical-slide img.img-circle,
 .home-most-popped-slider div.vertical-slide img.img-circle {
 	margin: 20px auto;
@@ -1614,6 +1627,8 @@ img.user-image {
 	/* webkit, moz, o */
 }
 
+.show-followers-slider div.vertical-slide,
+.show-liked-slider div.vertical-slide,
 .home-promoted-slider div.vertical-slide,
 .home-most-popped-slider div.vertical-slide {
 	height:280px;
@@ -1624,6 +1639,7 @@ img.user-image {
 	/* webkit, moz, o */
 }
 
+.show-liked-slider div.vertical-slide,
 .home-most-popped-slider div.vertical-slide {
 	background-color:#684389 !important;
 }
@@ -1632,6 +1648,7 @@ img.user-image {
 	background-color:#ffc000 !important;
 }
 
+.show-liked-slider div.vertical-slide h4,
 .home-promoted-slider div.vertical-slide h4,
 .home-most-popped-slider div.vertical-slide h4 {
 	margin: 5px;

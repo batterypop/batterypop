@@ -13,10 +13,14 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
      @active="shows"
+     @followers = @show.user_followers.random(5)
+    
     if(@episode.nil?) 
        @episode = @show.episodes.first
     end
-   
+    
+    @likers = @episode.votes.up.by_type(User).voters
+
   end
 
 
