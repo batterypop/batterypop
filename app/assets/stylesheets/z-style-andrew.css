@@ -950,7 +950,7 @@ div.center {
 	margin-right:0;
 	padding-left:0;
 	padding-right:0;
-    height: 426px;
+    height: 298px;
 
 }
 
@@ -1606,10 +1606,15 @@ img.user-image {
 
 
 .user-show-slider .bpop-slider-header:after{
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);
-	
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);	
 }
 
+.user-video-slider .bpop-slider,
+.users-followed-slider .bpop-slider,
+.users-following-slider .bpop-slider,
+.user-show-slider .bpop-slider {
+	padding-top:10px;
+}
 
 .show-followers-slider.bpop-slider,
 .show-liked-slider.bpop-slider,
@@ -1701,8 +1706,9 @@ img.user-image {
 */
 
 .show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
+
 	height:203px !important;
-	/*
+/*
 	When FitVidsJS comes aboard, we're gonna want to change the height because the aspect will shore itself up.
 
 	16:9 will put it the video at about 490px high, so it'll need to be want it at 310px.
@@ -1710,7 +1716,6 @@ img.user-image {
 	In the media queries at the bottom, it'll want to change it for medium desktop, too.
 	
 	*/
-	background-color:white;
 }
 
 div.show-popped-carousel{
@@ -1723,11 +1728,43 @@ div.show-popped-carousel{
 	margin-left: 30% !important;
 }
 
-@media all and (max-width: 1200px) {
-	.home-carousel-slider {
-		height:298px;
-	}
+.show-most-popped-controls .slider-up a,
+.show-most-popped-controls .slider-down a {
+	margin-top:-20px;
+}
 
+.show-most-popped-controls,
+.show-most-popped-inner-wrap .bx-wrapper .bx-viewport,
+.show-most-popped-footer,
+.show-most-popped-inner-wrap .bx-wrapper {
+	background-color:white;
+}
+
+@media all and (min-width: 1200px) {
+
+	.home-carousel-slider .bx-wrapper .bx-viewport,
+	ul.bxslider.home-side-carousel {
+		height: 422px !important;
+	}
+	
+	.home-carousel-slider {
+		height:426px !important;
+	}
+	
+}
+
+@media all and (max-width: 1199px) {
+	
+	.home-carousel-slider .bx-wrapper .bx-viewport,
+	ul.bxslider.home-side-carousel {
+	height: 294px !important;
+	}
+	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
+	height:214px !important;
+	top: -65px;
+	margin-bottom:-65px;
+	}
+	
 }
 
 @media all and (max-width: 992px) {
