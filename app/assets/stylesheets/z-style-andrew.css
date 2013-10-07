@@ -1393,12 +1393,14 @@ a.disabled>.plus {
 	top:0;
 	height:72px;
 	padding:10px 0 !important;
+	width:100%;
 }
 
 .show-player-wrapper {
 	background-color:black !important;
 	margin-left:-20px;
 	height: inherit;
+	position:relative;
 }
 
 .show-player-popover p,
