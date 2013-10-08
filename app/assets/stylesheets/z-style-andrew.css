@@ -1898,6 +1898,14 @@ div.show-popped-carousel{
 		padding-left:20px;
 		padding-right:20px;
 	}
+	
+	.show-player-episode-title h4{
+		text-align:left;
+	}
+	
+	.follow-pop-wrap {
+		margin-right:0;
+	}
 }
 	
 @media all and (max-width: 480px) {
