@@ -113,11 +113,11 @@
 						            <span id='episode-badge-vote-#{ep.id}'>#{ep.likes.size}</span>
 						            <div class='badge-box'>
 						            <div class='pop-button pop-episode pop_episode-#{ep.id}'  data-episode='#{ep.id}'>
-						            <div class='flash white'></div>
+						            <div class='flash'></div>
 						            </div></div></span>".html_safe,
 				                :slide_title => ep.title, 
 				                :slide_text => ep.description.html_safe, 
-				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
 				                # :slide_url => show_path(Episode.friendly.find(episode.id))
 				                :slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
 				                } %>
