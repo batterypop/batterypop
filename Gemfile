@@ -56,6 +56,9 @@ gem 'formtastic',          github: 'justinfrench/formtastic'
 
 gem "rich", github: 'bastiaanterhorst/rich'
 
+
+# gem 'vjs_rails'
+
 # gem 'active_admin_editor'
 
 gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
