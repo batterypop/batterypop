@@ -773,11 +773,19 @@ div.center {
 	vertical-align: middle;
 }
 
-
 .home-most-popped-header{
 	background-color: #684389;
 }
 
+.home-most-popped-header #home-mostpopped-next,
+.home-most-popped-header #home-mostpopped-prev{
+	z-index:2;
+}
+
+
+.home-most-popped-slider:hover .header-bg {
+	z-index:0;
+}
 
 .home-promoted-header {
 	background-color:#ffc000;
@@ -794,7 +802,7 @@ div.center {
 }
 
 .home-promoted-header .header-bg img{
-	margin: -28px 0 0 -128px;
+	margin: -27px 0 0 -128px;
 }
 
 .bpop-slider-header > div {
@@ -1323,7 +1331,7 @@ color:#96d7c8;
 	background-position: -32px -2px;
 }
 
-
+.show-lower-left .flash,
 .pop-button > .flash.white {
 	background-position: -3px -64px;
 	-webkit-border-radius:0;
@@ -1811,7 +1819,6 @@ div.show-popped-carousel{
 	height:120px;
 	width:120px;
 	margin:0 7% 0 0;
-	border-right:1px solid #e1e1e1;
 }
 
 .show-lower-left .horizontal-slide .badge {
@@ -1829,6 +1836,13 @@ div.show-popped-carousel{
 	font-size:11px;
 	line-height:15px;
 }
+
+.show-lower-left a.active,
+.show-lower-left a.active:hover {
+	border-color:transparent !important;
+	background-color:inherit !important;
+}
+
 
 @media all and (min-width: 1200px) {
 
@@ -1905,6 +1919,11 @@ div.show-popped-carousel{
 	
 	.follow-pop-wrap {
 		margin-right:0;
+	}
+	
+	.show-lower-left .horizontal-slide img {
+		height:60px;
+		width:60px;
 	}
 }
 	
