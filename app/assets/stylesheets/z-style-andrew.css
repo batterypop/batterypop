@@ -967,6 +967,16 @@ div.center {
 
 }
 
+.home-carousel-slider .bx-wrapper{
+	padding:0;
+}
+
+.home-carousel-slider li {
+	width:auto !important;
+	margin:0 auto !important;
+}
+
+
 /*
 -----------------------
 ------- Pipes ---------
@@ -1846,7 +1856,6 @@ div.show-popped-carousel{
 
 @media all and (min-width: 1200px) {
 
-	.home-carousel-slider .bx-wrapper .bx-viewport,
 	ul.bxslider.home-side-carousel {
 		height: 422px !important;
 	}
@@ -1859,10 +1868,10 @@ div.show-popped-carousel{
 
 @media all and (max-width: 1199px) {
 	
-	.home-carousel-slider .bx-wrapper .bx-viewport,
 	ul.bxslider.home-side-carousel {
 	height: 294px !important;
 	}
+	
 	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
 	height:214px !important;
 	top: -65px;
