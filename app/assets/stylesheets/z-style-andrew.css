@@ -669,6 +669,12 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 ---------------------------
 */
 
+.darken{
+	background: url('/assets/ui/darken.png') repeat;
+}
+
+
+
 .no-padding{
 	padding: 0px !important;
 }

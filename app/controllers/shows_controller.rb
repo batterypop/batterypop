@@ -13,14 +13,15 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
      @active="shows"
-     @followers = @show.user_followers.random(5)
+     @f = @show.user_followers.random(5)
+     @followers = (@f.compact!).nil? ? @f : @f.compact!
     
     if(@episode.nil?) 
        @episode = @show.episodes.first
     end
     
     @likers = @episode.votes.up.by_type(User).voters.compact!
-
+    # @voters = Votes.where(votable: @episode).random(3).map(&:voter)
   end
 
 

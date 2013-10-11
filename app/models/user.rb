@@ -63,6 +63,17 @@ class User < ActiveRecord::Base
     false
   end
 
+
+  # because some users were created without avatar attached, adding this as part of the model function
+  def get_avatar(user, size = :thumb)
+    unless(user.avatar.nil?) 
+        @img = image_tag(user.avatar.image(size))
+    else
+        @img = image_tag("missing.png")
+    end
+  end
+
+
  # def user_params
  # 	params.require(:user).permit(:username, :password_confirmation, :avatar_id)
  # end
