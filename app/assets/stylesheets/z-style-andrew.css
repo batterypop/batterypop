@@ -977,6 +977,11 @@ div.center {
 	padding:0;
 }
 
+
+.home-carousel-slider .bx-viewport{
+	height:100% !important;
+}
+
 .home-carousel-slider li {
 	width:auto !important;
 	margin:0 auto !important;
