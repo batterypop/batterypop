@@ -25,7 +25,7 @@
               </div>
             </div>
 
-<% if(@user.following_shows.count < 1) %>
+<% if(@user.following_shows.empty?) %>
             <div class="col-xs-12 text-center">
             <h4 class="page-title"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
             </div>
@@ -66,7 +66,7 @@
               </div>
             </div>
 
-<% if(@user.votes.up.votables.count < 1) %>
+<% if(@user.votes.up.votables.empty?) %>
             <div class="col-xs-12 text-center">
             <h4 class="page-title"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
             </div>
@@ -114,9 +114,9 @@
           </div>
 
 
-<% if(@user.following_users.count < 1) %>
+<% if(@user.following_users.empty?) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; <a href='/users'>go find some users!</a>" : " #{@user.username} isn't anyone at this time." %></h4>
+            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't anyone at this time." %></h4>
             </div>
 <% else %> 
 
@@ -148,6 +148,8 @@
 			</div>
 <!-- end users following -->
 
+
+
 <!-- users following you-->
       <div class="row fill top bottom padding ">
         <div class="users-following-slider green">
@@ -159,7 +161,13 @@
             </div>
           </div>
 
-    
+<% if(@user.following_users.empty?) %>
+            <div class="col-xs-12 text-center">
+            <h4 class="page-title"><%= (current_user == @user) ? "No one is following you; #{link_to( "go make some friends!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} has no followers at this time." %></h4>
+            </div>
+<% else %> 
+
+
           <div class="bpop-slider      green">
               <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="users-following-slider">
@@ -182,7 +190,7 @@
               </div>
           </div>
 
-
+<% end %>
 
         </div>
       </div>
