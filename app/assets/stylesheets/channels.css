@@ -42,10 +42,9 @@
 	height: 0;
 	content: "";
 	z-index: 4;
-	padding: 0 11px 13px;
+	padding: 0;
 	right: 0;
 	margin: 0 auto;
-	background-position: top center;
 }
 
 
