@@ -1121,6 +1121,7 @@ body {
 	margin-right: 30px;
 }
 
+.show-followers-carousel,
 .show-name-episodes-section .show-name,
 .show-name-episodes-section .show-episodes {
 	height:243px;
@@ -1132,6 +1133,8 @@ body {
 	margin:0;
 }
 
+.show-followers-carousel li,
+.show-followers-carousel .vertical-slide,
 .show-name-episodes-section .show-episodes li,
 .show-name-episodes-section .show-episodes .vertical-slide {
 	height: 255px;
@@ -1154,25 +1157,37 @@ body {
 	color:#878787 !important;
 }
 
+
+.show-followers-carousel,
 .show-episodes {
 	overflow-y:hidden;
 }
 
+.show-followers-carousel .bx-viewport li,
 .show-episodes .bx-viewport li {
 	margin-top:-12px;
 	height: 255px;
 	margin-right:6px
 }
 
+.show-followers-carousel h4,
 .show-episodes h4 {
 	font-size:24px;
 	line-height:21px;
 }
 
-.show-name-episodes-section a:hover{
+.show-followers-carousel h4,
+.show-followers-carousel p{
+	color:#457a21 !important;
+}
+
+.bpop-slider a:hover{
 	text-decoration:none !important;
 }
 
+.show-followers-carousel img {
+	margin-top:18px;
+}
 
 
 /*
@@ -1205,6 +1220,8 @@ body {
 	background-color:#2cb0e2 !important;
 }
 
+.blue.bpop-slider-header:after,
+.aqua.bpop-slider-header:after,
 .blue .bpop-slider-header:after,
 .aqua .bpop-slider-header:after {
 	border-top-color:#2cb0e2 !important;
@@ -1224,6 +1241,7 @@ body {
 	background-color:#684389 !important;
 }
 
+.purple.bpop-slider-header:after,
 .purple .bpop-slider-header:after {
 	border-top-color:#684389 !important;
 }
@@ -1250,6 +1268,8 @@ body {
 	background-color:#fabb00 !important;
 }
 
+.yellow.bpop-slider-header:after,
+.gold.bpop-slider-header:after,
 .yellow .bpop-slider-header:after,
 .gold .bpop-slider-header:after {
 	border-top-color:#fabb00 !important;
@@ -1276,8 +1296,10 @@ body {
 	background-color:#d6552d !important;
 }
 
+.tangerine.bpop-slider-header:after,
+.orangered.bpop-slider-header:after,
 .tangerine .bpop-slider-header:after,
-.orangered .bpop-slider-header:after {
+.orangered .bpop-slider-header:after{
 	border-top-color:#d6552d !important;
 }
 
@@ -1295,6 +1317,7 @@ body {
 	background-color:#457a21 !important;
 }
 
+.green.bpop-slider-header:after,
 .green .bpop-slider-header:after {
 	border-top-color:#457a21 !important;
 }
@@ -1313,6 +1336,7 @@ color:#1b6581;
 	background-color:#1b6581 !important;
 }
 
+.steelblue.bpop-slider-header:after,
 .steelblue .bpop-slider-header:after {
 	border-top-color:#1b6581 !important;
 }
@@ -1331,6 +1355,7 @@ color:#CC0000;
 	background-color:#CC0000 !important;
 }
 
+.red.bpop-slider-header:after,
 .red .bpop-slider-header:after {
 	border-top-color:#cc0000 !important;
 }
@@ -1349,6 +1374,7 @@ color:#96d7c8;
 	background-color:#96d7c8 !important;
 }
 
+.mint.bpop-slider-header:after 
 .mint .bpop-slider-header:after {
 	border-top-color:#96d7c8 !important;
 }
@@ -1367,6 +1393,7 @@ color:#96d7c8;
 	background-color:#28a0cd !important;
 }
 
+.turquoise.bpop-slider-header:after,
 .turquoise .bpop-slider-header:after {
 	border-top-color:#28a0cd !important;
 }
@@ -1711,6 +1738,19 @@ img.user-image {
 	background-color: white !important;
 }
 
+.show-followers-slider .small-header-bg {
+	padding-top:1px;
+}
+
+.show-followers-slider .bpop-slider-header:after {
+	border-top-color:transparent !important;
+}
+
+.show-followers-slider-header h4 {
+	padding-top:0;
+	text-shadow:none;
+}
+
 
 .user-show-slider .bpop-slider-header:after{
 /*	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);	*/
@@ -1734,8 +1774,6 @@ img.user-image {
 	margin-right: 0px;
 }
 
-.show-followers-slider h4,
-.show-followers-slider p,
 .show-liked-slider h4,
 .show-liked-slider p,
 .home-promoted-slider h4,
@@ -1765,6 +1803,7 @@ img.user-image {
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	/* webkit, moz, o */
 }
+
 
 .show-liked-slider div.vertical-slide,
 .home-most-popped-slider div.vertical-slide {
