@@ -102,11 +102,7 @@
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav">
-			<li class="<% if(@active=='shows') %> active<% end %>"><a href="/shows">Shows</a></li>
-			<li class="<% if(@active=='channels') %> active<% end %>"><a href="/channels">Channels</a></li>
-			<li class="<% if(@active=='shorts') %> active<% end %>"><a href="/shorts">Shorts</a></li>	
-			
-			<% if user_signed_in? %>
+		    <% if user_signed_in? %>
 				<li>
 					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy" %>
 				</li>
@@ -115,13 +111,15 @@
 				</li>
 			<% else %>
 				<li>
-				<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Sign In:" title="">Sign In</button>
-				</li>
-				<li>
-				<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
+					<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signIn" title="">Sign In</button>
+					
+					<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
 				</li>
 			<% end %>
-	     
+
+			<li class="<% if(@active=='shows') %> active<% end %>"><a href="/shows">Shows</a></li>
+			<li class="<% if(@active=='channels') %> active<% end %>"><a href="/channels">Channels</a></li>
+			<li class="<% if(@active=='shorts') %> active<% end %>"><a href="/shorts">Shorts</a></li>	
 	    </ul>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
@@ -176,23 +174,60 @@
 
 <!-- signup modal -->
 
-<div class="modal fade" id="becomeMember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Become A Member!</h4>
-        </div>
-        <div class="modal-body">
-         Want to follow your favorite web shows and have a voice voting the newest best videos?  Become a member today!  Sign up to the site above!
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+	<div class="modal fade" id="becomeMember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Become A Member!</h4>
+				</div>
+				<div class="modal-body">
+				Want to follow your favorite web shows and have a voice voting the newest best videos?  Become a member today!  Sign up to the site above!
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
+
+<!-- login modal for mobile -->
+	<div class="modal fade" id="modal_signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 class="modal-title">Sign In!</h3>
+				</div>
+				<div class="modal-body">
+					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+							<div><%= f.label :username %><br />
+							<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
+
+							<div><%= f.label :password %><br />
+							<%= f.password_field :password, :class =>"form-control" %></div>
+
+							<% if devise_mapping.rememberable? -%><br />
+							<div class="input-group">
+								<span class="input-group-addon">
+									<%= f.check_box :remember_me %> 
+								</span>
+								<%= f.label :remember_me, :class =>"form-control" %>
+							</div><br />
+
+
+							<% end -%>
+							<div class="modal-footer">
+							<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
+							</div>
+						<% end %>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+<!-- login modal for mobile -->
 
 
 
