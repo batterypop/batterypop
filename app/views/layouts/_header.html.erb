@@ -6,7 +6,7 @@
 	<div class="row fill bottom top padding margin shadow-container  hidden-xs">
 		<div class="shadow-mid-left"></div>
 		<div class="shadow-mid-right"></div>
-		 <div class="col-sm-4 col-sm-push-8 col-md-3 col-md-push-9 col-lg-3 col-xs-12 clearfix fill bottom padding margin" style="z-index:1;">
+		 <div class="col-sm-4 col-sm-offset-8 col-md-3 col-md-offset-9 col-xs-12 col-xs-offset-0 clearfix fill bottom padding margin" style="z-index:1;">
 			<div class="btn-login-group">
 				<% if user_signed_in? %>
 				<!-- this should be replaced with profile controls -->
@@ -67,17 +67,12 @@
 	<!-- </div>
 
 	<div class="row fill"> -->
-		<div class="col-md-6 col-md-pull-0 col-md-push-0 col-sm-8 col-sm-pull-2 col-xs-12 col-xs-pull-0  fill top padding margin left right" id="branding">
+		<div class="col-xs-12 col-xs-offset-0 fill top padding margin left right" id="branding">
 			<div class="desktop hidden-xs">
 				<div style="height:0px; margin: 10px 0;" class="hidden-md hidden-lg"></div>
 				<a href="/">
-					<%= image_tag "header-bg.png", :id=>'logoback' %>
-					<%= image_tag "header-logo.png", :id=>'logofront' %>
-				</a>
-			</div>
-			<div class="mobile hidden-lg hidden-md hidden-sm">
-				<a href="/">
-					<%= image_tag "header-mob.png" %>
+					<%= image_tag "header-new-bg.png", :id=>'logoback' %>
+					<%= image_tag "header-new-logo.png", :id=>'logofront' %>
 				</a>
 			</div>
 		</div>
@@ -96,7 +91,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="/"><%= image_tag "header-logo-mob-menu.png" %></a>
+	    <a class="navbar-brand" href="/"><%= image_tag "header-mob-new-1.png" %></a>
 	  </div>
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->

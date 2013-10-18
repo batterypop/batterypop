@@ -39,7 +39,8 @@ body .container {
 */
 
 
-
+ul.navbar-nav li,
+ul.navbar-nav button,
 #menu a {
 	font-family:"AnchorMedium", Helvetica, Arial, sans-serif !important;
 	font-weight:normal;
@@ -71,6 +72,8 @@ h3 {
 	line-height:26px;
 }
 
+ul.navbar-nav li,
+ul.navbar-nav button,
 h4 {
 	font-size:18px;
 	line-height:17px;
@@ -165,14 +168,74 @@ header {
 }
 
 #branding > .desktop {
-	height: 175px;
+	height: 113px;
 	width: 100%;
 	overflow: visible;
 	position: relative;
 	display: table;
-	margin-top: -65px;
 }
 
+.navbar-brand {
+	padding-top:0;
+	padding-bottom:0;
+	height:80px;
+}
+
+.navbar-default {
+	background:none;
+	border:0;
+	margin-bottom:0;
+	overflow-y:hidden;
+}
+
+.navbar-collapse {
+	border:0;
+}
+
+.icon-bar {
+	background-color:#28a0cd !important;
+}
+
+button.navbar-toggle:active,
+button.navbar-toggle{
+	background-color:#fcfcfc !important;
+	border-color:#28a0cd !important;
+	margin-right:20px;
+	height:44px;
+	width:44px;
+}
+
+button.navbar-toggle:hover {
+	background-color:#684389 !important;
+	border-color: #fcfcfc !important;
+}
+
+button.navbar-toggle:hover .icon-bar {
+	background-color:#ffffff !important;
+}
+
+.navbar-toggle .icon-bar+.icon-bar {
+margin-top: 5px !important;
+}
+
+ul.navbar-nav li a,
+ul.navbar-nav li button {
+	background:none !important;
+	border:0  !important;
+	padding: 5px 0 !important;
+	line-height:20px;	
+}
+ul.navbar-nav li a {
+	color:#28a0cd !important;
+}
+
+ul.navbar-nav li button {
+	color:#684389 !important;
+}
+
+.navbar * {
+	outline:0 !important;
+}
 
 #branding .desktop img {
 	position: absolute;
