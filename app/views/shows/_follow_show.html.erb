@@ -7,16 +7,16 @@
     <%= link_to(unfollow_show_path(show), 
         :remote => true, 
         :class => 'pop-button followed', 
-        :title => "Stop Following '#{show.title}'", 
-        :data => {:toggle=>"tooltip"} ) do %>
+        :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{show.title}!'</b>"} 
+        ) do %>
 		<div class="plus voted"></div>
     <% end %>
   <% else %>
     <%= link_to(follow_show_path(show),
         :remote => true, 
         :class => 'pop-button', 
-        :title => "Follow '#{show.title}'", 
-        :data => {:toggle=>"tooltip"}) do %>
+        :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{show.title}!'</b>"} 
+        ) do %>
 		<div class="plus"></div>
     <%end%>
   <% end %>
