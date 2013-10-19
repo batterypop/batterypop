@@ -13,7 +13,9 @@
 			<%= link_to(unpop_episode_path(episode), 
 					:remote => true, 
 			        :class => 'pop-button followed', 
-					:data => {:toggle=>"tooltip"} ) do %>
+			        # :content => "Click to unPOP #{episode.title}!", 
+					:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
+					) do %>
 					<div class="flash voted"></div>
 
 			<%end%>
@@ -23,12 +25,13 @@
 			<%= link_to(pop_episode_path(episode), 
 					:remote => true, 
 			        :class => 'pop-button', 
-					:data => {:toggle=>"tooltip"} ) do %>
+			        # :content => "Click to POP this #{episode.title}!",
+					:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"} 
+					) do %>
 					<div class="flash"></div>
 			<% end %>
 
 		<% end %>
 
 	</div>
-
 <% end %>
