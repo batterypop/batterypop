@@ -90,20 +90,14 @@ p {
 	margin-bottom:0;
 }
 
-
-/*		
-p {
-	font-family: 'Varela', sans-serif;
-	font-size:11px;
-	line-height:13px;
-	font-weight:normal;
-}*/
+a:hover {
+	text-decoration:none !important;
+}
 
 .btn-login-group a,
 .btn-login-group button{
 	font-family: 'Roboto Slab', Courier, serif;
 }
-
 
 
 /*
@@ -179,7 +173,15 @@ header {
 	padding-top:0;
 	padding-bottom:0;
 	height:80px;
+	position: relative;
+	left: 50%;
+	margin-left: -97px;
 }
+
+.navbar-nav button + button {
+	margin-left:40px;
+}
+
 
 .navbar-default {
 	background:none;
@@ -525,7 +527,7 @@ div.bpop-slider-header > div div.channel-header-title img {
 }
 
 .show-popped-carousel .bx-wrapper{
-	padding:5px 0;
+	padding:5px 0 0;
 }
 
 .bpop-slider .bx-wrapper,
@@ -612,6 +614,9 @@ ul.home-side-carousel li img {
 	margin-bottom:0 !important;
 }
 
+.caption {
+	overflow-y:hidden;
+}
 
 .bpop-slider .vertical-slide .caption h4 {
 	text-align:center;
@@ -927,9 +932,29 @@ div.center {
 	z-index:1;
 }
 
+.shorts-page-header {
+	height: auto;
+}
+
+.show-breadcrumb h1,
+.channel-page-header h1,
+.shorts-page-header h1 {
+	margin-top:8px;
+}
+
 .bpop-slider-header .glyphicon:first-child {
 	margin-right:15px;
 	margin-left:0;
+}
+
+.shorts .show-episodes{
+	float:left;
+	margin-bottom:10px;
+}
+
+.show-breadcrumb,
+.channel-page-header {
+height: auto !important;
 }
 
 .bpop-slider {
@@ -1202,12 +1227,29 @@ body {
 .show-followers-carousel,
 .show-name-episodes-section .show-name,
 .show-name-episodes-section .show-episodes {
-	height:243px;
+	height:273px;
 	border:none !important;
 }
 
+
+.vertical-slide:after {
+	width: 100%;
+	height: 15px;
+	left:0;
+	bottom: 5px;
+	position:absolute;
+	background-repeat:repeat-x;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAPCAYAAAAlH6X5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAClJREFUeNpi+P//PwMTAwMDF4jgBRECIEIQRIjACVFUAiEhCNfBCxBgAP2TBA/tmmXDAAAAAElFTkSuQmCC);
+	content:"";
+}
+
+.show-episodes .caption {
+	height:106px !important;
+}
+
+
 .show-name-episodes-section .show-name {
-	padding:29px;
+	padding:44px 29px;
 	margin:0;
 }
 
@@ -1219,11 +1261,11 @@ body {
 .show-followers-carousel .vertical-slide,
 .show-name-episodes-section .show-episodes li,
 .show-name-episodes-section .show-episodes .vertical-slide {
-	height: 255px;
+	height: 285px;
 }
 
 .show-name-episodes-section .vertical-slide .caption {
-	height:69px;
+	height:94px;
 	overflow-y:hidden;
 }
 
@@ -1247,10 +1289,9 @@ body {
 
 .show-followers-carousel .bx-viewport li,
 .show-episodes .bx-viewport li {
-	margin-top:-12px;
-	height: 255px;
-	margin-right:6px
-}
+	height: 285px;
+	margin-right: 6px;
+	margin-top: -12px;}
 
 .show-followers-carousel h4,
 .show-episodes h4 {
