@@ -1,30 +1,20 @@
 <!-- top most / breadcrumb area -->
-<!-- passing in @show and @episode -->
-<!-- hiding this on xs -->
-
-
-<div class="row bpop-breadcrumb slight-shadow hidden-xs">
+<div class="row bpop-breadcrumb slight-shadow">
 	<div class="col-lg-3 col-md-3 col-xs-6 bpop-show-title text-right">
-		<div class='col-lg-12'>
-			<%= image_tag(@show.image(:large), :alt => @show.creator.displayname, :width => '110', :height => '110',  :class => "img-responsive ") %>
-			<h3><%= @show.title %></h3>
-		</div>
+		
+			<%= crumb_title %>
 		
 	</div> 
 	<div class="col-lg-6 col-md-6 hidden-xs hidden-sm bpop-show-description">
 		<div>
-			<span><h3>By <%= @show.creator.displayname %></h3>
-			<%= @show.description.html_safe %>
-			<span id="episode-title">Watching: <b><%= @episode.title %></b></span>
-			</span>
+			<%= crumb_text %>
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-3 col-xs-6 bpop-show-action">
-
-		<div class="follow-pop-wrap">
-		    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-		    <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+		<div>
+			<% if !(local_assigns[:crumb_action].nil?) %><%= crumb_action %><% end %>
 		</div>
-		
 	</div>
 </div>
+<!-- end top most / breadcrumb area -->
+<!-- #TODO: this view needs to be re-worked on smaller screens; css needs to be rethought -->

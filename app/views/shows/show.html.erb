@@ -5,8 +5,17 @@
 
 
 
-<%= render partial: "layouts/breadcrumb", :locals => { :show => @show, :episode => @episode} %>
 
+<% @action = "<div class='follow-pop-wrap'>#{render :partial => 'shows/follow_show', :locals => {:show => @show}}#{render :partial => 'episodes/popunpop', :locals => {:episode => @episode}}</div>" %>
+
+
+<%= render partial: "layouts/breadcrumb", :locals => {
+		:crumb_title => "<div class='col-lg-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :width => '110', :height => '110',  :class => "img-responsive ")}<h3>#{ @show.title }</h3></div>".html_safe, 
+	 	
+	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<span id='episode-title'>Watching: #{@episode.title}</span></span>".html_safe,
+		
+		:crumb_action => @action.html_safe
+			 	} %>
 
 
 
