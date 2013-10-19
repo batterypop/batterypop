@@ -628,6 +628,15 @@ ul.home-side-carousel li img {
 	margin-right:0;
 }
 
+.home-carousel-header h4 {
+	font-size:28px;
+	line-height:28px;
+	margin:14px 0;
+	padding:0;
+	color:#428bca;
+}
+
+
 /*
 ---------------------------
 ------ Breadcrumbs  -------
@@ -1022,17 +1031,18 @@ div.center {
 	margin:0;
 }
 
-.home-carousel-controls {
-	width:auto;
-	display:block;
-	margin:0 auto;
-	width:110px;
-}
-
 #home-carousel-down a,
 #home-carousel-up a {
 	margin-top:0;
 	top:0;
+}
+
+#home-carousel-down a {
+	right:0;
+}
+
+#home-carousel-up a {
+	left:0;
 }
 
 .home-featured-wrapper {
