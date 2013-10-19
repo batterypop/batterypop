@@ -7,26 +7,17 @@ pos = 0 %>
 
 
 <!-- page header; break off? -->
-      <div class="row show-breadcrumb aqua">
-        <div class="col-lg-2 col-xs-3 aqua">
-				<div class="vert-middle-wrap">
-          <%= image_tag("channel_headers/tv.png", :class=> "img-responsive center") %>
-				</div>
-        </div>
-        <div class="col-lg-8 col-xs-6">
-			<div class="vert-middle-wrap text-center">
-				<div class="vert-middle">
-	
+      <div class="row show-breadcrumb text-center aqua">
+          <div class="col-lg-2 col-xs-3 tv-image">    
+            <%= image_tag("channel_headers/tv.png", :class=> "img-responsive pull-left") %>
+          </div>
+          <div class="col-lg-8 col-xs-6">  
           <h1 class="page-title">SHOWS</h1>
           <h5 class="page-title hidden-xs fill top bottom left right margin">The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends.</h5>
-				</div>
-			</div>
-        </div>
-         <div class="col-lg-2 col-xs-3 aqua">   
-				<div class="vert-middle-wrap">
-         <%= image_tag("channel_headers/tv.png", :class=> "img-responsive center") %>
-				</div>
-        </div>
+	      </div>
+	       <div class="col-lg-2 col-xs-3 tv-image">    
+	        <%= image_tag("channel_headers/tv.png", :class=> "img-responsive pull-right") %>
+	      </div>
 
       </div>
 <!-- page header end; break off? -->
@@ -47,7 +38,7 @@ pos = 0 %>
      <a href="<%= show_path(show) %>">
       <div class="col-xs-12 col-md-6 show-name">
 			<div class="show-metadata">
-				<div class="show-icon-border">
+				<div class="show-icon-border hidden-xs">
 					<div class="show-icon-container <%= colors[pos] %>">
 						<%= image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object show-episode-image", :width => '160') %>
 					</div>
