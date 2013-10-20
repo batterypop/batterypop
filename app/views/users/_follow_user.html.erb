@@ -4,25 +4,23 @@
 
 	<% else %>
 		<% if current_user == user %>
-
+			<a href="#" class="pop-button disabled" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="left" data-content="You can't follow yourself!"><div class="plus"></div></a>
 		<% else %>
 			<% if current_user.following?(user) %>
 				<%= link_to(unfollow_user_path(user), 
 		            :remote => true, 
-		            :class => 'btn btn-primary', 
-		            :title => "Stop Following '#{user.username}'", 
-		            :data => {:toggle=>"tooltip"} ) do %>
-						<span class="glyphicon glyphicon-plus follow"></span>
+		            :class => 'pop-button followed',
+		            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{user.username}!'</b>"} ) do %>
+						<div class="plus voted"></div>
 				<% end %>						
 
 			<% else %>
 				<%= link_to(follow_user_path(user),
 		            :remote => true, 
-		            :class => 'btn btn-primary', 
-		            :title => "Follow '#{user.username}'", 
-		            :data => {:toggle=>"tooltip"}) do %>
+		            :class => 'pop-button', 
+		            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{user.username}!'</b>"}) do %>
 
-		          <span class="glyphicon glyphicon-plus"></span>
+			         <div class="plus"></div>
 		        <% end %>
 			<% end %>
 		<% end %>

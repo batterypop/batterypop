@@ -751,9 +751,9 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	height: 100%;
 }
 
-.bpop-show-action, .bpop-show-description{
+.bpop-show-description{
 	padding: 10px 10px 10px 30px;
-	color: #ffffff !important;
+	color: #ffffff;
 	background-color: #428BCA;
 	height: 100px;
 }

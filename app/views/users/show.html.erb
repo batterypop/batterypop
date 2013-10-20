@@ -113,14 +113,14 @@
             <div class="text-center user-header ">
               <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title"><span class="glyphicon glyphicon-user"></span> Users <%= (current_user == @user) ? "You're Following" : " #{@user.username} Is Following" %> <span class="glyphicon glyphicon-user"></span></h4> 
+              <h4 class="page-title"><%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h4> 
             </div>
           </div>
 
 
 <% if(@user.following_users.empty?) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't anyone at this time." %></h4>
+            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't following anyone at this time." %></h4>
             </div>
 <% else %> 
 
@@ -159,13 +159,13 @@
         <div class="users-following-slider green">
           <div class="bpop-slider-header ">
             <div class="text-center user-header ">
-              <div id="users-following-next" class="col-xs-1  slider-next pull-right"></div>
-              <div id="users-following-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title"><span class="glyphicon glyphicon-user"></span> Users Following <%= (current_user == @user) ? "You" : @user.username %> <span class="glyphicon glyphicon-user"></span></h4> 
+              <div id="users-following-next" class="col-xs-1  slider-next pull-right "></div>
+              <div id="users-following-prev" class="col-xs-1 slider-prev pull-left "></div>
+              <h4 class="page-title">Follows <%= (current_user == @user) ? "You" : @user.username %></h4> 
             </div>
           </div>
 
-<% if(@user.following_users.empty?) %>
+<% if(@user.followers.empty?) %>
             <div class="col-xs-12 text-center">
             <h4 class="page-title"><%= (current_user == @user) ? "No one is following you; #{link_to( "go make some friends!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} has no followers at this time." %></h4>
             </div>
@@ -175,7 +175,7 @@
           <div class="bpop-slider      green">
               <div class="col-xs-12 no-padding user">
                 <ul class="bxslider " id="users-following-slider">
-                  <% @user.following_users.each do |user| %>
+                  <% @user.followers.each do |user| %>
                   <% unless(user.avatar.nil?) 
                     @img = user.avatar.image(:thumb)
                   else

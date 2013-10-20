@@ -1,8 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
-  # GET /shows
-  # GET /shows.json
   def index
     @active="shows"
     # @shows = Show.all
@@ -34,7 +32,6 @@ class ShowsController < ApplicationController
   end
 
   def unfollow
-    # @sh = Show.find(params[:id])
     current_user.stop_following(@show)
     respond_to do |format|
       format.js {render :action=>"unfollow"}
