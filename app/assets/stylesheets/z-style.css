@@ -814,7 +814,7 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 .vert-middle-wrap,
 .table-wrap {
 	display:table;
-	height:auto;
+	height:100%;
 	width:100%;
 }
 
@@ -823,6 +823,7 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	display:table-cell;
 	height:auto;
 	width:100%;
+	vertical-align:middle;
 }
 
 img.center,
@@ -1251,6 +1252,17 @@ padding: 0;
 	text-transform:none;
 }
 
+.bpop-show-description span {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.bpop-show-action > div {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
 .show-player-popover:after,
 .vertical-slide:after {
 	width: 100%;
@@ -1666,6 +1678,13 @@ a.disabled>.plus {
 	background-color: red !important;
 }
 
+.circle {
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-o-border-radius:50%;
+	border-radius:50%;
+}
+
 .all-users-user .horizontal-slide{}
 
 .pop-button > .flash:hover,
@@ -1689,17 +1708,22 @@ a.disabled>.plus {
 }
 
 .follow-pop-wrap {
-	display:block;
-	width:68px;
+	display:table-cell;
+	vertical-align:middle;
+	width:auto;
 	margin: 13px auto 0;
 }
 
+.follow-pop-wrap .flash,
+.bpop-show-action .flash,
 .flash.white,
 .show-player-popover-follow-pop .pop-button > .flash {
 	background-position: -2px -32px;
 	background-color:#684389;
 }
 
+.follow-pop-wrap .plus,
+.bpop-show-action .plus,
 .plus.white,
 .show-player-popover-follow-pop .pop-button > .plus {
 	background-position: -32px -32px;
@@ -1840,8 +1864,6 @@ div.medium-lightning {
 	background:url('/assets/lightning-plus-sprite.png') no-repeat 0 -60px;
 }
 
-
-
 /* USER PAGE */
 
 img.user-image {
@@ -1967,9 +1989,19 @@ img.user-image {
 	text-shadow:none;
 }
 
+.device-sm-show-episode h2,
+.device-sm-show-episode h3 {
+	margin-top:5px;
+	margin-bottom:5px;
+	color:white;
+	text-align:right;
+}
 
-.user-show-slider .bpop-slider-header:after{
-/*	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAASCAYAAAAzI3woAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUlJREFUeNrs1E9uRUAcB/DfQ7Fs2t5A3KXrXqFNe4Xe5LU9AImlPYk4gAuIFQsbiQURD7+OF9Oo9vkzY9FFv8kviDE+v5kAOKRtWzydTliWJWZZhnEco+M4RwC4I7eBt0gEwzCewjCs0zTFPM+xqipsmga7rqOM82CcQ7mu+04mu+XFmKb5vIT5AZpZqQ9W1BbMr6AxqigKLtRWzEXQHigWzCyIB8WKWQSxoHgwq0CXUMPXdzPFWJbFjFkNoqi6rr9QSZKg7/tvBHFNMbZtP0ZRxIzpI8HKHA4HEEXx27Wu6y9BEDTk/NXzvAdN046KolyRAlmWQZIkEAThPHb1e3Bob03o1pCOgXQOZBuBrByQf5atquo9Acs9gtZWzGbQFEWLTtEDxrUVwwSawsaPU0B/ZMFwgaa4MYgnEuyQPSA0Avyx/IOW8inAABDSmCiWbMhRAAAAAElFTkSuQmCC);	*/
+.follow-pop-wrap > div > div {
+	width:32px;
+	margin-left:auto;
+	margin-right:auto;
+	
 }
 
 .user-video-slider .bpop-slider,
@@ -2029,6 +2061,7 @@ img.user-image {
 .home-promoted-slider div.vertical-slide{
 	background-color:#ffc000 !important;
 }
+
 
 .show-liked-slider div.vertical-slide h4,
 .home-promoted-slider div.vertical-slide h4,
@@ -2112,7 +2145,7 @@ div.show-popped-carousel{
 }
 
 .show-lower-left{
-	margin:0;
+	margin:0 0 10px;
 	padding:0 5px;
 }
 
@@ -2147,6 +2180,14 @@ div.show-popped-carousel{
 	height:120px;
 	width:120px;
 	margin:0 7% 0 0;
+}
+
+.device-sm-show-episode > div {
+	height:85px;
+}
+
+.show-lower-right {
+	padding-top:18px !important;
 }
 
 .show-lower-left .horizontal-slide .badge {
@@ -2197,18 +2238,21 @@ div.show-popped-carousel{
 	.show-name-episodes-section .show-name {
 	padding: 68px 29px;
 	}
+
+	.show-most-popped-inner-wrap .bx-wrapper{
+		height:254px;
+	}
 	
 	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
 /*	height:214px !important; with footer */
 	height:247px !important; /* no footer*/
-	
 	top: -65px;
 	margin-bottom:-65px;
 	}
 	
 }
 
-@media all and (max-width: 992px) {
+@media all and (max-width: 990px) {
 
 
 	.home-carousel-prewrapper{
@@ -2236,11 +2280,28 @@ div.show-popped-carousel{
 	.show-most-popped-inner-wrap {
 		margin-right:0;
 	}
-
+	
 	.channel-icon {
 		display:none !important;
 	}
+
+	.show-most-popped-wrap {
+		height: auto;
+	}
+		
+	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
+		height:254px !important; /* no footer*/
+		top: 0;
+		margin-bottom:0;
+	}
 	
+	..show-most-popped-wrap {
+		margin-top:10px;
+	}
+	
+	.show-bottom-section {
+		margin-top:70px;
+	}
 }
 
 @media all and (max-width: 768px) {
