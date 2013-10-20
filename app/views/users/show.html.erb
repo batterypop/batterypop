@@ -70,7 +70,8 @@
               <div class="text-center user-header ">
                 <div id="users-video-next" class="col-xs-1  slider-next pull-right"></div>
                 <div id="users-video-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title">Videos<%= (current_user == @user) ? " You Like" : " #{@user.username} Likes" %></h4> 
+                <h4 class="page-title hidden-xs">Videos<%= (current_user == @user) ? " You Like" : " #{@user.username} Likes" %></h4> 
+                <h5 class="page-title visible-xs">Videos<%= (current_user == @user) ? " You Like" : " #{@user.username} Likes" %></h5> 
               </div>
             </div>
 
@@ -117,7 +118,8 @@
             <div class="text-center user-header ">
               <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title"><%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h4> 
+              <h4 class="page-title hidden-xs"><%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h4> 
+              <h5 class="page-title visible-xs"><%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h5> 
             </div>
           </div>
 
@@ -165,7 +167,8 @@
             <div class="text-center user-header ">
               <div id="users-following-next" class="col-xs-1  slider-next pull-right "></div>
               <div id="users-following-prev" class="col-xs-1 slider-prev pull-left "></div>
-              <h4 class="page-title">Follows <%= (current_user == @user) ? "You" : @user.username %></h4> 
+              <h4 class="page-title hidden-xs">Follows <%= (current_user == @user) ? "You" : @user.username %></h4> 
+              <h5 class="page-title visible-xs">Follows <%= (current_user == @user) ? "You" : @user.username %></h5> 
             </div>
           </div>
 
