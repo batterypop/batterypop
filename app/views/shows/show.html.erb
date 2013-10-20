@@ -10,7 +10,7 @@
 
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :width => '110', :height => '110',  :class => "img-responsive ")}<h3>#{ @show.title }</h3></div>".html_safe, 
+		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<span id='episode-title'>Watching: #{@episode.title}</span></span>".html_safe,
 		
