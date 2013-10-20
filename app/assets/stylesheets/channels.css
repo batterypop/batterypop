@@ -169,12 +169,19 @@ div.channel-icon-header {
 
 .channel div.vertical-slide {
 	height:280px;
-	background:url('/assets/channel-li-bg.png') center top no-repeat;
+	background:url('/assets/channel-li-bg-large.png') center -7px no-repeat;
 	text-align:center;
-	width: 190px !important;
+	width: 205px !important;
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	/* webkit, moz, o */
 }
+
+.channel .vertical-slide:after {
+	height:17px !important;
+	border-bottom:2px solid white;
+	bottom: 0 !important;
+}
+
 
 .channel div.vertical-slide h4 {
 	margin: 5px;
