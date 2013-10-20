@@ -2,14 +2,18 @@
   <div class="container">
     <div class="content">
 
+<% @follow_me = "<div class='follow-pop-wrap'>#{render :partial => 'users/follow_user', :locals => {:user => @user}}</div>" %>
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-				:crumb_title => "</h2><h3>#{ @user.username }</h3>".html_safe, 
-			 	:crumb_text => "#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe } %>
+				:crumb_title => "<div class='col-lg-12'><h3>#{ @user.username }</h3></div>".html_safe, 
+			 
+       	:crumb_text => "<span class='pull-right'><a href='/users'><h2 class='page-title'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h2></a></span>#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe,
+        
+        :crumb_action => @follow_me.html_safe } %>
 
 
 
-<%= render :partial => "users/follow_user", :locals => {:user => @user} %>
+
 
 
 
@@ -109,7 +113,7 @@
             <div class="text-center user-header ">
               <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title">Users <%= (current_user == @user) ? "You're Following" : " #{@user.username} Is Following" %></h4> 
+              <h4 class="page-title"><span class="glyphicon glyphicon-user"></span> Users <%= (current_user == @user) ? "You're Following" : " #{@user.username} Is Following" %> <span class="glyphicon glyphicon-user"></span></h4> 
             </div>
           </div>
 
@@ -157,7 +161,7 @@
             <div class="text-center user-header ">
               <div id="users-following-next" class="col-xs-1  slider-next pull-right"></div>
               <div id="users-following-prev" class="col-xs-1 slider-prev pull-left"></div>
-              <h4 class="page-title">Users Following <%= (current_user == @user) ? "You" : @user.username %></h4> 
+              <h4 class="page-title"><span class="glyphicon glyphicon-user"></span> Users Following <%= (current_user == @user) ? "You" : @user.username %> <span class="glyphicon glyphicon-user"></span></h4> 
             </div>
           </div>
 
