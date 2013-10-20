@@ -1,6 +1,11 @@
-<% unless current_user.nil? %>
-	<% unless current_user == user %>
-	    <div id="follow_user-<%=@user.id%>">
+<div id="follow_user-<%= user.id %>" class="follow-show">
+	<% if current_user.nil?%>
+		<a class="pop-button disabled" data-toggle="modal" href="#becomeMember"><div class="plus"></div></a>
+
+	<% else %>
+		<% if current_user == user %>
+
+		<% else %>
 			<% if current_user.following?(user) %>
 				<%= link_to(unfollow_user_path(user), 
 		            :remote => true, 
@@ -19,8 +24,7 @@
 
 		          <span class="glyphicon glyphicon-plus"></span>
 		        <% end %>
-			
 			<% end %>
-		</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
