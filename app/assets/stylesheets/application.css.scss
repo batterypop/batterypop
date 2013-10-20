@@ -120,6 +120,12 @@ body .container{
 	background: url(/assets/ui/breadcrumb-mid-left-edge.png) no-repeat;
 }
 
+.bpop-breadcrumb .show-crumb-image{
+	max-height: 110px;
+	max-width: 110px;
+	vertical-align: middle;
+}
+
 .home .home-side-carousel{
 	margin-left: -40px;
 }

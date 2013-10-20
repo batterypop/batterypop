@@ -7,7 +7,10 @@
 <%= render partial: "layouts/breadcrumb", :locals => {
 				:crumb_title => "<div class='col-lg-12'><h3>#{ @user.username }</h3></div>".html_safe, 
 			 
-       	:crumb_text => "<span class='pull-right'><a href='/users'><h2 class='page-title'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h2></a></span>#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe,
+       	:crumb_text => "<span class='pull-right'><a href='/users'>
+          <h2 class='page-title hidden-md'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h2>
+          <h3 class='page-title visible-md'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h3>
+          </a></span>#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe,
         
         :crumb_action => @follow_me.html_safe } %>
 
@@ -25,7 +28,8 @@
               <div class="text-center user-header ">
                 <div id="users-show-next" class="col-xs-1  slider-next pull-right"></div>
                 <div id="users-show-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h4> 
+                <h4 class="page-title hidden-xs">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h4> 
+                <h5 class="page-title visible-xs">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h5> 
               </div>
             </div>
 
