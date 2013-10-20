@@ -167,6 +167,10 @@ div.channel-icon-header {
 	/* webkit, moz, o */
 }
 
+.user-video-slider div.vertical-slide,
+.users-followed-slider div.vertical-slide,
+.users-following-slider div.vertical-slide,
+.user-video-slider div.vertical-slide,
 .channel div.vertical-slide {
 	height:280px;
 	background:url('/assets/channel-li-bg-large.png') center -7px no-repeat;
@@ -176,6 +180,15 @@ div.channel-icon-header {
 	/* webkit, moz, o */
 }
 
+.users-followed-slider div.vertical-slide,
+.users-following-slider div.vertical-slide{
+	height:205px;
+}
+
+.user-video-slider .vertical-slide:after,
+.users-followed-slider .vertical-slide:after
+.users-following-slider .vertical-slide:after,
+.user-video-slider .vertical-slide:after,
 .channel .vertical-slide:after {
 	height:17px !important;
 	border-bottom:2px solid white;
