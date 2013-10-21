@@ -83,6 +83,8 @@ gem "acts_as_follower", "~> 0.2.0"
 # https://github.com/grosser/random_records
 gem "random_record"
 
+gem "easy_captcha"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
