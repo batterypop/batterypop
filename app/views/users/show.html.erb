@@ -5,7 +5,7 @@
 <% @follow_me = "<div class='follow-pop-wrap'>#{render :partial => 'users/follow_user', :locals => {:user => @user}}</div>" %>
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-				:crumb_title => "<div class='col-xs-12'><h3>#{ @user.username }</h3></div>".html_safe, 
+				:crumb_title => "<div class='col-xs-12 username'><h3>#{ @user.username }</h3></div>".html_safe, 
 			 
        	:crumb_text => "<span class='pull-right'><a href='/users'>
           <h2 class='page-title hidden-md'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h2>

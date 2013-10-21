@@ -1,6 +1,7 @@
 <!-- top most / breadcrumb area -->
 <div class="row bpop-breadcrumb slight-shadow <% if !(local_assigns[:crumb_class].nil?) %><%= crumb_class %><% end %>">
-	<div class="col-md-3 col-xs-9 bpop-show-title text-right">
+	<div class="col-md-5 col-xs-9 bpop-show-title text-right">
+
 		
 			<% if !(local_assigns[:crumb_title].nil?) %><%= crumb_title %><% end %>
 		
@@ -10,11 +11,10 @@
 			<% if !(local_assigns[:crumb_text].nil?) %><%= crumb_text %><% end %>
 		</div>
 	</div>
-	<div class="col-xs-3 bpop-show-action">
+	<div class="col-md-1 col-xs-3 bpop-show-action">
 		<div>
 			<% if !(local_assigns[:crumb_action].nil?) %><%= crumb_action %><% end %>
 		</div>
 	</div>
 </div>
 <!-- end top most / breadcrumb area -->
-<!-- #TODO: this view needs to be re-worked on smaller screens; css needs to be rethought -->
