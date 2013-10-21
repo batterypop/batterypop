@@ -635,8 +635,12 @@ div.bpop-slider-header > div div.channel-header-title img {
 	text-shadow:0 0 5px white;
 }
 
-.bpop-show-title h3 {
+.username h3 {
 	word-break: break-all;
+}
+
+.bpop-show-description > div {
+	margin-left: 15px;
 }
 
 .show-popped-carousel,
@@ -702,7 +706,6 @@ div.bpop-breadcrumb {
 	border-bottom:0 !important;
 	padding:0 !important;
 }
-
 
 div.bpop-breadcrumb > div {
 	height:auto;
