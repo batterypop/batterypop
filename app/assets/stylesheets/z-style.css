@@ -563,6 +563,8 @@ div.bpop-slider-header > div div.channel-header-title img {
 	margin-top: -5px;
 }
 
+.all-users-user,
+.user-show-slider li,
 .show-popped-carousel li,
 .home-carousel .home-side-carousel li {
 	clear:left;
@@ -573,6 +575,13 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border-width: 0 1px 1px 0 !important;
 }
 
+.all-users-user {
+	clear:none;
+	margin:0 !important;
+}
+
+.user-show-slider li img.pull-left.show-episode-image,
+.all-users-user img.pull-left.user-image,
 .home-side-carousel li img.pull-left.show-episode-image,
 .show-popped-carousel li img.pull-left.show-episode-image{
 	margin:-10px 10px 0 0 !important;
@@ -581,6 +590,13 @@ div.bpop-slider-header > div div.channel-header-title img {
 	padding:0 !important;
 }
 
+.all-users-user img.pull-left.user-image {
+	margin-top:0 !important;
+}
+
+
+.all-users-user a.list-group-item,
+.user-show-slider li a.list-group-item,
 .home-side-carousel li a.list-group-item, 
 .show-popped-carousel li a.list-group-item {
 	border-radius:0 !important;
@@ -589,6 +605,8 @@ div.bpop-slider-header > div div.channel-header-title img {
 	border:none !important;
 }
 
+.all-users-user a.list-group-item:hover,
+.user-show-slider li a.list-group-item:hover,
 .home-side-carousel li a.list-group-item:hover, 
 .show-popped-carousel li a.list-group-item:hover {
 	background-color:#e9e9e9 !important;
@@ -598,9 +616,27 @@ div.bpop-slider-header > div div.channel-header-title img {
 	line-height:10px;
 }
 
+.user-show-slider li a.list-group-item p,
+.all-users-user a.list-group-item p{
+	font-size:11px;
+	line-height:13px;
+}
+
+.all-users-user .media-body {
+	padding:10px 0;
+}
+
+.user-show-slider li a.list-group-item:hover p,
+.user-show-slider li a.list-group-item:hover h4,
+.all-users-user a.list-group-item:hover p,
+.all-users-user a.list-group-item:hover h4,
 .bx-wrapper li a.list-group-item:hover p,
 .bx-wrapper li a.list-group-item:hover h4 {
 	text-shadow:0 0 5px white;
+}
+
+.bpop-show-title h3 {
+	word-break: break-all;
 }
 
 .show-popped-carousel,
@@ -1034,7 +1070,7 @@ height: auto !important;
 }
 
 .bx-pager-link.active {
-	background-color:#28a0cd  !important;
+	background-color:#28a0cd !important;
 }
 
 
@@ -2156,6 +2192,9 @@ div.show-popped-carousel{
 	background-color:white;
 }
 
+.show-breadcrumb .page-title {
+	padding-top:0;
+}
 
 .show-bottom-section,
 .show-lower-left,
@@ -2259,12 +2298,12 @@ div.show-popped-carousel{
 	height: 294px !important;
 	}
 	
-	.show-name-episodes-section .show-name {
-	padding: 68px 29px;
-	}
-
 	.show-most-popped-inner-wrap .bx-wrapper{
 		height:254px;
+	}
+	
+	.show-name-episodes-section .show-name {
+	padding: 68px inherit;
 	}
 	
 	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
