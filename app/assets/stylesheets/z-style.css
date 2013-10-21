@@ -700,6 +700,7 @@ ul.home-side-carousel li img {
 div.bpop-breadcrumb {
 	height:auto;
 	border-bottom:0 !important;
+	padding:0 !important;
 }
 
 
