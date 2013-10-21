@@ -79,6 +79,15 @@ h4 {
 	line-height:17px;
 }
 
+h5 {
+	font-size:24px;
+	line-height:23px;
+}
+
+.bpop-slider-header h5 {
+	line-height:53px;
+}
+
 p {
 	font-family: Helvetica, "Roboto", Arial, sans-serif !important;
 	font-size:11px;
@@ -485,6 +494,10 @@ header:hover #logofront {
    ---- channel headers ----
    ------------------------
 */
+
+.bpop-slider-header {
+	margin-top:15px;
+}
 
 div.bpop-slider-header > div div.channel-header-title {
 	height:55px;
@@ -1327,11 +1340,22 @@ background-position:center -135px;
 background-position:center -150px;
 }
 
+.user-video-slider .vertical-slide:after,
+.users-followed-slider .vertical-slide:after
+.users-following-slider .vertical-slide:after,
+.user-video-slider .vertical-slide:after,
 .show-followers-carousel .vertical-slide:after,
 .show-most-popped-carousel .vertical-slide:after,
 .show-episodes-slider .vertical-slide:after,
 .white .vertical-slide:after {
 background-position:center 0px;
+}
+
+.user-video-slider .vertical-slide,
+.users-followed-slider .vertical-slide
+.users-following-slider .vertical-slide,
+.user-video-slider .vertical-slide{
+	background-position:center -23px !important;
 }
 
 .show-episodes .caption {
@@ -2351,5 +2375,12 @@ div.show-popped-carousel{
 		padding-left:5px;
 		padding-right:5px;
 	}
+
+#show-followers-prev,
+#show-followers-next,
+#users-following-next,
+#users-following-prev{
+	display:none;
+}
 
 }
