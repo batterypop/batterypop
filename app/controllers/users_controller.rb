@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow]
+	before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow, :hint]
 
 	def new
 		@birthday = Date.civil(params[:user]["birthday(1i)"].to_i,
@@ -16,6 +16,25 @@ class UsersController < ApplicationController
 	def show
 	end
 
+
+	def hint
+		 # @user = User.friendly.find(params[:username])
+		 @question = SecurityQuestion.find(@user.security_question_id).name
+	end
+
+	def password
+		if @user
+			userAnswer = @user.security_question_answer.gsub(/[^0-9a-z]/i, '').downcase
+			paramAnswer = params[:answer].gsub(/[^0-9a-z]/i, '').downcase
+			if userAnswer == paramAnswer
+		        render json: { password: @user.encrypted_password }
+		      else
+		        render json: { password: nil }
+		      end
+	    else
+	      render json: { password: nil }
+	    end
+	end
 
 
 def follow

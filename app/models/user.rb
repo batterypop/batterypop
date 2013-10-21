@@ -74,6 +74,20 @@ class User < ActiveRecord::Base
   end
 
 
+  def hint(params)
+    @user = User.friendly.find(params[:username])
+    if @user
+        @question = SecurityQuestion.find(@user.security_question_id).name
+    else
+      @question = nil
+    end
+  end
+
+  def question_password(params)
+    puts "WEEE"
+  end
+
+
  # def user_params
  # 	params.require(:user).permit(:username, :password_confirmation, :avatar_id)
  # end

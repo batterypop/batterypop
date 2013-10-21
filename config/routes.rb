@@ -63,13 +63,13 @@ Batterypopv2::Application.routes.draw do
   # end
 
   devise_for :users,
-    :controllers => { :registrations => "devise/custom/registrations" }
+    :controllers => { :registrations => "devise/custom/registrations", :passwords => "devise/custom/passwords" }
 
 resources :users do
     member do
       get :follow
       get :unfollow
-    end
+     end
   end
 
     
