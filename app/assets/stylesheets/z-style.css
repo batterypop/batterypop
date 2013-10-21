@@ -1070,7 +1070,7 @@ height: auto !important;
 }
 
 .bx-pager-link.active {
-	background-color:#28a0cd  !important;
+	background-color:#28a0cd !important;
 }
 
 
@@ -2358,7 +2358,7 @@ div.show-popped-carousel{
 		margin-bottom:0;
 	}
 	
-	..show-most-popped-wrap {
+	.show-most-popped-wrap {
 		margin-top:10px;
 	}
 	
