@@ -49,7 +49,7 @@ class Devise::Custom::PasswordsController < Devise::PasswordsController
 		if(!@user.nil? && (@user.security_question_id.to_s == @questionID.to_s) && (@answerTest == @answerTarget))
 			sign_in @user, :bypass => true
 			flash[:notice] =  "You are now logged in!"
-			# redirect_to root_path
+			# redirect_to root_path and return
 			# return
 		else
 			flash[:notice] =  "The answer you entered is not your original answer."
