@@ -639,6 +639,10 @@ div.bpop-slider-header > div div.channel-header-title img {
 	word-break: break-all;
 }
 
+.popover {
+	width:auto !important;
+}
+
 .bpop-show-description > div {
 	margin-left: 15px;
 }
