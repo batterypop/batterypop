@@ -1,13 +1,13 @@
 <!-- top most / breadcrumb area -->
-<div class="row bpop-breadcrumb slight-shadow">
+<div class="row bpop-breadcrumb slight-shadow <% if !(local_assigns[:crumb_class].nil?) %><%= crumb_class %><% end %>">
 	<div class="col-md-3 col-xs-9 bpop-show-title text-right">
 		
-			<%= crumb_title %>
+			<% if !(local_assigns[:crumb_title].nil?) %><%= crumb_title %><% end %>
 		
 	</div> 
 	<div class="col-md-6 hidden-xs hidden-sm bpop-show-description">
 		<div>
-			<%= crumb_text %>
+			<% if !(local_assigns[:crumb_text].nil?) %><%= crumb_text %><% end %>
 		</div>
 	</div>
 	<div class="col-xs-3 bpop-show-action">
