@@ -1042,7 +1042,6 @@ height: auto !important;
 .bx-pager {
 	bottom:16px !important;
 	padding:9px 15px !important;
-/*	background-color:#f4f4f4; */
 	z-index:100;
 	opacity:0; 
 	-webkit-transition: opacity .1s;
@@ -2104,8 +2103,10 @@ img.user-image {
 .home-promoted-slider div.vertical-slide img.img-circle,
 .home-most-popped-slider div.vertical-slide img.img-circle {
 	margin: 20px auto;
+	-webkit-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	-o-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	-moz-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
 	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
-	/* webkit, moz, o */
 }
 
 .show-followers-slider div.vertical-slide,
@@ -2115,9 +2116,10 @@ img.user-image {
 	height:280px;
 	background:url('/assets/channel-li-bg-neg-large.png') center top no-repeat;
 	text-align:center;
-	/*width: 190px !important;*/  /* needed to remove for slide creation */
+	-webkit-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	-o-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
-	/* webkit, moz, o */
 }
 
 
