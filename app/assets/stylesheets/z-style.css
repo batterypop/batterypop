@@ -2340,12 +2340,32 @@ SHORTS PAGE */
 	}
 	
 	.shorts .vertical-slide:after{
-		width:157px !important;
+		width:250px !important;
+		left: 50% !important;
+		margin-left: -125px !important;
+	}
+
+	.shorts .show-episodes .vertical-slide{
+		margin: 0 auto 16px;
+		width: 250px !important;
 	}
 	
 	.show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes {
 		border-top: 4px solid #684389;
 		padding-top: 16px;
+	}
+	
+	.show-name-episodes-section .show-name {
+		padding:44px 29px;
+	}
+	
+	.show-icon-border {
+		width:45%;
+	}
+	
+	.show-metadata .flash-plus-voting {
+		left:45%;
+		margin-left:32px;
 	}
 }
 
