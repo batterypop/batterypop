@@ -1,6 +1,9 @@
 Batterypopv2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -79,7 +82,6 @@ Batterypopv2::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  #paperclip to aws s3
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
@@ -89,6 +91,9 @@ Batterypopv2::Application.configure do
     }
   }
 
-  GA.tracker = "UA-44486746-1"
 
+  BetterErrors.editor = :sublime
+
+   GA.tracker = "UA-44486746-2"
+  
 end
