@@ -86,7 +86,7 @@ gem "random_record"
 gem "easy_captcha"
 
 
-gem 'google-analytics-rails'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
