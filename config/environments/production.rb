@@ -89,6 +89,6 @@ Batterypopv2::Application.configure do
     }
   }
 
-  GA.tracker = "UA-44486746-1"
+
 
 end

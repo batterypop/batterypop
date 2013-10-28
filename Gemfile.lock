@@ -185,7 +185,6 @@ GEM
       activerecord (>= 3.0.0)
     friendly_id (5.0.0.beta4)
       activerecord (~> 4.0.0)
-    google-analytics-rails (0.0.4)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -360,7 +359,6 @@ DEPENDENCIES
   easy_captcha
   formtastic!
   friendly_id (= 5.0.0.beta4)
-  google-analytics-rails
   inherited_resources!
   jbuilder (~> 1.2)
   jquery-rails

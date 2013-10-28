@@ -92,8 +92,7 @@ Batterypopv2::Application.configure do
   }
 
 
-  BetterErrors.editor = :sublime
 
-   GA.tracker = "UA-44486746-2"
+ 
   
 end
