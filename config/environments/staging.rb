@@ -93,6 +93,8 @@ Batterypopv2::Application.configure do
 
 
 
+
+
  
   
 end
