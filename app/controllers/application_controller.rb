@@ -25,10 +25,13 @@ helper_method :most_popped
     end
   end
 
+
   def after_sign_in_path_for(resource)
+    if (resource.class.name == 'AdminUser')
+       session[:previous_url] = "/admin"
+     end
     session[:previous_url] || root_path
   end
-
 
 
 
