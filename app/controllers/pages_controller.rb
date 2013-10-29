@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :getGACode
   
   def home
     @title = "Home"
@@ -48,6 +49,15 @@ class PagesController < ApplicationController
   def advertise
     @title = "Advertise on batteryPOP!"
      @active = "advertise"
+  end
+
+  def getGACode
+    case Rails.env
+      when 'production'
+        @gacode = "UA-44486746-1"
+      when 'staging'
+        @gacode = "UA-44486746-2"
+    end
   end
 
 end
