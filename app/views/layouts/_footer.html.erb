@@ -42,9 +42,9 @@
 
 <script>
 <% unless (Rails.env.development? or Rails.env.test?)
-	if(Rails.env.production)
+	if(Rails.env.production?)
 		@gacode = "UA-44486746-1"
-	elseif (Rails.env.staging)
+	elseif (Rails.env.staging?)
 		@gacode = "UA-44486746-2"
 	end %>
 
