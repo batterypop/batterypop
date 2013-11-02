@@ -88,9 +88,9 @@ class User < ActiveRecord::Base
   end
 
 
- # def user_params
- # 	params.require(:user).permit(:username, :password_confirmation, :avatar_id)
- # end
+ def user_params
+ 	params.require(:user).permit(:username, :password_confirmation, :avatar_id)
+ end
 
 
  def create
@@ -105,7 +105,16 @@ class User < ActiveRecord::Base
   private 
   def slug_candidates
     [
-      username
+      username,
+      [username, 2],
+      [username, 3],
+      [username, 4],
+      [username, 5],
+      [username, 6],
+      [username, 7],
+      [username, 8],
+      [username, 9],
+      [username,  Time.now.strftime('%M:%S') ]
     ]
   end
 
