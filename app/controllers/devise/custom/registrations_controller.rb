@@ -5,17 +5,33 @@ class Devise::Custom::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    puts ''
     @username  = params[:username_prefix] + params[:username_suffix]
     # if either throw bad
-    params[:user][:username] = @username
+    tmpusername = @username.downcase
+    
+
+puts ''
+puts tmpusername
+puts ''
+    pos = User.where(:username => tmpusername).count
+
+    until User.where(:username => tmpusername).empty?
+      pos+= 1
+      tmpusername = [@username.downcase, pos].join("")
+    end
+
+    puts ""
+    puts tmpusername
+    puts ""
+
+    params[:user][:username] = tmpusername
     
     case params[:season]
     when "Spring" 
-      puts " -- spring"
       params[:user]["birthday(2i)"] = "3"
       params[:user]["birthday(3i)"] = "21"
     when "Summer"
-      puts "  --- summer"
       params[:user]["birthday(2i)"] = "6"
       params[:user]["birthday(3i)"] = "21"
     when "Autumn"
