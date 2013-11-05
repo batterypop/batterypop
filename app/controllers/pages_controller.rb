@@ -28,7 +28,7 @@ class PagesController < ApplicationController
     @title = "Shorts"
      @active = "shorts"
     @shorts = Show.where(:single => true, :approved => true)
-    @groups = @shorts.each_slice(6).to_a
+    @groups = @shorts.each_slice(4).to_a
   end
 
   def creators
