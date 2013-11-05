@@ -14,6 +14,10 @@ Batterypopv2::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+    # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
+
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
@@ -27,14 +31,14 @@ Batterypopv2::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-  config.assets.initialize_on_precompile = false
+  config.assets.compile = true
+  config.assets.initialize_on_precompile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
+  config.assets.version = '2.0'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
