@@ -18,6 +18,8 @@ ActiveAdmin.register Show do
 			f.input :skiplist, :label => "Hide from Show List.", :hint => "Select this to hide from the show carousel."
 			f.input :promote, :label => "Promote on Home Page?.", :hint => "Select this to add to the bottom Promoted carousel."
 			f.input :approved, :label => "BatteryPOP approved."
+			f.input :created_at
+			f.input :updated_at
 		end
 		 f.inputs "Episodes" do
 		 	f.has_many :episodes do |e|
