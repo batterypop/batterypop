@@ -4,7 +4,7 @@ class ShowsController < ApplicationController
   def index
     @active="shows"
     # @shows = Show.all
-    @shows=Show.where(:approved => true, :single => false)
+    @shows=Show.where(:approved => true, :single => false).order(:created_at)
   end
 
   # GET /shows/1
