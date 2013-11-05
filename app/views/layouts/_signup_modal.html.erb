@@ -26,7 +26,7 @@
 
 				
 
-					<%= select_tag  "username_prefix", ('<option value="">Pick Adverb!</option>' +options_from_collection_for_select(UsernameWord.where(:kind => 'adverb').order( "word ASC"), :word, :word)).html_safe, :class =>"controls form-control"  %>
+					<%= select_tag  "username_prefix", ('<option value="">Pick Adjective!</option>' +options_from_collection_for_select(UsernameWord.where(:kind => 'adverb').order( "word ASC"), :word, :word)).html_safe, :class =>"controls form-control"  %>
 				</div>
 
 				<div class="col-lg-6 col-xs-6">
