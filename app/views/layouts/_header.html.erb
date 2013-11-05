@@ -21,33 +21,13 @@
 
 				<!-- sign in / sign up buttons -->
 					<div class="col-xs-6 col-md-6" id="signin">
-						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="popover" data-placement="bottom" data-original-title="Sign In:" title="">Sign In</button>
+						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin" title="">Sign In</button>
 					</div>
-					<div id="login-popover-content"  class="hidden" >
-						<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-							<div><%= f.label :username %><br />
-							<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
+					
 
-							<div><%= f.label :password %><br />
-							<%= f.password_field :password, :class =>"form-control" %></div>
-
-							<% if devise_mapping.rememberable? -%><br />
-							<div class="input-group">
-								<span class="input-group-addon">
-									<%= f.check_box :remember_me %> 
-								</span>
-								<%= f.label :remember_me, :class =>"form-control" %>
-							</div><br />
-
-
-							<% end -%>
-							<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
-						<% end %>
-						</div>
-
-						<div class="col-xs-6 col-md-6" id="signup">
-							<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
-						</div>
+					<div class="col-xs-6 col-md-6" id="signup">
+						<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
+					</div>
 				 <!-- end sign in / sign up buttons -->
 				<% end %>
 			</div>
@@ -160,6 +140,11 @@
 	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<%= render 'layouts/signup_modal' %>
 	</div>
+	
+	<div class="modal fade" id="modal_signin" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<%= render 'layouts/signin_modal' %>
+	</div>
+
 </div>
 
 <!-- end of modal sign up -->
