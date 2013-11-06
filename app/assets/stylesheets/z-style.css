@@ -2340,20 +2340,22 @@ SHORTS PAGE */
 	}
 	
 	.shorts .vertical-slide:after{
-		width:250px !important;
+		width:156px !important;
 		left: 50% !important;
-		margin-left: -125px !important;
+		margin-left: -78px !important;
 	}
 
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width: 250px !important;
+		width: 156px !important;
 	}
-	
+
+/* Purple Border	
 	.show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes {
 		border-top: 4px solid #684389;
 		padding-top: 16px;
 	}
+*/
 	
 	.show-name-episodes-section .show-name {
 		padding:44px 29px;
@@ -2391,17 +2393,19 @@ SHORTS PAGE */
 	}
 	
 	.shorts .vertical-slide:after{
-		width:200px !important;
+		width:123px !important;
 	}
+
+/* Purple Border
 	
 	.show-episodes + .show-episodes + .show-episodes + .show-episodes + .show-episodes {
 		border-top: 4px solid #684389;
 		padding-top: 16px;
 	}
-	
+*/	
 }
 
-@media all and (max-width: 990px) {
+@media all and (max-width: 991px) {
 
 
 	.home-carousel-prewrapper{
@@ -2456,15 +2460,16 @@ SHORTS PAGE */
 		width:203px !important;
 	}
 	
+/* Purple Border
 	.show-episodes + .show-episodes + .show-episodes + .show-episodes {
 		border-top: 4px solid #684389;
 		padding-top: 16px;
 	}
-	
+*/	
 	
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 767px) {
 	
 	#menu p a {
 		font-size:24px;
@@ -2503,21 +2508,22 @@ SHORTS PAGE */
 	}
 	
 	.shorts .show-episodes .vertical-slide:after{
-		width: 400px !important;
+		width: 200px !important;
 		left: 50% !important;
-		margin-left: -200px !important;
+		margin-left: -100px !important;
 	}
 	
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width:400px !important;
+		width:200px !important;
 	}
 	
-	.show-episodes + .show-episodes {
+/* Purple Border
+		.show-episodes + .show-episodes + .show-episodes {
 		border-top: 4px solid #684389;
 		padding-top: 16px;
 	}
-	
+*/	
 }
 	
 @media all and (max-width: 480px) {
@@ -2536,15 +2542,24 @@ SHORTS PAGE */
 		display:none;
 	}
 
+	.shorts .show-episodes {
+		padding-left:10px;
+		padding-right:10px;
+	}
+
 	.shorts .show-episodes .vertical-slide:after{
-		width: 240px !important;
+		width: 120px !important;
 		left: 50% !important;
-		margin-left: -120px !important;
+		margin-left: -60px !important;
 	}
 	
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width:240px !important;
-		
+		width:120px !important;		
+	}
+	
+	.shorts .show-episodes .vertical-slide img {
+		width:100px;
+		margin-top: 15px !important;
 	}
 }
