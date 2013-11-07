@@ -2346,15 +2346,19 @@ SHORTS PAGE */
 		height:427px !important;
 	}
 	
+	.shorts .show-episodes {
+		width:20% !important;
+	}
+	
 	.shorts .vertical-slide:after{
-		width:156px !important;
+		width:194px !important;
 		left: 50% !important;
-		margin-left: -78px !important;
+		margin-left: -100px !important;
 	}
 
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width: 156px !important;
+		width: 194px !important;
 	}
 
 /* Purple Border	
@@ -2378,7 +2382,7 @@ SHORTS PAGE */
 	}
 }
 
-@media all and (max-width: 1199px) {
+@media all and (max-width: 992px) and (max-width: 1199px) {
 	
 	ul.bxslider.home-side-carousel {
 	height: 294px !important;
@@ -2400,7 +2404,7 @@ SHORTS PAGE */
 	}
 	
 	.shorts .vertical-slide:after{
-		width:123px !important;
+		width:200px !important;
 	}
 
 /* Purple Border
@@ -2412,7 +2416,7 @@ SHORTS PAGE */
 */	
 }
 
-@media all and (max-width: 991px) {
+@media all and (min-width: 768px) and (max-width: 991px) {
 
 
 	.home-carousel-prewrapper{
@@ -2461,6 +2465,10 @@ SHORTS PAGE */
 	
 	.show-bottom-section {
 		margin-top:70px;
+	}
+	
+	.shorts .show-episodes {
+		width:233px !important;
 	}
 	
 	.shorts .vertical-slide:after{
@@ -2515,14 +2523,14 @@ SHORTS PAGE */
 	}
 	
 	.shorts .show-episodes .vertical-slide:after{
-		width: 200px !important;
+		width: 250px !important;
 		left: 50% !important;
-		margin-left: -100px !important;
+		margin-left: -125px !important;
 	}
 	
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width:200px !important;
+		width:250px !important;
 	}
 	
 /* Purple Border
@@ -2531,6 +2539,21 @@ SHORTS PAGE */
 		padding-top: 16px;
 	}
 */	
+}
+
+@media all and (max-width: 620px) {
+
+	.shorts .show-episodes .vertical-slide:after{
+		width: 186px !important;
+		left: 50% !important;
+		margin-left: -93px !important;
+	}
+
+	.shorts .show-episodes .vertical-slide{
+		margin: 0 auto 16px;
+		width:186px !important;
+	}
+
 }
 	
 @media all and (max-width: 480px) {
@@ -2555,18 +2578,14 @@ SHORTS PAGE */
 	}
 
 	.shorts .show-episodes .vertical-slide:after{
-		width: 120px !important;
+		width: 200px !important;
 		left: 50% !important;
-		margin-left: -60px !important;
+		margin-left: -100px !important;
 	}
 	
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
-		width:120px !important;		
+		width:200px !important;		
 	}
-	
-	.shorts .show-episodes .vertical-slide img {
-		width:100px;
-		margin-top: 15px !important;
-	}
+
 }
