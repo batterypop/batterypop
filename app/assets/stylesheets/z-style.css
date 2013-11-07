@@ -643,6 +643,13 @@ div.bpop-slider-header > div div.channel-header-title img {
 	width:auto !important;
 }
 
+.popover {
+	/* these may need adjustment for different uses/locations/screenwidths */
+	left:-200% !important;
+	right:65px !important;
+	margin-top: -7px !important;
+}
+
 .bpop-show-description > div {
 	margin-left: 15px;
 }
