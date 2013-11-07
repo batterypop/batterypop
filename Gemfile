@@ -85,7 +85,8 @@ gem "random_record"
 
 gem "easy_captcha"
 
-
+gem "squeel"  # Last officially released gem
+# gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 
 
 group :doc do

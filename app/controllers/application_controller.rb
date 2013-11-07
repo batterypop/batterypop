@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
+   before_action :getGACode
 
 
   def most_popped
@@ -13,6 +14,16 @@ class ApplicationController < ActionController::Base
 helper_method :most_popped
 
 
+  def getGACode
+    case Rails.env
+      when 'production'
+         @gacode = "UA-44486746-1"
+       when 'staging'
+         @gacode = "UA-44486746-2"
+     end
+   end
+
+ 
     
 
   def store_location
