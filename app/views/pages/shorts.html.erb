@@ -6,21 +6,28 @@
 
 
 <!-- page header; break off? -->
-      <div class="row">
-        <div class="col-xs-12 text-center shorts-page-header red fill top bottom left right margin padding ">
-        
-	 <div class="col-lg-2 col-xs-3 tv-image">    
-          <%= image_tag("channel_headers/tv.png", :class=> "img-responsive pull-left") %>
-        </div>
-        <div class="col-lg-8 col-xs-6 page-header-description">  
-           <h1 class="page-title">SHORTS</h1>
-          <h4 class="page-title hidden-xs fill top left right margin padding ">Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level! </h4>
-        </div>
-         <div class="col-lg-2 col-xs-3 tv-image">    
-          <%= image_tag("channel_headers/tv.png", :class=> "img-responsive pull-right") %>
-        </div>
+
+		<div class="row">
+			<div class="col-xs-12 two-tone-banner text-center shorts-page-header red fill top bottom left right margin padding">
+				<div class="vert-middle-wrap">
+					<div class="vert-middle">
+						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+					</div>
+					<div class="vert-middle category-info darkred">
+						<h1 class="page-title">
+							SHORTS
+						</h1>
+						<h4 class="page-title hidden-xs">
+							Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!
+						</h4>
+					</div>
+					<div class="vert-middle">
+						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+					</div>
+				</div>
+			</div>
 		</div>
-      </div>
+
 <!-- page header end; break off? -->
 
 
@@ -32,7 +39,7 @@
 
 	<% group.each do |short| %>
 
-		<div class="col-md-3 col-sm-4 col-xs-12 show-episodes">
+		<div class="col-md-3 col-sm-4 col-xs-6 show-episodes">
 
 			<%= render partial: "layouts/vertical_slide", :locals => {
 				:slide_title => short.title, 

@@ -135,22 +135,10 @@ body .container{
 }
 
 
-h1.page-title, h2.page-title, h3.page-title, h4.page-title, h5.page-title{
-	text-transform: uppercase;
+.page-title{
 	color: #ffffff !important;
-	text-shadow: black 0 1px 7px;
+	text-shadow: black 0 0px 1px;
 }
-
-.channel-page-header{
-	background-color: #28a0cd;
-	height: 100px;
-}
-
-.shorts-page-header{
-	background-color: #CC0000;
-	height: 100px;	
-}
-
 
 .circle .image-wrap {
 	-webkit-border-radius: 45em;

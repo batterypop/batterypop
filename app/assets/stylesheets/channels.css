@@ -18,7 +18,7 @@
 .channel-icon{
 	z-index: 1000;
 	position: relative;
-	display: inline-block;
+	display: inline-block !important;
 	max-width: 90% !important;
 	min-width: 200px !important;
 	width: auto !important;
