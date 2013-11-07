@@ -95,6 +95,19 @@ p {
 	font-weight:normal;
 }
 
+
+h1.page-title {
+	font-size:30px;
+	line-height:30px;
+}
+
+h4.page-title {
+	font-family: Helvetica, "Roboto", Arial, sans-serif !important;
+	font-size:12px;
+	line-height:17px;
+	text-transform:none;
+}
+
 .media-body p {
 	margin-bottom:0;
 }
@@ -890,6 +903,10 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 	vertical-align:middle;
 }
 
+.two-tone-banner .vert-middle {
+	width:auto;
+}
+
 img.center,
 div.center {
 	display:block;
@@ -998,10 +1015,12 @@ div.center {
 	display:inline-block;
 }
 
-.show-breadcrumb h1,
-.channel-page-header h1,
-.shorts-page-header h1 {
-	margin-top:8px;
+.page-title {
+	margin:0px;
+}
+
+.page-title + .page-title {
+	margin-top:10px;
 }
 
 .bpop-slider-header .glyphicon:first-child {
@@ -1294,9 +1313,16 @@ body {
 }
 
 .tv-image {
-padding: 0;
+	width:90%;
+	height:auto;
+	max-width:120px;
 }
 
+.category-info {
+	padding: 8px 5%;
+	width: 75% !important;
+	min-height:90px;
+}
 
 .slider-next a,
 .slider-prev a{
@@ -1651,6 +1677,20 @@ color:#CC0000;
 .red.bpop-slider-header:after,
 .red .bpop-slider-header:after {
 	border-top-color:#cc0000 !important;
+}
+
+.darkred h1,
+.darkred h2,
+.darkred h3,
+.darkred h4,
+.darkred h5,
+.darkred h6,
+.darkred p {
+	color:#b90000;
+}
+
+.darkred {
+	background-color:#b90000;
 }
 
 .mint h1,
@@ -2445,10 +2485,6 @@ SHORTS PAGE */
 		margin-right:0;
 	}
 	
-	.channel-icon {
-		display:none !important;
-	}
-
 	.show-most-popped-wrap {
 		height: auto;
 	}
@@ -2533,12 +2569,13 @@ SHORTS PAGE */
 		width:250px !important;
 	}
 	
-/* Purple Border
-		.show-episodes + .show-episodes + .show-episodes {
-		border-top: 4px solid #684389;
-		padding-top: 16px;
+	.show-breadcrumb h1,
+	.channel-page-header h1,
+	.shorts-page-header h1 {
+		margin-top: 5px;
+		margin-bottom: 0;
+		line-height: 34px;
 	}
-*/	
 }
 
 @media all and (max-width: 620px) {
@@ -2552,6 +2589,10 @@ SHORTS PAGE */
 	.shorts .show-episodes .vertical-slide{
 		margin: 0 auto 16px;
 		width:186px !important;
+	}
+	
+	.category-info {
+		width: 50% !important;
 	}
 
 }
@@ -2575,6 +2616,10 @@ SHORTS PAGE */
 	.shorts .show-episodes {
 		padding-left:10px;
 		padding-right:10px;
+	}
+	
+	.shorts .show-episodes {
+		width:100% !important;
 	}
 
 	.shorts .show-episodes .vertical-slide:after{
