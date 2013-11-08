@@ -302,6 +302,14 @@ ul.navbar-nav li button {
 
 */
 
+.legend{
+	font-size: 16px;
+	color: #542f75 !important;
+}
+.legend > .pop-button{
+	
+}
+
 
 .btn-login-group button,
 .btn-login-group a {

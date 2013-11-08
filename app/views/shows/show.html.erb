@@ -102,7 +102,10 @@
 											:slide_title => most.title, 
 										 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
 											:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
-											:slide_url => episode_path(Episode.friendly.find(most.id))} %>
+
+											:slide_url => show_episode_path(most.show, Episode.friendly.find(most.id))
+										} 
+											%>
 									</li>
 								<% end %>	
 							</ul>
@@ -116,7 +119,10 @@
 <!-- end mid section player / carousel -->
 
 
+<!-- :slide_url => episode_path(Episode.friendly.find(most.id))}
 
+:slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
+  -->
 
 
 <!-- lower listings :slide_badge => ep.likes.size, -->
