@@ -101,7 +101,7 @@ h1.page-title {
 	line-height:30px;
 }
 
-h4.page-title {
+.two-tone-banner h4.page-title {
 	font-family: Helvetica, "Roboto", Arial, sans-serif !important;
 	font-size:12px;
 	line-height:17px;
@@ -718,6 +718,11 @@ ul.home-side-carousel li img {
 
 .caption {
 	overflow-y:hidden;
+}
+
+.empty-result {
+	padding-top:16px;
+	padding-bottom:16px;
 }
 
 .bpop-slider .vertical-slide .caption h4 {

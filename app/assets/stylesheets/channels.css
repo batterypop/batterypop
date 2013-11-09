@@ -93,7 +93,8 @@
 }
 
 .channel-slider.channel-video-games .bpop-slider-header:after,
-.channel-slider.channel-video-games, .tangerine{
+.channel-slider.channel-video-games,
+.tangerine{
 	background-color: #d6552d !important;
 }
 
@@ -108,7 +109,8 @@
 }
 
 .channel-slider.channel-action-adventure .bpop-slider-header:after,
-.channel-slider.channel-action-adventure, .green{
+.channel-slider.channel-action-adventure,
+.green{
 	background-color: #457a21 !important;
 }
 
@@ -123,7 +125,8 @@
 }
 
 .channel-slider.channel-science-math .bpop-slider-header:after,
-.channel-slider.channel-science-math, .aqua{
+.channel-slider.channel-science-math,
+.aqua{
 	background-color: #1b6681 !important;
 }
 
@@ -137,7 +140,8 @@
 }
 
 .channel-slider.channel-international .bpop-slider-header:after,
-.channel-slider.channel-international, .red{
+.channel-slider.channel-international,
+.red{
 	background-color: #c90000 !important;
 }
 
@@ -173,7 +177,9 @@ div.channel-icon-header {
 .user-video-slider div.vertical-slide,
 .channel div.vertical-slide {
 	height:280px;
-	background:url('/assets/channel-li-bg-large.png') center -7px no-repeat;
+	background-image:url('/assets/channel-li-bg-large.png');
+	background-position: center -7px;
+	background-repeat: no-repeat;
 	text-align:center;
 	width: 205px !important;
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
@@ -183,6 +189,13 @@ div.channel-icon-header {
 .users-followed-slider div.vertical-slide,
 .users-following-slider div.vertical-slide{
 	height:205px;
+	background-position: center -24px;
+}
+
+.user-video-slider div.vertical-slide,
+.users-followed-slider div.vertical-slide,
+.users-following-slider div.vertical-slide{
+	background-color: inherit;
 }
 
 .user-video-slider .vertical-slide:after,
@@ -195,6 +208,10 @@ div.channel-icon-header {
 	bottom: 0 !important;
 }
 
+.users-followed-slider div.vertical-slide:after,
+.users-following-slider div.vertical-slide:after{
+	background-position: center 0px;
+}
 
 .channel div.vertical-slide h4 {
 	margin: 5px;
