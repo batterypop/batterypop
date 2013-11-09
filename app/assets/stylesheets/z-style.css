@@ -302,12 +302,29 @@ ul.navbar-nav li button {
 
 */
 
-.legend{
-	font-size: 16px;
-	color: #542f75 !important;
+#legend {
+	padding: 2px 5px 0;
+	margin-top:10px;
+	-webkit-box-shadow: 0px 0px 10px #aaa;
+	-moz-box-shadow: 0px 0px 10px #aaa;
+	-o-box-shadow: 0px 0px 10px #aaa;
+	box-shadow: 0px 0px 10px #aaa;
 }
-.legend > .pop-button{
-	
+
+#legend h4{
+	font-family:"AnchorMedium", Helvetica, Arial, sans-serif !important;
+	font-weight:normal;
+	font-size: 20px;
+	line-height:20px;
+	margin:1px 0 0;
+	color: #2cb0e2 !important;
+	text-align:left !important;
+	text-transform:none !important;
+}
+
+#legend .pop-button > .flash:hover,
+#legend .pop-button > .plus:hover {
+	background-color:white;
 }
 
 
@@ -2466,6 +2483,9 @@ SHORTS PAGE */
 
 @media all and (min-width: 768px) and (max-width: 991px) {
 
+	.inline-hide{
+		display:none;
+	}
 
 	.home-carousel-prewrapper{
 		margin-left: 0px !important;
@@ -2539,9 +2559,48 @@ SHORTS PAGE */
 		padding-right:20px;
 	}
 	
+	.home-carousel-prewrapper{
+		margin-left: 0px !important;
+	}
+
+	.home-carousel-wrapper{
+		margin-left:0px !important;
+		border-left-width:1px;
+	}
+		
+	.home-featured-wrapper {
+		margin-right:0 !important;
+	}
+
+	.show-player-wrapper {
+		margin-left:0;
+	}
+	
+	.show-most-popped-wrap,
+	.show-most-popped-inner-wrap {
+		margin-right:0;
+	}
+	
+	.show-most-popped-wrap {
+		height: auto;
+	}
+		
+	.show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
+		height:254px !important; /* no footer*/
+		top: 0;
+		margin-bottom:0;
+	}
+	
+	.show-most-popped-wrap {
+		margin-top:10px;
+	}
+	
+	.show-bottom-section {
+		margin-top:70px;
+	}
 	
 	.show-name-episodes-section .show-name {
-	padding: 24px 29px;
+		padding: 24px 29px;
 	}
 	
 	.show-metadata .flash-plus-voting {
