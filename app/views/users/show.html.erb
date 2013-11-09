@@ -1,4 +1,4 @@
-<div class="main show">
+<div class="main show users-show">
   <div class="container">
     <div class="content">
 
@@ -35,7 +35,7 @@
 
 <% if(@user.following_shows.empty?) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
+            <h4 class="page-title empty-result"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
             </div>
 <% else %>
 
@@ -77,7 +77,7 @@
 
 <% if(@user.votes.up.votables.empty?) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
+            <h4 class="page-title empty-result"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
             </div>
 <% else %>
 
@@ -126,7 +126,7 @@
 
 <% if(@user.following_users.empty?) %>
             <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't following anyone at this time." %></h4>
+            <h4 class="page-title empty-result"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't following anyone at this time." %></h4>
             </div>
 <% else %> 
 
