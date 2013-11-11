@@ -10,6 +10,8 @@ ActiveAdmin.register Channel do
 			f.input :position, :label => "Channel Position", :required => true
 			f.input :title, :label => "Channel Title", :required => true 
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
+			f.input :icon
+			f.input :hidden, :label => "Select to hide channel from channel list."
 			f.input :parent, :as => :select, :member_label => :title
 		end
 		f.buttons

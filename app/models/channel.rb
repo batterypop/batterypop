@@ -8,9 +8,18 @@ class Channel < ActiveRecord::Base
   	belongs_to :parent, class_name: "Channel"
   	
 
+	has_attached_file :icon,
+	    :styles => { large: "300x300>", :thumb => "100x100#" },
+	    storage: :s3,
+	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/avatars/:id/:attachment/:style/:filename",
+	    bucket: S3_BUCKET
+	    
+
+
 
   	def self.get_channels
-  		Channel.includes(:shows).order('channels.position')
+  		Channel.includes(:shows).order('channels.position').where(:hidden => [nil, false] )
   	end
 
   	def self.get_channels_approved

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111043433) do
+ActiveRecord::Schema.define(version: 20131111162342) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -66,7 +66,11 @@ ActiveRecord::Schema.define(version: 20131111043433) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
-    t.boolean  "public"
+    t.boolean  "hidden"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
   end
 
   create_table "channels_shows", id: false, force: true do |t|
@@ -139,6 +143,7 @@ ActiveRecord::Schema.define(version: 20131111043433) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
+    t.boolean  "active"
   end
 
   create_table "follows", force: true do |t|
