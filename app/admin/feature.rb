@@ -7,6 +7,7 @@ ActiveAdmin.register Feature do
 			f.input :position, :label => "Slide Position"
 			f.input :title,  :required => true 
 			f.input :content,  :as => :rich, :allow_embeds => true
+			f.input :active, :label => "Active?", :hint => "Select for active, unselect to hide."
 		end
 		f.buttons
 	end
