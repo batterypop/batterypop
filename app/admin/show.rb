@@ -42,8 +42,10 @@ ActiveAdmin.register Show do
 	index do
 		column :position
 		column :creator, :as => :select, :member_label => :displayname
+		# column (:image) {link_to image_tag(@show.image(:thumb)), admin_show_path(@show)}
+		column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
 		column :title
-		column :description
+		column (:description) { |foobar| raw(foobar.description) }
 		column :single, :as => :check_box
 		column :approved
 		default_actions

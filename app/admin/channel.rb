@@ -18,5 +18,13 @@ ActiveAdmin.register Channel do
 	end
 
 
+	index do
+		column :position
+		column :title
+		column (:description) { |foobar| raw(foobar.description) }
+		column :hidden
+		default_actions
+	end
+
 
 end
