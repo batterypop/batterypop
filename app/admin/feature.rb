@@ -14,8 +14,10 @@ ActiveAdmin.register Feature do
 
 	index do
 		column :position
+		column :active
 		column :title
-		column :content
+		column (:content) { |foobar| raw(foobar.content) }
+		default_actions
 	end
 
 end

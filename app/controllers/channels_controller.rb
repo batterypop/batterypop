@@ -1,5 +1,5 @@
 class ChannelsController < ApplicationController
-	  before_action :set_channel, only: [:show, :edit, :update, :destroy]
+	  before_action :set_channel, only: [:feed, :show, :edit, :update, :destroy]
 
   def index
      @active="channels"
@@ -10,6 +10,13 @@ class ChannelsController < ApplicationController
   
   def show
      @active="channels"
+    
+  end
+
+  def feed
+    respond_to do |format|
+       format.rss { render :layout => false }
+     end
   end
 
   # def new
