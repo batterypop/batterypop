@@ -15,7 +15,8 @@
 class Show < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
-
+	
+	
 	acts_as_followable
 	belongs_to :creator
 

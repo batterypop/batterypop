@@ -52,7 +52,8 @@ gem 'activeadmin',         github: 'gregbell/active_admin'
 gem 'ransack',             github: 'ernie/ransack'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
-
+gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'chosen-rails'
 
 gem "rich", github: 'bastiaanterhorst/rich'
 
@@ -84,6 +85,7 @@ gem "acts_as_follower", "~> 0.2.0"
 gem "random_record"
 
 gem "easy_captcha"
+
 
 gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo

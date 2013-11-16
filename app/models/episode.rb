@@ -25,6 +25,14 @@ class Episode < ActiveRecord::Base
 	has_one :creator, :through => :show
 	belongs_to :embed
 
+
+	# dealing with suggested or related episodes 
+	has_many :suggestions, :foreign_key => "episode_id", :class_name => "Suggestion"
+	has_many :related_episodes, :through => :suggestions
+
+	accepts_nested_attributes_for :suggestions, :allow_destroy => true
+	accepts_nested_attributes_for :related_episodes, :allow_destroy => true
+
 	has_attached_file :image,
 	    :styles => { large: "864x486>", :thumb => "150x150#" },
 	    storage: :s3,
