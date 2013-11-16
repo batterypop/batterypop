@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111162342) do
+ActiveRecord::Schema.define(version: 20131114161519) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -248,6 +248,13 @@ ActiveRecord::Schema.define(version: 20131111162342) do
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true
+
+  create_table "suggestions", force: true do |t|
+    t.integer  "episode_id"
+    t.integer  "related_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "survey_answers", force: true do |t|
     t.integer  "attempt_id"
