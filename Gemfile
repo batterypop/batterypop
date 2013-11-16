@@ -53,7 +53,7 @@ gem 'ransack',             github: 'ernie/ransack'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
-gem 'chosen-rails'
+gem 'acts-as-taggable-on'
 
 gem "rich", github: 'bastiaanterhorst/rich'
 

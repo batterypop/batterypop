@@ -30,11 +30,8 @@ ActiveAdmin.register Show do
 				e.input :embed, :as => :select, :member_label => :provider, :required => true
 				e.input :video, :label => "Video Code"
 				e.input :approved, :label => "BatteryPOP approved."
-				# e.inputs "Suggestions" do
-				# 	e.has_many :related_episodes do |re|
-				# 		# re.input :related_episode, :as => :select
-				# 	end
-				# end
+				e.input :tag_list, :label => "Tags (seperated by commas)"
+
 		 	end
 
 		 end

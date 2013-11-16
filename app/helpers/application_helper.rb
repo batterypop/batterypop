@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActsAsTaggableOn::TagsHelper
 
   def title 
     base_title = "BatteryPop"
