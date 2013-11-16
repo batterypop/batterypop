@@ -19,7 +19,7 @@ class Episode < ActiveRecord::Base
 	friendly_id :slug_candidates, use: :slugged, :use => :scoped, :scope => :show
 
 	acts_as_votable
-
+	acts_as_taggable_on :tags
 
 	belongs_to :show
 	has_one :creator, :through => :show
