@@ -82,7 +82,7 @@
 							<img src="/assets/shows-popped-header.png">
 						</div>
 						<h1>
-							Most Popped
+							Next Up
 						</h1>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 					<div class="row no-margin no-padding">
 						<div class="col-xs-12 no-margin no-padding">
 							<ul class="bxslider show-most-popped-carousel">
-								<% Episode.mostpopped(10).each do |most| %>
+								<% Episode.nextup(@episode, 10).each do |most| %>
 									<li>
 									<%= render partial: "layouts/horizontal_slide", :locals => {
 											:slide_title => most.title, 
@@ -336,7 +336,7 @@
 			slideMargin: 10,
 			slideWidth: 165,
 			minSlides: 3,
-			maxSlides: 3,
+			maxSlides: 4,
 			moveSlides: 1,
 			pager: false
 		  }

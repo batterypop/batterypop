@@ -4,6 +4,7 @@ class Channel < ActiveRecord::Base
 	
 
 	has_and_belongs_to_many :shows, :join_table => :channels_shows
+	has_many :episodes, :through => :shows
 	has_many :subchannels, class_name: "Channel",  foreign_key: "parent_id"
   	belongs_to :parent, class_name: "Channel"
   	
