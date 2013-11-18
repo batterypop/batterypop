@@ -2250,7 +2250,8 @@ img.user-image {
 .show-most-popped-inner-wrap .bx-wrapper .bx-viewport {
 
 /*	height:203px !important; with footer */
-	height:238px !important; /* no footer */
+/*	height:238px !important;  no footer */
+	height: 355px !important;
 }
 
 .show-most-popped-footer {
@@ -2258,7 +2259,8 @@ img.user-image {
 }
 
 div.show-popped-carousel{
-	height: 384px !important;
+	/*height: 384px !important;*/
+	height: 509px !important;
 }
 
 .show-most-popped-controls .center{

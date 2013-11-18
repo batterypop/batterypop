@@ -7,4 +7,9 @@ class FeatureController < ApplicationController
 		render :partial => "layouts/featured", :collection => @features
 
 	end
+
+
+	def sort
+		puts params
+	end
 end

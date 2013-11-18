@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   # helpers for devise sessions
-  def resource_name
+    def resource_name
   		:user
   	end
 
