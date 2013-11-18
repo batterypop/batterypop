@@ -49,7 +49,7 @@ class Episode < ActiveRecord::Base
 		@next_episode = episode.show.episodes[episode.show.episodes.index(episode)+1]
 		if(!episode.tag_list.empty?)
 			@ret = Episode.tagged_with(episode.tag_list, :any => true).reject {|ep| ep == episode}
-			@ret = @ret.sample(lim).uniq();
+			@ret = @ret.sample(lim).uniq
 			if(!@next_episode.nil?)
 				@ret.unshift(@next_episode)
 			end
