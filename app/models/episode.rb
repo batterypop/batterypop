@@ -44,6 +44,10 @@ class Episode < ActiveRecord::Base
 		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim)
 	end
 
+
+
+##  TODO NEED TO CLEAN UP BELOW
+
 	def self.nextup(episode, lim=nil)
 		# first see if taglist
 		@next_episode = episode.show.episodes[episode.show.episodes.index(episode)+1]
