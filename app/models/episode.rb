@@ -46,9 +46,14 @@ class Episode < ActiveRecord::Base
 
 	def self.nextup(episode, lim=nil)
 		# first see if taglist
+		@next_episode = episode.show.episodes[episode.show.episodes.index(episode)+1]
 		if(!episode.tag_list.empty?)
 			@ret = Episode.tagged_with(episode.tag_list, :any => true).reject {|ep| ep == episode}
-			return @ret.sample(lim)
+			@ret = @ret.sample(lim).uniq();
+			if(!@next_episode.nil?)
+				@ret.unshift(@next_episode)
+			end
+			return @ret
 		else
 			# checking if this episode's show belongs to any channels
 			if(!episode.show.channels.empty?)
@@ -58,10 +63,19 @@ class Episode < ActiveRecord::Base
 					lim = @all_episodes.count
 				end
 				@all_episodes = @all_episodes.reject {|ep| ep == episode}
-				return @all_episodes.sample(lim)
+				# return (!@next_episode.nil?)  ?  @all_episodes.sample(lim).unshift(@next_episode) : @all_episodes.sample(lim)
+				@all_episodes = @all_episodes.sample(lim);
+				if(!@next_episode.nil?)
+					@all_episodes.unshift(@next_episode)
+				end
+				return @all_episodes
 			else
 				# not belong to any channels so most popped?
-				return  Episode.mostpopped(lim).reject{|ep| ep == episode}
+				@most =   Episode.mostpopped(lim).reject{|ep| ep == episode}
+				if(!@next_episode.nil?) 
+					@most.unshift(@next_episode)
+				end
+				return @most
 			end
 		end
 	end
