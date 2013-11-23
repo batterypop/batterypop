@@ -10,14 +10,22 @@ class ChannelsController < ApplicationController
   
   def show
      @active="channels"
+     @viddler = Viddler::Client.new('1ftfdc24uw7rv3pxqv51')
+     @viddler.authenticate! 'batterypop@gmail.com', 'purple2013'
+
+    respond_to do |format|
+      format.html
+      format.rss {render :layout => false }
+    end
+
     
   end
 
-  def feed
-    respond_to do |format|
-       format.rss { render :layout => false }
-     end
-  end
+  # def feed
+  #   # respond_to do |format|
+  #   #    format.rss { render :layout => false }
+  #   #  end
+  # end
 
   # def new
   #   @channel = Channel.new
