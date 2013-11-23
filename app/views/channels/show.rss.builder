@@ -25,7 +25,7 @@ xml.instruct! :xml, :version => "1.0"
 					# rez = ::RestClient.get(@url)
 					# xml.test rez.inspect
 
-					xml.video video['video']['files'][0]['url']
+					xml.video video['video']['files'][1]['html5_video_source']
 
 					# xml.media(:group => ())
 					# xml.media("media:content" => (:audioCodec => "mp4a", :bitrate => 33333))
