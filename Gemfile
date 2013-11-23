@@ -55,6 +55,8 @@ gem 'formtastic',          github: 'justinfrench/formtastic'
 gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
 gem 'acts-as-taggable-on'
 
+gem 'viddler-ruby'
+
 gem "rich", github: 'bastiaanterhorst/rich'
 
 
