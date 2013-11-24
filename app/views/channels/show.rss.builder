@@ -20,12 +20,14 @@ xml.instruct! :xml, :version => "1.0"
 					xml.guid "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 
 					video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
+					allfiles = video['video']['files']
+					files = ((allfiles.each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
 
 					# @url = "http://api.viddler.com/api/v2/viddler.videos.getDetails.json?video_id=#{episode.video}&api_key=1ftfdc24uw7rv3pxqv51&sessionid=#{@sessionid}"
 					# rez = ::RestClient.get(@url)
 					# xml.test rez.inspect
 
-					xml.video video['video']['files'][1]['html5_video_source']
+					xml.video files.first['html5_video_source ']
 
 					# xml.media(:group => ())
 					# xml.media("media:content" => (:audioCodec => "mp4a", :bitrate => 33333))
