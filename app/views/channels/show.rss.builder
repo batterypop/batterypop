@@ -21,25 +21,27 @@ xml.instruct! :xml, :version => "1.0"
 
 					xml.embed episode.embed.code.gsub("{{unbound view.dimensions.width}}", "100%").gsub("{{unbound view.dimensions.height}}", "100%").gsub("{{unbound view.autoplayFlag}}", "1").gsub("{{unbound view.videoId}}", episode.video).html_safe 
 
-					video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-					allfiles = video['video']['files']
-					files = ((allfiles.each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
-					vid = files.first
-					
+					if episode.embed.provider == 'viddler'
+						video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
+						allfiles = video['video']['files']
+						files = ((allfiles.each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
+						vid = files.first
+						
 
-					# should there be multiple video sizes? If not viddler?
+						# should there be multiple video sizes? If not viddler?
 
-					xml.media :group do
-						# xml.media :content => "poo"
-						xml.media(
-							:content, 
-							:url => vid['html5_video_source'], 
-							:type =>  vid['type'],
-							:width => vid["width"],
-					        :height => vid["height"],
-			        		:size => vid["size"],
-			        		:profile => vid['profile_name']
-							)
+						xml.media :group do
+							# xml.media :content => "poo"
+							xml.media(
+								:content, 
+								:url => vid['html5_video_source'], 
+								:type =>  vid['type'],
+								:width => vid["width"],
+						        :height => vid["height"],
+				        		:size => vid["size"],
+				        		:profile => vid['profile_name']
+								)
+						end
 					end
 				end
 			
