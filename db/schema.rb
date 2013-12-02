@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116210047) do
+ActiveRecord::Schema.define(version: 20131202184209) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -56,6 +56,20 @@ ActiveRecord::Schema.define(version: 20131116210047) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "slug"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_posts", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
   end
 
   create_table "channels", force: true do |t|
@@ -191,6 +205,18 @@ ActiveRecord::Schema.define(version: 20131116210047) do
   end
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "featured_image_file_name"
+    t.string   "featured_image_content_type"
+    t.integer  "featured_image_file_size"
+    t.datetime "featured_image_updated_at"
+  end
 
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"

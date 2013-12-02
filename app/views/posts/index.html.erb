@@ -1,0 +1,35 @@
+<div class="main channel">
+	<div class="container">
+		<div class="content">
+
+
+
+			<div class="row">
+				<div class="col-xs-12 col-lg-9 col-md-9">
+
+					<% @posts.each do |post| %>
+						<%= link_to post_path(post) do %>
+							<h2><%= "#{post.title}" %></h2>
+						<% end %>
+					<% end %>
+				</div>
+
+
+				<!-- sidebar -->
+				<div class="col-lg-3 col-md-3">
+					<%= render 'layouts/post_sidebar' %>
+				</div>
+
+
+			</div>
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
