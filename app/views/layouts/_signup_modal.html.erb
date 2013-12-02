@@ -34,12 +34,7 @@
 					<%= select_tag  "username_suffix", ('<option value="">Pick Noun!</option>' +options_from_collection_for_select(UsernameWord.where(:kind => 'noun').order( "word ASC"), :word, :word)).html_safe, :class =>"controls form-control"  %>
 				</div>
 
-				<!--
-				<div class="col-lg-6">
-					<% f.label "Enter Your Email:" %><br />
-					<% f.email_field :email, :class =>"form-control", :placeholder => "Enter Your Email!"  %>
-				</div>
-				-->
+				
 			</div>
 
 			<div class="row"><!-- row 2 -->

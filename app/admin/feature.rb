@@ -1,5 +1,5 @@
 ActiveAdmin.register Feature do
-	menu :parent => "BatteryPOP Home"
+	menu :parent => "BatteryPOP Home", :priority => 1
 
 	sortable
 

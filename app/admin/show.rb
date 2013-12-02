@@ -31,7 +31,7 @@ ActiveAdmin.register Show do
 				e.input :video, :label => "Video Code"
 				e.input :approved, :label => "BatteryPOP approved."
 				e.input :tag_list, :label => "Tags (seperated by commas)"
-
+				e.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
 		 	end
 
 		 end
