@@ -8,7 +8,9 @@ ActiveAdmin.register Post do
 	form do |f|
 		f.inputs "Post Details" do
 			f.input :title, :label => "Title", :required => true 
+			f.input :featured_image, :label => "Featured Image"
 			f.input :body, :label => "Body", :as => :rich, :allow_embeds => true
+			f.input :tag_list, :label => "Tags (seperated by commas)"
 		end
 		f.inputs "Categories" do
 			f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
