@@ -2,19 +2,21 @@ class Post < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
+	acts_as_taggable_on :tags
+
 	has_and_belongs_to_many :categories, :join_table => :categories_posts
 
-	 has_attached_file :featured_image, 
-	:styles => { large: "864x486>", :thumb => "150x150#" },
-	s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
-    path: "images/:class/:id/:attachment/:style/:filename",
-    bucket: S3_BUCKET,
-    default_url: "/assets/missing.png"
+	has_attached_file :featured_image, 
+		:styles => { large: "864x486>", :thumb => "150x150#" },
+		s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/:class/:id/:attachment/:style/:filename",
+	    bucket: S3_BUCKET,
+	    default_url: "/assets/missing.png"
 
 	private
 	
 	def post_params
-		params.require(:post).permit(:title, :body, :slug, :parent_id)
+		params.require(:post).permit(:title, :body, :slug, :featured_image)
 	end
 
 	def slug_candidates
