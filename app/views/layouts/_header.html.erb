@@ -132,20 +132,6 @@
 
 
 
-<!-- modal sign up -->
-<div class="row fill bottom margin padding"> <!-- This row is causing spacing issues when not in use -->
-
-	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<%= render 'layouts/signup_modal' %>
-	</div>
-	
-	<div class="modal fade" id="modal_signin" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<%= render 'layouts/signin_modal' %>
-	</div>
-
-</div>
-
-<!-- end of modal sign up -->
 
 
 
@@ -220,13 +206,13 @@
 				<div class="modal-body">
 					
 					<span class="text-left">
-				<h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! Sign Up Here!</h4>
+				<h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! <a href="#" data-toggle="modal" data-target="#modal_signup">Sign Up Here</a>!</h4>
 					
 				<h4>Step 2 – Start watching! We’ve got cartoons, comedy, music and more…every bubble on the site is something new.</h4>
 					
 				<h4>Step 3 – If you really like a video, POP it by clicking <span style="" class="pop-button"><div class="flash"></div></span>. That’s how you let your friends know what you’re watching.</h4>
 					
-				<h4>Step 4 – If you really like a show, CHARGE it by clicking <span class="pop-button"><div class="plus"></div></span>. That’s how you let us know you want more if it.</h4>
+				<h4>Step 4 – If you really like a show, CHARGE it by clicking <span class="pop-button"><div class="plus"></div></span>. That’s how you let us know you want more of it.</h4>
 					
 				<h4>Step 5 – Connect with FRIENDS. Click <a href="/users">[HERE]</a> to see a list of everyone on batteryPOP. Find your friends. Make new ones. And share your favorite shows and videos with them!</h4>
 					
@@ -238,6 +224,20 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
+<!-- modal sign up -->
+<div class="row fill bottom margin padding"> <!-- This row is causing spacing issues when not in use -->
+
+	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<%= render 'layouts/signup_modal' %>
+	</div>
+	
+	<div class="modal fade" id="modal_signin" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<%= render 'layouts/signin_modal' %>
+	</div>
+
+</div>
+
+<!-- end of modal sign up -->
 
 
 
