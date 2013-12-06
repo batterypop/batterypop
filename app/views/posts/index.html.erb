@@ -2,26 +2,74 @@
 	<div class="container">
 		<div class="content">
 
-
-
-			<div class="row">
-				<div class="col-xs-12 col-lg-9 col-md-9">
-
-					<% @posts.each do |post| %>
-						<%= link_to post_path(post) do %>
-							<h2><%= "#{post.title}" %></h2>
-						<% end %>
-					<% end %>
-				</div>
-
-
-				<!-- sidebar -->
-				<div class="col-lg-3 col-md-3">
-					<%= render 'layouts/post_sidebar' %>
-				</div>
-
-
+		
+<!-- page header; break off? -->
+<div class="row">
+	<div class="col-xs-12 two-tone-banner text-center show-page-header aqua fill top bottom left right margin padding">
+		<div class="vert-middle-wrap">
+			<div class="vert-middle">
+				<%= image_tag("header-logo-mob-menu.png", :class=> "tv-image") %>
 			</div>
+			<div class="vert-middle category-info turquoise">
+				<h1 class="page-title">
+					WORDS
+				</h1>
+				<h4 class="page-title hidden-xs ">
+					The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends.
+				</h4>
+			</div>
+			<div class="vert-middle">
+				<%= image_tag("header-logo-mob-menu.png", :class=> "tv-image") %>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- page header end; break off? -->
+
+
+
+
+
+
+
+
+<div class="row">
+	<div class="col-xs-12 col-lg-9 col-md-9">
+
+		<% @posts.each do |tpost| %>
+			
+			
+			
+			<div class="post-frame ">
+				<ul class="category-links">
+					<% tpost.categories.each do |cat| %>
+						<li class="category-title label label-warning"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
+					<% end %>
+				</ul>
+				<h1 class="post-title"><%= tpost.title %></h1>
+				<h4 class="post-date">
+					<%= tpost.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %>
+				</h4>
+
+				<%= image_tag(tpost.featured_image(:original), :alt => tpost.title, :class => "img-responsive post-featured-image", :width => '100%') %>
+
+				<hr />
+				
+			</div>
+
+
+
+		<% end %>
+	</div>
+
+
+	<!-- sidebar -->
+	<div class="col-lg-3 col-md-3">
+		<%= render 'layouts/post_sidebar' %>
+	</div>
+
+
+</div>
 
 
 
