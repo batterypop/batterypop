@@ -9,7 +9,7 @@
 					<div class="post-frame">
 						<ul class="category-links">
 							<% @post.categories.each do |cat| %>
-								<li class="category-title"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
+								<li class="category-title label label-warning"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
 							<% end %>
 						</ul>
 						

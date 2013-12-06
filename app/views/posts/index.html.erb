@@ -46,13 +46,15 @@
 						<li class="category-title label label-warning"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
 					<% end %>
 				</ul>
-				<h1 class="post-title"><%= tpost.title %></h1>
+				<%= link_to post_path(tpost) do %>
+					<h1 class="post-title"><%= tpost.title %></h1>
+				<% end %>
 				<h4 class="post-date">
 					<%= tpost.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %>
 				</h4>
-
-				<%= image_tag(tpost.featured_image(:original), :alt => tpost.title, :class => "img-responsive post-featured-image", :width => '100%') %>
-
+				<%= link_to post_path(tpost) do %>
+					<%= image_tag(tpost.featured_image(:original), :alt => tpost.title, :class => "img-responsive post-featured-image", :width => '100%') %>
+				<% end %>
 				<hr />
 				
 			</div>
