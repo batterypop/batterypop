@@ -4,18 +4,31 @@
 
 
 
-			<div class="row">
-				<div class="col-xs-12 col-lg-9 col-md-9">
-					<h1><%= @post.title %></h1>
-					<%= @post.body.html_safe %>
-				</div>
+			<div class="row no-margin no-padding">
+				<div class="col-xs-12 col-lg-9 col-md-9 no-margin no-padding">
+					<div class="post-frame">
+						<ul class="category-links">
+							<% @post.categories.each do |cat| %>
+								<li class="category-title"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
+							<% end %>
+						</ul>
+						
+						<h1 class="post-title"><%= @post.title %></h1>
+						<h4 class="post-date"><%= @post.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
+						<%= image_tag(@post.featured_image(:original), :alt => @post.title, :class => "img-responsive post-featured-image", :width => '100%') %>
 
 
-				<!-- sidebar -->
-				<div class="col-lg-3 col-md-3">
-					<%= render 'layouts/post_sidebar' %>
-				</div>
+							<div class="post-body"><%= @post.body.html_safe %></div>
+						</div>
+					</div>
 
+					<!-- sidebar -->
+					<div class="col-lg-3 col-md-3 post-sidebar">
+
+						<%= render 'layouts/post_sidebar' %>
+						<%= render 'layouts/most_popped' %>
+					</div>
+				
 
 			</div>
 

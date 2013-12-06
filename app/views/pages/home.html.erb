@@ -9,8 +9,11 @@
 				<div class="col-lg-8 no-padding">
 					<%= render 'layouts/promoted' %>
 				</div>
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<%= link_to(image_tag("ads/example.jpg", :class => 'img-responsive thumbnail'), "http://www.amazon.com/Watch-Find-batteryPOP-Videos-Games/dp/B00G5MNG08/ref=sr_sp-atf_title_1_1?ie=UTF8&qid=1383720933&sr=8-1&keywords=batterypop", :target => '_blank') %>
+				</div> -->
+				<div class="col-lg-4">
+				<%= render 'layouts/ads/watch_and_find' %>
 				</div>
 			</div>
 			
@@ -49,19 +52,19 @@
 			pager: false
 	  	});
 
-	  $('.home-most-popped').bxSlider({
-		  	nextSelector: '#home-mostpopped-next',
-			prevSelector: '#home-mostpopped-prev',
-			nextText: 'NEXT', prevText: 'PREV',
-		  	minSlides: 2,
-			maxSlides: 5,
-			responsive: true,
-	  		touchEnabled: true,
-	  		slideMargin: 6,
-	  		slideWidth: 220,
-			moveSlides: 2,
-			pager: false
-	  	});
+	  // $('.home-most-popped').bxSlider({
+		 //  	nextSelector: '#home-mostpopped-next',
+			// prevSelector: '#home-mostpopped-prev',
+			// nextText: 'NEXT', prevText: 'PREV',
+		 //  	minSlides: 2,
+			// maxSlides: 5,
+			// responsive: true,
+	  // 		touchEnabled: true,
+	  // 		slideMargin: 6,
+	  // 		slideWidth: 220,
+			// moveSlides: 2,
+			// pager: false
+	  // 	});
 
 	  $('.home-promoted').bxSlider({
 	  		nextSelector: '#home-promoted-next',
