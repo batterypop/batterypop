@@ -13,6 +13,13 @@ class Post < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+
+    default_scope :order => "created_at DESC"
+    scope :published, lambda { where("created_at <= ?", Time.zone.now) }
+  	scope :latest, lambda { |n| published.limit(n) }
+
+
+
 	private
 	
 	def post_params
