@@ -20,7 +20,7 @@ class ShowsController < ApplicationController
        @episode = @show.episodes.first
     end
     
-    @likers = @episode.votes.up.by_type(User).voters.compact!
+    @likers = @episode.votes.up.by_type(User).voters.compact
     # @voters = Votes.where(votable: @episode).random(3).map(&:voter)
   end
 
