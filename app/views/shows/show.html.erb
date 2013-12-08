@@ -183,6 +183,7 @@
 							<ul class="bxslider show-followers-carousel">
 					
 								<% @followers.each do |user| %>
+							
 									<% unless(user.avatar.nil?) 
 										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
 									else

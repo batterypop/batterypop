@@ -12,11 +12,6 @@ module ApplicationHelper
 
   # helpers for devise sessions
     def resource_name
-      puts " "
-      puts " ***********  "
-      puts "    RESOURCE NAME  "
-      puts " ***********  "
-      puts " "
   		:user
   	end
 

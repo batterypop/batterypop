@@ -218,32 +218,50 @@
 <!-- home items inited -->
 <script type="text/javascript">
   $(document).ready(function(){
+    // $('#user-show-slider').bxSlider({
+    //     nextSelector: '#users-show-next',
+    //     prevSelector: '#users-show-prev',
+    //     minSlides: 2,
+    //     maxSlides: 4,
+    //     slideWidth: 280,
+    //     infiniteLoop: false,
+    //     hideControlOnEnd: true,
+    //     responsive: true,
+    //     touchEnabled: true,
+    //     slideMargin: 5,
+    //     pager: false,
+    //     slideWidth: 280
+    //   }
+    // );
+
+
     $('#user-show-slider').bxSlider({
-        nextSelector: '#users-show-next',
-        prevSelector: '#users-show-prev',
-        minSlides: 1,
-        maxSlides: 4,
-        slideWidth: 280,
+        // nextSelector: '#users-video-next',
+        // prevSelector: '#users-video-prev',
+        minSlides: 2,
+        maxSlides: 5,
+        slideWidth: 220,
+        responsive: true,
         infiniteLoop: false,
         hideControlOnEnd: true,
-        responsive: true,
         touchEnabled: true,
-        slideMargin: 5,
+        slideMargin: 6,
         pager: false
       }
     );
+
 
     $('#user-video-slider').bxSlider({
         nextSelector: '#users-video-next',
         prevSelector: '#users-video-prev',
          minSlides: 2,
         maxSlides: 5,
-        slideWidth: 200,
+        slideWidth: 220,
         responsive: true,
         infiniteLoop: false,
         hideControlOnEnd: true,
         touchEnabled: true,
-        slideMargin: 10,
+        slideMargin: 6,
         pager: false
       }
     );
@@ -253,12 +271,12 @@
         prevSelector: '#users-followed-prev',
        minSlides: 2,
         maxSlides: 5,
-        slideWidth: 200,
+        slideWidth: 220,
         responsive: true,
         infiniteLoop: false,
         hideControlOnEnd: true,
         touchEnabled: true,
-        slideMargin: 10,
+        slideMargin: 6,
         pager: false
       }
     );
@@ -268,12 +286,12 @@
         prevSelector: '#users-following-prev',
         minSlides: 2,
         maxSlides: 5,
-        slideWidth: 200,
+        slideWidth: 220,
         responsive: true,
         infiniteLoop: false,
         hideControlOnEnd: true,
         touchEnabled: true,
-        slideMargin: 10,
+        slideMargin: 6,
         pager: false
       }
     );

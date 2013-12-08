@@ -11,8 +11,10 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
      @active="shows"
-     @f = @show.user_followers.random(5)
-     @followers = (@f.compact!).nil? ? @f : @f.compact!
+     # @f = @show.user_followers.random(5)
+     # @followers = (@f.compact!).nil? ? @f : @f.compact!
+
+     @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
     
     if(@episode.nil?) 
        @episode = @show.episodes.first
@@ -37,6 +39,20 @@ class ShowsController < ApplicationController
       format.js {render :action=>"unfollow"}
     end
   end
+
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_show
+    # @show = Show.find(params[:id])
+     @show = Show.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def show_params
+    params.require(:show).permit(:title, :description, :approved)
+  end
+
 
 
 
@@ -130,15 +146,4 @@ class ShowsController < ApplicationController
 
 
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_show
-      # @show = Show.find(params[:id])
-       @show = Show.friendly.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def show_params
-      params.require(:show).permit(:title, :description, :approved)
-    end
 end
