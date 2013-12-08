@@ -12,6 +12,8 @@ class EpisodesController < ApplicationController
   def show
      # @episode = Episode.friendly.find(params[:id])
      @show = @episode.show
+      @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
+      @likers = @episode.votes.up.by_type(User).voters.compact!
      render 'shows/show'
   end
 
