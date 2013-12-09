@@ -139,7 +139,7 @@
 
             <div class="bpop-slider">
               <div class="col-xs-12 no-padding user">
-                <ul class="bxslider " id="user-followed-slider">
+                <ul class="bxslider " id="users-followed-slider">
                   <% @user.following_users.each do |user| %>
                     <% unless(user.avatar.nil?) 
                       @img = user.avatar.image(:thumb)
@@ -247,10 +247,10 @@
     b = $.extend({}, {nextSelector: '#users-video-next', prevSelector: '#users-video-prev'}, args);
     $('#user-video-slider').bxSlider(b);
 
-    c = $.extend({}, {nextSelector: '#users-video-next', prevSelector: '#users-video-prev'}, args);
+    c = $.extend({}, {nextSelector: '#users-followed-next', prevSelector: '#users-followed-prev'}, args);
     $('#users-followed-slider').bxSlider(c);
 
-    d = $.extend({}, {nextSelector: '#users-video-next', prevSelector: '#users-video-prev'}, args);
+    d = $.extend({}, {nextSelector: '#users-following-next', prevSelector: '#users-following-prev'}, args);
     $('#users-following-slider').bxSlider(d);
 
   });
