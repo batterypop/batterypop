@@ -41,7 +41,7 @@ pos = 0 %>
 
 
 <!-- lower listings -->
-    <div class="row show-name-episodes-section <%= colors[pos] %>">
+  <div class="row show-name-episodes-section <%= colors[pos] %>">
      <a href="<%= show_path(show) %>">
       <div class="col-xs-12 col-lg-6 col-md-7 show-name">
 			<div class="show-metadata">
@@ -65,7 +65,7 @@ pos = 0 %>
       <div class="col-xs-12 col-lg-6 col-md-5 show-episodes">
 
 <!-- episode slider -->
-       <!--  <div class="row bpop-slider"> -->
+
             <ul class="bxslider show-episodes-slider">
                 <% show.episodes.each do |episode| %>
                   <li>
@@ -77,8 +77,6 @@ pos = 0 %>
                   </li>
                 <% end %>
             </ul>
-       <!--  </div>        -->
-<!-- end episode slider -->
 
 
 
