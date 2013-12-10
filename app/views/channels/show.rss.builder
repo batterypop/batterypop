@@ -13,6 +13,7 @@ xml.instruct! :xml, :version => "1.0"
 					xml.title "#{show.title}: #{episode.title}"
 					xml.pubDate "#{episode.created_at}"
 					xml.description "#{show.description} #{episode.description}"
+					xml.thumbnail "#{episode.image(:thumb)}"
 					# xml.source
 					# need to get episode.embed with code 
 					xml.pubDate episode.created_at.to_s(:rfc822)
