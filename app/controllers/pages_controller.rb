@@ -1,12 +1,17 @@
 class PagesController < ApplicationController
   
-  
   def home
     @title = "Home"
     @features = Feature.all
     @showlist = Show.showlist.approved.shuffle
     @popped = Episode.mostpopped(10) 
     @promoted = Show.where(:promote => true)
+    if !cookies[:viewedWelcome].present?
+      @cookie = false
+      cookies[:viewedWelcome] = { :value => "true", :expires => 1.minute.from_now}
+    else
+      @cookie = true
+    end
   end
 
   def contact
@@ -49,6 +54,13 @@ class PagesController < ApplicationController
   def advertise
     @title = "Advertise on batteryPOP!"
      @active = "advertise"
+  end
+
+
+
+  private 
+  def check_cookie
+    
   end
 
   # def getGACode

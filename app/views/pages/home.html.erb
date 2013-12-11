@@ -23,9 +23,43 @@
 
 
 
+<!-- welcome modal -->
+
+	<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<center><h1 class="modal-title">Welcome to BatteryPOP!</h1></center>
+				</div>
+				<div class="modal-body">
+				We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!<br />
+
+				If you like a video, POP it! Look for this symbol <span style="" class="pop-button"><div class="flash"></div></span> and click it. POPPING is just like voting!<br /><br />
+
+				But you have to <a href="#" data-toggle="modal" data-target="#modal_signup">Sign Up</a> first. Don’t worry, signing up is <strong>FREE</strong>, it’s <strong>EASY</strong>, and it’s <strong><a href="/about/privacy">SAFE</a></strong>.<br /><br />
+
+				And if you don’t want to sign up, no worries! You can still enjoy all the videos for as long as you like. So <strong>HAVE FUN!</strong>
+
+				</div>
+				<div class="modal-footer">
+					<div class="pull-left">
+					<a href="/about/privacy">A Note to Parents.</a>
+					</div>
+				  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 <!-- home items inited -->
 <script type="text/javascript">
 	$(document).ready(function(){
+
+		<% if((!current_user && !@cookie)) %>
+			$("#welcomeModal").modal('show');
+		<% end %>
+
 	  $('.home-featured').bxSlider({
 	  		mode: 'fade',
 	  		speed: 1000,
