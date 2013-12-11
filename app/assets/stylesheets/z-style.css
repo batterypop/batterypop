@@ -2361,7 +2361,7 @@ div.show-popped-carousel{
 .show-lower-left a.active,
 .show-lower-left a.active:hover {
 	border-color:transparent !important;
-	background-color:inherit !important;
+	background-color:  rgba(255,179,0,0.75) !important;
 }
 
 /*
