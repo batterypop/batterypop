@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202184209) do
+ActiveRecord::Schema.define(version: 20131212044236) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -143,6 +143,8 @@ ActiveRecord::Schema.define(version: 20131202184209) do
     t.integer  "cached_votes_up",    default: 0
     t.integer  "cached_votes_down",  default: 0
     t.integer  "episode"
+    t.string   "duration"
+    t.string   "age_range"
   end
 
   add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down"
@@ -271,6 +273,7 @@ ActiveRecord::Schema.define(version: 20131202184209) do
     t.boolean  "promote"
     t.boolean  "skiplist"
     t.integer  "position"
+    t.string   "age_range"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true

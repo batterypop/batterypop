@@ -85,6 +85,16 @@ class Episode < ActiveRecord::Base
 	end
 
 
+	def self.target_ages
+		return [
+			'Under 6',
+			'6-8',
+			'9-11',
+			'11+'
+		]
+	end
+
+
 	private
 
 	def slug_candidates
