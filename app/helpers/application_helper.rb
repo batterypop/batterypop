@@ -27,6 +27,13 @@ module ApplicationHelper
       Avatar.all
     end
 
-
+    def get_age_ranges
+      return [
+        'Under 6',
+        '6-8',
+        '9-11',
+        '11+'
+      ]
+    end
 
 end
