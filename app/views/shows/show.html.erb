@@ -8,12 +8,13 @@
 
 <% @action = "<div class='follow-pop-wrap'>#{render :partial => 'shows/follow_show', :locals => {:show => @show}}#{render :partial => 'episodes/popunpop', :locals => {:episode => @episode}}</div>" %>
 
+<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
 <%= render partial: "layouts/breadcrumb", :locals => {
 		:crumb_class => " hidden-xs hidden-sm",
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3></div>".html_safe, 
 	 	
-	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<br /><span id='episode-title'>Watching: #{@episode.title}</span></span>".html_safe,
+	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
 		
 		:crumb_action => @action.html_safe
 			 	} %>
@@ -133,6 +134,8 @@
 		<% unless @show.single? %>
 				<div class="media-list list-group">
 					<% @show.episodes.each do |ep| %>
+						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{@show.age_range}</span> " : ' ' %>
+						<% @duration =  (!ep.duration.nil? && !ep.duration.empty?) ? "<span class='episode-duration'>#{ep.duration}</span> " : ' ' %>
 	
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
@@ -143,8 +146,8 @@
 						            <div class='pop-button pop-episode pop_episode-#{ep.id}'  data-episode='#{ep.id}'>
 						            <div class='flash'></div>
 						            </div></div></span>".html_safe,
-				                :slide_title => ep.title, 
-				                :slide_text => ep.description.html_safe, 
+				                :slide_title => "#{ep.title} #{@duration}".html_safe, 
+				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
 				                # :slide_url => show_path(Episode.friendly.find(episode.id))
 				                :slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))

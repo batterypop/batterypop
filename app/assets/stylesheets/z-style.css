@@ -1538,6 +1538,19 @@ background-position:center 0px;
 	margin-top:18px;
 }
 
+.episode-duration{
+	float: right;
+}
+
+.episode-age-range{
+	color: rgb(127, 127, 127);
+	font-weight: bold;
+	font-family: Helvetica, Roboto, Arial, sans-serif;
+	font-size: 11px;
+	position: absolute; 
+	bottom: 10px;
+}
+
 
 /*
 

@@ -14,7 +14,7 @@ ActiveAdmin.register Show do
 			f.input :background, hint: "Main show page background if overridden."
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :position, :label => "Show Position"
-			f.input :age_range, :as => :select, :collection => Episode.target_ages
+			f.input :age_range, :as => :select, :collection => get_age_ranges
 			f.input :single, :label => "Single episode?", :hint => "Set to true for short or non-episodic video."
 			f.input :skiplist, :label => "Hide from Show List.", :hint => "Select this to hide from the show carousel."
 			f.input :promote, :label => "Promote on Home Page?.", :hint => "Select this to add to the bottom Promoted carousel."
@@ -28,7 +28,7 @@ ActiveAdmin.register Show do
 		 		e.input :title, :required => true
 				e.input :description, :as => :rich
 				e.input :duration, :label => "Duration"
-				e.input :age_range, :as => :select, :collection => Episode.target_ages
+				e.input :age_range, :as => :select, :collection => get_age_ranges
 				e.input :image
 				e.input :embed, :as => :select, :member_label => :provider, :required => true
 				e.input :video, :label => "Video Code"
