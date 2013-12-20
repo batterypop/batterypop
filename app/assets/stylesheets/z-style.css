@@ -95,6 +95,12 @@ p {
 	font-weight:normal;
 }
 
+.home-side-carousel li a.list-group-item p,
+.show-most-popped-carousel li a.list-group-item p {
+	line-height:16px;
+	font-size:13px;
+}
+
 
 h1.page-title {
 	font-size:30px;
