@@ -95,8 +95,8 @@ p {
 	font-weight:normal;
 }
 
-.home-side-carousel li a.list-group-item p,
-.show-most-popped-carousel li a.list-group-item p {
+.bx-wrapper .home-side-carousel li a.list-group-item p,
+.bx-wrapper .show-most-popped-carousel li a.list-group-item p {
 	line-height:16px;
 	font-size:13px;
 }
