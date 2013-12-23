@@ -1798,7 +1798,7 @@ color:#96d7c8;
 	-moz-border-radius:50%;
 	-o-border-radius:50%;
 	border-radius:50%;
-	background-image:url('/assets/lightning-plus-sprite.png');
+	background-image:url('/assets/lightning-plus-sprite_flipped.png');
 	background-repeat:no-repeat;
 	background-color:white;
 	border:0;
