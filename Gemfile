@@ -93,6 +93,9 @@ gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 
 
+gem 'rack-mini-profiler'
+# profiler for db calls
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
