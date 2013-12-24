@@ -138,4 +138,3 @@ end
 
 gem 'rack-mini-profiler'
 # profiler for db calls -- moved lower to 'see' the postgres gem
-

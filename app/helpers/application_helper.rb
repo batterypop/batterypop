@@ -1,6 +1,11 @@
 module ApplicationHelper
   include ActsAsTaggableOn::TagsHelper
 
+
+  def link_helper(obj)
+    return  pluralize(2, obj.class.name.downcase) + "/LINK_HELPER"
+  end
+
   def title 
     base_title = "BatteryPop"
     if @title.nil?
