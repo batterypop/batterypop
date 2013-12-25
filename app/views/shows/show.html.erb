@@ -103,8 +103,10 @@
 											:slide_title => most.title, 
 										 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
 											:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+											
+											#:slide_url => show_episode_path(most.show, Episode.friendly.find(most.id))
 
-											:slide_url => show_episode_path(most.show, Episode.friendly.find(most.id))
+											:slide_url =>  "/shows/"+most.show.slug + "/episodes/" + most.slug
 										} 
 											%>
 									</li>
@@ -150,7 +152,10 @@
 				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
 				                # :slide_url => show_path(Episode.friendly.find(episode.id))
-				                :slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
+				                #:slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
+								
+								:slide_url => "/shows/" + @show.slug + "/episodes/" + ep.slug
+
 				                } %>
 		            <% end %>
 				</div>
@@ -256,7 +261,11 @@
 											  	:slide_title => user.username, 
 											  	:slide_text => '', 
 											  	:slide_image => @img,
-												:slide_url => user_path(User.friendly.find(user.id))} %>
+											#	:slide_url => user_path(User.friendly.find(user.id))
+												
+												:slide_url => "/users/" + user.username
+												
+											} %>
 									
 									</li>
 								<% end %>
