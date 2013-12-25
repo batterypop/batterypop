@@ -42,7 +42,7 @@ pos = 0 %>
 
 <!-- lower listings -->
   <div class="row show-name-episodes-section <%= colors[pos] %>">
-     <a href="<%= show_path(show) %>">
+     <a href="/shows/<%= show.slug %>">
       <div class="col-xs-12 col-lg-6 col-md-7 show-name">
 			<div class="show-metadata">
 				<div class="show-icon-border hidden-xs">
@@ -73,7 +73,12 @@ pos = 0 %>
                       :slide_title => episode.title, 
                       :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
                       :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
-                      :slide_url => episode_path(Episode.friendly.find(episode.id))} %>
+                      
+                      #:slide_url => episode_path(Episode.friendly.find(episode.id))
+              
+                      :slide_url => "/shows/" + show.slug + "/episodes/" + episode.slug
+
+                      } %>
                   </li>
                 <% end %>
             </ul>
