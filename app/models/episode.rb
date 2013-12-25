@@ -48,6 +48,10 @@ class Episode < ActiveRecord::Base
 
 ##  TODO NEED TO CLEAN UP BELOW
 
+	default_scope where(:approved => true)
+
+
+
 	def self.nextup(episode, lim=nil)
 		# first see if taglist
 		@next_episode = episode.show.episodes[episode.show.episodes.index(episode)+1]

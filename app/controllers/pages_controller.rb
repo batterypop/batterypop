@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @promoted = Show.where(:promote => true)
     if !cookies[:viewedWelcome].present?
       @cookie = false
-      cookies[:viewedWelcome] = { :value => "true", :expires => 15.minutes.from_now}
+      cookies[:viewedWelcome] = { :value => "true", :expires => 1.day.from_now}
     else
       @cookie = true
     end
