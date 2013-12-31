@@ -18,7 +18,12 @@
 					  	:slide_title => show.title, 
 					  	:slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'), 
 					  	:slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
-					  	:slide_url => show_path(Show.friendly.find(show.id))} %>
+
+					  	# :slide_url => show_path(Show.friendly.find(show.id))
+
+					  	:slide_url => "/shows/" + show.slug
+
+					  	} %>
 					</li>
 				<% end %>
 		</ul>

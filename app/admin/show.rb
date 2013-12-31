@@ -2,9 +2,27 @@ ActiveAdmin.register Show do
 	menu :parent => "BatteryPOP Shows", :priority => 1
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
-		@show = Show.friendly.find(params[:id])
+		# @show = Show.friendly.find(params[:id])
+		# @show = Show.includes(:episodes).friendly.find(params[:id])
+		# @show = Show.friendly.find(params[:id]).includes(:episodes)
+		# @show = Show.joins(:episodes).friendly.find(params[:id])
+		@show = Show.joins(:episodes).where("episodes.show_id" => :id).includes(:episodes).friendly.find(params[:id])
 	end
 	
+	# controller do
+	# 	def active_admin_collection
+	# 		Show.unscoped{super}
+	# 		Episode.unscoped{super}
+	# 	end
+	# 	def resource
+	# 		Show.unscoped{super}
+	# 		Episode.unscoped{super}
+	# 	end
+	# end
+
+
+
+
 	form  do |f|  
 		f.inputs "Show Details" do
 			f.input :creator, :as => :select, :member_label => :displayname, :required => true
@@ -23,7 +41,7 @@ ActiveAdmin.register Show do
 			f.input :updated_at
 		end
 		 f.inputs "Episodes" do
-		 	f.has_many :episodes do |e|
+		 	f.has_many :episodes, :allow_destroy => true do |e|
 		 		e.input :episode, :label => "Episode Number", :hint => "Not required for non-episodic show."
 		 		e.input :title, :required => true
 				e.input :description, :as => :rich
@@ -34,7 +52,7 @@ ActiveAdmin.register Show do
 				e.input :video, :label => "Video Code"
 				e.input :approved, :label => "BatteryPOP approved."
 				e.input :tag_list, :label => "Tags (seperated by commas)"
-				e.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
+				# e.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
 		 	end
 
 		 end

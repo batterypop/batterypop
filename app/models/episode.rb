@@ -41,15 +41,23 @@ class Episode < ActiveRecord::Base
 	def self.mostpopped(lim=nil	)
 		# @episodes = Episode.where(:approved => true).order('cached_votes_up DESC').limit(lim)
 		# @episodes = Episode.where(:approved => true).joins(:show).where(:approved => true).order('cached_votes_up DESC').limit(lim)
-		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim)
+		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim).includes(:show)
 	end
 
 
 
 ##  TODO NEED TO CLEAN UP BELOW
+# not the best way of doing this I think
+	# if (:current_user != :current_admin_user)
+	# 	default_scope where(:approved => true)
+	# end
 
-	default_scope where(:approved => true)
+	scope :approved, -> {where(:approved => true)}
 
+	def self.default_scope
+		approved
+	end
+	
 
 
 	def self.nextup(episode, lim=nil)
