@@ -21,6 +21,9 @@ class Show < ActiveRecord::Base
 	belongs_to :creator
 
 	has_many :episodes, :order => 'episode ASC'
+
+	has_many :episodes_approved, :class_name => "Episode", :conditions => ["approved = ?", true]
+
 	has_and_belongs_to_many :channels, :join_table => :channels_shows
 
 	accepts_nested_attributes_for :episodes, :allow_destroy => true
