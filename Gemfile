@@ -27,7 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'ZenTest'
+gem 'ZenTest', '>= 4.9.5'
 
 
 gem 'paperclip',  '>= 3.4.0'  # image upload
@@ -133,7 +133,7 @@ group :test do
     gem 'rspec'
     gem 'autotest'
     gem 'autotest-growl'
-    gem 'autotest-fsevent'
+    gem 'autotest-fsevent', '>= 0.2.9'
 end
 
 gem 'rack-mini-profiler'
