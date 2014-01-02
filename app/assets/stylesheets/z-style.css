@@ -2725,5 +2725,9 @@ SHORTS PAGE */
 		margin: 0 auto 16px;
 		width:200px !important;		
 	}
+	
+	.channel div.vertical-slide {
+		background-position: center -46px;
+	}
 
 }
