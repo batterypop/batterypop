@@ -107,7 +107,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    ZenTest (4.9.3)
+    ZenTest (4.9.5)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -144,7 +144,7 @@ GEM
     atomic (1.1.14)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
-    autotest-fsevent (0.2.8)
+    autotest-fsevent (0.2.9)
       sys-uname
     autotest-growl (0.2.16)
     aws-sdk (1.18.0)
@@ -191,7 +191,7 @@ GEM
       yard (>= 0.7.0)
     erubis (2.7.0)
     execjs (2.0.1)
-    ffi (1.9.0)
+    ffi (1.9.3)
     foreigner (1.5.0)
       activerecord (>= 3.0.0)
     friendly_id (5.0.0.beta4)
@@ -362,7 +362,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest
+  ZenTest (>= 4.9.5)
   activeadmin!
   activeadmin-sortable-tree!
   acts-as-taggable-on
@@ -371,7 +371,7 @@ DEPENDENCIES
   anjlab-bootstrap-rails!
   annotate
   autotest
-  autotest-fsevent
+  autotest-fsevent (>= 0.2.9)
   autotest-growl
   aws-sdk
   better_errors
