@@ -120,6 +120,7 @@ group :development do
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
+   gem 'sqlite3'
 end
 
 
@@ -133,11 +134,10 @@ group :test do
     gem 'autotest'
     gem 'autotest-growl'
     gem 'autotest-fsevent', '>= 0.2.9'
+    gem 'sqlite3'
 end
 
-group :production, :test do
-   gem 'sqlite3'
-end
+
 
 
 gem 'rack-mini-profiler'
