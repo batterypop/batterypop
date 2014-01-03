@@ -17,7 +17,7 @@
 										:slide_image => image_tag(post.featured_image(:thumb), :alt => post.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
 										#:slide_url => post_path(Post.friendly.find(post.id))
 										
-										:slide_url => "/posts/" post.slug
+										:slide_url => "/posts/" + post.slug
 
 										} %>
 				</li>

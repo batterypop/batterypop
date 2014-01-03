@@ -92,7 +92,8 @@ gem "easy_captcha"
 gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 
-
+gem "browser"
+# https://github.com/fnando/browser
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -119,7 +120,6 @@ group :development do
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
-  gem 'sqlite3'
 end
 
 
@@ -129,12 +129,16 @@ group :production do
 end
 
 group :test do
-    gem 'sqlite3'
     gem 'rspec'
     gem 'autotest'
     gem 'autotest-growl'
     gem 'autotest-fsevent', '>= 0.2.9'
 end
+
+group :production, :test do
+   gem 'sqlite3'
+end
+
 
 gem 'rack-mini-profiler'
 # profiler for db calls -- moved lower to 'see' the postgres gem
