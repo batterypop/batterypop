@@ -33,6 +33,12 @@ class PagesController < ApplicationController
     @title = "Shorts"
      @active = "shorts"
     @shorts = Show.where(:single => true, :approved => true).includes(:episodes)
+    puts " "
+    puts "  %%%%%%%%%%% "
+    @shorts.inspect
+
+    puts ""
+    puts ""
     # @groups = @shorts.each_slice(4).to_a
   end
 
