@@ -45,7 +45,10 @@
 				:slide_title => short.title, 
 				:slide_text => short.description.html_safe, 
 				:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
-				:slide_url => episode_path(Episode.friendly.find(short.episodes.first.id))} %>
+				# :slide_url => episode_path(Episode.friendly.find(short.episodes.first.id))
+				:slide_url => "/shows/" + short.slug + "/episode/"
+
+				} %>
 
 
 		</div>
