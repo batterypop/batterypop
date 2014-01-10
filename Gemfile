@@ -95,6 +95,8 @@ gem "squeel"  # Last officially released gem
 gem "browser"
 # https://github.com/fnando/browser
 
+gem 'pg'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -120,12 +122,12 @@ group :development do
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
-   gem 'sqlite3'
+   # gem 'sqlite3'
 end
 
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -134,11 +136,10 @@ group :test do
     gem 'autotest'
     gem 'autotest-growl'
     gem 'autotest-fsevent', '>= 0.2.9'
-    gem 'sqlite3'
+    # gem 'sqlite3'
 end
-
-
 
 
 gem 'rack-mini-profiler'
 # profiler for db calls -- moved lower to 'see' the postgres gem
+
