@@ -167,8 +167,12 @@ div.channel-icon-header {
 
 .channel div.vertical-slide img.img-circle {
 	margin: 20px auto;
+	-webkit-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	-ms-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	-o-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
+	-moz-box-shadow: 3px 0 2px #444, -3px 0 2px #444;
 	box-shadow: 3px 0 2px #444, -3px 0 2px #444;
-	/* webkit, moz, o */
+
 }
 
 .user-video-slider div.vertical-slide,
@@ -182,8 +186,11 @@ div.channel-icon-header {
 	background-repeat: no-repeat;
 	text-align:center;
 	width: 205px !important;
+	-webkit-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	-ms-box-shadow: 2px 0 2px rgba(0,0,0,0.1);box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	-o-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
-	/* webkit, moz, o */
 }
 
 .users-followed-slider div.vertical-slide,
@@ -219,8 +226,11 @@ div.channel-icon-header {
 
 .thumbnail.vertical-slide {
 	border:none;
+	-webkit-border-radius:0;
+	-ms-border-radius:0;
+	-o-border-radius:0;
+	-moz-border-radius:0;
 	border-radius:0;
-	/* webkit, moz, o */
 	margin-bottom:0;
 }
 .channel .bx-wrapper {
@@ -229,7 +239,15 @@ div.channel-icon-header {
 
 .channel .bx-wrapper .bx-viewport {
 	border:none;
+	-webkit-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+	-moz-box-shadow: none;
 	box-shadow:none;
+	-webkit-border-radius:0;
+	-ms-border-radius:0;
+	-o-border-radius:0;
+	-moz-border-radius:0;
 	border-radius:0;
 	left:0;
 }
@@ -246,6 +264,10 @@ div.channel-icon-header {
 	background-color: white;
 	margin: 10px 5px;
 	padding: 5px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	-ms-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	-o-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
