@@ -2,7 +2,6 @@
 
 @font-face {
     font-family: 'AnchorSemibold';
-    src: url('/assets/anchor-semibold.eot');
     src: url('/assets/anchor-semibold.eot') format('embedded-opentype'),
          url('/assets/anchor-semibold.woff') format('woff'),
          url('/assets/anchor-semibold.ttf') format('truetype'),
@@ -11,7 +10,6 @@
 
 @font-face {
     font-family: 'AnchorMedium';
-    src: url('/assets/anchor-medium.eot');
     src: url('/assets/anchor-medium.eot') format('embedded-opentype'),
          url('/assets/anchor-medium.woff') format('woff'),
          url('/assets/anchor-medium.ttf') format('truetype'),
