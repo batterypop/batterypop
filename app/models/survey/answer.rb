@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: survey_answers
+#
+#  id          :integer          not null, primary key
+#  attempt_id  :integer
+#  question_id :integer
+#  option_id   :integer
+#  correct     :boolean
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Survey::Answer < ActiveRecord::Base
 
   self.table_name = "survey_answers"

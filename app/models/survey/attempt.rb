@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: survey_attempts
+#
+#  id               :integer          not null, primary key
+#  participant_id   :integer
+#  participant_type :string(255)
+#  survey_id        :integer
+#  winner           :boolean
+#  score            :integer
+#
+
 class Survey::Attempt < ActiveRecord::Base
 
   self.table_name = "survey_attempts"
