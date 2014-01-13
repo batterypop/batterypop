@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: channels
+#
+#  id                :integer          not null, primary key
+#  title             :string(255)
+#  description       :text
+#  slug              :string(255)
+#  parent_id         :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  position          :integer
+#  hidden            :boolean
+#  icon_file_name    :string(255)
+#  icon_content_type :string(255)
+#  icon_file_size    :integer
+#  icon_updated_at   :datetime
+#
+
 class Channel < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged

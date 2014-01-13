@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: features
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  content    :text
+#  created_at :datetime
+#  updated_at :datetime
+#  position   :integer
+#  active     :boolean
+#
+
 class Feature < ActiveRecord::Base
 
 

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: embeds
+#
+#  id         :integer          not null, primary key
+#  provider   :string(255)
+#  code       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Embed < ActiveRecord::Base
 	has_many :episodes
 	validates_uniqueness_of :provider

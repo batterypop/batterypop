@@ -1,4 +1,23 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id                          :integer          not null, primary key
+#  title                       :string(255)
+#  body                        :text
+#  slug                        :string(255)
+#  created_at                  :datetime
+#  updated_at                  :datetime
+#  featured_image_file_name    :string(255)
+#  featured_image_content_type :string(255)
+#  featured_image_file_size    :integer
+#  featured_image_updated_at   :datetime
+#
+
 class Post < ActiveRecord::Base
+	include PgSearch
+	multisearchable :against => [:title , :body]
+
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 

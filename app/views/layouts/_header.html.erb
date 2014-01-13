@@ -6,7 +6,18 @@
 	<div class="row fill bottom top padding margin shadow-container  hidden-xs">
 		<div class="shadow-mid-left"></div>
 		<div class="shadow-mid-right"></div>
-		 <div class="col-sm-4 col-sm-offset-8 col-md-3 col-md-offset-9 col-xs-12 col-xs-offset-0 clearfix fill bottom padding margin" style="z-index:1;">
+
+		<div class="col-sm-3 col-md-3" data-toggle="modal" data-target="#modal_legend">
+			<!-- <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0"> -->
+				<div id="legend" >	
+					<h4><span class="inline-hide">Click </span><span style="" class="pop-button"><div class="flash"></div></span><span class="inline-hide"> to </span>POP it!</h4>
+					<h4><span class="inline-hide">Click </span><span class="pop-button"><div class="plus"></div></span><span class="inline-hide"> to </span>CHARGE it!</h4>				
+				</div>
+			<!-- </div> -->
+		</div>
+
+
+		 <div class="col-sm-4 col-sm-offset-5 col-md-3 col-md-offset-6 col-xs-12 col-xs-offset-0 clearfix fill bottom padding margin" style="z-index:1;">
 			<div class="btn-login-group">
 				<% if user_signed_in? %>
 				<!-- this should be replaced with profile controls -->
@@ -32,12 +43,18 @@
 				<% end %>
 			</div>
 			<div class="clear"></div>
-			<div class="col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-4">
-				<div id="legend" data-toggle="modal" data-target="#modal_legend">	
-					<h4><span class="inline-hide">Click </span><span style="" class="pop-button"><div class="flash"></div></span><span class="inline-hide"> to </span>POP it!</h4>
-					<h4><span class="inline-hide">Click </span><span class="pop-button"><div class="plus"></div></span><span class="inline-hide"> to </span>CHARGE it!</h4>				
-				</div>
-			</div>
+			<div class="row fill top bottom padding margin">
+	            <div class="col-xs-12 col-md-12 fill top bottom padding" id="search">
+					<form role="search" action="/search" method="get">
+						<div class="form-group">
+                           <input type="text" class="form-control" placeholder="Search" name="query">
+						</div>
+	               </form>				
+
+	             
+
+	            </div>
+	        </div>
 
 		
 		</div>

@@ -2,19 +2,34 @@
 #
 # Table name: episodes
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :text
-#  approved    :boolean
-#  creator_id  :integer
-#  show_id     :integer
-#  video_type  :integer
-#  video_id    :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  description        :text
+#  approved           :boolean
+#  slug               :string(255)
+#  show_id            :integer
+#  embed_id           :string(255)
+#  video              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  cached_votes_total :integer          default(0)
+#  cached_votes_score :integer          default(0)
+#  cached_votes_up    :integer          default(0)
+#  cached_votes_down  :integer          default(0)
+#  episode            :integer
+#  duration           :string(255)
+#  age_range          :string(255)
 #
 
 class Episode < ActiveRecord::Base
+	include PgSearch
+	multisearchable :against => [:title, :description, :slug]
+
+
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged, :use => :scoped, :scope => :show
 
