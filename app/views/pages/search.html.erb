@@ -9,10 +9,12 @@
 					<ul>
 					<% if(@return.size) %>
 						<% @return.each do | doc | %>
-							<li><% doc.searchable.inspect %>
-							<%= doc.searchable_type %>:<%= link_to doc.searchable.title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
-								<%= doc.content.html_safe %>
-							</li>
+							<% if !doc.nil? %>
+								<li><% doc.searchable.inspect %>
+								<%= doc.searchable_type %>:<%= link_to doc.searchable.title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
+									<%= doc.content.html_safe %>
+								</li>
+							<% end %>
 						<% end %>
 					<% end %>
 					</ul>

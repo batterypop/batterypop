@@ -42,9 +42,9 @@ test:
 
 staging:
   adapter: postgresql
-  database: d1jmsfiqtro872
-  username: fhviosdrjnlgrv
-  password: M09LapdaukdrHq5hAYGy8xco2z
+  database: dal4bbm219boh3
+  username: uuzvyifdefyufx
+  password: PXErg7DOd47qEML1_JNH7d5cEV
   post: 5432
   encoding: unicode
 
