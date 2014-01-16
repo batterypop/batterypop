@@ -35,15 +35,17 @@ gem 'aws-sdk'
 
 gem 'unicorn'
 
-gem 'bootstrap-sass'
-# gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
+# gem 'bootstrap-sass', '~> 2.3.2.1' 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
+                             
 
-
-gem 'therubyracer'
-gem 'less-rails'
+gem "therubyracer"
+gem "less-rails"
 
 gem 'devise',  github: 'plataformatec/devise'
 gem 'devise_security_extension', :github => 'phatworx/devise_security_extension' # security questions
+
 
 # administration
 gem 'activeadmin',         github: 'gregbell/active_admin'
