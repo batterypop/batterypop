@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 3efe9030d6adc5848566a07f37d4ffc1c76c6b97
+  specs:
+    anjlab-bootstrap-rails (3.0.0.2)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
+GIT
   remote: git://github.com/bastiaanterhorst/rich.git
   revision: 53dba32858cb5ef9ff9143bc58989143cb098c05
   specs:
@@ -149,8 +157,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.0.3.0)
-      sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -366,6 +372,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_follower (~> 0.2.0)
   acts_as_votable (~> 0.7.1)
+  anjlab-bootstrap-rails!
   annotate
   autotest
   autotest-fsevent (>= 0.2.9)
@@ -373,7 +380,6 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
-  bootstrap-sass
   browser
   bundler
   bxslider-rails (~> 4.1.0)
