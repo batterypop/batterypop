@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212044236) do
+ActiveRecord::Schema.define(version: 20140112050614) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "username",               default: "", null: false
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  add_index "admin_users", ["username"], name: "index_admin_users_on_username", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["username"], name: "index_admin_users_on_username", unique: true, using: :btree
 
   create_table "avatars", force: true do |t|
     t.string   "name"
@@ -147,11 +150,11 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.string   "age_range"
   end
 
-  add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down"
-  add_index "episodes", ["cached_votes_score"], name: "index_episodes_on_cached_votes_score"
-  add_index "episodes", ["cached_votes_total"], name: "index_episodes_on_cached_votes_total"
-  add_index "episodes", ["cached_votes_up"], name: "index_episodes_on_cached_votes_up"
-  add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true
+  add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down", using: :btree
+  add_index "episodes", ["cached_votes_score"], name: "index_episodes_on_cached_votes_score", using: :btree
+  add_index "episodes", ["cached_votes_total"], name: "index_episodes_on_cached_votes_total", using: :btree
+  add_index "episodes", ["cached_votes_up"], name: "index_episodes_on_cached_votes_up", using: :btree
+  add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true, using: :btree
 
   create_table "features", force: true do |t|
     t.string   "title"
@@ -172,8 +175,8 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -183,10 +186,10 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "notifications", force: true do |t|
     t.string   "type"
@@ -206,7 +209,15 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "expires"
   end
 
-  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id", using: :btree
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -232,7 +243,7 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id"
+  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id", using: :btree
 
   create_table "rich_rich_files", force: true do |t|
     t.datetime "created_at"
@@ -276,7 +287,7 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.string   "age_range"
   end
 
-  add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true
+  add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true, using: :btree
 
   create_table "survey_answers", force: true do |t|
     t.integer  "attempt_id"
@@ -331,8 +342,8 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string "name"
@@ -370,10 +381,10 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.string   "slug"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["parent_id"], name: "index_users_on_parent_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["parent_id"], name: "index_users_on_parent_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"
@@ -386,7 +397,11 @@ ActiveRecord::Schema.define(version: 20131212044236) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+
+  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
+
+  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end

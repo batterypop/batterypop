@@ -7,7 +7,7 @@
 }*/
 
 .post-frame{
-	float: left;
+	/*float: left;*/
 	width: 100%;
 }
 
@@ -78,7 +78,69 @@ h4.post-date{
 	width: 100%;
 }
 
-.post-body p{
-	font-size: 14px;
-	line-height:16px;
+
+
+
+.post-frame {
+
+}
+
+.post-body p, .post-body li {
+font-size: 15px;
+line-height: 140%;
+color: #3290c0;
+}
+
+
+
+.list-number {
+padding-left: 0;
+}
+
+.list-number li {
+list-style-type: none;
+}
+
+.list-number li .number {
+font-size: 32px;
+border-radius: 1000px;
+border: 2px solid #3290c0;
+height: 40px;
+width: 40px;
+text-align: center;
+display: inline-block;
+clear: both;
+line-height: 110%;
+margin: 5px 0;
+}
+
+.list-number li p {
+
+}
+
+.list-number li:before {
+
+}
+
+.list-number li p strong em {
+font-size: 24px;
+font-weight: normal;
+font-style: normal;
+display: block;
+}
+
+.channel div.vertical-slide {
+background: url('/assets/channel-li-bg-neg-large.png') center top no-repeat;
+}
+.main.channel .container .row {
+margin: 0;
+padding: 0;
+}
+
+.channel div.vertical-slide {
+width: 100% !important;
+}
+
+.post-sidebar .row:last-child {
+margin-bottom: 0 !important;
 }

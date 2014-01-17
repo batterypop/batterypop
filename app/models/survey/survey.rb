@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: survey_surveys
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  description     :text
+#  attempts_number :integer          default(0)
+#  finished        :boolean          default(FALSE)
+#  active          :boolean          default(FALSE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Survey::Survey < ActiveRecord::Base
 
   self.table_name = "survey_surveys"

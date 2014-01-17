@@ -18,9 +18,13 @@
 #  background_content_type :string(255)
 #  background_file_size    :integer
 #  background_updated_at   :datetime
+#  slug                    :string(255)
 #
 
 class Creator < ActiveRecord::Base
+	include PgSearch
+	multisearchable :against => [:username , :displayname, :bio]
+
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
