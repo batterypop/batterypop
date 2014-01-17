@@ -28,7 +28,7 @@
 
 class Show < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:title, :description, :slug]
+	multisearchable :against => [:title, :description]
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
