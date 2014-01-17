@@ -27,7 +27,7 @@
 
 class Episode < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:title, :description, :slug]
+	multisearchable :against => [:title, :description]
 
 
 	extend FriendlyId
@@ -69,9 +69,9 @@ class Episode < ActiveRecord::Base
 
 	scope :approved, -> {where(:approved => true)}
 
-	def self.default_scope
-		approved
-	end
+	# def self.default_scope
+	# 	approved
+	# end
 	
 
 
