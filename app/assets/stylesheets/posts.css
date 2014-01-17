@@ -64,6 +64,7 @@ li.category-title h4 a{
 
 h1.post-title{
 	margin: 0px;
+	color: #428BCA;
 }
 
 h4.post-date{
@@ -86,7 +87,7 @@ font-family: Varela, Arial, Helvetica, sans-serif !important;
 .post-body p, .post-body li {
 font-size: 15px;
 line-height: 140%;
-color: #3290c0;
+color: #428BCA;
 }
 
 
@@ -102,7 +103,7 @@ list-style-type: none;
 .list-number li .number {
 font-size: 32px;
 border-radius: 1000px;
-border: 2px solid #3290c0;
+border: 2px solid #428BCA;
 height: 40px;
 width: 40px;
 text-align: center;
@@ -131,8 +132,10 @@ display: block;
 background: url('/assets/channel-li-bg-neg-large.png') center top no-repeat;
 }
 .main.channel .container .row {
+/*
 margin: 0;
 padding: 0;
+*/
 }
 
 .channel div.vertical-slide {
