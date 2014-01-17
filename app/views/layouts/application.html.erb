@@ -2,24 +2,53 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <title><%= content_for?(:title) ? yield(:title) : "batteryPOP" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "BatteryPOP" %>">
 
     <meta name="description" CONTENT="We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!" />
     <meta name="keywords" CONTENT="kid's videos" />
 
+	<!--[if IE]>
 
-  <script type="text/javascript" src="//use.typekit.net/mte6yna.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<style>
 
+		@font-face{
+		    font-family: 'AnchorSemibold' !important;
+		    src: url('/assets/AnchorWebSemiBold.eot') !important;
+		}
+
+		@font-face{
+		    font-family: 'AnchorMedium' !important;
+		    src: url('/assets/AnchorWebMedium.eot') !important;
+		}
+
+	</style>
+		
+	<![endif]-->
 
     <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+	
+    <!--[if IE]>
+
+
+
+    <![endif]-->
+
+		
   </head>
-  <body>
-    
+	<!--[if !IE]><!--><body><!--<![endif]-->
+	<!--[if gt IE 9]><!--><body><!--<![endif]-->
+  
+	<!--[if lte IE 9]>
+  
+	<body class="ie">
+		
+	<![endif]-->
+
 	
 	<%= render 'layouts/header' %>
 	
@@ -29,6 +58,8 @@
 	
 
   <%= render 'layouts/footer' %>
-    
+
+	      
   </body>
+
 </html>

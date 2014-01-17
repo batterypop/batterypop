@@ -163,6 +163,9 @@ body .container{
 	margin-bottom: 0px;
 	padding: 0px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    zoom: 1;
+    filter:
+        progid:DXImageTransform.Microsoft.Shadow(color=#333333,direction=0,strength=1);
 }
 
 .bpop-slider{
