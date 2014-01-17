@@ -2,17 +2,34 @@
 #
 # Table name: shows
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :text
-#  approved    :boolean
-#  creator_id  :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#  single      :boolean
+#  id                      :integer          not null, primary key
+#  title                   :string(255)
+#  description             :text
+#  approved                :boolean
+#  creator_id              :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#  single                  :boolean
+#  slug                    :string(255)
+#  subtitle                :string(255)
+#  image_file_name         :string(255)
+#  image_content_type      :string(255)
+#  image_file_size         :integer
+#  image_updated_at        :datetime
+#  background_file_name    :string(255)
+#  background_content_type :string(255)
+#  background_file_size    :integer
+#  background_updated_at   :datetime
+#  promote                 :boolean
+#  skiplist                :boolean
+#  position                :integer
+#  age_range               :string(255)
 #
 
 class Show < ActiveRecord::Base
+	include PgSearch
+	multisearchable :against => [:title, :description, :slug]
+
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 	
@@ -46,6 +63,10 @@ class Show < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+
+def creator_name
+	return creator.username
+end
 
 
 

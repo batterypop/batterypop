@@ -14,9 +14,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def search
+    @query = params[:query]
+    @title = "Search Return: " + @query
+    @return = PgSearch.multisearch(@query)
+  end
+
   def contact
     @title = "Contact Us"
-     @active = "contact"
+    @active = "contact"
   end
   
   def about

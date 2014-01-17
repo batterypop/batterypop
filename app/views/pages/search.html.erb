@@ -1,0 +1,25 @@
+<div class="main">
+	<div class="container">
+	    <div class="content">
+	    	<div class="row">
+	    		<div class="col-md-12">
+
+					<h1><%= @title %></h1>
+					<% @return.inspect %>
+					<ul>
+					<% if(@return.size) %>
+						<% @return.each do | doc | %>
+							<% if !doc.nil? %>
+								<li><% doc.searchable.inspect %>
+								<%= doc.searchable_type %>:<%= link_to doc.searchable.title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
+									<%= doc.content.html_safe %>
+								</li>
+							<% end %>
+						<% end %>
+					<% end %>
+					</ul>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div>

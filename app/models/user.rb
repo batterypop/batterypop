@@ -24,9 +24,13 @@
 #  current_sign_in_ip       :string(255)
 #  last_sign_in_ip          :string(255)
 #  parent_id                :integer          default(0), not null
+#  slug                     :string(255)
 #
 
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:username , :slug]
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
