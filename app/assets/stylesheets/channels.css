@@ -1,6 +1,7 @@
 .channel .vertical-slide{
 	width: 195px !important;
-	background-color: transparent !important;
+	/* background-color: transparent !important; */
+	background-color: #ffffff !important; 
 }
 
 .channel .bx-wrapper{
