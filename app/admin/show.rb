@@ -2,11 +2,10 @@ ActiveAdmin.register Show do
 	menu :parent => "BatteryPOP Shows", :priority => 1
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
-		# @show = Show.friendly.find(params[:id])
+		#@show = Show.joins(:episodes).where("episodes.show_id" => :id).includes(:episodes).friendly.find(params[:id])
+		# @show = Show.merge(Episode.unscoped).friendly.find(params[:id])
 		# @show = Show.includes(:episodes).friendly.find(params[:id])
-		# @show = Show.friendly.find(params[:id]).includes(:episodes)
-		# @show = Show.joins(:episodes).friendly.find(params[:id])
-		@show = Show.joins(:episodes).where("episodes.show_id" => :id).includes(:episodes).friendly.find(params[:id])
+		@show = Show.unscoped.includes(:episodes).friendly.find(params[:id])
 	end
 	
 	# controller do

@@ -9,10 +9,19 @@
 					<ul>
 					<% if(@return.size) %>
 						<% @return.each do | doc | %>
-							<% if !doc.nil? %>
-								<li><% doc.searchable.inspect %>
-								<%= doc.searchable_type %>:<%= link_to doc.searchable.title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
-									<%= doc.content.html_safe %>
+							<% if !doc.nil? 
+								@search_title = ''
+							case doc.searchable_type 
+								when "User", "Creator", "Sponsor"
+									@search_title = doc.searchable.username
+								when "Show", "Episode", "Post"
+									@search_title = doc.searchable.title
+							end %>
+
+
+							
+							<%= doc.searchable_type %>:<%= link_to @search_title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
+								<%= doc.content.html_safe %>
 								</li>
 							<% end %>
 						<% end %>

@@ -29,7 +29,7 @@
 
 class User < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:username , :slug]
+  multisearchable :against => [:username ]
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
