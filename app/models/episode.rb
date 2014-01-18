@@ -61,6 +61,17 @@ class Episode < ActiveRecord::Base
 
 
 
+#search helpers
+	def link
+		return "/shows/" + self.show.slug + "/episodes/" + self.slug
+	end
+
+	def thumb
+		return (self.image(:thumb))
+	end
+
+
+
 ##  TODO NEED TO CLEAN UP BELOW
 # not the best way of doing this I think
 	# if (:current_user != :current_admin_user)

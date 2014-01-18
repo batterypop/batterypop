@@ -64,9 +64,19 @@ class Show < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 
+#search return helpers
+def link
+	return "/shows/" + self.slug
+end
+
+def thumb
+	return (self.image(:thumb))
+end
+
 def creator_name
 	return creator.username
 end
+
 
 
 

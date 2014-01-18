@@ -56,6 +56,19 @@ class Creator < ActiveRecord::Base
     return nil
   end
 
+#search helpers
+  def title
+  	return self.displayname
+  end
+
+	def link
+		return "/creators/" + self.slug
+	end
+
+	def thumb
+		return (self.image(:thumb))
+	end
+
 
   	private
 	

@@ -55,8 +55,24 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :username
 
+#search helpers
+  def title
+    self.username
+  end
 
 
+  def link
+    return "/users/" + self.slug
+  end
+
+  def thumb
+    unless(user.avatar.nil?) 
+        @img = (user.avatar.image(:thumb))
+    else
+        @img = ("missing.png")
+    end
+    return @img
+  end
 
   def index
     redirect_to :root

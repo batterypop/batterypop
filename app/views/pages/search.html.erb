@@ -1,34 +1,53 @@
-<div class="main">
+<div class="main show">
 	<div class="container">
-	    <div class="content">
-	    	<div class="row">
-	    		<div class="col-md-12">
+		<div class="content">
 
-					<h1><%= @title %></h1>
-					<% @return.inspect %>
-					<ul>
+			<div class="row show-bottom-section">
+
+				<h1><%= @title %></h1>
+
+				<div class="col-lg-12 ">
+				<!--search results area -->
+
 					<% if(@return.size) %>
-						<% @return.each do | doc | %>
-							<% if !doc.nil? 
-								@search_title = ''
-							case doc.searchable_type 
-								when "User", "Creator", "Sponsor"
-									@search_title = doc.searchable.username
-								when "Show", "Episode", "Post"
-									@search_title = doc.searchable.title
-							end %>
+						<h3><%= @return.size %> results found:</h3>
+							<div class="media-list list-group">
+								<% @return.each do | doc | %>
+				
+									<% if !doc.nil? %>
 
 
-							
-							<%= doc.searchable_type %>:<%= link_to @search_title, "../#{(doc.searchable.class).to_s.downcase!.pluralize}/#{doc.searchable.id}" %><br />
-								<%= doc.content.html_safe %>
-								</li>
-							<% end %>
-						<% end %>
+
+									 <%= render partial: "layouts/horizontal_slide", :locals => {
+						                
+						                :slide_title => "#{doc.searchable.title}".html_safe, 
+						                :slide_text => "#{doc.content}".html_safe, 
+						                :slide_image => image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
+						               
+										
+										:slide_url => doc.searchable.link
+
+						                } %>
+
+
+
+
+									<% end %>
+
+
+								<% end %>
+							</div>
+					<% else %>
+						<h3>No results found.</h3>
 					<% end %>
-					</ul>
+
+				<!-- end of search results area -->
 				</div>
+
+				<!-- <div class="col-lg-4 show-lower-right no-padding">
+				</div> -->
+
 			</div>
-	    </div>
+		</div>
 	</div>
 </div>
