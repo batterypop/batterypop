@@ -38,6 +38,16 @@ class Post < ActiveRecord::Base
   	scope :latest, lambda { |n| published.limit(n) }
 
 
+	#search return helpers
+	def link
+		return "/posts/" + self.slug
+	end
+
+	def thumb
+		return (self.featured_image(:thumb))
+	end
+
+
 
 	private
 	
