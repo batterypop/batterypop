@@ -38,7 +38,7 @@ ul.navbar-nav button,
 #menu a {
 	font-family:"AnchorMedium", Helvetica, Arial, sans-serif !important;
 	font-weight:normal;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 }
 
 h1,
