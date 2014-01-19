@@ -14,15 +14,15 @@
 							<div class="media-list list-group">
 								<% @return.each do | doc | %>
 				
-									<% if !doc.nil? %>
+									<% if !doc.nil?
 
-
+										@img = image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image hidden-xs', :width => '125') %>
 
 									 <%= render partial: "layouts/horizontal_slide", :locals => {
 						                
 						                :slide_title => "#{doc.searchable.title}".html_safe, 
 						                :slide_text => "#{doc.content}".html_safe, 
-						                :slide_image => image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
+						                :slide_image => @img, 
 						               
 										
 										:slide_url => doc.searchable.link

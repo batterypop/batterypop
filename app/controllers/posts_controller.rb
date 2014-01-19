@@ -3,11 +3,13 @@ class PostsController < ApplicationController
 
 
 	def index
-		@active = "posts"
+		@title = "bLOG"
+     	@active = "blog"
 		@posts = Post.published
 	end
 
 	def show
+		@title = "bLOG: " + @post.title
 		@active = "posts"
 		@posts = Post.published
 		@latest = Post.latest(5)

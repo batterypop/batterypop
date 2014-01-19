@@ -106,9 +106,10 @@
 				</li>
 			<% end %>
 
-			<li class="<% if(@active=='shows') %> active<% end %>"><a href="/shows">Shows</a></li>
-			<li class="<% if(@active=='channels') %> active<% end %>"><a href="/channels">Channels</a></li>
+			<li class="<% if(@active=='shows') %> active<% end %>"><a href="/shows">SHOWS</a></li>
+			<li class="<% if(@active=='channels') %> active<% end %>"><a href="/channels">CHANNELS</a></li>
 			<li class="<% if(@active=='shorts') %> active<% end %>"><a href="/shorts">Shorts</a></li>	
+			<li class="<% if(@active=='blog') %> active<% end %>"><a href="/posts">bLOG</a></li>	
 	    </ul>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
@@ -120,16 +121,19 @@
 <!-- nav non-mobile -->
 	<nav class="row nav fill bottom padding margin hidden-xs" role="navigation">
 
-		<div class="col-md-10 col-md-push-1 col-xs-12 ">
+		<div class="col-md-10  col-xs-12 ">
 			<ul id="menu" class=" clearfix">
-				<li class="col-sm-3 col-sm-offset-1 col-xs-4 col-xs-offset-0 shows <% if(@active=='shows') %> active<% end %>">
-					<p><a href="/shows">Shows</a></p>
+				<li class="col-sm-2 col-sm-offset-2  col-xs-2 col-xs-offset-0 shows <% if(@active=='shows') %> active<% end %>">
+					<p><a href="/shows">SHOWS</a></p>
 				</li>
-				<li class="col-sm-4 col-xs-4 channels <% if(@active=='channels') %> active <% end %>">
-					<p><a href="/channels">Channels</a></p>
+				<li class="col-sm-3 col-xs-3 channels <% if(@active=='channels') %> active <% end %>">
+					<p><a href="/channels">CHANNELS</a></p>
 				</li>
-				<li class="col-sm-3 col-xs-4 newest <% if(@active=='shorts') %> active <% end %>">
-					<p><a href="/shorts">Shorts</a></p>
+				<li class="col-sm-3 col-xs-3 newest <% if(@active=='shorts') %> active <% end %>">
+					<p><a href="/shorts">SHORTS</a></p>
+				</li>
+				<li class="col-sm-2 col-xs-2 blog <% if(@active=='blog') %> active <% end %>">
+					<p><a href="/posts">bLOG</a></p>
 				</li>
 			</ul>
 		</div>
