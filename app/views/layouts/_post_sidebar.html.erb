@@ -27,11 +27,11 @@
 	</div>
 </div>
 
+<!-- second grouping of sidebar -->
 
 
 
-
-
+<!-- 
 <div class="row home-carousel-prewrapper ">
 	<div class="home-carousel-wrapper ">
 		<div class="col-xs-12 home-carousel-header">
@@ -47,4 +47,59 @@
 			</ul>
 		</div>
 	</div>
-</div>
+</div> -->
+
+<!-- third grouping in sidebar -->
+
+
+	<div class="bpop-slider-header">
+		<div class="text-center home-most-popped-header">
+			<div id="home-mostpopped-next" class="col-xs-1 slider-next pull-right"></div>
+			<div id="home-mostpopped-prev" class="col-xs-1 slider-prev pull-left"></div>
+			<div class="col-xs-12 slider-title">
+				<h4 style="font-size: 28px;">Most Popped</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row bpop-slider home-most-popped-body">
+		<div class="col-lg-12 no-padding">
+			<ul class="bxslider home-most-popped">
+				<% Episode.mostpopped(10).each do |episode| %>
+					<li>
+
+						 <%= render partial: "layouts/vertical_slide", :locals => {
+							  	:slide_title => episode.title, 
+							  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+							  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
+
+							  	:slide_url => episode.link
+
+							  	} %>
+
+					
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.home-most-popped').bxSlider({
+		  	nextSelector: '#home-mostpopped-next',
+			prevSelector: '#home-mostpopped-prev',
+			minSlides: 1,
+			maxSlides: 5,
+			responsive: true,
+	  		touchEnabled: true,
+	  		slideMargin: 6,
+	  		slideWidth: 220,
+			moveSlides: 2,
+			pager: false
+	  	});
+	 
+	});
+</script>

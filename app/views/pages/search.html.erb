@@ -3,14 +3,16 @@
 		<div class="content">
 
 			<div class="row show-bottom-section">
+				
 
 				<h1><%= @title %></h1>
 
-				<div class="col-lg-12 ">
+				<div class="col-lg-12">
 				<!--search results area -->
 
 					<% if(@return.size) %>
 						<h3><%= @return.size %> results found:</h3>
+						<div class="col-lg-12 show-lower-left">
 							<div class="media-list list-group">
 								<% @return.each do | doc | %>
 				
@@ -37,16 +39,17 @@
 
 								<% end %>
 							</div>
+							</div>
 					<% else %>
 						<h3>No results found.</h3>
 					<% end %>
 
 				<!-- end of search results area -->
-				</div>
+				
 
 				<!-- <div class="col-lg-4 show-lower-right no-padding">
 				</div> -->
-
+				</div>
 			</div>
 		</div>
 	</div>
