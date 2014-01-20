@@ -32,7 +32,7 @@
 
 				<!-- sign in / sign up buttons -->
 					<div class="col-xs-6 col-md-6" id="signin">
-						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin" title="">Sign In</button>
+						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin">Sign In</button>
 					</div>
 					
 
@@ -58,18 +58,16 @@
 
 		
 		</div>
-	<!-- </div>
-
-	<div class="row fill"> -->
+	
 		<div class="col-xs-12 col-xs-offset-0 fill top padding margin left right" id="branding">
 			<div class="desktop hidden-xs">
-				<!--div style="height:0px; margin: 10px 0;" class="hidden-md hidden-lg"></div-->
 				<a href="/">
 					<%= image_tag "header-new-bg.png", :id=>'logoback' %>
 					<%= image_tag "header-new-logo.png", :id=>'logofront' %>
 				</a>
 			</div>
 		</div>
+
 	</div>
 
 
@@ -100,7 +98,7 @@
 				</li>
 			<% else %>
 				<li>
-					<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signIn" title="">Sign In</button>
+					<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin" title="">Sign In</button>
 					
 					<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
 				</li>
@@ -176,42 +174,7 @@
 	</div><!-- /.modal -->
 
 
-<!-- login modal for mobile -->
-	<div class="modal fade" id="modal_signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 class="modal-title">Sign In!</h3>
-				</div>
-				<div class="modal-body">
-					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-							<div><%= f.label :username %><br />
-							<%= f.text_field :username, :autofocus => true, :class =>"form-control" %></div>
 
-							<div><%= f.label :password %><br />
-							<%= f.password_field :password, :class =>"form-control" %></div>
-
-							<% if devise_mapping.rememberable? -%><br />
-							<div class="input-group">
-								<span class="input-group-addon">
-									<%= f.check_box :remember_me %> 
-								</span>
-								<%= f.label :remember_me, :class =>"form-control" %>
-							</div><br />
-
-
-							<% end -%>
-							<div class="modal-footer">
-							<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
-							</div>
-						<% end %>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-
-<!-- login modal for mobile -->
 
 
 <!-- signup modal -->
@@ -296,11 +259,6 @@ mixpanel.init("3325da767d660888c632734174539060");</script><!-- end Mixpanel -->
 <script type="text/javascript">
 $(function (){ 
 
-	$("#popover_login").popover({ 
-		html : true,
-		container: 'body', 
-		content: function(){return $("#login-popover-content").html();}
-	});  
 
 	$(':not(#anything)').on('click', function (e) { 
 	    $('.popover-link').each(function () {
