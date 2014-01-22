@@ -6,7 +6,13 @@
 
 
 
-<% @action = "<div class='follow-pop-wrap'>#{render :partial => 'shows/follow_show', :locals => {:show => @show}}#{render :partial => 'episodes/popunpop', :locals => {:episode => @episode}}</div>" %>
+<% @action = "<div class='pull-right breadcrumb-badge'><h4 class='font-white'>Pop Score</h4>
+		<span class='badge bpop-badge '>
+            <span id='episode-badge-vote-#{@episode.id}'>#{@episode.likes.size}</span>
+	            <div class='badge-box'>
+		            <div class='pop-button pop-episode pop_episode-#{@episode.id}'  data-episode='#{@episode.id}'>
+			            <div class='flash'></div>
+						            </div></div></span></div>" %>
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
@@ -15,9 +21,8 @@
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
-		
 		:crumb_action => @action.html_safe
-			 	} %>
+		 	} %>
 
 
 
@@ -72,6 +77,7 @@
 					</div>
 				</div>
 			</div>
+
 <!-- ADDING HIDDEN FOR SMALL DEVICES -->
 
 
@@ -101,13 +107,12 @@
 								<% Episode.nextup(@episode, 10).each do |most| %>
 									<li>
 									<%= render partial: "layouts/horizontal_slide", :locals => {
-											:slide_title => most.title, 
+											:slide_title => most.slide_title.html_safe, 
 										 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
 											:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
 											
-											#:slide_url => show_episode_path(most.show, Episode.friendly.find(most.id))
-
-											:slide_url =>  "/shows/"+most.show.slug + "/episodes/" + most.slug
+											
+											:slide_url =>  most.link
 										} 
 											%>
 									</li>
@@ -118,16 +123,29 @@
 
 				</div>
 			</div>
+
+			<!-- new voting block? -->
+			<div class="row vote-block no-margin no-padding follow-pop-wrap center" >
+				<div class="col-lg-6 pop-box">
+					<h4 class="font-white">Click To</h4>
+				   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+				   	<h4 class="font-white">POP</h4>
+				</div>
+				<div class="col-lg-6 follow-box">
+					<h4 class="font-white">Click To</h4>
+					<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
+					<h4>Follow</h4>
+				</div>
+			</div>
+
+			<!-- end new voting block -->
 		</div>
 	   </div>
 
 <!-- end mid section player / carousel -->
 
 
-<!-- :slide_url => episode_path(Episode.friendly.find(most.id))}
 
-:slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
-  -->
 
 
 <!-- lower listings :slide_badge => ep.likes.size, -->
@@ -153,10 +171,7 @@
 				                :slide_title => "#{ep.title} #{@duration}".html_safe, 
 				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
-				                # :slide_url => show_path(Episode.friendly.find(episode.id))
-				                #:slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
-								
-								:slide_url => "/shows/" + @show.slug + "/episodes/" + ep.slug
+								:slide_url =>  ep.link
 
 				                } %>
 		            <% end %>
@@ -351,7 +366,7 @@
 			slideMargin: 10,
 			slideWidth: 165,
 			minSlides: 3,
-			maxSlides: 4,
+			maxSlides: 3,
 			moveSlides: 1,
 			pager: false
 		  }

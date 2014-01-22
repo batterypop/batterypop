@@ -1,0 +1,20 @@
+.vote-block{
+	height: 79px !important; 
+	background-color: #FF0000; 
+	width: 300px;
+}
+
+.vote-block .pop-box{
+	background-color: #3376be;
+	height: 100%;
+}
+
+.vote-block .follow-box{
+	background-color: #1e4269;
+	height: inherit;
+}
+
+/* seems stupid but didn't want to keep using 'page-title' in non page-title places */
+.font-white{
+	color: #ffffff;
+}

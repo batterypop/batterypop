@@ -11,7 +11,7 @@ module ApplicationHelper
     if @title.nil?
       base_title
     else
-      "#{base_title} | #{@title}"
+      strip_tags("#{base_title} | #{@title}")
     end
   end
 
@@ -50,8 +50,6 @@ module ApplicationHelper
       ]
     end
 
-    def poo
-      'I smell poo'
-    end
+ 
 
 end

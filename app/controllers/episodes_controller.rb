@@ -15,11 +15,12 @@ class EpisodesController < ApplicationController
       @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
       @likers = @episode.votes.up.by_type(User).voters.compact
       # show / episode title unless short
-      if(@episode.show.single?)
-         @title = @episode.show.title
-      else
-        @title = @episode.show.title + ' : ' + @episode.title
-      end
+      # if(@episode.show.single?)
+      #    @title = @episode.show.title
+      # else
+      #   @title = @episode.show.title + ' : ' + @episode.title
+      # end
+      @title = @episode.slide_title
       if(!@episode.tag_list.empty?)
         @page_keywords = @episode.tag_list.to_s
       end
