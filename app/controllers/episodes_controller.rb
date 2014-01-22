@@ -14,6 +14,11 @@ class EpisodesController < ApplicationController
      @show = @episode.show
       @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
       @likers = @episode.votes.up.by_type(User).voters.compact
+
+      @title = @episode.show.title + ' : ' + @episode.title
+      if(!@episode.tag_list.empty?)
+        @page_keywords = @episode.tag_list.to_s
+      end
      render 'shows/show'
   end
 
@@ -46,45 +51,6 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id]);
   end
 
-  # POST /episodes
-  # POST /episodes.json
-  # def create
-  #   @episode = Episode.new(episode_params)
-
-  #   respond_to do |format|
-  #     if @episode.save
-  #       format.html { redirect_to @episode, notice: 'Episode was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @episode }
-  #     else
-  #       format.html { render action: 'new' }
-  #       format.json { render json: @episode.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # PATCH/PUT /episodes/1
-  # # PATCH/PUT /episodes/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @episode.update(episode_params)
-  #       format.html { redirect_to @episode, notice: 'Episode was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @episode.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /episodes/1
-  # # DELETE /episodes/1.json
-  # def destroy
-  #   @episode.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to episodes_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

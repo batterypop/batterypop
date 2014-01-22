@@ -3,11 +3,21 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <title><%= content_for?(:title) ? yield(:title) : "batteryPOP" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "BatteryPOP" %>">
+    <title><%= title %></title>
 
-    <meta name="description" CONTENT="We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!" />
-    <meta name="keywords" CONTENT="kid's videos" />
+
+ 	<meta name="robots" content="index, follow">
+	<meta name="revisit-after" content="5 days">
+    <meta name="description" content="We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!" />
+    <meta name="keywords" content="<%= meta_keywords %>" />
+
+
+<!-- kids, videos, annimation -->
+
+
+
+
+
 
 	<!--[if IE]>
 
@@ -51,7 +61,6 @@
 
 	
 	<%= render 'layouts/header' %>
-	
 	
 	
 	<%= yield %>

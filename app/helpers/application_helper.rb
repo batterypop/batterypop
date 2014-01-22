@@ -7,11 +7,20 @@ module ApplicationHelper
   end
 
   def title 
-    base_title = "BatteryPop"
+    base_title = "batteryPop"
     if @title.nil?
       base_title
     else
       "#{base_title} | #{@title}"
+    end
+  end
+
+  def meta_keywords
+    base_tags = "Kids, Videos, Cartoons, Music, Funny, Safe, Comedy, Shows, Animation, Parents, Children, Web series, Webisodes, Kids Videos, Videos for Kids, Kid Safe Videos"
+    if @page_keywords.nil?
+      base_tags
+    else
+      "#{base_tags}, #{@page_keywords}"
     end
   end
 
@@ -39,6 +48,10 @@ module ApplicationHelper
         '9-11',
         '11+'
       ]
+    end
+
+    def poo
+      'I smell poo'
     end
 
 end

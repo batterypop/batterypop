@@ -3,6 +3,7 @@ class ShowsController < ApplicationController
 
   def index
     @active="shows"
+    @title = "Shows"
     # @shows = Show.all
     @shows=Show.where(:approved => true, :single => false).order(:created_at).includes(:episodes)
   end
@@ -11,6 +12,7 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
      @active="shows"
+  
      # @f = @show.user_followers.random(5)
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
 
@@ -18,6 +20,11 @@ class ShowsController < ApplicationController
     
     if(@episode.nil?) 
        @episode = @show.episodes.first
+    end
+
+    @title = @show.title + ' : ' + @episode.title
+    if(!@episode.tag_list.empty?)
+        @page_keywords = 'blog,' +  @episode.tag_list.to_s
     end
     
     @likers = @episode.votes.up.by_type(User).voters.compact
@@ -55,94 +62,6 @@ class ShowsController < ApplicationController
   end
 
 
-
-
-  # def follow
-  #   if current_user
-  #     current_user.follow(@show)
-  #     # RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
-  #     flash[:notice] = "You are now following #{@show.title}."
-   
-  #   else
-  #      flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@show.title}.".html_safe
-  #   end
-  # end
-
-  # def unfollow
-  #   if current_user
-  #     current_user.stop_following(@show)
-  #     flash[:notice] = "You are no longer following #{@show.title}."
-  #   else
-  #     flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@show.title}.".html_safe
-  #   end
-  # end
-
-
-  # def create
-  #   @user = User.find(params[:user_id])
-  #   current_user.follow(@user)
-  # end
- 
-  # def destroy
-  #   @user = User.find(params[:user_id])
-  #   current_user.stop_following(@user)
-  # end
-
-
-
-
-   ## Scopes for calculating relative users
-  # scope :created_yesterday, lambda { where(:created_at.gte => (Time.now - 1.day)) }
-  # scope :created_last_week, lambda { where(:created_at.gte => (Time.now - 1.week)) }
-
-  # GET /shows/new
-  # def new
-  #   @show = Show.new
-  # end
-
-  # GET /shows/1/edit
-  # def edit
-  # end
-
-  # POST /shows
-  # POST /shows.json
-  # def create
-  #   @show = Show.new(show_params)
-
-  #   respond_to do |format|
-  #     if @show.save
-  #       format.html { redirect_to @show, notice: 'Show was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @show }
-  #     else
-  #       format.html { render action: 'new' }
-  #       format.json { render json: @show.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # PATCH/PUT /shows/1
-  # PATCH/PUT /shows/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @show.update(show_params)
-  #       format.html { redirect_to @show, notice: 'Show was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @show.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /shows/1
-  # DELETE /shows/1.json
-  # def destroy
-  #   @show.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to shows_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
 
 
