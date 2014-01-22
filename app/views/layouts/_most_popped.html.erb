@@ -16,13 +16,11 @@
 					<li>
 
 						 <%= render partial: "layouts/vertical_slide", :locals => {
-							  	:slide_title => episode.title, 
+							  	:slide_title => episode.slide_title.html_safe, 
 							  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
 							  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
 
-							  	# :slide_url => show_episode_path(episode.show, Episode.friendly.find(episode.id))
-
-							  	:slide_url => "/shows/" + episode.show.slug + "/episodes/" + episode.slug
+							  	:slide_url =>  episode.link
 
 							  	} %>
 

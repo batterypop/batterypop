@@ -2260,7 +2260,8 @@ img.user-image {
 
 /*	height:203px !important; with footer */
 /*	height:238px !important;  no footer */
-	height: 355px !important;
+	/*height: 355px !important; */  /* this had been without vote-block */
+	height: 285px !important;
 }
 
 .show-most-popped-footer {
@@ -2269,7 +2270,8 @@ img.user-image {
 
 div.show-popped-carousel{
 	/*height: 384px !important;*/
-	height: 509px !important;
+	/*height: 509px !important;*/  /* this was without vote-block */
+	height: 430px !important;
 }
 
 .show-most-popped-controls .center{

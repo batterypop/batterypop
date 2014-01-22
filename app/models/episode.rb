@@ -70,6 +70,14 @@ class Episode < ActiveRecord::Base
 		return (self.image(:thumb))
 	end
 
+# title function to return for slide: show + ep title or just show title if single
+	def slide_title
+		if(self.show.single?)
+			self.show.title
+		else
+			self.show.title + ' :<br />' + self.title
+		end
+	end
 
 
 ##  TODO NEED TO CLEAN UP BELOW
