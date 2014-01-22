@@ -3,6 +3,7 @@ class ChannelsController < ApplicationController
 
   def index
      @active="channels"
+     @title = "Channels"
     # @channels = Channel.all.order('position ASC')
     @channels = Channel.get_channels
   end
@@ -10,6 +11,7 @@ class ChannelsController < ApplicationController
   
   def show
      @active="channels"
+     @title = "Channel: " + @channel.title
      @viddler = Viddler::Client.new('1ftfdc24uw7rv3pxqv51')
      @viddler.authenticate! 'batterypop@gmail.com', 'purple2013'
 

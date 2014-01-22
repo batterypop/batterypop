@@ -12,7 +12,10 @@ class PostsController < ApplicationController
 		@title = "bLOG: " + @post.title
 		@active = "posts"
 		@posts = Post.published
-		@latest = Post.latest(5)
+		@latest = Post.published.latest(5)
+		if(!@post.tag_list.empty?)
+	        @page_keywords = @post.tag_list.to_s
+	    end
 	end
 
 	private
