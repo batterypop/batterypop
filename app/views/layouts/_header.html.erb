@@ -16,9 +16,6 @@
 			<!-- </div> -->
 		</div>
 
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#become_member">
-  Launch demo modal
-</button>
 		 <div class="col-sm-4 col-sm-offset-5 col-md-3 col-md-offset-6 col-xs-12 col-xs-offset-0 clearfix fill bottom padding margin" style="z-index:1;">
 			<div class="btn-login-group">
 				<% if user_signed_in? %>
@@ -62,9 +59,6 @@
 		</div>
 	
 
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#become_member">
-  Launch demo modal
-</button>
 
 		<div class="col-xs-12 col-xs-offset-0 fill top padding margin left right" id="branding">
 			<div class="desktop hidden-xs">
@@ -164,7 +158,7 @@
 
 <!-- signup modal -->
 
-	<div class="modal fade" id="become_member" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="become_member" tabindex="-1" role="dialog"  aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -185,7 +179,7 @@
 
 <!-- signup modal -->
 
-	<div class="modal fade" id="modal_legend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal_legend" tabindex="-1" role="dialog"  aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -215,11 +209,11 @@
 <!-- modal sign up -->
 <div class="row fill bottom margin padding"> <!-- This row is causing spacing issues when not in use -->
 
-	<div class="modal fade" id="modal_signup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal_signup" role="dialog" aria-hidden="true">
 		<%= render 'layouts/signup_modal' %>
 	</div>
 	
-	<div class="modal fade" id="modal_signin" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal_signin" role="dialog" aria-hidden="true">
 		<%= render 'layouts/signin_modal' %>
 	</div>
 
@@ -260,24 +254,4 @@ mixpanel.init("3325da767d660888c632734174539060");</script><!-- end Mixpanel -->
 
 
 
-<script type="text/javascript">
-$(function (){ 
-
-
-	$(':not(#anything)').on('click', function (e) { 
-	    $('.popover-link').each(function () {
-	        //the 'is' for buttons that trigger popups
-	        //the 'has' for icons and other elements within a button that triggers a popup
-	        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-	            $(this).popover('hide');
-	            return;
-	        }
-	    });
-	});
-
-
-});  
-
-
-</script> 
 

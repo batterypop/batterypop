@@ -1,37 +1,35 @@
-<% if !(local_assigns[:id].nil?) %><b><%= id %></b><% end %>
-
-
 <%   if(current_user.nil? && !episode.nil?) %>
 	<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
-		<a class="pop-button disabled" data-toggle="modal" href="#becomeMember"><div class="flash"></div></a>
+		<a class="pop-button disabled" data-toggle="modal" data-target="#become_member" href="#"><div class="flash"></div></a>
 	</div>
-<% end %>
+<% else %>
 
-<%	if(!current_user.nil? && !episode.nil?) %>
-	<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
-		<% if(current_user.voted_up_on? episode) %>
-			<%= link_to(unpop_episode_path(episode), 
-					:remote => true, 
-			        :class => 'pop-button followed', 
-			        # :content => "Click to unPOP #{episode.title}!", 
-					:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
-					) do %>
-					<div class="flash voted"></div>
+	<%	if(!current_user.nil? && !episode.nil?) %>
+		<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
+			<% if(current_user.voted_up_on? episode) %>
+				<%= link_to(unpop_episode_path(episode), 
+						:remote => true, 
+				        :class => 'pop-button followed', 
+				        # :content => "Click to unPOP #{episode.title}!", 
+						:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
+						) do %>
+						<div class="flash voted"></div>
 
-			<%end%>
+				<%end%>
 
-		<% else %>
+			<% else %>
 
-			<%= link_to(pop_episode_path(episode), 
-					:remote => true, 
-			        :class => 'pop-button', 
-			        # :content => "Click to POP this #{episode.title}!",
-					:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"} 
-					) do %>
-					<div class="flash"></div>
+				<%= link_to(pop_episode_path(episode), 
+						:remote => true, 
+				        :class => 'pop-button', 
+				        # :content => "Click to POP this #{episode.title}!",
+						:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"} 
+						) do %>
+						<div class="flash"></div>
+				<% end %>
+
 			<% end %>
 
-		<% end %>
-
-	</div>
+		</div>
+	<% end %>
 <% end %>

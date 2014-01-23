@@ -1,2 +1,2 @@
-$('#follow_show-<%=@show.id%>').replaceWith('<%= escape_javascript(render :partial => "shows/follow_show", :locals => {:show => @show}) %>');
- $('.pop-button').popover();
+$('.follow_show-<%=@show.id%>').replaceWith('<%= escape_javascript(render :partial => "shows/follow_show", :locals => {:show => @show}) %>');
+$('.pop-button').popover();

@@ -1,27 +1,30 @@
-<div id="follow_show-<%= show.id %>" class="follow-show">
-<% if current_user.nil? %>
-    <a class="pop-button disabled" href="#become_member" data-toggle="modal" ><div class="plus" ></div></a>
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_legend">
-  Launch demo modal
-</button>
-<% else %>
+<div  class="follow-show follow_show-<%= show.id %>">
 
-  <% if current_user.following?(show) %>
-    <%= link_to(unfollow_show_path(show), 
-        :remote => true, 
-        :class => 'pop-button followed', 
-        :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{show.title}!'</b>"} 
-        ) do %>
-		<div class="plus voted"></div>
+    <% if current_user.nil? %>
+        <div class="pop-button"  data-toggle="modal" data-target="#become_member" >
+        <a class="pop-button disabled" data-toggle="modal" data-target="#become_member" href="#">
+        <div class="plus" ></div>
+        </a>
+        </div>
+
+    <% else %>
+
+      <% if current_user.following?(show) %>
+        <%= link_to(unfollow_show_path(show), 
+            :remote => true, 
+            :class => 'pop-button followed', 
+            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{show.title}!'</b>"} 
+            ) do %>
+    		<div class="plus voted"></div>
+        <% end %>
+      <% else %>
+        <%= link_to(follow_show_path(show),
+            :remote => true, 
+            :class => 'pop-button', 
+            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{show.title}!'</b>"} 
+            ) do %>
+    		<div class="plus"></div>
+        <%end%>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= link_to(follow_show_path(show),
-        :remote => true, 
-        :class => 'pop-button', 
-        :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{show.title}!'</b>"} 
-        ) do %>
-		<div class="plus"></div>
-    <%end%>
-  <% end %>
-<% end %>
 </div>

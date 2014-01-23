@@ -36,7 +36,7 @@
 										:slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
 										#:slide_url => show_path(Show.friendly.find(show.id))
 										
-										:slide_url => "/shows/" + show.slug 
+										:slide_url => show.link
 
 										} %>
 
