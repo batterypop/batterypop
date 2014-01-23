@@ -4,12 +4,21 @@
 	width: 300px;
 }
 
+.vote-prompt{
+	text-align: center;
+	color: #ffffff !important;
+	width: 100% !important;
+	text-transform: uppercase;
+}
+
 .vote-block .pop-box{
+	padding-top: 5px;
 	background-color: #3376be;
 	height: 100%;
 }
 
 .vote-block .follow-box{
+	padding-top: 5px;
 	background-color: #1e4269;
 	height: inherit;
 }

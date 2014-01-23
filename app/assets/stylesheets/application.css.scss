@@ -294,6 +294,19 @@ h4.media-heading{
 	background-color: #e90006 !important;
 	width: 50px !important;
 }
+
+/* THE FOLLOWING IS ADDED FOR SHOW PAGE BIG BOX VOTE SCORE */
+.bpop-badge-large{
+	color: #FFFFFF !important;
+	border-radius: 0px !important;
+	font-size: 24px;
+	background-color: #e90006 !important;
+	width: 80px !important;
+	position: absolute;
+	bottom: 0;
+	right: 0px;
+}
+
 .bpop-badge img{
 	position: relative;
 	display: block;

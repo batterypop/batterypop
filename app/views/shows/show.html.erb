@@ -6,13 +6,8 @@
 
 
 
-<% @action = "<div class='pull-right breadcrumb-badge'><h4 class='font-white'>Pop Score</h4>
-		<span class='badge bpop-badge '>
-            <span id='episode-badge-vote-#{@episode.id}'>#{@episode.likes.size}</span>
-	            <div class='badge-box'>
-		            <div class='pop-button pop-episode pop_episode-#{@episode.id}'  data-episode='#{@episode.id}'>
-			            <div class='flash'></div>
-						            </div></div></span></div>" %>
+<% @action = "<span class='badge bpop-badge-large '>
+            <span id='episode-badge-vote-#{@episode.id}'>#{@episode.likes.size}</span> </span>" %>
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
@@ -126,15 +121,15 @@
 
 			<!-- new voting block? -->
 			<div class="row vote-block no-margin no-padding follow-pop-wrap center" >
-				<div class="col-lg-6 pop-box">
-					<h4 class="font-white">Click To</h4>
+				<div class="col-lg-6 pop-box center">
+					<div class="vote-prompt">Click To</div>
 				   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-				   	<h4 class="font-white">POP</h4>
+				   	<div class="vote-prompt">POP</div>
 				</div>
-				<div class="col-lg-6 follow-box">
-					<h4 class="font-white">Click To</h4>
+				<div class="col-lg-6 follow-box center">
+					<div class="vote-prompt">Click To</div>
 					<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-					<h4>Follow</h4>
+					<div class="vote-prompt">Follow</div>
 				</div>
 			</div>
 
