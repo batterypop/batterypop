@@ -13,7 +13,7 @@
 
 			<div class="row"><!-- row 1 -->
 				<div class="col-lg-12" >
-					<%= f.label "Create Your User Name:" %><br />
+					<label>Create Your User Name:</label><br />
 					
 				</div>
 
@@ -22,7 +22,7 @@
 			<div class="row">
 				
 				<div class="col-lg-6 col-xs-6">
-					<%= f.label "Pick Adjective:" %><br />
+					<label>Pick Adjective:</label><br />
 
 				
 
@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="col-lg-6 col-xs-6">
-					<%= f.label "Pick Noun:" %><br />
+					<label>Pick Noun:</label><br />
 					<%= select_tag  "username_suffix", ('<option value="">Pick Noun!</option>' +options_from_collection_for_select(UsernameWord.where(:kind => 'noun').order( "word ASC"), :word, :word)).html_safe, :class =>"controls form-control"  %>
 				</div>
 
@@ -53,12 +53,12 @@
 <!-- security question -->
 			<div class="row">
 				<div class="col-lg-12 control-group">
-					<%= f.label "Security Question:" %><br />
+					<label>Security Question:</label><br />
 					<%= f.select  :security_question_id, ('<option value="">Please Select</option>' +options_from_collection_for_select(SecurityQuestion.all, :id, :name)).html_safe, {}, {:class =>"controls form-control"}  %>
 				</div>
 				
 				<div class="col-lg-12">
-					<%= f.label "Your Answer:" %><br />
+					<label>Your Answer:</label><br />
 					<%= f.text_field :security_question_answer,  :placeholder => "Enter security answer.", :class =>"form-control" %>
 				</div>
 			</div>
@@ -67,16 +67,9 @@
 
 			<div class="row"> <!-- row 4 -->
 				<div class="col-lg-6">
-					<!-- <div class="control-group">
-						<%= f.label "When's Your Birthday?" %><br />
-						<%= f.date_select :birthday, 
-									{:prompt => { :day => 'Select day', :month => 'Select month', 
-									:year => 'Select year' }, :date_separator => '<p></p>', 
-									:order => [:month, :day, :year], :start_year => Time.now.year, 
-									:end_year => Time.now.year-80}, :class => "controls form-control" %>
-					</div> -->
+					
 					<div class="control-group">
-						<%= f.label "When were you born?" %><br />
+						<label>When were you born?</label><br />
 						<%= select_tag  "season", ('<option value="">Which Season?</option>' +options_for_select([ "Spring", "Summer", "Autumn", "Winter" ])).html_safe, :class =>"controls form-control"  %>
 						<p></p>
 						 <%= select_year(0, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => 'birth_year', :prompt => 'What Year?'}, {:class => "controls form-control"}) %>
@@ -87,7 +80,7 @@
 
 				<div class="col-lg-6">
 					<div class="avatar-slider-parent">
-						<%= f.label "Choose your avatar!" %><br />
+						<label>Choose your avatar!</label><br />
 						<% @avatars = get_avatars %>
 						<%= f.hidden_field :avatar_id, :id => 'avatar_id', :value => @avatars.first.id %>
 						<div id="avatar-next" class="col-xs-1 slider-next pull-right"></div>
@@ -127,12 +120,12 @@
 
 		 <div class="modal-footer"> 
 		 	<%= f.submit "Sign up", class: "btn btn-primary " %>
-			<% end %>
+			
 			<div class="pull-left">
 			 <%= render "devise/shared/links" %>
 			 </div>
 		 </div>
-		
+		<% end %>
 	</div>
 </div>
 

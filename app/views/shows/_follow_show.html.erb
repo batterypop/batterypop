@@ -1,6 +1,9 @@
 <div id="follow_show-<%= show.id %>" class="follow-show">
 <% if current_user.nil? %>
-    <a class="pop-button disabled" data-toggle="modal" href="#becomeMember"><div class="plus"></div></a>
+    <a class="pop-button disabled" href="#become_member" data-toggle="modal" ><div class="plus" ></div></a>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_legend">
+  Launch demo modal
+</button>
 <% else %>
 
   <% if current_user.following?(show) %>
