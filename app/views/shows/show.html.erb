@@ -119,7 +119,7 @@
 			</div>
 
 			<!-- new voting block? -->
-			<div class="row vote-block no-margin no-padding follow-pop-wrap center" >
+			<div class="row vote-block no-margin no-padding follow-pop-wrap center hidden-xs hidden-sm" >
 				<div class="col-lg-6 pop-box center">
 					<div class="vote-prompt">Click To</div>
 				   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
@@ -130,6 +130,7 @@
 					<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 					<div class="vote-prompt">Follow</div>
 				</div>
+				
 			</div>
 
 			<!-- end new voting block -->
