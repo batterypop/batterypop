@@ -12,7 +12,7 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
      @active="shows"
-  
+     @show_follow_status = 'hello'
      # @f = @show.user_followers.random(5)
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
 
@@ -24,8 +24,15 @@ class ShowsController < ApplicationController
 
     @title = @show.title + ' : ' + @episode.title
     if(!@episode.tag_list.empty?)
-        @page_keywords = 'blog,' +  @episode.tag_list.to_s
+        @page_keywords =  @episode.tag_list.to_s
     end
+
+    # if current user following
+   if !current_user.nil? && current_user.following?(@show)
+       @show_follow_status = "You are following"
+   else
+       @show_follow_status = "status"
+   end
     
     @likers = @episode.votes.up.by_type(User).voters.compact
     # @voters = Votes.where(votable: @episode).random(3).map(&:voter)
@@ -34,17 +41,23 @@ class ShowsController < ApplicationController
 
 
   def follow
+    unless current_user.nil?
       current_user.follow(@show)
-      respond_to do |format|
-        format.js {render :action=>"follow"}
-      end
+      @show_follow_status = "You are following"
+      # respond_to do |format|
+      #   format.js {render :action=>"follow"}
+      # end
+    end
   end
 
   def unfollow
-    current_user.stop_following(@show)
-    respond_to do |format|
-      format.js {render :action=>"unfollow"}
+    unless current_user.nil?
+      current_user.stop_following(@show)
+       @show_follow_status = ""
     end
+    # respond_to do |format|
+    #   format.js {render :action=>"unfollow"}
+    # end
   end
 
 

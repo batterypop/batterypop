@@ -9,7 +9,7 @@
 
     <% else %>
 
-      <% if current_user.following?(show) %>
+      <% if current_user.following?(show) %> 
         <%= link_to(unfollow_show_path(show), 
             :remote => true, 
             :class => 'pop-button followed', 

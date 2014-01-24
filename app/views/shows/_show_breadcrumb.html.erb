@@ -1,0 +1,15 @@
+<h1>HI THERE</h1>
+<% if !current_user.nil? && current_user.following?(show)
+	@stub = "<div class='following-prompt'>You are following</div>" 
+else
+	@stub = ''
+
+ end %>
+
+<%= render partial: "layouts/breadcrumb", :locals => {
+		:crumb_class => " hidden-xs hidden-sm",
+		:crumb_title => "<div class='col-xs-12'>#{image_tag(show.image(:large), :alt => show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ show.title }</h3>#{@stub}</div>".html_safe, 
+	 	
+	 	:crumb_text => "<span><h3>By #{ show.creator.displayname}</h3>#{ show.description }<br /><span id='episode-title'>#{age_range}Watching: #{episode.title}</span></span>".html_safe,
+		:crumb_action => action.html_safe
+		 	} %>
