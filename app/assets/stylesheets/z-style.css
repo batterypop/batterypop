@@ -747,7 +747,7 @@ ul.home-side-carousel li img {
 	line-height:28px;
 	margin:14px 0;
 	padding:0;
-	color:#428bca;
+	color:$blue;
 }
 
 
@@ -841,7 +841,7 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 
 .bpop-breadcrumb .bpop-show-description {
-	background:#428BCA;
+	background:$blue;
 }
 
 
