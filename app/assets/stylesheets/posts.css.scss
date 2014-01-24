@@ -1,3 +1,5 @@
+@import "colors";
+
 /* posts and categories */
 
 
@@ -9,7 +11,13 @@
 .post-frame{
 	/*float: left;*/
 	width: 100%;
+	img {
+	max-width: 600px;
+	}
+
 }
+
+
 
 .post-sidebar .home-carousel-prewrapper{
 	margin-left: 0px !important;
@@ -64,7 +72,7 @@ li.category-title h4 a{
 
 h1.post-title{
 	margin: 0px;
-	color: #428BCA;
+	color: $blue;
 }
 
 h4.post-date{
@@ -87,7 +95,7 @@ font-family: Varela, Arial, Helvetica, sans-serif !important;
 .post-body p, .post-body li {
 font-size: 15px;
 line-height: 140%;
-color: #428BCA;
+color: $blue;
 }
 
 
@@ -103,7 +111,7 @@ list-style-type: none;
 .list-number li .number {
 font-size: 32px;
 border-radius: 1000px;
-border: 2px solid #428BCA;
+border: 2px solid $blue;
 height: 40px;
 width: 40px;
 text-align: center;
