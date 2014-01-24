@@ -1,11 +1,11 @@
-<div  class="follow-show follow_show-<%= show.id %>">
+<div  class="pop-button follow-show follow_show-<%= show.id %>">
 
     <% if current_user.nil? %>
-        <div class="pop-button"  data-toggle="modal" data-target="#become_member" >
+
         <a class="pop-button disabled" data-toggle="modal" data-target="#become_member" href="#">
         <div class="plus" ></div>
         </a>
-        </div>
+   
 
     <% else %>
 
