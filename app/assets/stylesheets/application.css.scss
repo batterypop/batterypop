@@ -22,7 +22,7 @@
 @import "twitter/bootstrap";
 
 
-
+@import "colors";
 
 
 .nav-toggle{
@@ -96,13 +96,13 @@ body .container{
 	border-style: none;
 	border-bottom: 1px solid aqua;
 	border-top: 4px solid #ececec;
-	background-color: #428BCA;
+	background-color: $blue;
 	padding: 0px;
 }
 
 
 .bpop-show-title{
-	color: #428BCA;
+	color: $blue;
 	padding-left: 150px;
 	background-color: #FFFFFF;
 	height: 100%;
@@ -111,7 +111,7 @@ body .container{
 .bpop-show-description{
 	padding: 10px 10px 10px 30px;
 	color: #ffffff;
-	background-color: #428BCA;
+	background-color: $blue;
 	height: 100px;
 }
 
