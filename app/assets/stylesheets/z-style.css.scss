@@ -305,14 +305,22 @@ ul.navbar-nav li button {
 */
 
 #legend {
-	padding: 2px 5px 0;
-	margin-top:10px;
+	display: inline-block;
+	left: 15px;
+	float: left;
+	padding: 5px 10px;
+	margin: 0;
+
 	-webkit-box-shadow: 0px 0px 10px #aaa;
 	-moz-box-shadow: 0px 0px 10px #aaa;
 	-o-box-shadow: 0px 0px 10px #aaa;
 	box-shadow: 0px 0px 10px #aaa;
 	position: relative;
 	z-index: 400;
+}
+
+#legend:hover {
+	cursor: pointer;
 }
 
 #legend h4{
