@@ -45,9 +45,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-		<% if((!current_user && !@cookie)) %>
-			$("#welcomeModal").modal('show');
-		<% end %>
+
+		console.log("before home featured");
 
 	  $('.home-featured').bxSlider({
 	  		mode: 'fade',
@@ -60,6 +59,9 @@
 	  		pager: true
 		  }
 	  	);
+
+	  console.log("after home featured");
+
 	  
 	  $('.home-side-carousel').bxSlider({
 		  	nextSelector: '#home-carousel-down',
@@ -92,6 +94,10 @@
 			moveSlides: 2,
 			pager: false
 	  	});
+
+		<% if((!current_user && !@cookie)) %>
+			$("#welcomeModal").modal('show');
+		<% end %>
 
 	});
 </script>
