@@ -47,6 +47,9 @@ class Post < ActiveRecord::Base
 		return (self.featured_image(:thumb))
 	end
 
+	def search_valid?
+		valid?
+	end
 
 
 	private

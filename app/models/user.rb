@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     return @img
   end
 
+  def search_valid?
+    valid?
+  end
+
   def index
     redirect_to :root
   end

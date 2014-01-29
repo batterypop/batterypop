@@ -69,6 +69,10 @@ class Creator < ActiveRecord::Base
 		return (self.image(:thumb))
 	end
 
+	def search_valid?
+		valid?
+	end
+
 
   	private
 	
