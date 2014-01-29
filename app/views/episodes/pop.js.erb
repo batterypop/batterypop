@@ -1,5 +1,5 @@
 $('.follow-pop-wrap .pop_episode-<%=@episode.id%>').replaceWith('<%= escape_javascript(render :partial => "episodes/popunpop", :locals => {:episode => @episode}) %>');
-$('.bpop-badge .episode-badge-vote-<%=@episode.id%>').html('<%= @episode.likes.size %>');
-$('.bpop-badge-large .episode-badge-vote-<%=@episode.id%>').html('+<%= @episode.likes.size %>');
+$('.bpop-badge .episode-badge-vote-<%=@episode.id%>').html('<%= @episode.pops %>');
+$('.bpop-badge-large .episode-badge-vote-<%=@episode.id%>').html('+<%= @episode.pops %>');
 $('.badge-box .pop_episode-<%=@episode.id%>').replaceWith('<%= escape_javascript(render :partial => "episodes/popunpop", :locals => {:episode => @episode}) %>');
  // $('.pop-button').popover();

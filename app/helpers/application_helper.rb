@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def title 
-    base_title = "batteryPop"
+    base_title = "batteryPOP"
     if @title.nil?
       base_title
     else
