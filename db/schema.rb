@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112050614) do
+ActiveRecord::Schema.define(version: 20140128212831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20140112050614) do
     t.integer  "episode"
     t.string   "duration"
     t.string   "age_range"
+    t.integer  "chicago"
   end
 
   add_index "episodes", ["cached_votes_down"], name: "index_episodes_on_cached_votes_down", using: :btree

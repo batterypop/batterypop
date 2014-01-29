@@ -54,15 +54,23 @@ class Episode < ActiveRecord::Base
 
 
 	def self.mostpopped(lim=nil	)
-		# @episodes = Episode.where(:approved => true).order('cached_votes_up DESC').limit(lim)
-		# @episodes = Episode.where(:approved => true).joins(:show).where(:approved => true).order('cached_votes_up DESC').limit(lim)
-		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim).includes(:show)
+		# following is only TRUE votes
+		#return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim).includes(:show)
+		# following is chicago votes AND true votes
+		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up + chicago').limit(lim).includes(:show)
 	end
 
+# popping / liking with chicago voting
+def pops
+	#return (self.likes.size + Integer(self.chicago.to_i))
+	return (self.cached_votes_up + Integer(self.chicago.to_i))
+end
 
 
 #search helpers
 	def link
+		puts self.inspect
+
 		return "/shows/" + self.show.slug + "/episodes/" + self.slug
 	end
 
