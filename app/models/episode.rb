@@ -78,6 +78,11 @@ end
 		return (self.image(:thumb))
 	end
 
+	def search_valid?
+		!!(approved && self.show && self.show.search_valid?)
+	end
+
+
 # title function to return for slide: show + ep title or just show title if single
 	def slide_title
 		if(self.show.single?)

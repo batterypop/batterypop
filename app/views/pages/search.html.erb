@@ -16,7 +16,7 @@
 							<div class="media-list list-group">
 								<% @return.each do | doc | %>
 				
-									<% if !doc.nil?
+									<% if !doc.nil?  && doc.search_valid?
 
 										@img = image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image hidden-xs', :width => '125') %>
 

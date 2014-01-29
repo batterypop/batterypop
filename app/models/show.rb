@@ -73,6 +73,10 @@ def thumb
 	return (self.image(:thumb))
 end
 
+def search_valid?
+	!!(approved)
+end
+
 def creator_name
 	return creator.username
 end
