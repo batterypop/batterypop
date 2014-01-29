@@ -42,11 +42,7 @@ class EpisodesController < ApplicationController
     #    @episode.liked_by current_user
     # end
     if current_user.nil?
-      puts ""
-      puts "NO USER"
       @episode.chicago = Integer(@episode.chicago.to_i) + 1
-      puts "#{ @episode.chicago}"
-      puts ""
       @episode.save
     else
        @episode.liked_by current_user
