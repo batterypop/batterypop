@@ -1,15 +1,15 @@
 <div class="row home-carousel-prewrapper ">
 	<div class="home-carousel-wrapper ">
 		<div class="col-xs-12 home-carousel-header">
-			<!-- <div id="home-carousel-down" class="slider-down pull-right col-xs-2 col-offset-xs-10"></div>
-			<div id="home-carousel-up" class="slider-up pull-left col-xs-2"></div> -->
+			<div id="home-carousel-down" class="slider-down pull-right col-xs-2 col-offset-xs-10"></div>
+					<div id="home-carousel-up" class="slider-up pull-left col-xs-2"></div>
 			<div class="col-xs-12 text-center slider-title">
 				<h4>Latest Posts</h4>
 			</div>
 		</div>
 		<div class="col-xs-12 home-carousel-slider">
 			<ul class="bxslider home-side-carousel">
-				<% Post.latest(10).each do |post| %>
+				<% @posts.each do |post| %>
 				<li>
 				<%= render partial: "layouts/horizontal_slide", :locals => {
 										:slide_title => post.title, 
@@ -102,4 +102,20 @@
 	  	});
 	 
 	});
+
+
+	 $('.home-side-carousel').bxSlider({
+		  	nextSelector: '#home-carousel-down',
+			prevSelector: '#home-carousel-up',
+			nextText: 'DOWN', prevText: 'UP',
+	  		responsive: true,
+	  		touchEnabled: true,
+	  		infiniteLoop: false,
+	  		mode: 'vertical',
+	  		preventDefaultSwipeY: true,
+			slideMargin: 10,
+			minSlides: 3,
+			moveSlides: 1,
+			pager: false
+	  	});
 </script>
