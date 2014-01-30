@@ -57,7 +57,7 @@ class Episode < ActiveRecord::Base
 		# following is only TRUE votes
 		#return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim).includes(:show)
 		# following is chicago votes AND true votes
-		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up + chicago').limit(lim).includes(:show)
+		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).where("episodes.chicago is not NULL").order('(cached_votes_up + chicago) DESC').limit(lim).includes(:show)
 	end
 
 # popping / liking with chicago voting
