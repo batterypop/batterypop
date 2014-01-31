@@ -15,7 +15,7 @@
 		:crumb_class => " hidden-xs hidden-sm",
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
-	 	:crumb_text => "<span><h3>By #{ @show.creator.displayname}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
+	 	:crumb_text => "<span><h3>By <a href='#{@show.creator.link}'>#{@show.creator.displayname}</a></h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
 		:crumb_action => @action.html_safe
 		 	} %>
 

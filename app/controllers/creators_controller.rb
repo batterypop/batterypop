@@ -6,11 +6,12 @@ class CreatorsController<ApplicationController
 	end
 
 	def show
+		@title = "Creator: #{@creator.displayname}"
 	end
 
 	private
 	def set_creator
-		@creator = Creator.friendly.find(params[:id])
+		@creator = Creator.includes(:shows).friendly.find(params[:id])
 	end
 	def creator_params
 		params.require(:creator).permit(:displayname, :username)
