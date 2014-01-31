@@ -36,7 +36,10 @@ module ApplicationHelper
   		@devise_mapping ||= Devise.mappings[:user]
   	end
 
-
+    def colors
+     ["aqua","purple","gold","orangered","green","steelblue","red","mint"]
+    end
+    
     def get_avatars
       Avatar.all
     end

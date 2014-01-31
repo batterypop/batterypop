@@ -5,14 +5,14 @@ class ShowsController < ApplicationController
     @active="shows"
     @title = "Shows"
     # @shows = Show.all
-    @shows=Show.where(:approved => true, :single => false).order(:created_at).includes(:episodes)
+    @shows=Show.series.order(:created_at).includes(:episodes)
   end
 
   # GET /shows/1
   # GET /shows/1.json
   def show
      @active="shows"
-     @show_follow_status = 'hello'
+     @show_follow_status = ''
      # @f = @show.user_followers.random(5)
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
 
