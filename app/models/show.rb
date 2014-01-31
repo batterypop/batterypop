@@ -121,7 +121,7 @@ scope :skiplistfalse, ->{where(:skiplist => false)}
 scope :showlist, -> {where(:skiplist => [false, nil])}
 
 scope :shorts,  -> {where(:single => true, :approved => true)}
-
+scope :series, -> {where(:single => [false, nil], :approved => true)}
 
 
 
