@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128212831) do
+ActiveRecord::Schema.define(version: 20140130163017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,8 @@ ActiveRecord::Schema.define(version: 20140128212831) do
     t.datetime "updated_at"
     t.integer  "position"
     t.boolean  "active"
+    t.integer  "owner_id"
+    t.integer  "seconds"
   end
 
   create_table "follows", force: true do |t|
@@ -191,6 +193,26 @@ ActiveRecord::Schema.define(version: 20140128212831) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "friends", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "description"
+    t.string   "sponsor"
+    t.string   "primary_color"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "background_image_file_name"
+    t.string   "background_image_content_type"
+    t.integer  "background_image_file_size"
+    t.datetime "background_image_updated_at"
+    t.boolean  "features_autoplay"
+    t.string   "features_exit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notifications", force: true do |t|
     t.string   "type"
