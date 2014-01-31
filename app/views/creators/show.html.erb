@@ -3,12 +3,192 @@
     <div class="content">
 
 
+<!-- breadcrumb -->
 
+<% @action = "" %>
 <%= render partial: "layouts/breadcrumb", :locals => {
-        :crumb_title => "#{}<h3>#{ @creator.displayname }</h3>".html_safe, 
-        :crumb_text => "#{ @creator.bio }".html_safe,
-        :crumb_action =>  image_tag(@creator.image, :alt => @creator.displayname, :class => "img-responsive thumbnail shadow", :width => '125') } %>
+		:crumb_class => " hidden-xs hidden-sm",
+		:crumb_title => "<div class='col-xs-12'>#{image_tag(@creator.image(:large), :alt => @creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @creator.displayname }</h3><div class='show-follow-status'></div></div>".html_safe, 
+	 	
+	 	:crumb_text => "<span>#{ @creator.bio }<br /></span>".html_safe,
+		:crumb_action => @action.html_safe
+		 	} %>
+
+<!-- end breadcrumb -->
+
+
+<!-- bio area -->
+<!-- end bio area -->
+
+<!-- shorts slider -->
+<% if @creator.shows.shorts.count %>
+
+	<!-- page header; break off? -->
+
+			<div class="row">
+				<div class="col-xs-12 two-tone-banner text-center shorts-page-header red fill top bottom left right margin padding">
+					<div class="vert-middle-wrap">
+						<div class="vert-middle">
+							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+						</div>
+						<div class="vert-middle category-info darkred">
+							<h1 class="page-title">
+								SHORTS
+							</h1>
+							<h4 class="page-title hidden-xs">
+								Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!
+							</h4>
+						</div>
+						<div class="vert-middle">
+							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- page header end; break off? -->
+
+
+
+
+	<div class="row">
+		<% @creator.shows.shorts.each do |short| %>
+
+			<div class="col-md-3 col-sm-4 col-xs-6 show-episodes">
+
+				<%= render partial: "layouts/vertical_slide", :locals => {
+					:slide_title => short.title, 
+					:slide_text => short.description.html_safe, 
+					:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+					:slide_url => "/shows/" + short.slug 
+					} %>
+			</div>
+
+		<% end %>
+	</div>
+
+
+<% end %>
+<!-- end shorts slider -->
+
+
+
+<!-- show list -->
+<% if @creator.shows.series.count %>
+	<!-- page header; break off? -->
+		<div class="row">
+			<div class="col-xs-12 two-tone-banner text-center show-page-header aqua fill top bottom left right margin padding">
+				<div class="vert-middle-wrap">
+					<div class="vert-middle">
+						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+					</div>
+					<div class="vert-middle category-info turquoise">
+						<h1 class="page-title">
+							SHOWS
+						</h1>
+						<h4 class="page-title hidden-xs ">
+							The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends.
+						</h4>
+					</div>
+					<div class="vert-middle">
+						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- page header end; break off? -->
+
+
+
+
+	<% pos =0 %>
+	<% @creator.shows.series.each do |show| %>
+	<%  
+	  if(pos >= (colors.count-1)) 
+	    pos =0 
+	  else
+	    pos = pos + 1
+	  end
+	%>
+
+
+	<!-- lower listings -->
+	  <div class="row show-name-episodes-section <%= colors[pos] %>">
+	     <a href="/shows/<%= show.slug %>">
+	      <div class="col-xs-12 col-lg-6 col-md-7 show-name">
+				<div class="show-metadata">
+					<div class="show-icon-border hidden-xs">
+						<div class="show-icon-container <%= colors[pos] %>">
+							<%= image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object show-episode-image", :width => '160') %>
+						</div>
+					</div>
+
+					<h2><%= "#{show.title}" %></h2>
+	            	<%= show.description.html_safe %>
+					<!--
+					Voting partial 
+					-->
+					<div class="flash-plus-voting">
+	           <%= render :partial => "shows/follow_show", :locals => {:show => show} %>
+					</div>
+				</div>
+	 	  </div>
+	  </a>
+	      <div class="col-xs-12 col-lg-6 col-md-5 show-episodes">
+
+	<!-- episode slider -->
+
+	            <ul class="bxslider show-episodes-slider">
+	                <% show.episodes.each do |episode| %>
+	                  <li>
+	                    <%= render partial: "layouts/vertical_slide", :locals => {
+	                      :slide_title => episode.title, 
+	                      :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+	                      :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+	                      
+	                      :slide_url => "/shows/" + show.slug + "/episodes/" + episode.slug
+
+	                      } %>
+	                  </li>
+	                <% end %>
+	            </ul>
+
+
+
+	      </div>
+	    </div>
+
+	<!-- end lower listings -->
+	<% end %>
+<% end %>
+
+
+<!-- end show list -->
+
+
+
 
 		</div>
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-episodes-slider').bxSlider({
+        minSlides: 2,
+        maxSlides: 4,
+        slideWidth: 170,
+        responsive: true,
+        touchEnabled: true,
+        slideMargin: 10,
+        moveSlides: 2,
+        infiniteLoop: false,
+        hideControlOnEnd: true,
+        slideMargin: 0, 
+        pager: false
+      });
+
+  });
+</script>
