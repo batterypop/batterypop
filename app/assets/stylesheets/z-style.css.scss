@@ -851,9 +851,24 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 
 .bpop-breadcrumb .bpop-show-description {
-	background:$blue;
+	background: $blue;
+		a {
+			&:link, &:visited {
+				color: $lite;
+			}
+			&:hover {
+				
+				color: lighten($blue, 40%);
+			}
+		}
+		br {
+			display: none;
+		}
 }
 
+.bpop-breadcrumb .bpop-show-action {
+	background: $blue;
+}
 
 /*
 ---------------------------
