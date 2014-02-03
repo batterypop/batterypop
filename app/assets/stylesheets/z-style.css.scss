@@ -852,13 +852,19 @@ div.bpop-breadcrumb > div.bpop-show-title:after{
 
 .bpop-breadcrumb .bpop-show-description {
 	background: $blue;
+		h4 {
+
+			margin-top: 0;
+		}
 		a {
 			&:link, &:visited {
 				color: $lite;
+				text-decoration: underline;
 			}
 			&:hover {
 				
 				color: lighten($blue, 40%);
+				text-decoration: none;
 			}
 		}
 		br {
