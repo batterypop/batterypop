@@ -73,10 +73,22 @@ class Creator < ActiveRecord::Base
 		valid?
 	end
 
+	# creator vote / following lookup
+	def total_show_followers
+		self.shows.inject(0){|sum, i| sum + i.followers.size}
+	end
+
+	def total_show_pops
+		self.shows.inject(0){|sum, i| sum + i.total_episode_pops}
+	end
+
+
+	def episodes_total_votes
+	end
+
+
 
   	private
-	
-
 	def slug_candidates
 		[
 			displayname,

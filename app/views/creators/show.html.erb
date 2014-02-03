@@ -10,7 +10,7 @@
 		:crumb_class => " hidden-xs hidden-sm",
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@creator.image(:large), :alt => @creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @creator.displayname }</h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
-	 	:crumb_text => "<span>#{ @creator.bio }<br /></span>".html_safe,
+	 	:crumb_text => "<span>#{ @creator.bio }<br /><div class='totals'><div class='vote-totals'><h4>Total Show Pops: #{@creator.total_show_pops}</h4></div><div class='follow-totals'><h4>Total Show Follows: #{@creator.total_show_followers}</h4></div></div></span>".html_safe,
 		:crumb_action => @action.html_safe
 		 	} %>
 
@@ -21,7 +21,7 @@
 <!-- end bio area -->
 
 <!-- shorts slider -->
-<% if @creator.shows.shorts.count %>
+<% if !@creator.shows.shorts.empty? %>
 
 	<!-- page header; break off? -->
 
@@ -74,7 +74,7 @@
 
 
 <!-- show list -->
-<% if @creator.shows.series.count %>
+<% if !@creator.shows.series.empty? %>
 	<!-- page header; break off? -->
 		<div class="row">
 			<div class="col-xs-12 two-tone-banner text-center show-page-header aqua fill top bottom left right margin padding">
