@@ -81,7 +81,10 @@ def creator_name
 	return creator.username
 end
 
-
+# total show episodes pops
+def total_episode_pops
+	self.episodes.inject(0){|sum, ep| sum + ep.pops}
+end
 
 
 def self.created_yesterday
