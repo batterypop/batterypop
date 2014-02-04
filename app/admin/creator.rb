@@ -14,6 +14,8 @@ ActiveAdmin.register Creator do
   		f.input :bio, :as => :rich, :config => { :width => '76%', :height => '400px' }
   		f.input :image, hint: "Image to be displayed in show list and header."
   		f.input :background, hint: "Background image if page is to be branded."
+      f.input :hidden, :as => :boolean, :label => "Hide Creator page: select if creator page should not be shown."
+
   	end
   	f.buttons
   end
