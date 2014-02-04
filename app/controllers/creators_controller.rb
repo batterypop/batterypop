@@ -6,7 +6,11 @@ class CreatorsController<ApplicationController
 	end
 
 	def show
-		@title = "Creator: #{@creator.displayname}"
+		if !@creator.hidden?
+			@title = "Creator: #{@creator.displayname}"
+		else
+			redirect_to "/"
+		end
 	end
 
 	private
