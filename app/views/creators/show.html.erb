@@ -20,56 +20,6 @@
 <!-- bio area -->
 <!-- end bio area -->
 
-<!-- shorts slider -->
-<% if !@creator.shows.shorts.empty? %>
-
-	<!-- page header; break off? -->
-
-			<div class="row">
-				<div class="col-xs-12 two-tone-banner text-center shorts-page-header red fill top bottom left right margin padding">
-					<div class="vert-middle-wrap">
-						<div class="vert-middle">
-							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-						</div>
-						<div class="vert-middle category-info darkred">
-							<h1 class="page-title">
-								SHORTS
-							</h1>
-							<h4 class="page-title hidden-xs">
-								Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!
-							</h4>
-						</div>
-						<div class="vert-middle">
-							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-						</div>
-					</div>
-				</div>
-			</div>
-
-<!-- page header end; break off? -->
-
-
-
-
-	<div class="row">
-		<% @creator.shows.shorts.each do |short| %>
-
-			<div class="col-md-3 col-sm-4 col-xs-6 show-episodes">
-
-				<%= render partial: "layouts/vertical_slide", :locals => {
-					:slide_title => short.title, 
-					:slide_text => short.description.html_safe, 
-					:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
-					:slide_url => "/shows/" + short.slug 
-					} %>
-			</div>
-
-		<% end %>
-	</div>
-
-
-<% end %>
-<!-- end shorts slider -->
 
 
 
@@ -164,6 +114,59 @@
 
 
 <!-- end show list -->
+
+
+<!-- shorts slider -->
+<% if !@creator.shows.shorts.empty? %>
+
+	<!-- page header; break off? -->
+
+			<div class="row">
+				<div class="col-xs-12 two-tone-banner text-center shorts-page-header red fill top bottom left right margin padding">
+					<div class="vert-middle-wrap">
+						<div class="vert-middle">
+							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+						</div>
+						<div class="vert-middle category-info darkred">
+							<h1 class="page-title">
+								SHORTS
+							</h1>
+							<h4 class="page-title hidden-xs">
+								Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!
+							</h4>
+						</div>
+						<div class="vert-middle">
+							<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- page header end; break off? -->
+
+
+
+
+	<div class="row">
+		<% @creator.shows.shorts.each do |short| %>
+
+			<div class="col-md-3 col-sm-4 col-xs-6 show-episodes">
+
+				<%= render partial: "layouts/vertical_slide", :locals => {
+					:slide_title => short.title, 
+					:slide_text => short.description.html_safe, 
+					:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+					:slide_url => "/shows/" + short.slug 
+					} %>
+			</div>
+
+		<% end %>
+	</div>
+
+
+<% end %>
+<!-- end shorts slider -->
+
 
 
 
