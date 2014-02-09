@@ -27,7 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'ZenTest', '>= 4.9.5'
+gem 'ZenTest', '~> 4.9.5'
 
 
 gem 'paperclip',  '>= 3.4.0'  # image upload
