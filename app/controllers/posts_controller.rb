@@ -6,6 +6,14 @@ class PostsController < ApplicationController
 		@title = "bLOG"
      	@active = "blog"
 		@posts = Post.published
+		@feed_title = "batteryPOP bLOG"
+		@blog_description = "From hot topics to the coolest trends, the batteryPOP blog has a few words for everyone!"
+		@updated = @posts.first.updated_at unless @posts.empty?
+		respond_to do |format|
+			format.html
+			format.atom {render :layout => false}
+			format.rss {render :layout => false }
+		end
 	end
 
 	def show
@@ -17,6 +25,8 @@ class PostsController < ApplicationController
 	        @page_keywords = @post.tag_list.to_s
 	    end
 	end
+
+	
 
 	private
 	def set_post
