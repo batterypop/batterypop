@@ -6,7 +6,7 @@ ActiveAdmin.register Embed do
 			f.input :provider, :label => "Provider", :required => true
 			f.input :code, :label => "iFrame Embed", :required => true
 		end
-		f.buttons
+		f.actions
 	end
 
 

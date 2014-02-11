@@ -7,7 +7,7 @@ ActiveAdmin.register Avatar do
       f.input :name,  hint: "Only used internally."
       f.input :image, hint: "Avatars should be uploaded as 300x300 PNG's"
     end
-    f.buttons
+    f.actions
   end
 
   # index do      :as => :rich_picker, :config => { :style => 'width: 400px !important;' }

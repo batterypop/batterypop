@@ -11,7 +11,7 @@ ActiveAdmin.register Category do
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :parent, :as => :select, :member_label => :title
 		end
-		f.buttons
+		f.actions
 	end
 
 

@@ -17,7 +17,7 @@ ActiveAdmin.register Creator do
       f.input :hidden, :as => :boolean, :label => "Hide Creator page: select if creator page should not be shown."
 
   	end
-  	f.buttons
+  	f.actions
   end
 
   index do
