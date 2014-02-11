@@ -12,7 +12,7 @@ ActiveAdmin.register Feature do
 			f.input :content,  :as => :rich, :allow_embeds => true
 			f.input :active, :label => "Active?", :hint => "Select for active, unselect to hide."
 		end
-		f.buttons
+		f.actions
 	end
 
 

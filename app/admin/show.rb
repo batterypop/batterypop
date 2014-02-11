@@ -58,7 +58,7 @@ ActiveAdmin.register Show do
 		 f.inputs "Show Channels" do
 			f.input :channels, :as => :check_boxes, :input_html => { :multiple => true } 
 		end
-		f.buttons
+		f.actions
 	end
 
 	index do

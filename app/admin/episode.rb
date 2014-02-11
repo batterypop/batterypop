@@ -33,7 +33,7 @@ ActiveAdmin.register Episode do
 			e.input :embed, :as => :select, :member_label => :provider, :required => true
 			e.input :video, :label => "Video Code"
 		end
-		e.buttons
+		e.actions
 	end
 
 end

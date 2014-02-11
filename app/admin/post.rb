@@ -15,7 +15,7 @@ ActiveAdmin.register Post do
 		f.inputs "Categories" do
 			f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
 		end
-		f.buttons
+		f.actions
 	end
 
 
