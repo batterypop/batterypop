@@ -63,7 +63,10 @@ class Show < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+	validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/
 
+	  
 #search return helpers
 def link
 	return "/shows/" + self.slug

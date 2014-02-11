@@ -52,6 +52,7 @@ class Episode < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 	def self.mostpopped(lim=nil	)
 		# following is only TRUE votes

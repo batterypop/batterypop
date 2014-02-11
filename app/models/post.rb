@@ -32,6 +32,8 @@ class Post < ActiveRecord::Base
 	    bucket: S3_BUCKET,
 	    default_url: "/assets/missing.png"
 
+	validates_attachment_content_type :featured_image, :content_type => /\Aimage\/.*\Z/
+
 
     default_scope :order => "created_at DESC"
     scope :published, lambda { where("created_at <= ?", Time.zone.now) }

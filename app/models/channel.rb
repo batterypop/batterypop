@@ -34,6 +34,8 @@ class Channel < ActiveRecord::Base
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/avatars/:id/:attachment/:style/:filename",
 	    bucket: S3_BUCKET
+
+	validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
 	    
 
 
