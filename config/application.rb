@@ -32,5 +32,9 @@ module Batterypopv2
     # config.assets.initialize_on_precompile = false
     
     config.action_controller.include_all_helpers = true
+
+    config.paperclip_defaults = {
+        
+    }
   end
 end

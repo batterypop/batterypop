@@ -1,24 +1,8 @@
 ActiveAdmin.register Episode do
 	menu :parent => "BatteryPOP Shows"
-	navigation_menu :show
 
-	
-	controller do
-		def active_admin_collection
-			puts "^^^^^^^^^^^^"
-			puts "episode admin collection"
-			puts "^^^^^^^^^^^"
-			Show.unscoped{super}
-		end
-		def resource
-			puts "^^^^^^^^^^^^"
-			puts "episode   resourse"
-			puts "^^^^^^^^^^^"
-			Show.unscoped{super}
-		end
-	end
 
-	belongs_to :show
+	# belongs_to :show
 
      before_filter :only => [:show, :destroy, :edit, :update] do
 		@episode = Episode.friendly.find(params[:id])

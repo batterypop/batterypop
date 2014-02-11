@@ -24,6 +24,8 @@ class Avatar < ActiveRecord::Base
     bucket: S3_BUCKET,
     default_url: "/assets/missing.png"
 
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
   validates_presence_of :name
   validates_presence_of :image
   validates_attachment_presence :image
