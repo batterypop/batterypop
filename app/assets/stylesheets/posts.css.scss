@@ -12,7 +12,7 @@
 	/*float: left;*/
 	width: 100%;
 	img {
-	max-width: 600px;
+	/* max-width: 600px; */
 	}
 
 }
@@ -152,4 +152,9 @@ width: 100% !important;
 
 .post-sidebar .row:last-child {
 margin-bottom: 0 !important;
+}
+
+
+.text-lower{
+	text-transform: none;
 }
