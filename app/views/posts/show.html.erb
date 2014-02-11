@@ -15,7 +15,7 @@
 						
 						<h1 class="post-title"><%= @post.title %></h1>
 						<h4 class="post-date"><%= @post.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
-						<%= image_tag(@post.featured_image(:original), :alt => @post.title, :class => "img-responsive post-featured-image", :width => '100%') %>
+						<%= image_tag(@post.featured_image(:large), :alt => @post.title, :class => "img-responsive post-featured-image", :width => '100%') %>
 
 
 							<div class="post-body"><%= @post.body.html_safe %></div>
