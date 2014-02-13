@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-	menu :parent => "BatteryPOP Home", :priority => 3
+	menu :parent => "bPOP Pages", :priority => 3, :label => 'bLOG Categories'
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 		@category = Category.friendly.find(params[:id])

@@ -1,5 +1,5 @@
 ActiveAdmin.register Embed do
-	menu :parent => "BatteryPOP Shows"
+	menu :parent => "bPOP Shows"
 
 	form do |f|
 		f.inputs "Video Embed Details" do

@@ -12,8 +12,12 @@ ActiveAdmin.register Creator do
   		f.input :username, hint: "Unique sign in name, no spaces.", :required => true
   		f.input :displayname, hint: "Creator name that displays on page.", :label => "Display Name", :required => true
   		f.input :bio, :as => :rich, :config => { :width => '76%', :height => '400px' }
-  		f.input :image, hint: "Image to be displayed in show list and header."
-  		f.input :background, hint: "Background image if page is to be branded."
+      f.input :image,  :hint => f.object.background.present? \
+        ? f.template.image_tag(f.object.image.url(:thumb))
+        : f.template.content_tag(:span, 'No image as yet.')
+      f.input :background,  :hint => f.object.background.present? \
+        ? f.template.image_tag(f.object.background.url(:thumb))
+        : f.template.content_tag(:span, 'No background as yet.')
       f.input :hidden, :as => :boolean, :label => "Hide Creator page: select if creator page should not be shown."
 
   	end
