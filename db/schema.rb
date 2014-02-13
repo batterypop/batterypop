@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204075725) do
+ActiveRecord::Schema.define(version: 20140213063513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20140204075725) do
     t.boolean  "active"
     t.integer  "owner_id"
     t.integer  "seconds"
+    t.string   "owner_type"
   end
 
   create_table "follows", force: true do |t|
@@ -181,6 +182,16 @@ ActiveRecord::Schema.define(version: 20140204075725) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "friend_episodes", force: true do |t|
+    t.integer  "friend_id"
+    t.integer  "episode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friend_episodes", ["episode_id"], name: "index_friend_episodes_on_episode_id", using: :btree
+  add_index "friend_episodes", ["friend_id"], name: "index_friend_episodes_on_friend_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -205,10 +216,10 @@ ActiveRecord::Schema.define(version: 20140204075725) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "background_image_file_name"
-    t.string   "background_image_content_type"
-    t.integer  "background_image_file_size"
-    t.datetime "background_image_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
     t.boolean  "features_autoplay"
     t.string   "features_exit"
     t.datetime "created_at"

@@ -93,16 +93,16 @@ class Creator < ActiveRecord::Base
   	private
 	def slug_candidates
 		[
-			displayname,
-			[displayname, 2],
-			[displayname, 3],
-			[displayname, 4],
-			[displayname, 5],
-			[displayname, 6],
-			[displayname, 7],
-			[displayname, 8],
-			[displayname, 9],
-			[displayname,  Time.now.strftime('%M:%S') ]
+			:displayname,
+			[:displayname, 2],
+			[:displayname, 3],
+			[:displayname, 4],
+			[:displayname, 5],
+			[:displayname, 6],
+			[:displayname, 7],
+			[:displayname, 8],
+			[:displayname, 9],
+			[:displayname,  Time.now.strftime('%M:%S') ]
 		]
 	end
 

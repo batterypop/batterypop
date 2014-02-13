@@ -129,16 +129,16 @@ class User < ActiveRecord::Base
   private 
   def slug_candidates
     [
-      username,
-      [username, 2],
-      [username, 3],
-      [username, 4],
-      [username, 5],
-      [username, 6],
-      [username, 7],
-      [username, 8],
-      [username, 9],
-      [username,  Time.now.strftime('%M:%S') ]
+      :username,
+      [:username, 2],
+      [:username, 3],
+      [:username, 4],
+      [:username, 5],
+      [:username, 6],
+      [:username, 7],
+      [:username, 8],
+      [:username, 9],
+      [:username,  Time.now.strftime('%M:%S') ]
     ]
   end
 

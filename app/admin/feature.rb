@@ -10,6 +10,7 @@ ActiveAdmin.register Feature do
 			f.input :position, :label => "Slide Position"
 			f.input :title,  :required => true 
 			f.input :content,  :as => :rich, :allow_embeds => true
+			f.input :seconds, :label => "Time", :hint => "Time in milliseconds."
 			f.input :active, :label => "Active?", :hint => "Select for active, unselect to hide."
 		end
 		f.actions
