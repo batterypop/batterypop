@@ -28,16 +28,16 @@ class Category < ActiveRecord::Base
 
 	def slug_candidates
 		[
-			title,
-			[title, 2],
-			[title, 3],
-			[title, 4],
-			[title, 5],
-			[title, 6],
-			[title, 7],
-			[title, 8],
-			[title, 9],
-			[title,  Time.now.strftime('%M:%S') ]
+			:title,
+			[:title, 2],
+			[:title, 3],
+			[:title, 4],
+			[:title, 5],
+			[:title, 6],
+			[:title, 7],
+			[:title, 8],
+			[:title, 9],
+			[:title,  Time.now.strftime('%M:%S') ]
 		]		
 	end
 end

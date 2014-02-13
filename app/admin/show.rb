@@ -24,7 +24,7 @@ ActiveAdmin.register Show do
 
 	form  do |f|  
 		f.inputs "Show Details" do
-			f.input :creator, :as => :select, :member_label => :displayname, :required => true
+			f.input :creator, :class => 'chosen', :as => :select, :member_label => :displayname, :required => true
 			f.input :title, :label => "Show Title", :required => true 
 			f.input :subtitle, :label => "Show Subtitle", :required => true 
 			f.input :image, hint: "Main show image."
@@ -36,8 +36,8 @@ ActiveAdmin.register Show do
 			f.input :skiplist, :label => "Hide from Show List.", :hint => "Select this to hide from the show carousel."
 			f.input :promote, :label => "Promote on Home Page?.", :hint => "Select this to add to the bottom Promoted carousel."
 			f.input :approved, :label => "BatteryPOP approved."
-			f.input :created_at
-			f.input :updated_at
+			f.input :created_at, :as => :datetime_select
+			f.input :updated_at, :as => :datetime_select
 		end
 		 f.inputs "Episodes" do
 		 	f.has_many :episodes, :allow_destroy => true do |e|
@@ -66,10 +66,11 @@ ActiveAdmin.register Show do
 		column :creator, :as => :select, :member_label => :displayname
 		# column (:image) {link_to image_tag(@show.image(:thumb)), admin_show_path(@show)}
 		column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
-		column :title
+		column  :title
 		column (:description) { |foobar| raw(foobar.description) }
 		column :single, :as => :check_box
 		column :approved
+
 		default_actions
 	end
 
