@@ -1,5 +1,5 @@
 ActiveAdmin.register Channel do
-	menu :parent => "BatteryPOP Shows"
+	menu :parent => "bPOP Shows"
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 		@channel = Channel.friendly.find(params[:id])

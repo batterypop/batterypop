@@ -1,5 +1,5 @@
 ActiveAdmin.register Episode do
-	menu :parent => "BatteryPOP Shows"
+	menu :parent => "bPOP Shows"
 
 
 	# belongs_to :show

@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-	menu :parent => "BatteryPOP Home", :priority => 2
+	menu :parent => "bPOP Pages", :priority => 2, :label => 'bLOG'
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 		@post = Post.friendly.find(params[:id])

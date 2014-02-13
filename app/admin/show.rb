@@ -1,5 +1,5 @@
 ActiveAdmin.register Show do
-	menu :parent => "BatteryPOP Shows", :priority => 1
+	menu :parent => "bPOP Shows", :priority => 1
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 		#@show = Show.joins(:episodes).where("episodes.show_id" => :id).includes(:episodes).friendly.find(params[:id])
@@ -27,8 +27,12 @@ ActiveAdmin.register Show do
 			f.input :creator, :class => 'chosen', :as => :select, :member_label => :displayname, :required => true
 			f.input :title, :label => "Show Title", :required => true 
 			f.input :subtitle, :label => "Show Subtitle", :required => true 
-			f.input :image, hint: "Main show image."
-			f.input :background, hint: "Main show page background if overridden."
+			f.input :image,  :hint => f.object.image.present? \
+		        ? f.template.image_tag(f.object.image.url(:thumb))
+		        : f.template.content_tag(:span, 'Main show image.')
+			f.input :background,  :hint => f.object.background.present? \
+		        ? f.template.image_tag(f.object.background.url(:thumb))
+		        : f.template.content_tag(:span, 'No background as yet.')
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 			f.input :position, :label => "Show Position"
 			f.input :age_range, :as => :select, :collection => get_age_ranges
@@ -46,7 +50,9 @@ ActiveAdmin.register Show do
 				e.input :description, :as => :rich
 				e.input :duration, :label => "Duration"
 				e.input :age_range, :as => :select, :collection => get_age_ranges
-				e.input :image
+ 				e.input :image,  :hint => e.object.image.present? \
+			        ? e.template.image_tag(e.object.image.url(:thumb))
+			        : e.template.content_tag(:span, 'No background as yet.')
 				e.input :embed, :as => :select, :member_label => :provider, :required => true
 				e.input :video, :label => "Video Code"
 				e.input :approved, :label => "BatteryPOP approved."
