@@ -20,7 +20,7 @@ ActiveAdmin.register Friend do
       f.input :background,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.background.url(:thumb))
         : f.template.content_tag(:span, 'No background as yet.')
-      f.input :episodes, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :title, :through => :featured_episodes
+      f.input :episodes, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
     end
     f.inputs "Featured" do
       f.input :features_autoplay, :label => "Features should autoplay?"
