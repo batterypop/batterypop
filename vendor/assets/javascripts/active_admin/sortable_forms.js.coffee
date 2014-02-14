@@ -12,3 +12,5 @@ $ ->
     $(this).sortable
       items: "fieldset"
       update: (event, ui) -> reindexSort context, inputName
+
+      alert "sortable forms!"

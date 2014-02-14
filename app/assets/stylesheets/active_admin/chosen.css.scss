@@ -4,11 +4,11 @@ body.active_admin {
     // padding-top: 5px;
 
     li.input {
-      // padding: 5px 10px;
-      // padding-left: 10px;
+      padding: 5px 10px;
+      padding-left: 10px;
 
       select {
-        // width: 70%;
+         width: 70%;
       }
 
       &.phone, &.email, &.string, &.number, &.text, &.password, &.datepicker {
@@ -41,7 +41,7 @@ body.active_admin {
 
 // mine
 .chosen-container{
-  width: auto !important;
+  // width: 100% !important;
     .chosen-single{
         padding-right: 20px;
     }

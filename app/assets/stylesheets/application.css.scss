@@ -11,18 +11,17 @@
 
  *= require_self
  *= require bxslider
- * require tree .
+ *= require_tree .
  *= require jquery.ui.all
- 
  */
-@import "channels.css";
-@import "grid.css";
-@import "jquery-ui.css";
-@import "rich/editor";
-@import "posts.css";
-@import "shows.css";
-@import "z-style.css";
+// @import "channels.css";
+// @import "grid.css";
+// @import "jquery-ui.css";
+// @import "rich/editor";
+// @import "shows.css";
 
+// @import "posts.css";
+// @import "z-style.css";
 // change colors
 /*$link-color: red;*/
 
@@ -32,18 +31,16 @@
 
 @import "colors";
 
-
-@font-face {
-  font-family: 'Varela';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Varela'), url(http://themes.googleusercontent.com/static/fonts/varela/v5/maB5vWJo0EAVzvHPjBkLM-vvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+@font-face{
+    font-family: 'AnchorSemibold';
+    src: url('/assets/AnchorWebSemiBold.eot') format('embedded-opentype'), 
+         url('/assets/AnchorWebSemiBold.woff') format('woff');
 }
-@font-face {
-  font-family: 'Roboto Slab';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(http://themes.googleusercontent.com/static/fonts/robotoslab/v3/dazS1PrQQuCxC3iOAJFEJRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+
+@font-face{
+    font-family: 'AnchorMedium';
+    src: url('/assets/AnchorWebMedium.eot') format('embedded-opentype'),
+         url('/assets/AnchorWebMedium.woff') format('woff');
 }
 
 
