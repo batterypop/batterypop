@@ -96,6 +96,14 @@ end
 		end
 	end
 
+	def chosen_title
+		if self.show.present?
+			self.show.title + ' : ' + self.title
+		else
+			self.title
+		end
+	end
+
 
 ##  TODO NEED TO CLEAN UP BELOW
 # not the best way of doing this I think
