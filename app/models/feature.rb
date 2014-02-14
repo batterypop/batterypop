@@ -26,5 +26,6 @@ class Feature < ActiveRecord::Base
 	end
 
 	scope :active, -> {where(:active => true).order(:position)}
+	scope :homepage, -> {where(:owner_type => nil)}
 
 end
