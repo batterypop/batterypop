@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/bastiaanterhorst/rich.git
-  revision: ff14a9f91658df0ff46028c5b510c13b9ac6a2b0
+  revision: 02cec78fac2d78499222c07cf25a28a2a7257962
   specs:
     rich (1.4.7)
       jquery-rails
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 60d8be97ec2c29a871f55bd28e00ca9ec9257028
+  revision: 1eca642f8e4d3619a669a4af588be8359373c30f
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 2aedb1bf795947f189183fbd1e479719463f6395
+  revision: 93bdee264030f4387b467dc637c63e9d4cee1cf6
   specs:
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -150,7 +150,7 @@ GEM
     autotest-fsevent (0.2.9)
       sys-uname
     autotest-growl (0.2.16)
-    aws-sdk (1.33.0)
+    aws-sdk (1.34.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
