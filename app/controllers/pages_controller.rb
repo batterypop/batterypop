@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   
   def home
     @title = "Home"
-    @features = Feature.active
+    @features = Feature.homepage.active
     @showlist = Show.showlist.approved.shuffle
     @popped = Episode.mostpopped(10) 
     @promoted = Show.where(:promote => true)
