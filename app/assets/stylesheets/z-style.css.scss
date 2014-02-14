@@ -1999,6 +1999,7 @@ a.disabled>.plus {
 
 
 .small-header-bg {
+	z-index: 1;
 	position: absolute;
 	top: -20px;
 	height:71px;
@@ -2237,6 +2238,26 @@ img.user-image {
 	-o-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	-moz-box-shadow: 2px 0 2px rgba(0,0,0,0.1);
 	box-shadow: 2px 0 2px rgba(0,0,0,0.1);
+}
+
+.show-liked-slider div.vertical-slide {
+background-position: center -25px;
+
+	.caption {
+	margin-top: 20px;
+	}
+}
+
+.show-liked-slider {
+	a {
+	display: block;
+	}
+	ul {
+	float: left;
+	}
+	.bx-wrapper .bx-viewport {
+	left: 0;
+	}
 }
 
 
