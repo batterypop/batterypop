@@ -2,7 +2,7 @@ ActiveAdmin.register Friend do
 
   menu :parent => "bPOP Pages", :priority => 4, :label => "Sponsored"
 
-  config.filters = false
+  # config.filters = false
 
   before_filter :only => [:show, :destroy, :edit, :update] do
     @friend = Friend.friendly.find(params[:id])
@@ -24,6 +24,7 @@ ActiveAdmin.register Friend do
     end
     f.inputs "Featured" do
       f.input :features_autoplay, :label => "Features should autoplay?"
+      f.input :features_exit, :label => "Features exit on end?", :as => :select, :collection => ['automatic', 'close']
       f.has_many :features, :allow_destroy => true do |e|
         e.input :position, :label => "Slide Position"
         e.input :title,  :required => true 
@@ -34,8 +35,6 @@ ActiveAdmin.register Friend do
     end
     f.actions
   end
-
-
 
 
 
