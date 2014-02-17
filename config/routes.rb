@@ -4,6 +4,10 @@ Batterypopv2::Application.routes.draw do
   
   resources :channels
 
+  resources :creators
+
+  resources :friends
+
   # resources :episodes
 
   resources :posts
@@ -59,7 +63,6 @@ Batterypopv2::Application.routes.draw do
  
   root :to => "pages#home"
 
-  resources :creators
 
   # resources :users do
   #   member do
