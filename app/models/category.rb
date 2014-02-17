@@ -20,6 +20,9 @@ class Category < ActiveRecord::Base
 	belongs_to :parent, class_name: "Category"
 
 
+	def should_generate_new_friendly_id?
+	  slug.blank? || title_changed?
+	end
 
 	private
 	def category_params

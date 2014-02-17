@@ -90,6 +90,10 @@ def total_episode_pops
 end
 
 
+def should_generate_new_friendly_id?
+  slug.blank? || title_changed?
+end
+
 def self.created_yesterday
 	created_between((Time.zone.now-1.day).beginning_of_day, (Time.zone.now-1.day).end_of_day)
 end
