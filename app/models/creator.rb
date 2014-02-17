@@ -63,32 +63,34 @@ class Creator < ActiveRecord::Base
   	return self.displayname
   end
 
-	def link
-		return "/creators/" + self.slug
-	end
+def link
+	return "/creators/" + self.slug
+end
 
-	def thumb
-		return (self.image(:thumb))
-	end
+def thumb
+	return (self.image(:thumb))
+end
 
-	def search_valid?
-		valid?
-	end
+def search_valid?
+	valid?
+end
 
-	# creator vote / following lookup
-	def total_show_followers
-		self.shows.inject(0){|sum, i| sum + i.followers.size}
-	end
+# creator vote / following lookup
+def total_show_followers
+	self.shows.inject(0){|sum, i| sum + i.followers.size}
+end
 
-	def total_show_pops
-		self.shows.inject(0){|sum, i| sum + i.total_episode_pops}
-	end
-
-
-	def episodes_total_votes
-	end
+def total_show_pops
+	self.shows.inject(0){|sum, i| sum + i.total_episode_pops}
+end
 
 
+def episodes_total_votes
+end
+
+def should_generate_new_friendly_id?
+  slug.blank? || displayname_changed?
+end
 
   	private
 	def slug_candidates

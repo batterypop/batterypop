@@ -70,6 +70,9 @@ def pops
 	return (self.cached_votes_up + Integer(self.chicago.to_i))
 end
 
+def should_generate_new_friendly_id?
+  slug.blank? || title_changed?
+end
 
 #search helpers
 	def link
