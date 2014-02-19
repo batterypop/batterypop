@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: git://github.com/grimmwerks/bxslider-rails.git
-  revision: 0f0822c145a18f6f05f64f47e4e3862e645e0482
+  revision: 10183584a3ffe5c32445c1dcb3fedb07271ff7a3
   specs:
     bxslider-rails (4.1.0)
 
