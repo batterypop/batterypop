@@ -37,6 +37,28 @@
 }
 
 
+
+/** adding ui element here **/
+.closex {
+    background: url("/assets/ui/closex.png") no-repeat scroll 0 0 transparent;
+    top: 5px;
+    right: -45px;
+    cursor: pointer;
+    height: 36px;
+    margin: -16px 0 0 0;
+    position: absolute;
+    width: 36px;
+    z-index: 120;
+}
+
+.closex:hover {
+    background-position: -37px 0;
+}
+
+
+
+
+
 .nav-toggle{
 	background-color: #502a6e !important;
 }
