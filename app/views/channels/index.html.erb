@@ -55,7 +55,7 @@
                 :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
                 # :slide_image => show.image(:thumb), 
                 :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
-                :slide_url => "shows/"+show.slug} %>
+                :slide_url => show.link} %>
             </li>
           <% end %>
              
@@ -88,6 +88,7 @@
         slideWidth: 205,
         responsive: true,
         touchEnabled: true,
+        infiniteLoop: false,
         slideMargin: 10,
         moveSlides: 2,
         pager: false
