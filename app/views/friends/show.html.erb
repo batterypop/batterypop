@@ -11,14 +11,13 @@
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
-<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
 
 
 <%= render partial: "layouts/breadcrumb", :locals => {
 		:crumb_class => " hidden-xs hidden-sm",
-		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3><div class='show-follow-status'></div></div>".html_safe, 
+		:crumb_title => "<div class='col-xs-12'>#{image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => "img-responsive show-crumb-image")}<h3><a href='#{@friend.link}'>#{ @friend.title }</a></h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
-	 	:crumb_text => "<span><h3>By #{@creator_name}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
+	 	:crumb_text => "<span><h3>By #{@friend.sponsor}</h3>#{ @friend.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
 		:crumb_action => @action.html_safe
 		 	} %>
 
@@ -28,6 +27,7 @@
       <div class="row margin padding bottom">
         <!-- video player area -->
         <div class="col-md-9 show-player no-margin no-padding">
+        	<!-- video player -->
 			<div class="show-player-wrapper">
 				<div class="row no-padding no-margin show-player-popover">
 					<div class="col-sm-4 col-xs-12 show-player-episode-title">
@@ -45,7 +45,20 @@
 				<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
 			<% end %>
 	        </div>
+			<!-- end video player -->
 
+			<!-- featured area -->
+			<div class="friend-featured">
+				<div class="home-featured-wrapper">
+					<ul class="bxslider home-featured">
+						<% @friend.features.each do |feature| %>
+							<li><%= feature.content.html_safe %></li>
+						<% end %>
+
+					</ul>
+				</div>
+			</div>
+			<!-- end featured area -->
 			
 
 		</div>
@@ -59,17 +72,16 @@
 
 <!-- ADDING HIDDEN FOR SMALL DEVICES -->
 			<div class="row device-sm-show-episode visible-xs visible-sm">
-				<div class="col-xs-10 aqua">
+				<div class="col-xs-11 aqua">
 					<div class="vert-middle-wrap">
 						<div class="vert-middle">
-							<h2><%= @show.title %></h2>
+							<h2><%= @friend.title %></h2>
 							<h3><%= @episode.title %></h3>
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-2 steelblue">
+				<div class="col-xs-1 steelblue">
 					<div class="follow-pop-wrap center">
-					    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 					    <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
 					</div>
 				</div>
@@ -151,9 +163,10 @@
 			<div class="col-lg-8 show-lower-left">
 <!--episodes area -->
 
-		<% unless @show.single? %>
+		
 				<div class="media-list list-group">
-					<% @show.episodes.each do |ep| %>
+					<% @friend.episodes.each do |ep| %>
+						<% if ep.approved? %>
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
 						<% @duration =  (!ep.duration.nil? && !ep.duration.empty?) ? "<span class='episode-duration'>#{ep.duration}</span> " : ' ' %>
 	
@@ -169,12 +182,13 @@
 				                :slide_title => "#{ep.title} #{@duration}".html_safe, 
 				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
-								:slide_url =>  ep.link
+								:slide_url =>  '/friends/' + @friend.slug + '/episodes/' + ep.slug
 
 				                } %>
+				        <% end %>
 		            <% end %>
 				</div>
-		<% end %>
+	
 
 
 <!-- end of episodes area -->
@@ -322,6 +336,20 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+
+
+		$('.home-featured').bxSlider({
+	  		mode: 'fade',
+	  		speed: 1000,
+		  	auto: true,
+	  		video: true,
+	  		responsive: true,
+	  		touchEnabled: true, 
+			controls:false,
+	  		pager: true
+		  }
+	  	);
+
 
 		$('.show-followers-carousel').bxSlider({
 			nextSelector: '#show-followers-next',

@@ -61,6 +61,10 @@ class Friend < ActiveRecord::Base
 
 	scope :active, -> {where(:active => true)}
 
+	def link
+		"/friends/" + self.slug
+	end
+
 	def should_generate_new_friendly_id?
 	  slug.blank? || title_changed?
 	end

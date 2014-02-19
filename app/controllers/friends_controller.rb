@@ -9,7 +9,11 @@ class FriendsController < ApplicationController
 
 	def show
 		if @friend.approved
-			@title = ""
+			@title = @friend.title
+			if(@episode.nil?) 
+				@episode = @friend.episodes.first
+				@show = @episode.show
+			end
 		else
 			redirect_to "/"
 		end
@@ -19,6 +23,7 @@ class FriendsController < ApplicationController
 
 	private
 	def set_friend
-		@friend = Friend.includes(:episodes).includes(:features).where("features.active" => true).friendly.find(params[:id])
+		# @friend = Friend.includes(:episodes).includes(:features).where("features.active" => true).friendly.find(params[:id])
+		@friend = Friend.includes(:episodes).includes(:features).friendly.find(params[:id])
 	end
 end

@@ -6,7 +6,9 @@ Batterypopv2::Application.routes.draw do
 
   resources :creators
 
-  resources :friends
+  resources :friends do
+    resources :episodes
+  end
 
   # resources :episodes
 

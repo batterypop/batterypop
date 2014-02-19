@@ -76,8 +76,6 @@ end
 
 #search helpers
 	def link
-		puts self.inspect
-
 		return "/shows/" + self.show.slug + "/episodes/" + self.slug
 	end
 

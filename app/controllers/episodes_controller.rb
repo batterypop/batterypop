@@ -10,6 +10,9 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.json
   def show
+    # {"action"=>"show", "controller"=>"episodes", "friend_id"=>"a-cool-friends", "id"=>"the-wheel-mccoy"}
+    # {"action"=>"show", "controller"=>"episodes", "show_id"=>"pencilmation", "id"=>"mythory-of-the-world-prehistoric-man"}
+    # 
      # @episode = Episode.friendly.find(params[:id])
      @show = @episode.show
       @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
@@ -20,11 +23,19 @@ class EpisodesController < ApplicationController
       # else
       #   @title = @episode.show.title + ' : ' + @episode.title
       # end
-      @title = @episode.slide_title
+     
       if(!@episode.tag_list.empty?)
         @page_keywords = @episode.tag_list.to_s
       end
-     render 'shows/show'
+      # need to know if this is a friend or show render
+      if params.has_key?(:show_id)
+         @title = @episode.slide_title
+         render 'shows/show'
+      elsif params.has_key?(:friend_id)
+        @friend = Friend.friendly.find(params["friend_id"])
+        @title = @friend.title
+        render 'friends/show'
+      end
   end
 
   # GET /episodes/new
