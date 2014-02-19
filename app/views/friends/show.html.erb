@@ -59,6 +59,9 @@
 
 					</ul>
 				</div>
+				<% if @friend.features_exit == "close" %>
+					<span class="closex"></span>
+				<% end %>
 			</div>
 		<% end %>
 			<!-- end featured area -->
@@ -344,17 +347,39 @@
 <% unless @friend.features.empty? %>
 
 		$('.home-featured').bxSlider({
+
 	  		mode: 'fade',
 	  		speed: 1000,
+	  	<% if @friend.features_autoplay %>
 		  	auto: true,
+		<% end %>
 	  		video: true,
 	  		responsive: true,
 	  		touchEnabled: true, 
-			controls:false,
+			controls: <%= !@friend.features_autoplay %>,
 	  		pager: true
-		  }
+	  	<% if @friend.features_exit == "automatic" %>
+	  		, onSlideBefore: function($slideElement, oldIndex, newIndex){
+			    if(newIndex == 0){
+			    	$( "div.friend-featured" ).fadeOut(
+			    		4000,
+				    	$( "div.friend-featured" ).html("")
+			    	);
+			    }
+			  }
+		<% end %>
+
+		  } 
 	  	);
 
+	<% if @friend.features_exit == "close" %>
+		$( "span.closex" ).click(function(){
+			$( "div.friend-featured" ).fadeOut(
+	    		4000,
+		    	$( "div.friend-featured" ).html("")
+	    	);
+		});
+	<% end %>
 
 
 		//  need to add if auto play it does calleback
@@ -406,6 +431,7 @@
 	  		preventDefaultSwipeY: true,
 			slideMargin: 10,
 			slideWidth: 165,
+			infiniteLoop: false,
 			minSlides: 3,
 			maxSlides: 3,
 			moveSlides: 1,
