@@ -48,16 +48,19 @@
 			<!-- end video player -->
 
 			<!-- featured area -->
+		<% unless @friend.features.empty? %>
 			<div class="friend-featured">
 				<div class="home-featured-wrapper">
 					<ul class="bxslider home-featured">
 						<% @friend.features.each do |feature| %>
-							<li><%= feature.content.html_safe %></li>
+							<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
+							<li <%= @dur %>><%= feature.content.html_safe %></li>
 						<% end %>
 
 					</ul>
 				</div>
 			</div>
+		<% end %>
 			<!-- end featured area -->
 			
 
