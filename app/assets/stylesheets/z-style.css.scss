@@ -19,6 +19,7 @@ body {
 }
 
 body .container {
+	position: relative;
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
 	-o-box-shadow:none;
@@ -1281,6 +1282,7 @@ body {
 }
 
 .pipes:before {
+	//background: url('/assets/background/background_pipes_left.png') no-repeat 250px top;
 	background: url('/assets/pipes-left.jpg') no-repeat left top;
 	padding-left: 250px;
 	left:-250px;
