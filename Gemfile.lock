@@ -156,6 +156,7 @@ GEM
     autotest-fsevent (0.2.9)
       sys-uname
     autotest-growl (0.2.16)
+    awesome_print (1.2.0)
     aws-sdk (1.34.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -403,6 +404,7 @@ DEPENDENCIES
   autotest
   autotest-fsevent (>= 0.2.9)
   autotest-growl
+  awesome_print
   aws-sdk
   better_errors
   binding_of_caller
