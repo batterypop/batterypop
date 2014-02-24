@@ -53,6 +53,13 @@ module ApplicationHelper
       ]
     end
 
- 
+    def custom_background_override
+      if !@custom_background.nil?
+      "<div class='bk-extra' style='background: url(#{@custom_background}) repeat left top;
+ width: 200%;height:999em;display:block;top:0;left:-50%;position:absolute;z-index: 0;'></div>".html_safe
+      else
+        ""
+      end
+    end
 
 end

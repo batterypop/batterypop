@@ -3,7 +3,7 @@
 		<div class="content">
 
 
-
+<!-- {@friend.primary_color} -->
 
 
 <% @action = "<span class='badge bpop-badge-large '>
@@ -11,10 +11,14 @@
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
-
+<% 	@color_class = ''
+	unless @friend.primary_color.empty? 
+		@color_class = "background-color: #{@friend.primary_color};"
+	end %>
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-		:crumb_class => " hidden-xs hidden-sm",
+		:crumb_class => " hidden-xs hidden-sm ",
+		:crumb_style =>  @color_class,
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => "img-responsive show-crumb-image")}<h3><a href='#{@friend.link}'>#{ @friend.title }</a></h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{@friend.sponsor}</h3>#{ @friend.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,

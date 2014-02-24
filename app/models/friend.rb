@@ -40,6 +40,8 @@ class Friend < ActiveRecord::Base
 
 	accepts_nested_attributes_for :features
 
+	before_save :destroy_images?
+
 	#image stuff
 	has_attached_file :image,
 	    :styles => { hd: "1056x594>", large: "300x300>", node: "250x250>", :thumb => "100x100>" },
@@ -69,7 +71,31 @@ class Friend < ActiveRecord::Base
 	  slug.blank? || title_changed?
 	end
 
+# image and background delete or update
+
+	def delete_image
+		@delete_image ||= "0"
+	end
+	def delete_image=(value)
+		@delete_image = value
+	end
+
+	def delete_background
+		@delete_background ||= "0"
+	end
+	def delete_background=(value)
+		@delete_background = value
+	end
+
+
 	private  
+	def destroy_images?
+	    # self.image.clear if @delete_image == "1"
+	    # self.background.clear if @delete_background == "1"
+	    self.image = nil if @delete_image == "1"
+	    self.background = nil if @delete_background == "1"
+	end
+
 	def slug_candidates
 		[
 			:title,
