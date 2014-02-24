@@ -16,12 +16,21 @@ ActiveAdmin.register Friend do
       f.input :approved, :required => true
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
+
       f.input :image,  :hint => f.object.image.present? \
-        ? f.template.image_tag(f.object.image.url(:thumb))
+        ? f.template.image_tag(f.object.image.url(:thumb)) 
         : f.template.content_tag(:span, 'No icon as yet.')
-      f.input :background,  :hint => f.object.background.present? \
+      if f.object.image.present? 
+        f.input :delete_image, as: :boolean, required: :false, label: 'Remove image'
+      end
+
+      f.input :background,  :allow_destroy => true,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.background.url(:thumb))
         : f.template.content_tag(:span, 'No background as yet.')
+      if f.object.background.present? 
+        f.input :delete_background, as: :boolean, required: :false, label: 'Remove image'
+      end
+
       f.input :episodes, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
     end
     f.inputs "Featured" do

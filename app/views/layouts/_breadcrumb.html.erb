@@ -6,12 +6,12 @@
 			<% if !(local_assigns[:crumb_title].nil?) %><%= crumb_title %><% end %>
 		
 	</div> 
-	<div class="col-md-6 hidden-xs hidden-sm bpop-show-description">
+	<div class="col-md-6 hidden-xs hidden-sm bpop-show-description" <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
 		<div>
 			<% if !(local_assigns[:crumb_text].nil?) %><%= crumb_text %><% end %>
 		</div>
 	</div>
-	<div class="col-md-1 col-xs-3 bpop-show-action">
+	<div class="col-md-1 col-xs-3 bpop-show-action" <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
 		<div>
 			<% if !(local_assigns[:crumb_action].nil?) %><%= crumb_action %><% end %>
 		</div>

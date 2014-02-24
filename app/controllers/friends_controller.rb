@@ -10,6 +10,7 @@ class FriendsController < ApplicationController
 	def show
 		if @friend.approved
 			@title = @friend.title
+			@custom_background = @friend.background(:original)
 			if(@episode.nil?) 
 				@episode = @friend.episodes.first
 				@show = @episode.show
