@@ -62,4 +62,12 @@ module ApplicationHelper
       end
     end
 
+
+    # determine if friend feature is first view of page
+    def is_friend_return_view?
+      @prevURL = session[:previous_url].split('/')[0..2].join('/')
+      @curURL = request.fullpath.split('/')[0..2].join('/')
+      return ( @curURL == @prevURL)
+    end
+
 end

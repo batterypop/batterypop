@@ -44,7 +44,7 @@ class Friend < ActiveRecord::Base
 
 	#image stuff
 	has_attached_file :image,
-	    :styles => { hd: "1056x594>", large: "300x300>", node: "250x250>", :thumb => "100x100>" },
+	    :styles => { large: "300x300>", node: "250x250>", :thumb => "100x100>" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/friends/:id/image/:attachment/:style/:filename",
@@ -52,7 +52,7 @@ class Friend < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 	has_attached_file :background,
-	    :styles => { full: "1600x1100>", large: "300x300>", node: "250x250>", :thumb => "100x100>" },
+	    :styles => { full: "1600x1100>", large: "300x300>",  :thumb => "100x100>" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/friends/:id/background/:attachment/:style/:filename",
