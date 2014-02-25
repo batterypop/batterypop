@@ -3,9 +3,6 @@
 		<div class="content">
 
 
-<!-- {@friend.primary_color} -->
-
-
 <% @action = "<span class='badge bpop-badge-large '>
             <span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span> </span>" %>
 
@@ -52,7 +49,7 @@
 			<!-- end video player -->
 
 			<!-- featured area -->
-		<% unless @friend.features.empty? %>
+		<% unless (@friend.features.empty? || is_friend_return_view?) %>
 			<div class="friend-featured">
 				<div class="home-featured-wrapper">
 					<ul class="bxslider home-featured">
