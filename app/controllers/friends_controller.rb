@@ -2,9 +2,11 @@ class FriendsController < ApplicationController
 	before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@title = "Friends"
-		@active = "friends"
-		@friends = Friend.all
+		redirect_to "/"
+		# @title = "Friends"
+		# @active = "friends"
+		# @friends = Friend.all
+
 	end
 
 	def show

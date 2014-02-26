@@ -52,95 +52,9 @@
 
 
 
+		 <%=  render :partial => "layouts/next_up" %>
 
 
-<!-- vertical carousel -->
-		<div class="col-md-3 show-popped-carousel no-margin no-padding">
-
-<!-- ADDING HIDDEN FOR SMALL DEVICES -->
-			<div class="row device-sm-show-episode visible-xs visible-sm">
-				<div class="col-xs-10 aqua">
-					<div class="vert-middle-wrap">
-						<div class="vert-middle">
-							<h2><%= @show.title %></h2>
-							<h3><%= @episode.title %></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-2 steelblue">
-					<div class="follow-pop-wrap center">
-					    <%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-					    <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-					</div>
-				</div>
-			</div>
-
-<!-- ADDING HIDDEN FOR SMALL DEVICES -->
-
-
-
-			<div class="show-most-popped-wrap">
-				<div class="row no-margin no-padding">
-					<div class="col-xs-12 show-most-popped-header no-margin no-padding text-center">
-						<div class="small-header-bg">
-							<img src="/assets/shows-popped-header.png">
-						</div>
-						<h1>
-							Next Up
-						</h1>
-					</div>
-				</div>
-				<div class="show-most-popped-inner-wrap">
-					<div class="col-xs-12 show-most-popped-controls hidden-sm hidden-xs no-margin no-padding">
-						<div class="center" >
-							<div id="show-popped-down" class="slider-down pull-right"></div>
-							<div id="show-popped-up" class="slider-up pull-left"></div>
-						</div>
-					</div>
-
-					<div class="row no-margin no-padding">
-						<div class="col-xs-12 no-margin no-padding">
-							<ul class="bxslider show-most-popped-carousel">
-								<% Episode.nextup(@episode, 10).each do |most| %>
-									<li>
-									<%= render partial: "layouts/horizontal_slide", :locals => {
-											:slide_title => most.slide_title.html_safe, 
-										 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
-											:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
-											
-											
-											:slide_url =>  most.link
-										} 
-											%>
-									</li>
-								<% end %>	
-							</ul>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<!-- new voting block? -->
-			<div class="row vote-block no-margin no-padding follow-pop-wrap center hidden-xs hidden-sm" >
-				<div class="col-lg-6 pop-box center">
-					<div class="vote-prompt">Click To</div>
-				   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-				   	<div class="vote-prompt">POP</div>
-				</div>
-				<div class="col-lg-6 follow-box center">
-					<div class="vote-prompt">Click To</div>
-					<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-					<div class="vote-prompt">Follow</div>
-				</div>
-				
-			</div>
-
-			<!-- end new voting block -->
-		</div>
-	   </div>
-
-<!-- end mid section player / carousel -->
 
 
 
