@@ -2854,3 +2854,18 @@ SHORTS PAGE */
 	}
 
 }
+
+.mainstage {
+	position: relative;
+}
+
+.shade {
+	height: 515px;
+	width: 102%;
+	display: block;
+	position: absolute;
+	top: 150px;
+	left: -10px;
+	background: black;
+	z-index: 10;
+}
