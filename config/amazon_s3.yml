@@ -1,35 +1,16 @@
-# original setup; creating one bucket to test under production; unsure if these are all machty
-# development:
-#   bucket: batterypop-dev
-#   access_key_id: AKIAI7I56B3HSKHO3IAA
-#   secret_access_key: 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
-# staging:
-#   bucket: batterypop-dev
-#   access_key_id: AKIAI7I56B3HSKHO3IAA
-#   secret_access_key: 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
-# production:
-#   bucket: batterypop-prod
-#   access_key_id: AKIAIHNUUZXLOQ6NANDA
-#   secret_access_key: 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
-# test:
-#   bucket: batterypop-dev
-#   access_key_id: AKIAI7I56B3HSKHO3IAA
-#   secret_access_key: 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
-
-
 production:
   bucket: batterypop-v2-prod
-  access_key_id: AKIAIHNUUZXLOQ6NANDA
-  secret_access_key: 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
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']
 development:
-  bucket: batterypop-v2-dev
-  access_key_id: AKIAI7I56B3HSKHO3IAA
-  secret_access_key: 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
+  bucket: batterypop-v2-development
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']
 staging:
-  bucket: batterypop-v2-prod
-  access_key_id: AKIAIHNUUZXLOQ6NANDA
-  secret_access_key: 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
+  bucket: batterypop-v2-staging
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']
 test:
-  bucket: batterypop-v2-dev
-  access_key_id: AKIAI7I56B3HSKHO3IAA
-  secret_access_key: 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
+  bucket: batterypop-v2-development
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']
