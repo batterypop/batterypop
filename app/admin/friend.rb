@@ -42,7 +42,6 @@ ActiveAdmin.register Friend do
         e.input :content,  :as => :rich, :allow_embeds => true
         e.input :seconds, :label => "Time", :hint => "Time in milliseconds."
         e.input :active, :label => "Active?", :hint => "Select for active, unselect to hide."
-        # e.input :delete, :as => :check_box :_destroy %>
       end
     end
     f.actions
