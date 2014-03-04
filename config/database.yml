@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SQLite version 3.x
 #   gem install sqlite3
 #
@@ -22,9 +23,9 @@
 
 production:
   adapter: postgresql
-  database: dakuok3re64cjs
-  username: jbsfmhvondnfrz
-  password: zTqrmKavM8svE5gmPbUIS7n1_X
+  database: ENV['DB_NAME']
+  username: ENV['DB_USER']
+  password: ENV['DB_PASS']
   post: 5432
   encoding: unicode
 
@@ -34,17 +35,19 @@ test:
   pool: 5
   timeout: 5000
 
-# development:
-#   adapter: sqlite3
-#   database: db/development.sqlite3
-#   pool: 5
-#   timeout: 5000
 
 staging:
   adapter: postgresql
   database: dal4bbm219boh3
   username: uuzvyifdefyufx
   password: PXErg7DOd47qEML1_JNH7d5cEV
+
+
+staging:
+  adapter: postgresql
+  database: ENV['DB_NAME']
+  username: ENV['DB_USER']
+  password: ENV['DB_PASS']
   post: 5432
   encoding: unicode
 
