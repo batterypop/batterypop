@@ -1,0 +1,29 @@
+production:
+  adapter: postgresql
+  database: ENV['DB_NAME']
+  username: ENV['DB_USER']
+  password: ENV['DB_PASS']
+  post: 5432
+  encoding: unicode
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+
+staging:
+  adapter: postgresql
+  database: ENV['DB_NAME']
+  username: ENV['DB_USER']
+  password: ENV['DB_PASS']
+  post: 5432
+  encoding: unicode
+
+development:
+  adapter: postgresql
+  database: batterypop_v2_development
+  host: localhost
+  post: 5432
+  encoding: unicode
