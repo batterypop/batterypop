@@ -1,16 +1,8 @@
 production:
   bucket: batterypop-v2-prod
-  access_key_id: ENV['S3_KEY']
-  secret_access_key: ENV['S3_SECRET']
 development:
   bucket: batterypop-v2-development
-  access_key_id: ENV['S3_KEY']
-  secret_access_key: ENV['S3_SECRET']
 staging:
   bucket: batterypop-v2-staging
-  access_key_id: ENV['S3_KEY']
-  secret_access_key: ENV['S3_SECRET']
 test:
   bucket: batterypop-v2-development
-  access_key_id: ENV['S3_KEY']
-  secret_access_key: ENV['S3_SECRET']

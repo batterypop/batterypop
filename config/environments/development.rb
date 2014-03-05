@@ -6,6 +6,7 @@ Batterypopv2::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -27,14 +28,14 @@ Batterypopv2::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
 
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
       :bucket => ENV['AWS_BUCKET'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']  
     }
   }
 

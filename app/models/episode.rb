@@ -44,11 +44,16 @@ class Episode < ActiveRecord::Base
 	has_many :friend_episodes
 	has_many :friends, :through => :friend_episodes
 
-
+	before_save :destroy_images?
 
 
 	has_attached_file :image,
-	    :styles => { large: "864x486>", :thumb => "150x150#" },
+	    :styles => { 
+	    	large: "864x486>", 
+	    	:thumb => "150x150#",
+	    	:roku_sd => "214x144^",
+	    	:roku_hd => "290x218^"
+	    },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/:class/:id/:attachment/:style/:filename",
@@ -155,10 +160,25 @@ end
 			end
 		end
 	end
+	
+	def should_generate_new_friendly_id?
+	  slug.blank? || title_changed?
+	end
+
+	# image and background delete or update
+
+	def delete_image
+		@delete_image ||= "0"
+	end
+	def delete_image=(value)
+		@delete_image = value
+	end
 
 
-
-	private
+	private  
+	def destroy_images?
+	    self.image = nil if @delete_image == "1"
+	end
 
 	def slug_candidates
 		[

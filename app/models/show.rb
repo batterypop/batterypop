@@ -48,7 +48,11 @@ class Show < ActiveRecord::Base
 
 
 	has_attached_file :image,
-	    :styles => { large: "864x486>", :thumb => "150x150#" },
+	    :styles => { large: "864x486>", 
+	    	:thumb => "150x150#",
+	    	:roku_sd => "214x144^",
+	    	:roku_hd => "290x218^"
+	    	 },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/:class/:id/:attachment/:style/:filename",

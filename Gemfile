@@ -60,7 +60,7 @@ gem 'viddler-ruby'
 gem "rich", github: 'bastiaanterhorst/rich'
 
 
-# gem 'vjs_rails'
+gem 'video-js-rails'   # https://github.com/alexesDev/video-js-rails
 
 # gem 'active_admin_editor'
 

@@ -16,8 +16,11 @@ class ChannelsController < ApplicationController
      @viddler.authenticate! 'batterypop@gmail.com', 'purple2013'
 
     respond_to do |format|
-      format.html
       format.rss {render :layout => false }
+      # format.roku {render :layout => false }
+      format.roku {render :layout => false }
+      format.json { render :json => @channel }
+      format.html
     end
 
     
