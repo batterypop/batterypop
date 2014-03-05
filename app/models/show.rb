@@ -52,6 +52,7 @@ class Show < ActiveRecord::Base
 	    	:thumb => "150x150#",
 	    	:roku_sd => "214x144^",
 	    	:roku_hd => "290x218^"
+	    	
 	    	 },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
