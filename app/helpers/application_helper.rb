@@ -63,6 +63,23 @@ module ApplicationHelper
     end
 
 
+    # viddler authentication in one area
+    def episode_embed_helper(episode)
+     # right now videojs is only for viddler; otherwaise standard
+        @ret = ''
+        if(episode.embed.provider == 'viddler')
+          @viddler = Viddler::Client.new(ENV['VIDDLER_ID'])
+          @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+           @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+        else
+          @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+        end
+        return @ret
+    end
+
+
+
+
     # determine if friend feature is first view of page
     def is_friend_return_view?
       @prevURL = session[:previous_url].nil? ? ""  : session[:previous_url].split('/')[0..2].join('/')

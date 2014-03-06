@@ -12,8 +12,7 @@ class ChannelsController < ApplicationController
   def show
      @active="channels"
      @title = "Channel: " + @channel.title
-     @viddler = Viddler::Client.new('1ftfdc24uw7rv3pxqv51')
-     @viddler.authenticate! 'batterypop@gmail.com', 'purple2013'
+   
 
     respond_to do |format|
       format.rss {render :layout => false }
@@ -21,7 +20,9 @@ class ChannelsController < ApplicationController
       format.roku {render :layout => false }
       format.json { render :json => @channel }
       format.html {
-        if @channel.hidden? redirect_to "/"
+        if @channel.hidden? 
+          redirect_to "/"
+        end
       }
     end
 

@@ -42,7 +42,7 @@
 					</div>
 				</div>
 			<% if !(@episode).nil? %>
-				<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
+				<%= episode_embed_helper(@episode)  %>
 			<% end %>
 	        </div>
 
