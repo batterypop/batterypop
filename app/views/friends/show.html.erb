@@ -27,34 +27,8 @@
 <!-- mid section player / carousel -->
       <div class="row margin padding bottom mainstage">
 
-<<<<<<< HEAD
-      	<div class="shade">
-
-	<!-- featured area || is_friend_return_view? -->
-		<% unless (@friend.features.empty? ) %>
-			<div class="friend-featured">
-				<div class="home-featured-wrapper">
-					<ul class="bxslider home-featured">
-						<% @friend.features.each do |feature| %>
-							<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
-							<li <%= @dur %>><%= feature.content.html_safe %></li>
-						<% end %>
-
-					</ul>
-				</div>
-				<% if @friend.features_exit == "close" %>
-					<span class="closex"></span>
-				<% end %>
-			</div>
-		<% end %>
-			<!-- end featured area -->
-
-      	
-      		
-      	</div>
-=======
       	<div class="shade"></div>
->>>>>>> 2a051918ec2eef09c8ceefe7b78268fc1d6451f8
+
         <!-- video player area -->
         <div class="col-md-9 show-player no-margin no-padding">
         	<!-- video player -->
@@ -77,9 +51,6 @@
 	        </div>
 			<!-- end video player -->
 
-<<<<<<< HEAD
-		
-=======
 			<!-- featured area -->
 		<% unless (@friend.features.empty? || is_friend_return_view?) %>
 			<div class="friend-featured">
@@ -98,8 +69,6 @@
 			</div>
 		<% end %>
 			<!-- end featured area -->
->>>>>>> 2a051918ec2eef09c8ceefe7b78268fc1d6451f8
-			
 
 		</div>
 
