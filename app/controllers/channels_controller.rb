@@ -20,7 +20,9 @@ class ChannelsController < ApplicationController
       # format.roku {render :layout => false }
       format.roku {render :layout => false }
       format.json { render :json => @channel }
-      format.html
+      format.html {
+        if @channel.hidden? redirect_to "/"
+      }
     end
 
     

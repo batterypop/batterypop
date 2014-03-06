@@ -26,8 +26,9 @@
 			
 <!-- mid section player / carousel -->
       <div class="row margin padding bottom mainstage">
-
-      	<div class="shade"></div>
+		<% unless (@friend.features.empty? || is_friend_return_view?) %>
+	      	<div class="shade"></div>
+	    <% end %>
 
         <!-- video player area -->
         <div class="col-md-9 show-player no-margin no-padding">
@@ -292,10 +293,8 @@
 
 	<% if @friend.features_exit == "close" %>
 		$( "span.closex" ).click(function(){
-			$( "div.friend-featured" ).fadeOut(
-	    		4000,
-		    	$( "div.friend-featured" ).html("")
-	    	);
+			$("div.shade").remove();
+			$("div.friend-featured").remove();
 		});
 	<% end %>
 
