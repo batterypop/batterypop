@@ -42,7 +42,7 @@
 					</div>
 				</div>
 			<% if !(@episode).nil? %>
-				<%= episode_embed_helper(@episode)  %>
+				<%= @vidapi.get_embed(@episode).html_safe  %>
 			<% end %>
 	        </div>
 

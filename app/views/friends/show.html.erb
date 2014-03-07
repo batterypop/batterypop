@@ -47,7 +47,7 @@
 					</div>
 				</div>
 			<% if !(@episode).nil? %>
-				<%= @episode.embed.get_embed(@episode.embed, @episode.video).html_safe %>
+				<%= @vidapi.get_embed(@episode).html_safe %>
 			<% end %>
 	        </div>
 			<!-- end video player -->

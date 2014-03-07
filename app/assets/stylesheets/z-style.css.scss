@@ -1891,6 +1891,7 @@ a.disabled>.plus {
 
 .show-player-popover {
 	overflow-y:hidden;
+	z-index: 2;
 }
 
 .follow-pop-wrap {

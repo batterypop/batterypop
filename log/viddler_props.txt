@@ -1,0 +1,177 @@
+
+
+href_by_product = Hash[ary.map { |h| h.values_at('product', 'href') }]
+p href_by_product['campfire'] # => "https://company.campfirenow.com"
+p href_by_product['bcx']      # => "https://basecamp.com/123456789/api/v1"
+
+@fathers.select {|father| father["age"] > 35 }
+=> [ { "age" => 40, "father" => "Bob" },
+     { "age" => 50, "father" => "Batman" } ]
+
+
+<video id="video-{{unbound view.videoId}}" class="video-js vjs-default-skin" controls preload="none" width="{{unbound view.dimensions.width}}" height="{{unbound view.dimensions.height}}"
+      data-setup="{}">
+    <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+</video>
+
+
+<video id="video-{{unbound view.videoId}}" class="video-js vjs-default-skin" controls preload="none" width="{{unbound view.dimensions.width}}" height="{{unbound view.dimensions.height}}" data-setup="{}"> 
+{{videosources}}
+</video>
+
+
+
+
+"video" => {
+                            "id" => "58ac46f1",
+                        "status" => "ready",
+                        "author" => "BatteryPop",
+                         "title" => "Retro Kids e1p3",
+                   "upload_time" => "1391021789",
+              "made_public_time" => "1391021789",
+                        "length" => "265",
+                   "description" => "",
+                     "age_limit" => "",
+                           "url" => "http://www.viddler.com/v/58ac46f1",
+                 "thumbnail_url" => "http://thumbs.cdn-ec.viddler.com/thumbnail_2_58ac46f1_v2.jpg",
+             "thumbnail_version" => "v2",
+                     "permalink" => "http://www.viddler.com/v/58ac46f1",
+            "html5_video_source" => "http://www.viddler.com/file/58ac46f1/html5",
+                    "view_count" => "3",
+              "impression_count" => "13",
+                      "favorite" => "0",
+                 "comment_count" => "0",
+                          "tags" => [],
+           "password_protection" => "0",
+              "thumbnails_count" => "11",
+               "thumbnail_index" => "4",
+                   "permissions" => {
+                  "view" => {
+                "level" => "public"
+            },
+                 "embed" => {
+                "level" => "private"
+            },
+               "tagging" => {
+                "level" => "private"
+            },
+            "commenting" => {
+                "level" => "private"
+            },
+              "download" => {
+                "level" => "private"
+            }
+        },
+          "display_aspect_ratio" => "16:9",
+                         "files" => [
+            [0] {
+                                  "id" => "708307584027d1d8b68bca876286b90a",
+                              "status" => "ready",
+                                 "ext" => "m4v",
+                                "type" => "video/x-m4v",
+                               "width" => "960",
+                              "height" => "540",
+                                "size" => "125163809",
+                                 "url" => "http://www.viddler.com/file/d/58ac46f1.m4v?vfid=708307584027d1d8b68bca876286b90a",
+                  "html5_video_source" => "",
+                "display_aspect_ratio" => "16:9",
+                              "source" => "1",
+                               "flash" => "na",
+                              "iphone" => "na",
+                                "ipad" => "na",
+                              "itunes" => "off",
+                          "profile_id" => "",
+                        "profile_name" => "Source",
+                          "created_at" => "1391021789",
+                    "status_update_at" => "1391021789"
+            },
+            [1] {
+                                  "id" => "708307584027d1d43045f6c809a66399",
+                              "status" => "ready",
+                                 "ext" => "mp4",
+                                "type" => "video/mp4",
+                               "width" => "640",
+                              "height" => "360",
+                                "size" => "16141791",
+                                 "url" => "http://www.viddler.com/file/d/58ac46f1.mp4?vfid=708307584027d1d43045f6c809a66399",
+                  "html5_video_source" => "http://www.viddler.com/file/58ac46f1/708307584027d1d43045f6c809a66399",
+                "display_aspect_ratio" => "16:9",
+                              "source" => "0",
+                               "flash" => "on",
+                              "iphone" => "on",
+                                "ipad" => "on",
+                              "itunes" => "on",
+                          "profile_id" => "8",
+                        "profile_name" => "360p",
+                          "created_at" => "1391021789",
+                    "status_update_at" => "1391021869"
+            },
+            [2] {
+                                  "id" => "708307584027d0dcd60732c98e43f2ef",
+                              "status" => "ready",
+                                 "ext" => "mp4",
+                                "type" => "video/mp4",
+                               "width" => "854",
+                              "height" => "480",
+                                "size" => "30543363",
+                                 "url" => "http://www.viddler.com/file/d/58ac46f1.mp4?vfid=708307584027d0dcd60732c98e43f2ef",
+                  "html5_video_source" => "http://www.viddler.com/file/58ac46f1/708307584027d0dcd60732c98e43f2ef",
+                "display_aspect_ratio" => "16:9",
+                              "source" => "0",
+                               "flash" => "on",
+                              "iphone" => "on",
+                                "ipad" => "on",
+                              "itunes" => "on",
+                          "profile_id" => "3",
+                        "profile_name" => "480p",
+                          "created_at" => "1391021789",
+                    "status_update_at" => "1391021912"
+            },
+            [3] {
+                                  "id" => "708307584027d0de5965752eeaf38446",
+                              "status" => "ready",
+                                 "ext" => "3gp",
+                                "type" => "video/3gpp",
+                               "width" => "320",
+                              "height" => "180",
+                                "size" => "5173357",
+                                 "url" => "http://www.viddler.com/file/d/58ac46f1.3gp?vfid=708307584027d0de5965752eeaf38446",
+                  "html5_video_source" => "",
+                "display_aspect_ratio" => "16:9",
+                              "source" => "0",
+                               "flash" => "na",
+                              "iphone" => "na",
+                                "ipad" => "na",
+                              "itunes" => "na",
+                          "profile_id" => "5",
+                        "profile_name" => "3GP",
+                          "created_at" => "1391021789",
+                    "status_update_at" => "1391021837"
+            },
+            [4] {
+                                  "id" => "708307584027d0d8cc5a7fc925a7c190",
+                              "status" => "ready",
+                                 "ext" => "webm",
+                                "type" => "video/webm",
+                               "width" => "854",
+                              "height" => "480",
+                                "size" => "29964834",
+                                 "url" => "http://www.viddler.com/file/d/58ac46f1.webm?vfid=708307584027d0d8cc5a7fc925a7c190",
+                  "html5_video_source" => "",
+                "display_aspect_ratio" => "16:9",
+                              "source" => "0",
+                               "flash" => "na",
+                              "iphone" => "na",
+                                "ipad" => "na",
+                              "itunes" => "na",
+                          "profile_id" => "6",
+                        "profile_name" => "WebM",
+                          "created_at" => "1391021789",
+                    "status_update_at" => "1391021942"
+            }
+        ],
+        "closed_captioning_list" => []
+    }
+}
