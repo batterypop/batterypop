@@ -20,13 +20,10 @@ xml.instruct! :xml, :version => "1.0"
 					xml.link "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 					xml.guid "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 
-					xml.embed episode.embed.code.gsub("{{unbound view.dimensions.width}}", "100%").gsub("{{unbound view.dimensions.height}}", "100%").gsub("{{unbound view.autoplayFlag}}", "1").gsub("{{unbound view.videoId}}", episode.video).html_safe 
+					xml.embed @vidapi.get_embed(episode)
 
 					if episode.embed.provider == 'viddler'
-						video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-						allfiles = video['video']['files']
-						files = ((allfiles.each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
-						vid = files.first
+						vid = @vidapi.get_video(episode)
 						
 
 						# should there be multiple video sizes? If not viddler?

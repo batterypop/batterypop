@@ -1,6 +1,9 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
+  include ViddlerConnect
+  VidAPI.new
+
   def index
     @active="shows"
     @title = "Shows"
@@ -11,6 +14,7 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    @vidapi = VidAPI
      @active="shows"
      @show_follow_status = ''
      # @f = @show.user_followers.random(5)

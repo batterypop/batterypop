@@ -28,13 +28,9 @@ xml.instruct! :xml, :version => "1.0"
 					
 
 						if episode.embed.provider == 'viddler'
-							video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-							allfiles = video['video']['files']
-							files = ((allfiles.each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
-							vid = files.first
+							vid = @vidapi.get_video(episode)
 							
-							ap files
-
+						
 							# should there be multiple video sizes? If not viddler?
 
 							xml.media :group do
