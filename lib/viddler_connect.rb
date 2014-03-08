@@ -1,9 +1,12 @@
 module ViddlerConnect
 	class VidAPI
 
-		@@viddler = Viddler::Client.new(ENV['VIDDLER_ID'])
-	    @@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+		@@viddler
 
+		def self.initialize
+			@@viddler = Viddler::Client.new(ENV['VIDDLER_ID'])
+		    @@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+		end
 
 		def self.get_viddler
 			@@viddler
