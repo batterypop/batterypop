@@ -1,9 +1,13 @@
 module ViddlerConnect
 	class VidAPI
+		@@viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
+	    @@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
 
+	    puts "VIDAPI CLASS TOP LEVEL"
 
 		def self.initialize
-			@@viddler = Viddler::Client.new(ENV['VIDDLER_ID'])
+			puts "VIDAPI INITIALIZED"
+			@@viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
 		    @@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
 		end
 
