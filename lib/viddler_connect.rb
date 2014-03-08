@@ -1,7 +1,6 @@
 module ViddlerConnect
 	class VidAPI
 
-		@@viddler
 
 		def self.initialize
 			@@viddler = Viddler::Client.new(ENV['VIDDLER_ID'])
