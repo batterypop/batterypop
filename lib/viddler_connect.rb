@@ -37,9 +37,7 @@ module ViddlerConnect
 			return vid
 		end
 
-		def self.brap
-			return "BRAP ON!!!"
-		end
+		
 
 	end
 end
