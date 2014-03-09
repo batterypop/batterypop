@@ -1,7 +1,6 @@
 class FriendsController < ApplicationController
 	before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
-	include ViddlerConnect
 
 	def index
 		redirect_to "/"
@@ -13,8 +12,6 @@ class FriendsController < ApplicationController
 
 	def show
 		if @friend.approved
-			VidAPI.new
-			@vidapi = VidAPI
 			@title = @friend.title
 			if @friend.background.present? 
 				@custom_background = @friend.background(:original)

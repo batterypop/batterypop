@@ -28,7 +28,7 @@ xml.instruct! :xml, :version => "1.0"
 					
 
 						if episode.embed.provider == 'viddler'
-							vid = @vidapi.get_video(episode)
+							vid = vid_file(episode)
 							
 						
 							# should there be multiple video sizes? If not viddler?

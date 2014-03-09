@@ -1,7 +1,6 @@
 class ChannelsController < ApplicationController
 	  before_action :set_channel, only: [:feed, :show, :edit, :update, :destroy]
 
-    include ViddlerConnect
 
   def index
      @active="channels"
@@ -12,9 +11,6 @@ class ChannelsController < ApplicationController
 
   
   def show
-    VidAPI.new
-    @vidapi = VidAPI
-    @viddler = VidAPI.get_viddler
 
      @active="channels"
      @title = "Channel: " + @channel.title

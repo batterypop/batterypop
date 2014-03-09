@@ -1,7 +1,6 @@
 class EpisodesController < ApplicationController
   before_action :set_episode, only: [:show, :edit, :update, :destroy, :pop, :unpop ]
 
-  include ViddlerConnect
 
   # GET /episodes
   # GET /episodes.json
@@ -12,8 +11,6 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.json
   def show
-    VidAPI.new
-    @vidapi = VidAPI
     @show = @episode.show
     @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
     @likers = @episode.votes.up.by_type(User).voters.compact

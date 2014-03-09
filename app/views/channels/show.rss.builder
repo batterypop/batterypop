@@ -20,10 +20,10 @@ xml.instruct! :xml, :version => "1.0"
 					xml.link "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 					xml.guid "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 
-					xml.embed @vidapi.get_embed(episode)
+					xml.embed vid_embed(episode)
 
 					if episode.embed.provider == 'viddler'
-						vid = @vidapi.get_video(episode)
+						vid = vid_file(episode)
 						
 
 						# should there be multiple video sizes? If not viddler?
