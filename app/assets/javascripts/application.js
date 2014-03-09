@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bxslider
-//= require video-js
+
 //= require_tree .
 
