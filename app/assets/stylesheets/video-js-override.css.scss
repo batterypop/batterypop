@@ -87,7 +87,7 @@ The default control bar that is a container for most of the controls.
   height: 3.0em;
   /* background-color-with-alpha */
   background-color: #07141e;
-  background-color: rgba(7, 20, 30, 0.7);
+  /*background-color: rgba(7, 20, 30, 0.7);*/
 }
 /* Show the control bar only once the video has started playing */
 .vjs-default-skin.vjs-has-started .vjs-control-bar {
@@ -761,3 +761,19 @@ body.vjs-full-window {
 /* -----------------------------------------------------------------------------
 The original source of this file lives at
 https://github.com/videojs/video.js/blob/master/src/css/video-js.less */
+
+
+.vjs-default-skin div.vjs-progress-control {
+  left: 0;
+  right: 0;
+}
+
+.vjs-load-progress {
+  border-radius: 0;
+}
+
+.vjs-default-skin .vjs-time-controls {
+  top: -0.5em;
+  border: 0;
+  background: none;
+}
