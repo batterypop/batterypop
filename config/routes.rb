@@ -36,6 +36,11 @@ Batterypopv2::Application.routes.draw do
   resources :messages 
   resources :conversations
 
+
+  # sitemap routing
+  get "/sitemap.xml", :to => "sitemap#index"
+  get "/sitemap.xml.gz", :to => "sitemap#index"
+
 #attempt at voting on episode not within shows nesting
 # put '/episodes/:id/:action' => 'episodes#popunpop'
 
