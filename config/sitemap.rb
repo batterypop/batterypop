@@ -57,5 +57,6 @@ SitemapGenerator::Sitemap.create do
 
   User.find_each do |user|
   	add user_path(user), :lastmod => user.updated_at
+  end
 
 end
