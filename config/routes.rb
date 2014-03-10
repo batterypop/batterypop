@@ -54,11 +54,11 @@ Batterypopv2::Application.routes.draw do
   get "pages/search"
 
   get "shorts", :to => "pages#shorts"
-  get "about/creators", :to => "pages#creators"
-  get "about/privacy", :to => "pages#privacy"
-  get "about/terms", :to => "pages#terms"
-  get "about/advertise", :to => "pages#advertise"
-  get "about", :to => "pages#about"
+  get "calling-all-creators", :to => "pages#creators"
+  get "privacy-policy", :to => "pages#privacy"
+  get "terms-and-conditions", :to => "pages#terms"
+  get "advertise-with-us", :to => "pages#advertise"
+  get "about-batterypop", :to => "pages#about"
   
   get "search", :to => "pages#search"
 
