@@ -4,4 +4,4 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: http://www.batterypop.com/sitemap.xml.gz
+Sitemap: http://batterypop-v2-prod.s3.amazonaws.com/sitemaps/sitemap.xml.gz
