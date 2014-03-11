@@ -73,15 +73,21 @@ module ApplicationHelper
 		else
 			vidid = episode.video
 			videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-			files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
-			matched = files.select { |vid| vid['width'] = "854" }
-			@src = ""
-			matched.each do |i|
-				@src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
+			# old embed or new with videojs
+			if videoData['video']['files'].nil?
+				 old = Embed.where(:provider => "viddler_original").first
+				 @ret = old.get_embed(old, episode.video).html_safe
+			else
+				files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+				matched = files.select { |vid| vid['width'] = "854" }
+				@src = ""
+				matched.each do |i|
+					@src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
+				end
+				@ret = episode.embed.get_embed(episode.embed, vidid).html_safe
+				@poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+				@ret = @ret.gsub("{{poster}}", "poster='#{@poster}'").gsub("{{videosources}}", @src).gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
 			end
-			@ret = episode.embed.get_embed(episode.embed, vidid).html_safe
-			@poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-			@ret = @ret.gsub("{{poster}}", "poster='#{@poster}'").gsub("{{videosources}}", @src).gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
 		end
 		return @ret
 	end
