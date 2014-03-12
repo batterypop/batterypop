@@ -156,3 +156,15 @@ end
 gem 'rack-mini-profiler'
 # profiler for db calls -- moved lower to 'see' the postgres gem
 
+
+# VIDEO JS INO
+# unfortunately the gem for videojs seemed to be out of sync and there's no gems for the plugins anyway so 
+# they would have to be manually entered; so for the time being just have to keep on top of any changes and 
+# add each of these plugins manually.  Perhaps secondary I'll create a videojs-batterypop gem that pulls 
+# submodules from all these different githubs and keep it updated that way. 
+# Youtube:
+# https://github.com/eXon/videojs-youtube
+# Vimeo: 
+# https://github.com/eXon/videojs-vimeo
+# Google Analytics
+# https://github.com/mickey/videojs-ga

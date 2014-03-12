@@ -292,7 +292,7 @@
 		  $('div.show-player-popover').stop(true).fadeOut(600); 
 		});
 
-		$("[data-episode").each(function(){
+		$("[data-episode]").each(function(){
 			$.ajax({
 				type : 'POST',
 		      url : '/refresh',
