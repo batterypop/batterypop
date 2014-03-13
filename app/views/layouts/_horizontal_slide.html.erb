@@ -1,4 +1,4 @@
-<a href="<%= slide_url %>" class="media list-group-item horizontal-slide <% if (local_assigns[:slide_active]) %>active<% end %> ">
+<a href="<%= slide_url %>" class="media list-group-item horizontal-slide <% if (local_assigns[:slide_active]) %>active<% end %> <% if (local_assigns[:slide_class]) %><%= slide_class %><% end %>">
 	<div class="media-body">
 		<%= slide_image %>
 		<% if !(local_assigns[:slide_badge].nil?) %><%= slide_badge %><% end %>

@@ -16,7 +16,7 @@
 <%= render partial: "layouts/breadcrumb", :locals => {
 		:crumb_class => " hidden-xs hidden-sm ",
 		:crumb_style =>  @color_class,
-		:crumb_title => "<div class='col-xs-12'>#{image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => "img-responsive show-crumb-image")}<h3><a href='#{@friend.link}'>#{ @friend.title }</a></h3><div class='show-follow-status'></div></div>".html_safe, 
+		:crumb_title => "<div class='col-xs-12 sponsor'>#{image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => "img-responsive show-crumb-image")}<h3><a href='#{@friend.link}'>#{ @friend.title }</a></h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{@friend.sponsor}</h3>#{ @friend.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
 		:crumb_action => @action.html_safe
@@ -26,9 +26,7 @@
 			
 <!-- mid section player / carousel -->
       <div class="row margin padding bottom mainstage">
-		<% unless (@friend.features.empty? || is_friend_return_view?) %>
-	      	<div class="shade"></div>
-	    <% end %>
+		
 
         <!-- video player area -->
         <div class="col-md-9 show-player no-margin no-padding">
@@ -107,7 +105,9 @@
 				                :slide_title => "#{ep.title} #{@duration}".html_safe, 
 				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
 				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
-								:slide_url =>  '/friends/' + @friend.slug + '/episodes/' + ep.slug
+								:slide_url =>  '/friends/' + @friend.slug + '/episodes/' + ep.slug,
+
+								:slide_class => "sponsor"
 
 				                } %>
 				        <% end %>

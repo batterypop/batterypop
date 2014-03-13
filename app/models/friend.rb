@@ -61,7 +61,7 @@ class Friend < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/
 
-	scope :active, -> {where(:active => true)}
+	scope :approved, -> {where(:approved => true)}
 
 	def link
 		"/friends/" + self.slug

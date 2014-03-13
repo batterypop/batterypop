@@ -73,7 +73,8 @@
                       
                       #:slide_url => episode_path(Episode.friendly.find(episode.id))
               
-                      :slide_url => "/shows/" + show.slug + "/episodes/" + episode.slug
+                      :slide_url => "/shows/" + show.slug + "/episodes/" + episode.slug,
+                      :slide_class => !episode.friends.approved.empty? ? "sponsor": nil
 
                       } %>
                   </li>

@@ -1,4 +1,4 @@
-<a href="<%= slide_url %>">
+<a href="<%= slide_url %>"  <% if !(local_assigns[:slide_class].nil?) %>class="<%= slide_class %>"<% end %>>
 	<div class="thumbnail vertical-slide">
 		<%= slide_image %>
 		<div class="caption">
