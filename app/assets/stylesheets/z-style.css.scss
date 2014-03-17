@@ -2931,3 +2931,21 @@ height: 110px;
 width: 100px;
 }
 }
+
+.bpop-breadcrumb {
+
+	> div > div > img.img-responsive {
+	vertical-align: middle;
+	display: inline-block;
+	}
+
+	> div > div {
+	line-height: 110px;
+	text-align: left;
+	}
+	> div > div > h3 {
+
+	text-align: right;
+	}
+
+}
