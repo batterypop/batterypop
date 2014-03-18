@@ -8,6 +8,7 @@ class ShowsController < ApplicationController
     @title = "Shows"
     # @shows = Show.all
     @shows=Show.series.order(:created_at).includes(:episodes)
+    @description = "The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends."
   end
 
   # GET /shows/1
@@ -19,10 +20,12 @@ class ShowsController < ApplicationController
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
 
      @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
-    
+     @description = @show.description
     if(@episode.nil?) 
        @episode = @show.episodes.first
     end
+
+
 
     @title = @show.title + ' : ' + @episode.title
     if(!@episode.tag_list.empty?)

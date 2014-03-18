@@ -8,19 +8,34 @@ module ApplicationHelper
 
   def title 
     base_title = "batteryPOP"
-    if @title.nil?
+    if @title.nil? 
       base_title
     else
       strip_tags("#{base_title} | #{@title}")
     end
   end
 
+  def meta_description
+    puts ''
+    puts "$$$"
+    puts @description
+    puts "$$$"
+    puts ""
+    base_description = "We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!"
+    if @description.nil? || @description.empty?
+      base_description
+    else
+      strip_tags("#{@description}")
+    end
+  end
+
+
   def meta_keywords
     base_tags = "Kids, Videos, Cartoons, Music, Funny, Safe, Comedy, Shows, Animation, Parents, Children, Web series, Webisodes, Kids Videos, Videos for Kids, Kid Safe Videos"
     if @page_keywords.nil?
       base_tags
     else
-      "#{base_tags}, #{@page_keywords}"
+      "#{@page_keywords}, #{base_tags}"
     end
   end
 

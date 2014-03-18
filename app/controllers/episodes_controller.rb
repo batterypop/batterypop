@@ -18,6 +18,7 @@ class EpisodesController < ApplicationController
     if(!@episode.tag_list.empty?)
       @page_keywords = @episode.tag_list.to_s
     end
+     @description = @episode.description
     # need to know if this is a friend or show render
     if params.has_key?(:show_id)
        @title = @episode.slide_title

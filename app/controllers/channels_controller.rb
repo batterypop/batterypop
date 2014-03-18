@@ -7,6 +7,7 @@ class ChannelsController < ApplicationController
      @title = "Channels"
     # @channels = Channel.all.order('position ASC')
     @channels = Channel.get_channels
+    @description = "batteryPOP has a channel for whatever you’re in the mood for today! And yes, channel surfing is highly encouraged."
   end
 
   
@@ -14,7 +15,7 @@ class ChannelsController < ApplicationController
 
      @active="channels"
      @title = "Channel: " + @channel.title
-   
+    @description = @channel.description
 
     respond_to do |format|
       format.rss {render :layout => false }
