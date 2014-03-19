@@ -18,6 +18,10 @@ ActiveAdmin.register Creator do
       f.input :background,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.background.url(:thumb))
         : f.template.content_tag(:span, 'No background as yet.')
+      f.input :email
+      f.input :website, :label => "Website URL"
+      f.input :google, :label => "Google+"
+      f.input :youtube, :label => "Youtube Channel"
       f.input :hidden, :as => :boolean, :label => "Hide Creator page: select if creator page should not be shown."
 
   	end
