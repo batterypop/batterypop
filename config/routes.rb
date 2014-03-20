@@ -6,6 +6,8 @@ Batterypopv2::Application.routes.draw do
 
   resources :creators
 
+  # resources :contacts
+
   resources :friends do
     resources :episodes
   end
@@ -47,16 +49,16 @@ Batterypopv2::Application.routes.draw do
 
 # put '/shows/:id/:action' => 'shows#followToggle'
 
-  get "pages/home"
-  get "pages/contact"
-  get "pages/about"
-  get "pages/newest"
-  get "pages/shorts"
-  get "pages/creators"
-  get "pages/privacy"
-  get "pages/terms"
-  get "pages/advertise"
-  get "pages/search"
+  # get "pages/home"
+  # get "pages/contact"
+  # get "pages/about"
+  # get "pages/newest"
+  # get "pages/shorts"
+  # get "pages/creators"
+  # get "pages/privacy"
+  # get "pages/terms"
+  # get "pages/advertise"
+  # get "pages/search"
 
   get "shorts", :to => "pages#shorts"
   get "calling-all-creators", :to => "pages#creators"
@@ -67,7 +69,8 @@ Batterypopv2::Application.routes.draw do
   
   get "search", :to => "pages#search"
 
-  
+  get "contact", :to => "contacts#new"
+  post "contact", :to => "contacts#create"
  
   root :to => "pages#home"
 
