@@ -1,5 +1,5 @@
 <!-- vertical carousel -->
-		<div class="col-md-3 show-popped-carousel no-margin no-padding hidden-sm hidden-xs">
+		<div class="col-lg-3 show-popped-carousel no-margin no-padding hidden-md hidden-sm hidden-xs">
 
 <!-- ADDING HIDDEN FOR SMALL DEVICES -->
 			<div class="row device-sm-show-episode visible-xs visible-sm">
@@ -67,12 +67,12 @@
 
 			<!-- new voting block? -->
 			<div class="row vote-block no-margin no-padding follow-pop-wrap center hidden-xs hidden-sm" >
-				<div class="col-lg-6 pop-box center">
+				<div class="col-lg-6 col-md-6 pop-box center">
 					<div class="vote-prompt">Click To</div>
 				   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
 				   	<div class="vote-prompt">POP</div>
 				</div>
-				<div class="col-lg-6 follow-box center">
+				<div class="col-lg-6 col-md-6 follow-box center">
 					<div class="vote-prompt">Click To</div>
 					<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 					<div class="vote-prompt">Follow</div>

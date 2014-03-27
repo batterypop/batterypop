@@ -27,7 +27,7 @@
 <!-- mid section player / carousel -->
       <div class="row margin padding bottom">
         <!-- video player area -->
-        <div class="col-md-9 show-player no-margin no-padding">
+        <div class="col-lg-9 show-player no-margin no-padding ">
 			<div class="show-player-wrapper">
 				<div class="row no-padding no-margin show-player-popover">
 					<div class="col-sm-4 col-xs-12 show-player-episode-title">
@@ -73,6 +73,7 @@
 	
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						 <%= render partial: "layouts/horizontal_slide", :locals => {
+						 		:slide_small_hide => 'hidden-xs',
 				                :slide_active => (@episode == ep),
 				                :slide_badge => "<span class='badge bpop-badge pull-right'>
 						            <span class='episode-badge-vote-#{ep.id}'>#{ep.pops}</span>
@@ -301,7 +302,13 @@
 		      data: {id: $(this).attr("data-episode")}
 			})
 		});
+
+	
+		//$(".content").fitVids({ customSelector: "video[src^='http://www.viddler.com']"});
+
+		//$(".content").fitVids({ customSelector: "div[src^='http://www.viddler.com']"});
 		
+		$(".content").fitVids({customSelector: "video"});
 
 
 	  
