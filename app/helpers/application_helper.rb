@@ -125,6 +125,7 @@ module ApplicationHelper
       @prevURL = session[:previous_url].nil? ? ""  : session[:previous_url].split('/')[0..2].join('/')
       @curURL = request.fullpath.split('/')[0..2].join('/')
       return ( @curURL == @prevURL)
+      # return false
     end
 
 end
