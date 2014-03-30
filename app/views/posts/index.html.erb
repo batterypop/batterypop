@@ -35,33 +35,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-lg-9 col-md-9">
-
-		<% @posts.each do |tpost| %>
-			
-			
-			
-			<div class="post-frame ">
-				<ul class="category-links">
-					<% tpost.categories.each do |cat| %>
-						<li class="category-title label label-warning"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
-					<% end %>
-				</ul>
-				<%= link_to post_path(tpost) do %>
-					<h1 class="post-title"><%= tpost.title %></h1>
-				<% end %>
-				<h4 class="post-date">
-					<%= tpost.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %>
-				</h4>
-				<%= link_to post_path(tpost) do %>
-					<%= image_tag(tpost.featured_image(:original), :alt => tpost.title, :class => "img-responsive post-featured-image", :width => '100%') %>
-				<% end %>
-				<hr />
-				
-			</div>
-
-
-
-		<% end %>
+		<%= render 'layouts/post_list' %>
 	</div>
 
 

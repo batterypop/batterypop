@@ -403,6 +403,7 @@ GEM
       rest-client
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
     yard (0.8.7.3)
 
 PLATFORMS
@@ -465,3 +466,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   viddler-ruby
+  will_paginate (~> 3.0.5)

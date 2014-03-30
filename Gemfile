@@ -109,6 +109,9 @@ gem 'sitemap_generator'
 gem 'carrierwave'
 gem 'fog' # if you're using S3  
 # NEED TO KEEP SITEMAP NOT ON HEROKU AS ITs readonly
+# 
+
+gem 'will_paginate', '~> 3.0.5'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

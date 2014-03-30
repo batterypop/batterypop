@@ -1,1 +1,60 @@
-<h1>show cat</h1>
+<div class="main post-category">
+	<div class="container">
+		<div class="content">
+
+		
+<!-- page header; break off? -->
+<div class="row">
+	<div class="col-xs-12 two-tone-banner text-center show-page-header aqua fill top bottom left right margin padding">
+		<div class="vert-middle-wrap">
+			<div class="vert-middle">
+				<span style="" class="pop-button"><div class="flash"></div></span>
+			</div>
+			<div class="vert-middle category-info turquoise">
+				<h1 class="page-title">
+					<span class="text-lower">b</span>LOG
+				</h1>
+				<h4 class="page-title hidden-xs ">
+					bLOG Category: <%= @category.title %> <%= @category.description %>
+				</h4>
+			</div>
+			<div class="vert-middle">
+				<span style="" class="pop-button"><div class="flash"></div></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- page header end; break off? -->
+
+
+
+
+
+
+
+
+<div class="row">
+	<div class="col-xs-12 col-lg-9 col-md-9">
+		<%= render 'layouts/post_list' %>
+	</div>
+
+
+	<!-- sidebar -->
+	<div class="col-lg-3 col-md-3 post-sidebar">
+		<%= render 'layouts/post_sidebar' %>
+	</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+		</div>
+		 <a href="https://plus.google.com/111613426507812683994" rel="me" style="color: white;">Google+</a>
+	</div>
+</div>

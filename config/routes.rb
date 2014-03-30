@@ -15,6 +15,7 @@ Batterypopv2::Application.routes.draw do
   # resources :episodes
 
   resources :posts
+  
   resources :categories
 
   resources :shows do

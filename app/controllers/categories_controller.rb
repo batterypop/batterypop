@@ -6,6 +6,11 @@ class CategoriesController < ApplicationController
 	end
 	
 	def show
+		@title = "bLOG Category: #{@category.title}"
+		@active = "blog"
+		@description = "batteryPOP bLOG in the #{@category.title} category listing."
+		@latest = Post.published.latest(5)
+		@posts = @category.posts.published.paginate(:page => params[:page], :per_page => 5)
 	end
 
 	private

@@ -5,7 +5,9 @@ class PostsController < ApplicationController
 	def index
 		@title = "bLOG"
      	@active = "blog"
-		@posts = Post.published
+		# @posts = Post.published
+		@posts = Post.published.paginate(:page => params[:page], :per_page => 5)
+		@latest = Post.published.latest(5)
 		@feed_title = "batteryPOP bLOG"
 		@blog_description = "From hot topics to the coolest trends, the batteryPOP blog has a few words for everyone!"
 		@description = "#{@feed_title}: #{@blog_description}"
@@ -21,7 +23,7 @@ class PostsController < ApplicationController
 		@title = "bLOG: " + @post.title
 		@active = "posts"
 		@description = "#{@post.body}"
-		@posts = Post.published
+		# @posts = Post.published
 		@latest = Post.published.latest(5)
 		if(!@post.tag_list.empty?)
 	        @page_keywords = @post.tag_list.to_s
