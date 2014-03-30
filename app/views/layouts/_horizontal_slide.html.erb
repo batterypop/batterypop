@@ -19,8 +19,10 @@
 	<% if (local_assigns[:slide_class]) %><%= slide_class %><% end %>
 	 ">
 		<div class="media-body">
-			
-
+			<div class="row">
+			<%= slide_image %>
+			<% if !(local_assigns[:slide_badge].nil?) %><%= slide_badge %><% end %>
+			</div>
 			<h4 class="media-heading"><%= slide_title %></h4>
 			<% if !(local_assigns[:slide_text].nil?) %><p><%= slide_text %></p><% end %>
 		</div>
