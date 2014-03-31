@@ -7,7 +7,7 @@ class ShowsController < ApplicationController
     @active="shows"
     @title = "Shows"
     # @shows = Show.all
-    @shows=Show.series.order(:created_at).includes(:episodes)
+    @shows=Show.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
     @description = "The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends."
   end
 

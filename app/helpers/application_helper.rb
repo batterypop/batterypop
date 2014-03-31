@@ -16,11 +16,6 @@ module ApplicationHelper
   end
 
   def meta_description
-    puts ''
-    puts "$$$"
-    puts @description
-    puts "$$$"
-    puts ""
     base_description = "We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!"
     if @description.nil? || @description.empty?
       base_description

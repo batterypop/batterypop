@@ -29,6 +29,8 @@
 <!-- page header end; break off? -->
 
 
+<%= will_paginate @shows %>
+
 <% @shows.each do |show| %>
 <%  
   if(pos >= (colors.count-1)) 
@@ -89,7 +91,7 @@
 <!-- end lower listings -->
 <% end %>
 
-
+<%= will_paginate @posts %>
 
     </div>
   </div>
