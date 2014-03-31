@@ -23,6 +23,29 @@
 		 	} %>
 
 
+
+<!-- ADDING HIDDEN FOR SMALL DEVICES -->
+<div class="row follow-pop-wrap  device-sm-show-episode visible-xs visible-sm">
+	<div class="col-xs-8 aqua">
+		<h3><%= @show.title %></h3>
+		<h3><%= @episode.title %></h3>
+	<%= @action.html_safe %>
+	</div>
+
+	<div class="col-xs-2 pop-box center-block steelblue">
+		<div class="vote-prompt">Click To</div>
+	   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+	   	<div class="vote-prompt">POP</div>
+	</div>
+	<div class="col-xs-2  follow-box center-block purple">
+		<div class="vote-prompt">Click To</div>
+		<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
+		<div class="vote-prompt">Follow</div>
+	</div>
+
+</div>
+<!-- ADDING HIDDEN FOR SMALL DEVICES -->
+
 			
 <!-- mid section player / carousel -->
       <div class="row margin padding bottom">
