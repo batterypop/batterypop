@@ -28,8 +28,9 @@
 </div>
 <!-- page header end; break off? -->
 
-
-<%= will_paginate @shows %>
+<div class="row">
+  <%= will_paginate @shows %>
+</div>
 
 <% @shows.each do |show| %>
 <%  
@@ -91,7 +92,9 @@
 <!-- end lower listings -->
 <% end %>
 
-<%= will_paginate @posts %>
+<div class="row">
+  <%= will_paginate @shows %>
+</div>
 
     </div>
   </div>
