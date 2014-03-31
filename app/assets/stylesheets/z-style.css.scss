@@ -2181,10 +2181,16 @@ img.user-image {
 	text-shadow:none;
 }
 
+div.row.follow-pop-wrap.device-sm-show-episode.visible-xs.visible-sm{
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
 .device-sm-show-episode h2,
 .device-sm-show-episode h3 {
-	margin-top:5px;
-	margin-bottom:5px;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding: 0px !important;
 	color:white;
 	text-align:left;
 }

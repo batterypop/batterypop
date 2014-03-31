@@ -33,14 +33,14 @@
 	</div>
 
 	<div class="col-xs-2 pop-box center-block steelblue">
-		<div class="vote-prompt">Click To</div>
-	   <%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-	   	<div class="vote-prompt">POP</div>
+		<div class="vote-prompt hidden-xs">Click To</div>
+		<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+		<div class="vote-prompt hidden-xs">POP</div>
 	</div>
 	<div class="col-xs-2  follow-box center-block purple">
-		<div class="vote-prompt">Click To</div>
+		<div class="vote-prompt hidden-xs">Click To</div>
 		<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-		<div class="vote-prompt">Follow</div>
+		<div class="vote-prompt hidden-xs">Follow</div>
 	</div>
 
 </div>
