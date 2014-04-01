@@ -56,10 +56,9 @@ module ApplicationHelper
 
     def get_age_ranges
       return [
-        'Under 6',
+        'All Ages',
         '6-8',
-        '9-11',
-        '11+'
+        '9-11'
       ]
     end
 
