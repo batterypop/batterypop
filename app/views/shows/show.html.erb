@@ -92,7 +92,7 @@
 				<div class="media-list list-group">
 					<% @show.episodes.each do |ep| %>
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
-						<% @duration =  (!ep.duration.nil? && !ep.duration.empty?) ? "<span class='episode-duration'>#{ep.duration}</span> " : ' ' %>
+						<% @duration =  (!ep.duration.nil? && !ep.duration.empty?) ? "<span class='episode-duration'>Time: #{ep.duration}</span> " : ' ' %>
 	
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						 <%= render partial: "layouts/horizontal_slide", :locals => {

@@ -1572,14 +1572,20 @@ background-position:center 0px;
 }
 
 .episode-duration{
-	float: right;
+	color: rgb(127, 127, 127);
+	font-weight: bold;
+	font-family: Helvetica, Roboto, Arial, sans-serif;
+	font-size: 12px;
+	position: absolute; 
+	bottom: 10px;
+	right: 20px;
 }
 
 .episode-age-range{
 	color: rgb(127, 127, 127);
 	font-weight: bold;
 	font-family: Helvetica, Roboto, Arial, sans-serif;
-	font-size: 11px;
+	font-size: 12px;
 	position: absolute; 
 	bottom: 10px;
 }
@@ -2431,7 +2437,8 @@ div.show-popped-carousel{
 .show-lower-left .horizontal-slide p {
 	color:#7f7f7f;
 	font-size:11px;
-	line-height:15px;
+	line-height:13px;
+	margin-bottom: 10px !important;
 }
 
 .show-lower-left a.active,
