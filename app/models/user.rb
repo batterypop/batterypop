@@ -66,12 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def thumb
-    unless(user.avatar.nil?) 
-        @img = (user.avatar.image(:thumb))
-    else
-        @img = ("missing.png")
-    end
-    return @img
+    self.avatar.image(:thumb)
   end
 
   def search_valid?
@@ -89,11 +84,11 @@ class User < ActiveRecord::Base
 
 
   # because some users were created without avatar attached, adding this as part of the model function
-  def get_avatar(user, size = :thumb)
+  def get_avatar(size = :thumb)
     unless(user.avatar.nil?) 
-        @img = image_tag(user.avatar.image(size))
+        self.avatar.image(size)
     else
-        @img = image_tag("missing.png")
+        image_tag("missing.png")
     end
   end
 
@@ -108,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def question_password(params)
-    puts "WEEE"
+   
   end
 
 
@@ -124,6 +119,21 @@ class User < ActiveRecord::Base
 # mailboxer
   def mailboxer_email(object)
     return nil
+  end
+
+  def age_in_years 
+    # Difference in years, less one if you have not had a birthday this year.
+    unless(self.birthday.nil?)
+      d= Time.now
+      a = d.year - self.birthday.year
+      a = a - 1 if (
+           self.birthday.month >  d.month or 
+          (self.birthday.month >= d.month and self.birthday.day > d.day)
+      )
+      a
+    else
+      "--"
+    end
   end
 
   private 
