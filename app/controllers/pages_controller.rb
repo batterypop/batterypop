@@ -20,6 +20,10 @@ class PagesController < ApplicationController
     @return = PgSearch.multisearch(@query)
   end
 
+  def investors
+    @title = "Investors"
+  end
+
   def contact
     @title = "Contact Us"
     @active = "contact"

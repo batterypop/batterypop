@@ -67,6 +67,7 @@ Batterypopv2::Application.routes.draw do
   get "terms-and-conditions", :to => "pages#terms"
   get "advertise-with-us", :to => "pages#advertise"
   get "about-batterypop", :to => "pages#about"
+  get "investors", :to => "pages#investors"
   
   get "search", :to => "pages#search"
 
