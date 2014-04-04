@@ -6,8 +6,7 @@
 
 
 
-<% @action = "<span class='badge bpop-badge-large '>
-            <span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span> </span>" %>
+<% @action = "<span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span>" %>
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
@@ -15,29 +14,30 @@
 
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-		:crumb_class => " hidden-xs hidden-sm",
+		:crumb_class => " hidden-xs hidden-sm hidden-md",
 		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{@creator_name}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
-		:crumb_action => @action.html_safe
+		:crumb_action => "<span class='badge bpop-badge-large'>#{@action}</span>".html_safe
 		 	} %>
 
 
 
 <!-- ADDING HIDDEN FOR SMALL DEVICES -->
-<div class="row follow-pop-wrap  device-sm-show-episode visible-xs visible-sm">
-	<div class="col-xs-8 aqua">
+<div class="row follow-pop-wrap  device-sm-show-episode visible-xs visible-sm visible-md">
+	<div class="col-sm-8 col-xs-10 aqua">
 		<h3><%= @show.title %></h3>
 		<h3><%= @episode.title %></h3>
-	<%= @action.html_safe %>
+		<span class='badge bpop-badge-large hidden-xs'><%= @action.html_safe %></span>
 	</div>
 
-	<div class="col-xs-2 pop-box center-block steelblue">
+	<div class="col-sm-2 col-xs-2 pop-box center-block steelblue">
 		<div class="vote-prompt hidden-xs">Click To</div>
 		<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+		<span class='badge bpop-badge-large visible-xs'><%= @action.html_safe %></span>
 		<div class="vote-prompt hidden-xs">POP</div>
 	</div>
-	<div class="col-xs-2  follow-box center-block purple">
+	<div class="col-sm-2 col-xs-0 follow-box center-block purple hidden-xs">
 		<div class="vote-prompt hidden-xs">Click To</div>
 		<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
 		<div class="vote-prompt hidden-xs">Follow</div>
@@ -192,14 +192,8 @@
 						<h1>Popped By</h1>
 					</div>
 				</div>
-				<!-- <div class="show-most-popped-inner-wrap">
-					<div class="col-xs-12 show-most-popped-controls no-margin no-padding">
-						<div class="center" >
-							<div id="show-liked-next" class="slider-down pull-right"></div>
-							<div id="show-liked-prev" class="slider-up pull-left"></div>
-						</div>
-					</div> -->
-					<% if !@likers.nil? && !@likers.empty? %>
+
+				<% if !@likers.nil? && !@likers.empty? %>
 					<div class="row no-margin no-padding show-liked-slider">
 						<div class="col-xs-12 no-margin no-padding">
 							<ul class="bxslider show-liked-carousel">

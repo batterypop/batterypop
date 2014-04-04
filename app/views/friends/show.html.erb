@@ -3,8 +3,8 @@
 		<div class="content">
 
 
-<% @action = "<span class='badge bpop-badge-large '>
-            <span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span> </span>" %>
+
+<% @action = "<span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span>" %>
 
 <% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
 
@@ -19,8 +19,26 @@
 		:crumb_title => "<div class='col-xs-12 sponsor'>#{image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => "img-responsive show-crumb-image")}<h3><a href='#{@friend.link}'>#{ @friend.title }</a></h3><div class='show-follow-status'></div></div>".html_safe, 
 	 	
 	 	:crumb_text => "<span><h3>By #{@friend.sponsor}</h3>#{ @friend.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
-		:crumb_action => @action.html_safe
+		:crumb_action => "<span class='badge bpop-badge-large'>#{@action}</span>".html_safe
 		 	} %>
+
+
+<!-- ADDING HIDDEN FOR SMALL DEVICES -->
+<div class="row follow-pop-wrap sponsor  device-sm-show-episode visible-xs visible-sm">
+	<div class="col-sm-10 col-xs-10 " <% unless @color_class.nil? %> style="<%= @color_class %>"<% end %>>
+		<h1><%= @friend.title %></h1>
+		<span class='badge bpop-badge-large hidden-xs'><%= @action.html_safe %></span>
+	</div>
+
+	<div class="col-sm-2 col-xs-2 pop-box center-block steelblue">
+		<div class="vote-prompt hidden-xs">Click To</div>
+		<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
+		<span class='badge bpop-badge-large visible-xs'><%= @action.html_safe %></span>
+		<div class="vote-prompt hidden-xs">POP</div>
+	</div>
+
+</div>
+<!-- ADDING HIDDEN FOR SMALL DEVICES -->
 
 
 			
@@ -29,7 +47,7 @@
 		
 
         <!-- video player area -->
-        <div class="col-md-9 show-player no-margin no-padding">
+        <div class="col-lg-9 show-player no-margin no-padding">
         	<!-- video player -->
 			<div class="show-player-wrapper">
 				<div class="row no-padding no-margin show-player-popover">
