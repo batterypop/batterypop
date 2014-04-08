@@ -146,7 +146,7 @@
 							<ul class="bxslider show-followers-carousel">
 					
 								<% @followers.each do |user| %>
-							
+									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
 									<% unless(user.avatar.nil?) 
 										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
 									else
@@ -155,7 +155,7 @@
 									<li>
 										 <%= render partial: "layouts/vertical_slide", :locals => {
 											  	:slide_title => user.username, 
-											  	:slide_text => '', 
+											  	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe, 
 											  	:slide_image => @img,
 												:slide_url => user_path(User.friendly.find(user.id))} %>
 									
@@ -200,6 +200,7 @@
 							
 
 								<% @likers.each do |user| %>
+									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
 									<% unless(user.avatar.nil?) 
 										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
 									else
@@ -208,7 +209,7 @@
 									<li>
 										 <%= render partial: "layouts/vertical_slide", :locals => {
 											  	:slide_title => user.username, 
-											  	:slide_text => '', 
+											  	:slide_text =>"<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
 											  	:slide_image => @img,
 											#	:slide_url => user_path(User.friendly.find(user.id))
 												
@@ -295,6 +296,8 @@
 	  		touchEnabled: true,
 	  		mode: 'vertical',
 	  		preventDefaultSwipeY: true,
+	  		infiniteLoop: false,
+	  		hideControlOnEnd: true,
 			slideMargin: 10,
 			slideWidth: 165,
 			minSlides: 3,
