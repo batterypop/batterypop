@@ -11,7 +11,9 @@ ActiveAdmin.register Creator do
   	f.inputs "Creator Details" do
   		f.input :username, hint: "Unique sign in name, no spaces.", :required => true
   		f.input :displayname, hint: "Creator name that displays on page.", :label => "Display Name", :required => true
-  		f.input :bio, :as => :rich, :config => { :width => '76%', :height => '400px' }
+  		f.input :password,  :label => "Password", :required => true
+      f.input :password_confirmation,  :label => "Password Confirm", :required => true
+      f.input :bio, :as => :rich, :config => { :width => '76%', :height => '400px' }
       f.input :image,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.image.url(:thumb))
         : f.template.content_tag(:span, 'No image as yet.')

@@ -7,11 +7,9 @@
 
 	<% @users.each do |user| %>
 
-	<% unless(user.avatar.nil?) 
-		@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' )
-	else
-		@img = image_tag("missing.png", :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124')
-	end %>
+
+
+	<% @img = image_tag(user.get_avatar(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ) %>
 
 	<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
 

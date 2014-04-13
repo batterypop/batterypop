@@ -1,16 +1,6 @@
 class Devise::Custom::PasswordsController < Devise::PasswordsController
 
-	# def new
-	# 	super
-	# 	puts ''
-	# 	puts ''
-	# 	puts '   $$$$$$$$$$$$$$$$$$$$$  '
-	# 	puts '  GOT  HERE  NEW'
-	# 	puts params.inspect
-	# 	puts '   $$$$$$$$$$$$$$$$$$$$$  '
-	# 	puts ' '
-	# 	puts ''
-	# end
+
 
 	def create
 		super

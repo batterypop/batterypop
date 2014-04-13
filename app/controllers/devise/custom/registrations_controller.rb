@@ -5,25 +5,18 @@ class Devise::Custom::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    puts ''
+
     @username  = params[:username_prefix] + params[:username_suffix]
     # if either throw bad
     tmpusername = @username.downcase
     
 
-puts ''
-puts tmpusername
-puts ''
     pos = User.where(:username => tmpusername).count
 
     until User.where(:username => tmpusername).empty?
       pos+= 1
       tmpusername = [@username.downcase, pos].join("")
     end
-
-    puts ""
-    puts tmpusername
-    puts ""
 
     params[:user][:username] = tmpusername
     
@@ -47,15 +40,6 @@ puts ''
     # need to check if year not saved
     params[:user]["birthday(1i)"] = params[:date][:birth_year]
 
-    # puts ''
-    # puts "  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   "
-    #  params.inspect
-    #  puts ""
-    #  puts params[:user].inspect
-    #  puts @username.inspect
-    #  puts params[:user][:username]
-
-    #  puts ''
 
     super
     # begin

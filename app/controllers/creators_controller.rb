@@ -14,6 +14,9 @@ class CreatorsController<ApplicationController
 		end
 	end
 
+	def dashboard
+	end
+
 	private
 	def set_creator
 		@creator = Creator.includes(:shows).friendly.find(params[:id])

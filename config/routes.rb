@@ -4,7 +4,6 @@ Batterypopv2::Application.routes.draw do
   
   resources :channels
 
-  resources :creators
 
   # resources :contacts
 
@@ -85,7 +84,24 @@ Batterypopv2::Application.routes.draw do
   # end
 
   devise_for :users,
-    :controllers => { :registrations => "devise/custom/registrations", :passwords => "devise/custom/passwords" }
+    :controllers => { 
+      :registrations => "devise/custom/registrations", 
+      :passwords => "devise/custom/passwords" 
+    }
+
+  devise_for :creators,
+    :controllers => {
+       sessions: "devise/custom/creators"
+      # :registrations => "devise/custom/creators"
+    }
+
+  # devise_for :creators, :skip => [:sessions] do 
+  #   get '/creator/login' => 'devise/sessions#new', :as => :new_creator_session 
+  #   post '/creator/login' => 'devise/sessions#create', :as => :creator_session 
+  #   get 'logout' => 'devise/sessions#destroy', :as => :destroy_creator_session 
+  # end 
+
+    #devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
 resources :users do
     member do
@@ -94,7 +110,7 @@ resources :users do
      end
   end
 
-    
+  resources :creators  
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

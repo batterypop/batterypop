@@ -30,6 +30,10 @@ class Creator < ActiveRecord::Base
 
 	acts_as_messageable
 
+
+	devise :database_authenticatable, :registerable, :rememberable, :trackable, :authentication_keys => [:username] 
+
+
 	has_many :shows
 	has_many :episodes, :through => :shows
 
@@ -52,6 +56,8 @@ class Creator < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	validates_attachment_content_type :background, :content_type => /\Aimage\/.*\Z/
 
+	validates_uniqueness_of :username
+	validates_presence_of :username
 
 # mailboxer
   def mailboxer_email(object)

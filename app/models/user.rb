@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def thumb
-    self.avatar.image(:thumb)
+    self.get_avatar(:thumb)
   end
 
   def search_valid?
@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
 
   # because some users were created without avatar attached, adding this as part of the model function
   def get_avatar(size = :thumb)
-    unless(user.avatar.nil?) 
+    unless(self.avatar.nil?) 
         self.avatar.image(size)
     else
         image_tag("missing.png")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319181914) do
+ActiveRecord::Schema.define(version: 20140411055621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,7 +133,17 @@ ActiveRecord::Schema.define(version: 20140319181914) do
     t.string   "website"
     t.string   "facebook"
     t.string   "youtube"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",           default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "creators", ["reset_password_token"], name: "index_creators_on_reset_password_token", unique: true, using: :btree
 
   create_table "embeds", force: true do |t|
     t.string   "provider"
@@ -240,6 +250,20 @@ ActiveRecord::Schema.define(version: 20140319181914) do
     t.datetime "updated_at"
     t.boolean  "approved"
   end
+
+  create_table "linkages", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
 
   create_table "notifications", force: true do |t|
     t.string   "type"

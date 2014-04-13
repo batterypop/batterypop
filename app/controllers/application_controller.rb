@@ -38,7 +38,9 @@ helper_method :most_popped
 
 
   def after_sign_in_path_for(resource)
-    if (resource.class.name == 'AdminUser')
+    if (resource.class.name == "Creator")
+       session[:previous_url] = "/creators/dashboard"
+    elsif (resource.class.name == 'AdminUser')
        session[:previous_url] = "/admin"
      end
     session[:previous_url] || root_path
@@ -51,6 +53,8 @@ helper_method :most_popped
   def devise_parameter_sanitizer
     if resource_class == User
       Devise::Custom::ParamaterSanitizer.new(User, :user, params)
+    elsif resource_class == Creator
+      Devise::Custom::CreatorSanitizer.new(Creator, :creator, params)
     else
       super # Use the default one
     end
