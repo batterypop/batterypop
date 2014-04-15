@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def meta_description
-    base_description = "We’ve got tons of new videos for you to enjoy, most under 5 minutes, so watch as many as you want!"
+    base_description = "Free videos for kids in a safe, super fun setting. Cartoons, comedy, music and more, and KIDS decide what pops!"
     if @description.nil? || @description.empty?
       base_description
     else
