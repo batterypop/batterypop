@@ -26,7 +26,7 @@ module ApplicationHelper
 
 
   def meta_keywords
-    base_description = "Free videos for kids in a safe, super fun setting. Cartoons, comedy, music and more, and KIDS decide what pops!"
+    base_tags = "Kids, Videos, Cartoons, Music, Funny, Safe, Comedy, Shows, Animation, Parents, Children, Web series, Webisodes, Kids Videos, Videos for Kids, Kid Safe Videos"
     if @page_keywords.nil?
       base_tags
     else
