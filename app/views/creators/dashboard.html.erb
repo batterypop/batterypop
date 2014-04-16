@@ -1,0 +1,50 @@
+<div class="main show">
+	<div class="container">
+		<div class="content">
+
+
+
+		
+
+<%= link_to "Creator Log Out", destroy_creator_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
+
+
+
+<% current_creator.shows.each do | show | %>
+
+<ul class="media-list well">
+	<li class="media">
+		<a class="pull-left" href="#">
+	     <%= image_tag(show.image(:thumb), :alt => show.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
+	    </a>
+		<div class="media-body">
+			<h4 class="media-heading"><%= show.title %></h4>
+			Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
+			
+			<!-- episodes -->
+			<% show.episodes.each do | ep | %>
+			<div class="media well well-sm">
+				<a class="pull-left" href="#">
+			     <%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
+			    </a>
+				<div class="media-body">
+					<h4 class="media-heading"><%= ep.title %></h4>
+					<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
+				</div>
+			</div>
+			<% end %>
+			<!-- end episodes -->
+		</div>
+	</li>
+</ul>
+
+
+<% end %>	
+
+
+
+
+<!--  -->
+		</div>
+	</div>
+</div>

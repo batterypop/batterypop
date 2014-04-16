@@ -1,6 +1,6 @@
 <div class="modal-dialog rounded">
 
-	<%= form_for(:user, :url => registration_path(:user)) do |f| %>
+	<%= form_for(:user, :as => :user, :url => registration_path(:user)) do |f| %>
 
 	<div class="modal-content">
 		<div class="modal-header">

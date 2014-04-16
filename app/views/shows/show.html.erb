@@ -147,11 +147,8 @@
 					
 								<% @followers.each do |user| %>
 									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-									<% unless(user.avatar.nil?) 
-										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
-									else
-										@img = image_tag("missing.png", :class => "img-responsive img-circle")
-									end %>
+									<% @img = image_tag(user.thumb,  :class => "img-responsive img-circle" ) %>
+									
 									<li>
 										 <%= render partial: "layouts/vertical_slide", :locals => {
 											  	:slide_title => user.username, 
@@ -201,11 +198,7 @@
 
 								<% @likers.each do |user| %>
 									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-									<% unless(user.avatar.nil?) 
-										@img = image_tag(user.avatar.image(:thumb),  :class => "img-responsive img-circle" )
-									else
-										@img = image_tag("missing.png", :class => "img-responsive img-circle")
-									end %>
+									<% @img = image_tag(user.thumb,  :class => "img-responsive img-circle" ) %>
 									<li>
 										 <%= render partial: "layouts/vertical_slide", :locals => {
 											  	:slide_title => user.username, 

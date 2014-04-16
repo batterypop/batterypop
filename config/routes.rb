@@ -43,6 +43,11 @@ Batterypopv2::Application.routes.draw do
   get "/sitemap.xml", :to => "sitemap#index"
   get "/sitemap.xml.gz", :to => "sitemap#index"
 
+
+
+  get "/dashboard", :to => "creators#dashboard"
+    # get "/creators/dashboard", :to => "creators#dashboard"
+
 #attempt at voting on episode not within shows nesting
 # put '/episodes/:id/:action' => 'episodes#popunpop'
 

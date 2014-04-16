@@ -15,6 +15,15 @@ class CreatorsController<ApplicationController
 	end
 
 	def dashboard
+		# @title ="DASHBOARD"
+		# ap current_creator
+		
+		if current_creator.nil? 
+			redirect_to "/creators/sign_in"
+		else
+			@creator = current_creator
+			@title = "Dashboard: #{current_creator.displayname}"
+		end
 	end
 
 	private

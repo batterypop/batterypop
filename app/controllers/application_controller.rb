@@ -39,12 +39,13 @@ helper_method :most_popped
 
   def after_sign_in_path_for(resource)
     if (resource.class.name == "Creator")
-       session[:previous_url] = "/creators/dashboard"
+       session[:previous_url] = "/dashboard"
     elsif (resource.class.name == 'AdminUser')
        session[:previous_url] = "/admin"
      end
     session[:previous_url] || root_path
   end
+
 
 
 
