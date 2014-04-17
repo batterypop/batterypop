@@ -31,6 +31,9 @@ helper_method :most_popped
     if (request.fullpath != "/users/sign_in" &&
         request.fullpath != "/users/sign_up" &&
         request.fullpath != "/users/password" &&
+        request.fullpath != "/creators/sign_in" &&
+        request.fullpath != "/creators/sign_out" &&
+        request.fullpath != "/dashboard" &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
     end
