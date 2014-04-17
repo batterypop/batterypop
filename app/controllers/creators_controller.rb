@@ -23,6 +23,7 @@ class CreatorsController<ApplicationController
 		else
 			@creator = current_creator
 			@title = "Dashboard: #{current_creator.displayname}"
+			# g=e.votes.up.by_type(User).voters.group_by &:gender
 		end
 	end
 
