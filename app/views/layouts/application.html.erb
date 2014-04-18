@@ -23,6 +23,7 @@
 	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 	  ga("create", "<%= @gacode %>", "batterypop.com");
+	  ga('require', 'displayfeatures');
 	  ga('send', 'pageview');
 	</script>
 <% end %>
