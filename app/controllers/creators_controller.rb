@@ -24,6 +24,7 @@ class CreatorsController<ApplicationController
 			@creator = current_creator
 			@title = "Dashboard: #{current_creator.displayname}"
 			# g=e.votes.up.by_type(User).voters.group_by &:gender
+			# e.show.followers.group_by(&:gender)
 		end
 	end
 

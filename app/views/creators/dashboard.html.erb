@@ -9,39 +9,48 @@
 <%= link_to "Creator Log Out", destroy_creator_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
 
 
+			<div class="row">
 
-<% current_creator.shows.each do | show | %>
+			<% current_creator.shows.find_each do | show | %>
 
-<ul class="media-list well">
-	<li class="media">
-		<a class="pull-left" href="#">
-	     <%= image_tag(show.image(:thumb), :alt => show.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
-	    </a>
-		<div class="media-body">
-			<h4 class="media-heading"><%= show.title %></h4>
-			Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
-			
+			<ul class="media-list well">
+				<li class="media">
+					<a class="pull-left" href="#">
+				     <%= image_tag(show.image(:thumb), :alt => show.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
+				    </a>
+					<div class="media-body">
+						<h2 class="media-heading"><%= show.title %></h2>
+
+						Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
+						<div><%= users_to_census_gender_count(show.followers, true).inspect %></div>
+						<div><%= users_to_census_age_count(show.followers, true).inspect %></div>
+
 			<!-- episodes -->
-			<% show.episodes.each do | ep | %>
-			<div class="media well well-sm">
-				<a class="pull-left" href="#">
-			     <%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
-			    </a>
-				<div class="media-body">
-					<h4 class="media-heading"><%= ep.title %></h4>
-					<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
-				</div>
-			</div>
-			<% end %>
+						<% show.episodes.find_each do | ep | %>
+						<div class="media well well-sm">
+							<a class="pull-left" href="#">
+						     <%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
+						    </a>
+							<div class="media-body">
+								<h4 class="media-heading"><%= ep.title %></h4>
+								<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
+							</div>
+							<div class="row">
+							<%= users_to_census_gender_count(ep.votes.up.by_type(User).voters, true).inspect %>
+							<%= users_to_census_age_count(ep.votes.up.by_type(User).voters, true).inspect %>
+							</div>
+							
+						</div>
+						<% end %>
 			<!-- end episodes -->
-		</div>
-	</li>
-</ul>
+					</div>
+				</li>
+			</ul>
 
 
-<% end %>	
+			<% end %>	
 
-
+			</div>
 
 
 <!--  -->

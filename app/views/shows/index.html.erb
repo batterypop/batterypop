@@ -67,7 +67,7 @@
 <!-- episode slider -->
 
             <ul class="bxslider show-episodes-slider">
-                <% show.episodes.each do |episode| %>
+                <% show.episodes.find_each do |episode| %>
                   <li>
                     <%= render partial: "layouts/vertical_slide", :locals => {
                       :slide_title => episode.title, 
