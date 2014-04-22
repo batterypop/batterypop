@@ -2,11 +2,17 @@
 	<div class="container">
 		<div class="content">
 
-
+<div class="jumbotron">
+ <h2><%= current_creator.displayname %></h2>
+ <div class="pull-right">
+ 	<%= current_creator.total_show_followers %>
+ </div>
+  <p><%= link_to "Creator Log Out", destroy_creator_session_path, :method => :delete, :class => "btn btn-primary btn-small " %></p>
+</div>
 
 		
 
-<%= link_to "Creator Log Out", destroy_creator_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
+
 
 
 			<div class="row">
@@ -19,9 +25,11 @@
 				     <%= image_tag(show.image(:thumb), :alt => show.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
 				    </a>
 					<div class="media-body">
-						<h2 class="media-heading"><%= show.title %></h2>
+						<h2 class="media-heading"><%= link_to show.title, show.link %></h2>
 
 						Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
+
+						<div id="show-gender-followers-<%= show.id %>" style="height: 150px; width: 150px;" data-chart="<%= chart_data_to_donut(users_to_census_gender_count(show.followers, true)).to_json %>"></div>
 						<div><%= users_to_census_gender_count(show.followers, true).inspect %></div>
 						<div><%= users_to_census_age_count(show.followers, true).inspect %></div>
 
@@ -32,7 +40,7 @@
 						     <%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
 						    </a>
 							<div class="media-body">
-								<h4 class="media-heading"><%= ep.title %></h4>
+								<h4 class="media-heading"><%= link_to ep.title, ep.link %></h4>
 								<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
 							</div>
 							<div class="row">
@@ -57,3 +65,17 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+		Morris.Donut({
+		  element: 'show-gender-followers',
+		  data: [
+		    {label: "Download Sales", value: 12},
+		    {label: "In-Store Sales", value: 30},
+		    {label: "Mail-Order Sales", value: 20}
+		  ]
+		});
+	
+	
+</script>

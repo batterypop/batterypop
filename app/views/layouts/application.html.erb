@@ -13,6 +13,17 @@
     <meta name="description" content="<%= meta_description %>" />
     <meta name="keywords" content="<%= meta_keywords %>" />
 
+	<!-- crazyegg -->
+<% if Rails.env.production? %>
+	<script type="text/javascript">
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0019/5753.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+	</script>
+<% end %>
+
+
 
     <!-- GA -->
 <% unless (Rails.env.development? or Rails.env.test?) %>
@@ -80,7 +91,11 @@
 
     <![endif]-->
 
-		
+	
+	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>	
+
   </head>
 	
 

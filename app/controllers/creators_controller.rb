@@ -1,6 +1,8 @@
 class CreatorsController<ApplicationController
 	before_action :set_creator, only: [:show]
 
+	respond_to :html, :xml, :json
+
 	def index
 		@creators = Creator.all
 	end
@@ -28,6 +30,8 @@ class CreatorsController<ApplicationController
 		end
 	end
 
+
+
 	private
 	def set_creator
 		@creator = Creator.includes(:shows).friendly.find(params[:id])
@@ -35,4 +39,8 @@ class CreatorsController<ApplicationController
 	def creator_params
 		params.require(:creator).permit(:displayname, :username)
 	end
+
+
+	
+
 end

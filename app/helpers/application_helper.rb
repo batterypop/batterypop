@@ -94,6 +94,7 @@ module ApplicationHelper
 
   def users_to_census_age_count(arr, deductYears=false)
     # e = Episode.friendly.find('who-swallowed-a-fly'); u=e.votes.up.by_type(User).voters; s=e.show
+    # h[key] ? h[key] << category[:id] : h[key] = [category[:id]]
     ret = Hash.new
     arr.each do |user|
       # ret << user.id
@@ -125,8 +126,23 @@ module ApplicationHelper
         ret[targetGender] = ret[targetGender] + 1
       end
     end
-    return ret.sort_by{|k,v| k.to_i}
+    return ret.sort_by{|k,v| k}
   end
+
+
+  def chart_data_to_donut(arr)
+    h = Array.new
+    arr.each do |item|
+      h << {"label" => item[0], "value" => item[1].to_s}
+    end
+    return h
+  end
+
+
+
+
+
+
 
 
 

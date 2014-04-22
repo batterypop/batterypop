@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
    before_action :getGACode
 
 
-  def most_popped
-    #@most_popped  ||= Show.first
-    @most_popped ||= "This is a test"
-  end
-helper_method :most_popped
 
 
   def getGACode
