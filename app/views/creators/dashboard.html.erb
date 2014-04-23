@@ -30,8 +30,8 @@
 						Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
 
 						<div id="show-gender-followers-<%= show.id %>" style="height: 150px; width: 150px;" data-chart="<%= chart_data_to_donut(users_to_census_gender_count(show.followers, true)).to_json %>"></div>
-						<div><%= users_to_census_gender_count(show.followers, true).inspect %></div>
-						<div><%= users_to_census_age_count(show.followers, true).inspect %></div>
+						<div id="show-age-followers-<%= show.id %>" data-chart="<%= chart_data_to_bar(users_to_census_age_count(show.followers, true)).to_json %>"></div>
+						
 
 			<!-- episodes -->
 						<% show.episodes.find_each do | ep | %>

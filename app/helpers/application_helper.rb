@@ -139,7 +139,16 @@ module ApplicationHelper
   end
 
 
-
+  def chart_data_to_bar(arr)
+    h = Array.new
+    arr.each do |item|
+      x = Hash.new
+      x[:y] = item[0]
+      item[1].each{|k,v| x[k.to_sym] = v}
+      h << x
+    end
+    return h
+  end
 
 
 
