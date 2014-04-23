@@ -195,7 +195,7 @@
                        <%= render partial: "layouts/vertical_slide", :locals => {
                             :slide_title => user.username, 
                             :slide_text => '',
-                            :slide_image => image_tag(user.thumb_ :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+                            :slide_image => image_tag(user.thumb :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
                             :slide_url => user_path(User.friendly.find(user.id))} %>
                     </li>
                   <% end %>
