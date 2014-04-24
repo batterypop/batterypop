@@ -28,9 +28,16 @@
 						<h2 class="media-heading"><%= link_to show.title, show.link %></h2>
 
 						Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
+					
+					<div class="row chart-row">
+						<div class="col-md- col-sm-4">
+							<div id="show-gender-followers-<%= show.id %>" class="chart-donut" style="height: 150px;" data-chart="<%= chart_data_to_donut(users_to_census_gender_count(show.followers, true)).to_json %>"></div>
+						</div>
+						<div class="col-md-8 col-sm-8">
+							<div id="show-age-followers-<%= show.id %>" style="height: 150px;" class="chart-bar" data-chart="<%= chart_data_to_bar(users_to_census_age_count(show.followers, true)).to_json %>"></div>
+						</div>
+					</div>
 
-						<div id="show-gender-followers-<%= show.id %>" style="height: 150px; width: 150px;" data-chart="<%= chart_data_to_donut(users_to_census_gender_count(show.followers, true)).to_json %>"></div>
-						<div id="show-age-followers-<%= show.id %>" data-chart="<%= chart_data_to_bar(users_to_census_age_count(show.followers, true)).to_json %>"></div>
 						
 
 			<!-- episodes -->
@@ -43,9 +50,14 @@
 								<h4 class="media-heading"><%= link_to ep.title, ep.link %></h4>
 								<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
 							</div>
-							<div class="row">
-							<%= users_to_census_gender_count(ep.votes.up.by_type(User).voters, true).inspect %>
-							<%= users_to_census_age_count(ep.votes.up.by_type(User).voters, true).inspect %>
+							<div class="row chart-row">
+								<div class="col-md-3 col-sm-3">
+									<div id="episode-gender-<%= ep.id %>"  class="chart-donut" style="height: 150px;"  data-chart="<%= chart_data_to_donut(users_to_census_gender_count(ep.votes.up.by_type(User).voters, true)).to_json %>" /></div>
+								</div>
+								<div class="col-md-8 col-sm-8">
+									<div id="episode-age-<%= ep.id %>"  class="chart-bar" style="height: 150px;" data-chart="<%= chart_data_to_bar(users_to_census_age_count(ep.votes.up.by_type(User).voters, true)).to_json %>" /></div>
+								</div>
+						
 							</div>
 							
 						</div>
@@ -68,14 +80,26 @@
 
 
 <script type="text/javascript">
-		Morris.Donut({
-		  element: 'show-gender-followers',
-		  data: [
-		    {label: "Download Sales", value: 12},
-		    {label: "In-Store Sales", value: 30},
-		    {label: "Mail-Order Sales", value: 20}
-		  ]
+	$(document).ready(function(){
+		$(".chart-donut").each(function(){
+			Morris.Donut({
+				colors: ["pink", "blue", "green"],
+				element: this.id,
+				data: eval($(this).attr("data-chart"))
+			});
 		});
+
+		$(".chart-bar").each(function(){
+			Morris.Bar({
+			  element: this.id,
+			  data: eval($(this).attr("data-chart")), 
+			  xkey: 'y',
+			  ykeys: ['male', 'female', 'unknown'],
+			  labels: ['Male', 'Female', 'Uknown'],
+			  barColors: ["blue", "pink", "green"]
+			});
+		});
+		
 	
-	
+	});
 </script>

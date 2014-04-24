@@ -116,7 +116,8 @@ module ApplicationHelper
 
 
   def users_to_census_gender_count(arr, deductYears=true)
-    ret = Hash.new
+    # ret = Hash.new
+    ret = {"male" => 0, "female" => 0, "unknown" => 0}
     arr.each do |user|
       targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
       targetGender = user.gender.nil? ? 'unknown' : user.gender

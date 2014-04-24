@@ -46,6 +46,8 @@ Batterypopv2::Application.routes.draw do
 
 
   get "/dashboard", :to => "creators#dashboard"
+  get "/creators/sign_out", :to => "creators#dashboard"
+  
     # get "/creators/dashboard", :to => "creators#dashboard"
 
 #attempt at voting on episode not within shows nesting

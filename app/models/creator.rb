@@ -83,6 +83,7 @@ end
 
 # creator vote / following lookup
 def total_show_followers
+	# just realized these aren't unique; need to keep as users and distinct
 	self.shows.inject(0){|sum, i| sum + i.followers.size}
 end
 
