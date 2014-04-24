@@ -23,23 +23,7 @@
 
 
 
-<!-- welcome modal -->
 
-	<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal_signup">
-				<%= image_tag "welcome_popup.png", :class => "img-responsive"  %>
-				</a>
-				<div class="modal-footer">
-					<div class="pull-left">
-					<a href="/about/privacy">A Note to Parents.</a>
-					</div>
-				  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
 
 <!-- home items inited -->
 <script type="text/javascript">
@@ -93,9 +77,9 @@
 			pager: false
 	  	});
 
-		<% if((!current_user && !@cookie)) %>
-			$("#welcomeModal").modal('show');
-		<% end %>
+		// <% if((!current_user && !@cookie)) %>
+		// 	$("#welcomeModal").modal('show');
+		// <% end %>
 
 		
 
