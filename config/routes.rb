@@ -117,7 +117,12 @@ resources :users do
      end
   end
 
-  resources :creators  
+  resources :creators  do
+    member do
+      post :draw_chart_bar
+      post :draw_chart_donut
+    end
+  end
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

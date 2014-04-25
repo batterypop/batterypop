@@ -82,22 +82,19 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".chart-donut").each(function(){
-			Morris.Donut({
-				colors: ["pink", "blue", "green"],
-				element: this.id,
-				data: eval($(this).attr("data-chart"))
-			});
+			$.ajax({
+				type: 'POST',
+				url: '<%= draw_chart_donut_creator_path(@creator) %>',
+				data: {element: this.id}
+			})
 		});
 
 		$(".chart-bar").each(function(){
-			Morris.Bar({
-			  element: this.id,
-			  data: eval($(this).attr("data-chart")), 
-			  xkey: 'y',
-			  ykeys: ['male', 'female', 'unknown'],
-			  labels: ['Male', 'Female', 'Uknown'],
-			  barColors: ["blue", "pink", "green"]
-			});
+			$.ajax({
+				type: 'POST',
+				url: '<%= draw_chart_bar_creator_path(@creator) %>',
+				data: {element: this.id}
+			})
 		});
 		
 	

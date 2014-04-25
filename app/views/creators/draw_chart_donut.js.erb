@@ -1,0 +1,7 @@
+Morris.Donut({
+	colors: ["pink", "blue", "green"],
+	element: '<%= @element %>',
+	data: eval($("#<%= @element %>").attr("data-chart"))
+});
+
+

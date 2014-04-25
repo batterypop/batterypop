@@ -32,6 +32,15 @@ class CreatorsController<ApplicationController
 
 
 
+	def draw_chart_bar
+		@element =  params['element']
+	end
+
+	def draw_chart_donut
+		@element =  params['element']
+	end
+
+
 	private
 	def set_creator
 		@creator = Creator.includes(:shows).friendly.find(params[:id])

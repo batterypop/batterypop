@@ -1,0 +1,16 @@
+// Morris.Donut({
+// 	colors: ["pink", "blue", "green"],
+// 	element: '<%= @element %>',
+// 	data: eval($("#<%= @element %>").attr("data-chart"))
+// });
+
+// alert('<%= @element %>');
+
+Morris.Bar({
+  element: '<%= @element %>',
+  data: eval($("#<%= @element %>").attr("data-chart")),
+  xkey: 'y',
+  ykeys: ['male', 'female', 'unknown'],
+  labels: ['Male', 'Female', 'Uknown'],
+  barColors: ["blue", "pink", "green"]
+});
