@@ -34,11 +34,14 @@ ActiveAdmin.register Creator do
   	column :username
   	column :displayname
   	column :bio
+    column "Show Count" do |creator|
+      creator.shows.count
+    end
   	column "Image" do |creator|
-  		link_to image_tag(creator.image(:thumb)), admin_creator_path(creator)
+  		link_to image_tag(creator.image(:thumb), :width => '110', :height => '110'), admin_creator_path(creator)
   	end
   	column "Background" do |creator|
-  		link_to image_tag(creator.background(:thumb)), admin_creator_path(creator)
+  		link_to image_tag(creator.background(:thumb), :width => '110', :height => '110'), admin_creator_path(creator)
   	end
     default_actions
   end
