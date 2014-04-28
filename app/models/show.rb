@@ -28,6 +28,7 @@
 
 class Show < ActiveRecord::Base
 	include PgSearch
+	include DashboardUtility
 	multisearchable :against => [:title, :description]
 
 	extend FriendlyId
@@ -92,6 +93,38 @@ end
 # total show episodes pops
 def total_episode_pops
 	self.episodes.inject(0){|sum, ep| sum + ep.pops}
+end
+
+# dashboard methods
+def followers_by_gender
+	DashboardUtility.users_to_census_gender_count(self.followers, true)
+end
+
+def followers_by_age
+	DashboardUtility.users_to_census_age_count(self.followers, true)
+end
+
+def voters_from_show_episodes
+	h = Array.new
+	self.episodes.each do |ep|
+		voters = ep.votes.up.by_type(User).voters
+		voters.each do |voter|
+			h << voter unless h.include?(voter)
+			# ap voter
+		end
+	end
+	return h
+end
+
+
+def episodes_votes_by_age
+	voters = self.voters_from_show_episodes
+	DashboardUtility.users_to_census_age_count(voters, true)
+end
+
+def episodes_votes_by_gender
+	voters = self.voters_from_show_episodes
+	DashboardUtility.users_to_census_gender_count(voters, true)
 end
 
 

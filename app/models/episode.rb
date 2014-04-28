@@ -29,6 +29,8 @@ class Episode < ActiveRecord::Base
 	include PgSearch
 	multisearchable :against => [:title, :description]
 
+	include DashboardUtility
+
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged, :use => :scoped, :scope => :show
@@ -162,6 +164,15 @@ end
 				return @most
 			end
 		end
+	end
+
+
+	def votes_by_gender
+		DashboardUtility.users_to_census_gender_count(self.votes.up.by_type(User).voters, true)
+	end
+
+	def votes_by_age
+		DashboardUtility.users_to_census_age_count(self.votes.up.by_type(User).voters, true)
 	end
 	
 	def should_generate_new_friendly_id?

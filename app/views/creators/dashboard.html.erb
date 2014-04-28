@@ -4,9 +4,9 @@
 
 <div class="jumbotron">
  <h2><%= current_creator.displayname %></h2>
- <div class="pull-right">
+ <!-- <div class="pull-right">
  	<%= current_creator.total_show_followers %>
- </div>
+ </div> -->
   <p><%= link_to "Creator Log Out", destroy_creator_session_path, :method => :delete, :class => "btn btn-primary btn-small " %></p>
 </div>
 
@@ -26,42 +26,110 @@
 				    </a>
 					<div class="media-body">
 						<h2 class="media-heading"><%= link_to show.title, show.link %></h2>
-
-						Pops: <span class="badge alert-success"><%= show.total_episode_pops %></span> | Followers: <span class="badge alert-info"><%= show.user_followers.count %></span>
+						Followers: <span class="badge alert-danger"><%= show.user_followers.count %></span> | Total Pops: <span class="badge alert-primary"><%= show.total_episode_pops %></span> 
 					
 					<div class="row chart-row">
-						<div class="col-md- col-sm-4">
-							<div id="show-gender-followers-<%= show.id %>" class="chart-donut" style="height: 150px;" data-chart="<%= chart_data_to_donut(users_to_census_gender_count(show.followers, true)).to_json %>"></div>
+						<div class="col-md-2 col-sm-2">
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Follower Genders</h3>
+								</div>
+								<div class="panel-body">
+									<div id="show-gender-followers-<%= show.id %>" class="chart-donut" style="height: 150px;" data-chart="<%= chart_data_to_donut(show.followers_by_gender).to_json %>"></div>
+								</div>
+							</div>
+
 						</div>
-						<div class="col-md-8 col-sm-8">
-							<div id="show-age-followers-<%= show.id %>" style="height: 150px;" class="chart-bar" data-chart="<%= chart_data_to_bar(users_to_census_age_count(show.followers, true)).to_json %>"></div>
+						<div class="col-md-4 col-sm-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Follower Ages</h3>
+								</div>
+								<div class="panel-body">
+									<div id="show-age-followers-<%= show.id %>" style="height: 150px;" class="chart-bar" data-chart="<%= chart_data_to_bar(show.followers_by_age).to_json %>"></div>
+								</div>
+							</div>
+						</div>
+						
+
+						<div class="col-md-2 col-sm-2">
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Total Voters</h3>
+								</div>
+								<div class="panel-body">
+									<div id="show-age-gender-voters-<%= show.id %>" class="chart-donut" style="height: 150px;" data-chart="<%= chart_data_to_donut(show.episodes_votes_by_gender).to_json %>"></div>
+								</div>
+							</div>
+
+						</div>
+
+
+
+
+						<div class="col-md-4 col-sm-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Total Voters Age</h3>
+								</div>
+								<div class="panel-body">
+									<div id="show-episode-voters-<%= show.id %>" style="height: 150px;" class="chart-bar" data-chart="<%= chart_data_to_bar(show.episodes_votes_by_age).to_json %>"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 
 						
 
 			<!-- episodes -->
-						<% show.episodes.find_each do | ep | %>
+			<% unless show.single? %>
+					<% show.episodes.find_each do | ep | %>
 						<div class="media well well-sm">
 							<a class="pull-left" href="#">
 						     <%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left', :width => '50') %>
 						    </a>
-							<div class="media-body">
-								<h4 class="media-heading"><%= link_to ep.title, ep.link %></h4>
-								<span class="badge alert-success"><%= ep.cached_votes_up %> </span>  <span class="badge alert-info"><%= Integer(ep.chicago.to_i) %></span>
+							<div class="media-body nav-pills">
+								<h2 class="media-heading"><%= link_to ep.title, ep.link %></h2>
+								<button type="button" class="btn btn-default" disabled="disabled"><b>POPS:</b></button> 
+								<button class="btn btn-warning btn-sm" type="button">
+							      Anon: <span class="badge"><%= Integer(ep.chicago.to_i) %></span>
+							    </button>
+							    <button class="btn btn-primary btn-sm" type="button">
+							      Users: <span class="badge"><%= ep.cached_votes_up %></span>
+							    </button>
+								
 							</div>
 							<div class="row chart-row">
-								<div class="col-md-3 col-sm-3">
-									<div id="episode-gender-<%= ep.id %>"  class="chart-donut" style="height: 150px;"  data-chart="<%= chart_data_to_donut(users_to_census_gender_count(ep.votes.up.by_type(User).voters, true)).to_json %>" /></div>
+								<div class="col-md-2 col-sm-2">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title">Voter Genders</h3>
+										</div>
+										<div class="panel-body">
+											<div id="episode-gender-<%= ep.id %>"  class="chart-donut" style="height: 150px;"  data-chart="<%= chart_data_to_donut(ep.votes_by_gender).to_json %>" /></div>
+										</div>
+									</div>
+
 								</div>
 								<div class="col-md-8 col-sm-8">
-									<div id="episode-age-<%= ep.id %>"  class="chart-bar" style="height: 150px;" data-chart="<%= chart_data_to_bar(users_to_census_age_count(ep.votes.up.by_type(User).voters, true)).to_json %>" /></div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title">Voter Ages</h3>
+										</div>
+										<div class="panel-body">
+											<div id="episode-age-<%= ep.id %>"  class="chart-bar" style="height: 150px;" data-chart="<%= chart_data_to_bar(ep.votes_by_age).to_json %>" /></div>
+										</div>
+									</div>
+
 								</div>
 						
 							</div>
 							
 						</div>
 						<% end %>
+			<% end %>
 			<!-- end episodes -->
 					</div>
 				</li>

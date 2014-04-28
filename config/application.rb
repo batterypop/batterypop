@@ -31,7 +31,7 @@ module Batterypopv2
    # config.autoload_paths += %W(#{config.root}/lib)
     # config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    #config.eager_load_paths += Dir[Rails.root.join('lib')]
+    config.eager_load_paths += Dir[Rails.root.join('lib')]
  
 
     # config.assets.precompile += %w( .svg .eot .woff .ttf )
