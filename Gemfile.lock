@@ -269,6 +269,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    mixpanel-ruby (1.4.0)
     multi_json (1.8.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -443,6 +444,7 @@ DEPENDENCIES
   less-rails
   mailboxer
   meta_request
+  mixpanel-ruby
   paperclip (>= 3.4.0)
   pg
   pg_search

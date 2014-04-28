@@ -113,6 +113,9 @@ gem 'fog' # if you're using S3
 
 gem 'will_paginate', '~> 3.0.5'
 
+
+gem 'mixpanel-ruby'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
