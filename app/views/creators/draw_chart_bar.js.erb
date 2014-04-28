@@ -1,16 +1,13 @@
-// Morris.Donut({
-// 	colors: ["pink", "blue", "green"],
-// 	element: '<%= @element %>',
-// 	data: eval($("#<%= @element %>").attr("data-chart"))
-// });
-
-// alert('<%= @element %>');
-
-Morris.Bar({
-  element: '<%= @element %>',
-  data: eval($("#<%= @element %>").attr("data-chart")),
-  xkey: 'y',
-  ykeys: ['male', 'female', 'unknown'],
-  labels: ['Male', 'Female', 'Uknown'],
-  barColors: ["blue", "pink", "green"]
-});
+var chartData = (eval($("#<%= @element %>").attr("data-chart")));
+if(chartData.length == 0){
+	$("#<%= @element %>").html('<div class="alert alert-warning text-center">No Data Found</div>');
+}else{
+	Morris.Bar({
+	  element: '<%= @element %>',
+	  data: eval($("#<%= @element %>").attr("data-chart")),
+	  xkey: 'y',
+	  ykeys: ['male', 'female', 'unknown'],
+	  labels: ['Male', 'Female', 'Uknown'],
+	  barColors: ["blue", "pink", "green"]
+	});
+}

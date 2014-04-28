@@ -19,10 +19,20 @@ module DashboardUtility
   end
 
   def self.users_to_census_age_count(arr, deductYears=false)
+
     # e = Episode.friendly.find('who-swallowed-a-fly'); u=e.votes.up.by_type(User).voters; s=e.show
     # h[key] ? h[key] << category[:id] : h[key] = [category[:id]]
     ret = Hash.new
+	if arr.empty?
+		puts " "
+		puts " %%%%%%%%  "
+		ap arr
+		puts ""
+    	return ret
+    end
+    puts "CALLING EACH"
     arr.each do |user|
+    	if user.nil? then next end
       # ret << user.id
       # targetDate = user.birthday.nil? ?  'unknown' : user.birthday.to_s
       targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
@@ -37,14 +47,16 @@ module DashboardUtility
         ret[targetDate][targetGender] =  ret[targetDate][targetGender] + 1
       end
     end
-    return ret.sort_by{|k,v| k.to_i}
+    return ret.sort_by	{|k,v| k.to_i}
   end
 
 
   def self.users_to_census_gender_count(arr, deductYears=true)
     # ret = Hash.new
+    if arr.empty? then return Hash.new;  end
     ret = {"male" => 0, "female" => 0, "unknown" => 0}
     arr.each do |user|
+    	if user.nil? then next  end
       targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
       targetGender = user.gender.nil? ? 'unknown' : user.gender
       if ret[targetGender].nil?
@@ -79,18 +91,6 @@ module DashboardUtility
 
 
 
-  # def self.voters_from_show_episodes(show)
-  # 	# a.inject([]) { |result,h| result << h unless result.include?(h); result }
-  # 	# show.episodes.inject([]){|res, ep| ep.votes.up.by_type(User).voters.each do |voter|}
-  # 	h = Array.new
-  # 	show.episodes.each do |ep|
-  # 		voters = ep.votes.up.by_type(User).voters
-  # 		voters.each do |voter|
-  # 			h << voter unless h.include?(voter)
-  # 		end
-  # 	end
-  # 	return h
-  # end
 
 
 end
