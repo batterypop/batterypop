@@ -24,13 +24,8 @@ module DashboardUtility
     # h[key] ? h[key] << category[:id] : h[key] = [category[:id]]
     ret = Hash.new
 	if arr.empty?
-		puts " "
-		puts " %%%%%%%%  "
-		ap arr
-		puts ""
     	return ret
     end
-    puts "CALLING EACH"
     arr.each do |user|
     	if user.nil? then next end
       # ret << user.id
