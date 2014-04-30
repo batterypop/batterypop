@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def home
-    @title = "Home"
+    @title = "Free Videos for Kids"
     @features = Feature.homepage.active
     @showlist = Show.showlist.approved.shuffle
     @popped = Episode.mostpopped(10) 
