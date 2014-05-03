@@ -116,7 +116,8 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'mixpanel-ruby'
 
-gem 'google-api-client'
+# gem 'google-api-client'
+gem 'rack-google-analytics'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
