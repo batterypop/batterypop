@@ -58,6 +58,15 @@ module ApplicationHelper
       end
     end
 
+
+    def get_ga_page_params 
+      if @ga_page_params.nil? || @ga_page_params.empty?
+        ""
+      else
+        return @ga_page_params.html_safe
+      end
+    end
+
     def colors
      ["aqua","purple","gold","orangered","green","steelblue","red","mint"]
     end

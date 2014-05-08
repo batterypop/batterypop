@@ -21,7 +21,8 @@ class EpisodesController < ApplicationController
      @description = @episode.description
 
 
-     @ga_custom = "ga('set', 'dimension1', '#{@episode.creator.id}');"
+     # @ga_custom = "ga('set', 'dimension1', '#{@episode.creator.id}');"
+     @ga_page_params = ", {'dimension1':  '#{@episode.creator.id}', 'dimension2': '#{@episode.id}'}"
 
      
     # need to know if this is a friend or show render

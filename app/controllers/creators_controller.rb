@@ -11,6 +11,8 @@ class CreatorsController<ApplicationController
 		if !@creator.hidden?
 			@title = "Creator: #{@creator.displayname}"
 			@description = "Creator: #{@creator.displayname} #{@creator.bio}"
+			@ga_page_params = ", {'dimension1':  '#{@creator.id}'}"
+
 		else
 			redirect_to "/"
 		end
