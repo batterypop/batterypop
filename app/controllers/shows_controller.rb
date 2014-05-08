@@ -28,6 +28,9 @@ class ShowsController < ApplicationController
 
 
     @title = @show.title + ' : ' + @episode.title
+  
+    @ga_custom = "ga('set', 'dimension1', '#{@show.creator.id}');"
+
     if(!@episode.tag_list.empty?)
         @page_keywords =  @episode.tag_list.to_s
     end

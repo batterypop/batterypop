@@ -1,7 +1,6 @@
 class Devise::Custom::RegistrationsController < Devise::RegistrationsController
   def new
     super # no customization, simply call the devise implementation
-    params.inspect
   end
 
   def create

@@ -19,6 +19,11 @@ class EpisodesController < ApplicationController
       @page_keywords = @episode.tag_list.to_s
     end
      @description = @episode.description
+
+
+     @ga_custom = "ga('set', 'dimension1', '#{@episode.creator.id}');"
+
+     
     # need to know if this is a friend or show render
     if params.has_key?(:show_id)
        @title = @episode.slide_title

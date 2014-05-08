@@ -3,9 +3,6 @@ class Devise::Custom::CreatorsController < Devise::SessionsController
 # get /resources/sign_in
 	def new
 		super
-		ap request.env["devise.mapping"]
-		ap params
-		ap sign_in_params
 	end
 # # POST /resource/sign_in
 	def create

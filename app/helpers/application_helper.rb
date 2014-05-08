@@ -48,6 +48,16 @@ module ApplicationHelper
   		@devise_mapping ||= Devise.mappings[:user]
   	end
 
+
+
+    def get_ga_custom
+      if @ga_custom.nil? || @ga_custom.empty?
+        ""
+      else
+        return @ga_custom.html_safe
+      end
+    end
+
     def colors
      ["aqua","purple","gold","orangered","green","steelblue","red","mint"]
     end
@@ -157,37 +167,54 @@ module ApplicationHelper
 
 
 
-
-
+  def traceout(object)
+    puts ""
+    puts ""
+    puts " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    TRACEOUT  %%%%%%%%%%%%%%%%%%%%%%%%%%"
+    # ap object
+    puts object.inspect
+    puts " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    TRACEOUT  %%%%%%%%%%%%%%%%%%%%%%%%%%"
+    puts ""
+    puts ""
+  end
 
 # viddler helpers was originally it's own class
-	def vid_embed(episode)
-		@viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
-		@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
-		@ret =''
-		if(episode.embed.provider != 'viddler')
-			@ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
-		else
-			vidid = episode.video
-			videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-			# old embed or new with videojs
-			if videoData['video']['files'].nil?
-				 old = Embed.where(:provider => "viddler_original").first
-				 @ret = old.get_embed(old, episode.video).html_safe
-			else
-				files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
-				matched = files.select { |vid| vid['width'] = "854" }
-				@src = ""
-				matched.each do |i|
-					@src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
-				end
-				@ret = episode.embed.get_embed(episode.embed, vidid).html_safe
-				@poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-				@ret = @ret.gsub("{{poster}}", "poster='#{@poster}'").gsub("{{videosources}}", @src).gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-			end
-		end
-		return @ret
-	end
+
+
+  def vid_embed(episode)
+   @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+    if(episode.embed.provider == 'viddler')
+      @viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
+      @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+      vidid = episode.video
+      videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
+      if videoData['video']['files'].nil?
+         old = Embed.where(:provider => "viddler_original").first
+         @ret = old.get_embed(old, episode.video).html_safe
+      else
+        files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+        matched = files.select { |vid| vid['width'] = "854" }
+        @src = ""
+        matched.each do |i|
+          @src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
+        end
+      end
+      @ret = episode.embed.get_embed(episode.embed, vidid).html_safe
+      @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+      @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'").gsub("{{videosources}}", @src).gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+      traceout(@ret)
+
+    else
+      traceout("NOT VIDDLER")
+      traceout(episode)
+       @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+      # just in case there's other info
+      @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+    end
+    return @ret
+  end
+
+
 
 	def vid_file(episode)
 		@viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])

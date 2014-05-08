@@ -41,6 +41,7 @@
       for (percent = _i = 0; _i <= 99; percent = _i += percentsPlayedInterval) {
         if (percentPlayed >= percent && __indexOf.call(percentsAlreadyTracked, percent) < 0) {
           if (__indexOf.call(eventsToTrack, "start") >= 0 && percent === 0 && percentPlayed > 0) {
+            console.log(this);
             sendbeacon('start', true);
           } else if (__indexOf.call(eventsToTrack, "percentsPlayed") >= 0 && percentPlayed !== 0) {
             sendbeacon('percent played', true, percent);

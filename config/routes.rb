@@ -93,7 +93,8 @@ Batterypopv2::Application.routes.draw do
   devise_for :users,
     :controllers => { 
       :registrations => "devise/custom/registrations", 
-      :passwords => "devise/custom/passwords" 
+      :passwords => "devise/custom/passwords",
+      :sessions => "devise/custom/users"
     }
 
   devise_for :creators,

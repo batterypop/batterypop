@@ -93,6 +93,10 @@ end
 		return (self.image(:thumb))
 	end
 
+	def poster
+		return (self.image(:large))
+	end
+
 	def search_valid?
 		!!(approved && self.show && self.show.search_valid?)
 	end
