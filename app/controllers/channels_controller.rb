@@ -6,7 +6,7 @@ class ChannelsController < ApplicationController
      @active="channels"
      @title = "Channels"
     # @channels = Channel.all.order('position ASC')
-    @channels = Channel.get_channels
+    @channels = Channel.get_channels_approved
     @description = "batteryPOP has a channel for whatever you’re in the mood for today! And yes, channel surfing is highly encouraged."
   end
 

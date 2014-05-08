@@ -45,7 +45,7 @@ class Channel < ActiveRecord::Base
   	end
 
   	def self.get_channels_approved
-  		Channel.order('channels.position').includes(:shows).where(shows:{approved: true})
+  		Channel.order('channels.position, shows.created_at desc').where(:hidden => [nil, false] ).includes(:shows).where(shows:{approved: true})
   	end
 
 	def should_generate_new_friendly_id?
