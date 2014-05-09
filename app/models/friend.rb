@@ -71,6 +71,16 @@ class Friend < ActiveRecord::Base
 	  slug.blank? || title_changed?
 	end
 
+
+# search helpers
+	def thumb
+		return self.image(:thumb)
+	end
+
+	def search_valid?
+		!!(approved)
+	end
+
 # image and background delete or update
 
 	def delete_image
