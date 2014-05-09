@@ -188,34 +188,58 @@ module ApplicationHelper
   end
 
 # viddler helpers was originally it's own class
+  
+  def viddler_files(viddler_id, episode_id)
+    # @viddler ||= Viddler::Client.new(viddler_id)
+    @viddler = Viddler::Client.new(viddler_id)
+    traceout("instantiate viddler wtih #{viddler_id}")
+    puts @viddler.inspect
+    @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+    videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode_id}"
+    traceout(videoData)
+    return videoData
+  end
+
 
 
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
     if(episode.embed.provider == 'viddler')
-      @viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
-      @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
-      vidid = episode.video
-      videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
+      # @viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
+      # @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
+      # videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
+      # 
+      traceout("FIRST CALL")
+      videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
+      traceout("AFTER FIRST CALL")
+      traceout(videoData['video']['files'])
       if videoData['video']['files'].nil?
+        traceout("NOT FOUND VIDEO")
+        traceout(episode)
+        videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
+      end
+        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+       @src = ""
+      if videoData['video']['files'].nil?
+        traceout("GOING TO THE OLD EMBED THEN")
          old = Embed.where(:provider => "viddler_original").first
          @ret = old.get_embed(old, episode.video).html_safe
       else
         files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
         matched = files.select { |vid| vid['width'] = "854" }
-        @src = ""
+    
         matched.each do |i|
           @src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
         end
       end
-      @ret = episode.embed.get_embed(episode.embed, vidid).html_safe
+      
       @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-      @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'").gsub("{{videosources}}", @src).gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-      traceout(@ret)
-
+      @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
+      @ret = @ret.gsub("{{videosources}}", @src)
+      @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+     
+      traceout('final embed')
     else
-      traceout("NOT VIDDLER")
-      traceout(episode)
        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
       # just in case there's other info
       @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
