@@ -1,11 +1,13 @@
-// colors for batteryPOP
-
-$dark: #000000;
 $lite: #ffffff;
+$dark: #000000;
 
 $gray: #878787;
- 
-$blue: #428BCA;
+$gray-dark: #333333;
+$gray-lite: #cccccc;
+$gray-xlite: #eeeeee;
+
+
+$blue: #28a0cd;
 $purple: #684389;
 $gold: #FABB00;
 $orange: #D6552D;
@@ -14,4 +16,18 @@ $navy: #1B6581;
 $red: #C90000;
 $mint: #96D7C8;
 
-$default-text-color: $gray;
+
+$color-text: $gray-dark;
+
+$lite-dim: transparentize($lite, .3);
+$dark-dim: transparentize($dark, .3);
+
+$lite-dim-half: transparentize($lite, .5);
+$dark-dim-half: transparentize($dark, .5);
+
+$lite-dim-trans: transparentize($lite, .7);
+$dark-dim-trans: transparentize($dark, .7);
+
+
+$blue-dim: transparentize($blue, .3);
+

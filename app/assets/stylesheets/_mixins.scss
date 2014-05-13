@@ -1,0 +1,478 @@
+//@import "compass";
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+ 
+// Add percentage of black to a color
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+
+@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+  color: $normal;
+  @if $visited {
+    &:visited {
+      color: $visited; } }
+  @if $focus {
+    &:focus {
+      color: $focus; } }
+  @if $hover {
+    &:hover {
+      color: $hover; } }
+  @if $active {
+    &:active {
+      color: $active; } } }
+
+
+
+
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.vertical-align {
+  @extend %vertical-align;
+}
+
+@mixin fontsize($size:1.4, $line: $size * 1.42){
+    font-size:   ($size * 10) + px;
+    line-height: ($line * 10) + px;
+    font-size:   $size + rem;
+  line-height: $line + rem;
+}
+
+@font-face {
+  font-family: 'Anchor Web Medium';
+  src: url('/assets/AnchorWebMedium.eot'); /* IE9 Compat Modes */
+  src: url('/assets/AnchorWebMedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/AnchorWebMedium.woff') format('woff'); 
+}
+
+
+@font-face {
+  font-family: 'Anchor Web Semibold';
+  src: url('/assets/AnchorWebSemiBold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/AnchorWebSemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/AnchorWebSemiBold.woff') format('woff'); 
+}
+
+
+@font-face {
+  font-family: 'bpop';
+  src: url('/assets/bpop.eot'); /* IE9 Compat Modes */
+  src: url('/assets/bpop.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/bpop.woff') format('woff'), /* Modern Browsers */
+       url('/assets/bpop.ttf')  format('truetype'); /* Legacy iOS */
+}
+
+
+$font-sans: "Roboto", Arial, Helvetica, sans-serif;
+$font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
+$font-display: "Anchor Web Medium", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+
+$font-display-bold: "Anchor Web Semibold", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+$font-head: "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+$font-bpop: "bpop", sans-serif;
+
+%icon-bpop {
+font-family: $font-bpop;
+font-weight: normal;
+line-height: 1;
+font-style: normal;
+text-transform: none;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+%font-display {
+  font-weight: normal;
+  letter-spacing: .04em;
+  font-family: $font-display;
+}
+
+%font-display-bold {
+  font-weight: normal;
+  letter-spacing: .04em;
+  font-family: $font-display-bold;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+%border-radius {
+border-radius: 4px;
+}
+
+%border-circle {
+border-radius: 50%;
+}
+
+%box-shadow {
+box-shadow: 0 0 10px 0 transparentize($dark, .8);
+}
+
+%text-shadow {
+text-shadow: 1px 1px 2px transparentize($dark, .5);
+}
+
+%text-glow {
+text-shadow: 0 0 10px transparentize($dark, .2);
+}
+
+%lowercase {
+text-transform: lowercase;
+}
+
+%uppercase{
+text-transform: uppercase;
+}
+
+%text-caps {
+font-weight: bold;
+text-transform: uppercase;
+//letter-spacing: .1em;
+}
+
+%bk-white {
+  background-color: $lite;
+}
+
+%bk-blue {
+  background-color: $blue;
+}
+
+%bk-purple {
+  background-color: $purple;
+}
+%bk-gold {
+  background-color: $gold;
+}
+
+%bk-orange {
+  background-color: $orange;
+}
+
+%bk-green {
+  background-color: $green;
+}
+
+%bk-red {
+  background-color: $red;
+}
+
+%bk-navy {
+  background-color: $navy;
+}
+
+
+
+%bk-mint {
+  background-color: $mint;
+}
+
+
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+     @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     @content;
+  }
+
+  &:-ms-input-placeholder {  
+     @content;
+  }
+
+
+  @extend %lowercase;
+
+}
+
+// buttons 
+
+
+
+
+/* Common Colors - Variables */
+
+/* Mixins */
+
+@mixin btn-theme($btn-color) {
+border-color: darken($btn-color, 5%);
+  background-color: $btn-color;
+  &:hover {
+    border-color: darken($btn-color, 5%);
+    background-color: darken($btn-color, 5%);
+    box-shadow: 0 .125em $lite-dim, inset 0 .063em $lite-dim, inset 0 -.188em lighten($btn-color, 2%);
+  }
+  &:active {
+    box-shadow: 0 .063em $lite-dim, inset 0 0 1.094em darken($btn-color, 20%), inset 0 .063em darken($btn-color, 10%),inset 0 -0.188em darken($btn-color, 10%); 
+  }
+}
+
+
+/* Button Global */
+
+.btn {
+  display: inline-block;
+  //padding: .75em 2em;
+  transition: none;
+  @extend %border-radius;
+  box-shadow: inset 0 .063em $lite-dim, inset 0 -.188em rgba(black,.15);
+  color: $lite;
+  font-family: $font-head; 
+  font-weight: normal;
+  text: {
+    transform: lowercase;
+    decoration: none;
+  }
+  cursor:pointer;
+}
+
+/* Button Themes */
+
+.btn-purple {
+  @include btn-theme($purple);
+}
+.btn-blue {
+  @include btn-theme($blue);
+}
+.btn-green {
+  @include btn-theme($green);
+}
+.btn-gold {
+  @include btn-theme($gold);
+}
+
+.btn-navy {
+  @include btn-theme($navy);
+}
+
+// banner-themes
+@mixin banner-theme($banner-color) {
+  
+  .well {
+  background-color: shade($banner-color, 10%);
+    &:before, &:after {
+      background-color: $banner-color;
+    }
+  }
+
+}
+
+.banner.theme-red {
+  @include banner-theme($red);
+}
+
+.banner.theme-blue {
+  @include banner-theme($blue);
+}
+
+
+// panel-themes
+@mixin panel-theme($panel-color) { 
+  background-color: $panel-color;
+    .well a {
+      color: $panel-color;
+        &:link, &:visited, &:hover {
+        color: $panel-color;
+        }
+
+    }
+}
+
+
+.panel.panel-blue {
+  @include panel-theme($blue);
+}
+
+.panel.panel-red {
+  @include panel-theme($red);
+}
+
+.panel.panel-purple {
+  @include panel-theme($purple);
+}
+
+.panel.panel-green {
+  @include panel-theme($green);
+}
+
+.panel.panel-mint {
+  @include panel-theme($mint);
+}
+
+.panel.panel-orange {
+  @include panel-theme($orange);
+}
+
+.panel.panel-gold {
+  @include panel-theme($gold);
+}
+
+.panel.panel-navy {
+  @include panel-theme($navy);
+}
+
+// carousel themes
+@mixin theme($theme-color) {
+  li {
+      background: $lite;
+      background: linear-gradient($lite, $gray-xlite);
+    height: 100%;
+      &:after {
+          bottom: 0;
+          left: 0;
+          content: " ";
+          height: 30px;
+          width: 100%;
+          display: block;
+          position: absolute;
+          background: linear-gradient(bottom, $theme-color, rgba($theme-color, 1.0));
+          z-index: 5;
+      }
+
+  }
+  .panel {
+    background: $theme-color;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 2px 0 transparentize($dark, .8);
+      &:before{
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba($theme-color, 0);
+        border-top-color: $theme-color;
+        border-width: 10px;
+        margin-left: -10px;
+        z-index: 5;
+
+      }
+        &:after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba($dark, 0);
+        border-top-color: rgba($dark, .1);
+        border-width: 13px;
+        margin-left: -13px;
+        z-index: 4;
+        
+      }
+  }
+  h3 {
+  color: $lite;
+  }
+
+  .bx-wrapper {
+    background-color: tint($theme-color, 80%);
+    //background: linear-gradient(tint($theme-color, 80%), $lite);
+  }
+  .summary {
+    background-color: $theme-color;
+    position: relative;
+    &:before{
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba($theme-color, 0);
+      border-bottom-color: $theme-color;
+      border-width: 10px;
+      margin-left: -10px;
+      z-index: 5;
+    }
+
+
+
+  }
+  a {
+    p, h4 {
+     color: $lite; 
+    }
+
+  }
+
+
+}
+
+@mixin theme-invert($theme-color) {
+  .bx-wrapper {
+    background: shade($theme-color, 10%);
+    background: linear-gradient(shade($theme-color, 20%), $theme-color);
+  }
+    .summary {
+    background-color: $lite;
+
+    &:before {
+
+      border-color: rgba($lite, 0);
+      border-bottom-color: $lite;
+
+    }
+
+
+
+}
+      li {
+      background: $gray-xlite;
+      background: linear-gradient($lite, $gray-xlite 20%);
+        &:after {
+
+            background: linear-gradient(bottom, $lite, rgba($lite, 1.0));
+
+        }
+
+      }
+
+
+      a {
+        p, h4 {
+        color: $theme-color; 
+      }
+
+      }
+}
+
+
+@mixin vertical-theme($theme-color) {
+  .panel {
+    border-top: 10px solid shade($theme-color, 20%);
+  }
+      a {
+        h4, p {
+        color: $theme-color; 
+      }
+/*         p {
+          color: $color-text;
+        } */
+      }
+}
+
