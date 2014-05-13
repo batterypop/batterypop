@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     #  end
     if Rails.env == 'production'
       @gacode = "UA-44486746-1"
-    elsif 
+    else
       @gacode = "UA-44486746-2"
     end
         
