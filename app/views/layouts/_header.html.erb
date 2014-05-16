@@ -1,155 +1,118 @@
-<div class="container pipes-container">
-<%= custom_background_override %>
- 	<div class="row pipes fill top bottom left right margin padding"></div>
-
-</div>
-<header class="container shadow-bottom-left">
-	<div class="shadow-bottom-right"></div>
-	<div class="row fill bottom top padding margin shadow-container  hidden-xs">
-		<div class="shadow-mid-left"></div>
-		<div class="shadow-mid-right"></div>
-
-		<div class="col-sm-3 col-md-3" >
-			<!-- <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0"> -->
-				<div id="legend" data-toggle="modal" data-target="#modal_legend">	
-					<h4><span class="inline-hide">Click </span><span style="" class="pop-button"><div class="flash"></div></span><span class="inline-hide"> to </span>POP it!</h4>
-					<h4><span class="inline-hide">Click </span><span class="pop-button"><div class="plus"></div></span><span class="inline-hide"> to </span>FOLLOW!</h4>				
+<header class="wrapper">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> 
+					<h1><a class="navbar-brand" href="index.php">batteryPOP</a></h1>
 				</div>
-			<!-- </div> -->
-		</div>
-
-		 <div class="col-sm-4 col-sm-offset-5 col-md-3 col-md-offset-6 col-xs-12 col-xs-offset-0 clearfix fill bottom padding margin" style="z-index:1;">
-			<div class="btn-login-group">
-				<% if user_signed_in? %>
-				<!-- this should be replaced with profile controls -->
-				<div class="col-xs-6 col-md-6" id="signin">
-					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn-primary btn-small btn-login" %>
-					</div>
-					<div class="col-xs-6 col-md-6" id="signup">
-					<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-primary btn-small btn-login" %>
-					</div>
-				<!-- end profile controls -->
-				<% else %>
-
-				<!-- sign in / sign up buttons -->
-					<div class="col-xs-6 col-md-6" id="signin">
-						<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin">Sign In</button>
-					</div>
-					
-
-					<div class="col-xs-6 col-md-6" id="signup">
-						<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
-					</div>
-				 <!-- end sign in / sign up buttons -->
-				<% end %>
-			</div>
-			<div class="clear"></div>
-			<div class="row fill top bottom padding margin">
-	            <div class="col-xs-12 col-md-12 fill top bottom padding" id="search">
-					<form role="search" action="/search" method="get">
-						<div class="form-group">
-                           <input type="text" class="form-control" placeholder="Search" name="query">
+				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="<% if(@active=='shows') %> active<% end %>">
+							<a href="/shows">Shows</a>
+						</li>
+						<li class="<% if(@active=='channels') %> active<% end %>">
+							<a href="/channels">Channels</a>
+						</li>
+						<li class="<% if(@active=='shorts') %> active<% end %>">
+							<a href="/shorts">Shorts</a>
+						</li>
+						<li class="<% if(@active=='blog') %> active<% end %>">
+							<a href="/posts"><span class="lowercase">B</span>log</a>
+						</li>
+					</ul>
+					<div class="visible-lg">
+						<div class="panel-left panel panel-default">
+							<a class="links-bpop" href="#">
+								<p class="link-pop"><span class="hidden-sm">click to </span>POP it!</p>
+								<p class="link-follow"><span class="hidden-sm">click to </span>FOLLOW!</p>
+							</a>
 						</div>
-	               </form>				
-
-	             
-
-	            </div>
-	        </div>
-
-		
+						<!-- left -->
+						<div class="panel-right panel">
+							<div class="btn-group btn-group-justified">
+								<div class="btn-group">
+									<button type="button" class="btn btn-blue">Sign in</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-purple">Sign up</button>
+								</div>
+							</div>
+							<form class="navbar-form navbar-left" role="search">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search">
+									<span class="input-group-btn">
+									<button class="btn btn-primary" type="submit">Go!</button>
+									</span>
+								</div>
+								<!-- /input-group -->
+							</form>
+						</div>
+						<!-- panel-right -->
+					</div>
+					<!-- visible-lg -->
+					<div class="hidden-lg">
+						<div class="row clearfix">
+							<div class="panel panel-nav clearfix">
+								<div class="col-sm-4 column">
+									<a class="links-bpop" href="#">
+										<p class="link-pop"><span class="visible-xs">click to </span>POP it!</p>
+										<p class="link-follow"><span class="visible-xs">click to </span>FOLLOW!</p>
+									</a>
+								</div>
+								<!-- col -->
+								<div class="col-sm-4 column">
+									<div class="btn-group btn-group-justified">
+										<div class="btn-group">
+											<button type="button" class="btn btn-blue">Sign in</button>
+										</div>
+										<div class="btn-group">
+											<button type="button" class="btn btn-purple">Sign up</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4 column">
+									<form class="navbar-form navbar-left" role="search">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Search">
+											<span class="input-group-btn">
+											<button class="btn btn-primary" type="submit">Go!</button>
+											</span>
+										</div>
+										<!-- /input-group -->
+									</form>
+								</div>
+								<!-- col -->
+							</div>
+							<!-- panel -->
+						</div>
+						<!-- row -->
+					</div>
+					<!-- visible-md -->
+				</div>
+			</nav>
 		</div>
-	
-
-
-		<div class="col-xs-12 col-xs-offset-0 fill top padding margin left right" id="branding">
-			<div class="desktop hidden-xs">
-				<a href="/">
-					<%= image_tag "header-new-bg.png", :id=>'logoback' %>
-					<%= image_tag "header-new-logo.png", :id=>'logofront' %>
-				</a>
-			</div>
-		</div>
-
 	</div>
 
-
-
-
-<!-- navbar mobile hidden elsewhere -->
-	<nav class="navbar navbar-default visible-xs" role="navigation">
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand" href="/"><%= image_tag "header-mob-new-1.png" %></a>
-	  </div>
-
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse navbar-ex1-collapse">
-	    <ul class="nav navbar-nav">
-		    <% if user_signed_in? %>
-				<li>
-					<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy" %>
-				</li>
-				<li>
-					<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login" %>
-				</li>
-			<% else %>
-				<li>
-					<button type="button" id="popover_login" class="btn btn-primary btn-small btn-login" data-toggle="modal" data-target="#modal_signin" title="">Sign In</button>
-					
-					<button type="button" class="btn btn-primary btn-small btn-login" id="signup" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
-				</li>
-			<% end %>
-
-			<li class="<% if(@active=='shows') %> active<% end %>"><a href="/shows">SHOWS</a></li>
-			<li class="<% if(@active=='channels') %> active<% end %>"><a href="/channels">CHANNELS</a></li>
-			<li class="<% if(@active=='shorts') %> active<% end %>"><a href="/shorts">SHORTS</a></li>	
-			<li class="<% if(@active=='blog') %> active<% end %>"><a href="/posts">bLOG</a></li>	
-	    </ul>
-	  </div><!-- /.navbar-collapse -->
-	</nav>
+				<!-- end wrapper header -->
+<!-- after header -->
 
 
 
 
 
-<!-- nav non-mobile -->
-	<nav class="row nav fill bottom padding margin hidden-xs" role="navigation">
 
-		<div class="col-md-10  col-xs-12 col-sm-12 ">
-			<ul id="menu" class=" clearfix">
-				<li class="col-sm-3 col-md-2 col-sm-offset-0 col-md-offset-2  col-xs-2 col-xs-offset-0 shows <% if(@active=='shows') %> active<% end %>">
-					<p><a href="/shows">SHOWS</a></p>
-				</li>
-				<li class="col-sm-3 col-xs-3 channels <% if(@active=='channels') %> active <% end %>">
-					<p><a href="/channels">CHANNELS</a></p>
-				</li>
-				<li class="col-sm-3 col-xs-3 newest <% if(@active=='shorts') %> active <% end %>">
-					<p><a href="/shorts">SHORTS</a></p>
-				</li>
-				<li class="col-sm-3 col-md-2 col-xs-2 blog <% if(@active=='blog') %> active <% end %>">
-					<p><a href="/posts">bLOG</a></p>
-				</li>
-			</ul>
-		</div>
-	</nav>
 
 	
 
 
 
-	<div class="row fill bottom margin padding"> <!-- This row is causing spacing issues when not in use -->
+<!-- 	<div class="row fill bottom margin padding"> 
 		<div class="col-lg-12">
-			<!-- <p id="notice"><%= notice %></p> -->
+			 <p id="notice"><%= notice %></p> 
 			<%= render 'layouts/messages' %>
 		</div>
-	</div>
+	</div> -->
 
 
 
@@ -222,30 +185,4 @@
 </div>
 
 <!-- end of modal sign up -->
-
-
-
-
-
-
-<!-- Begin comScore Tag -->
-<script>
-  var _comscore = _comscore || [];
-  _comscore.push({ c1: "2", c2: "17406136" });
-  (function() {
-    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
-    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-    el.parentNode.insertBefore(s, el);
-  })();
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=17406136&cv=2.0&cj=1" />
-</noscript>
-<!-- End comScore Tag -->
-
-
 </header>
-
-
-
-

@@ -1,31 +1,7 @@
-<a href="<%= slide_url %>" class="media list-group-item horizontal-slide 
-<% if (local_assigns[:slide_active]) %>active<% end %> 
-<% if (local_assigns[:slide_class]) %><%= slide_class %><% end %>
-<% if (local_assigns[:slide_small_hide]) %><%= slide_small_hide %><% end %>
- ">
-	<div class="media-body">
-		<%= slide_image %>
-		<% if !(local_assigns[:slide_badge].nil?) %><%= slide_badge %><% end %>
-		<h4 class="media-heading"><%= slide_title %></h4>
+<a href="<%= slide_url %>">
+	<div class="thumb"><%= slide_image %></div>
+	<div class="summary">
+		<h4><%= slide_title %></h4>
 		<% if !(local_assigns[:slide_text].nil?) %><p><%= slide_text %></p><% end %>
 	</div>
 </a>
-
-
-<% if (local_assigns[:slide_small_hide]) %>
-
-	<a href="<%= slide_url %>" class="media list-group-item horizontal-slide visible-xs 
-	<% if (local_assigns[:slide_active]) %>active<% end %> 
-	<% if (local_assigns[:slide_class]) %><%= slide_class %><% end %>
-	 ">
-		<div class="media-body">
-			<div class="row">
-			<%= slide_image %>
-			<% if !(local_assigns[:slide_badge].nil?) %><%= slide_badge %><% end %>
-			</div>
-			<h4 class="media-heading"><%= slide_title %></h4>
-			<% if !(local_assigns[:slide_text].nil?) %><p><%= slide_text %></p><% end %>
-		</div>
-	</a>
-
-<% end %>

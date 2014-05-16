@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<!-- <script src="//cdn.optimizely.com/js/580450290.js"></script> -->
   	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -12,6 +11,12 @@
 	<meta name="revisit-after" content="2 days">
     <meta name="description" content="<%= meta_description %>" />
     <meta name="keywords" content="<%= meta_keywords %>" />
+
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
 
 	<!-- crazyegg -->
 <% if Rails.env.production? %>
@@ -27,52 +32,14 @@
 <%= render partial: "layouts/google_analytics" %>
 
 
+<!--[if IE 8]>
+	<html class="no-js lt-ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 8]><!--> 
+	<html class="no-js" lang="en">
+<!--<![endif]-->
 
 
-
-
-	<!--[if IE]>
-
-	<style>
-
-		@font-face{
-			font-family: 'AnchorSemibold' !important;
-			src: url('/assets/AnchorWebSemiBold.eot') !important;
-		}
-
-		@font-face{
-			font-family: 'AnchorMedium' !important;
-			src: url('/assets/AnchorWebMedium.eot') !important;
-		}
-		@font-face {
-			font-family: 'Varela';
-			font-style: normal;
-			font-weight: 400;
-			src: local('Varela'), url(http://themes.googleusercontent.com/static/fonts/varela/v5/maB5vWJo0EAVzvHPjBkLM-vvDin1pK8aKteLpeZ5c0A.woff) format('woff');
-		}
-		@font-face {
-			font-family: 'Roboto Slab';
-			font-style: normal;
-			font-weight: 700;
-			src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(http://themes.googleusercontent.com/static/fonts/robotoslab/v3/dazS1PrQQuCxC3iOAJFEJRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
-		}
-
-		
-
-	</style>
-		
-	<![endif]-->
-
-    <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-	
-    <!--[if IE]>
-
-
-
-    <![endif]-->
 
 	
 	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
@@ -82,15 +49,8 @@
   </head>
 	
 
-	<!--[if !IE]><!--><body><!--<![endif]-->
-	<!--[if gt IE 9]><!--><body><!--<![endif]-->
-  
-	<!--[if lte IE 9]>
-  
-	<body class="ie">
-		
-	<![endif]-->
-
+<body>
+	<div class="container clearfix">
 	
 	<%= render 'layouts/header' %>
 	
