@@ -1,0 +1,22 @@
+<div class="btn-group btn-group-justified">
+	<% if user_signed_in? %>
+		<!-- buttons to login or signup -->
+		<div class="btn-group">
+			<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn btn-blue btn-small btn-login" %>
+		</div>
+		<div class="btn-group">
+			<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-purple btn-small btn-login" %>
+		</div>
+		<!-- end buttons to login or signup -->
+	<% else %>
+		<!-- buttons to login or signup -->
+		<div class="btn-group">
+			<button type="button" class="btn btn-blue" data-toggle="modal" data-target="#modal_signin">Sign In</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-purple" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
+		</div>
+		<!-- end buttons to login or signup -->
+	<% end %>
+</div>
+
