@@ -116,6 +116,8 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'mixpanel-ruby'
 
+gem 'newrelic_rpm'
+
 # gem 'google-api-client'
 gem 'rack-google-analytics'
 
