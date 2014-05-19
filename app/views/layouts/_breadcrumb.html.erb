@@ -1,20 +1,48 @@
 <!-- top most / breadcrumb area -->
-<div class="row bpop-breadcrumb slight-shadow <% if !(local_assigns[:crumb_class].nil?) %><%= crumb_class %><% end %>">
-	<div class="col-md-5 col-xs-9 bpop-show-title text-right">
-
-		
-			<% if !(local_assigns[:crumb_title].nil?) %><%= crumb_title %><% end %>
-		
-	</div> 
-	<div class="col-md-6 hidden-xs hidden-sm bpop-show-description" <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
-		<div>
-			<% if !(local_assigns[:crumb_text].nil?) %><%= crumb_text %><% end %>
+<div class="row headcrumb clearfix">
+	<div class="col-md-5 column">
+		<div class="well arrow_box">
+			<div class="row clearfix">
+				<% if !(local_assigns[:crumb_thumb].nil?) %>
+					<div class="col-xs-4 column">
+						<div class="thumb"><%= crumb_thumb %></div>
+					</div>
+				<% end %>
+				<% if !(local_assigns[:crumb_title].nil?) %>
+					<div class="col-xs-8 column">
+						<!-- <span class="sponsor label label-red">Sponsored</span> -->
+						<div class="summary">
+							<h2><%= crumb_title %></h2>
+							<% if !(local_assigns[:crumb_creator].nil?) %>
+								<h4><%= crumb_creator %></h4>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<!-- col -->
 		</div>
 	</div>
-	<div class="col-md-1 col-xs-3 bpop-show-action" <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
-		<div>
-			<% if !(local_assigns[:crumb_action].nil?) %><%= crumb_action %><% end %>
+	<!-- well -->
+	<div class="col-md-7 column">
+		<div class="well well-split">
+			<div class="row clearfix">
+				<% if !(local_assigns[:crumb_text].nil?) %>
+				<div class="col-sm-9 col-xs-8 column">
+					<div class="description">
+						<%= crumb_text %>
+					</div>
+				</div>
+				<% end %>
+				<% if !(local_assigns[:crumb_action].nil?) %>
+					<div class="col-sm-3 col-xs-4 column">
+						<%= crumb_action %>
+					</div>
+				<% end %>
+				<!-- col -->
+			</div>
 		</div>
+		<!-- well -->
 	</div>
+	<!-- col -->
 </div>
-<!-- end top most / breadcrumb area -->

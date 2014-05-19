@@ -11,12 +11,9 @@ font-size: 62.5%; /* Sets up the Base 10 stuff */
 
 }
 
-
 body {
 //@include fontsize(1.4);
 }
-
-
 
 
 body {
@@ -104,6 +101,12 @@ a:active, a:focus {
   margin-bottom: 0;
 }
 
+
+// fix
+.separator {
+  margin-bottom: 30px;
+}
+
 .sidebar .row {
   margin-bottom: 30px;
 }
@@ -183,7 +186,7 @@ a:active, a:focus {
       display: block;
       height: 100%;
       width: 120px;
-      background-image: url("/assets/icon-tv-plus.svg");
+      background-image: url("#{$image-path}/icon-tv-plus.svg");
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: contain;
@@ -285,7 +288,7 @@ background-color: $lite;
   //position: relative;
   //z-index: 1;
   h1 {
-          background: url("/assets/starburst.png") no-repeat 50% -55px;
+          background: url("#{$image-path}/starburst.png") no-repeat 50% -55px;
       height: 160px;
       width: 305px;
       display: inline-block;
@@ -301,7 +304,7 @@ background-color: $lite;
 
    //z-index: 5;
     a {
-        background: url("/assets/logo.png") no-repeat 50% 50%;
+        background: url("#{$image-path}/logo.png") no-repeat 50% 50%;
    display: block;
    width: 305px;
    margin: 0 auto;
@@ -518,23 +521,23 @@ margin-bottom: 0;
 }
 
 .bx-wrapper .bx-loading { 
-background: url("/assets/bx_loader.gif") center center no-repeat #fff;
+background: url("#{$image-path}/bx_loader.gif") center center no-repeat #fff;
 }
 
 .bx-wrapper .bx-prev {
-  background: url("/assets/controls.png") no-repeat 0 -32px;
+  background: url("#{$image-path}/controls.png") no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-  background: url("/assets/controls.png") no-repeat -43px -32px;
+  background: url("#{$image-path}/controls.png") no-repeat -43px -32px;
 }
 
 .bx-wrapper .bx-controls-auto .bx-start {
-  background: url("/assets/controls.png") -86px -11px no-repeat;
+  background: url("#{$image-path}/controls.png") -86px -11px no-repeat;
 }
 
 .bx-wrapper .bx-controls-auto .bx-stop {
-  background: url("/assets/controls.png") -86px -44px no-repeat;
+  background: url("#{$image-path}/controls.png") -86px -44px no-repeat;
 
 }
 
@@ -635,6 +638,8 @@ top: -30px;
 .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
   background-color: $blue;
 }
+
+
 
 // carousel
 .carousel {
@@ -782,7 +787,7 @@ top: -30px;
       overflow: hidden;
     }
   
-    
+    // fix
     .summary {
       margin-left: 80px;
       background: $lite;
@@ -795,7 +800,7 @@ top: -30px;
       width: 100%;
       display: block;
       position: absolute;
-      background: linear-gradient(bottom, $lite, transparentize($lite, 0));
+      background: linear-gradient(bottom, $lite, rgba($lite, 0));
       z-index: 5;
     }
 
@@ -846,6 +851,10 @@ top: -30px;
     content: "\e607";
   }
 }
+
+
+
+
 
 .carousel-horizontal {
   h3 {
@@ -1151,7 +1160,7 @@ top: -30px;
   
   text-align: center;
     .well {
-        background: url("/assets/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
+        background: url("#{$image-path}/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
         background-color: $purple;
         background-size: cover;
     }
@@ -1169,15 +1178,15 @@ top: -30px;
     }
 
     .badge-itunes {
-      background: url("/assets/badges-app.png") 0 0 no-repeat;
+      background: url("#{$image-path}/badges-app.png") 0 0 no-repeat;
     }
 
      .badge-google {
-      background: url("/assets/badges-app.png") 0 -45px no-repeat;
+      background: url("#{$image-path}/badges-app.png") 0 -45px no-repeat;
     }
 
    .badge-amazon {
-      background: url("/assets/badges-app.png") 0 bottom no-repeat;
+      background: url("#{$image-path}/badges-app.png") 0 bottom no-repeat;
       
     }
 
@@ -1401,29 +1410,35 @@ margin-top: -50px;
 
 
 
-
+// fix
 .media-list {
   //margin-bottom: 30px;
   .media {
     position: relative;
+    
     padding: 15px;
-    background: $lite;
+    background: $gray-xlite;
+    margin: 0 auto 2px;
+        &.active {
+          background-color: $gold;
+        }
+
+    > a {
+
+      display: block;
+     padding: 15px;
+     background: $lite;
     box-shadow: 0 0 3px 0 $dark-dim-trans;
-  }
+    position: relative;
+    width: 100%;
+    height: auto;
+    
 
-
-  > a {
-    display: block;
-   border: 15px solid $gray-xlite;
-   margin-bottom: 2px;
-      &.active {
-        border-color: $gold;
-      }
-
+    }
   }
 
 .media-body {
-  width: 70%;
+width: 100%;
   p {
     color: $color-text;
     &:last-child {
@@ -1511,14 +1526,15 @@ margin-top: -50px;
 .media {
   .badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 30px;
+    right: 30px;
   }
 }
 
 
 
 .button-pop {
+font-size: 0; // hack to keep inline blocks together
 width: 100%;
 height: 55px;
 background: $red;
@@ -1661,4 +1677,202 @@ overflow: hidden;
     font-family: $font-head;
     text-transform: none;
   }
+}
+
+
+
+// short 
+
+.short {
+
+    .summary {
+    padding: 10px;
+    
+  }
+
+
+
+  .item {
+    height: 300px;
+    margin-bottom: 30px;
+
+      a {
+      height: 100%;
+       overflow: hidden;
+       background: $gray-xlite;
+      background: linear-gradient($lite, $gray-lite);
+      
+      border: 1px solid $gray-lite;
+        position: relative;
+        display: block;
+        width: 100%;
+        @extend %box-shadow;
+        &:after {
+           bottom: 0;
+          left: 0;
+          content: " ";
+          height: 30px;
+          width: 100%;
+          display: block;
+          position: absolute;
+          background: linear-gradient(bottom, $lite, rgba($lite, 0));
+          z-index: 5;
+        }
+
+          h4 {
+            @extend %font-display;
+            @extend %uppercase;
+            @include fontsize(2.1);
+
+          }
+          p {
+            @include fontsize(1.2);
+            color: $color-text;
+          }
+      }
+    
+  }
+
+      .summary {
+    position: relative;
+    height: 100%;
+    text-align: center;
+
+      > * {
+      margin: 0;
+      }
+    }
+
+  .thumb {
+    width: 100%;
+    padding: 15px;
+    img {
+      border: 2px solid white;
+      width: auto;
+      max-height: 150px;
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 100%;
+      @extend %border-circle;
+    }
+  }
+
+
+  
+
+}
+
+
+// pagination 
+
+.pagination {
+  margin: auto;
+  > li {
+    
+    > a {
+     border-color: $gray-lite; 
+    }
+  }
+}
+
+// post
+
+.post {
+
+  position: relative;
+  padding-bottom: 15px;
+  //margin-bottom: 15px;
+
+  //border-bottom: 1px solid $gray-xlite;
+  header {
+    @extend %box-shadow;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    padding: 15px;
+    z-index: 5;
+    border-top: 5px solid $gold;
+    background: $gray-xlite;
+    background: rgba($lite, .8);
+    h1, h4 {
+      margin: 0;
+    }
+
+    h1 {
+    @extend %uppercase;
+    }
+    h3 {
+      color: $lite;
+      display: inline-block;
+      @extend %text-shadow;
+      @extend %uppercase;
+      margin-bottom: 5px;
+      background: $gold;
+      @extend %border-radius;
+      padding: .2em .5em;
+    }
+
+  }
+
+  .thumb {
+    border-top: 5px solid $purple;
+    background: $gray-xlite;
+    margin-bottom: 15px;
+    
+    a {
+      display: block;
+      
+    }
+    img {
+      
+      max-width: 100%;
+    }
+
+  }
+
+  .content {
+    clear: both;
+    .lead {
+      @include fontsize(1.8);
+      color: $blue;
+      margin-bottom: 15px;
+    }
+    h4, h5 {
+      font-family: $font-head;
+      font-weight: bold;
+    }
+    ul {
+      
+      margin-left: 30px;
+      li {
+        list-style-type: disc;
+        list-style-position: outside;
+      }
+    }
+    ol {
+      margin-left: 30px;
+      li {
+        list-style-type: decimal;
+        list-style-position: outside;
+      }
+    &.list-countdown {
+      margin-left: 10px;
+      li {
+        list-style-type: none;
+      }
+    }
+
+    }
+      .list-alot li {
+        margin-bottom: 15px;
+      }
+
+      hr {
+        border-top: 1px solid $gray-xlite;
+        margin: 15px auto;
+      }
+  }
+
+  // end post
 }

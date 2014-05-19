@@ -1,317 +1,159 @@
-<div class="main show">
-	<div class="container">
-		<div class="content">
+<section class="wrapper">
 
-
-
-
-
-<% @action = "<span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span>" %>
-
-<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
-
-<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
-
-
-<%= render partial: "layouts/breadcrumb", :locals => {
-		:crumb_class => " hidden-xs hidden-sm hidden-md",
-		:crumb_title => "<div class='col-xs-12'>#{image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive show-crumb-image")}<h3>#{ @show.title }</h3><div class='show-follow-status'></div></div>".html_safe, 
-	 	
-	 	:crumb_text => "<span><h3>By #{@creator_name}</h3>#{ @show.description }<br /><span id='episode-title'>#{@age_range}Watching: #{@episode.title}</span></span>".html_safe,
-		:crumb_action => "<span class='badge bpop-badge-large'>#{@action}</span>".html_safe
-		 	} %>
-
-
-
-<!-- ADDING HIDDEN FOR SMALL DEVICES -->
-<div class="row follow-pop-wrap  device-sm-show-episode visible-xs visible-sm visible-md">
-	<div class="col-sm-8 col-xs-10 aqua">
-		<h3><%= @show.title %></h3>
-		<h3><%= @episode.title %></h3>
-		<span class='badge bpop-badge-large hidden-xs'><%= @action.html_safe %></span>
+	<!-- badge -->
+	<% @action = "
+		<div class='button-pop'>
+		<a class='btn btn-purple episode-badge-vote-#{@episode.id}' href='#'>
+			<h5>POP it!</h5>
+		</a>
+		<div class='pop-number'>#{@episode.pops}</div>
 	</div>
-
-	<div class="col-sm-2 col-xs-2 pop-box center-block steelblue">
-		<div class="vote-prompt hidden-xs">Click To</div>
-		<%= render :partial => "episodes/popunpop", :locals => {:episode => @episode} %>
-		<span class='badge bpop-badge-large visible-xs'><%= @action.html_safe %></span>
-		<div class="vote-prompt hidden-xs">POP</div>
+	<div class='button-follow'>
+		<a class='btn btn-navy' href='#'>
+			<h5>FOLLOW</h5>
+		</a>
 	</div>
-	<div class="col-sm-2 col-xs-0 follow-box center-block purple hidden-xs">
-		<div class="vote-prompt hidden-xs">Click To</div>
-		<%= render :partial => "shows/follow_show", :locals => {:show => @show} %>
-		<div class="vote-prompt hidden-xs">Follow</div>
-	</div>
+	" %>
 
-</div>
-<!-- ADDING HIDDEN FOR SMALL DEVICES -->
+	<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<strong>For kids</strong> <em>#{@show.age_range}</em> " : '' %>
 
-			
+	<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
 
-      <div class="row margin padding bottom">
-        <!-- video player area -->
-        <div class="col-lg-9 show-player no-margin no-padding ">
-			<div class="show-player-wrapper">
-				<div class="row no-padding no-margin show-player-popover">
-					<div class="col-sm-4 col-xs-12 show-player-episode-title">
-						<div class="table-wrap">
-							<h4><%= @episode.title %></h4>
-						</div>
-					</div>
-					<div class="col-sm-8 hidden-xs show-player-episode-description">
-						<div class="table-wrap">
-							<%= @episode.description.html_safe %>
-						</div>
-					</div>
-				</div>
-			<% if !(@episode).nil? %>
-				<%= vid_embed(@episode).html_safe  %>
-			<% end %>
-	        </div>
+
+	<%= render partial: "layouts/breadcrumb", :locals => {
+			:crumb_creator => @creator_name.html_safe,
+			:crumb_thumb  => image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive"),
+			:crumb_title => @show.title, 
+		 	
+		 	:crumb_text => "<h5>#{@show.subtitle}</h5>#{ @show.description }<p><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</p>".html_safe,
+			:crumb_action => "#{@action}".html_safe
+			 	} %>
+
+
+
+
+	<div class="row clearfix">			
+	<!-- video section -->
+
+		<div class="col-md-8 column">
+			<div class="videocontent">
+				<% if !(@episode).nil? %>
+					<%= vid_embed(@episode).html_safe  %>
+				<% end %>
+			</div>
 		</div>
 
+	<!-- end video section -->
+		<%=  render :partial => "layouts/next_up" %>
+	</div>
+
+	<!-- end video / nextup -->
 
 
-		 <%=  render :partial => "layouts/next_up" %>
-
-
-
-
-<!-- lower listings :slide_badge => ep.likes.size, -->
-		<div class="row show-bottom-section">
-			<div class="col-lg-8 show-lower-left">
-<!--episodes area -->
-
-		<% unless @show.single? %>
-				<div class="media-list list-group">
+	<div class="row clearfix">
+		<!-- episode list -->
+		<div class="col-md-8 column">
+			<% unless @show.single? %>
+				<div class="media-list">
 					<% @show.episodes.each do |ep| %>
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
-						<% @duration =  (!ep.duration.nil? && !ep.duration.empty?) ? "<span class='episode-duration'>Time: #{ep.duration}</span> " : ' ' %>
-	
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
-						 <%= render partial: "layouts/horizontal_slide", :locals => {
-						 		:slide_small_hide => 'hidden-xs',
-				                :slide_active => (@episode == ep),
-				                :slide_badge => "<span class='badge bpop-badge pull-right'>
-						            <span class='episode-badge-vote-#{ep.id}'>#{ep.pops}</span>
-						            <div class='badge-box'>
-						            <div class='pop-button pop-episode pop_episode-#{ep.id}'  data-episode='#{ep.id}'>
-						            <div class='flash'></div>
-						            </div></div></span>".html_safe,
-				                :slide_title => "#{ep.title}".html_safe, 
-				                :slide_text => "#{ep.description}  #{@age_range}  #{@duration}".html_safe, 
-				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
-								:slide_url =>  ep.link, 
-
-								:slide_class => !ep.friends.approved.empty? ? "sponsor": nil
-
-				                } %>
-		            <% end %>
-				</div>
-		<% end %>
-
-
-<!-- end of episodes area -->
-			</div>
-			<div class="col-lg-4 show-lower-right no-padding">
-
-				
-				<div class="row fill top bottom margin padding show-followers-slider">
-					<div class="bpop-slider-header green">
-						<div class="text-center show-followers-slider-header">
-							<div class="small-header-bg green">
-								<img src="/assets/followed-by-header.png">
-							</div>
-							<div id="show-followers-next" class="col-xs-1 slider-next pull-right"></div>
-							<div id="show-followers-prev" class="col-xs-1 slider-prev pull-left"></div>
-							<div class="col-xs-12 slider-title">
-								<h4 class="page-title">Followed By</h4>
-							</div>
-						</div>
-					</div>
-
-
-				
-					<% if !@followers.nil? && !@followers.empty? %>
-
-					<div class="row bpop-slider show-followers-slider green">
-						<div class="col-lg-12 no-padding ">
-							
-							<ul class="bxslider show-followers-carousel">
-					
-								<% @followers.each do |user| %>
-									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-									<% @img = image_tag(user.thumb,  :class => "img-responsive img-circle" ) %>
-									
-									<li>
-										 <%= render partial: "layouts/vertical_slide", :locals => {
-											  	:slide_title => user.username, 
-											  	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe, 
-											  	:slide_image => @img,
-												:slide_url => user_path(User.friendly.find(user.id))} %>
-									
-									</li>
-								<% end %>
-								
-							</ul>
-						</div>
-					</div>
-
-					<% else %>
-						<div class="row bpop-slider show-followers-slider green darken">
-							<div class="col-lg-12 no-padding">
-								<div class="text-center ">
-								<h3 class="page-title">Be the first to follow this show!</h3>
+						<div class="media <% if(@episode == ep) %>active<% end %> ">
+							<a href="<%= ep.link %>">
+								<div class="pull-left thumb">
+									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive  media-object ', :width => '125') %>
 								</div>
-							</div>
+								<div class="media-body">
+									<h3 class="media-heading"><%= ep.title %></h3>
+									<h4><% if(!ep.duration.nil? && !ep.duration.empty?)%><%= ep.duration %><% end %></h4>
+									<%= ep.description.html_safe %>
+								</div>
+							</a>
+							<a class="badge">
+								<h5><%= ep.pops %></h5>
+								<div class="badge-box" data-episode="<%= ep.id %>">
+									<div data-button="" class="btn-pop episode-badge-vote-#{ep.id}">POP it</div>
+								</div>
+							</a>
+							<!-- badge -->
 						</div>
 					<% end %>
-
+					<!-- media -->
 				</div>
+			<% end %>
+			<!-- media list -->
+		</div>
+		<!-- end episode list -->
 
-
-
-
-
-				<div class="row fill bottom padding">
-					<div class="col-xs-12 show-most-popped-header no-margin no-padding text-center">
-						<div class="small-header-bg">
-							<img src="/assets/shows-popped-header.png">
-						</div>
-						<div id="show-liked-next" class="slider-down  slider-next pull-right"></div>
-						<div id="show-liked-prev" class="slider-up  slider-prev pull-left"></div>
-						<h1>Popped By</h1>
-					</div>
-				</div>
-
-				<% if !@likers.nil? && !@likers.empty? %>
-					<div class="row no-margin no-padding show-liked-slider">
-						<div class="col-xs-12 no-margin no-padding">
-							<ul class="bxslider show-liked-carousel">
-							
-
-								<% @likers.each do |user| %>
-									<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-									<% @img = image_tag(user.thumb,  :class => "img-responsive img-circle" ) %>
-									<li>
-										 <%= render partial: "layouts/vertical_slide", :locals => {
-											  	:slide_title => user.username, 
-											  	:slide_text =>"<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
-											  	:slide_image => @img,
-											#	:slide_url => user_path(User.friendly.find(user.id))
-												
-												:slide_url => "/users/" + user.username
-												
-											} %>
-									
-									</li>
-								<% end %>
-					
-
-							</ul>
-						</div>
-					</div>
-					<% else %>
-						<div class="row no-margin no-padding show-liked-slider purple darken" style="margin-top: -5px !important;">
-							<div class="col-xs-12 no-margin no-padding text-center">
-								<h3 class="page-title">Be the first to pop this episode!</h3>
+		<!-- sidebar -->
+		<div class="col-md-4 column sidebar">
+			<div class="row clearfix">
+				<!-- followed by -->
+				<div class="col-md-12 column">
+					<div class="carousel carousel-horizontal theme-green theme-invert">
+						<div class="panel">
+							<div class="panel-head">
+								<h3>Followed By</h3>
 							</div>
 						</div>
-					<% end %>
+						<% if !@followers.nil? && !@followers.empty? %>
+						<ul>
+							<% @followers.each do |user| %>
+								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
+								<li>
+								<%= render partial: "layouts/horizontal_slide", :locals => {
+									:slide_title => user.username, 
+								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe, 
+									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'), 
+									:slide_url => user_path(User.friendly.find(user.id))
+								} 
+								%>
+								</li>
+							<% end %>
+						</ul>
+						<% else %>
+							<div class="row">
+								<h3>Be the first to FOLLOW this episode!</h3>
+							</div>
+						<% end %>
+					</div>
 				</div>
+				<!-- carousel -->
 
-				
-
-
-
+				<!-- end followed by -->
+				<!-- popped by -->
+				<div class="col-md-12 column">
+					<div class="carousel carousel-horizontal theme-purple">
+						<div class="panel">
+							<div class="panel-head">
+								<h3>Popped By</h3>
+							</div>
+						</div>
+						<% if !@likers.nil? && !@likers.empty? %>
+						<ul>
+							<% @likers.each do |user| %>
+								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
+								<li>
+								<%= render partial: "layouts/horizontal_slide", :locals => {
+									:slide_title => user.username, 
+								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe, 
+									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'), 
+									:slide_url => user.link
+								} 
+								%>
+								</li>
+							<% end %>
+						</ul>
+						<% else %>
+							<div class="row">
+								<h3>Be the first to POP this episode!</h3>
+							</div>
+						<% end %>
+					</div>
 				</div>
+				<!-- end popped by -->
 			</div>
 		</div>
-
-<!-- end lower listings -->
-
-
-
-
-
-
-
-		</div>
+		<!-- end sidebar -->
 	</div>
-</div>
-
-
-
-<script type="text/javascript">
-	$(document).ready(function(){
-
-		$('.show-followers-carousel').bxSlider({
-			nextSelector: '#show-followers-next',
-			prevSelector: '#show-followers-prev',
-	  		responsive: true,
-	  		touchEnabled: true,
-			slideMargin: 2,
-			slideWidth: 170,
-			hideControlOnEnd: true,
-			minSlides: 2,
-			moveSlides: 1,
-			infiniteLoop: false,
-			hideControlOnEnd: true,
-			pager: false
-		  }
-	  	);
-
-	  	$('.show-liked-carousel').bxSlider({
-			nextSelector: '#show-liked-next',
-			prevSelector: '#show-liked-prev',
-	  		responsive: true,
-	  		touchEnabled: true,
-			slideMargin: 2,
-			slideWidth: 170,
-			hideControlOnEnd: true,
-			minSlides: 2,
-			moveSlides: 1,
-			infiniteLoop: false,
-			hideControlOnEnd: true,
-			pager: false
-		  }
-	  	);
-
-		$('.show-most-popped-carousel').bxSlider({
-			nextSelector: '#show-popped-down',
-			prevSelector: '#show-popped-up',
-			nextText: 'DOWN', prevText: 'UP',
-	  		responsive: true,
-	  		touchEnabled: true,
-	  		mode: 'vertical',
-	  		preventDefaultSwipeY: true,
-	  		infiniteLoop: false,
-	  		hideControlOnEnd: true,
-			slideMargin: 10,
-			slideWidth: 165,
-			minSlides: 3,
-			maxSlides: 3,
-			moveSlides: 1,
-			pager: false
-		  }
-	  	);
-
-		$("div.show-player-wrapper").bind("mouseenter", function(){
-		  $('div.show-player-popover').stop(true).fadeIn(600); 
-		});
-
-		$("div.show-player-wrapper").bind("mouseleave", function(){
-		  $('div.show-player-popover').stop(true).fadeOut(600); 
-		});
-
-		$("[data-episode]").each(function(){
-			$.ajax({
-				type : 'POST',
-		      url : '/refresh',
-		      data: {id: $(this).attr("data-episode")}
-			})
-		});
-
-	  
-  	});
-</script>
+</section>

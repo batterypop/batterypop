@@ -1,5 +1,15 @@
 //@import "compass";
 
+$image-path: '../images';
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+
 // Add percentage of white to a color
 @function tint($color, $percent){
   @return mix(white, $color, $percent);
@@ -50,26 +60,26 @@
 
 @font-face {
   font-family: 'Anchor Web Medium';
-  src: url('/assets/AnchorWebMedium.eot'); /* IE9 Compat Modes */
-  src: url('/assets/AnchorWebMedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/AnchorWebMedium.woff') format('woff'); 
+  src: url('fonts/AnchorWebMedium.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AnchorWebMedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AnchorWebMedium.woff') format('woff'); 
 }
 
 
 @font-face {
   font-family: 'Anchor Web Semibold';
-  src: url('/assets/AnchorWebSemiBold.eot'); /* IE9 Compat Modes */
-  src: url('/assets/AnchorWebSemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/AnchorWebSemiBold.woff') format('woff'); 
+  src: url('fonts/AnchorWebSemiBold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AnchorWebSemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AnchorWebSemiBold.woff') format('woff'); 
 }
 
 
 @font-face {
   font-family: 'bpop';
-  src: url('/assets/bpop.eot'); /* IE9 Compat Modes */
-  src: url('/assets/bpop.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/bpop.woff') format('woff'), /* Modern Browsers */
-       url('/assets/bpop.ttf')  format('truetype'); /* Legacy iOS */
+  src: url('fonts/bpop.eot'); /* IE9 Compat Modes */
+  src: url('fonts/bpop.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/bpop.woff') format('woff'), /* Modern Browsers */
+       url('fonts/bpop.ttf')  format('truetype'); /* Legacy iOS */
 }
 
 
@@ -200,6 +210,35 @@ text-transform: uppercase;
 
 }
 
+@mixin txt-theme($txt-color) {
+  color: $txt-color;
+}
+
+.text-purple {
+  @include txt-theme($purple);
+}
+.text-blue {
+  @include txt-theme($blue);
+}
+.text-navy {
+  @include txt-theme($navy);
+}
+.text-mint {
+  @include txt-theme($mint);
+}
+.text-green {
+  @include txt-theme($green);
+}
+.text-orange {
+  @include txt-theme($orange);
+}
+.text-gold {
+  @include txt-theme($gold);
+}
+.text-red {
+  @include txt-theme($red);
+}
+
 // buttons 
 
 
@@ -326,6 +365,7 @@ border-color: darken($btn-color, 5%);
   @include panel-theme($navy);
 }
 
+// fix
 // carousel themes
 @mixin theme($theme-color) {
   li {
@@ -340,7 +380,7 @@ border-color: darken($btn-color, 5%);
           width: 100%;
           display: block;
           position: absolute;
-          background: linear-gradient(bottom, $theme-color, rgba($theme-color, 1.0));
+          background: linear-gradient(bottom, $theme-color, rgba($theme-color, 0));
           z-index: 5;
       }
 

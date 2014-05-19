@@ -40,7 +40,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 #                               :github => 'anjlab/bootstrap-rails'
 
-                             
+                    
+gem 'modernizr-rails'         
 
 gem "therubyracer"
 # gem "less-rails"

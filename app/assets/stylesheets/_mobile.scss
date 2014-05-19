@@ -9,9 +9,7 @@
 /* max-width 480px */
 //@media(max-width: $screen-xs-min){
 @media(max-width: 480px){
-.media-list .media-body {
-  width: 100%;
-}
+
 
 
 .panel-split {
@@ -97,13 +95,17 @@ display: none !important;
 
     .col-md-12 .carousel-horizontal li {
 width: 200px !important;
+
+
 }
 
-  br {
+
+
+footer.wrapper {
+    br {
     display: none;
   }
-
-
+}
 
 
 //
@@ -112,6 +114,9 @@ width: 200px !important;
 
 @media(min-width: 600px){
 
+.media-list .media-body {
+  width: 60%;
+}
     .col-md-12 .carousel-horizontal li {
 width: 223px !important;
 }
@@ -143,11 +148,35 @@ width: 223px !important;
 }
 
 
-
-
 /* max-width 767px */
 //@media (max-width: $screen-xs-max) {
   @media (max-width: 767px) {
+
+// fix
+.post {
+padding-bottom: 0;
+margin-bottom: 15px;
+border-bottom: 1px solid $gray-xlite;
+  //border-bottom: 1px solid $gray-xlite;
+  header {
+    box-shadow: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
+    border-top: 0;
+    background: none;
+    margin-bottom: 15px;
+
+    }
+
+
+  .thumb {
+    border-top: 0;
+
+  }
+}
+
 
 .navbar-default ul.navbar-nav a {
     padding: 15px 0;
@@ -199,13 +228,21 @@ box-shadow: none;
 /* min-width 768px */
 //@media (min-width: $screen-sm-min) {
   @media (min-width: 768px) {
+// fix
+    .post header {
+      max-width: 96%;
+}
+
+.media-list .media-body {
+  width: 70%;
+}
 
 .col-md-12 .carousel-horizontal li {
 width: 223px !important;
 }
 
 body {
-  background: url("/assets/bk.jpg") no-repeat $gold 50% 50% fixed;
+  background: url("#{$image-path}/bk.jpg") no-repeat $gold 50% 50% fixed;
   background-size: cover;
 }
 
@@ -220,27 +257,27 @@ body {
     z-index: -1;
   }
     &:before {
-    background: url("/assets/pipe-left.png") 0 0 repeat-y;
+    background: url("#{$image-path}/pipe-left.png") 0 0 repeat-y;
     left: -200px;
 
     }
     &:after {
-    background: url("/assets/pipe-right.png") 0 0 repeat-y;
+    background: url("#{$image-path}/pipe-right.png") 0 0 repeat-y;
     right: -200px;
     }
 }
 
 .navbar-header {
-  background: url("/assets/description.png") no-repeat 50% 50%;
+  background: url("#{$image-path}/description.png") no-repeat 50% 50%;
 }
 
 //
 }
 
-
 /* min-width 992px */
 //@media (min-width: $screen-md-min) {
   @media (min-width: 992px) {
+
 
   .col-md-12 .carousel-horizontal li {
 width: 220px !important;
@@ -256,6 +293,10 @@ width: 220px !important;
   .bx-wrapper {
   height: inherit !important;
   }
+}
+
+.sidebar .carousel-vertical {
+  margin-bottom: 75px;
 }
 //  
 }
@@ -327,6 +368,7 @@ p {
 
 
 
+
 //
 }
 
@@ -350,7 +392,7 @@ p {
     only screen and (min-device-pixel-ratio: 2), 
     only screen and (min-resolution: 2dppx) {
 .jumbotron {
-   background: transparent url('/assets/49.jpg') no-repeat no-repeat center center fixed;
+   background: transparent url('../images/49.jpg') no-repeat no-repeat center center fixed;
     -webkit-background-size: 1333px 960px;
     background-size: 1333px 960px;
 }
