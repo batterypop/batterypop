@@ -192,11 +192,11 @@ module ApplicationHelper
   def viddler_files(viddler_id, episode_id)
     # @viddler ||= Viddler::Client.new(viddler_id)
     @viddler = Viddler::Client.new(viddler_id)
-    traceout("instantiate viddler wtih #{viddler_id}")
-    puts @viddler.inspect
+    # traceout("instantiate viddler wtih #{viddler_id}")
+    # puts @viddler.inspect
     @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
     videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode_id}"
-    traceout(videoData)
+    # traceout(videoData)
     return videoData
   end
 
@@ -209,13 +209,13 @@ module ApplicationHelper
       # @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
       # videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
       # 
-      traceout("FIRST CALL")
+      # traceout("FIRST CALL")
       videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
-      traceout("AFTER FIRST CALL")
+      # traceout("AFTER FIRST CALL")
       traceout(videoData['video']['files'])
       if videoData['video']['files'].nil?
         traceout("NOT FOUND VIDEO")
-        traceout(episode)
+        # traceout(episode)
         videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
       end
         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
