@@ -19,7 +19,24 @@ ActiveAdmin.register Show do
 	# 	end
 	# end
 
+	# without sweepers first
+	controller do
+		def update
+			super
+			 expire_fragment("shows_promoted")
+		end
 
+		def destroy
+			super
+			 expire_fragment("shows_promoted")
+		end
+
+		def create
+			super
+			 expire_fragment("shows_promoted")
+		end
+
+	end
 
 
 	form  do |f|  

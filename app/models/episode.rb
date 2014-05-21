@@ -38,7 +38,7 @@ class Episode < ActiveRecord::Base
 	acts_as_votable
 	acts_as_taggable_on :tags
 
-	belongs_to :show
+	belongs_to :show, touch: true
 	has_one :creator, :through => :show
 	belongs_to :embed
 	has_many :channels, :through => :show
