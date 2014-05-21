@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @features = Feature.homepage.active
     @showlist = Show.showlist.approved.shuffle
     @popped = Episode.mostpopped(10) 
-    @promoted = Show.where(:promote => true)
+    @promoted = Show.where(:promote => true).order('updated_at DESC')
     if !cookies[:viewedWelcome].present?
       @cookie = false
       cookies[:viewedWelcome] = { :value => "true", :expires => 1.day.from_now}

@@ -17,7 +17,7 @@
 					<li>
 
 						 <%= render partial: "layouts/vertical_slide", :locals => {
-							  	:slide_title => "#{episode.slide_title} #{episode.pops}".html_safe, 
+							  	:slide_title => "#{episode.slide_title}".html_safe, 
 							  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
 							  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
 
