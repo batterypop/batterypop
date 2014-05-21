@@ -70,6 +70,10 @@ class ShowsController < ApplicationController
     # end
   end
 
+  def edit
+    redirect_to "/"
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
