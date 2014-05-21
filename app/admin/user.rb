@@ -6,3 +6,5 @@ ActiveAdmin.register User do
 	end
 
 end
+
+#  need to add form because changing user with default form kills password

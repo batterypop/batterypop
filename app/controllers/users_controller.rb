@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
-		@groups = @users.each_slice(4).to_a
 	end
 
 

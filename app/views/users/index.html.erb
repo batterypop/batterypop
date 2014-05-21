@@ -7,7 +7,7 @@
 
 	<% @users.each do |user| %>
 
-
+	<% cache user do %>
 
 	<% @img = image_tag(user.get_avatar(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ) %>
 
@@ -31,7 +31,7 @@
 
 
 		</div>
-
+		<% end %>
 	<% end %>
 
 	</div>
