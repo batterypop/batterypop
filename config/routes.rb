@@ -74,6 +74,7 @@ Batterypopv2::Application.routes.draw do
   get "advertise-with-us", :to => "pages#advertise"
   get "about-batterypop", :to => "pages#about"
   get "investors", :to => "pages#investors"
+  get "bot", :to => "pages#bot"
   
   get "search", :to => "pages#search"
 
