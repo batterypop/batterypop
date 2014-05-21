@@ -68,7 +68,7 @@ display: none !important;
 .footer-links {
   a {
 
-    @include fontsize(1.4);
+    //@include fontsize(1.4);
 
   }
 
@@ -152,6 +152,7 @@ width: 223px !important;
 //@media (max-width: $screen-xs-max) {
   @media (max-width: 767px) {
 
+
 // fix
 .post {
 padding-bottom: 0;
@@ -233,6 +234,10 @@ box-shadow: none;
       max-width: 96%;
 }
 
+.navbar-form, .navbar-form .input-group {
+  //width: 100%;
+}
+
 .media-list .media-body {
   width: 70%;
 }
@@ -244,6 +249,7 @@ width: 223px !important;
 body {
   background: url("#{$image-path}/bk.jpg") no-repeat $gold 50% 50% fixed;
   background-size: cover;
+
 }
 
 .container {
@@ -277,14 +283,58 @@ body {
 /* min-width 992px */
 //@media (min-width: $screen-md-min) {
   @media (min-width: 992px) {
+.headcrumb {
+  //height: 150px;
+  //overflow: hidden;
 
+
+  > .column:first-child {
+    display: table;
+    
+      .well {
+        display: table-cell;
+        vertical-align: middle;
+      }
+  }
+  .description {
+    padding-left: 15px;
+  }
+
+.arrow_box:after {
+  content: "";
+  border-style: solid;
+  border-top-width: 80px;
+  border-bottom-width: 80px;
+  border-right-width: 0;
+  border-left-width: 15px;
+  border-color: transparent $lite;
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  z-index: 2;
+  margin-top: -80px;
+  }
+
+/*   .arrow_box:after {
+  content: "";
+  height: 100%;
+  width: 15px;
+  display: block;
+  right: -15px;
+  z-index: 2;
+  background: url("#{$image-path}/headcrumb.svg") right 50% no-repeat;
+  position: absolute;
+  background-size: 15px 100%;
+  } */
+
+}
 
   .col-md-12 .carousel-horizontal li {
 width: 220px !important;
 }
 
 .carousel-vertical {
-  height: 273px !important;
+  height: 304px !important;
 
   .bx-viewport {
   height: 100% !important;
@@ -296,7 +346,7 @@ width: 220px !important;
 }
 
 .sidebar .carousel-vertical {
-  margin-bottom: 75px;
+  margin-bottom: 60px;
 }
 //  
 }
@@ -354,8 +404,46 @@ p {
 /* min-width 1200px */
 //@media (min-width: $screen-lg-min) {
   @media (min-width: 1200px) {
+
+.row-featured {
+
+  width: 1200px;
+  left: -15px;
+
+}
+.corners {
+background: transparent;
+width: 100%;
+height: 15px;
+display: block;
+position: absolute;
+z-index: 2;
+bottom: -15px;
+left: 0;
+  &:before, &:after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    height: 0;
+    border-style: solid;
+    width: 0;
+  }
+  &:before {
+    left: 0;
+    border-width: 0 15px 15px 0;
+    border-color: transparent rgba($dark, .7) transparent transparent;
+
+  }
+    &:after {
+    right: 0;
+    width: 0;
+    border-width: 15px 15px 0 0;
+    border-color: rgba($dark, .7) transparent transparent transparent;
+
+  }
+}
 .carousel-vertical {
-  height: 345px !important;
+  height: 390px !important;
 
   .bx-viewport {
   height: 100% !important;

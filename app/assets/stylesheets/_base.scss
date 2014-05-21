@@ -32,10 +32,9 @@ body {
 h1,
 h2,
 h3,
-h4,
+h4, 
 h5,
-h6, 
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5 {
   @extend %font-display;
   font-weight: normal;
 
@@ -52,6 +51,14 @@ h1, h2, h3, h4, h5, h6, p, ul, ol,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin: 0 0 15px;
   padding: 0;
+}
+
+h5 {
+@include fontsize(1.8);
+}
+
+form, form > * {
+  font-size: 16px;
 }
 
 small {
@@ -115,7 +122,7 @@ a:active, a:focus {
   box-shadow: none;
   border-radius: 0;
   border: 0;
-  background: transparent;
+  background: none;
   margin-bottom: 0;
 }
 
@@ -126,10 +133,14 @@ a:active, a:focus {
   background: $lite;
 }
 
+
+
 .well.well-frame {
   border: 5px solid $lite;
   @extend %box-shadow;
 }
+
+
 
 .panel-head {
   height: 60px;
@@ -166,8 +177,8 @@ a:active, a:focus {
 .banner {
   .well {
     position: relative;
-    padding-left: 135px;
-    padding-right: 135px;
+    padding-left: 150px;
+    padding-right: 150px;
     color: $lite;
     @extend %text-shadow;
     text-align: center;
@@ -185,11 +196,11 @@ a:active, a:focus {
       position: absolute;
       display: block;
       height: 100%;
-      width: 120px;
+      width: 150px;
       background-image: url("#{$image-path}/icon-tv-plus.svg");
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      background-size: contain;
+      background-size: 120px;
       
     }
       &:before {
@@ -232,10 +243,22 @@ input::placeholder {
   @extend %lowercase;
 }
 
+form > *, .input-group, input, textarea {
+  @include fontsize(1.6);
+  border-radius: 0 !important;
+}
+
+.input-group-btn:last-child>.btn {
+  width: 100%;
+}
+
+
 button {
   font-weight: bold;
   @extend %lowercase;
 }
+
+
 
 .wrapper {
 
@@ -356,6 +379,7 @@ background-color: $lite;
   //z-index: 2;
   margin: 0 auto;
   float: none;
+  background: $lite;
   text-align: center;
 
     li {
@@ -419,19 +443,26 @@ background-color: $lite;
     border: 4px solid $lite;
     border-top: 0;
     @extend %box-shadow;
-    border-radius: 0 0 6px 6px;
+    //border-radius: 0 0 6px 6px;
+    border-radius: 0;
   }
 
   .btn-group>.btn-group:first-child>.btn:last-child {
-    border-radius: 0 0 0 4px;
+    //border-radius: 0 0 0 4px;
+    border-radius: 0;
   }
 
   .btn-group>.btn-group:last-child>.btn:first-child {
-    border-radius: 0 0 4px 0;
+    //border-radius: 0 0 4px 0;
+    border-radius: 0;
   }
   .navbar-form {
     padding: 0;
     margin: 15px 0;
+    width: 100%;
+      .input-group {
+        width: 100%;
+      }
   }
 }
 
@@ -454,14 +485,14 @@ margin-bottom: 0;
       p {
         margin-bottom: 0;
       
-      @include fontsize(1.8);
+      @include fontsize(2.0);
       font-family: $font-head;
-      font-weight: bold;
+      font-weight: normal;
         &:before {
         @extend %icon-bpop;
         
         margin-right: 5px;
-        font-size: 130%;
+        font-size: 120%;
         vertical-align: text-top;
         }
       }
@@ -507,6 +538,7 @@ margin-bottom: 0;
   .navbar-form {
     margin: 0;
     padding: 0;
+
   }
 }
 
@@ -764,6 +796,13 @@ top: -30px;
 
 
 .carousel-vertical {
+
+  .panel {
+    &:before, &:after {
+      border: 0;
+    }
+  }
+
   .summary {
     overflow: hidden;
   }
@@ -800,7 +839,7 @@ top: -30px;
       width: 100%;
       display: block;
       position: absolute;
-      background: linear-gradient(bottom, $lite, rgba($lite, 0));
+      background: linear-gradient(to top, $lite, rgba($lite, 0));
       z-index: 5;
     }
 
@@ -880,6 +919,22 @@ top: -30px;
         //border: 1px solid $gray-lite;
         height: 100%;
         overflow: hidden;
+
+      }
+
+      .sponsor {
+          &:before {
+          content: "";
+          background: url("#{$image-path}/badge-sponsor.svg") 0 0 no-repeat;
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          width: 110px;
+          height: 110px;
+          background-size: contain;
+          display: block;
+          z-index: 2;
+        }
       }
 
 
@@ -971,7 +1026,7 @@ top: -30px;
 .panel-split .well {
   background-color: $lite;
   //background: linear-gradient($lite, $gray-xlite);
-  min-height: 300px;
+  height: 300px;
   display: table;
     a {
       display: table-cell;
@@ -1018,8 +1073,8 @@ top: -30px;
               
             }
             h5 {
-              font-family: $font-sans;
-              font-weight: bold;
+              font-family: $font-head;
+              font-weight: normal;
               color: $color-text;
             }
             p {
@@ -1085,14 +1140,17 @@ top: -30px;
     
   }
 
-  .panel {
-    border-top: 10px solid $blue;
+  .panel-head {
+    border-top: 5px solid $blue;
+
   }
   h3 {
   color: $blue;
+  line-height: 55px;
   }
   .bx-wrapper {
     background-color: $gray-xlite;
+    border-bottom: 5px solid $blue;
   }
   a {
     p {
@@ -1195,10 +1253,11 @@ top: -30px;
       width: 140px;
       height: 45px;
       display: inline-block;
-      border-radius: 5px;
+      border-radius: 0;
       background-color: $dark;
       text-align: center;
       margin: 5px auto;
+      border-color: $dark;
 
     }
 }
@@ -1246,7 +1305,7 @@ top: -30px;
 
 // videojs
 //.video-js {padding-top: 56.25%}
-.video-js {padding-top: 55.25%}
+.video-js {padding-top: 56.25%}
 .vjs-fullscreen {padding-top: 0}
 
 
@@ -1273,9 +1332,10 @@ margin-top: -50px;
 
 // headcrumb 
 .headcrumb {
+  
   background-color: $blue;
   color: $lite;
-  min-height: 150px;
+
   //height: 140px;
   //border-top: 5px solid $gray-xlite;
   @extend %box-shadow;
@@ -1311,16 +1371,14 @@ margin-top: -50px;
          max-width: 100%;
         }
     }
-    .column {
-      min-height: 120px;
-    }
+
 
 
 
     > .column {
       &:first-child {
         background-color: $lite;
-        height: 100%;
+        
         color: $blue;
 
           a {
@@ -1332,7 +1390,7 @@ margin-top: -50px;
     }
 
    .well {
-            background: transparent;
+            background: none;
             padding: 15px 0;
           }
 
@@ -1340,18 +1398,16 @@ margin-top: -50px;
 
 
 .headcrumb .description {
-      padding-left: 15px;
+
 
             h5 {
-              font-family: $font-sans;
-              font-weight: bold;
+              //font-family: $font-sans;
+              //font-weight: bold;
 
             }
             p {
               @include fontsize(1.2);
-                &:last-child {
-                  margin-bottom: 0;
-                }
+                
             }
 
 
@@ -1359,13 +1415,17 @@ margin-top: -50px;
 
 .sponsor.label {
   display: inline-block;
-  @include fontsize(1.4);
+  @include fontsize(1.8);
+  line-height: 1;
+  padding: 5px 10px 4px;
   font-family: $font-head;
   margin-bottom: 5px;
   @extend %uppercase;
   position: absolute;
+  background: $blue;
+  @extend %border-radius;
 
-    &:before, &:after {
+/*     &:before, &:after {
       @extend %icon-bpop;
       content: "\e607";
 
@@ -1377,27 +1437,15 @@ margin-top: -50px;
      &:after {
 
       margin-left: 5px;
-    }
+    } */
 }
 
 .arrow_box {
   position: relative;
   background: $lite;
 }
-.arrow_box:after {
-  left: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba($lite, 0);
-  border-left-color: $lite;
-  border-width: 30px;
-  margin-top: -30px;
-}
+
+
 
 .label-red {
    background-color: $red; 
@@ -1536,7 +1584,7 @@ width: 100%;
 .button-pop {
 font-size: 0; // hack to keep inline blocks together
 width: 100%;
-height: 55px;
+height: 60px;
 background: $red;
 @extend %border-radius;
 overflow: hidden;
@@ -1546,9 +1594,9 @@ margin-bottom: 10px;
   .pop-number {
   width: 40%;
   text-align: center;
-  height: 55px;
-  @include fontsize(2.1);
-  line-height: 55px;
+  height: 60px;
+  @include fontsize(2.4);
+  line-height: 60px;
   font-family: $font-head;
 
   color: $lite;
@@ -1573,11 +1621,12 @@ margin-bottom: 10px;
   }
   a {
     width: 60%;
-    height: 55px;
+    height: 60px;
     display: inline-block;
     position: relative;
     text-align: center;
-    border-radius: 4px 0 0 4px;
+    //border-radius: 4px 0 0 4px;
+    border-radius: 0;
     vertical-align: top;
     //color: $lite;
     //@extend %bk-purple;
@@ -1595,12 +1644,13 @@ margin-bottom: 10px;
   }
   h5 {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     width: 100%;
     left: 0;
     height: 20px;
     margin: 0 auto;
     overflow: hidden;
+    @include fontsize(1.8);
     font-family: $font-head;
     text-transform: none;
   }
@@ -1610,43 +1660,16 @@ margin-bottom: 10px;
 
 .button-follow {
 width: 100%;
-height: 55px;
+height: 60px;
 background: $navy;
 @extend %border-radius;
 overflow: hidden;
 
 
-  .pop-number {
-  width: 40%;
-  text-align: center;
-  height: 55px;
-  @include fontsize(2.1);
-  line-height: 55px;
-  font-family: $font-head;
-
-  color: $lite;
-  //background: $red;
-  display: inline-block;
-  position: relative;
-  z-index: 5;
-    &:after {
-    left: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba($red, 0);
-    border-left-color: $red;
-    border-width: 7px;
-    margin-top: -7px;
-    }
-  }
+  
   a {
     width: 100%;
-    height: 55px;
+    height: 60px;
     display: inline-block;
     position: relative;
     text-align: center;
@@ -1668,12 +1691,13 @@ overflow: hidden;
   }
   h5 {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     width: 100%;
     left: 0;
     height: 20px;
     margin: 0 auto;
     overflow: hidden;
+    @include fontsize(1.8);
     font-family: $font-head;
     text-transform: none;
   }
@@ -1715,7 +1739,7 @@ overflow: hidden;
           width: 100%;
           display: block;
           position: absolute;
-          background: linear-gradient(bottom, $lite, rgba($lite, 0));
+          background: linear-gradient(to top, $lite, rgba($lite, 0));
           z-index: 5;
         }
 
@@ -1793,7 +1817,7 @@ overflow: hidden;
     padding: 15px;
     z-index: 5;
     border-top: 5px solid $gold;
-    background: $gray-xlite;
+    background: $lite;
     background: rgba($lite, .8);
     h1, h4 {
       margin: 0;
@@ -1876,3 +1900,18 @@ overflow: hidden;
 
   // end post
 }
+
+
+
+
+.row-featured {
+  position: relative;
+
+
+  > .column {
+    padding: 0;
+  }
+
+}
+
+

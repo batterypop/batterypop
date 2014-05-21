@@ -1,6 +1,7 @@
 //@import "compass";
 
-$image-path: '../images';
+$image-path: "/assets";
+
 
 @mixin opacity($opacity) {
   opacity: $opacity;
@@ -60,26 +61,26 @@ $image-path: '../images';
 
 @font-face {
   font-family: 'Anchor Web Medium';
-  src: url('fonts/AnchorWebMedium.eot'); /* IE9 Compat Modes */
-  src: url('fonts/AnchorWebMedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/AnchorWebMedium.woff') format('woff'); 
+  src: url('#{$image-path}/AnchorWebMedium.eot'); /* IE9 Compat Modes */
+  src: url('#{$image-path}/AnchorWebMedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$image-path}/AnchorWebMedium.woff') format('woff'); 
 }
 
 
 @font-face {
   font-family: 'Anchor Web Semibold';
-  src: url('fonts/AnchorWebSemiBold.eot'); /* IE9 Compat Modes */
-  src: url('fonts/AnchorWebSemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/AnchorWebSemiBold.woff') format('woff'); 
+  src: url('#{$image-path}/AnchorWebSemiBold.eot'); /* IE9 Compat Modes */
+  src: url('#{$image-path}/AnchorWebSemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$image-path}/AnchorWebSemiBold.woff') format('woff'); 
 }
 
 
 @font-face {
   font-family: 'bpop';
-  src: url('fonts/bpop.eot'); /* IE9 Compat Modes */
-  src: url('fonts/bpop.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/bpop.woff') format('woff'), /* Modern Browsers */
-       url('fonts/bpop.ttf')  format('truetype'); /* Legacy iOS */
+  src: url('#{$image-path}/bpop.eot'); /* IE9 Compat Modes */
+  src: url('#{$image-path}/bpop.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$image-path}/bpop.woff') format('woff'), /* Modern Browsers */
+       url('#{$image-path}/bpop.ttf')  format('truetype'); /* Legacy iOS */
 }
 
 
@@ -88,7 +89,8 @@ $font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
 $font-display: "Anchor Web Medium", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
 
 $font-display-bold: "Anchor Web Semibold", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
-$font-head: "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+//$font-head: "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
+$font-head: "Anchor Web Medium", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;
 $font-bpop: "bpop", sans-serif;
 
 %icon-bpop {
@@ -115,17 +117,24 @@ text-transform: none;
 -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 %border-radius {
-border-radius: 4px;
+border-radius: 0;
 }
 
 %border-circle {
 border-radius: 50%;
 }
 
+
+
 %box-shadow {
+
 box-shadow: 0 0 10px 0 transparentize($dark, .8);
 }
+
+
 
 %text-shadow {
 text-shadow: 1px 1px 2px transparentize($dark, .5);
@@ -254,10 +263,10 @@ border-color: darken($btn-color, 5%);
   &:hover {
     border-color: darken($btn-color, 5%);
     background-color: darken($btn-color, 5%);
-    box-shadow: 0 .125em $lite-dim, inset 0 .063em $lite-dim, inset 0 -.188em lighten($btn-color, 2%);
+    //box-shadow: 0 .125em $lite-dim, inset 0 .063em $lite-dim, inset 0 -.188em lighten($btn-color, 2%);
   }
   &:active {
-    box-shadow: 0 .063em $lite-dim, inset 0 0 1.094em darken($btn-color, 20%), inset 0 .063em darken($btn-color, 10%),inset 0 -0.188em darken($btn-color, 10%); 
+    //box-shadow: 0 .063em $lite-dim, inset 0 0 1.094em darken($btn-color, 20%), inset 0 .063em darken($btn-color, 10%),inset 0 -0.188em darken($btn-color, 10%); 
   }
 }
 
@@ -269,9 +278,11 @@ border-color: darken($btn-color, 5%);
   //padding: .75em 2em;
   transition: none;
   @extend %border-radius;
-  box-shadow: inset 0 .063em $lite-dim, inset 0 -.188em rgba(black,.15);
+  //box-shadow: inset 0 .063em $lite-dim, inset 0 -.188em rgba(black,.15);
   color: $lite;
   font-family: $font-head; 
+  @include fontsize(1.6);
+  line-height: 1.3;
   font-weight: normal;
   text: {
     transform: lowercase;
@@ -380,7 +391,7 @@ border-color: darken($btn-color, 5%);
           width: 100%;
           display: block;
           position: absolute;
-          background: linear-gradient(bottom, $theme-color, rgba($theme-color, 0));
+          background: linear-gradient(to top, $theme-color, rgba($theme-color, 0));
           z-index: 5;
       }
 
@@ -486,7 +497,7 @@ border-color: darken($btn-color, 5%);
       background: linear-gradient($lite, $gray-xlite 20%);
         &:after {
 
-            background: linear-gradient(bottom, $lite, rgba($lite, 1.0));
+            background: linear-gradient(to top, $lite, rgba($lite, 0));
 
         }
 
@@ -504,7 +515,7 @@ border-color: darken($btn-color, 5%);
 
 @mixin vertical-theme($theme-color) {
   .panel {
-    border-top: 10px solid shade($theme-color, 20%);
+    //border-top: 5px solid shade($theme-color, 30%);
   }
       a {
         h4, p {
@@ -513,6 +524,9 @@ border-color: darken($btn-color, 5%);
 /*         p {
           color: $color-text;
         } */
+      }
+      .bx-wrapper {
+        border-bottom: 5px solid $theme-color; 
       }
 }
 

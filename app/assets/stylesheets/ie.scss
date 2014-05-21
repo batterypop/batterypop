@@ -1,0 +1,182 @@
+@import "colors";
+
+@import "mixins";
+
+$pie-path: "/assets/PIE.htc";
+
+%css-pie {
+behavior: url($pie-path);
+position: relative;
+}
+
+%ie-box-shadow {
+box-shadow: 0 0 10px 0 #ccc;
+behavior: url($pie-path);
+}
+
+.no-textshadow {
+	.carousel-horizontal .panel h3 {
+	color: $lite;
+
+	}
+}
+
+.no-boxshadow {
+
+  .panel.panel-default, .well.well-frame, .navbar-default ul.navbar-nav, .navbar-default, .headcrumb {
+    @extend %ie-box-shadow;
+   
+  }
+  .navbar-default ul.navbar-nav a {
+  	
+  	@extend %css-pie;
+		&:hover {
+		background: $lite;	
+		}
+  }
+}
+
+.no-boxshadow {
+
+  .well.well-frame, .headcrumb {
+    position: relative;
+   
+  }
+}
+
+.no-backgroundsize {
+.navbar-header {
+
+	 h1 {
+
+	  a {
+		background: url("#{$image-path}/logo-sm.png") no-repeat 50% 50%;
+		}
+
+	}
+
+}
+}
+
+.no-rgba {
+	.carousel-horizontal .bx-controls-direction a, .slider .bx-controls-direction a {
+		&:link, &:visited {
+			color: $lite;
+			//@include opacity(0.8);
+			
+		}
+		&:hover {
+			color: $lite;
+			//@include opacity(1.0);
+		}
+	}
+
+	.panel-split .carousel-horizontal .bx-controls-direction a {
+				&:link, &:visited {
+			color: $gray;
+			//@include opacity(1.0);
+			
+		}
+		&:hover {
+			color: $gray-dark;
+			//@include opacity(1.0);
+		}
+	}
+}
+
+.no-borderradius {
+	.button-follow, .button-pop {
+		//@extend %css-pie;
+		//@extend %border-radius;
+	}
+	 .button-follow a, .button-pop a {
+		//@extend %css-pie;
+		//@extend %border-radius;
+	 	&:before {
+	 	background: none;
+		
+	 }
+	}
+}
+
+
+.no-borderradius {
+	.carousel-horizontal li .thumb img {
+		//@extend %css-pie;
+		//border-radius: 150px;
+
+	}
+
+	.panel-split .well a .thumb img {
+		@extend %css-pie;
+		border-radius: 100%;
+	}
+
+
+	.navbar-default .panel-right .btn-group-justified {
+		box-shadow: 0 0 5px 0 $gray;
+		@extend %css-pie;
+	}
+
+	.panel-split .well {
+		height: 300px !important;
+		overflow: hidden;
+		padding-top: 0;
+		padding-bottom: 0;
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+
+	.navbar-default .panel-right {
+  
+  .navbar-form {
+
+      .input-group {
+        width: auto;
+				
+      }
+  }
+	}
+
+
+	.container {
+
+	  &:before, &:after {
+	    width: 200px;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    display: block;
+	    z-index: -1;
+	  }
+	    &:before {
+	    background: url("#{$image-path}/pipe-left.png") 0 0 repeat-y;
+	    left: -200px;
+
+	    }
+	    &:after {
+	    background: url("#{$image-path}/pipe-right.png") 0 0 repeat-y;
+	    right: -200px;
+	    }
+	}
+
+
+
+
+
+//
+}
+
+.no-svg {
+	.banner .well {
+		&:before, &:after {
+			background-image: url("#{$image-path}/icon-tv-plus.png");
+		}
+	}
+
+
+}
+
+
