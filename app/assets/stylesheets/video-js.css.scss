@@ -1,8 +1,11 @@
 /*!
 Video.js Default Styles (http://videojs.com)
-Version 4.4.3
+Version 4.5.1
 Create your own skin at http://designer.videojs.com
 */
+
+$image-path: "/assets";
+
 /* SKIN
 ================================================================================
 The main class name for all skin-specific styles. To make your own skin,
@@ -13,6 +16,8 @@ e.g. <video class="video-js my-skin-name">
 .vjs-default-skin {
   color: #cccccc;
 }
+
+
 /* Custom Icon Font
 --------------------------------------------------------------------------------
 The control icons are from a custom font. Each icon corresponds to a character
@@ -20,8 +25,8 @@ The control icons are from a custom font. Each icon corresponds to a character
 */
 @font-face {
   font-family: 'VideoJS';
-  src: url('/assets/vjs.eot');
-  src: url('/assets/vjs.eot?#iefix') format('embedded-opentype'), url('/assets/vjs.woff') format('woff'), url('/assets/vjs.ttf') format('truetype');
+  src: url('#{$image-path}/vjs.eot');
+  src: url('#{$image-path}/vjs.eot?#iefix') format('embedded-opentype'), url('#{$image-path}/vjs.woff') format('woff'), url('#{$image-path}/vjs.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -731,6 +736,10 @@ body.vjs-full-window {
   /* Leave padding on left and right */
   left: 1em;
   right: 1em;
+}
+/* Move captions down when controls aren't being shown */
+.video-js.vjs-user-inactive.vjs-playing .vjs-text-track-display {
+  bottom: 1em;
 }
 /* Individual tracks */
 .video-js .vjs-text-track {
