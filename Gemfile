@@ -119,6 +119,11 @@ gem  'will_paginate-bootstrap'
 
 gem 'mixpanel-ruby'
 
+gem 'newrelic_rpm'
+
+gem 'memcachier'
+gem 'dalli'
+
 # gem 'google-api-client'
 gem 'rack-google-analytics'
 
