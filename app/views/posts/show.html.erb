@@ -1,41 +1,52 @@
-<div class="main channel">
-	<div class="container">
-		<div class="content">
+<section class="wrapper">
+
+
+	<div class="row clearfix">
+		<div class="col-md-8 column">
 
 
 
-			<div class="row no-margin no-padding">
-				<div class="col-xs-12 col-lg-9 col-md-9">
-					<div class="post-frame">
-						<ul class="category-links">
-							<% @post.categories.each do |cat| %>
-								<li class="category-title label label-warning"><h4><%= link_to cat.title, category_path(cat) %></h4></li>
-							<% end %>
-						</ul>
+
+			<div class="row clearfix">
+				<div class="col-md-12">
+					<article class="post">
+
+						<header>
+							<ul>
+								<% @post.categories.each do |cat| %>
+									<li><h4><%= link_to cat.title, category_path(cat) %></h4></li>
+								<% end %>
+							</ul>
+							<a href="#{@post.link}"><h1 class="post-title"><%= @post.title %></h1></a>
+							<h4 class="meta"><%= @post.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
+						</header>
 						
-						<h1 class="post-title"><%= @post.title %></h1>
-						<h4 class="post-date"><%= @post.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
-						<%= image_tag(@post.featured_image(:large), :alt => @post.title, :class => "img-responsive post-featured-image", :width => '100%') %>
-
-
-							<div class="post-body"><%= @post.body.html_safe %></div>
-						</div>
-					</div>
-
-					<!-- sidebar -->
-					<div class="col-lg-3 col-md-3 post-sidebar">
-						<%= render 'layouts/post_sidebar' %>
-					</div>
 				
+						<figure class="thumb">
+							<%= link_to post_path(@post) do %>
+								<%= image_tag(@post.featured_image(:original), :alt => @post.title, :class => "img-responsive post-featured-image") %>
+							<% end %>
+						</figure>
+
+
+						<div class="content">
+							<%= @post.body.html_safe %></div>
+						</div>
+					</article>
 
 			</div>
 
 
 
-
-
-
 		</div>
-		 <a href="https://plus.google.com/111613426507812683994" rel="me" style="color: white;">Google+</a>
+
+		<!-- sidebar -->
+		<div class="col-md-4 column sidebar">
+			<%= render 'layouts/post_sidebar' %>
+		</div>
 	</div>
-</div>
+
+
+	
+		 <a href="https://plus.google.com/111613426507812683994" rel="me" style="color: white;">Google+</a>
+</section>
