@@ -19,8 +19,12 @@
 
   <!-- page header end; break off? -->
 
-  <div class="row">
-    <%= will_paginate @shows %>
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="text-center">
+        <%= will_paginate @shows, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
   </div>
 
   <% @shows.each do |show| %>
@@ -44,23 +48,27 @@
                 <div class="thumb"><%= image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object show-episode-image", :width => '160') %></div>
                 <div class="summary">
                   <h2><%= "#{show.title}" %></h2>
-                  <h5><%= show.description.html_safe %></p>
+                  <h5><%= show.subtitle %></h5>
+                  <%= show.description.html_safe %>
                 </div>
               </a>
             </div>
           </div>
           <div class="col-md-7 column">
-            <div class="carousel carousel-horizontal theme-purple theme-invert">
+            <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
               <ul>
               <% show.episodes.find_each do |episode| %>
                 <li>
-                  <a href="#">
-                    <div class="thumb"><img alt="" src="http://lorempixel.com/200/200/abstract/1"></div>
-                    <div class="summary">
-                      <h4>Some Kind of Headline</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, omnis quasi totam sed sint error nobis facilis rerum cumque ducimus sed sint error nobis facilis rerum cumque ducimus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, omnis quasi totam sed sint error nobis. </p>
-                    </div>
-                  </a>
+                  
+                  <%= render partial: "layouts/vertical_slide", :locals => {
+                  :slide_title => episode.slide_title.html_safe, 
+                  :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+                  :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
+                  :slide_url =>  episode.link, 
+                  :slide_class => !episode.friends.approved.empty? ? "sponsor": nil
+
+                  } %>
+
                 </li>
                 <% end %>
               </ul>
@@ -79,9 +87,13 @@
 <!-- end lower listings -->
 <% end %>
 
-<div class="row">
-  <%= will_paginate @shows %>
-</div>
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="text-center">
+        <%= will_paginate @shows, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
 
 
 

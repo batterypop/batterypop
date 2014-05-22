@@ -52,6 +52,7 @@ class ShowsController < ApplicationController
     unless current_user.nil?
       current_user.follow(@show)
       @show_follow_status = "You are following"
+      current_user.touch  # cache clear; TODO: sweeper?
       # respond_to do |format|
       #   format.js {render :action=>"follow"}
       # end
@@ -62,6 +63,7 @@ class ShowsController < ApplicationController
     unless current_user.nil?
       current_user.stop_following(@show)
        @show_follow_status = ""
+       current_user.touch  # cache clear; TODO: sweeper?
     end
     # respond_to do |format|
     #   format.js {render :action=>"unfollow"}

@@ -7,7 +7,7 @@
 				</div>
 			</div>
 			<ul>
-				
+				<% cache 'shows_most_popped', skip_digest: true do %>
 				<% Episode.mostpopped(10).each do |episode| %>
 					<li>
 
@@ -23,7 +23,7 @@
 					
 					</li>
 				<% end %>
-				
+				<% end %>
 			</ul>
 		</div>
 	</div>

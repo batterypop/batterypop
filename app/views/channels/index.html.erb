@@ -1,98 +1,67 @@
 <!-- name.downcase.gsub(" ", "-")  -->
-<div class="main channel">
-  <div class="container">
-    <div class="content">
-<!-- page header; break off? -->
-		<div class="row">
-			<div class="col-xs-12 two-tone-banner text-center channel-page-header aqua fill top bottom left right margin padding">
-				<div class="vert-middle-wrap">
-					<div class="vert-middle">
-						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-					</div>
-					<div class="vert-middle category-info turquoise">
-						<h1 class="page-title">
-							CHANNELS
-						</h1>
-						<h4 class="page-title hidden-xs">
-							batteryPOP has a channel for whatever you’re in the mood for today! And yes, channel surfing is highly encouraged.
-						</h4>
-					</div>
-					<div class="vert-middle">
-						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-					</div>
-				</div>
-			</div>
-		</div>
-<!-- page header end; break off? -->
-  
-<!-- repeat channels -->
+<section class="wrapper">
 
-
-
-<% @channels.each do |channel| %>
-<div class="row">
-	<div class="channel-slider channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-      <div class="bpop-slider-header ">
-        <div class="text-center channel-header channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next" class="col-xs-1  slider-next pull-right"></div>
-          <div id="<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev" class="col-xs-1 slider-prev pull-left"></div>
-          <!-- <h4 class="page-title"><%= channel.title %></h4> -->
-			<div class="col-xs-12 channel-icon-header">
-
-     <!--        < %= link_to channel_path(channel) do %> -->
-              <%= image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "img-responsive channel-icon hidden-xs hidden-sm") %><h4 class="hidden-md hidden-lg channel-name"><%= channel.title %></h4>
-     <!--       < % end %> -->
-			</div>
-        </div>
+  <!-- page header; break off? -->
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="banner theme-blue">
+        <div class="well well-frame">
+        <h3>Channels</h3>
+        <p>batteryPOP has a channel for whatever you&rsquo;re in the mood for today! And yes, channel surfing is highly encouraged.</p>
       </div>
-      <div class="bpop-slider ">
-        <div class="col-xs-12 channel-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-          <ul class="bxslider  slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>">
-          <% channel.shows.each do |show| %>
-            <li>
-              <%= render partial: "layouts/vertical_slide", :locals => {
-                :slide_title => show.title, 
-                :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
-                # :slide_image => show.image(:thumb), 
-                :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
-                :slide_url => show.link} %>
-            </li>
-          <% end %>
-             
+    </div>
+  </div>
+  <!-- page header end; break off? -->
+  
+  <!-- repeat channels -->
+
+
+    <% pos = 0 %>
+
+    <% @channels.each do |channel| %>
+
+      <%  if(pos >= (colors.count-1)) 
+            pos =0 
+          else
+            pos = pos + 1
+          end
+        %>
+
+
+
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
+          <div class="panel">
+            <div class="panel-head">
+              <h3 class="visible-xs visible-sm"><%= channel.title %></h3>
+
+              <%= image_tag("channel_headers/#{channel.title.downcase.gsub(" ", "-").gsub("-&-", "-")}-full.png", :alt => channel.title, :class => "hidden-xs hidden-sm title-img  img-responsive  title-#{channel.title.downcase}") %>
+
+      			</div>
+          </div>
+          
+          <ul>
+            <% channel.shows.each do |show| %>
+              <li>
+                <%= render partial: "layouts/vertical_slide", :locals => {
+                  :slide_title => show.title, 
+                  :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                  :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle"),
+                  :slide_url => show.link} %>
+              </li>
+            <% end %>
+                 
           </ul>
         </div>
-		</div>
-      </div>
-</div>
+  		</div>
+    </div>
 
-<!-- show_path(Show.friendly.find(show.id)) -->
+  <!-- show_path(Show.friendly.find(show.id)) -->
 
 
 <% end %>
 
 
 <!-- end repeat channels -->
-
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  <% @channels.each do |channel| %>
-    $('.slider-<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>').bxSlider({
-        nextSelector: '#<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-next',
-        prevSelector: '#<%= channel.title.downcase.gsub(" ", "-").gsub("-&-", "-") %>-prev',
-        nextText: 'NEXT', prevText: 'PREV',
-        minSlides: 2,
-        maxSlides: 5,
-        slideWidth: 205,
-        responsive: true,
-        touchEnabled: true,
-        infiniteLoop: false,
-        slideMargin: 10,
-        moveSlides: 2,
-        pager: false
-      });
-  <% end %>
-
-</script>
+</section>

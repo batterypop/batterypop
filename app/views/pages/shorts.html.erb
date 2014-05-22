@@ -1,32 +1,19 @@
-<div class="main channel">
-  <div class="container">
-    <div class="content shorts">
+<section class="wrapper">
 
 
 
 
 <!-- page header; break off? -->
 
-		<div class="row">
-			<div class="col-xs-12 two-tone-banner text-center shorts-page-header red fill top bottom left right margin padding">
-				<div class="vert-middle-wrap">
-					<div class="vert-middle">
-						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-					</div>
-					<div class="vert-middle category-info darkred">
-						<h1 class="page-title">
-							SHORTS
-						</h1>
-						<h4 class="page-title hidden-xs">
-							Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!
-						</h4>
-					</div>
-					<div class="vert-middle">
-						<%= image_tag("channel_headers/tv.png", :class=> "tv-image") %>
-					</div>
-				</div>
+	<div class="row clearfix">
+		<div class="col-md-12">
+			<div class="banner theme-red">
+				<div class="well well-frame">
+				<h3>Shorts</h3>
+				<p>Today’s shorts could be tomorrow’s shows. Check out the latest in cartoons, live action and music and help POP these to the next level!</p>
 			</div>
 		</div>
+	</div>
 
 <!-- page header end; break off? -->
 
@@ -35,35 +22,33 @@
 <!-- episode_path(Episode.friendly.find(short.episodes.first.id)) -->
 
 
-	<div class="row">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="short theme-red theme-invert">
 
-	<% @shorts.each do |short| %>
+				<div class="row clearfix">
 
-		<div class="col-md-3 col-sm-4 col-xs-6 show-episodes">
+					<% @shorts.each do |short| %>
 
-			<%= render partial: "layouts/vertical_slide", :locals => {
-				:slide_title => short.title, 
-				:slide_text => short.description.html_safe, 
-				:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
-				# :slide_url => episode_path(Episode.friendly.find(short.episodes.first.id))
-				:slide_url => "/shows/" + short.slug 
+						<div class="col-md-3 col-sm-4 col-xs-6 item">
 
-				} %>
+							<%= render partial: "layouts/vertical_slide", :locals => {
+								:slide_title => short.title, 
+								:slide_text => short.description.html_safe, 
+								:slide_image => image_tag(short.image(:thumb), :alt => short.title, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
+								# :slide_url => episode_path(Episode.friendly.find(short.episodes.first.id))
+								:slide_url => "/shows/" + short.slug 
 
-
-		</div>
-
-	<% end %>
-
-	</div>
+								} %>
 
 
+						</div>
 
-
-
-
-
-
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+
+
+</section>
