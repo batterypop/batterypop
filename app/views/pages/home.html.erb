@@ -1,85 +1,22 @@
 <section class="wrapper">
 		
 			
-			<%= render 'layouts/promo' %>
-			<%= render 'layouts/most_popped' %>
-			
-			<div class="row fill bottom margin padding">
-				<div class="col-lg-8 no-padding">
-					<%= render 'layouts/promoted' %>
-				</div>
-				<!-- <div class="col-lg-4">
-					<%= link_to(image_tag("ads/example.jpg", :class => 'img-responsive thumbnail'), "http://www.amazon.com/Watch-Find-batteryPOP-Videos-Games/dp/B00G5MNG08/ref=sr_sp-atf_title_1_1?ie=UTF8&qid=1383720933&sr=8-1&keywords=batterypop", :target => '_blank') %>
-				</div> -->
-				<div class="col-lg-4">
-				<%= render 'layouts/ads/watch_and_find' %>
-				</div>
-			</div>
-			
+	<%= render 'layouts/promo' %>
+
+
+	<%= render 'layouts/most_popped' %>
+
+
+	<div class="row clearfix">
+
+		<div class="col-md-8 column separator">
+			<%= render 'layouts/promoted' %>
+		</div>
 		
-</div>
+		<div class="col-md-4 column">
+			<%= render 'layouts/ads/watch_and_find' %>
+		</div>
 
-
-
-
-
-<!-- home items inited -->
-<script type="text/javascript">
-	$(document).ready(function(){
-
-
-
-	  $('.home-featured').bxSlider({
-	  		mode: 'fade',
-	  		speed: 1000,
-		  	auto: true,
-	  		video: true,
-	  		responsive: true,
-	  		touchEnabled: true,
-	  		pager: false
-		  }
-	  	);
-
-
-
-	  
-	  // $('.home-side-carousel').bxSlider({
-		 //  	nextSelector: '#home-carousel-down',
-			// prevSelector: '#home-carousel-up',
-			// nextText: 'DOWN', prevText: 'UP',
-	  // 		responsive: true,
-	  // 		touchEnabled: true,
-	  // 		infiniteLoop: false,
-	  // 		mode: 'vertical',
-	  // 		preventDefaultSwipeY: true,
-			// slideMargin: 10,
-			// minSlides: 3,
-			// moveSlides: 1,
-			// pager: false
-	  // 	});
-
-
-
-	  $('.home-promoted').bxSlider({
-	  		nextSelector: '#home-promoted-next',
-			prevSelector: '#home-promoted-prev',
-			nextText: 'NEXT', prevText: 'PREV',
-			infiniteLoop: false, 
-		  	minSlides: 2,
-			maxSlides: 4,
-			slideWidth: 182,
-			responsive: true,
-	  		touchEnabled: true,
-	  		slideMargin: 6,
-			moveSlides: 2,
-			pager: false
-	  	});
-
-		// <% if((!current_user && !@cookie)) %>
-		// 	$("#welcomeModal").modal('show');
-		// <% end %>
-
-		
-
-	});
-</script>
+	</div>
+	
+</section>

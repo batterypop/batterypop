@@ -1,9 +1,9 @@
 <!-- promo start -->
-<div class="row clearfix">
+<div class="row clearfix row-featured">
 	<!-- large image right slideshow -->
-	<div class="col-lg-9 col-lg-push-3 col-md-8 col-md-push-4 no-padding no-margin">
-		<div class="home-featured-wrapper">
-			<ul class="bxslider home-featured">
+	<div class="col-md-8 col-md-push-4 column">
+		<div class="slider">
+			<ul>
 				<% @features.each do |feature| %>
 					<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
 					<li <%= @dur %>><%= feature.content.html_safe %></li>
@@ -43,6 +43,6 @@
 		</div>
 	</div>
 	<!-- end of vertical carousel -->
-
+	<div class="corners"></div>
 </div>
 <!-- end show promo -->

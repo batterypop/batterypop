@@ -26,82 +26,74 @@ jQuery(document).ready(function() {
     });
 
 
-$("[data-episode]").each(function(){
-    $.ajax({
-        type : 'POST',
-      url : '/refresh',
-      data: {id: $(this).attr("data-episode")}
-    })
-});
 
 
-
-jQuery('a[rel="external"]')
-.click( function() {
-    window.open( jQuery(this).attr('href') );
-    pde(evt);
-});
-
-
-// jQuery('.slider ul').bxSlider({
-//     infiniteLoop: true,
-//     pager: true
-//     //preventDefaultSwipeY: true
-// });
+    jQuery('a[rel="external"]')
+    .click( function() {
+        window.open( jQuery(this).attr('href') );
+        pde(evt);
+    });
 
 
-jQuery('.carousel-vertical ul').bxSlider({
-    mode: 'vertical',
-    slideMargin: 10,
-    minSlides: 3,
-    pager: false,
-    infiniteLoop: false,
-    adaptiveHeight: true,
-    responsive: true,
-    touchEnabled: false,
-    moveSlides: 0
-    //preventDefaultSwipeY: true
-});
-
-jQuery('.col-md-12 .carousel-horizontal ul').bxSlider({
-    mode: 'horizontal',
-    slideMargin: 10,
-    minSlides: 1,
-    maxSlides: 6,
-    pager: false,
-    infiniteLoop: false,
-    responsive: true,
-    touchEnabled: true,
-    moveSlides: 0,
-    slideWidth: 212
-    //preventDefaultSwipeY: true
-});
+    jQuery('.slider ul').bxSlider({
+        infiniteLoop: true,
+        pager: true
+        //preventDefaultSwipeY: true
+    });
 
 
-// jQuery('.col-md-8 .carousel-horizontal ul').bxSlider({
-//     mode: 'horizontal',
-//     slideMargin: 10,
-//     minSlides: 1,
-//     maxSlides: 4,
-//     pager: false,
-//     infiniteLoop: false,
-//     responsive: true,
-//     touchEnabled: true,
-//     moveSlides: 0,
-//     slideWidth: 230
-// });
+    jQuery('.carousel-vertical ul').bxSlider({
+        mode: 'vertical',
+        slideMargin: 10,
+        minSlides: 3,
+        pager: false,
+        infiniteLoop: false,
+        adaptiveHeight: true,
+        responsive: true,
+        touchEnabled: false,
+        moveSlides: 0
+        //preventDefaultSwipeY: true
+    });
 
-// jQuery('.col-md-7 .carousel-horizontal ul').bxSlider({
-//     mode: 'horizontal',
-//     slideMargin: 10,
-//     minSlides: 1,
-//     maxSlides: 4,
-//     pager: false,
-//     infiniteLoop: false,
-//     responsive: true,
-//     touchEnabled: true,
-//     moveSlides: 0,
-//     slideWidth: 203
-// });
+    jQuery('.col-md-12 .carousel-horizontal ul').bxSlider({
+        mode: 'horizontal',
+        slideMargin: 10,
+        minSlides: 1,
+        maxSlides: 6,
+        pager: false,
+        infiniteLoop: false,
+        responsive: true,
+        touchEnabled: true,
+        moveSlides: 0,
+        slideWidth: 212
+        //preventDefaultSwipeY: true
+    });
+
+
+    jQuery('.col-md-8 .carousel-horizontal ul').bxSlider({
+        mode: 'horizontal',
+        slideMargin: 10,
+        minSlides: 1,
+        maxSlides: 4,
+        pager: false,
+        infiniteLoop: false,
+        responsive: true,
+        touchEnabled: true,
+        moveSlides: 0,
+        slideWidth: 230
+    });
+
+    jQuery('.col-md-7 .carousel-horizontal ul').bxSlider({
+        mode: 'horizontal',
+        slideMargin: 10,
+        minSlides: 1,
+        maxSlides: 4,
+        pager: false,
+        infiniteLoop: false,
+        responsive: true,
+        touchEnabled: true,
+        moveSlides: 0,
+        slideWidth: 203
+    });
 
 });

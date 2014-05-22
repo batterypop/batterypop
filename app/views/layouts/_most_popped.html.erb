@@ -1,17 +1,13 @@
-<div class="row fill bottom margin padding home-most-popped-slider">
-	<div class="bpop-slider-header">
-		<div class="text-center home-most-popped-header">
-			<div class="header-bg"><%= image_tag "most-popped-home-header-bg.png" %></div>
-			<div id="home-mostpopped-next" class="col-xs-1 slider-next pull-right"></div>
-			<div id="home-mostpopped-prev" class="col-xs-1 slider-prev pull-left"></div>
-			<div class="col-xs-12 slider-title">
-				<h4>Most Popped</h4>
+<div class="row clearfix">
+	<div class="col-md-12 column">
+		<div class="carousel carousel-horizontal theme-purple bpop-icon-bolt">
+			<div class="panel">
+				<div class="panel-head">
+					<h3>Most Popped</h3>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row bpop-slider home-most-popped-body">
-		<div class="col-lg-12 no-padding">
-			<ul class="bxslider home-most-popped">
+			<ul>
+				
 				<% Episode.mostpopped(10).each do |episode| %>
 					<li>
 
@@ -19,7 +15,6 @@
 							  	:slide_title => episode.slide_title.html_safe, 
 							  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
 							  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
-
 							  	:slide_url =>  episode.link, 
 							  	:slide_class => !episode.friends.approved.empty? ? "sponsor": nil
 
@@ -28,29 +23,9 @@
 					
 					</li>
 				<% end %>
+				
 			</ul>
 		</div>
 	</div>
+	<!-- carousel -->
 </div>
-
-
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.home-most-popped').bxSlider({
-		  	nextSelector: '#home-mostpopped-next',
-			prevSelector: '#home-mostpopped-prev',
-			nextText: 'NEXT', prevText: 'PREV',
-		  	minSlides: 1,
-			maxSlides: 5,
-			infiniteLoop: false,
-			responsive: true,
-	  		touchEnabled: true,
-	  		slideMargin: 6,
-	  		slideWidth: 220,
-			moveSlides: 2,
-			pager: false
-	  	});
-	 
-	});
-</script>
