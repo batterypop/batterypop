@@ -397,6 +397,8 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.5)
+    will_paginate-bootstrap (1.0.0)
+      will_paginate (>= 3.0.3)
     yard (0.8.7.3)
 
 PLATFORMS
@@ -463,3 +465,4 @@ DEPENDENCIES
   unicorn
   viddler-ruby
   will_paginate (~> 3.0.5)
+  will_paginate-bootstrap

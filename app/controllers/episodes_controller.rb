@@ -43,7 +43,9 @@ class EpisodesController < ApplicationController
 
   # GET /episodes/1/edit
   def edit
+    redirect_to "/"
   end
+
 
 # voting
   def pop
