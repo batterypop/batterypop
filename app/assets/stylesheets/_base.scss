@@ -1315,8 +1315,12 @@ top: -30px;
 
 
 .videocontent {
-  max-width: 100%;
+ // max-width: 100%;
 
+}
+
+.fluid-width-video-wrapper {
+  padding-top: 56.25% !important;
 }
 
 .vjs-default-skin .vjs-big-play-button {
