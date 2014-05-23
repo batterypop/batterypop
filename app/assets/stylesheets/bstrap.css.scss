@@ -20,9 +20,7 @@
   height: auto;
   float: left;
   list-style: none;
-  	img {
-  		max-width: 100%;
-  	}
+
 }
  
 @mixin block-grid ($per-row) {

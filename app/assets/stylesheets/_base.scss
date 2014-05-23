@@ -1915,3 +1915,38 @@ overflow: hidden;
 }
 
 
+// blockgrid
+[class*="block-grid-"] {
+  margin-bottom: 30px;
+}
+.list-user li {
+  .media {
+    display: block;
+    border: 1px solid $gray-lite;
+    @extend %box-shadow;
+    padding: 10px;
+    
+      &:hover {
+        background: tint($dark, 98%);
+        
+      }
+      .thumb {
+      max-width: 90px;
+        img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        }
+      }
+      .media-body {
+        h4 {
+          @include fontsize(2.1);
+          margin-bottom: 0;
+        }
+        p {
+          color: $color-text;
+          @include fontsize(1.2);
+        }
+      }
+  }
+}
