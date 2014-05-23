@@ -94,62 +94,6 @@ module ApplicationHelper
 
 
 
-  # def users_to_census_age_array(arr, deductYears=false)
-  #   ret = Hash.new
-  #   arr.each do |user|
-  #     # ret << user.id
-  #     # targetDate = user.birthday.nil? ?  'unknown' : user.birthday.to_s
-  #     targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
-  #     targetGender = user.gender.nil? ? 'unknown' : user.gender
-  #     if ret[targetDate].nil?  # we know there hasn't been any gender assigned to this date
-  #       # ret[targetDate] = Hash.new
-  #        ret[targetDate] = {"male" => 0, "female" => 0, "unknown" => 0}
-  #     end
-  #     if ret[targetDate][targetGender].nil?
-  #       ret[targetDate][targetGender] = Array.new
-  #     end
-  #     ret[targetDate][targetGender] << user
-  #   end
-  #   return ret.sort_by{|k,v| k.to_i}
-  # end
-
-  # def users_to_census_age_count(arr, deductYears=false)
-  #   # e = Episode.friendly.find('who-swallowed-a-fly'); u=e.votes.up.by_type(User).voters; s=e.show
-  #   # h[key] ? h[key] << category[:id] : h[key] = [category[:id]]
-  #   ret = Hash.new
-  #   arr.each do |user|
-  #     # ret << user.id
-  #     # targetDate = user.birthday.nil? ?  'unknown' : user.birthday.to_s
-  #     targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
-  #     targetGender = user.gender.nil? ? 'unknown' : user.gender
-  #     if ret[targetDate].nil?  # we know there hasn't been any gender assigned to this date
-  #       # ret[targetDate] = Hash.new
-  #       ret[targetDate] = {"male" => 0, "female" => 0, "unknown" => 0}
-  #     end
-  #     if ret[targetDate][targetGender].nil?
-  #       ret[targetDate][targetGender] = 1
-  #     else
-  #       ret[targetDate][targetGender] =  ret[targetDate][targetGender] + 1
-  #     end
-  #   end
-  #   return ret.sort_by{|k,v| k.to_i}
-  # end
-
-
-  # def users_to_census_gender_count(arr, deductYears=true)
-  #   # ret = Hash.new
-  #   ret = {"male" => 0, "female" => 0, "unknown" => 0}
-  #   arr.each do |user|
-  #     targetDate = user.birthday.nil? ?  'unknown' : (deductYears==true ? (Time.now.year - user.birthday.year).to_s : user.birthday.to_s)
-  #     targetGender = user.gender.nil? ? 'unknown' : user.gender
-  #     if ret[targetGender].nil?
-  #       ret[targetGender] = 1
-  #     else
-  #       ret[targetGender] = ret[targetGender] + 1
-  #     end
-  #   end
-  #   return ret.sort_by{|k,v| k}
-  # end
 
 
   def chart_data_to_donut(arr)
@@ -212,16 +156,16 @@ module ApplicationHelper
       # traceout("FIRST CALL")
       videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
       # traceout("AFTER FIRST CALL")
-      traceout(videoData['video']['files'])
+      # traceout(videoData['video']['files'])
       if videoData['video']['files'].nil?
-        traceout("NOT FOUND VIDEO")
+        # traceout("NOT FOUND VIDEO")
         # traceout(episode)
         videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
       end
         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
        @src = ""
       if videoData['video']['files'].nil?
-        traceout("GOING TO THE OLD EMBED THEN")
+        # traceout("GOING TO THE OLD EMBED THEN")
          old = Embed.where(:provider => "viddler_original").first
          @ret = old.get_embed(old, episode.video).html_safe
       else
@@ -238,7 +182,7 @@ module ApplicationHelper
       @ret = @ret.gsub("{{videosources}}", @src)
       @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
      
-      traceout('final embed')
+      # traceout('final embed')
     else
        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
       # just in case there's other info
