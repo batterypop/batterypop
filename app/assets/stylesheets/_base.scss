@@ -1815,11 +1815,12 @@ overflow: hidden;
 
   position: relative;
   padding-bottom: 15px;
+  min-height: 160px;
   //margin-bottom: 15px;
 
   //border-bottom: 1px solid $gray-xlite;
   header {
-    @extend %box-shadow;
+    //@extend %box-shadow;
     position: absolute;
     top: 0;
     left: 15px;
@@ -1837,20 +1838,28 @@ overflow: hidden;
     }
     h3 {
       color: $lite;
+      margin: 0;
+       a {
+        color: $lite;
+       }
+    }
+    ul {
+      margin: 0;
+    }
+    li {
       display: inline-block;
       @extend %text-shadow;
       @extend %uppercase;
       margin-bottom: 5px;
       background: $gold;
       @extend %border-radius;
-      padding: .2em .5em;
+      padding: .2em .5em; 
     }
 
   }
 
   .thumb {
     border-top: 5px solid $purple;
-    background: $gray-xlite;
     margin-bottom: 15px;
     
     a {
