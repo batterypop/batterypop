@@ -1,0 +1,24 @@
+<article class="post">
+	<header>
+		<ul>
+			<% post.categories.each do |cat| %>
+				<li><h3><%= link_to cat.title, category_path(cat) %></h3></li>
+			<% end %>
+		</ul>
+		<a href="<%= post.link %>"><h1 class="post-title"><%= post.title %></h1></a>
+		<h4 class="meta"><%= post.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
+	</header>
+	
+
+	<figure class="thumb">
+		<%= link_to post_path(post) do %>
+			<%= image_tag(post.featured_image(:original), :alt => post.title) %>
+		<% end %>
+	</figure>
+
+	<% if !(local_assigns[:post_content].nil?) && (local_assigns[:post_content] == true) %>
+		<div class="content">
+			<%= post.body.html_safe %></div>
+		</div>
+	<% end %>
+</article>

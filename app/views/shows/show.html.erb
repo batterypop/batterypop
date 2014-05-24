@@ -22,7 +22,7 @@
 
 	<%= render partial: "layouts/breadcrumb", :locals => {
 			:crumb_creator => @creator_name.html_safe,
-			:crumb_thumb  => image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => "img-responsive"),
+			:crumb_thumb  => image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => ""),
 			:crumb_title => @show.title, 
 		 	
 		 	:crumb_text => "<h5>#{@show.subtitle}</h5>#{ @show.description }<p><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</p>".html_safe,
@@ -32,7 +32,7 @@
 
 
 
-	<div class="row clearfix">			
+	<div class="row clearfix row-featured">		
 	<!-- video section -->
 
 		<div class="col-md-8 column">
@@ -45,6 +45,9 @@
 
 	<!-- end video section -->
 		<%=  render :partial => "layouts/next_up" %>
+
+		<div class="corners"></div>
+
 	</div>
 
 	<!-- end video / nextup -->
@@ -61,7 +64,7 @@
 						<div class="media <% if(@episode == ep) %>active<% end %> ">
 							<a href="<%= ep.link %>">
 								<div class="pull-left thumb">
-									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive  media-object ', :width => '125') %>
+									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
 								</div>
 								<div class="media-body">
 									<h3 class="media-heading"><%= ep.title %></h3>

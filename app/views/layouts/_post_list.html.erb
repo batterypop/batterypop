@@ -12,27 +12,7 @@
 
 		<% @posts.each do |tpost| %>
 
-			<article class="post">
-				<header>
-					<ul>
-						<% tpost.categories.each do |cat| %>
-							<li><h4><%= link_to cat.title, category_path(cat) %></h4></li>
-						<% end %>
-					</ul>
-					
-					<%= link_to post_path(tpost) do %>
-						<h1 class="post-title"><%= tpost.title %></h1>
-					<% end %>
-					<h4 class="meta"><%= tpost.created_at.strftime("%A, %B %d %Y @ %I:%M %p") %></h4>
-				</header>
-
-				<figure class="thumb">
-					<%= link_to post_path(tpost) do %>
-						<%= image_tag(tpost.featured_image(:original), :alt => tpost.title, :class => "img-responsive post-featured-image") %>
-					<% end %>
-				</figure>
-			</article>
-
+			<%= render partial: "posts/post_single", :locals => {:post => tpost } %>
 
 		<% end %>
 
