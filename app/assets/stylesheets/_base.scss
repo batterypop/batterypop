@@ -699,6 +699,7 @@ top: -30px;
   h4 {
   @extend %font-display;
   @extend %uppercase;
+
         
       }
   p {
@@ -946,6 +947,7 @@ top: -30px;
     
       h4 {
       @include fontsize(2.1);
+      line-height: 1.1;
       }
       .summary {
         //margin-left: 80px;
