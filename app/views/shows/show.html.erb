@@ -61,7 +61,7 @@
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						<div class="media <% if(@episode == ep) %>active<% end %> ">
-							<a href="<%= ep.link %>">
+							<a class="clearfix" href="<%= ep.link %>">
 								<div class="pull-left thumb">
 									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
 								</div>
@@ -74,7 +74,7 @@
 							<a class="badge">
 								<h5><%= ep.pops %></h5>
 								<div class="badge-box" data-episode="<%= ep.id %>">
-									<div data-button="" class="btn-pop episode-badge-vote-#{ep.id}">POP it</div>
+									<div class="btn-pop episode-badge-vote-#{ep.id}">POP it</div>
 								</div>
 							</a>
 							<!-- badge -->
