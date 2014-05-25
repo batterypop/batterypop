@@ -98,7 +98,14 @@ jQuery(document).ready(function() {
 
 });
 
+// fitvids
   jQuery(document).ready(function($){
     // Target your .container, .wrapper, .post, etc.
     $(".videocontent").fitVids();
   });
+
+
+// equalize height
+  jQuery(document).ready(function($) {
+    $(".headcrumb").eqHeight(".column");
+});

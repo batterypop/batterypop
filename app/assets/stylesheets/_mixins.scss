@@ -296,7 +296,7 @@ border-color: darken($btn-color, 5%);
 .btn-purple {
   @include btn-theme($purple);
 }
-.btn-blue {
+.btn-blue, .btn-primary {
   @include btn-theme($blue);
 }
 .btn-green {
