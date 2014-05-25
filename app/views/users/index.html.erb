@@ -1,9 +1,18 @@
-<div class="main users">
-  <div class="container">
-    <div class="content">
+<section class="wrapper">
+
+	<div class="row clearfix">
+		<div class="col-md-12">
+			<div class="banner theme-blue">
+					<div class="well well-frame">
+						<h3>Users</h3>
+						<p></p>
+					</div>
+			</div>
+		</div>
+	</div>
 
 
-	<div class="row">
+	<div class="row clearfix">
 
 	<% @users.each do |user| %>
 
@@ -13,10 +22,10 @@
 
 	<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
 
-
-
-
-		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 all-users-user">
+		
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 ">
+			
+			<div class="well">
 
 			<%= render partial: "layouts/horizontal_slide", :locals => {
 				:slide_title => user.username, 
@@ -30,8 +39,10 @@
 				:slide_url => user_path(User.friendly.find(user.id))} %>
 
 
+			</div>
+
 		</div>
-		<% end %>
+	<% end %>
 	<% end %>
 
 	</div>
@@ -40,6 +51,4 @@
 
 
 
-		</div>
-	</div>
-</div>
+</section>

@@ -1,122 +1,63 @@
-<div class="row home-carousel-prewrapper ">
-	<div class="home-carousel-wrapper ">
-		<div class="col-xs-12 home-carousel-header">
-			<span style="" class="pop-button pull-left"><div class="flash"></div></span>
-			<span style="" class="pop-button pull-right"><div class="flash"></div></span>
-			<div class="col-xs-12 text-center slider-title">
-				<h4>Latest Posts</h4>
+<div class="row clearfix">
+	<div class="col-md-12 column">
+
+		<div class="carousel carousel-vertical theme-default">
+
+			<div class="panel panel-default">
+				<div class="panel-head">
+						<h3>Latest Posts</h3>
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 home-carousel-slider">
-			<ul class="bxslider home-side-carousel">
+
+			<ul>
 				<% @latest.each do |latest_post| %>
-				<li>
-				<%= render partial: "layouts/horizontal_slide", :locals => {
-										:slide_title => latest_post.title, 
-									 	:slide_text => '', 
-										:slide_image => image_tag(latest_post.featured_image(:thumb), :alt => latest_post.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
-										#:slide_url => post_path(Post.friendly.find(post.id))
-										
-										:slide_url => "/posts/" + latest_post.slug
+					<li>
 
-										} %>
-				</li>
+					<%= render partial: "layouts/horizontal_slide", :locals => {
+						:slide_title => latest_post.title, 
+					 	:slide_text => '', 
+						:slide_image => image_tag(latest_post.featured_image(:thumb), :alt => latest_post.title), 
+						:slide_url => latest_post.link
+
+						} %>
+
+					</li>
 				<% end %>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<!-- second grouping of sidebar -->
-
-
-
-<!-- 
-<div class="row home-carousel-prewrapper ">
-	<div class="home-carousel-wrapper ">
-		<div class="col-xs-12 home-carousel-header">
-			<div id="home-carousel-down" class="slider-down pull-right col-xs-2 col-offset-xs-10"></div>
-			<div id="home-carousel-up" class="slider-up pull-left col-xs-2"></div>
-			<div class="col-xs-8 col-offset-xs-2 text-center slider-title">
-				<h4>Archives</h4>
-			</div>
-		</div>
-		<div class="col-xs-12 home-carousel-slider">
-			<ul class="bxslider home-side-carousel">
 				
 			</ul>
-		</div>
-	</div>
-</div> -->
 
-<!-- third grouping in sidebar -->
+		</div><!-- carousel -->
+	</div><!-- col-inner -->
+
+</div><!-- row-inner -->
 
 
-	<div class="bpop-slider-header">
-		<div class="text-center home-most-popped-header">
-			<div id="home-mostpopped-next" class="col-xs-1 slider-next pull-right"></div>
-			<div id="home-mostpopped-prev" class="col-xs-1 slider-prev pull-left"></div>
-			<div class="col-xs-12 slider-title">
-				<h4 style="font-size: 28px;">Most Popped</h4>
+<div class="row clearfix">
+	<div class="col-md-12 column">
+		<div class="carousel carousel-horizontal theme-purple">
+			<div class="panel">
+				<div class="panel-head">
+					<h3>Most Popped</h3>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row bpop-slider home-most-popped-body">
-		<div class="col-lg-12 no-padding">
-			<ul class="bxslider home-most-popped">
+			<ul>
+				<% cache 'shows_most_popped', skip_digest: true do %>
 				<% Episode.mostpopped(10).each do |episode| %>
 					<li>
 
-						 <%= render partial: "layouts/vertical_slide", :locals => {
-							  	:slide_title => episode.title, 
-							  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
-							  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
-
-							  	:slide_url => episode.link
-
-							  	} %>
-
+					 <%= render partial: "layouts/vertical_slide", :locals => {
+						  	:slide_title => episode.title, 
+						  	:slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+						  	:slide_image => image_tag(episode.image(:thumb), :alt => episode.title),
+						  	:slide_url => episode.link
+						  	} %>
 					
 					</li>
+				<% end %>
 				<% end %>
 			</ul>
 		</div>
 	</div>
-
-
-
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.home-most-popped').bxSlider({
-		  	nextSelector: '#home-mostpopped-next',
-			prevSelector: '#home-mostpopped-prev',
-			minSlides: 1,
-			maxSlides: 5,
-			responsive: true,
-	  		touchEnabled: true,
-	  		infiniteLoop: false,
-	  		slideMargin: 6,
-	  		slideWidth: 220,
-			moveSlides: 2,
-			pager: false
-	  	});
-	 
-	});
-
-
-	 $('.home-side-carousel').bxSlider({
-		  	nextSelector: '#home-carousel-down',
-			prevSelector: '#home-carousel-up',
-			nextText: 'DOWN', prevText: 'UP',
-	  		responsive: true,
-	  		touchEnabled: true,
-	  		infiniteLoop: false,
-	  		mode: 'vertical',
-	  		preventDefaultSwipeY: true,
-			slideMargin: 10,
-			minSlides: 3,
-			moveSlides: 1,
-			pager: false
-	  	});
-</script>
+	<!-- carousel -->
+</div>
+<!-- row -->

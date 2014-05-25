@@ -1,9 +1,0 @@
-@font-face{
-    font-family: 'AnchorSemibold';
-    src: url('/assets/AnchorWebSemiBold.eot');
-}
-
-@font-face{
-    font-family: 'AnchorMedium';
-    src: url('/assets/AnchorWebMedium.eot');
-}

@@ -68,7 +68,7 @@ module ApplicationHelper
     end
 
     def colors
-     ["aqua","purple","gold","orangered","green","steelblue","red","mint"]
+     ["blue","purple","gold","orange","green","navy","red","mint"]
     end
     
     def get_avatars

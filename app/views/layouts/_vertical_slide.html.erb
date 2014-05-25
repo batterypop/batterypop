@@ -1,9 +1,7 @@
 <a href="<%= slide_url %>"  <% if !(local_assigns[:slide_class].nil?) %>class="<%= slide_class %>"<% end %>>
-	<div class="thumbnail vertical-slide">
-		<%= slide_image %>
-		<div class="caption">
-		  <h4><%= slide_title %></h4>
-			  <p><small><%= slide_text %></small></p>
-		  </div>
+	<div class="thumb"><%= slide_image %></div>
+	<div class="summary">
+		<h4><%= slide_title %></h4>
+		<p><%= slide_text %></p>
 	</div>
 </a>

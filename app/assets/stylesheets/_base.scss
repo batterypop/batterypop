@@ -1,0 +1,1972 @@
+//@import "compass";
+
+
+
+//@include establish-baseline;
+
+
+html {
+
+font-size: 62.5%; /* Sets up the Base 10 stuff */
+
+}
+
+body {
+//@include fontsize(1.4);
+}
+
+
+body {
+  overflow-x: hidden;
+      
+  background-size: cover;
+  background-color: $lite;
+
+  font-family: $font-sans;
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: $color-text;
+
+  margin: 0 auto;
+
+}
+h1,
+h2,
+h3,
+h4, 
+h5,
+.h1, .h2, .h3, .h4, .h5 {
+  @extend %font-display;
+  font-weight: normal;
+
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+text-rendering: optimizeLegibility;
+
+}
+
+
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, 
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+h5 {
+@include fontsize(1.8);
+}
+
+form, form > * {
+  font-size: 16px;
+}
+
+small {
+@include fontsize(1.2);
+}
+
+li {
+  list-style-type: none;
+}
+
+.lowercase {
+  @extend %lowercase;
+}
+
+.uppercase {
+  @extend %uppercase;
+}
+
+a {
+  outline: none;
+  @include link-colors($blue, darken($blue, 10%), $blue, $blue);
+  transition: 300ms all ease-in;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+a:active, a:focus { 
+ outline: none; 
+
+}
+
+
+
+// bootstrap mods 
+.navbar {
+  margin-bottom: 0;
+}
+
+.row {
+  margin-bottom: 30px;
+}
+
+
+
+.row .row {
+  margin-bottom: 0;
+}
+
+
+// fix
+.separator {
+  margin-bottom: 30px;
+}
+
+.sidebar .row {
+  margin-bottom: 30px;
+}
+
+.panel {
+  box-shadow: none;
+  border-radius: 0;
+  border: 0;
+  background: none;
+  margin-bottom: 0;
+}
+
+.panel.panel-default {
+  @extend %box-shadow;
+  position: relative;
+  z-index: 2;
+  background: $lite;
+}
+
+
+
+.well.well-frame {
+  border: 5px solid $lite;
+  @extend %box-shadow;
+}
+
+
+
+.panel-head {
+  height: 60px;
+  > h3 {
+    line-height: 60px;
+    @extend %uppercase;
+    text-align: center;
+  }
+}
+
+
+
+
+.panel.panel-blue {
+  @extend %bk-blue;
+}
+
+.panel.panel-frame {
+  padding: 15px;
+}
+
+
+
+.well {
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  border: none;
+  padding: 15px;
+}
+
+
+
+.banner {
+  .well {
+    position: relative;
+    padding-left: 150px;
+    padding-right: 150px;
+    color: $lite;
+    @extend %text-shadow;
+    text-align: center;
+    h3 {
+      @extend %uppercase;
+      margin-bottom: 0;
+      @include fontsize(3.0);
+
+    }
+    p {
+      margin: 0 auto; 
+    }
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 150px;
+      background-image: url("#{$image-path}/icon-tv-plus.svg");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 120px;
+      
+    }
+      &:before {
+      top: 0;
+      left: 0;
+
+    }
+    &:after {
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+
+
+
+
+
+.well-sm {
+  padding: 10px;
+
+}
+
+[class*="btn-"] {
+@include link-colors($lite, $lite, $lite, $lite);
+}
+
+
+
+
+// forms
+
+form > *, button {
+font-family: $font-head;
+
+}
+
+input::placeholder {
+  @extend %lowercase;
+}
+
+form > *, .input-group, input, textarea {
+  @include fontsize(1.6);
+  border-radius: 0 !important;
+}
+
+.input-group-btn:last-child>.btn {
+  width: 100%;
+}
+
+
+button {
+  font-weight: bold;
+  @extend %lowercase;
+}
+
+
+
+.wrapper {
+
+  height: 100%;
+  //@extend %box-shadow;
+
+}
+
+footer.wrapper .row {
+  margin-bottom: 15px;
+}
+
+.container {
+  height: 100%;
+  @extend %box-shadow;
+  position: relative;
+background-color: $lite;
+}
+// nav
+
+.navbar-default {
+  background-color: $lite;
+  @extend %box-shadow;
+  overflow: hidden;
+
+
+
+  .navbar-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+
+
+  .navbar-form {
+    border-bottom: 0;
+  }
+
+
+
+
+.navbar-header {
+  float: none;
+  display: block;
+  height: 120px;
+  text-align: center;
+  
+  //position: relative;
+  //z-index: 1;
+  h1 {
+          background: url("#{$image-path}/starburst.png") no-repeat 50% -55px;
+      height: 160px;
+      width: 305px;
+      display: inline-block;
+      margin: auto;
+      text-align: center;
+      //position: relative;
+      //z-index: 10;
+
+      //position: absolute;
+      //top: 0;
+      //left: -10px;
+      //z-index: -1;
+
+   //z-index: 5;
+    a {
+        background: url("#{$image-path}/logo.png") no-repeat 50% 50%;
+   display: block;
+   width: 305px;
+   margin: 0 auto;
+   background-size: 135px auto; 
+   position: relative; 
+   height: 120px;
+
+      //content: "";
+
+    }
+  }
+  a.navbar-brand {
+    //height: 100px;
+    //width: 303px;
+    //display: block;
+    text-indent: -999em;
+
+  }
+
+
+
+    .navbar-toggle {
+      border-color: $gray-lite;
+      background: $gray-lite;
+
+      .icon-bar {
+      background-color: $lite;
+
+      }
+        &:active, &:focus, &:hover {
+        background-color: $blue;
+        border-color: $blue;
+          .icon-bar {
+            background-color: $lite;
+          }
+        }
+    }
+}
+
+
+// end navbar-default
+}
+
+
+
+.navbar-default ul.navbar-nav {
+  @extend %box-shadow;
+  //position: relative;
+  //z-index: 2;
+  margin: 0 auto;
+  float: none;
+  background: $lite;
+  text-align: center;
+
+    li {
+    @extend %font-display;
+    @include fontsize(3.0);
+    float: none;
+    display: inline-block;
+    margin: 0 3%;
+    }
+
+    a {
+      @extend %uppercase;
+    @include link-colors($blue, $blue, $blue, $blue);
+    padding: 20px;
+        span {
+        @extend %lowercase;
+        }
+        &:hover {
+          box-shadow: 0 -3px 0 0 $blue;
+
+        }
+    }
+    li.active {
+      position: relative;
+
+      /* &:before {
+      border-top: 3px solid $blue;
+      width: 100%;
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 0;
+      z-index: 2; 
+
+
+      } */
+    
+      a {
+      box-shadow: 0 -3px 0 0 $blue;
+      cursor: default;
+      @include link-colors($blue, $blue, $blue, $blue);
+      background: transparent;
+        &:hover {
+        background: transparent;
+        }
+
+      }
+    }
+}
+
+
+
+
+.navbar-default .panel-right {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  width: 20%;
+
+  .btn-group-justified {
+    border: 4px solid $lite;
+    border-top: 0;
+    @extend %box-shadow;
+    //border-radius: 0 0 6px 6px;
+    border-radius: 0;
+  }
+
+  .btn-group>.btn-group:first-child>.btn:last-child {
+    //border-radius: 0 0 0 4px;
+    border-radius: 0;
+  }
+
+  .btn-group>.btn-group:last-child>.btn:first-child {
+    //border-radius: 0 0 4px 0;
+    border-radius: 0;
+  }
+  .navbar-form {
+    padding: 0;
+    margin: 15px 0;
+    width: 100%;
+      .input-group {
+        width: 100%;
+      }
+  }
+}
+
+
+.navbar-default .panel-left {
+position: absolute;
+top: 0;
+left: 15px;
+padding: 15px;
+ 
+}
+
+
+
+.links-bpop {
+margin-bottom: 0;
+
+  
+
+      p {
+        margin-bottom: 0;
+      
+      @include fontsize(2.0);
+      font-family: $font-head;
+      font-weight: normal;
+        &:before {
+        @extend %icon-bpop;
+        
+        margin-right: 5px;
+        font-size: 120%;
+        vertical-align: text-top;
+        }
+      }
+
+
+  
+}
+  
+
+
+
+
+
+.link-pop {
+  &:before {
+  content: "\3d";
+  color: $purple;
+
+  
+  }
+}
+
+.link-follow {
+  &:before {
+    content: "\3f";
+  color: $gold;
+
+  }
+}
+
+.panel-nav {
+  
+  padding: 15px;
+
+  li {
+    display: inline-block;
+    
+    &:first-child {
+      margin-right: 15px;
+    }
+  }
+
+  .navbar-form {
+    margin: 0;
+    padding: 0;
+
+  }
+}
+
+
+// bxslider
+
+.bx-wrapper .bx-viewport {
+  box-shadow: none;
+  border: 0;
+  left: 0;
+  background: transparent; 
+}
+
+.bx-wrapper .bx-loading { 
+background: url("#{$image-path}/bx_loader.gif") center center no-repeat #fff;
+}
+
+.bx-wrapper .bx-prev {
+  background: url("#{$image-path}/controls.png") no-repeat 0 -32px;
+}
+
+.bx-wrapper .bx-next {
+  background: url("#{$image-path}/controls.png") no-repeat -43px -32px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+  background: url("#{$image-path}/controls.png") -86px -11px no-repeat;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+  background: url("#{$image-path}/controls.png") -86px -44px no-repeat;
+
+}
+
+
+// end bxslider mods
+
+
+.slider ul, .carousel ul {
+float: left;
+width: 100%;
+}
+
+.slider p {
+  margin-bottom: 0;
+}
+
+
+.bx-wrapper {
+  margin-bottom: 0;
+
+}
+
+
+
+.bx-wrapper .bx-controls-direction a {
+    height: 35px;
+    width: 35px;
+     
+    color: $lite-dim;
+  
+    &:hover {
+    color: $lite;
+     }
+    &:before {
+      width: 100%;
+      //width: auto;
+      text-align: center;
+    // text-shadow: 0 0 5px $dark-dim;
+    @include fontsize(3.0);
+    @extend %icon-bpop;
+    //line-height: 1;
+    @extend %border-circle;
+    position: absolute;
+    display: block;
+    text-indent: 0; 
+    line-height: 1;     
+    }
+}
+
+
+.bx-wrapper .bx-prev {
+background: transparent;
+}
+
+.bx-wrapper .bx-next {
+background: transparent;
+}
+
+
+.bx-wrapper .bx-prev {
+  &:before {
+  content: "\e602";
+  }
+}
+
+.bx-wrapper .bx-next {
+  &:before {
+  content: "\e603";
+  }
+}
+
+.carousel .bx-controls-direction a {
+top: -30px;
+
+}
+
+.carousel-vertical .bx-wrapper {
+  .bx-prev:before {
+    content: "\e601";
+  }
+}
+
+.carousel-vertical .bx-wrapper {
+  .bx-next:before {
+    content: "\e600";
+  }
+}
+
+
+.bx-wrapper .bx-pager {
+  bottom: 15px;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager {
+  a {
+    @extend %border-circle;
+    height: 15px;
+    width: 15px;
+    background-color: $lite-dim;
+  }
+} 
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
+  background-color: $blue;
+}
+
+
+
+// carousel
+.carousel {
+  .bx-wrapper {
+  padding: 15px;
+  }
+  .panel {
+    text-align: center;
+  }
+  .panel h3 {
+  @include fontsize(3.6);
+  @extend %font-display-bold;
+  //color: $gray-xlite;
+  //@extend %text-shadow;
+  line-height: 60px;
+  display: inline-block;
+  margin: 0 auto;
+
+  }
+  h4 {
+  @extend %font-display;
+  @extend %uppercase;
+
+        
+      }
+  p {
+    @include fontsize(1.2);
+  }
+  ul {
+    margin-bottom: 0;
+    li {
+      //border: 1px solid transparentize($lite, .2);
+      border: 1px solid transparentize($dark, 1.0);
+
+      max-width: 100%; 
+      //overflow: visible;
+      a {
+        
+        display: block;
+        width: 100%;
+        @extend %box-shadow;
+      }
+    }
+  }
+    .summary {
+    position: relative;
+    height: 100%;
+
+      > * {
+      margin: 0;
+      }
+    }
+
+  .thumb {
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  .summary {
+    padding: 10px;
+    
+  }
+
+  // end carousel
+}
+
+
+// themes
+
+.theme-purple {
+  @include theme($purple);
+}
+.theme-blue {
+  @include theme($blue);
+}
+.theme-green {
+  @include theme($green);
+}
+.theme-gold {
+  @include theme($gold);
+}
+.theme-orange {
+  @include theme($orange);
+}
+.theme-red {
+  @include theme($red);
+}
+.theme-mint {
+  @include theme($mint);
+}
+.theme-navy {
+  @include theme($navy);
+}
+
+.theme-purple.theme-invert {
+  @include theme-invert($purple);
+}
+.theme-blue.theme-invert {
+  @include theme-invert($blue);
+}
+.theme-green.theme-invert {
+  @include theme-invert($green);
+}
+.theme-gold.theme-invert {
+  @include theme-invert($gold);
+}
+.theme-orange.theme-invert {
+  @include theme-invert($orange);
+}
+.theme-red.theme-invert {
+  @include theme-invert($red);
+}
+.theme-mint.theme-invert {
+  @include theme-invert($mint);
+}
+.theme-navy.theme-invert {
+  @include theme-invert($navy);
+}
+
+
+
+
+.carousel-vertical {
+
+  .panel {
+    &:before, &:after {
+      border: 0;
+    }
+  }
+
+  .summary {
+    overflow: hidden;
+  }
+  ul {
+  max-width: 100%;
+  //height: 280px !important;
+  }
+  li {
+      background: $lite;
+
+    height: auto;
+      &:after {
+          display: none;
+      }
+
+    //@extend %box-shadow;
+    //height: 100px;
+    a {
+      //border: 1px solid $gray-lite;
+      height: 80px;
+      overflow: hidden;
+    }
+  
+    // fix
+    .summary {
+      margin-left: 80px;
+      background: $lite;
+      //height: 85%;
+      &:after {
+      bottom: 0;
+      left: 0;
+      content: " ";
+      height: 30px;
+      width: 100%;
+      display: block;
+      position: absolute;
+      background: linear-gradient(to top, $lite, rgba($lite, 0));
+      z-index: 5;
+    }
+
+
+        /*&:before {
+        content: "";
+        //display: block;
+        width: 100%;
+        height: 15px;
+        //background: ivory;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        } */
+    }
+    .thumb {
+    width: 80px;
+    float: left;
+    }
+
+
+  
+  }
+  .bx-wrapper {
+    
+    height: inherit !important;
+
+        /*&:before {
+        content: "";
+        //display: block;
+        width: 100%;
+        height: 30px;
+        background: linear-gradient(transparentize($gray-xlite, 1), $gray-xlite 70%);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        } */
+  }
+// end carousel vertical
+}
+
+.bpop-star {
+  display: inline-block;
+  &:before {
+    @extend %icon-bpop;
+    content: "\e607";
+  }
+}
+
+
+
+
+
+.carousel-horizontal {
+  h3 {
+     color: $gray-xlite;
+    text-shadow: 0 -1px 0 $lite, 0 1px 2px transparentize($dark, .5);
+  }
+  .bx-viewport {
+    height: 300px;
+    overflow: hidden;
+  }
+  ul {
+    height: 100%;
+    overflow: hidden;
+    //max-width: 100%;
+    //height: 280px !important;
+    }
+    li {
+
+      position: relative;
+      //@extend %box-shadow;
+      //height: 100px;
+      a {
+        //border: 1px solid $gray-lite;
+        height: 100%;
+        overflow: hidden;
+
+      }
+
+      .sponsor {
+          &:before {
+          content: "";
+          background: url("#{$image-path}/badge-sponsor.svg") 0 0 no-repeat;
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          width: 110px;
+          height: 110px;
+          background-size: contain;
+          display: block;
+          z-index: 2;
+        }
+      }
+
+
+    
+      h4 {
+      @include fontsize(2.1);
+      line-height: 1.1;
+      }
+      .summary {
+        //margin-left: 80px;
+        height: 100%;
+        text-align: center;
+ 
+
+
+          /*&:before {
+          content: "";
+          //display: block;
+          width: 100%;
+          height: 15px;
+          //background: ivory;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+          } */
+      }
+      .thumb {
+      width: 100%;
+      padding: 15px;
+        img {
+          border: 2px solid $lite;
+          width: 150px;
+          height: 150px;
+          display: block;
+          text-align: center;
+          margin: 0 auto;
+          max-width: 100%;
+          @extend %border-circle;
+        }
+      }
+
+
+    
+    }
+    .bx-wrapper {
+      
+      //height: inherit !important;
+
+          /*&:before {
+          content: "";
+          //display: block;
+          width: 100%;
+          height: 30px;
+          background: linear-gradient(transparentize($gray-xlite, 1), $gray-xlite 70%);
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+          } */
+    }
+  // end carousel horizontal
+  
+}
+
+
+
+.panel-split {
+  .bx-wrapper {
+    padding: 0;
+    background: none !important;
+  }
+  .bx-controls-direction a {
+    top: 50%;
+  }
+  .bx-wrapper .bx-controls-direction a {
+    color: $dark-dim-trans;
+      &:hover {
+        color: $dark-dim-half;
+      }
+  }
+  .bx-wrapper .bx-prev {
+    left: 0;
+  }
+    .bx-wrapper .bx-next {
+    right: 0;
+  }
+}
+
+.panel-split .well {
+  background-color: $lite;
+  //background: linear-gradient($lite, $gray-xlite);
+  height: 300px;
+  display: table;
+    a {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      width: 100%;
+      position: relative;
+
+        
+        .thumb {
+          float: left;
+          margin-right: 15px;
+          //max-width: 200px;
+          
+          //height: auto;
+          overflow: hidden;
+          display: inline-block;
+          width: 45%;
+          max-width: 200px;
+          position: relative;
+          //border: 1px solid $lite;
+
+            img {
+              border: 2px solid #fff;
+              width: 100%;
+              height: auto;
+              display: block;
+              //text-align: center;
+              //margin: 0 auto;
+              max-width: 100%;
+              @extend %border-circle;
+            }
+        }
+        .summary {
+          overflow: hidden;
+          position: relative;
+          //display: inline-block;
+          //width: 50%;
+          //float: right;
+
+            h2 {
+              @extend %uppercase;
+              
+              
+            }
+            h5 {
+              font-family: $font-head;
+              font-weight: normal;
+              color: $color-text;
+            }
+            p {
+              color: $color-text;
+              @include fontsize(1.2);
+                &:last-child {
+                  margin-bottom: 0;
+                }
+            }
+
+
+        }
+    }
+}
+
+[class*="bpop-icon-"] h3 {
+  position: relative;
+  &:before, &:after {
+    @extend %icon-bpop;
+    font-size: 30px;
+    text-shadow: none;
+    color: $lite;
+
+  }
+    &:before {
+    margin-right: 15px;
+  }
+    &:after {
+    margin-left: 15px;
+  }
+}
+
+.bpop-icon-plus h3 {
+  &:before, &:after {
+    content: "\e605";
+  }
+}
+
+.bpop-icon-star h3 {
+  &:before, &:after {
+    content: "\e606";
+  }
+}
+
+.bpop-icon-bolt h3 {
+  &:before, &:after {
+    content: "\e604";
+  }
+}
+
+
+
+
+
+
+
+
+.carousel-vertical {
+&.theme-default {
+
+  .bx-wrapper .bx-controls-direction a {
+    @include link-colors($blue, darken($blue, 10%), $blue, $blue);
+    
+  }
+
+  .panel-head {
+    border-top: 5px solid $blue;
+
+  }
+  h3 {
+  color: $blue;
+  line-height: 55px;
+  }
+  .bx-wrapper {
+    background-color: $gray-xlite;
+    border-bottom: 5px solid $blue;
+  }
+  a {
+    p {
+      color: $color-text;
+    }
+  }
+}
+
+
+}
+
+
+.carousel-vertical {
+&.theme-purple {
+  @include vertical-theme($purple);
+}
+&.theme-blue {
+  @include vertical-theme($blue);
+}
+&.theme-green {
+  @include vertical-theme($green);
+}
+&.theme-gold {
+  @include vertical-theme($gold);
+}
+&.theme-red {
+  @include vertical-theme($red);
+}
+&.theme-orange {
+  @include vertical-theme($orange);
+}
+&.theme-mint {
+  @include vertical-theme($mint);
+}
+&.theme-navy {
+  @include vertical-theme($navy);
+}
+}
+
+// footer
+.footer-links {
+  a {
+    display: block;
+    @extend %lowercase;
+    font-family: $font-head;
+    text-align: center;
+    @include fontsize(1.8);
+    padding: 5px 0;
+  }
+
+}
+
+.folio {
+  h4 {
+    margin-bottom: 0;
+    @extend %uppercase;
+    color: $lite;
+    text-align: center;
+  }
+}
+
+
+
+.ad {
+  
+  text-align: center;
+    .well {
+        background: url("#{$image-path}/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
+        background-color: $purple;
+        background-size: cover;
+    }
+
+    h2 {
+      @extend %uppercase;
+      color: $lite;
+      text-shadow: -2px 2px 5px $dark-dim-half;
+    }
+    img {
+      border-radius: 20px;
+      box-shadow: -2px 2px 5px 0 $dark-dim-half;
+      margin: 15px auto;
+
+    }
+
+    .badge-itunes {
+      background: url("#{$image-path}/badges-app.png") 0 0 no-repeat;
+    }
+
+     .badge-google {
+      background: url("#{$image-path}/badges-app.png") 0 -45px no-repeat;
+    }
+
+   .badge-amazon {
+      background: url("#{$image-path}/badges-app.png") 0 bottom no-repeat;
+      
+    }
+
+    .badge {
+      text-indent: -999em;
+      width: 140px;
+      height: 45px;
+      display: inline-block;
+      border-radius: 0;
+      background-color: $dark;
+      text-align: center;
+      margin: 5px auto;
+      border-color: $dark;
+
+    }
+}
+
+.title-img {
+  position: absolute;
+  left: 50%;
+
+}
+
+.title-music {
+  margin-left: -95px;
+  top: -14px;
+}
+
+.title-cartoons {
+  margin-left: -175px;
+  top: -17px;
+}
+
+.title-comedy {
+  margin-left: -138px;
+  top: -14px;
+}
+
+.title-games {
+  margin-left: -245px;
+  top: 0;
+}
+
+.title-action {
+  margin-left: -308px;
+  top: 1px;
+}
+
+.title-science {
+  margin-left: -220px;
+  top: -2px;
+}
+
+.title-international {
+  margin-left: -194px;
+  top: -11px;
+}
+
+// videojs
+//.video-js {padding-top: 56.25%}
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0}
+
+
+.videocontent {
+ // max-width: 100%;
+
+}
+
+.fluid-width-video-wrapper {
+  padding-top: 56.25% !important;
+}
+
+.vjs-default-skin .vjs-big-play-button {
+@include fontsize(4.0);
+left: 50%;
+top: 50%;
+width: 100px;
+height: 100px;
+margin-left: -50px;
+margin-top: -50px;
+@extend %border-circle;
+  &:before {
+  line-height: 100px;
+  }
+}
+
+
+
+// headcrumb 
+.headcrumb {
+  
+  background-color: $blue;
+  color: $lite;
+
+  //height: 140px;
+  //border-top: 5px solid $gray-xlite;
+  @extend %box-shadow;
+  .summary {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 30px;
+  }
+    h2 {
+    //display: inline-block;
+    //vertical-align: middle;
+    text-transform: uppercase;
+    
+    margin: 0 auto;
+    }
+    h4 {
+      margin: 0 auto;
+      //@include fontsize(2.1);
+
+      //color: $blue;
+    }
+
+    .thumb {
+      
+      margin: auto;
+      text-align: right;
+
+        img {
+         @extend %border-circle;
+/*          height: 100px;
+         width: 100px; */
+         max-width: 100%;
+        }
+    }
+
+
+
+
+    > .column {
+      &:first-child {
+        background-color: $lite;
+        
+        color: $blue;
+
+          a {
+            text-decoration: underline;
+          }
+        
+
+      }
+    }
+
+   .well {
+            background: none;
+            padding: 15px 0;
+          }
+
+}
+
+
+.headcrumb .description {
+
+
+            h5 {
+              //font-family: $font-sans;
+              //font-weight: bold;
+
+            }
+            p {
+              @include fontsize(1.2);
+                
+            }
+
+
+}
+
+.sponsor.label {
+  display: inline-block;
+  @include fontsize(1.8);
+  line-height: 1;
+  padding: 5px 10px 4px;
+  font-family: $font-head;
+  margin-bottom: 5px;
+  @extend %uppercase;
+  position: absolute;
+  background: $blue;
+  @extend %border-radius;
+
+/*     &:before, &:after {
+      @extend %icon-bpop;
+      content: "\e607";
+
+    }
+     &:before {
+
+      margin-right: 5px;
+    }
+     &:after {
+
+      margin-left: 5px;
+    } */
+}
+
+.arrow_box {
+  position: relative;
+  background: $lite;
+}
+
+
+
+.label-red {
+   background-color: $red; 
+}
+
+.pull-left, .media > .pull-left {
+  margin-right: 15px;
+}
+
+
+
+
+// fix
+.media-list {
+  //margin-bottom: 30px;
+  .media {
+    position: relative;
+    
+    padding: 15px;
+    background: $gray-xlite;
+    margin: 0 auto 2px;
+        &.active {
+          background-color: $gold;
+        }
+
+    > a {
+
+      display: block;
+     padding: 15px;
+     background: $lite;
+    box-shadow: 0 0 3px 0 $dark-dim-trans;
+    position: relative;
+    width: 100%;
+    height: auto;
+    
+
+    }
+  }
+
+.media-body {
+width: 100%;
+  p {
+    color: $color-text;
+    &:last-child {
+      margin-bottom: 0;
+    }
+   }
+   h3 {
+    @extend %uppercase;
+   }
+   h3, h4 {
+    color: $blue;
+   }
+}
+
+
+.thumb {
+  max-width: 100px;
+  margin-bottom: 15px;
+  
+  img {
+    max-width: 100%;
+    @extend %border-circle;
+  }
+}
+}
+
+.badge {
+  display: inline-block;
+  padding: 0;
+  height: 75px;
+  width: 60px;
+  background: $lite;
+  border-radius: 0;
+  border: 1px solid $gray-xlite;
+  box-shadow: 0 0 2px 0 $dark-dim-trans;
+  h5 {
+    margin: 0;
+    height: 25px;
+    line-height: 25px;
+    color: $lite;
+    background: $red;
+    font-family: $font-head;
+    position: relative;
+      &:after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba($red, 0);
+        border-top-color: $red;
+        border-width: 7px;
+        margin-left: -7px;
+      }
+  }
+  .badge-box {
+    
+    width: 100%;
+  }
+  .btn-pop {
+  color: $purple;
+  text-indent: -999em;
+  float: left;
+  position: relative;
+  width: 100%;
+    &:before {
+      @include fontsize(2.4);
+      position: absolute;
+      text-indent: 0;
+       height: 50px;
+       line-height: 50px;
+       text-align: center;
+       display: block;
+      width: 100%;
+      @extend %icon-bpop;
+      content: "\2b";
+    
+    }
+  }
+}
+
+.media {
+  .badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+
+
+.button-pop {
+font-size: 0; // hack to keep inline blocks together
+width: 100%;
+height: 60px;
+background: $red;
+@extend %border-radius;
+overflow: hidden;
+margin-bottom: 10px;
+
+
+  .pop-number {
+  width: 40%;
+  text-align: center;
+  height: 60px;
+  @include fontsize(2.4);
+  line-height: 60px;
+  font-family: $font-head;
+
+  color: $lite;
+  //background: $red;
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+    &:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba($red, 0);
+    border-right-color: $red;
+    border-width: 7px;
+    margin-top: -7px;
+    }
+  }
+  a {
+    width: 60%;
+    height: 60px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    //border-radius: 4px 0 0 4px;
+    border-radius: 0;
+    vertical-align: top;
+    //color: $lite;
+    //@extend %bk-purple;
+    //@extend %border-radius;
+        &:before {
+      @include fontsize(2.4);
+      @extend %icon-bpop;
+      content: "\3d";
+      color: $lite;
+      line-height: 1;
+      background: $red;
+      @extend %border-circle;
+    }
+    
+  }
+  h5 {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    left: 0;
+    height: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    @include fontsize(1.8);
+    font-family: $font-head;
+    text-transform: none;
+  }
+}
+
+
+
+.button-follow {
+width: 100%;
+height: 60px;
+background: $navy;
+@extend %border-radius;
+overflow: hidden;
+
+
+  
+  a {
+    width: 100%;
+    height: 60px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    @extend %border-radius;
+    vertical-align: top;
+    //color: $lite;
+    //@extend %bk-purple;
+    //@extend %border-radius;
+      &:before {
+      @include fontsize(2.4);
+      @extend %icon-bpop;
+      content: "\3f";
+      color: $lite;
+      line-height: 1;
+      background: $gold;
+      @extend %border-circle;
+    }
+    
+  }
+  h5 {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    left: 0;
+    height: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    @include fontsize(1.8);
+    font-family: $font-head;
+    text-transform: none;
+  }
+}
+
+
+
+// short 
+
+.short {
+
+    .summary {
+    padding: 10px;
+    
+  }
+
+
+
+  .item {
+    height: 300px;
+    margin-bottom: 30px;
+
+      a {
+      height: 100%;
+       overflow: hidden;
+       background: $gray-xlite;
+      background: linear-gradient($lite, $gray-lite);
+      
+      border: 1px solid $gray-lite;
+        position: relative;
+        display: block;
+        width: 100%;
+        @extend %box-shadow;
+        &:after {
+           bottom: 0;
+          left: 0;
+          content: " ";
+          height: 30px;
+          width: 100%;
+          display: block;
+          position: absolute;
+          background: linear-gradient(to top, $lite, rgba($lite, 0));
+          z-index: 5;
+        }
+
+          h4 {
+            @extend %font-display;
+            @extend %uppercase;
+            @include fontsize(2.1);
+
+          }
+          p {
+            @include fontsize(1.2);
+            color: $color-text;
+          }
+      }
+    
+  }
+
+      .summary {
+    position: relative;
+    height: 100%;
+    text-align: center;
+
+      > * {
+      margin: 0;
+      }
+    }
+
+  .thumb {
+    width: 100%;
+    padding: 15px;
+    img {
+      border: 2px solid white;
+      width: auto;
+      max-height: 150px;
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 100%;
+      @extend %border-circle;
+    }
+  }
+
+
+  
+
+}
+
+
+// pagination 
+
+.pagination {
+  margin: auto;
+  > li {
+    
+    > a {
+     border-color: $gray-lite; 
+    }
+  }
+}
+
+// post
+
+.post {
+
+  position: relative;
+  padding-bottom: 15px;
+  min-height: 160px;
+  //margin-bottom: 15px;
+
+  //border-bottom: 1px solid $gray-xlite;
+  header {
+    //@extend %box-shadow;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    padding: 15px;
+    z-index: 5;
+    border-top: 5px solid $gold;
+    background: $lite;
+    background: rgba($lite, .8);
+    h1, h4 {
+      margin: 0;
+    }
+
+    h1 {
+    @extend %uppercase;
+    }
+    h3 {
+      color: $lite;
+      margin: 0;
+       a {
+        color: $lite;
+       }
+    }
+    ul {
+      margin: 0;
+    }
+    li {
+      display: inline-block;
+      @extend %text-shadow;
+      @extend %uppercase;
+      margin-bottom: 5px;
+      background: $gold;
+      @extend %border-radius;
+      padding: .2em .5em; 
+    }
+
+  }
+
+  .thumb {
+    border-top: 5px solid $purple;
+    margin-bottom: 15px;
+    
+    a {
+      display: block;
+      
+    }
+    img {
+      
+      max-width: 100%;
+    }
+
+  }
+
+  .content {
+    clear: both;
+    .lead {
+      @include fontsize(1.8);
+      color: $blue;
+      margin-bottom: 15px;
+    }
+    h4, h5 {
+      font-family: $font-head;
+      font-weight: bold;
+    }
+    ul {
+      
+      margin-left: 30px;
+      li {
+        list-style-type: disc;
+        list-style-position: outside;
+      }
+    }
+    ol {
+      margin-left: 30px;
+      li {
+        list-style-type: decimal;
+        list-style-position: outside;
+      }
+    &.list-countdown {
+      margin-left: 10px;
+      li {
+        list-style-type: none;
+      }
+    }
+
+    }
+      .list-alot li {
+        margin-bottom: 15px;
+      }
+
+      hr {
+        border-top: 1px solid $gray-xlite;
+        margin: 15px auto;
+      }
+  }
+
+  // end post
+}
+
+
+
+
+.row-featured {
+  position: relative;
+
+
+  > .column {
+    padding: 0;
+  }
+
+}
+
+
+// blockgrid
+[class*="block-grid-"] {
+  margin-bottom: 30px;
+}
+.list-user li {
+  .media {
+    display: block;
+    border: 1px solid $gray-lite;
+    @extend %box-shadow;
+    padding: 10px;
+    
+      &:hover {
+        background: tint($dark, 98%);
+        
+      }
+      .thumb {
+      max-width: 90px;
+        img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        }
+      }
+      .media-body {
+        h4 {
+          @include fontsize(2.1);
+          margin-bottom: 0;
+        }
+        p {
+          color: $color-text;
+          @include fontsize(1.2);
+        }
+      }
+  }
+}

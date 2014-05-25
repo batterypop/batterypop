@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 3250d5494a8fb2715d3a16e24c7b82f57266ff42
-  specs:
-    anjlab-bootstrap-rails (3.0.3.0)
-      railties (>= 3.0)
-      sass (>= 3.2)
-
-GIT
   remote: git://github.com/bastiaanterhorst/rich.git
   revision: 02cec78fac2d78499222c07cf25a28a2a7257962
   specs:
@@ -167,6 +159,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.1.0)
+      sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -195,7 +189,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    commonjs (0.2.7)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -250,11 +243,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.1)
-    less (2.4.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.4.2)
-      actionpack (>= 3.1)
-      less (~> 2.4.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -272,6 +260,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     mixpanel-ruby (1.4.0)
+    modernizr-rails (2.7.1)
     multi_json (1.8.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -411,6 +400,8 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.5)
+    will_paginate-bootstrap (1.0.0)
+      will_paginate (>= 3.0.3)
     yard (0.8.7.3)
 
 PLATFORMS
@@ -423,7 +414,6 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_follower (~> 0.2.0)
   acts_as_votable (~> 0.7.1)
-  anjlab-bootstrap-rails!
   annotate
   autotest
   autotest-fsevent (>= 0.2.9)
@@ -432,6 +422,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.1.1)
   browser
   bundler
   bxslider-rails!
@@ -447,12 +438,12 @@ DEPENDENCIES
   friendly_id (= 5.0.0.beta4)
   inherited_resources!
   jbuilder (~> 1.2)
-  jquery-rails
-  less-rails
+  jquery-ui-rails
   mailboxer
   memcachier
   meta_request
   mixpanel-ruby
+  modernizr-rails
   newrelic_rpm
   paperclip (>= 3.4.0)
   pg
@@ -466,6 +457,7 @@ DEPENDENCIES
   rich!
   rspec
   rspec-rails
+  sass-rails (~> 4.0.0)
   sdoc
   sitemap_generator
   spork
@@ -479,3 +471,4 @@ DEPENDENCIES
   unicorn
   viddler-ruby
   will_paginate (~> 3.0.5)
+  will_paginate-bootstrap

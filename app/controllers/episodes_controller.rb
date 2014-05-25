@@ -65,8 +65,8 @@ class EpisodesController < ApplicationController
   def unpop
     unless current_user.nil?
        @episode.unliked_by current_user
+      current_user.touch
        expire_fragment("shows_most_popped")
-       current_user.touch
      end
   end
 

@@ -1,9 +1,9 @@
 <!-- promo start -->
-<div class="row bpop-promo fill bottom margin padding">
+<div class="row clearfix row-featured">
 	<!-- large image right slideshow -->
-	<div class="col-lg-9 col-lg-push-3 col-md-8 col-md-push-4 no-padding no-margin">
-		<div class="home-featured-wrapper">
-			<ul class="bxslider home-featured">
+	<div class="col-md-8 col-md-push-4 column">
+		<div class="slider">
+			<ul>
 				<% @features.each do |feature| %>
 					<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
 					<li <%= @dur %>><%= feature.content.html_safe %></li>
@@ -17,38 +17,30 @@
 
 	
 	<!-- begin vertical carousel -->	
-	<div class="col-md-4 col-lg-3 col-lg-pull-9 col-md-pull-8 home-carousel  no-padding no-margin hidden-xs">
-		<div class="row home-carousel-prewrapper">
-			<div class="home-carousel-wrapper">
-				<div class="col-xs-12 home-carousel-header">
-					<div id="home-carousel-down" class="slider-down pull-right col-xs-2 col-offset-xs-10"></div>
-					<div id="home-carousel-up" class="slider-up pull-left col-xs-2"></div>
-					<div class="col-xs-8 col-offset-xs-2 text-center slider-title">
-						<h4>Now Playing</h4>
-					</div>
-				</div>
-				<div class="col-xs-12 home-carousel-slider">
-					<ul class="bxslider home-side-carousel">
-						<% @showlist.each do |show| %>
-						<li>
-							<%= render partial: "layouts/horizontal_slide", :locals => {
-										:slide_title => show.title, 
-									 	:slide_text => show.subtitle, 
-										:slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
-										#:slide_url => show_path(Show.friendly.find(show.id))
-										
-										:slide_url => show.link
-
-										} %>
-
-						</li>
-						<% end %>
-					</ul>
+	<div class="col-md-4 col-md-pull-8 column">
+		<div class="carousel carousel-vertical theme-default">
+			<div class="panel panel-default">
+				<div class="panel-head">
+					<h3>Now Playing</h3>
 				</div>
 			</div>
+			<ul>
+				<% @showlist.each do |show| %>
+				<li>
+					<%= render partial: "layouts/horizontal_slide", :locals => {
+						:slide_title => show.title, 
+					 	:slide_text => show.subtitle, 
+						:slide_image => image_tag(show.image(:thumb), :alt => show.title), 
+						:slide_url => show.link
+
+						} %>
+
+				</li>
+				<% end %>
+			</ul>
 		</div>
 	</div>
 	<!-- end of vertical carousel -->
+	<div class="corners"></div>
 </div>
 <!-- end show promo -->
-
