@@ -17,13 +17,20 @@
 
 <link href="/assets/bstrap.css" media="all" rel="stylesheet" />
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <!--[if lte IE 9]>
-  	<link href="/assets/ie.css" media="all" rel="stylesheet" />
-		<![endif]-->
-    <%= javascript_include_tag "application" %>
+
+    <%= javascript_include_tag :modernizr, "application" %>
+
     <!--[if lt IE 9]>
-  	<script type="text/javascript" src="/assets/PIE_IE678.js"></script>
-		<![endif]-->
+  <%= javascript_include_tag 'respond' %>
+  <script type="text/javascript" src="/assets/PIE_IE678.js"></script>
+<![endif]-->
+
+
+
+<!--[if lte IE 9]>
+  	<link href="/assets/ie.css" media="all" rel="stylesheet" />
+<![endif]-->
+		
 
     <%= csrf_meta_tags %>
 
