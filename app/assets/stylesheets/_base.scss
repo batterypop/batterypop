@@ -582,7 +582,7 @@ float: left;
 width: 100%;
 }
 
-.slider p {
+.slider p, .slider ul {
   margin-bottom: 0;
 }
 
@@ -592,7 +592,10 @@ width: 100%;
 
 }
 
-
+.carousel-horizontal .bx-wrapper {
+  max-width: 100% !important;
+  
+}
 
 .bx-wrapper .bx-controls-direction a {
     height: 35px;

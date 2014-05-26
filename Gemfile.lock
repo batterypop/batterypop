@@ -143,6 +143,8 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.2)
     atomic (1.1.14)
+    autoprefixer-rails (1.0.20140203)
+      execjs
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-fsevent (0.2.9)
@@ -415,6 +417,7 @@ DEPENDENCIES
   acts_as_follower (~> 0.2.0)
   acts_as_votable (~> 0.7.1)
   annotate
+  autoprefixer-rails
   autotest
   autotest-fsevent (>= 0.2.9)
   autotest-growl
