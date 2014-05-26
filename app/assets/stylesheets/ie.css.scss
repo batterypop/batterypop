@@ -34,6 +34,10 @@ behavior: url($pie-path);
 		background: $lite;	
 		}
   }
+
+  .navbar-default ul.navbar-nav li.active a {
+  	background: $lite;
+  }
 }
 
 .no-boxshadow {
@@ -41,6 +45,9 @@ behavior: url($pie-path);
   .well.well-frame, .headcrumb {
     position: relative;
    
+  }
+  .panel-split .well {
+  	width:100%;
   }
 }
 
@@ -180,3 +187,12 @@ behavior: url($pie-path);
 }
 
 
+.ie8 .video-js .fluid-width-video-wrapper {
+ padding-top: 0 !important;
+}
+
+.ie8 .vjs-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

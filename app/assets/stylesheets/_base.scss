@@ -749,6 +749,10 @@ top: -30px;
 }
 
 
+.summary h5 {
+  line-height: 1.1;
+}
+
 // themes
 
 .theme-purple {
@@ -1317,7 +1321,11 @@ top: -30px;
 // videojs
 //.video-js {padding-top: 56.25%}
 .video-js {padding-top: 56.25%}
+//.ie8 .video-js {padding-top: 0}
 .vjs-fullscreen {padding-top: 0}
+
+
+
 
 
 .videocontent {
@@ -1328,6 +1336,8 @@ top: -30px;
 .fluid-width-video-wrapper {
   padding-top: 56.25% !important;
 }
+
+
 
 .vjs-default-skin .vjs-big-play-button {
 @include fontsize(4.0);
@@ -1807,7 +1817,17 @@ overflow: hidden;
 
 // pagination 
 
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $blue;
+  border-color: $blue;
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: $blue;
+}
+
 .pagination {
+  @extend %border-radius;
   margin: auto;
   > li {
     
@@ -1815,6 +1835,10 @@ overflow: hidden;
      border-color: $gray-lite; 
     }
   }
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span, .pagination > li:first-child > a, .pagination > li:first-child > span {
+ @extend %border-radius; 
 }
 
 // post

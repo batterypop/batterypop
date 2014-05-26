@@ -105,6 +105,8 @@ jQuery(document).ready(function() {
   });
 
 
+
+
 // equalize height
   jQuery(document).ready(function($) {
     $(".headcrumb").eqHeight(".column");
