@@ -104,6 +104,10 @@ behavior: url($pie-path);
 		
 	 }
 	}
+	.carousel-horizontal li .thumb img, .short .thumb img {
+		background: none;
+		border: none;
+	}
 }
 
 
@@ -196,3 +200,5 @@ behavior: url($pie-path);
   top: 0;
   left: 0;
 }
+
+

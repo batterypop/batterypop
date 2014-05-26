@@ -118,6 +118,10 @@ a:active, a:focus {
   margin-bottom: 30px;
 }
 
+.sidebar .well > * {
+  margin-bottom: 0;
+}
+
 .panel {
   box-shadow: none;
   border-radius: 0;
@@ -757,6 +761,7 @@ top: -30px;
 
 .theme-purple {
   @include theme($purple);
+
 }
 .theme-blue {
   @include theme($blue);
@@ -1298,7 +1303,7 @@ top: -30px;
   top: -14px;
 }
 
-.title-games {
+.title-video {
   margin-left: -245px;
   top: 0;
 }
@@ -1774,6 +1779,7 @@ overflow: hidden;
             @extend %font-display;
             @extend %uppercase;
             @include fontsize(2.1);
+            line-height: 1.1;
 
           }
           p {
@@ -1798,7 +1804,8 @@ overflow: hidden;
     width: 100%;
     padding: 15px;
     img {
-      border: 2px solid white;
+      border: 2px solid $lite;
+      background: $lite;
       width: auto;
       max-height: 150px;
       display: block;

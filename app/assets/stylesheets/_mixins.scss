@@ -470,7 +470,9 @@ border-color: darken($btn-color, 5%);
     }
 
   }
-
+    .well {
+    background: tint($theme-color, 80%);
+  }
 
 }
 
