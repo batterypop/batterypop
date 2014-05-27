@@ -16,7 +16,7 @@
 
 			<div class="row"><!-- row 1 -->
 				<div class="col-lg-12" >
-					<label>Create Your User Name:</label><br />
+					<h3>Create Your User Name:</h3>
 					
 				</div>
 
@@ -86,12 +86,11 @@
 						<label>Choose your avatar!</label><br />
 						<% @avatars = get_avatars %>
 						<%= f.hidden_field :avatar_id, :id => 'avatar_id', :value => @avatars.first.id %>
-						<div id="avatar-next" class="col-xs-1 slider-next pull-right"></div>
-						<div id="avatar-prev" class="col-xs-1 slider-prev pull-left"></div>
+		
 						<ul class="bxslider avatar-slider ">
 							<% @avatars.each do |avatar| %>
 								<li data="<%= avatar.id %>">
-									<%=  image_tag(avatar.image, :width => '120', :class => "img-responsive  avatar-image data-id=#{avatar.id}") %>
+									<%=  image_tag(avatar.image, :width => '120', :class => "avatar-image data-id=#{avatar.id}") %>
 								</li>
 							<% end %>
 						</ul>
@@ -122,7 +121,7 @@
 		</div><!-- end modal body-->
 
 		 <div class="modal-footer"> 
-		 	<%= f.submit "Sign up", class: "btn btn-primary " %>
+		 	<%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
 			
 			<div class="pull-left">
 			 <%= render "devise/shared/links" %>
@@ -141,8 +140,7 @@ $(document).ready(function(){
 		   $('input[name="user[avatar_id]"]').val(item[0].getAttribute('data'));
 		},
 
-		nextSelector: '#avatar-next',
-		prevSelector: '#avatar-prev',
+
 		auto: false,
   		responsive: true,
   		touchEnabled: true, 
@@ -151,7 +149,8 @@ $(document).ready(function(){
   		maxSlides: 1,
   		slideWidth: 120,
   		infiniteLoop: false,
-	 	hideControlOnEnd: true
+	 	hideControlOnEnd: true,
+	 	slideMargin: 0
 	})
 })
 </script>

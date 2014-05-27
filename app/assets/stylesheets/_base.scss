@@ -58,7 +58,7 @@ h5 {
 }
 
 form, form > * {
-  font-size: 16px;
+  //font-size: 16px;
 }
 
 small {
@@ -238,17 +238,14 @@ a:active, a:focus {
 
 // forms
 
-form > *, button {
-font-family: $font-head;
 
-}
 
 input::placeholder {
   @extend %lowercase;
 }
 
 form > *, .input-group, input, textarea {
-  @include fontsize(1.6);
+ // @include fontsize(1.6);
   border-radius: 0 !important;
 }
 
@@ -987,7 +984,7 @@ top: -30px;
           border: 2px solid $lite;
           background: $lite;
           width: 150px;
-          height: 150px;
+          height: auto;
           display: block;
           text-align: center;
           margin: 0 auto;
@@ -2016,3 +2013,49 @@ overflow: hidden;
   @extend %border-radius;
 }
 
+.avatar-slider-parent {
+  ul {
+  margin-bottom: 0;
+  float: left;
+    li {
+      width: 120px !important;
+    }
+  }
+
+  .bx-viewport {
+    height: 120px !important;
+  }
+    .bx-wrapper {
+    margin-bottom: 0;
+  }
+  .bx-wrapper .bx-controls-direction a {
+    @include link-colors($blue, darken($blue, 10%), $blue, $blue);
+  }
+
+  .bx-prev {
+    left: -70px;
+  }
+
+  .bx-next {
+    right: -70px;
+  }
+
+  .bx-wrapper .bx-controls-direction a.disabled {
+    display: inline;
+    cursor: default;
+    @include link-colors($gray-lite, $gray-lite, $gray-lite, $gray-lite);
+  }
+}
+
+.modal {
+  h1, h3 {
+    @extend %uppercase;
+  }
+  h1, h3, label {
+    text-align: center;
+  }
+  label {
+    width: 100%;
+    margin: 0 auto 5px;
+  }
+}

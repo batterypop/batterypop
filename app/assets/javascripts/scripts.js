@@ -58,7 +58,7 @@ jQuery(document).ready(function() {
     jQuery('.col-md-12 .carousel-horizontal ul').bxSlider({
         mode: 'horizontal',
         slideMargin: 10,
-        minSlides: 1,
+        minSlides: 2,
         maxSlides: 6,
         pager: false,
         infiniteLoop: false,
@@ -73,7 +73,7 @@ jQuery(document).ready(function() {
     jQuery('.col-md-8 .carousel-horizontal ul').bxSlider({
         mode: 'horizontal',
         slideMargin: 10,
-        minSlides: 1,
+        minSlides: 2,
         maxSlides: 4,
         pager: false,
         infiniteLoop: false,
@@ -86,7 +86,7 @@ jQuery(document).ready(function() {
     jQuery('.col-md-7 .carousel-horizontal ul').bxSlider({
         mode: 'horizontal',
         slideMargin: 10,
-        minSlides: 1,
+        minSlides: 2,
         maxSlides: 4,
         pager: false,
         infiniteLoop: false,
