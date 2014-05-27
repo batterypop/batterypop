@@ -1,17 +1,17 @@
 class ContactsController < ApplicationController
 
 	def new
-		
+		 @active = "contact"
 	end
 
 	def create
+		 @active = "contact"
 		# could check if anything is missing and return
 		unless current_user.nil?
 			params[:contact][:user_id] = current_user.id 
 		end
 		params[:contact]["ip"] = request.remote_ip
 
-ap(contact_params)
 
 		@contact = Contact.new(contact_params)
 		@contact.save
