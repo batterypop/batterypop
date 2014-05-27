@@ -2007,3 +2007,12 @@ overflow: hidden;
       }
   }
 }
+
+.bx-wrapper .bx-controls-direction a {
+  z-index: 100;
+}
+
+.form-control, .input-group-addon {
+  @extend %border-radius;
+}
+
