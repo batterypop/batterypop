@@ -69,13 +69,7 @@ li {
   list-style-type: none;
 }
 
-.lowercase {
-  @extend %lowercase;
-}
 
-.uppercase {
-  @extend %uppercase;
-}
 
 a {
   outline: none;
@@ -389,19 +383,19 @@ background-color: $lite;
     float: none;
     display: inline-block;
     margin: 0 3%;
+    @extend %uppercase;
     }
 
     a {
-      @extend %uppercase;
+      
     @include link-colors($blue, $blue, $blue, $blue);
     padding: 20px;
-        span {
-        @extend %lowercase;
-        }
+
         &:hover {
           box-shadow: 0 -3px 0 0 $blue;
 
         }
+
     }
     li.active {
       position: relative;
@@ -431,7 +425,9 @@ background-color: $lite;
     }
 }
 
-
+.lowercase {
+  text-transform: lowercase;
+}
 
 
 .navbar-default .panel-right {

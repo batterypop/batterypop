@@ -144,13 +144,15 @@ text-shadow: 1px 1px 2px transparentize($dark, .5);
 text-shadow: 0 0 10px transparentize($dark, .2);
 }
 
+%uppercase {
+text-transform: uppercase;
+}
+
 %lowercase {
 text-transform: lowercase;
 }
 
-%uppercase{
-text-transform: uppercase;
-}
+
 
 %text-caps {
 font-weight: bold;
