@@ -51,7 +51,8 @@ jQuery(document).ready(function() {
         adaptiveHeight: true,
         responsive: true,
         touchEnabled: false,
-        moveSlides: 0
+        moveSlides: 0,
+        hideControlOnEnd: true
         //preventDefaultSwipeY: true
     });
 
@@ -65,7 +66,8 @@ jQuery(document).ready(function() {
         responsive: true,
         touchEnabled: true,
         moveSlides: 0,
-        slideWidth: 212
+        slideWidth: 212,
+        hideControlOnEnd: true
         //preventDefaultSwipeY: true
     });
 
@@ -80,7 +82,8 @@ jQuery(document).ready(function() {
         responsive: true,
         touchEnabled: true,
         moveSlides: 0,
-        slideWidth: 230
+        slideWidth: 230,
+        hideControlOnEnd: true
     });
 
     jQuery('.col-md-7 .carousel-horizontal ul').bxSlider({
@@ -93,7 +96,8 @@ jQuery(document).ready(function() {
         responsive: true,
         touchEnabled: true,
         moveSlides: 0,
-        slideWidth: 203
+        slideWidth: 203,
+        hideControlOnEnd: true
     });
 
 });

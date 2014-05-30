@@ -603,7 +603,11 @@ width: 100%;
     width: 35px;
      
     color: $lite-dim;
-  
+      &.disabled {
+        display: inline;
+        @include link-colors($lite-dim-trans, $lite-dim-trans, $lite-dim-trans, $lite-dim-trans);
+        cursor: default;
+      }
     &:hover {
     color: $lite;
      }
@@ -981,15 +985,15 @@ top: -30px;
       width: 100%;
       padding: 15px;
         img {
-          border: 2px solid $lite;
-          background: $lite;
+          //border: 2px solid $lite;
+         // background: $lite;
           width: 150px;
           height: auto;
           display: block;
           text-align: center;
           margin: 0 auto;
           max-width: 100%;
-          @extend %border-circle;
+          //@extend %border-circle;
         }
       }
 
@@ -1067,14 +1071,14 @@ top: -30px;
           //border: 1px solid $lite;
 
             img {
-              border: 2px solid #fff;
+              //border: 2px solid #fff;
               width: 100%;
               height: auto;
               display: block;
               //text-align: center;
               //margin: 0 auto;
               max-width: 100%;
-              @extend %border-circle;
+              //@extend %border-circle;
             }
         }
         .summary {
@@ -1145,15 +1149,30 @@ top: -30px;
 
 
 
+[class*="carousel-vertical.theme-"] {
+    .bx-wrapper .bx-controls-direction a {
+    @include link-colors($lite-dim, $lite, $lite-dim, $lite-dim);
+    &.disabled {
+      cursor: default;
+      display: inline;
+      @include link-colors($lite-dim-trans, $lite-dim-trans, $lite-dim-trans, $lite-dim-trans);
+    }
+    
+  }
 
-
+}
 
 
 .carousel-vertical {
 &.theme-default {
 
   .bx-wrapper .bx-controls-direction a {
-    @include link-colors($blue, darken($blue, 10%), $blue, $blue);
+    @include link-colors($blue, shade($blue, 10%), $blue, $blue);
+    &.disabled {
+      cursor: default;
+      display: inline;
+      @include link-colors(tint($blue, 30%), tint($blue, 30%), tint($blue, 30%), tint($blue, 30%));
+    }
     
   }
 
@@ -1392,7 +1411,7 @@ margin-top: -50px;
       text-align: right;
 
         img {
-         @extend %border-circle;
+         //@extend %border-circle;
 /*          height: 100px;
          width: 100px; */
          max-width: 100%;
@@ -1537,7 +1556,7 @@ width: 100%;
     max-width: 100%;
     height: 100px;
     width: 100px;
-    @extend %border-circle;
+    //@extend %border-circle;
   }
 }
 }
@@ -1716,6 +1735,14 @@ overflow: hidden;
       background: $gold;
       @extend %border-circle;
     }
+    &.disabled {
+      cursor: auto;
+      pointer-events: auto;
+      @include opacity(1.0);
+      &:before {
+        background: $blue;
+      }
+    }
     
   }
   h5 {
@@ -1801,15 +1828,15 @@ overflow: hidden;
     width: 100%;
     padding: 15px;
     img {
-      border: 2px solid $lite;
-      background: $lite;
+      //border: 2px solid $lite;
+      //background: $lite;
       width: auto;
       max-height: 150px;
       display: block;
       text-align: center;
       margin: 0 auto;
       max-width: 100%;
-      @extend %border-circle;
+      //@extend %border-circle;
     }
   }
 
