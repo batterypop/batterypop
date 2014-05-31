@@ -2,18 +2,15 @@
 
 	<!-- badge -->
 	<% @action = "
-		<div class='button-pop'>
-		<a class='btn btn-purple episode-badge-vote-#{@episode.id}' href='#'>
+		<div class='button-pop episode-badge-vote-#{@episode.id}'>
+		<a class='btn btn-purple ' href='#'>
 			<h5>POP it!</h5>
 		</a>
 		<div class='pop-number'>#{@episode.pops}</div>
 	</div>
-	<div class='button-follow'>
-		<a class='btn btn-navy' href='#'>
-			<h5>FOLLOW</h5>
-		</a>
-	</div>
+	#{ render :partial => "shows/follow_show", :locals => {:show => @show} }
 	" %>
+
 
 	<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<strong>For kids</strong> <em>#{@show.age_range}</em> " : '' %>
 
@@ -74,7 +71,7 @@
 							<a class="badge">
 								<h5><%= ep.pops %></h5>
 								<div class="badge-box" data-episode="<%= ep.id %>">
-									<div class="btn-pop episode-badge-vote-#{ep.id}">POP it</div>
+									<div class="btn-pop episode-badge-vote-<%= ep.id %>">POP it</div>
 								</div>
 							</a>
 							<!-- badge -->
@@ -167,3 +164,6 @@
 
 	</div>
 </section>
+
+
+<%= javascript_include_tag 'refresh' %>

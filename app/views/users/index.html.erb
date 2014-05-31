@@ -13,6 +13,8 @@
 
 
 	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="short theme-green theme-invert">
 
 	<% @users.each do |user| %>
 
@@ -21,29 +23,29 @@
 	<% @img = image_tag(user.get_avatar(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '94', :height => '124' ) %>
 
 	<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-
-		
-		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 ">
 			
-			<div class="well">
 
-			<%= render partial: "layouts/horizontal_slide", :locals => {
-				:slide_title => user.username, 
-				:slide_text =>  "<b>#{@gender}, #{user.age_in_years}</b><br /><b>Following:</b><br />\ 
+			<div class="col-md-3 col-sm-4 col-xs-6 item">
+
+				<%= render partial: "layouts/vertical_slide", :locals => {
+					:slide_title => user.username, 
+					:slide_text => "<b>#{@gender}, #{user.age_in_years}</b><br /><b>Following:</b><br />
 								#{pluralize(user.following_by_type('User').count, 'user')}   |   #{pluralize(user.following_by_type('Show').count, 'show')}
 								<br />
 								 Has #{ pluralize( user.followers.count, 'follower')} 
 								 <br />
-								 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe, 
-				:slide_image => @img,
-				:slide_url => user_path(User.friendly.find(user.id))} %>
-
+								 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe,
+					:slide_image => image_tag(user.get_avatar(:thumb)),
+					:slide_url => user_path(User.friendly.find(user.id))} %>
 
 			</div>
-
+		
+		
+	<% end %>
+	<% end %>
+		
+			</div>
 		</div>
-	<% end %>
-	<% end %>
 
 	</div>
 

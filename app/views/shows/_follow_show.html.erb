@@ -1,9 +1,9 @@
-<div  class="pop-button follow-show follow_show-<%= show.id %>">
+<div class='button-follow follow_show-<%= show.id %>'>
 
     <% if current_user.nil? %>
 
-        <a class="pop-button disabled" data-toggle="modal" data-target="#become_member" href="#">
-        <div class="plus" ></div>
+        <a class='btn btn-navy' data-toggle="modal" data-target="#become_member"  href='#'>
+            <h5>FOLLOW</h5>
         </a>
    
 
@@ -12,18 +12,18 @@
       <% if current_user.following?(show) %> 
         <%= link_to(unfollow_show_path(show), 
             :remote => true, 
-            :class => 'pop-button followed', 
+            :class => 'btn btn-navy', 
             :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{show.title}!'</b>"} 
             ) do %>
-    		<div class="plus voted"></div>
+    		<h5>UN-FOLLOW</h5>
         <% end %>
       <% else %>
         <%= link_to(follow_show_path(show),
             :remote => true, 
-            :class => 'pop-button', 
+            :class => 'btn btn-navy', 
             :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{show.title}!'</b>"} 
             ) do %>
-    		<div class="plus"></div>
+    		<h5>FOLLOW</h5>
         <%end%>
       <% end %>
     <% end %>

@@ -1,47 +1,54 @@
-<div class="main show users-show">
-  <div class="container">
-    <div class="content">
+<section class="wrapper">
 
-<% @follow_me = "<div class='follow-pop-wrap'>#{render :partial => 'users/follow_user', :locals => {:user => @user}}</div>" %>
+<% @follow_me = "#{ render :partial => "users/follow_user", :locals => {:user => @user} }" %>
+
+<% @gender = @user.gender.nil? ? "---" : @user.gender.capitalize %>
+
+<!-- breadcrumb -->
 
 <%= render partial: "layouts/breadcrumb", :locals => {
-        :crumb_title => "<div class='col-xs-12 username'><h3>#{ @user.username }</h3></div>".html_safe, 
-       
-        :crumb_text => "<span class='pull-right'><a href='/users'>
-          <h2 class='page-title hidden-md'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h2>
-          <h3 class='page-title visible-md'>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h3>
-          </a></span>#{image_tag(@user.avatar.image(:thumb),  :class => "img-responsive thumbnail media-object pull-left user-image", :width => '125', :height => '125' )}".html_safe,
-        
-        :crumb_action => @follow_me.html_safe } %>
+      :crumb_creator => "" ,
+      :crumb_thumb  => image_tag(@user.avatar.image(:large), :alt => @user.username, :class => ""),
+      :crumb_title => @user.username, 
+      :crumb_text => "<a href='/users' style='color: white;'>
+          <h3 class='page-title '>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h3></a>
 
+          <b>#{@gender}, #{@user.age_in_years}</b><br />
+          <strong>Following:</strong> #{pluralize(@user.following_by_type('User').count, 'user')}   |   #{pluralize(@user.following_by_type('Show').count, 'show')}
+                <br />
+                 Has #{ pluralize(@user.followers.count, 'follower')} 
+                 <br />
+                 <strong>Likes:</strong> #{pluralize(@user.find_liked_items.count, 'video')}
+          ".html_safe,
+      :crumb_action => @follow_me.html_safe
+        } %>
+
+<!-- end breadcrumb -->
 
 
 
 <!-- shows following good -->
-<div class="row fill top bottom padding ">
-  <div class="user-video-slider  purple">
-    <div class="bpop-slider-header ">
-      <div class="text-center user-header ">
-        <div id="users-shows-next" class="col-xs-1  slider-next pull-right "></div>
-        <div id="users-shows-prev" class="col-xs-1 slider-prev pull-left "></div>
-        <h4 class="page-title hidden-xs">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h4> 
-        <h5 class="page-title visible-xs">Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h5> 
+
+
+
+
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="carousel carousel-horizontal theme-purple bpop-icon-bolt">
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Shows <%= (current_user == @user) ? " You Follow" : " #{@user.username} Follows" %></h3>
+        </div>
       </div>
-    </div>
+      <ul>
+  
+      <% if @user.following_shows.empty? %>
+        <div class="well">
+          <h4 class="text-center"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
+        </div>
 
-  <% if(@user.following_shows.empty?) %>
-
-      <div class="col-xs-12 text-center">
-        <h4 class="page-title empty-result"><%= (current_user == @user) ? "You're not following any; go find some shows!" : " #{@user.username} isn't following any shows at this time." %></h4>
-      </div>
-
-  <% else %> 
-
-
-    <div class="bpop-slider ">
-        <div class="col-xs-12 no-padding user">
-          <ul class="bxslider " id="users-shows-slider">
-            <% @user.following_shows.each  do |show| %>
+      <% else %>  
+        <% @user.following_shows.each  do |show| %>
               <li>
                  <%= render partial: "layouts/vertical_slide", :locals => {
                       :slide_title => show.title, 
@@ -49,17 +56,16 @@
                       :slide_image => image_tag(show.image(:thumb), :alt => show.title, :class => "img-responsive img-circle" ),
                       :slide_url => show_path(Show.friendly.find(show.id))} %>
               </li>
-            <% end %>
-             
-          </ul>
-        </div>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
-
-  <% end %>
-
   </div>
+  <!-- carousel -->
 </div>
-<!-- shows  following good -->  
+
+
+
 
 
 
@@ -69,49 +75,39 @@
 
 
 <!-- episodes you liked -->
-<!-- assuming voting of only one type: Episode. need to change if other voting -->
-      <div class="row fill top bottom padding">
-        <div class="user-video-slider yellow">
-            <div class="bpop-slider-header ">
-              <div class="text-center user-header ">
-                <div id="users-video-next" class="col-xs-1  slider-next pull-right"></div>
-                <div id="users-video-prev" class="col-xs-1 slider-prev pull-left"></div>
-                <h4 class="page-title hidden-xs">Videos<%= (current_user == @user) ? " You Popped" : " #{@user.username} Popped" %></h4> 
-                <h5 class="page-title visible-xs">Videos<%= (current_user == @user) ? " You Popped" : " #{@user.username} Popped" %></h5> 
-              </div>
-            </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="carousel carousel-horizontal theme-gold bpop-icon-bolt">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Videos<%= (current_user == @user) ? " You Popped" : " #{@user.username} Popped" %></h3>
+          </div>
+        </div>
+        <ul>
+    
+        <% if(@user.votes.up.votables.empty?) %>
+          <div class="well">
+            <h4 class="text-center"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
+          </div>
 
-<% if(@user.votes.up.votables.empty?) %>
-            <div class="col-xs-12 text-center">
-            <h4 class="page-title empty-result"><%= (current_user == @user) ? "You haven't liked any yet; go watch some videos!" : " #{@user.username}  hasn't liked any videos yet.." %></h4>
-            </div>
-<% else %>
-
-
-            <div class="bpop-slider">
-              <div class="col-xs-12 no-padding user">
-                <ul class="bxslider " id="user-video-slider">
-                  <% @user.votes.up.votables.each do |episode| %>
-                    <li>
-
-                        <%= render partial: "layouts/vertical_slide", :locals => {
+        <% else %>  
+          <% @user.votes.up.votables.each do |episode| %>
+                <li>
+                   <%= render partial: "layouts/vertical_slide", :locals => {
                             :slide_title => episode.title, 
                             :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'),
                             # :slide_image => show.image(:thumb), 
                             :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
                             :slide_url => episode_path(Episode.friendly.find(episode.id))} %>
-
-
-                    </li>
-                  <% end %>
-                   
-                </ul>
-              </div>
-          </div>
-<% end %>          
-        </div>
-
+                </li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
+    </div>
+    <!-- carousel -->
+  </div>
+
 <!-- videos you liked  -->
 
 
@@ -119,45 +115,41 @@
 
 <!-- users you follow -->
 <!-- assuming voting of only one type: Episode. need to change if other voting -->
-      <div class="row fill top bottom padding">
-        <div class="user-video-slider green">
-            <div class="bpop-slider-header ">
-              <div class="text-center user-header ">
-                <div id="users-followed-next" class="col-xs-1  slider-next pull-right"></div>
-                <div id="users-followed-prev" class="col-xs-1 slider-prev pull-left"></div>
-                 <h4 class="page-title hidden-xs">Friends <%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h4> 
-                 <h5 class="page-title visible-xs">Friends <%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %></h5> 
-              </div>
-            </div>
-
-<% if(@user.following_users.empty?) %>
-            <div class="col-xs-12 text-center">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="carousel carousel-horizontal theme-green bpop-icon-bolt">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>
+            Friends <%= (current_user == @user) ? "You Follow" : " #{@user.username} Follows" %>
+            </h3>
+          </div>
+        </div>
+        <ul>
+    
+        <% if(@user.following_users.empty?) %>
+          <div class="well">
+            <h4 class="text-center">
             <h4 class="page-title empty-result"><%= (current_user == @user) ? "You're not following anyone; #{link_to( "go find some users!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} isn't following anyone at this time." %></h4>
-            </div>
-<% else %> 
+          </div>
 
-
-            <div class="bpop-slider">
-              <div class="col-xs-12 no-padding user">
-                <ul class="bxslider " id="users-followed-slider">
-                  <% @user.following_users.each do |user| %>
-                   
-                    <li>
-                       <%= render partial: "layouts/vertical_slide", :locals => {
+        <% else %>  
+           <% @user.following_users.each do |user| %>
+                <li>
+                   <%= render partial: "layouts/vertical_slide", :locals => {
                             :slide_title => user.username, 
                             :slide_text => '',
                             :slide_image => image_tag(user.thumb, :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
                             :slide_url => user_path(User.friendly.find(user.id))} %>
-                    </li>
-                  <% end %>
-                 
-                </ul>
-              </div>
-          </div>
-<% end %>          
-        </div>
-
+                </li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
+    </div>
+    <!-- carousel -->
+  </div>
+
 <!-- videos you liked  -->
 
 
@@ -167,83 +159,44 @@
 
 <!-- users you follow -->
 <!-- users follows -->
-      <div class="row fill top bottom padding">
-        <div class="user-video-slider blue">
-            <div class="bpop-slider-header ">
-              <div class="text-center user-header ">
-                <div id="users-following-next" class="col-xs-1  slider-next pull-right"></div>
-                <div id="users-following-prev" class="col-xs-1 slider-prev pull-left"></div>
-                  <h4 class="page-title hidden-xs">Friends Who Follow <%= (current_user == @user) ? "You" : @user.username %></h4> 
-                  <h5 class="page-title visible-xs">Friends Who Follow <%= (current_user == @user) ? "You" : @user.username %></h5> 
-              </div>
-            </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="carousel carousel-horizontal theme-mint bpop-icon-bolt">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>
+            Friends Who Follow <%= (current_user == @user) ? "You" : @user.username %></h3>
+          </div>
+        </div>
+        <ul>
+    
+        <% if(@user.followers.empty?) %>
+          <div class="well">
+            <h4 class="text-center">
+            <h4 class="page-title empty-result"><%= (current_user == @user) ? "No one is following you; #{link_to( "go make some friends!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} has no followers at this time." %></h4>
+          </div>
 
-
-<% if(@user.followers.empty?) %>
-            <div class="col-xs-12 text-center">
-            <h4 class="page-title"><%= (current_user == @user) ? "No one is following you; #{link_to( "go make some friends!", :controller => "users", :action => "index")} ".html_safe : " #{@user.username} has no followers at this time." %></h4>
-            </div>
-<% else %> 
-
-
-            <div class="bpop-slider">
-              <div class="col-xs-12 no-padding user">
-                <ul class="bxslider " id="users-following-slider">
-                  <% @user.followers.each do |user| %>
-                    
-                    <li>
-                       <%= render partial: "layouts/vertical_slide", :locals => {
+        <% else %>  
+           <% @user.followers.each do |user| %>
+                <li>
+                   <%= render partial: "layouts/vertical_slide", :locals => {
                             :slide_title => user.username, 
                             :slide_text => '',
                             :slide_image => image_tag(user.thumb, :alt => user.username, :class => "img-responsive img-circle", :width => '110', :height => '110' ),
                             :slide_url => user_path(User.friendly.find(user.id))} %>
-                    </li>
-                  <% end %>
-                 
-                </ul>
-              </div>
-          </div>
-<% end %>          
-        </div>
-
+                </li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
+    </div>
+    <!-- carousel -->
+  </div>
+
+
+
+
+      
 <!-- users following you   -->
 
-
-
-
-
-
-
-
-
-<!-- home items inited -->
-<script type="text/javascript">
-  $(document).ready(function(){
-  
-    args = {
-      minSlides: 2,
-      maxSlides: 5,
-      slideWidth: 220,
-      responsive: true,
-      infiniteLoop: false,
-      // hideControlOnEnd: true,
-      touchEnabled: true,
-      slideMargin: 6,
-      pager: false
-    };
-
-    a = $.extend({}, {nextSelector: '#users-shows-next', prevSelector: '#users-shows-prev'}, args);
-    $('#users-shows-slider').bxSlider(a);
-
-    b = $.extend({}, {nextSelector: '#users-video-next', prevSelector: '#users-video-prev'}, args);
-    $('#user-video-slider').bxSlider(b);
-
-    c = $.extend({}, {nextSelector: '#users-followed-next', prevSelector: '#users-followed-prev'}, args);
-    $('#users-followed-slider').bxSlider(c);
-
-    d = $.extend({}, {nextSelector: '#users-following-next', prevSelector: '#users-following-prev'}, args);
-    $('#users-following-slider').bxSlider(d);
-
-  });
-</script>
+</secttion>

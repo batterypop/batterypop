@@ -1,2 +1,2 @@
-$('#follow_user-<%=@user.id%>').replaceWith('<%= escape_javascript(render :partial => "users/follow_user", :locals => {:user => @user}) %>');
+$('.follow_user-<%=@user.id%>').replaceWith('<%= escape_javascript(render :partial => "users/follow_user", :locals => {:user => @user}) %>');
  $('.pop-button').popover();
