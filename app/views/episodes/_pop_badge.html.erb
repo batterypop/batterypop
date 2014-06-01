@@ -1,0 +1,32 @@
+<% if(!current_user.nil? && (current_user.voted_up_on? episode)) %>
+
+	<%= link_to(unpop_episode_path(episode), 
+			:remote => true,
+			:class => "badge episode-badge-vote-#{episode.id}",
+			:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
+			) do %>
+	
+	<h5><%= episode.pops %></h5>
+	<div class="badge-box" >
+		<div class="btn-pop "></div>
+	</div>
+
+	<% end %>
+
+
+<% else %>
+
+	<%= link_to(pop_episode_path(episode), 
+			:remote => true,
+			:class => "badge episode-badge-vote-#{episode.id}",
+			:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"}
+			) do %>
+
+	<h5><%= episode.pops %></h5>
+	<div class="badge-box" >
+		<div class="btn-pop "></div>
+	</div>
+
+	<% end %>
+
+<% end %>

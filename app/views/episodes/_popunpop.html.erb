@@ -1,13 +1,13 @@
-<div class="pop-button pop-episode pop_episode-<%= episode.id %> " data-episode="<%= episode.id %> ">
+<div class="button-pop episode-header-vote-<%= episode.id %>" data-episode="<%= episode.id %> ">
 	<% if(!current_user.nil? && (current_user.voted_up_on? episode)) %>
 	
 		<%= link_to(unpop_episode_path(episode), 
 				:remote => true, 
-		        :class => 'pop-button followed', 
+		        :class => 'btn btn-purple', 
 		        # :content => "Click to unPOP #{episode.title}!", 
 				:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
 				) do %>
-				<div class="flash voted"></div>
+				<h5>unPOP it!</h5>
 
 		<%end%>
 
@@ -15,12 +15,13 @@
 
 		<%= link_to(pop_episode_path(episode), 
 				:remote => true, 
-		        :class => 'pop-button', 
+		        :class => 'btn btn-purple', 
 		        # :content => "Click to POP this #{episode.title}!",
 				:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"} 
 				) do %>
-				<div class="flash"></div>
+				<h5>POP it!</h5>
 		<% end %>
 
 	<% end %>
+	<div class='pop-number'><%= episode.pops %></div>
 </div>

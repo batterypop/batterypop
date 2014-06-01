@@ -2,12 +2,7 @@
 
 	<!-- badge -->
 	<% @action = "
-		<div class='button-pop episode-badge-vote-#{@episode.id}'>
-		<a class='btn btn-purple ' href='#'>
-			<h5>POP it!</h5>
-		</a>
-		<div class='pop-number'>#{@episode.pops}</div>
-	</div>
+	#{ render :partial => "episodes/popunpop", :locals => {:episode => @episode} }
 	#{ render :partial => "shows/follow_show", :locals => {:show => @show} }
 	" %>
 
@@ -68,12 +63,9 @@
 									<%= ep.description.html_safe %>
 								</div>
 							</a>
-							<a class="badge">
-								<h5><%= ep.pops %></h5>
-								<div class="badge-box" data-episode="<%= ep.id %>">
-									<div class="btn-pop episode-badge-vote-<%= ep.id %>">POP it</div>
-								</div>
-							</a>
+						
+
+							<%= render :partial => "episodes/pop_badge", :locals => {:episode => ep}  %>
 							<!-- badge -->
 						</div>
 					<% end %>
