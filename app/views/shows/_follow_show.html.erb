@@ -12,7 +12,7 @@
       <% if current_user.following?(show) %> 
         <%= link_to(unfollow_show_path(show), 
             :remote => true, 
-            :class => 'btn btn-navy', 
+            :class => 'btn btn-navy pop-ver', 
             :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{show.title}!'</b>"} 
             ) do %>
     		<h5>UN-FOLLOW</h5>
@@ -20,7 +20,7 @@
       <% else %>
         <%= link_to(follow_show_path(show),
             :remote => true, 
-            :class => 'btn btn-navy', 
+            :class => 'btn btn-navy pop-over', 
             :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{show.title}!'</b>"} 
             ) do %>
     		<h5>FOLLOW</h5>

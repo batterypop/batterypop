@@ -100,6 +100,9 @@ jQuery(document).ready(function() {
         hideControlOnEnd: true
     });
 
+
+    $('.pop-over').popover();
+
 });
 
 // fitvids

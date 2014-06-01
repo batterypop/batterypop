@@ -3,9 +3,8 @@
 	
 		<%= link_to(unpop_episode_path(episode), 
 				:remote => true, 
-		        :class => 'btn btn-purple', 
-		        # :content => "Click to unPOP #{episode.title}!", 
-				:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
+		        :class => 'btn  btn-purple pop-over', 
+				:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>"} 
 				) do %>
 				<h5>unPOP it!</h5>
 
@@ -15,8 +14,7 @@
 
 		<%= link_to(pop_episode_path(episode), 
 				:remote => true, 
-		        :class => 'btn btn-purple', 
-		        # :content => "Click to POP this #{episode.title}!",
+		        :class => 'btn btn-purple pop-over', 
 				:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"} 
 				) do %>
 				<h5>POP it!</h5>

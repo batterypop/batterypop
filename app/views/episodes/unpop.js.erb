@@ -1,6 +1,6 @@
 $('.episode-header-vote-<%= @episode.id %>').replaceWith('<%= escape_javascript(render :partial => "episodes/popunpop", :locals => {:episode => @episode}) %>');
 $('.episode-badge-vote-<%= @episode.id %>').replaceWith('<%= escape_javascript(render :partial => "episodes/pop_badge", :locals => {:episode => @episode}) %>');
-$('.pop-button').popover();
+$('.pop-over').popover();
 
 // $('.bpop-badge .episode-badge-vote-<%=@episode.id%>').html('<%= @episode.pops %>');
 // $('.bpop-badge-large .episode-badge-vote-<%=@episode.id%>').html('+<%= @episode.pops %>');

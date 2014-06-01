@@ -1,8 +1,16 @@
+/*
+* videojs-ga - v0.3.0 - 2014-05-23
+* Copyright (c) 2014 Michael Bensoussan
+* Licensed MIT
+*/
 (function() {
   var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   videojs.plugin('ga', function(options) {
     var dataSetupOptions, defaultsEventsToTrack, end, error, eventCategory, eventLabel, eventsToTrack, fullscreen, gaLibrary, loaded, parsedOptions, pause, percentsAlreadyTracked, percentsPlayedInterval, play, resize, seekEnd, seekStart, seeking, sendbeacon, timeupdate, volumeChange;
+    if (options == null) {
+      options = {};
+    }
     dataSetupOptions = {};
     if (this.options()["data-setup"]) {
       parsedOptions = JSON.parse(this.options()["data-setup"]);
@@ -20,7 +28,7 @@
     seekStart = seekEnd = 0;
     seeking = false;
     loaded = function() {
-      var sourceType, tmpSrcArray;
+      var sourceType, techName, tmpSrcArray;
       if (!eventLabel) {
         eventLabel = this.currentSrc().split("/").slice(-1)[0].replace(/\.(\w{3,4})(\?.*)?$/i, '');
       }
@@ -30,7 +38,8 @@
       if (__indexOf.call(eventsToTrack, "srcType") >= 0) {
         tmpSrcArray = this.currentSrc().split(".");
         sourceType = tmpSrcArray[tmpSrcArray.length - 1];
-        sendbeacon('source type - ' + ("" + this.techName + "/" + sourceType), true);
+        techName = this.contentEl().getElementsByClassName("vjs-tech")[0].id;
+        sendbeacon('source type - ' + ("" + techName + "/" + sourceType), true);
       }
     };
     timeupdate = function() {
@@ -41,7 +50,6 @@
       for (percent = _i = 0; _i <= 99; percent = _i += percentsPlayedInterval) {
         if (percentPlayed >= percent && __indexOf.call(percentsAlreadyTracked, percent) < 0) {
           if (__indexOf.call(eventsToTrack, "start") >= 0 && percent === 0 && percentPlayed > 0) {
-            console.log(this);
             sendbeacon('start', true);
           } else if (__indexOf.call(eventsToTrack, "percentsPlayed") >= 0 && percentPlayed !== 0) {
             sendbeacon('percent played', true, percent);
@@ -96,7 +104,7 @@
     fullscreen = function() {
       var currentTime;
       currentTime = Math.round(this.currentTime());
-      if (this.isFullScreen) {
+      if (this.isFullscreen()) {
         sendbeacon('enter fullscreen', false, currentTime);
       } else {
         sendbeacon('exit fullscreen', false, currentTime);
@@ -104,8 +112,7 @@
     };
     sendbeacon = function(action, nonInteraction, value) {
       try {
-        if ('analytics.js' === gaLibrary) { 
-        
+        if ('analytics.js' === gaLibrary) {
           ga('send', 'event', {
             'eventCategory': eventCategory,
             'eventAction': action,

@@ -2,8 +2,8 @@
 
 	<%= link_to(unpop_episode_path(episode), 
 			:remote => true,
-			:class => "badge episode-badge-vote-#{episode.id}",
-			:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>",} 
+			:class => "badge pop-over episode-badge-vote-#{episode.id}",
+			:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to unPOP <b>'#{episode.title}!'</b>"} 
 			) do %>
 	
 	<h5><%= episode.pops %></h5>
@@ -18,7 +18,7 @@
 
 	<%= link_to(pop_episode_path(episode), 
 			:remote => true,
-			:class => "badge episode-badge-vote-#{episode.id}",
+			:class => "badge pop-over episode-badge-vote-#{episode.id}",
 			:data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"}
 			) do %>
 
