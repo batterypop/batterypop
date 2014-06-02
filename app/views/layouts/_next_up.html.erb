@@ -12,7 +12,7 @@
 				<%= render partial: "layouts/horizontal_slide", :locals => {
 						:slide_title => most.slide_title.html_safe, 
 					 	:slide_text => truncate_html(strip_tags(most.description), length: 60, omission: '<b>...(more)</b>'), 
-						:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '80', :height => '80'), 
+						:slide_image => image_tag(most.image(:thumb), :alt => most.title, :class => "show-episode-image", :width => '80', :height => '80'), 
 						:slide_url =>  most.link
 					} 
 						%>

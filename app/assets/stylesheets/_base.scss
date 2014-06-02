@@ -989,7 +989,7 @@ top: -30px;
           text-align: center;
           margin: 0 auto;
           max-width: 100%;
-          //@extend %border-circle;
+          @extend %border-circle;
         }
       }
 
@@ -1074,7 +1074,7 @@ top: -30px;
               //text-align: center;
               //margin: 0 auto;
               max-width: 100%;
-              //@extend %border-circle;
+              @extend %border-circle;
             }
         }
         .summary {
@@ -1407,7 +1407,7 @@ margin-top: -50px;
       text-align: right;
 
         img {
-         //@extend %border-circle;
+         @extend %border-circle;
 /*          height: 100px;
          width: 100px; */
          max-width: 100%;
@@ -1552,7 +1552,7 @@ width: 100%;
     max-width: 100%;
     height: 100px;
     width: 100px;
-    //@extend %border-circle;
+    @extend %border-circle;
   }
 }
 }
@@ -1845,7 +1845,7 @@ overflow: hidden;
       text-align: center;
       margin: 0 auto;
       max-width: 100%;
-      //@extend %border-circle;
+      @extend %border-circle;
     }
   }
 

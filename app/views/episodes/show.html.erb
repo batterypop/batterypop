@@ -46,7 +46,7 @@
                 :slide_badge => '23,333',
                 :slide_title => ep.title, 
                 :slide_text => ep.description.html_safe, 
-                :slide_image => image_tag(ep.image, :alt => ep.title, :class => "img-responsive thumbnail media-object pull-left show-episode-image", :width => '125'), 
+                :slide_image => image_tag(ep.image, :alt => ep.title, :class => "show-episode-image", :width => '125'), 
                 # :slide_url => show_episode_path(@episode.show, Episode.friendly.find(ep.id))
                 :slide_url => "/shows/"+ ep.show.slug + "/episodes/" + ep.slug
                 } %>

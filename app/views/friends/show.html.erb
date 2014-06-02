@@ -122,7 +122,7 @@
 						            </div></div></span>".html_safe,
 				                :slide_title => "#{ep.title} #{@duration}".html_safe, 
 				                :slide_text => "#{ep.description}  #{@age_range}".html_safe, 
-				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'img-responsive thumbnail media-object pull-left show-episode-image', :width => '125'), 
+				                :slide_image => image_tag(ep.image(:thumb), :alt => ep.title, :class => 'show-episode-image', :width => '125'), 
 								:slide_url =>  '/friends/' + @friend.slug + '/episodes/' + ep.slug,
 
 								:slide_class => "sponsor"
