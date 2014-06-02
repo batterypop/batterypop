@@ -48,7 +48,6 @@
                 <div class="thumb"><%= image_tag(show.image(:thumb), :alt => show.title, :class => "show-episode-image", :width => '160') %></div>
                 <div class="summary">
                   <h2><%= "#{show.title}" %></h2>
-                  <h5><%= show.subtitle %></h5>
                   <%= show.description.html_safe %>
                 </div>
               </a>
@@ -61,7 +60,7 @@
                 <li>
                   
                   <%= render partial: "layouts/vertical_slide", :locals => {
-                  :slide_title => episode.slide_title.html_safe, 
+                  :slide_title => episode.title.html_safe, 
                   :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
                   :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
                   :slide_url =>  episode.link, 
