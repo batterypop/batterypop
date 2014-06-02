@@ -42,7 +42,7 @@ jQuery(document).ready(function() {
         width: 800, 
         minSlides: 1,
         maxSlides: 1,
-        infiniteLoop: false
+        infiniteLoop: true
         //preventDefaultSwipeY: true
     });
 

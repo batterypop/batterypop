@@ -81,7 +81,7 @@ gem "acts_as_votable", "~> 0.7.1"
 gem 'friendly_id', '5.0.0.beta4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # gem "bxslider-rails", "~> 4.1.0"
-gem "bxslider-rails", github: 'grimmwerks/bxslider-rails'  #cutomized fork
+gem "bxslider-rails", github: 'grimmwerks/bxslider-rails', ref: 'db1053d8f49e6fedec6afccdf5c3832d9e8c6b18'   #cutomized fork
 
 gem  'truncate_html'
 

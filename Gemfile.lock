@@ -41,9 +41,10 @@ GIT
 
 GIT
   remote: git://github.com/grimmwerks/bxslider-rails.git
-  revision: 10183584a3ffe5c32445c1dcb3fedb07271ff7a3
+  revision: db1053d8f49e6fedec6afccdf5c3832d9e8c6b18
+  ref: db1053d8f49e6fedec6afccdf5c3832d9e8c6b18
   specs:
-    bxslider-rails (4.1.0)
+    bxslider-rails (4.1.2)
 
 GIT
   remote: git://github.com/josevalim/inherited_resources.git
