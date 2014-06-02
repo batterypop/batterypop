@@ -1381,11 +1381,19 @@ margin-top: -50px;
   //height: 140px;
   //border-top: 5px solid $gray-xlite;
   @extend %box-shadow;
+
+  .arrow_box .well .row {
+    height: 100%;
+      > div {
+        height: 100%;
+      }
+  }
   .summary {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin-top: 30px;
+    //margin-top: 30px;
+    @extend %vertical-align;
   }
     h2 {
     //display: inline-block;
@@ -1434,6 +1442,7 @@ margin-top: -50px;
    .well {
             background: none;
             padding: 15px 0;
+            height: 100%;
           }
 
 }
