@@ -37,7 +37,11 @@ jQuery(document).ready(function() {
 
     jQuery('.slider ul').bxSlider({
         infiniteLoop: true,
-        pager: false
+        pager: false, 
+        auto: true,
+        width: 800, 
+        minSlides: 1,
+        maxSlides: 1
         //preventDefaultSwipeY: true
     });
 
