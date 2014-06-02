@@ -23,6 +23,8 @@ class PagesController < ApplicationController
   def bot
   end
 
+  def test
+  end
 
   def investors
     @title = "Investors"

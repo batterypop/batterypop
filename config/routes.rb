@@ -43,28 +43,12 @@ Batterypopv2::Application.routes.draw do
   get "/sitemap.xml", :to => "sitemap#index"
   get "/sitemap.xml.gz", :to => "sitemap#index"
 
-
+  get 'videotest', :to => "media#index"
 
   get "/dashboard", :to => "creators#dashboard"
   get "/creators/sign_out", :to => "creators#dashboard"
   
-    # get "/creators/dashboard", :to => "creators#dashboard"
 
-#attempt at voting on episode not within shows nesting
-# put '/episodes/:id/:action' => 'episodes#popunpop'
-
-
-# put '/shows/:id/:action' => 'shows#followToggle'
-
-  # get "pages/home"
-  # get "pages/contact"
-  # get "pages/about"
-  # get "pages/newest"
-  # get "pages/shorts"
-  # get "pages/creators"
-  # get "pages/privacy"
-  # get "pages/terms"
-  # get "pages/advertise"
   # get "pages/search"
 
   get "shorts", :to => "pages#shorts"
@@ -75,6 +59,7 @@ Batterypopv2::Application.routes.draw do
   get "about-batterypop", :to => "pages#about"
   get "investors", :to => "pages#investors"
   get "bot", :to => "pages#bot"
+  get "test", :to => "pages#test"
   
   get "search", :to => "pages#search"
 
