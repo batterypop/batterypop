@@ -1410,7 +1410,7 @@ margin-top: -50px;
     }
 
     .thumb {
-      
+      @extend %vertical-align;
       margin: auto;
       text-align: right;
 

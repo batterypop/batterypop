@@ -1,4 +1,7 @@
-<div class="button-pop episode-header-vote-<%= episode.id %>" data-episode="<%= episode.id %> ">
+<!-- begin button row --><div class="row clearfix">
+
+	<div class="col-sm-12 col-xs-6">
+	<div class="button-pop episode-header-vote-<%= episode.id %>" data-episode="<%= episode.id %> ">
 	<% if(!current_user.nil? && (current_user.voted_up_on? episode)) %>
 	
 		<%= link_to(unpop_episode_path(episode), 
@@ -23,3 +26,5 @@
 	<% end %>
 	<div class='pop-number'><%= episode.pops %></div>
 </div>
+</div><!-- col-half -->
+
