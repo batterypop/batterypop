@@ -41,7 +41,8 @@ jQuery(document).ready(function() {
         auto: true,
         width: 800, 
         minSlides: 1,
-        maxSlides: 1
+        maxSlides: 1,
+        infiniteLoop: false
         //preventDefaultSwipeY: true
     });
 
