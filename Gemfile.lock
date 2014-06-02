@@ -461,7 +461,7 @@ DEPENDENCIES
   rich!
   rspec
   rspec-rails
-  sass-rails (~> 4.0.0)
+  sass-rails (~> 4.0.1)
   sdoc
   sitemap_generator
   spork
