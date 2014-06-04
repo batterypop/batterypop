@@ -1719,7 +1719,7 @@ margin-bottom: 10px;
   top: 50% !important;
 }
 
-.button-pop div.popover {
+.button-pop div.popover, .button-follow div.popover {
   @include fontsize(1.4);
   left: -250px !important;
 }
