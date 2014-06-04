@@ -10,7 +10,15 @@
 //@media(max-width: $screen-xs-min){
 @media(max-width: 480px){
 
+.post {
+  h1 {
+    @include fontsize(3.0);
+  }
+  h3 {
+    @include fontsize(1.8);
 
+  }
+}
 
 .panel-split {
   .well {
@@ -154,29 +162,7 @@ width: 223px !important;
 
 
 // fix
-.post {
-padding-bottom: 0;
-margin-bottom: 15px;
-border-bottom: 1px solid $gray-xlite;
-  //border-bottom: 1px solid $gray-xlite;
-  header {
-    box-shadow: none;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 0;
-    border-top: 0;
-    background: none;
-    margin-bottom: 15px;
 
-    }
-
-
-  .thumb {
-    border-top: 0;
-
-  }
-}
 
 
 .navbar-default ul.navbar-nav a {
@@ -230,9 +216,7 @@ box-shadow: none;
 //@media (min-width: $screen-sm-min) {
   @media (min-width: 768px) {
 // fix
-    .post header {
-      max-width: 96%;
-}
+
 
 .navbar-form, .navbar-form .input-group {
   //width: 100%;
