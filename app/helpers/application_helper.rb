@@ -149,10 +149,9 @@ module ApplicationHelper
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
 
-    if !episode.links.empty?
-      traceout("COUNT: #{episode.links.empty?}")
-      return(print_embed(episode))
-    end
+    # if (!episode.links.empty?)
+    #   # return(print_embed(episode))
+    # end
 
     if(episode.embed.provider == 'viddler')
       
@@ -169,6 +168,13 @@ module ApplicationHelper
          @ret = old.get_embed(old, episode.video).html_safe
       else
         files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+
+        # puts ""
+        # puts " %%%%%%%%%%%%%%%%    wwwwwwww"
+        # puts files.inspect
+        # puts files.count
+        # puts " %%%%%%%%%%%%%%%%"
+
         matched = files.select { |vid| vid['width'] = "854" }
     
         matched.each do |i|
@@ -187,7 +193,6 @@ module ApplicationHelper
       # just in case there's other info
       @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
     end
-    traceout(@ret)
     return @ret
   end
 
