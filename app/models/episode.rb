@@ -46,6 +46,8 @@ class Episode < ActiveRecord::Base
 	has_many :friend_episodes
 	has_many :friends, :through => :friend_episodes
 
+	has_many :links, :as => :linkedmedia
+
 	before_save :destroy_images?
 
 

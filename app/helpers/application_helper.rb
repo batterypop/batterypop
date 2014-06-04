@@ -148,18 +148,17 @@ module ApplicationHelper
 
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+
+    if !episode.links.empty?
+      traceout("COUNT: #{episode.links.empty?}")
+      return(print_embed(episode))
+    end
+
     if(episode.embed.provider == 'viddler')
-      # @viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
-      # @viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
-      # videoData = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-      # 
-      # traceout("FIRST CALL")
+      
       videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
-      # traceout("AFTER FIRST CALL")
-      # traceout(videoData['video']['files'])
+     
       if videoData['video']['files'].nil?
-        # traceout("NOT FOUND VIDEO")
-        # traceout(episode)
         videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
       end
         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
@@ -188,7 +187,13 @@ module ApplicationHelper
       # just in case there's other info
       @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
     end
+    traceout(@ret)
     return @ret
+  end
+
+  def print_embed(episode)
+     @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+     traceout("GOT TO PRINT EMBED")
   end
 
 

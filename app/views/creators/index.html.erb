@@ -5,9 +5,14 @@
 			<h3>All Creators</h3>
 
 
-			<%= @creators.inspect %>
+			<% @creators.inspect %>
+			
+			<%= @_request.env.inspect %>
 
+			<%= @_request.env['HTTP_USER_AGENT'].inspect %>
 
-
+			REMOTE_ADDR
+			HTTP_ACCEPT_LANGUAGE
+	
 	</div>
 </section>
