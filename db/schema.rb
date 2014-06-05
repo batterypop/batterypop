@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603033547) do
+ActiveRecord::Schema.define(version: 20140604173757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,7 +267,7 @@ ActiveRecord::Schema.define(version: 20140603033547) do
 
   create_table "links", force: true do |t|
     t.string   "url"
-    t.string   "data"
+    t.text     "data"
     t.integer  "linkedmedia_id"
     t.string   "linkedmedia_type"
     t.integer  "views",            default: 0

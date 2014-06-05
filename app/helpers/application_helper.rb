@@ -149,11 +149,9 @@ module ApplicationHelper
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
 
-    # if (!episode.links.empty?)
-    #   # return(print_embed(episode))
-    # end
+    traceout("EMpty?  #{episode.links.empty?}")
 
-    if(episode.embed.provider == 'viddler')
+    if(episode.embed.provider == 'viddler' && episode.links.empty? )
       
       videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
      
@@ -169,11 +167,11 @@ module ApplicationHelper
       else
         files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
 
-        # puts ""
-        # puts " %%%%%%%%%%%%%%%%    wwwwwwww"
-        # puts files.inspect
-        # puts files.count
-        # puts " %%%%%%%%%%%%%%%%"
+        files.each do |f|
+          @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode )
+          @link.save
+        end
+        
 
         matched = files.select { |vid| vid['width'] = "854" }
     
@@ -192,6 +190,7 @@ module ApplicationHelper
        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
       # just in case there's other info
       @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+      return @ret
     end
     return @ret
   end
