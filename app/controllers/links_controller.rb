@@ -15,6 +15,13 @@ class LinksController < ApplicationController
 		@episode = @link.linkedmedia
 		@show = @episode.show
 		ga_track_event("Test", "begin", "#{@show.title} : #{@episode.title}")
+
+		@visitor = Visitor.new(:session_id =>  @_request.session.id , :http_user_agent => @_request.env['HTTP_USER_AGENT'], :remote_addr =>  @_request.env['REMOTE_ADDR'] ,  :http_accept_language => @_request.env['HTTP_ACCEPT_LANGUAGE'] )
+		if !current_user.nil?
+			@visitor.user = current_user
+		end
+		@visitor.link = @link
+		
 		redirect_to @link.url
 	end
 

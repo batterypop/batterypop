@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604173757) do
+ActiveRecord::Schema.define(version: 20140605154659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,9 +270,9 @@ ActiveRecord::Schema.define(version: 20140604173757) do
     t.text     "data"
     t.integer  "linkedmedia_id"
     t.string   "linkedmedia_type"
-    t.integer  "views",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "visits_count",     default: 0
   end
 
   create_table "notifications", force: true do |t|
@@ -469,6 +469,18 @@ ActiveRecord::Schema.define(version: 20140604173757) do
   add_index "users", ["parent_id"], name: "index_users_on_parent_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "visits", force: true do |t|
+    t.string   "session_id"
+    t.string   "http_user_agent"
+    t.string   "http_accept_language"
+    t.string   "remote_addr"
+    t.text     "data"
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

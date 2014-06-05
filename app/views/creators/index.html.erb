@@ -4,15 +4,20 @@
 
 			<h3>All Creators</h3>
 
+		Current	<%= current_user %><br />
+
 
 			<% @creators.inspect %>
 			
-			<%= @_request.env.inspect %>
+<%= @_request.session.id %>
 
-			<%= @_request.env['HTTP_USER_AGENT'].inspect %>
+			<%= @_request.inspect %>
+
+			<% @_request.env['HTTP_USER_AGENT'].inspect %>
 
 			REMOTE_ADDR
 			HTTP_ACCEPT_LANGUAGE
+
 	
 	</div>
 </section>
