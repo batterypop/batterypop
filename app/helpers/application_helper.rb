@@ -149,55 +149,70 @@ module ApplicationHelper
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
 
-    traceout("EMpty?  #{episode.links.empty?}")
+    if (episode.links.empty?)
+      traceout("YES #{episode.links.empty?}")
+      if(episode.embed.provider == 'viddler' ) # no links, need to create
+        
+        videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
+       
+        if videoData['video']['files'].nil?
+          videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
+        end
+          @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+         # @src = ""
+        if videoData['video']['files'].nil?
+           old = Embed.where(:provider => "viddler_original").first
+           @ret = old.get_embed(old, episode.video).html_safe
 
-    if(episode.embed.provider == 'viddler' && episode.links.empty? )
+        else
+          files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+
+           @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+
+          files.each do |f|
+            f['poster'] = @poster
+            @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
+            @link.save
+          end
+          
+
+
+          # matched = files.select { |vid| vid['width'] = "854" }
       
-      videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
-     
-      if videoData['video']['files'].nil?
-        videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
-      end
-        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
-       @src = ""
-      if videoData['video']['files'].nil?
-        # traceout("GOING TO THE OLD EMBED THEN")
-         old = Embed.where(:provider => "viddler_original").first
-         @ret = old.get_embed(old, episode.video).html_safe
-      else
-        files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
-
-        files.each do |f|
-          @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode )
-          @link.save
+          # matched.each do |i|
+          #   @src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
+          # end
         end
         
-
-        matched = files.select { |vid| vid['width'] = "854" }
-    
-        matched.each do |i|
-          @src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
-        end
+        # @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+        # @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
+        # @ret = @ret.gsub("{{videosources}}", @src)
+        # @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+       
+        # traceout('final embed')
+      else
+         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+        # just in case there's other info
+        @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+        return @ret
       end
-      
-      @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-      @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
-      @ret = @ret.gsub("{{videosources}}", @src)
-      @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-     
-      # traceout('final embed')
-    else
-       @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
-      # just in case there's other info
-      @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-      return @ret
     end
-    return @ret
+     return(print_embed(episode))
   end
 
   def print_embed(episode)
-     @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
-     traceout("GOT TO PRINT EMBED")
+    @src = ''
+    # assuming link_type='file' for now
+    episode.links.each do |link|
+      data = ActiveSupport::JSON.decode(link.data)
+      @poster = data['poster']
+      @src+= "<source src='/links/#{link.id}' type='#{data['type']}' />"
+    end
+    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+    @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
+    @ret = @ret.gsub("{{videosources}}", @src)
+    @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+    return(@ret)
   end
 
 

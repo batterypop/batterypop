@@ -38,11 +38,11 @@ module Batterypopv2
 
     # config.assets.initialize_on_precompile = false
     
-    # if Rails.env=="production"
-    #     config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-44486746-1'
-    # elsif 
-    #     config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-44486746-2'
-    # end
+    if Rails.env=="production"
+        config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-44486746-1'
+    elsif 
+        config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-44486746-2'
+    end
             
     
     config.action_controller.include_all_helpers = true

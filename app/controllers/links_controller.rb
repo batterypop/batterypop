@@ -2,10 +2,9 @@ class LinksController < ApplicationController
 	before_action :set_link
 
 	def show
-		
-		puts "   **************"
-		ap params
-		puts " ***************"
+		if(@link.link_type="file")
+			file
+		end
 	end
 
 
@@ -14,16 +13,21 @@ class LinksController < ApplicationController
 		# ga_track_event("Users", "Login", "Standard")
 		@episode = @link.linkedmedia
 		@show = @episode.show
-		ga_track_event("Test", "begin", "#{@show.title} : #{@episode.title}")
 
-		@visitor = Visitor.new(:session_id =>  @_request.session.id , :http_user_agent => @_request.env['HTTP_USER_AGENT'], :remote_addr =>  @_request.env['REMOTE_ADDR'] ,  :http_accept_language => @_request.env['HTTP_ACCEPT_LANGUAGE'] )
+		ga_track_event("Video", "begin", "#{@show.title} : #{@episode.title}")
+
+		@visit = Visit.new(:session_id =>  @_request.session.id , :http_user_agent => @_request.env['HTTP_USER_AGENT'], :remote_addr =>  @_request.env['REMOTE_ADDR'], :request_uri => @_request.env['REQUEST_URI'],  
+			:http_accept_language => @_request.env['HTTP_ACCEPT_LANGUAGE'] )
+
 		if !current_user.nil?
-			@visitor.user = current_user
+			@visit.user = current_user
 		end
-		@visitor.link = @link
-		
+		@visit.link = @link
+		@visit.save
+
 		redirect_to @link.url
 	end
+
 
 	private
 	def set_link
