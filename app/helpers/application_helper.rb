@@ -172,6 +172,7 @@ module ApplicationHelper
           files.each do |f|
             f['poster'] = @poster
             @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
+            traceout(@link)
             @link.save
           end
           
