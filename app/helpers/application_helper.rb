@@ -206,7 +206,7 @@ module ApplicationHelper
     episode.links.each do |link|
       data = ActiveSupport::JSON.decode(link.data)
       @poster = data['poster']
-      @src+= "<source src='/links/#{link.id}' type='#{data['type']}' />"
+      @src+= "<source src='/links/#{link.id}/file' type='#{data['type']}' />"
     end
     @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
     @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
