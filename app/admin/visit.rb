@@ -17,6 +17,15 @@ ActiveAdmin.register Visit do
   # 
   
   index do
+    column :user
+    column "Episode" do |visit|
+      link_to visit.link.linkedmedia.title, admin_episode_path(visit.link.linkedmedia)
+    end
+    column :remote_addr
+    column :http_user_agent
+    column :http_accept_language
+    column :data
+
   end
   
 end
