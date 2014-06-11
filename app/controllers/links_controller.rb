@@ -13,9 +13,14 @@ class LinksController < ApplicationController
 		# ga_track_event("Users", "Login", "Standard")
 		@episode = @link.linkedmedia
 		@show = @episode.show
-
 		save_visit
 		redirect_to @link.url
+	end
+
+
+	def feed
+		@episode = @link.linkedmedia
+		@show = @episode.show
 	end
 
 

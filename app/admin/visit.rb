@@ -13,5 +13,10 @@ ActiveAdmin.register Visit do
   #  permitted << :other if resource.something?
   #  permitted
   # end
+  # 
+  # 
+  
+  index do
+  end
   
 end

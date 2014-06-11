@@ -2,6 +2,7 @@ ActiveAdmin.register Episode do
 	menu :parent => "bPOP Shows"
 
 
+	sortable
 	# belongs_to :show
 
      before_filter :only => [:show, :destroy, :edit, :update] do
@@ -23,6 +24,20 @@ ActiveAdmin.register Episode do
 			e.input :video, :label => "Video Code"
 		end
 		e.actions
+	end
+
+
+	index do
+
+		column :title
+		column :approved
+		column (:description) { |foobar| raw(foobar.description) }
+		column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
+		column :show
+		column :count, :sortable do |episode|
+			episode.visits.size
+		end
+		default_actions
 	end
 
 end

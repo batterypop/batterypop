@@ -86,7 +86,9 @@ ActiveAdmin.register Show do
 
 	index do
 		column :position
-		column :creator, :as => :select, :member_label => :displayname
+		column :creator do |show|
+			link_to show.creator.displayname, admin_creator_path(show.creator)
+		end
 		# column (:image) {link_to image_tag(@show.image(:thumb)), admin_show_path(@show)}
 		column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
 		column  :title

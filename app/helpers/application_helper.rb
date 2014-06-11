@@ -172,25 +172,9 @@ module ApplicationHelper
           files.each do |f|
             f['poster'] = @poster
             @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
-            traceout(@link)
             @link.save
           end
-          
-
-
-          # matched = files.select { |vid| vid['width'] = "854" }
-      
-          # matched.each do |i|
-          #   @src+= "<source src='#{i['html5_video_source']}' type='#{i['type']}' />"
-          # end
         end
-        
-        # @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-        # @ret = @ret.gsub("{{poster}}", "poster='#{@poster}'")
-        # @ret = @ret.gsub("{{videosources}}", @src)
-        # @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-       
-        # traceout('final embed')
       else
          @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
         # just in case there's other info

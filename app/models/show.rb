@@ -43,6 +43,7 @@ class Show < ActiveRecord::Base
 	has_many :episodes_approved, :class_name => "Episode", :conditions => ["approved = ?", true]
 
 	has_many :links, as: :linkedmedia, through: :episodes
+	has_many :visits, through: :links
 
 	has_and_belongs_to_many :channels, :join_table => :channels_shows 
 
