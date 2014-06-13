@@ -15,9 +15,12 @@ ActiveAdmin.register Visit do
   # end
   # 
   # 
+  # 
+
+ 
   
-  index do
-    column :user
+  index :title => proc { collection.count } do
+    column :user, sortable: :user_id
     column "Episode" do |visit|
       link_to visit.link.linkedmedia.title, admin_episode_path(visit.link.linkedmedia)
     end
@@ -25,7 +28,7 @@ ActiveAdmin.register Visit do
     column :http_user_agent
     column :http_accept_language
     column :data
-
+    column :created_at
   end
   
 end
