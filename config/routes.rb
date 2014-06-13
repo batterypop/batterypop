@@ -2,7 +2,7 @@ Batterypopv2::Application.routes.draw do
 
   mount Rich::Engine => '/rich', :as => 'rich'
   
-  resources :channels
+  # resources :channels
 
 
   # resources :contacts
@@ -57,7 +57,7 @@ Batterypopv2::Application.routes.draw do
 
   # get "pages/search"
 
-  get "shorts", :to => "pages#shorts"
+  # get "shorts", :to => "pages#shorts"
   get "calling-all-creators", :to => "pages#creators"
   get "privacy-policy", :to => "pages#privacy"
   get "terms-and-conditions", :to => "pages#terms"
@@ -66,7 +66,7 @@ Batterypopv2::Application.routes.draw do
   get "investors", :to => "pages#investors"
   get "bot", :to => "pages#bot"
   
-  get "test", :to => "pages#test"
+  # get "test", :to => "pages#test"
   
   get "search", :to => "pages#search"
 

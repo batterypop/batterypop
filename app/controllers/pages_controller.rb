@@ -2,16 +2,23 @@ class PagesController < ApplicationController
   
   def home
     @title = "Free Videos for Kids"
+    @active = "home"
+
+    @shorts = Show.where(:single => true, :approved => true).includes(:episodes)
+
     @features = Feature.homepage.active
     @showlist = Show.showlist.approved.shuffle
     @popped = Episode.mostpopped(10) 
     @promoted = Show.where(:promote => true).order('updated_at DESC')
-    if !cookies[:viewedWelcome].present?
-      @cookie = false
-      cookies[:viewedWelcome] = { :value => "true", :expires => 1.day.from_now}
-    else
-      @cookie = true
-    end
+
+    @channels = Channel.get_channels_approved
+    
+    # if !cookies[:viewedWelcome].present?
+    #   @cookie = false
+    #   cookies[:viewedWelcome] = { :value => "true", :expires => 1.day.from_now}
+    # else
+    #   @cookie = true
+    # end
   end
 
   def search

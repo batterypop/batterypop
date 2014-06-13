@@ -8,14 +8,11 @@
 				</div>
 				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
+						<li class="<% if(@active=='home') %> active<% end %>">
+							<a href="/">Home</a>
+						</li>
 						<li class="<% if(@active=='shows') %> active<% end %>">
 							<a href="/shows">Shows</a>
-						</li>
-						<li class="<% if(@active=='channels') %> active<% end %>">
-							<a href="/channels">Channels</a>
-						</li>
-						<li class="<% if(@active=='shorts') %> active<% end %>">
-							<a href="/shorts">Shorts</a>
 						</li>
 						<li class="<% if(@active=='blog') %> active<% end %>">
 							<a href="/posts"><span class="lowercase">B</span>log</a>
