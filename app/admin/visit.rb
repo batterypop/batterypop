@@ -19,7 +19,7 @@ ActiveAdmin.register Visit do
 
  
   
-  index :title => proc { collection.count } do
+  index :title => proc{ "Visits - #{collection.count}" } do
     column :user, sortable: :user_id
     column "Episode" do |visit|
       link_to visit.link.linkedmedia.title, admin_episode_path(visit.link.linkedmedia)
