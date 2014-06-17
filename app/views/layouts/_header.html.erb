@@ -8,15 +8,12 @@
 				</div>
 				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="<% if(@active=='home') %> active<% end %>">
-							<a href="/">Home</a>
-						</li>
-						<li class="<% if(@active=='shows') %> active<% end %>">
-							<a href="/shows">Shows</a>
-						</li>
-						<li class="<% if(@active=='blog') %> active<% end %>">
-							<a href="/posts"><span class="lowercase">B</span>log</a>
-						</li>
+	
+
+<%= render "layouts/test/navigation_#{home_display_test}" %>
+
+
+
 					</ul>
 					<div class="visible-lg">
 						<div class="panel-left panel panel-default">
@@ -88,8 +85,6 @@
 
 
 
-
-
 	
 
 
@@ -100,7 +95,6 @@
 			<%= render 'layouts/messages' %>
 		</div>
 	</div> -->
-
 
 
 

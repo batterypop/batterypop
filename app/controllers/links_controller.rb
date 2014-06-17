@@ -27,6 +27,8 @@ class LinksController < ApplicationController
 	def save_visit
 		@tmp = {:session_id => @_request.session.id, :link_id => @link.id, :time => Time.now}
 
+		@data = home_display_test
+
 		
 		if (session[:last_saved_visit].nil?  || 
 			 (session[:last_saved_visit][:session_id] != @tmp[:session_id]) ||
@@ -34,11 +36,16 @@ class LinksController < ApplicationController
 			  ((session[:last_saved_visit][:session_id] == @tmp[:session_id]) && (session[:last_saved_visit][:link_id] == @link.id) && (@tmp[:time] > 15.minutes.since(session[:last_saved_visit][:time])))
 			)
 
-			@visit = Visit.create(:session_id =>  @_request.session.id , :http_user_agent => @_request.env['HTTP_USER_AGENT'], :remote_addr =>  @_request.env['REMOTE_ADDR'], :request_uri => @_request.env['REQUEST_URI'],  
+			@visit = Visit.create(:session_id =>  @_request.session.id , :http_user_agent => @_request.env['HTTP_USER_AGENT'], :remote_addr =>  @_request.env['REMOTE_ADDR'], :request_uri => @_request.env['REQUEST_URI'],  :data => @data,
 			:http_accept_language => @_request.env['HTTP_ACCEPT_LANGUAGE'], :user => current_user, :link => @link )
 
 			session[:last_saved_visit] = @tmp
 			ga_track_event("Video", "begin", "#{@show.title} : #{@episode.title}")
+
+			# finished('home_display_test', :reset => false)
+			finished('home_display_test')
+
+
 
 			# puts session[:last_saved_visit].inspect
 			# puts '-   S   A   V  I  N  G -'

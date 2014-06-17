@@ -8,6 +8,15 @@ class ApplicationController < ActionController::Base
 
 
 
+  helper_method :home_display_test
+
+  def home_display_test
+    @home_display =  ab_test("home_display_test", 'original', 'new')
+    return @home_display
+  end
+
+
+
 
   def getGACode
 

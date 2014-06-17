@@ -1,0 +1,46 @@
+<!-- promo start -->
+<div class="row clearfix row-featured">
+	<!-- large image right slideshow -->
+	<div class="col-md-8 col-md-push-4 column">
+		<div class="slider">
+			<ul>
+				<% @features.each do |feature| %>
+					<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
+					<li <%= @dur %>><%= feature.content.html_safe %></li>
+				<% end %>
+
+			</ul>
+		</div>
+	</div>
+	<!-- end large image right slideshow -->
+	
+
+	
+	<!-- begin vertical carousel -->	
+	<div class="col-md-4 col-md-pull-8 column">
+		<div class="carousel carousel-vertical theme-default">
+			<div class="panel panel-default">
+				<div class="panel-head">
+					<h3>Now Playing</h3>
+				</div>
+			</div>
+			<ul>
+				<% @showlist.each do |show| %>
+				<li>
+					<%= render partial: "layouts/horizontal_slide", :locals => {
+						:slide_title => show.title, 
+					 	:slide_text => show.subtitle, 
+						:slide_image => image_tag(show.image(:thumb), :alt => show.title), 
+						:slide_url => show.link
+
+						} %>
+
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<!-- end of vertical carousel -->
+	<div class="corners"></div>
+</div>
+<!-- end show promo -->

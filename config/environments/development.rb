@@ -43,5 +43,7 @@ Batterypopv2::Application.configure do
 
 
   BetterErrors.editor = :sublime
+
+  ENV['REDISTOGO_URL'] = 'redis://localhost:6379'
   
 end

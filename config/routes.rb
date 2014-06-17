@@ -2,10 +2,13 @@ Batterypopv2::Application.routes.draw do
 
   mount Rich::Engine => '/rich', :as => 'rich'
   
-  # resources :channels
+  resources :channels
 
 
   # resources :contacts
+  # 
+  
+  mount Split::Dashboard, :at => 'admin/split'
 
   resources :friends do
     resources :episodes
@@ -57,7 +60,7 @@ Batterypopv2::Application.routes.draw do
 
   # get "pages/search"
 
-  # get "shorts", :to => "pages#shorts"
+  get "shorts", :to => "pages#shorts"
   get "calling-all-creators", :to => "pages#creators"
   get "privacy-policy", :to => "pages#privacy"
   get "terms-and-conditions", :to => "pages#terms"

@@ -1,6 +1,7 @@
 module ApplicationHelper
   include DashboardUtility
   include ActsAsTaggableOn::TagsHelper
+  include Split::Helper
 
 
 

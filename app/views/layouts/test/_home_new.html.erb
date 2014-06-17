@@ -1,0 +1,92 @@
+<section class="wrapper">
+		
+			
+	<%= render 'layouts/promo' %>
+
+
+
+
+	<%= render 'layouts/most_popped' %>
+
+
+<!-- shorts channel -->
+<% pos = 0 %>
+	 <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Shorts</h3>
+
+
+      		</div>
+          </div>
+          
+          <ul>
+            <% @shorts.each do |show| %>
+              <li>
+                <%= render partial: "layouts/vertical_slide", :locals => {
+                  :slide_title => show.title, 
+                  :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                  :slide_image => image_tag(show.image(:thumb), :alt => show.title),
+                  :slide_url => show.link} %>
+              </li>
+            <% end %>
+                 
+          </ul>
+        </div>
+  		</div>
+	    </div>
+
+<!-- end shorts channel -->
+
+
+  <!-- repeat channels -->
+
+
+<% pos = 1 %>
+<% @channels.each do |channel| %>
+
+      <%  if(pos >= (colors.count-1)) 
+            pos =0 
+          else
+            pos = pos + 1
+          end
+        %>
+
+
+
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
+          <div class="panel">
+            <div class="panel-head">
+              <h3 class="visible-xs visible-sm"><%= channel.title %></h3>
+
+              <%= image_tag(channel.icon(:original), :alt => channel.title, :class => "hidden-xs hidden-sm title-img  title-#{channel.title.downcase}") %>
+
+      			</div>
+          </div>
+          
+          <ul>
+            <% channel.shows.each do |show| %>
+              <li>
+                <%= render partial: "layouts/vertical_slide", :locals => {
+                  :slide_title => show.title, 
+                  :slide_text => truncate_html(strip_tags(show.description), length: 100, omission: '<b>...(more)</b>'),
+                  :slide_image => image_tag(show.image(:thumb), :alt => show.title),
+                  :slide_url => show.link} %>
+              </li>
+            <% end %>
+                 
+          </ul>
+        </div>
+  		</div>
+    </div>
+<% end %>
+<!-- end channels -->
+
+
+
+	
+</section>
