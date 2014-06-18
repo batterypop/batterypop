@@ -11,7 +11,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Top Daily Episodes - #{thisday}" do
 
-            h4 "Total Video Views Today: #{Visit.where(:created_at => Date.today).count}"
+            h4 "Total Video Views Today: #{Visit.where("created_at >= ?", Time.zone.now.beginning_of_day).count}"
 
             con = ActiveRecord::Base.connection()
 
