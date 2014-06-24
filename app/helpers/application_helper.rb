@@ -1,3 +1,4 @@
+
 module ApplicationHelper
   include DashboardUtility
   include ActsAsTaggableOn::TagsHelper
@@ -98,24 +99,11 @@ module ApplicationHelper
 
 
   def chart_data_to_donut(arr)
-    # h = Array.new
-    # arr.each do |item|
-    #   h << {"label" => item[0], "value" => item[1].to_s}
-    # end
-    # return h
     DashboardUtility.chart_data_to_donut(arr)
   end
 
 
   def chart_data_to_bar(arr)
-    # h = Array.new
-    # arr.each do |item|
-    #   x = Hash.new
-    #   x[:y] = item[0]
-    #   item[1].each{|k,v| x[k.to_sym] = v}
-    #   h << x
-    # end
-    # return h
     DashboardUtility.chart_data_to_bar(arr)
   end
 
@@ -145,7 +133,29 @@ module ApplicationHelper
     return videoData
   end
 
+  def vid_link_create(episode)
+    if(episode.links.empty?)
+      if(episode.embed.provider == 'viddler' ) # no links, need to create
+          videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
+          if videoData['video']['files'].nil?
+            videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
+          end
 
+
+          if !(videoData['video']['files'].nil?)
+            files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+
+            @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+
+            files.each do |f|
+              f['poster'] = @poster
+              @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
+              @link.save
+            end
+          end
+      end
+    end
+  end
 
   def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
@@ -154,27 +164,30 @@ module ApplicationHelper
       traceout("YES #{episode.links.empty?}")
       if(episode.embed.provider == 'viddler' ) # no links, need to create
         
-        videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
+        vid_link_create(episode)
+
+        # videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
        
-        if videoData['video']['files'].nil?
-          videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
-        end
+        # if videoData['video']['files'].nil?
+        #   videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
+        # end
           @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
          # @src = ""
-        if videoData['video']['files'].nil?
+        # if videoData['video']['files'].nil?
+          if episode.links.empty?
            old = Embed.where(:provider => "viddler_original").first
            @ret = old.get_embed(old, episode.video).html_safe
 
         else
-          files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
+          # files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
 
-           @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
+          #  @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
 
-          files.each do |f|
-            f['poster'] = @poster
-            @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
-            @link.save
-          end
+          # files.each do |f|
+          #   f['poster'] = @poster
+          #   @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
+          #   @link.save
+          # end
         end
       else
          @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
@@ -204,12 +217,8 @@ module ApplicationHelper
 
 
 	def vid_file(episode)
-		@viddler ||= Viddler::Client.new(ENV['VIDDLER_ID'])
-		@viddler.authenticate! ENV['VIDDLER_USER'], ENV['VIDDLER_PASSWORD']
-		video = @viddler.get 'viddler.videos.getDetails', :video_id => "#{episode.video}"
-		files = ((video['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by {|g| g['width'] }
-		vid = files.first
-		return vid
+    vid_link_create(episode)
+    return episode.links
 	end
 
 

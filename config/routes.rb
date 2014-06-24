@@ -21,6 +21,7 @@ Batterypopv2::Application.routes.draw do
   resources :links do
     member do
       get :file
+      get :feed
     end
   end
   

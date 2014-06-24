@@ -37,32 +37,41 @@ xml.instruct! :xml, :version => "1.0"
 					xml.guid "#{show_episode_url(show, Episode.friendly.find(episode.id))}"
 
 					xml.embed do
-						xml.cdata!(vid_embed(episode))
+						# xml.cdata!(vid_embed(episode))
 					end
 
 					if episode.embed.provider == 'viddler'
-						vid = vid_file(episode)
+						links = vid_file(episode)
 						
 
 						# should there be multiple video sizes? If not viddler?
 
 						xml.media :group do
-							# xml.media :content => "poo"
-							xml.media(
-								:content, 
-								:url => vid['html5_video_source'], 
-								:type =>  vid['type'],
-								:width => vid["width"],
-						        :height => vid["height"],
-				        		:size => vid["size"],
-				        		:profile => vid['profile_name']
+
+							links.each do | link |
+
+								data = ActiveSupport::JSON.decode(link.data)
+
+								xml.media(
+									:content, 
+									# :url => "http://www.batterypop.com/links/#{link.id}/feed", 
+									:url => "#{feed_link_url(link)}?channel=#{@channel.title}",
+									:type =>  data['type'],
+									:width => data["width"],
+							        :height => data["height"],
+					        		:size => data["size"],
+					        		:profile => data['profile_name'],
+					        		:poster => data['poster']
 								)
+							end
+
 							xml.media(
 								:thumbnail,
 								:url => "#{episode.image(:large)}",
 								:width => "864", 
 								:height => "486"
-								)
+							)
+
 						end
 					end
 				end
