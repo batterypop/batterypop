@@ -14,7 +14,7 @@ class LinksController < ApplicationController
 		@episode = @link.linkedmedia
 		@show = @episode.show
 		finished('home_display_test')
-		save_visit(home_display_test)
+		save_visit({test: home_display_test}.to_json)
 		redirect_to @link.url
 	end
 
@@ -22,7 +22,7 @@ class LinksController < ApplicationController
 	def feed
 		@episode = @link.linkedmedia
 		@show = @episode.show
-		save_visit(params[:channel])
+		save_visit({feed: params[:channel]}.to_json)
 		redirect_to @link.url
 	end
 
