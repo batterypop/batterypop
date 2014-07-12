@@ -7,7 +7,7 @@
 	" %>
 
 
-	<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<strong>For kids</strong> <em>#{@show.age_range}</em> " : '' %>
+	<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<strong class='episode-ages'>For kids</strong> <em>#{@show.age_range}</em> " : '' %>
 
 	<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
 
