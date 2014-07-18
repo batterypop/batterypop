@@ -177,7 +177,7 @@ module ApplicationHelper
           if episode.links.empty?
            old = Embed.where(:provider => "viddler_original").first
            @ret = old.get_embed(old, episode.video).html_safe
-
+           return @ret
         else
           # files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
 
