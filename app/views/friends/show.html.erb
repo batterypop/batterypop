@@ -6,7 +6,7 @@
 
 <% @action = "<span class='episode-badge-vote-#{@episode.id}'>+#{@episode.pops}</span>" %>
 
-<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<br /><span class='episode-ages'>For kids #{@show.age_range}</span> " : '' %>
+<% @age_range =  (!@show.age_range.nil? && !@show.age_range.empty?) ? "<span class='episode-ages'><strong>For kids</strong> <em>#{@show.age_range}</em></span>" : '' %>
 
 <% 	@color_class = ''
 	unless @friend.primary_color.empty? 
