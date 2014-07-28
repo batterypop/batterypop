@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<!-- well -->
-	<div class="col-md-7 column">
+	<div class="col-md-7 column"   <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
 		<div class="well well-split">
 			<div class="row clearfix">
 				<% if !(local_assigns[:crumb_text].nil?) %>
