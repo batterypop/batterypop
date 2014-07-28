@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611012351) do
+ActiveRecord::Schema.define(version: 20140728154458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,12 +251,25 @@ ActiveRecord::Schema.define(version: 20140611012351) do
     t.boolean  "approved"
   end
 
+  create_table "linkages", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
+
   create_table "links", force: true do |t|
     t.string   "url"
     t.text     "data"
     t.integer  "linkedmedia_id"
     t.string   "linkedmedia_type"
-    t.integer  "views",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "visits_count",     default: 0
@@ -451,6 +464,8 @@ ActiveRecord::Schema.define(version: 20140611012351) do
     t.string   "last_sign_in_ip"
     t.integer  "parent_id",                default: 0,  null: false
     t.string   "slug"
+    t.string   "kpass_id"
+    t.string   "kpass_access_key"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

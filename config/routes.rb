@@ -1,5 +1,13 @@
 Batterypopv2::Application.routes.draw do
 
+
+  get 'kpass/authorize' => 'kpass#authorize', as: 'kpass_authorize'
+  get 'kpass/profile' => 'kpass#profile', as: 'kpass_profile'
+  get 'kpass/verify' => 'kpass#verify', as: 'kpass_verify'
+  get 'kpass/sign_out' => 'kpass#sign_out', as: 'kpass_sign_out'
+  post 'kpass/webhooks' => 'kpass#webhooks', as: 'kpass_webhooks'
+
+
   mount Rich::Engine => '/rich', :as => 'rich'
   
   resources :channels
