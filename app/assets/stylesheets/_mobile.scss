@@ -244,7 +244,7 @@ body {
     position: absolute;
     top: 0;
     display: block;
-    z-index: -1;
+    z-index: -5;
   }
     &:before {
     background: url("#{$image-path}/pipe-left.png") 0 0 repeat-y;

@@ -29,6 +29,20 @@ body {
   margin: 0 auto;
 
 }
+
+.bk-extra {
+width: 200%;
+height:100%;
+display:block;
+top:0;
+left:-50%;
+position:
+absolute;
+z-index: -2;
+
+}
+
+
 h1,
 h2,
 h3,
@@ -680,7 +694,12 @@ top: -30px;
   background-color: $blue;
 }
 
-
+.slider.slider-sponsor {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+}
 
 // carousel
 .carousel {
