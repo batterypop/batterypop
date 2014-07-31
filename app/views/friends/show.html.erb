@@ -18,7 +18,7 @@
 	<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
 
 	<%= render partial: "layouts/breadcrumb", :locals => {
-			:crumb_creator => @creator_name.html_safe,
+			:crumb_creator => "By #{@friend.sponsor}",
 			:crumb_style => @color_class,
 			:crumb_thumb  => image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => ""),
 			:crumb_title => @friend.title, 
@@ -192,3 +192,36 @@
 
 
 <%= javascript_include_tag 'refresh' %>
+
+<!-- javascript with optional params -->
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		<% unless @friend.features.empty? %>
+			
+			$('.slider.slider-sponsor ul').bxSlider({
+				controls: <%= !@friend.features_autoplay %>,
+		        infiniteLoop: true,
+		        pager: false, 
+		       <% if @friend.features_autoplay %>
+				  	auto: true,
+				<% end %>
+				responsive: true,
+				touchEnabled: true
+	          	<% if @friend.features_exit == "automatic" %>
+			  		, onSlideBefore: function($slideElement, oldIndex, newIndex){
+					    if(newIndex == 0){
+					    	$( "div.slider-sponsor" ).fadeOut(
+					    		4000,
+						    	$( "div.slider-sponsor" ).html("")
+					    	);
+					    }
+					  }
+				<% end %>
+		    });
+
+		<% end %>
+	});
+</script>

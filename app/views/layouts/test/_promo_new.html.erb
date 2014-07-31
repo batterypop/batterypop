@@ -2,7 +2,7 @@
 <div class="row clearfix row-featured">
 	<!-- large image right slideshow -->
 	<div class="col-md-12 col-lg-8 column">
-		<div class="slider">
+		<div class="slider slider-home">
 			<ul>
 				<% @features.each do |feature| %>
 					<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>

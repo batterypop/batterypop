@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
     });
 
 
-    jQuery('.slider ul').bxSlider({
+    jQuery('.slider.slider-home ul').bxSlider({
         infiniteLoop: true,
         pager: false, 
         auto: true,
