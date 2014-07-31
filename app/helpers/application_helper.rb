@@ -87,8 +87,7 @@ module ApplicationHelper
 
     def custom_background_override
       if !@custom_background.nil?
-      "<div class='bk-extra' style='background: url(#{@custom_background}) repeat left top;
- width: 200%;height:999em;display:block;top:0;left:-50%;position:absolute;z-index: 0;'></div>".html_safe
+      "<div class='bk-extra' style='background: url(#{@custom_background}) repeat left top;'></div>".html_safe
       else
         ""
       end
@@ -229,8 +228,8 @@ module ApplicationHelper
     def is_friend_return_view?
       @prevURL = session[:previous_url].nil? ? ""  : session[:previous_url].split('/')[0..2].join('/')
       @curURL = request.fullpath.split('/')[0..2].join('/')
-      return ( @curURL == @prevURL)
-      # return false
+      # return ( @curURL == @prevURL)
+      return false
     end
 
 end

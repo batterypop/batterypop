@@ -24,7 +24,8 @@
 			:crumb_title => @friend.title, 
 		 	
 		 	:crumb_text => "<h5>#{@show.subtitle}</h5>#{ @friend.description }<p><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</p>".html_safe,
-			:crumb_action => "#{@action}".html_safe
+			:crumb_action => "#{@action}".html_safe, 
+			:crumb_sponsor => true
 			 	} %>
 
 
@@ -34,29 +35,32 @@
 	<!-- video section -->
 
 		<div class="col-md-8 column">
+
+
+			<!-- featured area -->
+			<% unless (@friend.features.empty? || is_friend_return_view?) %>
+
+				<div class=“slider slider-sponsor”>
+					<ul>
+						<% @friend.features.each do |feature| %>
+							<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
+							<li <%= @dur %>><%= feature.content.html_safe %></li>
+						<% end %>
+
+					</ul>
+					<% if @friend.features_exit == "close" %>
+						<span class="closex"></span>
+					<% end %>
+				</div>
+			<% end %>
+
 			<div class="videocontent">
 				<% if !(@episode).nil? %>
 					<%= vid_embed(@episode).html_safe  %>
 				<% end %>
 			</div>
 
-				<!-- featured area -->
-			<% unless (@friend.features.empty? || is_friend_return_view?) %>
-				<div class="friend-featured">
-					<div class="home-featured-wrapper">
-						<ul class="bxslider home-featured">
-							<% @friend.features.each do |feature| %>
-								<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
-								<li <%= @dur %>><%= feature.content.html_safe %></li>
-							<% end %>
-
-						</ul>
-					</div>
-					<% if @friend.features_exit == "close" %>
-						<span class="closex"></span>
-					<% end %>
-				</div>
-			<% end %>
+			
 		</div>
 
 	<!-- end video section -->
@@ -80,7 +84,7 @@
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						<div class="media <% if(@episode == ep) %>active<% end %> ">
-							<a class="clearfix" href="<%= ep.link %>">
+							<a class="clearfix sponsor" href="<%= ep.link %>">
 								<div class="pull-left thumb">
 									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
 								</div>

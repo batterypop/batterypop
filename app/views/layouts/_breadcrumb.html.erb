@@ -10,7 +10,9 @@
 				<% end %>
 				<% if !(local_assigns[:crumb_title].nil?) %>
 					<div class="col-xs-8">
-						<!-- <span class="sponsor label label-red">Sponsored</span> -->
+						<% if !(local_assigns[:crumb_sponsor].nil?) %>
+							<span class="sponsor label">Sponsored</span>
+						<% end %>
 						<div class="summary">
 							<h2><%= crumb_title %></h2>
 							<% if !(local_assigns[:crumb_creator].nil?) %>
