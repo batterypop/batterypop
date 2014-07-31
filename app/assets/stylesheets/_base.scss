@@ -1442,7 +1442,7 @@ margin-top: -50px;
       text-align: right;
 
         img {
-         @extend %border-circle;
+        // @extend %border-circle;
 /*          height: 100px;
          width: 100px; */
          max-width: 100%;
@@ -2142,13 +2142,37 @@ border-bottom: 1px solid $gray-xlite;
   display: block;
 }
 .closex {
-background-color: black;
-background-color: transparentize($blue, .5);
-background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNDQzLjYsMzg3LjFMMzEyLjQsMjU1LjRsMTMxLjUtMTMwYzUuNC01LjQsNS40LTE0LjIsMC0xOS42bC0zNy40LTM3LjZjLTIuNi0yLjYtNi4xLTQtOS44LTRjLTMuNywwLTcuMiwxLjUtOS44LDQgIEwyNTYsMTk3LjhMMTI0LjksNjguM2MtMi42LTIuNi02LjEtNC05LjgtNGMtMy43LDAtNy4yLDEuNS05LjgsNEw2OCwxMDUuOWMtNS40LDUuNC01LjQsMTQuMiwwLDE5LjZsMTMxLjUsMTMwTDY4LjQsMzg3LjEgIGMtMi42LDIuNi00LjEsNi4xLTQuMSw5LjhjMCwzLjcsMS40LDcuMiw0LjEsOS44bDM3LjQsMzcuNmMyLjcsMi43LDYuMiw0LjEsOS44LDQuMWMzLjUsMCw3LjEtMS4zLDkuOC00LjFMMjU2LDMxMy4xbDEzMC43LDEzMS4xICBjMi43LDIuNyw2LjIsNC4xLDkuOCw0LjFjMy41LDAsNy4xLTEuMyw5LjgtNC4xbDM3LjQtMzcuNmMyLjYtMi42LDQuMS02LjEsNC4xLTkuOEM0NDcuNywzOTMuMiw0NDYuMiwzODkuNyw0NDMuNiwzODcuMXoiLz48L3N2Zz4=");
+  @include opacity(.5);
+background-color: $dark;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKlJREFUeNrUVm0KgDAInTtLu/+B7C5GMGgsPxcWCf5pPp9TnguIqGRaLcnGEWD3qPG4s0WDI12G05nmIk4KipCoOGsGm9Eu7DGyOaqRbuKKLYtAdyEg6EC6+j60jjtr80dQhGb310huCa0NFS8l9yjZIlGTf7YqInOwdKISeIesktRg8l2YiUySLbRXV0UkuRtTn4jIJcbsB4fbRThUF30ybzj4/V/FIcAA3MjEKwzldmYAAAAASUVORK5CYII=);
 background-position: 50% 50%;
+background-repeat: no-repeat;
+cursor: pointer;
 height: 60px;
 width: 60px;
 position: absolute;
 top: 0;
 right: 0;
+//@extend %border-circle;
+}
+
+.media-list {
+  .sponsor {
+      &:before {
+      content: "";
+      background: url("#{$image-path}/badge-sponsor.svg") 0 0 no-repeat;
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 90px;
+      height: 90px;
+      background-size: contain;
+      display: block;
+      z-index: 2;
+    }
+  }
+}
+
+.no-svg .sponsor:before {
+  background-image: url("#{$image-path}/badge-sponsor.png");
 }

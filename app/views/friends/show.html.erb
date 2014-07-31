@@ -40,7 +40,7 @@
 			<!-- featured area -->
 			<% unless (@friend.features.empty? || is_friend_return_view?) %>
 
-				<div class=“slider slider-sponsor”>
+				<div class="slider slider-sponsor">
 					<ul>
 						<% @friend.features.each do |feature| %>
 							<% @dur = feature.seconds.nil? ? "" : "duration=#{feature.seconds}"%>
