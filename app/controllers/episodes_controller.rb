@@ -32,6 +32,9 @@ class EpisodesController < ApplicationController
     elsif params.has_key?(:friend_id)
       @friend = Friend.friendly.find(params["friend_id"])
       @title = @friend.title
+      if @friend.background.present? 
+        @custom_background = @friend.background(:original)
+      end
       render 'friends/show'
     end
   end

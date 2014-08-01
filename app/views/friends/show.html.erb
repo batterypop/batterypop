@@ -15,7 +15,6 @@
 		end %>
 
 
-	<% @creator_name = (@show.creator.hidden?) ? "#{@show.creator.displayname}" : "<a href='#{@show.creator.link}'>#{@show.creator.displayname}</a>"  %>
 
 	<%= render partial: "layouts/breadcrumb", :locals => {
 			:crumb_creator => "By #{@friend.sponsor}",
