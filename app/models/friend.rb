@@ -67,6 +67,10 @@ class Friend < ActiveRecord::Base
 		"/friends/" + self.slug
 	end
 
+	def episode_link(episode)
+		self.link + '/episodes/' + episode.slug
+	end
+
 	def should_generate_new_friendly_id?
 	  slug.blank? || title_changed?
 	end
