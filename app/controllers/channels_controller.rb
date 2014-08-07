@@ -21,6 +21,7 @@ class ChannelsController < ApplicationController
       format.rss {render :layout => false }
       # format.roku {render :layout => false }
       format.roku {render :layout => false }
+      format.tubi {render :layout => false }
       format.json { render :json => @channel }
       format.html {
         if @channel.hidden? 

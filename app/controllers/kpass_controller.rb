@@ -65,6 +65,11 @@ class KpassController < ApplicationController
       json = open(verify_url).read
       response = JSON.parse(json)
 
+      puts ""
+      puts " %%%%%%%%%%%"
+      puts ""
+      puts response.inspect
+
       # find or create a new user based on the username of the kpass account.
       # for over-13 users, the json will include their username (since they're
       # allowed to authorize the sharing of it.) if it's not present (because
@@ -80,7 +85,7 @@ class KpassController < ApplicationController
       @user = User.find_or_create_by(kpass_id: kpass_id)
 
       # set or update the username.
-      @user.handle = username
+      @user.username = username
 
       # store the api key we have for this user.
       @user.kpass_access_key = response["access_key"]
@@ -88,10 +93,13 @@ class KpassController < ApplicationController
       # save the user in the sample app.
       @user.save
 
+
+      puts @user.inspect
+
       # mark the user as signed in locally.
       # (this is a helper method of devise, the rails ruby gem we're using for
       # authentication in the sample app.)
-      session_sign_in(@user)
+     # session_sign_in(@user)
 
     end
 
@@ -104,13 +112,15 @@ class KpassController < ApplicationController
       # redirect them back to whatever it was they were doing.
       after_sign_in = session['after_sign_in']
       session['after_sign_in'] = nil
-      redirect_to after_sign_in
+      # redirect_to after_sign_in
 
     # if the user was just generally signing in..
     else
 
       # show them the list of rooms they can now chat in.
-      redirect_to rooms_path
+      # redirect_to rooms_path
+
+      puts @user.inspect
 
     end
 
@@ -122,7 +132,7 @@ class KpassController < ApplicationController
     # mark them as signed out.
     # (this is a helper method of devise, the rails ruby gem we're using for
     # authentication in the sample app.)
-    session_sign_out
+    #session_sign_out    <----   NEED TO CHANGE TO CUSTOM USER SIGN OUT
 
     # send them back to the homepage.
     redirect_to root_path
