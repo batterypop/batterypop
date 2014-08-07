@@ -9,7 +9,10 @@
 /* max-width 480px */
 //@media(max-width: $screen-xs-min){
 @media(max-width: 480px){
-
+.sponsor.label {
+display: inline;
+position: relative;
+}
 .post {
   h1 {
     @include fontsize(3.0);
