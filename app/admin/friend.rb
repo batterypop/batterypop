@@ -14,6 +14,7 @@ ActiveAdmin.register Friend do
       f.input :title, :required => true
       f.input :sponsor, :required => true
       f.input :approved, :required => true
+      f.input :hide_sponsor_banner, :label => "Hide 'SPONSOR' banner?"
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 
