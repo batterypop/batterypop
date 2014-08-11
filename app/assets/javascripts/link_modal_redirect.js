@@ -15,7 +15,9 @@ $(document).ready(function(){
 	});
 
 	$('#btnYes').click(function(){
-		window.location.href = $(this).attr("data-url");
+		// window.location.href = $(this).attr("data-url");
+		var url = $(this).attr("data-url");
+		window.open($(this).attr("data-url"), '_new');
 	});
 
 });
