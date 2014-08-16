@@ -10,7 +10,8 @@
 					<ul class="nav navbar-nav">
 	
 
-<%= render "layouts/test/navigation_#{home_display_test}" %>
+<% # render "layouts/test/navigation_#{home_display_test}" %>
+<%= render "layouts/test/navigation_new" %>
 
 
 
@@ -122,6 +123,8 @@
 	</div><!-- /.modal -->
 
 
+
+<% link_to 'KPASS Signin', kpass_authorize_path %>  <% link_to 'KPASS Profile', kpass_profile_path(:return_to => 'http://www.gadbooks.com/') %> 
 
 <!-- signup modal -->
 

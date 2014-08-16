@@ -27,8 +27,12 @@ class KpassController < ApplicationController
 
     # redirect to kpass for authorization (and authentication if they're not
     # signed in.)
-    redirect_to "#{ENV['KPASS_ENDPOINT']}/oauth/authorize?app_id=#{ENV['KPASS_APP_ID']}"
+    # 
+    
 
+    authorize_url =  "#{ENV['KPASS_ENDPOINT']}/oauth/authorize?app_id=#{ENV['KPASS_APP_ID']}"
+     puts ""; puts "%%%%%%%%%%"; puts "authorize";  puts authorize_url; puts ""
+     redirect_to authorize_url
   end
 
   # when a user hits '/kpass/profile'
@@ -41,7 +45,10 @@ class KpassController < ApplicationController
     # done editing their profile.
     # redirect_to "#{ENV['KPASS_ENDPOINT']}?app_id=#{ENV['KPASS_APP_ID']}&return_to=#{URI::escape(params['return_to'])}"
 
-    redirect_to "#{ENV['KPASS_ENDPOINT']}?app_id=#{ENV['KPASS_APP_ID']}&return_to=#{URI::escape(params['return_to'])}"
+    profile_url = "#{ENV['KPASS_ENDPOINT']}?app_id=#{ENV['KPASS_APP_ID']}&return_to=#{URI::escape(params['return_to'])}"
+    puts ""; puts "%%%%%%%%%%"; puts profile_url; puts ""
+    puts params.inspect
+    redirect_to profile_url
   end
 
   # when a user hits '/kpass/verify'
@@ -62,6 +69,8 @@ class KpassController < ApplicationController
       # access key and some other user details for this user. this is standard
       # oauth stuff.
       verify_url = "#{ENV['KPASS_ENDPOINT']}/oauth/verify?api_key=#{ENV['KPASS_API_KEY']}&token=#{params[:token]}"
+      puts verify_url
+
       json = open(verify_url).read
       response = JSON.parse(json)
 
@@ -132,6 +141,8 @@ class KpassController < ApplicationController
     # mark them as signed out.
     # (this is a helper method of devise, the rails ruby gem we're using for
     # authentication in the sample app.)
+    # 
+    # 
     #session_sign_out    <----   NEED TO CHANGE TO CUSTOM USER SIGN OUT
 
     # send them back to the homepage.
@@ -142,10 +153,13 @@ class KpassController < ApplicationController
   # when kpass sends a request to '/kpass/webhooks'
   # (this is a server-to-server request)
   def webhooks
-
+puts ""; puts "%%%%%%%%%%"; puts "webhooks";  puts ""
     # parse the json data.
+    
+    puts params.inspect
     data = JSON.parse(params['json'])
-
+puts ""
+      puts data.inspect
     # if it's an authorization webhook.
     if data['type'].include?("member.authorization")
 

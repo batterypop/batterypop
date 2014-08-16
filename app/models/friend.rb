@@ -43,6 +43,15 @@ class Friend < ActiveRecord::Base
 	before_save :destroy_images?
 
 	#image stuff
+	#
+	has_attached_file :sidebar_image,
+	    :styles => { large: "400x390>", :thumb => "100x100>"},
+	    storage: :s3,
+	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+	    path: "images/friends/:id/sidebar_image/:attachment/:style/:filename",
+	    bucket: S3_BUCKET,
+	    default_url: "/assets/missing.png"
+
 	has_attached_file :image,
 	    :styles => { large: "300x300>", node: "250x250>", :thumb => "100x100>" },
 	    storage: :s3,
@@ -94,6 +103,14 @@ class Friend < ActiveRecord::Base
 		@delete_image = value
 	end
 
+	def delete_sidebar_image
+		@delete_sidebar_image ||= "0"
+	end
+	def delete_sidebar_image=(value)
+		@delete_sidebar_image = value
+	end
+
+
 	def delete_background
 		@delete_background ||= "0"
 	end
@@ -102,12 +119,17 @@ class Friend < ActiveRecord::Base
 	end
 
 
+	scope :series, -> {where(:approved => true)}
+
+
+
 	private  
 	def destroy_images?
 	    # self.image.clear if @delete_image == "1"
 	    # self.background.clear if @delete_background == "1"
 	    self.image = nil if @delete_image == "1"
 	    self.background = nil if @delete_background == "1"
+	    self.sidebar_image = nil if @delete_sidebar_image == "1"
 	end
 
 	def slug_candidates

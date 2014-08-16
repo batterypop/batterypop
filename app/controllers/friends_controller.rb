@@ -3,11 +3,11 @@ class FriendsController < ApplicationController
 
 
 	def index
-		redirect_to "/"
-		# @title = "Friends"
-		# @active = "friends"
-		# @friends = Friend.all
-
+		# redirect_to "/"
+		@title = "Friends"
+		@active = "friends"
+		@friends=Friend.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
+	    @description = "Check out these cool videos from batteryPOP's coolest friends!."
 	end
 
 	def show

@@ -129,8 +129,8 @@ gem 'memcachier'
 gem 'dalli'
 
 
-gem 'split', "~> 0.7.2", :require => 'split/dashboard'
-gem 'redis'
+# gem 'split', "~> 0.7.2", :require => 'split/dashboard'
+# gem 'redis'
 
 # gem 'google-api-client'
 gem 'rack-google-analytics'

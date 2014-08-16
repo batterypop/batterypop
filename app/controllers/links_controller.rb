@@ -13,8 +13,8 @@ class LinksController < ApplicationController
 		# ga_track_event("Users", "Login", "Standard")
 		@episode = @link.linkedmedia
 		@show = @episode.show
-		finished('home_display_test')
-		save_visit({test: home_display_test}.to_json)
+		# finished('home_display_test')
+		save_visit()
 		redirect_to @link.url
 	end
 

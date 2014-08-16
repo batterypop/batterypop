@@ -1,0 +1,100 @@
+<section class="wrapper">
+
+<% pos = 0 %>
+
+
+<!-- page header; break off? -->
+  <div class="row clearfix">
+    <div class="col-md-12">
+
+      <div class="banner theme-blue">
+          <div class="well well-frame">
+            <h3>Shows</h3>
+            <p>The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends.</p>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- page header end; break off? -->
+
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="text-center">
+        <%= will_paginate @shows, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+
+  <% @shows.each do |show| %>
+  <%  
+    if(pos >= (colors.count-1)) 
+      pos =0 
+    else
+      pos = pos + 1
+    end
+  %>
+
+
+  <div class="row clearfix">
+    <div class="col-lg-12 column">
+      <div class="panel-split panel-frame panel panel-<%= colors[pos] %> clearfix">
+
+        <div class="row clearfix">
+          <div class="col-md-5 column">
+            <div class="well clearfix">
+              <a href="<%= show.link %>">
+                <div class="thumb"><%= image_tag(show.image(:thumb), :alt => show.title, :class => "show-episode-image", :width => '160') %></div>
+                <div class="summary">
+                  <h2><%= "#{show.title}" %></h2>
+                  <h5><%= show.subtitle %></h5>
+                  <%= show.description.html_safe %>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-7 column">
+            <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
+              <ul>
+              <% show.episodes.find_each do |episode| %>
+                <li>
+                  
+                  <%= render partial: "layouts/vertical_slide", :locals => {
+                  :slide_title => episode.title.html_safe, 
+                  :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
+                  :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
+                  :slide_url =>  episode.link, 
+                  :slide_class => !episode.friends.approved.empty? ? "sponsor": nil
+
+                  } %>
+
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <!-- carousel -->
+        </div>
+        <!-- panel -->
+      </div>
+      <!-- row -->
+    </div>
+  <!-- col -->
+  </div>
+  <!-- row -->
+
+<!-- end lower listings -->
+<% end %>
+
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="text-center">
+        <%= will_paginate @shows, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>

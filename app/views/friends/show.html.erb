@@ -110,6 +110,15 @@
 
 		<div class="col-md-4 column sidebar">
 
+			<% if @friend.sidebar_image.present?  %>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+					<%= image_tag(@friend.sidebar_image.url, :width => "100%") %>
+					</div>
+				</div>
+			<% end %>
+
+
 			<%= render 'layouts/ads/sidebar' %>
 
 			<div class="row clearfix">

@@ -25,6 +25,16 @@ ActiveAdmin.register Friend do
         f.input :delete_image, as: :boolean, required: :false, label: 'Remove image'
       end
 
+      f.input :sidebar_image,  :hint => f.object.sidebar_image.present? \
+        ? f.template.image_tag(f.object.sidebar_image.url(:thumb)) 
+        : f.template.content_tag(:span, 'No icon as yet.')
+      if f.object.sidebar_image.present? 
+        f.input :delete_sidebar_image, as: :boolean, required: :false, label: 'Remove image'
+      end
+
+       f.input :sidebar_image_link, :label => "URL for Sidebar?"
+
+
       f.input :background,  :allow_destroy => true,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.background.url(:thumb))
         : f.template.content_tag(:span, 'No background as yet.')

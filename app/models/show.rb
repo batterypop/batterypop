@@ -81,6 +81,10 @@ def link
 	return "/shows/" + self.slug
 end
 
+def episode_link(episode)
+	self.link + '/episodes/' + episode.slug
+end
+
 def thumb
 	return (self.image(:thumb))
 end
