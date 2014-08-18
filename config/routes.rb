@@ -19,6 +19,10 @@ Batterypopv2::Application.routes.draw do
   # mount Split::Dashboard, :at => 'admin/split'
 
   resources :friends do
+    member do
+      get :follow
+      get :unfollow
+    end
     resources :episodes
   end
 

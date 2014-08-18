@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-	before_action :set_friend, only: [:show, :edit, :update, :destroy]
+	before_action :set_friend, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
 
 	def index
@@ -22,6 +22,22 @@ class FriendsController < ApplicationController
 			end
 		else
 			redirect_to "/"
+		end
+	end
+
+	def follow
+		unless current_user.nil?
+		  current_user.follow(@friend)
+		  @friend_follow_status = "You are following"
+		  current_user.touch  # cache clear; TODO: sweeper?
+		end
+	end
+
+	def unfollow
+		unless current_user.nil?
+		  current_user.stop_following(@friend)
+		   @friend_follow_status = ""
+		   current_user.touch  # cache clear; TODO: sweeper?
 		end
 	end
 

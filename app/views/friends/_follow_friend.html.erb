@@ -1,0 +1,35 @@
+<div class="col-sm-12 col-xs-6">
+    <div class='button-follow follow_friend-<%= friend.id %>'>
+
+    <% if current_user.nil? %>
+
+        <a class='btn btn-navy disabled' data-toggle="modal" data-target="#become_member"  href='#'>
+            <h5>FOLLOW</h5>
+        </a>
+   
+
+    <% else %>
+
+      <% if current_user.following?(friend) %> 
+        <%= link_to(unfollow_friend_path(friend), 
+            :remote => true, 
+            :class => 'btn btn-navy pop-ver', 
+            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to stop following <b>'#{friend.title}!'</b>"} 
+            ) do %>
+    		<h5>UN-FOLLOW</h5>
+        <% end %>
+      <% else %>
+      <%= puts "FRIEND CALLED" %>
+        <%= link_to(follow_friend_path(friend),
+            :remote => true, 
+            :class => 'btn btn-navy pop-over', 
+            :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Click to follow <b>'#{friend.title}!'</b>"} 
+            ) do %>
+    		<h5>FOLLOW</h5>
+        <%end%>
+      <% end %>
+    <% end %>
+</div>
+</div><!-- col-half2 -->
+
+</div><!-- end button row -->
