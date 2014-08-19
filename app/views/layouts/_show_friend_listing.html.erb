@@ -38,7 +38,7 @@ list_items (array ie @shows)
   <% list_items.each do |item| %>
   <%  
   # color from friend: primary color or else next in position
-  if (defined?(item.primary_color)).nil? 
+  if  !item.primary_color? 
     if(pos >= (colors.count-1)) 
       pos =0 
     else
