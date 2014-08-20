@@ -3,7 +3,9 @@
 	<!-- badge -->
 	<% @action = "
 	#{ render :partial => "episodes/popunpop", :locals => {:episode => @episode} }
+	<div class='col-sm-12 col-xs-6'>
 	#{ render :partial => "shows/follow_show", :locals => {:show => @show} }
+	</div>
 	" %>
 
 
