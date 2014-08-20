@@ -38,18 +38,22 @@ list_items (array ie @shows)
   <% list_items.each do |item| %>
   <%  
   # color from friend: primary color or else next in position
-  if  !item.primary_color? 
-    if(pos >= (colors.count-1)) 
-      pos =0 
-    else
-      pos = pos + 1
-    end
-    panelColor = "panel-#{colors[pos]}"
-    styleColor = ""
+  
+  if(pos >= (colors.count-1)) 
+    pos =0 
   else
-    panelColor = ""
-    styleColor = "background-color: #{item.primary_color};"
+    pos = pos + 1
   end
+  panelColor = "panel-#{colors[pos]}"
+  styleColor = ""
+
+  if !(defined?(item.primary_color).nil?)
+    if item.primary_color?
+      panelColor = ""
+      styleColor = "background-color: #{item.primary_color};"
+    end
+  end
+  
   %>
 
 
