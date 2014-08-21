@@ -3,6 +3,7 @@
 listing_title
 listing_description
 list_items (array ie @shows)
+list_class 
 
 -->
 
@@ -65,10 +66,10 @@ list_items (array ie @shows)
           <div class="col-md-5 column">
             <div class="well clearfix">
               <a href="<%= item.link %>">
-                <div class="thumb"><%= image_tag(item.image(:thumb), :alt => item.title, :class => "show-episode-image", :width => '160') %></div>
+                <div class="thumb <%= list_class %>"><%= image_tag(item.image(:thumb), :alt => item.title, :class => "show-episode-image", :width => '160') %></div>
                 <div class="summary">
                   <h2><%= "#{item.title}" %></h2>
-                  <h5><% unless (defined?(item.subtitle)).nil? %><%= item.subtitle %></h5><% end %>
+                  <% unless (defined?(item.subtitle)).nil? %><h5><%= item.subtitle %></h5><% end %>
                   <%= strip_links(item.description).html_safe %>
                 </div>
               </a>
