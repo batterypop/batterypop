@@ -84,7 +84,7 @@
 						<% @age_range =  (!ep.age_range.nil? && !ep.age_range.empty?) ? "<span class='episode-age-range'>For kids #{ep.age_range}</span> " : ' ' %>
 						<% (@vote == (current_user && (current_user.voted_up_on? ep))  ? "pop" : "") %>
 						<div class="media <% if(@episode == ep) %>active<% end %> ">
-							<a class="clearfix <% if(!@friend.hide_sponsor_banner?) %>sponsor<% end %> " href="<%= @friend.episode_link(ep) %>">
+							<a class="clearfix <% if(!@friend.hide_sponsor_listing?) %>sponsor<% end %> " href="<%= @friend.episode_link(ep) %>">
 								<div class="pull-left thumb">
 									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
 								</div>

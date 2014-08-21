@@ -14,7 +14,8 @@ ActiveAdmin.register Friend do
       f.input :title, :required => true
       f.input :sponsor
       f.input :approved, :required => true
-      f.input :hide_sponsor_banner, :label => "Hide 'SPONSOR' banner?"
+      f.input :hide_sponsor_banner, :label => "Hide 'SPONSOR' in breadcrumb?"
+      f.input :hide_sponsor_listing, :label => "Hide 'SPONSOR' in Sponsor episode list?"
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 

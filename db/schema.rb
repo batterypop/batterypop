@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815082319) do
+ActiveRecord::Schema.define(version: 20140821004706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 20140815082319) do
     t.integer  "sidebar_image_file_size"
     t.datetime "sidebar_image_updated_at"
     t.string   "sidebar_image_link"
+    t.boolean  "hide_sponsor_listing"
   end
 
   create_table "linkages", force: true do |t|
