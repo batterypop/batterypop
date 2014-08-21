@@ -1093,7 +1093,7 @@ top: -30px;
               //text-align: center;
               //margin: 0 auto;
               max-width: 100%;
-              //@extend %border-circle;
+              @extend %border-circle;
             }
         }
         .summary {
@@ -1124,6 +1124,10 @@ top: -30px;
 
         }
     }
+}
+
+.thumb.thumb-logo img {
+border-radius: 0 !important;
 }
 
 [class*="bpop-icon-"] h3 {
