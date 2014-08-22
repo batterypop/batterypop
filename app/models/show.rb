@@ -123,6 +123,9 @@ def voters_from_show_episodes
 	return h
 end
 
+def hide_sponsor_listing?
+	return false
+end
 
 def episodes_votes_by_age
 	voters = self.voters_from_show_episodes
