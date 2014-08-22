@@ -1,6 +1,6 @@
-cache [@channel, 'rss'], skip_digest: true,  :expires_in => 8.hours  do
+cache [@channel, 'rss'], skip_digest: true,  :expires_in => 2.hours  do
 
-xml.instruct! :xml, :version => "1.0"
+xml.instruct! 
 
 	xml.rss(:version => "2.0", "xmlns:media" => 'http://search.yahoo.com/mrss/', "xmlns:atom" => "http://www.w3.org/2005/Atom")  do
 	
@@ -29,6 +29,8 @@ xml.instruct! :xml, :version => "1.0"
 					xml.description do
 						xml.cdata!("#{show.description} #{episode.description}")
 					end
+					xml.age_range "#{episode.age_range}"
+
 					xml.thumbnail "#{episode.image(:thumb)}"
 					# xml.source
 					# need to get episode.embed with code 
