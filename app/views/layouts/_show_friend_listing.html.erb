@@ -66,7 +66,7 @@ list_class
           <div class="col-md-5 column">
             <div class="well clearfix">
               <a href="<%= item.link %>">
-                <div class="thumb <%= list_class %>"><%= image_tag(item.image(:thumb), :alt => item.title, :class => "show-episode-image", :width => '160') %></div>
+                <div class="thumb <%= list_class %>"><%= image_tag(item.image(:listing), :alt => item.title, :class => "show-episode-image", :width => '160') %></div>
                 <div class="summary">
                   <h2><%= "#{item.title}" %></h2>
                   <% unless (defined?(item.subtitle)).nil? %><h5><%= item.subtitle %></h5><% end %>
