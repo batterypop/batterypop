@@ -7,7 +7,7 @@ class FriendsController < ApplicationController
 		@title = "Friends"
 		@active = "friends"
 		@friends=Friend.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
-	    @description = "Check out these cool videos from batteryPOP's coolest friends!."
+	    @description = "Check out these cool videos from batteryPOP's coolest friends!"
 	end
 
 	def show

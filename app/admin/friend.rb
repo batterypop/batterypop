@@ -19,6 +19,8 @@ ActiveAdmin.register Friend do
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
 
+      f.input :created_at, :as => :datetime_select
+
       f.input :image,  :hint => f.object.image.present? \
         ? f.template.image_tag(f.object.image.url(:thumb)) 
         : f.template.content_tag(:span, 'No icon as yet.')

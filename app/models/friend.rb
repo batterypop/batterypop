@@ -53,7 +53,7 @@ class Friend < ActiveRecord::Base
 	    default_url: "/assets/missing.png"
 
 	has_attached_file :image,
-	    :styles => { large: "300x300>", node: "250x250>", :thumb => "100x100>" },
+	    :styles => { large: "300x300>", listing: "200x200>", :thumb => "150x150>" },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
 	    path: "images/friends/:id/image/:attachment/:style/:filename",

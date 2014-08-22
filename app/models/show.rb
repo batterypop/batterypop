@@ -55,8 +55,8 @@ class Show < ActiveRecord::Base
 	    :styles => { large: "864x486>", 
 	    	:thumb => "150x150#",
 	    	:roku_sd => "214x144^",
-	    	:roku_hd => "290x218^"
-	    	
+	    	:roku_hd => "290x218^",
+	    	:listing => "200x200>"
 	    	 },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
