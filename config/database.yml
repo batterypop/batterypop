@@ -6,18 +6,6 @@ production:
   post: 5432
   encoding: unicode
 
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-
-
-staging:
-  adapter: postgresql
-  database: dal4bbm219boh3
-  username: uuzvyifdefyufx
-  password: PXErg7DOd47qEML1_JNH7d5cEV
 
 
 staging:
