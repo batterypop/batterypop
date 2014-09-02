@@ -58,7 +58,7 @@ ActiveAdmin.register Show do
 			f.input :promote, :label => "Promote on Home Page?.", :hint => "Select this to add to the bottom Promoted carousel."
 			f.input :approved, :label => "BatteryPOP approved."
 			f.input :created_at, :as => :datetime_select
-			f.input :updated_at, :as => :datetime_select
+			# f.input :updated_at, :as => :datetime_select
 		end
 		 f.inputs "Episodes" do
 		 	f.has_many :episodes, :allow_destroy => true do |e|

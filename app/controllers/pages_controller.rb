@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :set_page, only: [:show, :edit, :update]
   
   def home
     @title = "Free Videos for Kids"
@@ -30,8 +31,6 @@ class PagesController < ApplicationController
   def bot
   end
 
-  def test
-  end
 
   def investors
     @title = "Investors"
@@ -42,14 +41,14 @@ class PagesController < ApplicationController
     @active = "contact"
   end
   
-  def about
-    @title = "About Us"
-     @active = "about"
-  end
+  # def about
+  #   @title = "About Us"
+  #   @active = "about"
+  # end
   
   def shows
     @title = "Shows"
-     @active = "shows"
+    @active = "shows"
   end
 
   def shorts
@@ -59,31 +58,40 @@ class PagesController < ApplicationController
     # @groups = @shorts.each_slice(4).to_a
   end
 
-  def creators
-    @title = "Calling All Creators"
-     @active = "creators"
-  end
+  # def creators
+  #   @title = "Calling All Creators"
+  #    @active = "creators"
+  # end
 
-  def privacy
-    @title = "Privacy Policy"
-     @active = "privacy"
-  end
+  # def privacy
+  #   @title = "Privacy Policy"
+  #    @active = "privacy"
+  # end
 
-  def terms
-    @title = "Terms and Conditions"
-    @active = "terms"
-  end
+  # def terms
+  #   @title = "Terms and Conditions"
+  #   @active = "terms"
+  # end
 
-  def advertise
-    @title = "Advertise on batteryPOP!"
-     @active = "advertise"
-  end
+  # def advertise
+  #   @title = "Advertise on batteryPOP!"
+  #    @active = "advertise"
+  # end
 
+
+  def show
+    @active = @page.slug
+    @title = @page.title
+  end
 
 
   private 
   def check_cookie
     
+  end
+
+  def set_page
+    @page = Page.friendly.find(params[:id])
   end
 
 

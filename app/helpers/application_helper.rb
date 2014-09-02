@@ -221,6 +221,12 @@ module ApplicationHelper
 	end
 
 
+  # using helper method to determin path, get possible link / sidebar and display
+  def draw_if_sidebar
+    Link.sidebar_from_link(request.original_fullpath)
+  end
+
+
 
 
 

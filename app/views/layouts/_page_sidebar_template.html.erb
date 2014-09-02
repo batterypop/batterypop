@@ -1,0 +1,13 @@
+<h3 class="text-center"><span class="glyphicon glyphicon-plus-sign"></span>  <%= sidebar.title %>  <span class="glyphicon glyphicon-plus-sign"></span></h3>
+<div class="panel-body sidebar">
+
+	<div class="list-group">
+	<% sidebar.links.find_each do |link| %>
+		<a href="<%= link.url %>" class="list-group-item  <% if(request.original_fullpath==link.url) %> active<% end %>">
+			<h4 class="list-group-item-heading "><%= link.title %></h4>
+		</a>
+	<% end %>
+
+	</div>
+
+</div>

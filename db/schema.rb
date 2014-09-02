@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821004706) do
+ActiveRecord::Schema.define(version: 20140902133125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,6 +281,7 @@ ActiveRecord::Schema.define(version: 20140821004706) do
     t.datetime "updated_at"
     t.integer  "visits_count",     default: 0
     t.string   "link_type"
+    t.string   "title"
   end
 
   create_table "notifications", force: true do |t|
@@ -302,6 +303,14 @@ ActiveRecord::Schema.define(version: 20140821004706) do
   end
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id", using: :btree
+
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
@@ -380,6 +389,13 @@ ActiveRecord::Schema.define(version: 20140821004706) do
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true, using: :btree
+
+  create_table "sidebars", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "survey_answers", force: true do |t|
     t.integer  "attempt_id"

@@ -1,5 +1,5 @@
 ActiveAdmin.register Feature do
-	menu :parent => "bPOP Pages", :priority => 1
+	menu :parent => "bPOP Pages", :priority => 3
 
 	sortable
 

@@ -1,0 +1,35 @@
+<section class="wrapper">
+
+	<div class="row clearfix">
+
+
+	
+	<% # if there's no sidebars then fullwidth content
+		if(draw_if_sidebar.nil?)
+	%>
+		<div class="col-md-12">
+
+		<%= @page.content.html_safe %>
+
+		</div>
+
+	<% else %>
+		 <div class="col-md-3">
+			<%# @page.sidebars.find_each do |sidebar| %>
+				<%= render partial: 'layouts/page_sidebar_template',  :locals => {:sidebar => draw_if_sidebar} %>
+			<%# end %>
+		</div>
+
+		<div class="col-md-7">
+
+		<%= @page.content.html_safe %>
+
+		</div>
+	<% end %>
+		
+
+
+				
+			 <a href="https://plus.google.com/111613426507812683994" rel="me" style="color: white;">Google+</a>
+	</div>	
+</section>
