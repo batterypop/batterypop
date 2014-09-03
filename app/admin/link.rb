@@ -7,7 +7,7 @@ ActiveAdmin.register Link do
       f.input :url, :required => true
       f.input :link_type, :required => true, collection: ['url', 'file']
       f.input :data
-
+      f.input :created_at, :as => :datetime_select
       # f.has_many :items do |item|
       #   item.input :itemizable_identifier, collection: (Domain.all + Service.all).map { |i| [ i.name, "#{i.class}-#{i.id}"] }
       #   item.input :quantity
