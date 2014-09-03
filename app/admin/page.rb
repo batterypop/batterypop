@@ -11,7 +11,7 @@ ActiveAdmin.register Page do
       f.input :title, :required => true
       f.input :slug
       f.input :content, :as => :rich, :allow_embeds => true
-      f.input :sidebars, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :title, :through => :pages_sidebars
+      # f.input :sidebars, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :title, :through => :pages_sidebars
     end
     f.actions
   end
