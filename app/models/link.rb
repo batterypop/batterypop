@@ -1,6 +1,8 @@
 class Link < ActiveRecord::Base
 	belongs_to :linkedmedia, :polymorphic =>  true
 
+	# default_scope order('created_at DESC')
+
 	has_many :visits
 	has_many :sidebars
 
