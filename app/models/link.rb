@@ -9,9 +9,8 @@ class Link < ActiveRecord::Base
 
 	def self.sidebar_from_link(str)
 		unless Link.find_by(:link_type => 'url', :url => str).nil?
-			Link.find_by(:link_type => 'url', :url => str).linkedmedia
+			return	Link.find_by(:link_type => 'url', :url => str).linkedmedia
 		end
-		# return link
 	end
 
 

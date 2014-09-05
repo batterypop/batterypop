@@ -223,6 +223,7 @@ module ApplicationHelper
 
   # using helper method to determin path, get possible link / sidebar and display
   def draw_if_sidebar
+    puts ""; puts " %*%*%*%*%*%*%*%*%**%*%*%*%*%"; puts request.original_fullpath;
     Link.sidebar_from_link(request.original_fullpath)
   end
 

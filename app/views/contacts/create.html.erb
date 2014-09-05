@@ -2,7 +2,13 @@
 
   <div class="row clearfix">
     <div class="col-md-3">
-      <%= render 'layouts/about_sidebar' %>
+      
+      <%=
+      if(!draw_if_sidebar.nil?)
+          render partial: 'layouts/page_sidebar_template',  :locals => {:sidebar => draw_if_sidebar}
+      end
+      %>
+
     </div>
 
     <div class="col-md-9">
