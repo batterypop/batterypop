@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
    
   end
 
+  def should_generate_new_friendly_id?
+    slug.blank? || username_changed?
+  end
+
 
  def user_params
  	params.require(:user).permit(:username, :password_confirmation, :avatar_id)

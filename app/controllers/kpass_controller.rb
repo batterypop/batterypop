@@ -46,8 +46,6 @@ class KpassController < ApplicationController
     # redirect_to "#{ENV['KPASS_ENDPOINT']}?app_id=#{ENV['KPASS_APP_ID']}&return_to=#{URI::escape(params['return_to'])}"
 
     profile_url = "#{ENV['KPASS_ENDPOINT']}?app_id=#{ENV['KPASS_APP_ID']}&return_to=#{URI::escape(params['return_to'])}"
-    puts ""; puts "%%%%%%%%%%"; puts profile_url; puts ""
-    puts params.inspect
     redirect_to profile_url
   end
 
@@ -74,10 +72,7 @@ class KpassController < ApplicationController
       json = open(verify_url).read
       response = JSON.parse(json)
 
-      puts ""
-      puts " %%%%%%%%%%%"
-      puts ""
-      puts response.inspect
+      puts ""; puts "%%%%%%%%%%"; puts "verify";  puts response.inspect; puts ""
 
       # find or create a new user based on the username of the kpass account.
       # for over-13 users, the json will include their username (since they're
@@ -91,7 +86,14 @@ class KpassController < ApplicationController
 
       # only create a new user record for them if we don't already have a user
       # record for their unique id.
+      # @user = User.find_or_create_by(kpass_id: kpass_id)
+      # 
+      # 
+      # @user = User.create(username: username, kpass_id: kpass_id)
       @user = User.find_or_create_by(kpass_id: kpass_id)
+
+      # @user = User.where(:kpass_id => kpass_id, :username => username).first_or_create
+
 
       # set or update the username.
       @user.username = username
@@ -102,13 +104,13 @@ class KpassController < ApplicationController
       # save the user in the sample app.
       @user.save
 
-
-      puts @user.inspect
-
       # mark the user as signed in locally.
       # (this is a helper method of devise, the rails ruby gem we're using for
       # authentication in the sample app.)
      # session_sign_in(@user)
+      # user_session_sign_in(@user)
+      sign_in(@user)
+
 
     end
 
@@ -168,12 +170,14 @@ puts ""
 
       # if we found the user in our sample app..
       if user.present?
+        puts " we found user";
+        puts user.inspect
 
         # if the webhook is telling us they've been approved..
         if data['type'] == "member.authorization.approved"
 
           # update the username of the user, since we should have access to it now.
-          user.handle = data['data']['object']['member']['username']
+          user.username = data['data']['object']['member']['username']
           user.save
 
         # if the webhook is telling us that our authorization has been revoked..
@@ -204,7 +208,7 @@ puts ""
   # under-13 user authorizes the app with kpass and when their parent authorizes
   # the sharing of their kpass username.
   def random_username
-    "chatter-#{(rand * 10000).to_i}"
+    "batterypop-#{(rand * 10000).to_i}"
   end
 
 end
