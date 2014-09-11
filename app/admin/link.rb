@@ -1,15 +1,16 @@
 ActiveAdmin.register Link do
   menu :parent => "bPOP Pages"
 
+  # filter :associated_visits_id, collection: proc { Visit.all }
+
   controller do
-    # def scoped_collection
-    #     Link.where(link_type: 'url')
-    # end
-    # def collection
-    #   puts ""; puts " "; puts "%%%*******%%%%%%%%%%%%%%%%****************%%%%%%%%%%%%************"; puts "";
-     
-    # end
+    def scoped_collection
+        # Link.where(link_type: 'url')   hiding all the files; not needed in admin
+        super.where(link_type: 'url').order(:created_at)
+    end
   end
+
+
 
   form do |f|
     f.inputs "Links" do
