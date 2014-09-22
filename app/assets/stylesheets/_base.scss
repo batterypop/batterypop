@@ -2096,6 +2096,7 @@ border-bottom: 1px solid $gray-xlite;
 }
 
 .avatar-slider-parent {
+  margin-bottom: 20px;
   ul {
   margin-bottom: 0;
   float: left;
@@ -2111,15 +2112,16 @@ border-bottom: 1px solid $gray-xlite;
     margin-bottom: 0;
   }
   .bx-wrapper .bx-controls-direction a {
+    top: 100%;
     @include link-colors($blue, darken($blue, 10%), $blue, $blue);
   }
 
   .bx-prev {
-    left: -70px;
+    left: -5px;
   }
 
   .bx-next {
-    right: -70px;
+    right: -5px;
   }
 
   .bx-wrapper .bx-controls-direction a.disabled {

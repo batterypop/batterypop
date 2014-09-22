@@ -1,0 +1,54 @@
+<!-- top most / breadcrumb area -->
+<div class="row headcrumb clearfix">
+	<div class="col-md-5 arrow_box column">
+		<div class="well">
+			<div class="row clearfix">
+				<% if !(current_user == @user) %>
+					<div class="col-xs-4">
+						<div class="thumb">
+							<%= @user.thumb %>
+						</div>
+					</div> 
+				<% else %>
+					<%= render partial: "layouts/avatar_select" %>
+				<% end %>
+				<% if !(local_assigns[:crumb_title].nil?) %>
+					<div class="col-xs-8">
+						<% if (!(local_assigns[:crumb_sponsor].nil?) && crumb_sponsor) %>
+							<span class="sponsor label">Sponsored</span>
+						<% end %>
+						<div class="summary">
+							<h2><%= crumb_title %></h2>
+							<% if !(local_assigns[:crumb_creator].nil?) %>
+								<h4><%= crumb_creator %></h4>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<!-- col -->
+		</div>
+	</div>
+	<!-- well -->
+	<div class="col-md-7 column"   <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
+		<div class="well well-split">
+			<div class="row clearfix">
+				<% if !(local_assigns[:crumb_text].nil?) %>
+				<div class="col-sm-9 col-xs-12">
+					<div class="description">
+						<%= crumb_text %>
+					</div>
+				</div>
+				<% end %>
+				<% if !(local_assigns[:crumb_action].nil?) %>
+					<div class="col-sm-3 col-xs-12">
+						<%= crumb_action %>
+					</div>
+				<% end %>
+				<!-- col -->
+			</div>
+		</div>
+		<!-- well -->
+	</div>
+	<!-- col -->
+</div>

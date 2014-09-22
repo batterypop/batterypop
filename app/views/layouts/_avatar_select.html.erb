@@ -1,0 +1,22 @@
+<% @avatars = get_avatars %>
+<% @avatar_start_id = @user.avatar.nil? ? @avatars.first.id : @user.avatar.id %>
+
+<%= form_for(@user, :url => {action: "save_avatar"}) do |f| %>
+<div class="col-xs-4">
+	<div class="avatar-slider-parent">
+		
+		<ul class="bxslider avatar-slider slider ">
+			<% @avatars.each do |avatar| %>
+				<li data="<%= avatar.id %>">
+					<%=  image_tag(avatar.image, :width => '120', :class => "avatar-image data-id=#{avatar.id}") %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<%= f.hidden_field :avatar_id, :id => 'avatar_id', :value => @avatar_start_id %>
+
+	<%= f.submit "Save", class: "btn btn-primary btn-xs btn-block", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'right', :html => true,  :content => "Save Avatar"}  %>
+
+</div>
+<% end %>

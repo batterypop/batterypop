@@ -11,10 +11,10 @@
 	<% else %>
 		<!-- buttons to login or signup -->
 		<div class="btn-group">
-			<button type="button" class="btn btn-blue" data-toggle="modal" data-target="#modal_signin">Sign In</button>
+			<%= link_to "Sign In", kpass_authorize_path, :class => "btn btn-blue", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Log into batteryPOP through KPASS"}  %>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-purple" data-toggle="modal" data-target="#modal_signup">Sign Up</button>
+			<%= link_to "Sign Up", kpass_new_path, :class => "btn btn-purple", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Create a KPASS Profile."}  %>
 		</div>
 		<!-- end buttons to login or signup -->
 	<% end %>

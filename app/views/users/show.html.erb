@@ -1,25 +1,31 @@
 <section class="wrapper">
 
-<% @follow_me = "#{ render :partial => "users/follow_user", :locals => {:user => @user} }" %>
+<% kpass = link_to(kpass_profile_path(:return_to => 'http://www.batterypop.com/'),
+          :class => 'btn btn-navy') do %>
+        <h5>KPASS PROFILE</h5>
+      <% end %>
+
+
+<% @follow_me = (@user == current_user) ? 
+          "<div class='button-follow '>#{kpass}</div>"
+         : "#{ render :partial => "users/follow_user", :locals => {:user => @user} }" %>
 
 <% @gender = @user.gender.nil? ? "---" : @user.gender.capitalize %>
 
 <!-- breadcrumb -->
 
-<%= render partial: "layouts/breadcrumb", :locals => {
+<%= render partial: "layouts/user_breadcrumb", :locals => {
       :crumb_creator => "" ,
-      :crumb_thumb  => image_tag(@user.avatar.image(:large), :alt => @user.username, :class => ""),
+      :crumb_thumb => @user.thumb,
       :crumb_title => @user.username, 
-      :crumb_text => "<a href='/users' style='color: white;'>
-          <h3 class='page-title '>Find Other Users to Follow! <span class='glyphicon glyphicon-user'></span></h3></a>
-
-          <b>#{@gender}, #{@user.age_in_years}</b><br />
+      :crumb_text => " <b>#{@gender}, #{@user.age_in_years}</b><br />
           <strong>Following:</strong> #{pluralize(@user.following_by_type('User').count, 'user')}   |   #{pluralize(@user.following_by_type('Show').count, 'show')}
                 <br />
                  Has #{ pluralize(@user.followers.count, 'follower')} 
                  <br />
                  <strong>Likes:</strong> #{pluralize(@user.find_liked_items.count, 'video')}
-          ".html_safe,
+          <p></p><a href='/users' style='color: white;'>
+          <h4 class='page-title '>Find Other Users to Follow!   <span class='glyphicon glyphicon-user'></span></h4></a>".html_safe,
       :crumb_action => @follow_me.html_safe
         } %>
 

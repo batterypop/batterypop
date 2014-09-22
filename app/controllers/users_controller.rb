@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow, :hint]
+	before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow, :save_avatar]
 
 	def new
 		@birthday = Date.civil(params[:user]["birthday(1i)"].to_i,
@@ -8,18 +8,19 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.all
+		# using username_avatar_age_gender to see if user shoudl be listed
+		@users = User.listable 
 	end
 
 
 	def show
+		if(current_user != @user && !@user.publish_public_profile)
+			redirect_to "/"
+		end
 	end
 
 
-	def hint
-		 # @user = User.friendly.find(params[:username])
-		 @question = SecurityQuestion.find(@user.security_question_id).name
-	end
+
 
 	def password
 		if @user
@@ -34,6 +35,16 @@ class UsersController < ApplicationController
 	      render json: { password: nil }
 	    end
 	end
+
+
+
+def save_avatar
+	@avatar = Avatar.find(params['user']['avatar_id'])
+	@user.avatar = @avatar
+	@user.save
+	puts @user.avatar_id
+	redirect_to :action => "show"
+end
 
 
 def follow

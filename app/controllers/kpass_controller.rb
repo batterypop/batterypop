@@ -20,6 +20,14 @@ class KpassController < ApplicationController
 
   # this action is run when a user hits the '/kpass/authorize' route. we link
   # to this with all our "sign in with kpass" buttons in the sample app.
+  # 
+  # 
+  # adding new for path  members/new?app_id
+  def new
+    new_url =  "#{ENV['KPASS_ENDPOINT']}/members/new?app_id=#{ENV['KPASS_APP_ID']}"
+    redirect_to new_url
+  end
+
 
   # when a user hits "/kpass/authorize"
   # we link to this from our 'sign in with kpass' buttons in the sample app.
@@ -31,8 +39,7 @@ class KpassController < ApplicationController
     
 
     authorize_url =  "#{ENV['KPASS_ENDPOINT']}/oauth/authorize?app_id=#{ENV['KPASS_APP_ID']}"
-     puts ""; puts "%%%%%%%%%%"; puts "authorize";  puts authorize_url; puts ""
-     redirect_to authorize_url
+    redirect_to authorize_url
   end
 
   # when a user hits '/kpass/profile'
@@ -67,7 +74,7 @@ class KpassController < ApplicationController
       # access key and some other user details for this user. this is standard
       # oauth stuff.
       verify_url = "#{ENV['KPASS_ENDPOINT']}/oauth/verify?api_key=#{ENV['KPASS_API_KEY']}&token=#{params[:token]}"
-      puts verify_url
+      # puts verify_url
 
       json = open(verify_url).read
       response = JSON.parse(json)
@@ -89,14 +96,22 @@ class KpassController < ApplicationController
       # @user = User.find_or_create_by(kpass_id: kpass_id)
       # 
       # 
-      # @user = User.create(username: username, kpass_id: kpass_id)
       @user = User.find_or_create_by(kpass_id: kpass_id)
-
       # @user = User.where(:kpass_id => kpass_id, :username => username).first_or_create
 
 
       # set or update the username.
       @user.username = username
+
+      @user.birthday = response["member"]["birthday"]
+      @user.gender = response["member"]["gender"]
+      @user.username_avatar_age_gender = response["keys"]["username_avatar_age_gender"]
+      @user.access_to_moderated_chats = response["keys"]["access_to_moderated_chats"]
+      @user.youtube_and_3rdparty_videos = response["keys"]["batterypop_youtube_and_3rdparty_videos"]
+      @user.publish_public_profile = response["keys"]["batterypop_publish_public_profile"]
+
+      @user.approved = response["approved"]
+      @user.rejected = response["rejected"]
 
       # store the api key we have for this user.
       @user.kpass_access_key = response["access_key"]
@@ -118,24 +133,26 @@ class KpassController < ApplicationController
     # to do something in the app that required authentication..
     # (this is a feature of devise, the rails ruby gem we're using for
     # authentication in the sample app.)
-    if session['after_sign_in'].present?
+    # if session['previous_url'].present?
 
-      # redirect them back to whatever it was they were doing.
-      after_sign_in = session['after_sign_in']
-      session['after_sign_in'] = nil
-      # redirect_to after_sign_in
+    #   redirect_to session[:previous_url]
 
-    # if the user was just generally signing in..
-    else
+    #   puts ""; puts " $$*($*$*$*$ "; puts "REDIREC TO PREVIOUS URL"; puts "";
+      
+    # else
 
-      # show them the list of rooms they can now chat in.
-      # redirect_to rooms_path
+    #    puts ""; puts " $$*($*$*$*$ "; puts "REDIREC TO /USERS"; puts "";
 
-      puts @user.inspect
+    #   redirect_to "/users"
 
-    end
+    # end
+    # 
+    
+    redirect_to "/users"
 
   end
+
+
 
   # when a user hits '/kpass/profile'
   def sign_out
@@ -155,13 +172,13 @@ class KpassController < ApplicationController
   # when kpass sends a request to '/kpass/webhooks'
   # (this is a server-to-server request)
   def webhooks
-puts ""; puts "%%%%%%%%%%"; puts "webhooks";  puts ""
+# puts ""; puts "%%%%%%%%%%"; puts "webhooks";  puts ""
     # parse the json data.
     
     puts params.inspect
     data = JSON.parse(params['json'])
-puts ""
-      puts data.inspect
+# puts ""
+# puts data.inspect
     # if it's an authorization webhook.
     if data['type'].include?("member.authorization")
 
@@ -170,8 +187,7 @@ puts ""
 
       # if we found the user in our sample app..
       if user.present?
-        puts " we found user";
-        puts user.inspect
+       
 
         # if the webhook is telling us they've been approved..
         if data['type'] == "member.authorization.approved"
