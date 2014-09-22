@@ -6,6 +6,7 @@ Batterypopv2::Application.routes.draw do
   get 'kpass/verify' => 'kpass#verify', as: 'kpass_verify'
   get 'kpass/sign_out' => 'kpass#sign_out', as: 'kpass_sign_out'
   post 'kpass/webhooks' => 'kpass#webhooks', as: 'kpass_webhooks'
+  get 'kpass/new' => 'kpass#new', as: 'kpass_new'
 
 
   mount Rich::Engine => '/rich', :as => 'rich'
@@ -117,6 +118,7 @@ Batterypopv2::Application.routes.draw do
 
 resources :users do
     member do
+      patch :save_avatar
       get :follow
       get :unfollow
      end

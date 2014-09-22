@@ -44,16 +44,19 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:username] 
+         :rememberable, :trackable, :validatable, :authentication_keys => [:username] 
 
 
-  has_many :children, class_name: "User",  foreign_key: "parent_id"
-  belongs_to :parent, class_name: "User"
+  # has_many :children, class_name: "User",  foreign_key: "parent_id"
+  # belongs_to :parent, class_name: "User"
   belongs_to :avatar
 
 
-  validates_uniqueness_of :username
-  validates_presence_of :username
+  # validates_uniqueness_of :username
+  # validates_presence_of :username
+
+  scope :viewable, -> {where(:publish_public_profile => true)}
+  scope :listable, -> {where(:username_avatar_age_gender => true)}
 
 #search helpers
   def title
@@ -83,27 +86,32 @@ class User < ActiveRecord::Base
   end
 
 
+
+
   # because some users were created without avatar attached, adding this as part of the model function
   def get_avatar(size = :thumb)
     unless(self.avatar.nil?) 
-        self.avatar.image(size)
+      img =  ActionController::Base.helpers.image_tag(self.avatar.image(size))
     else
-        image_tag("missing.png")
+      img =  ActionController::Base.helpers.image_tag("missing.png")
     end
+    return img
   end
 
 
-  def hint(params)
-    @user = User.friendly.find(params[:username])
-    if @user
-        @question = SecurityQuestion.find(@user.security_question_id).name
-    else
-      @question = nil
-    end
-  end
+  # def hint(params)
+  #   @user = User.friendly.find(params[:username])
+  #   if @user
+  #       @question = SecurityQuestion.find(@user.security_question_id).name
+  #   else
+  #     @question = nil
+  #   end
+  # end
 
-  def question_password(params)
-   
+
+
+  def should_generate_new_friendly_id?
+    slug.blank? || username_changed?
   end
 
 

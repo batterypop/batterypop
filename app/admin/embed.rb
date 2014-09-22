@@ -4,6 +4,7 @@ ActiveAdmin.register Embed do
 	form do |f|
 		f.inputs "Video Embed Details" do
 			f.input :provider, :label => "Provider", :required => true
+			f.input :needs_permission
 			f.input :code, :label => "iFrame Embed", :required => true
 		end
 		f.actions

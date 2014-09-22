@@ -248,8 +248,8 @@ Devise.setup do |config|
 
   # security_question integration for recover form
   # this automatically enables captchas (captcha_for_recover, as fallback)
-  config.security_question_for_recover = true
-  config.security_question_for_unlock = true
+  # config.security_question_for_recover = true
+  # config.security_question_for_unlock = true
 
   # ==> Security Extension
   # Configure security extension for devise
@@ -268,7 +268,7 @@ Devise.setup do |config|
 
   # enable email validation for :secure_validatable. (true, false, validation_options)
   # dependency: need an email validator like rails_email_validator
-  # config.email_validation = true
+  config.email_validation = false
 
   # captcha integration for recover form
   # config.captcha_for_recover = true

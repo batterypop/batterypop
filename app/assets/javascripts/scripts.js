@@ -105,6 +105,28 @@ jQuery(document).ready(function() {
         hideControlOnEnd: true
     });
 
+  
+
+    // avatar slider
+    var avSlider = $('.avatar-slider').bxSlider({
+        onSlideAfter: function(item){
+            var id = item[0].getAttribute('data');
+            $('#avatar_id').val(id);
+        },
+        
+        startSlide: ($('#avatar_id').val()-1),
+        auto: false,
+        responsive: true,
+        touchEnabled: true, 
+        pager: false,
+        minSlides: 1,
+        maxSlides: 1,
+        slideWidth: 120,
+        infiniteLoop: false,
+        hideControlOnEnd: true,
+        slideMargin: 0
+    })
+  
 
     $('.pop-over').popover();
 

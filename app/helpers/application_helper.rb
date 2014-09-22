@@ -157,42 +157,73 @@ module ApplicationHelper
   end
 
   def vid_embed(episode)
+    # first, if viddler or not
+    if(episode.embed.provider=="viddler")
+      if(episode.links.empty?)  #only viddler deals with links
+        vid_link_create(episode)
+        if(episodel.links.empty?)  # still no links? must be sub account
+          old = Embed.where(:provider => "viddler_original").first
+           @ret = old.get_embed(old, episode.video).html_safe
+           return @ret
+        end
+
+      else # viddler first time viewed, no links
+      end
+
+    else  # not viddler as a provider at all
+    end
+
+  end
+
+  def vid_embed(episode)
    @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
 
     if (episode.links.empty?)
-      traceout("YES #{episode.links.empty?}")
       if(episode.embed.provider == 'viddler' ) # no links, need to create
         
         vid_link_create(episode)
-
-        # videoData = viddler_files(ENV['VIDDLER_ID'], episode.video)
        
-        # if videoData['video']['files'].nil?
-        #   videoData = viddler_files(ENV['VIDDLER_SECOND_ID'], episode.video)
-        # end
-          @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
-         # @src = ""
-        # if videoData['video']['files'].nil?
-          if episode.links.empty?
+        if episode.links.empty?
            old = Embed.where(:provider => "viddler_original").first
            @ret = old.get_embed(old, episode.video).html_safe
            return @ret
-        else
-          # files = ((videoData['video']['files'].each{|f| f.clear unless(!f['html5_video_source'].empty?)  }).reject{ |e| e.empty? }).sort_by{|g| g['width'] }.reverse
-
-          #  @poster = videoData['video']['thumbnail_url'].empty? ? "" : videoData['video']['thumbnail_url']
-
-          # files.each do |f|
-          #   f['poster'] = @poster
-          #   @link = Link.new(:url => f['html5_video_source'], :data => f.to_json, :linkedmedia => episode, :link_type => 'file' )
-          #   @link.save
-          # end
         end
-      else
-         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+      else  # this is not viddler, everyone else
+        
+
+        @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
         # just in case there's other info
         @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
-        return @ret
+
+        #  now must see if episode.embed needs perms or not
+        #  
+puts "---  WE're not viddler"      
+
+        if(episode.embed.needs_permission?)
+
+puts "--   Episode needs perms"
+          # needs perms; is the user signed in first?
+          if(!current_user.present?)  # not signed in
+puts "--   sorry buddy you have to sign in (show message)"
+            return "<div class='fluid-width-video-wrapper' style='padding-top: 50%; background-color: black; color: white;'><h2 class='text-center lead'>You need to create an account and have permissions to view.</h2></div>"
+          else
+puts " -- there IS a current user "
+            # there is a current user, but perms?
+            if(current_user.present?  && current_user.youtube_and_3rdparty_videos?)
+puts "ok current user present && current_user can view"
+puts @ret
+              return @ret
+            else
+puts " you need permissions (message)"
+              return "<div class='fluid-width-video-wrapper' style='padding-top: 50%; background-color: black; color: white;'><h2 class='text-center lead'>Sorry; you don't have permissions to view.</h2></div>"
+            end
+put " #   we're at a weird spot!!!!!"
+          end
+        else # anyone can see it
+puts "-- nah anyone can see this (and return)"
+puts @ret
+          return @ret
+        end
       end
     end
      return(print_embed(episode))
@@ -223,7 +254,6 @@ module ApplicationHelper
 
   # using helper method to determin path, get possible link / sidebar and display
   def draw_if_sidebar
-    puts ""; puts " %*%*%*%*%*%*%*%*%**%*%*%*%*%"; puts request.original_fullpath;
     Link.sidebar_from_link(request.original_fullpath)
   end
 
