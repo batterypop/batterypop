@@ -16,6 +16,8 @@
 <link href="/assets/bstrap.css" media="all" rel="stylesheet" />
     <%= stylesheet_link_tag "application", :media => "all" %>
 
+	<%= render partial: "layouts/ads/dfp_header" %>
+
     <%= javascript_include_tag :modernizr, "application" %>
 
     <!--[if lt IE 9]>
@@ -48,7 +50,7 @@
 
 <%= render partial: "layouts/comscore" %>
 
-<%= render partial: "layouts/ads/dfp_header" %>
+
 
  <script src="//cdn.optimizely.com/js/580450290.js">
 
