@@ -269,6 +269,7 @@ Devise.setup do |config|
   # enable email validation for :secure_validatable. (true, false, validation_options)
   # dependency: need an email validator like rails_email_validator
   config.email_validation = false
+  config.clean_up_csrf_token_on_authentication = false
 
   # captcha integration for recover form
   # config.captcha_for_recover = true

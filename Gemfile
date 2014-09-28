@@ -162,6 +162,8 @@ group :development do
   gem 'spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
+  gem 'pry'
+  gem 'debugger'
    # gem 'sqlite3'
 end
 

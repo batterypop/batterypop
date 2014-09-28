@@ -13,6 +13,7 @@
 ##
 
 class KpassController < ApplicationController
+   before_filter :current_user
 
   # we disable forgery protection for webhooks so clients don't have to fetch a
   # token. this is rails-specific.
@@ -79,7 +80,7 @@ class KpassController < ApplicationController
       json = open(verify_url).read
       response = JSON.parse(json)
 
-      puts ""; puts "%%%%%%%%%%"; puts "verify";  puts response.inspect; puts ""
+      # puts ""; puts "%%%%%%%%%%"; puts "verify";  puts response.inspect; puts ""
 
       # find or create a new user based on the username of the kpass account.
       # for over-13 users, the json will include their username (since they're
@@ -103,6 +104,7 @@ class KpassController < ApplicationController
       # set or update the username.
       @user.username = username
 
+      @user.password = 'batterypop'  #devise throws exception without a password upon save
       @user.birthday = response["member"]["birthday"]
       @user.gender = response["member"]["gender"]
       @user.username_avatar_age_gender = response["keys"]["username_avatar_age_gender"]
@@ -117,16 +119,14 @@ class KpassController < ApplicationController
       @user.kpass_access_key = response["access_key"]
 
       # save the user in the sample app.
-      @user.save
-
-      # mark the user as signed in locally.
-      # (this is a helper method of devise, the rails ruby gem we're using for
-      # authentication in the sample app.)
-     # session_sign_in(@user)
-      # user_session_sign_in(@user)
-      sign_in(@user)
-
-
+      if @user.save
+        sign_in(@user)
+        # @_current_user = @user
+        # cookies[:current_user_id] = @user.id
+        # cookies[:current_user_kpass_id] = kpass_id  #trying to find a way around post method not getting current_user
+      else
+        raise Exception.new(@user.errors.full_messages)
+      end
     end
 
     # if the user was bumped into the authorization workflow because they tried
@@ -172,10 +172,7 @@ class KpassController < ApplicationController
   # when kpass sends a request to '/kpass/webhooks'
   # (this is a server-to-server request)
   def webhooks
-# puts ""; puts "%%%%%%%%%%"; puts "webhooks";  puts ""
-    # parse the json data.
     
-    puts params.inspect
     data = JSON.parse(params['json'])
 # puts ""
 # puts data.inspect
@@ -184,7 +181,7 @@ class KpassController < ApplicationController
 
       # fetch the user for this webhook.
       user = User.find_by(kpass_id: data['data']['object']['member']['id'])
-
+     
       # if we found the user in our sample app..
       if user.present?
        
@@ -192,9 +189,36 @@ class KpassController < ApplicationController
         # if the webhook is telling us they've been approved..
         if data['type'] == "member.authorization.approved"
 
-          # update the username of the user, since we should have access to it now.
+          # update the username of the user, since we should have access to it now
           user.username = data['data']['object']['member']['username']
+          user.password = 'batterypop'  #devise throws exception without a password upon save
+          user.birthday = data['data']['object']["member"]["birthday"]
+          user.gender = data['data']['object']["member"]["gender"]
+          user.username_avatar_age_gender = data['data']['object']["keys"]["username_avatar_age_gender"]
+          user.access_to_moderated_chats = data['data']['object']["keys"]["access_to_moderated_chats"]
+          user.youtube_and_3rdparty_videos = data['data']['object']["keys"]["batterypop_youtube_and_3rdparty_videos"]
+          user.publish_public_profile = data['data']['object']["keys"]["batterypop_publish_public_profile"]
+
           user.save
+
+debugger
+
+puts "CHECKING IDS"
+puts "nil? #{current_user.nil?}"
+puts current_user.present?
+puts current_user.inspect
+puts user.inspect
+puts "logged in user"
+puts logged_in_user.inspect
+
+binding.pry
+
+
+          # if(current_user.present? && (current_user.kpass_id == user.kpass_id))
+          #   # current_user = user
+          #   puts "Did it load?"
+          # end
+
 
         # if the webhook is telling us that our authorization has been revoked..
         elsif data['type'] == "member.authorization.revoked"
@@ -224,7 +248,8 @@ class KpassController < ApplicationController
   # under-13 user authorizes the app with kpass and when their parent authorizes
   # the sharing of their kpass username.
   def random_username
-    "batterypop-#{(rand * 10000).to_i}"
+    # "batterypop-#{(rand * 10000).to_i}"
+    "batterypop-#{Time.now.to_i}"
   end
 
 end
