@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def logged_in_user
+    current_user
+  end
+
 
 
   def getGACode

@@ -52,6 +52,25 @@ module ApplicationHelper
 
 
 
+    # ads for swapping code
+    def get_banner_header
+      if (@banner_ad.nil? || @banner_ad.empty?)
+        ""
+      else
+        render :partial => 'layouts/ads/dfp_header', :locals => {:banner_ad => @banner_ad, :banner_id => @banner_id}
+      end
+    end
+
+    def get_banner_embed
+      if (@banner_id.nil? || @banner_id.empty?)
+        ""
+      else
+        render :partial => 'layouts/ads/dfp_div_area', :locals => {:ad_id => @banner_id}
+      end
+    end
+
+
+
     def get_ga_custom
       if @ga_custom.nil? || @ga_custom.empty?
         ""

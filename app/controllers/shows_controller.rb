@@ -6,6 +6,10 @@ class ShowsController < ApplicationController
   def index
     @active="shows"
     @title = "Shows"
+
+    @banner_ad = "/31902320/Shows_main_leaderboard"
+    @banner_id = 'div-gpt-ad-1411894179579-0'
+
     # @shows = Show.all
     @shows=Show.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
     @description = "The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends."
@@ -14,6 +18,8 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    @banner_ad = "/31902320/Shows_Leaderboard"
+    @banner_id = 'div-gpt-ad-1411894829676-0'
      @active="shows"
      @show_follow_status = ''
      # @f = @show.user_followers.random(5)

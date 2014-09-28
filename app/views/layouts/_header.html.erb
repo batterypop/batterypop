@@ -82,7 +82,7 @@
 <!-- after header -->
 
 
-<%= render 'layouts/ads/banner' %>
+<% get_banner_header %>
 
 
 
@@ -163,5 +163,7 @@
 		<% # render 'layouts/signin_modal' %>
 	</div>
 
+
+<%= current_user.inspect %>
 
 </header>
