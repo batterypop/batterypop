@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow, :save_avatar]
+	rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
+	# around_filter :catch_not_found
 
 	def new
 		@birthday = Date.civil(params[:user]["birthday(1i)"].to_i,
@@ -66,5 +68,10 @@ end
 	def set_user
 		@user = User.friendly.find(params[:id])
 	end
+
+	def user_not_found
+		flash[:notice] = "User not found."
+		redirect_to "/users", :flash => { :error => "User not found." }
+    end
 	
 end

@@ -189,9 +189,12 @@ class KpassController < ApplicationController
         # if the webhook is telling us they've been approved..
         if data['type'] == "member.authorization.approved"
 
+        # for some reason if we save user with password the session is kicked out
+
+
           # update the username of the user, since we should have access to it now
           user.username = data['data']['object']['member']['username']
-          user.password = 'batterypop'  #devise throws exception without a password upon save
+          # user.password = 'batterypop'  #devise throws exception without a password upon save
           user.birthday = data['data']['object']["member"]["birthday"]
           user.gender = data['data']['object']["member"]["gender"]
           user.username_avatar_age_gender = data['data']['object']["keys"]["username_avatar_age_gender"]
@@ -201,38 +204,22 @@ class KpassController < ApplicationController
 
           user.save
 
-debugger
-
-puts "CHECKING IDS"
-puts "nil? #{current_user.nil?}"
-puts current_user.present?
-puts current_user.inspect
-puts user.inspect
-puts "logged in user"
-puts logged_in_user.inspect
-
-binding.pry
-
-
-          # if(current_user.present? && (current_user.kpass_id == user.kpass_id))
-          #   # current_user = user
-          #   puts "Did it load?"
-          # end
 
 
         # if the webhook is telling us that our authorization has been revoked..
         elsif data['type'] == "member.authorization.revoked"
 
           # destroy the user.
-          user.destroy
+          # user.destroy
+          anonymize_user(user)
 
         # if the webhook is telling us that the parent of an under-13 user has
         # denied our ability to see personal information for this user..
         elsif data['type'] == "member.authorization.rejected"
 
           # destroy the user.
-          user.destroy
-
+          # user.destroy
+          anonymize_user(user)
         end
 
       end
@@ -242,6 +229,18 @@ binding.pry
     # communicate back to kpass that we've received the webhook.
     render json: [true]
 
+  end
+
+  def anonymize_user(user, params = nil)
+    user.username =random_username
+    user.birthday = nil
+    user.gender = nil
+    user.username_avatar_age_gender = nil
+    user.access_to_moderated_chats = nil
+    user.youtube_and_3rdparty_videos = nil
+    user.publish_public_profile = nil
+
+    user.save
   end
 
   # helper function to generate a random username use inbetween when an
