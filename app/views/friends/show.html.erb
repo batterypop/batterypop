@@ -76,7 +76,7 @@
 	<div class="row clearfix">
 		<!-- episode list -->
 		<div class="col-md-8 column">
-			<% unless @show.single? %>
+			
 				<div class="media-list">
 					<% @friend.episodes.each do |ep| %>
 						<% if ep.approved? %>
@@ -103,7 +103,7 @@
 					<% end %>
 					<!-- media -->
 				</div>
-			<% end %>
+			
 			<!-- media list -->
 		</div>
 		<!-- end episode list -->
