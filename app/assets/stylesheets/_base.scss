@@ -57,7 +57,7 @@ left: 50%;
 margin-left: -364px;
 border: 1px solid black;
 padding-right: 15px;
-background: url("#{$image-path}/ad.png") black 0 50% no-repeat;
+background: url("#{$image-path}/ad.png") black right 50% no-repeat;
   &:after {
   content: "";
   }
@@ -77,7 +77,7 @@ background: url("#{$image-path}/ad.png") black 0 50% no-repeat;
   margin-top: 10px;
   margin-left: 50px;
   padding-bottom: 15px;
-  background: url("#{$image-path}/advertisement.png") black 50% 0 no-repeat;
+  background: url("#{$image-path}/advertisement.png") black 50% bottom no-repeat;
   &:after {
     content: "";
   }
