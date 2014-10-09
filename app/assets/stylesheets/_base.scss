@@ -35,7 +35,7 @@ body {
 //   background: #D5950A;
 //   margin-bottom: 30px;
 // }
-.webad-top-horizontal {
+.webad-top-horizontal-alt {
   text-align: center;
   background: #D5950A;
   position: relative;
@@ -45,11 +45,53 @@ body {
   margin-bottom: 4px;
 }
 
-.webad-side-lower{
+// 728px banner
+.webad-top-horizontal {
+text-align: center;
+background: black;
+position: relative;
+margin: 0 auto 30px;
+
+display: inline-block;
+left: 50%;
+margin-left: -364px;
+border: 1px solid black;
+  &:after {
+    content: "AD";
+    color: white;
+    font-size: 11px;
+    background: black;
+    width: 15px;
+    line-height: 15px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+  }
+}
+
+.webad-side-lower-alt {
   text-align: center;
   position: relative;
   margin-top: 10px;
   margin-left: 50px;
+}
+
+.webad-side-lower {
+  position: relative;
+  text-align: center;
+  position: relative;
+  margin-top: 10px;
+  margin-left: 50px;
+  &:after {
+    color: white;
+    font-size: 11px;
+    background: black;
+    width: 100%;
+    height: 15px;
+    line-height: 15px;
+    display: block;
+    margin: 0;
+  }
 }
 
 .bk-extra {
@@ -2204,3 +2246,4 @@ right: 0;
 .no-svg .sponsor:before {
   background-image: url("#{$image-path}/badge-sponsor.png");
 }
+
