@@ -63,6 +63,12 @@ background: url("#{$image-path}/ad.png") black right 50% no-repeat;
   }
 }
 
+.webad-left {
+  background: url("#{$image-path}/ad-alt.png") black left 50% no-repeat;
+  padding-right: 0;
+  padding-left: 15px;
+}
+
 .webad-side-lower-alt {
   text-align: center;
   position: relative;
@@ -71,16 +77,24 @@ background: url("#{$image-path}/ad.png") black right 50% no-repeat;
 }
 
 .webad-side-lower {
-  position: relative;
-  text-align: center;
-  position: relative;
-  margin-top: 10px;
-  margin-left: 50px;
-  padding-bottom: 15px;
+position: relative;
+text-align: center;
+padding-bottom: 15px;
+border: 1px solid black;
+display: block;
+overflow: hidden;
+margin: auto;
+box-sizing: content-box;
   background: url("#{$image-path}/advertisement.png") black 50% bottom no-repeat;
   &:after {
     content: "";
   }
+}
+
+.webad-top {
+  padding-bottom: 0;
+  padding-top: 15px;
+  background-position: 50% top;
 }
 
 .bk-extra {
