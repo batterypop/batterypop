@@ -68,8 +68,9 @@ class User < ActiveRecord::Base
     return "/users/" + self.slug
   end
 
-  def thumb
-    self.get_avatar(:thumb)
+  def thumb(dim=nil)
+    puts ""; puts "#@@@@   first   @@@"; puts dim; puts "";
+    self.get_avatar(:thumb, dim)
   end
 
   def search_valid?
@@ -89,11 +90,12 @@ class User < ActiveRecord::Base
 
 
   # because some users were created without avatar attached, adding this as part of the model function
-  def get_avatar(size = :thumb)
+  def get_avatar(size = :thumb, dim=nil)
+    puts ""; puts "#@@@@   again   @@@"; puts dim; puts "";
     unless(self.avatar.nil?) 
-      img =  ActionController::Base.helpers.image_tag(self.avatar.image(size))
+      img =  ActionController::Base.helpers.image_tag(self.avatar.image(size), size: dim)
     else
-      img =  ActionController::Base.helpers.image_tag("missing.png")
+      img =  ActionController::Base.helpers.image_tag("missing.png", size: dim)
     end
     return img
   end

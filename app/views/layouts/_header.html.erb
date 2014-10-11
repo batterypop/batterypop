@@ -105,28 +105,6 @@
 
 <!-- signup modal -->
 
-<!-- 	<div class="modal fade" id="become_member" tabindex="-1" role="dialog"  aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h1 class="modal-title">Become A Member!</h1>
-				</div>
-				<div class="modal-body">
-				Want to follow your favorite web shows and have a voice voting the newest best videos?  Become a member today!  Sign up to the site above!
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-
-
-
-<!-- signup modal -->
-
 	<div class="modal fade" id="modal_legend" tabindex="-1" role="dialog"  aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -136,7 +114,7 @@
 					WHERE YOU’RE IN CHARGE OF WHAT POPS!</h1>
 				</div>
 				<div class="modal-body text-left">
-					<h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! <a href="#" data-toggle="modal"  data-dismiss="modal"  data-target="#modal_signup">Sign Up Here</a>!</h4>
+					<h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! <%= link_to "Sign Up Here!", kpass_new_path  %></h4>
 						
 					<h4>Step 2 – Start watching! We’ve got cartoons, comedy, music and more…every bubble on the site is something new.</h4>
 						
@@ -155,13 +133,7 @@
 	</div><!-- /.modal -->
 
 
-	<div class="modal fade" id="modal_signup" role="dialog" aria-hidden="true">
-		<% # render 'layouts/signup_modal' %>
-	</div>
 	
-	<div class="modal fade" id="modal_signin" role="dialog" aria-hidden="true">
-		<% # render 'layouts/signin_modal' %>
-	</div>
 
 
 

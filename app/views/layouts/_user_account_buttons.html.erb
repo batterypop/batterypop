@@ -5,7 +5,7 @@
 			<%= link_to "Log Out", destroy_user_session_path, :method => :delete, :id => "destroy", :class => "btn btn btn-blue btn-small btn-login" %>
 		</div>
 		<div class="btn-group">
-			<%= link_to "Profile", user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-purple btn-small btn-login" %>
+			<%= link_to current_user.user.username, user_path(User.friendly.find(current_user.id)), :id => "login", :class => "btn btn-purple btn-small btn-login" %>
 		</div>
 		<!-- end buttons to login or signup -->
 	<% else %>
