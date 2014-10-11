@@ -78,7 +78,7 @@ list_class
           <div class="col-md-7 column">
             <div class="carousel carousel-horizontal theme-<%= colors[pos] %> theme-invert">
               <ul>
-              <% item.episodes.find_each do |episode| %>
+              <% item.episodes.each do |episode| %>
                 <li>
                   
                   <%= render partial: "layouts/vertical_slide", :locals => {

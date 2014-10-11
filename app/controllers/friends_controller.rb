@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
 		# redirect_to "/"
 		@title = "Friends"
 		@active = "friends"
-		@friends=Friend.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
+		@friends=Friend.approved.paginate(:page => params[:page], :per_page => 8)
 	    @description = "Check out these cool videos from batteryPOP's coolest friends!"
 	end
 
@@ -46,6 +46,6 @@ class FriendsController < ApplicationController
 	private
 	def set_friend
 		# @friend = Friend.includes(:episodes).includes(:features).where("features.active" => true).friendly.find(params[:id])
-		@friend = Friend.includes(:episodes).includes(:features).friendly.find(params[:id])
+		@friend = Friend.includes(:features).friendly.find(params[:id])
 	end
 end

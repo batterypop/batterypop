@@ -22,6 +22,7 @@ ActiveAdmin.register Episode do
 		      end
 			e.input :embed, :as => :select, :member_label => :provider, :required => true
 			e.input :video, :label => "Video Code"
+			e.input :created_at, :as => :datetime_select
 		end
 		e.actions
 	end
