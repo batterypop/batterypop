@@ -15,7 +15,9 @@ node.parentNode.insertBefore(gads, node);
 
 <script type='text/javascript'>
 googletag.cmd.push(function() {
+	
 googletag.defineSlot('<% if !(local_assigns[:banner_ad].nil?) %><%= banner_ad %><% end %>', [[728, 90], [970, 90]], '<% if !(local_assigns[:banner_id].nil?) %><%= banner_id %><% end %>').addService(googletag.pubads());
+
 
 googletag.defineSlot('/31902320/Shows_Single_300x100_1', [300, 100], 'div-gpt-ad-1412663594152-0').addService(googletag.pubads());
 googletag.defineSlot('/31902320/show_medrec2', [300, 250], 'div-gpt-ad-1412664632584-0').addService(googletag.pubads());

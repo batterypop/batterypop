@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 	def index
 		@title = "bLOG"
      	@active = "blog"
+     	@banner_ad = "/31902320/Blog_leaderboard"
+   		@banner_id = 'div-gpt-ad-1413352958218-0'
 		# @posts = Post.published
 		@posts = Post.published.paginate(:page => params[:page], :per_page => 5)
 		@latest = Post.published.latest(5)
@@ -20,6 +22,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@banner_ad = "/31902320/Blog_leaderboard"
+   		@banner_id = 'div-gpt-ad-1413352958218-0'
 		@title = "bLOG: " + @post.title
 		@active = "posts"
 		@description = "#{@post.body}"

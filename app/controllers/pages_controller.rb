@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @banner_ad = "/31902320/Homepage_Leaderboard"
     @banner_id = 'div-gpt-ad-1411455733171-0'
-
+    # @banner_id = 'div-gpt-ad-1413353062754-0'
   
 
     @title = "Free Videos for Kids"
