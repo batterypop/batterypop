@@ -27,9 +27,13 @@ class EpisodesController < ApplicationController
      
     # need to know if this is a friend or show render
     if params.has_key?(:show_id)
+      @banner_ad = "/31902320/Shows_Leaderboard"
+      @banner_id = 'div-gpt-ad-1411894829676-0'
        @title = @episode.slide_title
        render 'shows/show'
     elsif params.has_key?(:friend_id)
+      @banner_ad = "/31902320/Friends_single_leaderboard"
+      @banner_id = 'div-gpt-ad-1413353029748-0'
       @friend = Friend.friendly.find(params["friend_id"])
       @title = @friend.title
       if @friend.background.present? 
