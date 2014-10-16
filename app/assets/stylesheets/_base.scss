@@ -72,9 +72,22 @@ background: url("#{$image-path}/ad.png") black right 50% no-repeat;
 .webad-side-lower-alt {
   text-align: center;
   position: relative;
-  margin-top: 10px;
-  margin-left: 50px;
+ // margin-top: 0;
+  //margin-left: auto;
+  //margin-right: auto;
+  &.webad-stack {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: url("#{$image-path}/advertisement-alt.png") 50% top no-repeat;
+  }
 }
+
+[id*="div-gpt-ad-"] {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
 
 .webad-side-lower-three {
   text-align: center;
