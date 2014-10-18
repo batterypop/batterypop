@@ -50,7 +50,7 @@ body {
 text-align: center;
 background: black;
 position: relative;
-margin: 0 auto 30px;
+margin: 0 auto 15px;
 
 display: inline-block;
 left: 50%;
@@ -369,7 +369,7 @@ button {
 
 }
 
-footer.wrapper .row {
+footer.wrapper .row, header.wrapper .row {
   margin-bottom: 15px;
 }
 
