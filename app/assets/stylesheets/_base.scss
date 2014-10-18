@@ -82,7 +82,7 @@ background: url("#{$image-path}/ad.png") black right 50% no-repeat;
   }
 }
 
-[id*="div-gpt-ad-"] {
+.webad-stack [id*="div-gpt-ad-"] {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
