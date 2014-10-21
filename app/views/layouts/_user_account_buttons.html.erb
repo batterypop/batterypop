@@ -14,7 +14,8 @@
 			<%= link_to "Sign In", kpass_authorize_path, :class => "btn btn-blue", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Log into batteryPOP through KPASS"}  %>
 		</div>
 		<div class="btn-group">
-			<%= link_to "Sign Up", kpass_new_path, :class => "btn btn-purple", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Create a KPASS Profile."}  %>
+			<% link_to "Sign Up", kpass_new_path, :class => "btn btn-warning", :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Create a KPASS Profile."}  %>
+			<%= link_to (image_tag("kpass_signup_button.png")), kpass_new_path, :class => "btn btn-warning",  :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true,  :content => "Create a KPASS Profile."} %>
 		</div>
 		<!-- end buttons to login or signup -->
 	<% end %>
