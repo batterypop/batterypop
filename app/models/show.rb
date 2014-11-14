@@ -29,7 +29,14 @@
 class Show < ActiveRecord::Base
 	include PgSearch
 	include DashboardUtility
-	multisearchable :against => [:title, :description]
+	# multisearchable :against => [:title, :description]
+
+	pg_search_scope :search_text,
+	      :against => [:title, :description],
+	      :using => {
+	        :tsearch => {:prefix => true}
+	      }
+
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged

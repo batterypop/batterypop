@@ -1,54 +1,140 @@
 <section class="wrapper">
-
 	
+<h1><%= @title %></h1>
 
-	<div class="row show-bottom-section">
-		
+	<!-- creators -->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
 
-		<h1><%= @title %></h1>
+			<% if(@creators.size) %>
+				<h3><%= @creators.size %> creators found:</h3>
+					<div class="short theme-green theme-invert">
+					<% @creators.each do | creator | %>
+	
+						<% if !creator.nil?   && creator.search_valid? %>
 
-		<div class="col-lg-12">
-		<!--search results area -->
+						<div class="col-md-3 col-sm-4 col-xs-6 item">
+						<%= render partial: "layouts/vertical_slide", :locals => {
+							:slide_title => creator.title, 
+							:slide_text => "#{ creator.bio }<br /><div class='totals'>
+								<div class='vote-totals'><h4>Total Show Pops: #{creator.total_show_pops}</h4></div><div class='follow-totals'><h4>Total Show Follows: #{creator.total_show_followers}</h4></div></div>".html_safe,
+							:slide_image => image_tag(creator.thumb),
+							:slide_url => creator.link } %>
 
-			<% if(@return.size) %>
-				<h3><%= @return.size %> results found:</h3>
-				<div class="col-lg-12 show-lower-left">
-					<div class="media-list list-group">
-						<% @return.each do | doc | %>
-		
-							<% if !doc.nil?  && doc.searchable.search_valid?
-
-								@img = image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'show-episode-image hidden-xs', :width => '125') %>
-
-							 <%= render partial: "layouts/horizontal_slide", :locals => {
-				                
-				                :slide_title => "#{doc.searchable.title}".html_safe, 
-				                :slide_text => "#{doc.content}".html_safe, 
-				                :slide_image => @img, 
-				               
-								
-								:slide_url => doc.searchable.link
-
-				                } %>
-
-
-
-
-							<% end %>
-
-
+						</div>
 						<% end %>
-					</div>
+					<% end %>
 					</div>
 			<% else %>
-				<h3>No results found.</h3>
+				<h3>No users found.</h3>
 			<% end %>
-
-		<!-- end of search results area -->
-		
-
-		<!-- <div class="col-lg-4 show-lower-right no-padding">
-		</div> -->
 		</div>
+	</div>
+
+
+	<!-- users -->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+
+			<% if(@users.size) %>
+				<h3><%= @users.size %> users found:</h3>
+					<div class="short theme-green theme-invert">
+					<% @users.each do | user | %>
+	
+						<% if !user.nil?   && user.search_valid? %>
+
+						<div class="col-md-3 col-sm-4 col-xs-6 item">
+						<% @gender = user.gender.nil?  ? "---" : user.gender.capitalize %>
+						<%= render partial: "layouts/vertical_slide", :locals => {
+							:slide_title => user.username, 
+							:slide_text => "<b>#{@gender}, #{user.age_in_years}</b><br /><b>Following:</b><br />
+										#{pluralize(user.following_by_type('User').count, 'user')}   |   #{pluralize(user.following_by_type('Show').count, 'show')}
+										<br />
+										 Has #{ pluralize( user.followers.count, 'follower')} 
+										 <br />
+										 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe,
+							:slide_image => user.thumb("100x100").html_safe,
+							:slide_url => user_path(User.friendly.find(user.id))} %>
+
+						</div>
+						<% end %>
+					<% end %>
+					</div>
+			<% else %>
+				<h3>No users found.</h3>
+			<% end %>
+		</div>
+	</div>
+
+
+
+	
+	<div class="row clearfix">
+		<div class="col-md-12 column clearfix">
+			<% if(@vids.size) %>
+				<h3><%= @vids.size %> Shows or Episodes found:</h3>
+					<div class="media-list">
+						<% @vids.each do | doc | %>
+		
+							<% if !doc.nil?  && !doc.searchable.nil? && doc.searchable.search_valid? %>
+
+							<div class="media">
+								<a class="clearfix" href="<%= doc.searchable.link %>">
+									<div class="pull-left thumb">
+
+									<%=	image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'show-episode-image hidden-xs', :width => '125') %>
+									</div>
+									<div class="media-body">
+										<h3 class="media-heading"><%= doc.searchable.title.html_safe %></h3>
+										<%= truncate(sanitize(strip_tags(doc.content.html_safe)), :length=>350, :omission=>"  >>>") %>
+									</div>
+
+								</a>
+							</div>
+
+							<% end %>
+						<% end %>
+					</div>
+			<% else %>
+				<h3>No Shows or Episodes found.</h3>
+			<% end %>
+		</div>
+	</div>
+
+
+	<div class="row clearfix">
+		<!-- posts -->
+		<div class="col-md-12 column">
+		<!--search results area -->
+
+			<% if(@posts.size) %>
+				<h3><%= @posts.size %> blog posts found:</h3>
+					<div class="media-list">
+						<% @posts.each do | doc | %>
+		
+							<% if !doc.nil?  && !doc.searchable.nil?  %>
+
+							<div class="media">
+								<a class="clearfix" href="<%= doc.searchable.link %>">
+									<div class="pull-left thumb">
+
+									<%=	image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'show-episode-image hidden-xs', :width => '125') %>
+									</div>
+									<div class="media-body">
+										<h3 class="media-heading"><%= doc.searchable.title.html_safe %></h3>
+										<%= truncate(sanitize(strip_tags(doc.content.html_safe)), :length=>350, :omission=>"  >>>") %>
+									</div>
+
+								</a>
+							</div>
+
+							<% end %>
+						<% end %>
+					</div>
+			<% else %>
+				<h3>No blog posts found.</h3>
+			<% end %>
+		</div>
+
 	</div>
 </section>

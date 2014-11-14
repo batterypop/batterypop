@@ -29,7 +29,12 @@
 
 class User < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:username ]
+  # multisearchable :against => [:username ]
+  pg_search_scope :search_text,
+                  :against => :username,
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
@@ -69,12 +74,11 @@ class User < ActiveRecord::Base
   end
 
   def thumb(dim=nil)
-    puts ""; puts "#@@@@   first   @@@"; puts dim; puts "";
     self.get_avatar(:thumb, dim)
   end
 
   def search_valid?
-    valid?
+    valid? 
   end
 
   def index
@@ -91,7 +95,6 @@ class User < ActiveRecord::Base
 
   # because some users were created without avatar attached, adding this as part of the model function
   def get_avatar(size = :thumb, dim=nil)
-    puts ""; puts "#@@@@   again   @@@"; puts dim; puts "";
     unless(self.avatar.nil?) 
       img =  ActionController::Base.helpers.image_tag(self.avatar.image(size), size: dim)
     else

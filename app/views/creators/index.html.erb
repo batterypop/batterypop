@@ -22,7 +22,7 @@
 						<div class="col-md-3 col-sm-4 col-xs-6 item">
 						
 							<%= render partial: "layouts/vertical_slide", :locals => {
-								:slide_title => creator.title, 
+								:slide_title => creator.displayname, 
 								:slide_text => "".html_safe,
 								:slide_image => image_tag(creator.thumb),
 								:slide_url => creator.link} %>

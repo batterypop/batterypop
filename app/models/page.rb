@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
-	include PgSearch
-	multisearchable :against => [:title, :content]
+	# include PgSearch
+	# multisearchable :against => [:title, :content]
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged

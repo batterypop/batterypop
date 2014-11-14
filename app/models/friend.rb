@@ -25,7 +25,13 @@
 
 class Friend < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:title, :description, :sponsor]
+	# multisearchable :against => [:title, :description, :sponsor]
+
+	pg_search_scope :search_text,
+                  :against => [:title, :description, :sponsor],
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged

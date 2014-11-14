@@ -16,7 +16,13 @@
 
 class Post < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:title , :body]
+	# multisearchable :against => [:title , :body]
+
+	pg_search_scope :search_text,
+              :against => [:title, :body],
+              :using => {
+                :tsearch => {:prefix => true}
+              }
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged

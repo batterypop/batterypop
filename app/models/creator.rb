@@ -23,7 +23,13 @@
 
 class Creator < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:username , :displayname, :bio]
+	# multisearchable :against => [:username , :displayname, :bio]
+
+	pg_search_scope :search_text,
+                  :against => [:username, :displayname, :bio],
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
@@ -73,8 +79,8 @@ def link
 	return "/creators/" + self.slug
 end
 
-def thumb
-	return (self.image(:thumb))
+def thumb(dim=nil)
+	return (self.image(:thumb, dim))
 end
 
 def search_valid?

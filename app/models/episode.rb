@@ -27,7 +27,14 @@
 
 class Episode < ActiveRecord::Base
 	include PgSearch
-	multisearchable :against => [:title, :description]
+	# multisearchable :against => [:title, :description]
+
+	pg_search_scope :search_text,
+                  :against => [:title, :description],
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
+
 
 	include DashboardUtility
 
