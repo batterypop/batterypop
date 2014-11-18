@@ -71,7 +71,7 @@
 	
 	<div class="row clearfix">
 		<div class="col-md-12 column clearfix">
-			<% if(@vids.size) %><%= @vids.inspect %><br />
+			<% if(@vids.size) %><% @vids.inspect %><br />
 				<h3><%= @vids.size %> Shows or Episodes found:</h3>
 					<div class="media-list">
 						<% @vids.each do | doc | %>
