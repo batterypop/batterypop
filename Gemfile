@@ -164,6 +164,7 @@ group :development do
   gem 'annotate'
   gem 'pry'
   gem 'debugger'
+  gem 'rails-erd'
    # gem 'sqlite3'
 end
 

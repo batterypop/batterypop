@@ -56,6 +56,8 @@ class Episode < ActiveRecord::Base
 	has_many :links, :as => :linkedmedia
 	has_many :visits, :through => :links
 
+	has_many :chicago_votes, :as => :voteable
+
 	before_save :destroy_images?
 
 
@@ -79,8 +81,25 @@ class Episode < ActiveRecord::Base
 		# following is only TRUE votes
 		#return Episode.joins(:show).where(:approved => true, "shows.approved" => true).order('cached_votes_up DESC').limit(lim).includes(:show)
 		# following is chicago votes AND true votes
+		# below is working for all time
+		# return Episode.joins(:show).where(:approved => true, "shows.approved" => true).where("episodes.chicago is not NULL").order('(cached_votes_up + chicago) DESC').limit(lim).includes(:show)
+		# below is for section of time
+		# ActsAsVotable::Vote.all(:conditions => ["created_at >= ?", Date.today.at_beginning_of_month])
+		# x=ActsAsVotable::Vote.all(:conditions => ["created_at >= ? AND votable_type = ?", "2014-10-01", "Episode"])
+		#  x=ActsAsVotable::Vote.select("id, votable_id").all(:conditions => ["created_at >= ? AND votable_type = ?", "2014-10-01", "Episode"])
+		#  x=ChicagoVote.select("voteable_id, count(voteable_id) as total").where(:created_at => @start..@end).group("voteable_id").order("total DESC")
+
 		return Episode.joins(:show).where(:approved => true, "shows.approved" => true).where("episodes.chicago is not NULL").order('(cached_votes_up + chicago) DESC').limit(lim).includes(:show)
 	end
+
+
+	def self.mostpopped_by_month(lim=nil)
+		@start = Date.today.beginning_of_month
+		@end = Date.today.end_of_month
+		ids = ChicagoVote.select("voteable_id, count(voteable_id) as total").where(:created_at => @start..@end).group("voteable_id").order("total DESC")
+	end
+
+
 
 # popping / liking with chicago voting
 def pops
