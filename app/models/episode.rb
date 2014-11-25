@@ -96,7 +96,7 @@ class Episode < ActiveRecord::Base
 	def self.mostpopped_by_month(lim=nil)
 		@start = Date.today.beginning_of_month
 		@end = Date.today.end_of_month
-		ids = ChicagoVote.select("voteable_id, count(voteable_id) as total").where(:created_at => @start..@end).group("voteable_id").order("total DESC")
+		return Episode.joins(:chicago_votes).select("episodes.*, count(episodes.id) as total").where(:chicago_votes => {:created_at => Date.today.beginning_of_month..Date.today.end_of_month}).group("episodes.id").order("total DESC").limit(lim)
 	end
 
 

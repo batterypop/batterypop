@@ -14,7 +14,9 @@ class PagesController < ApplicationController
 
     @features = Feature.homepage.active
     @showlist = Show.showlist.approved.shuffle
-    @popped = Episode.mostpopped(10) 
+    # @popped = Episode.mostpopped(10) 
+    @popped = Episode.mostpopped_by_month(10)
+
     @promoted = Show.where(:promote => true).order('updated_at DESC')
 
     @channels = Channel.get_channels_approved
