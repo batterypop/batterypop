@@ -36,7 +36,10 @@ class PagesController < ApplicationController
     @users = User.listable.search_text(@query);
     @creators = Creator.search_text(@query)
     # @vids = PgSearch.multisearch(@query).where.not(:searchable_type => "Post", :searchable_type => "User", :searchable_type => "Creator")
-    @vids = PgSearch.multisearch(@query).where(:searchable_type => "Episode")
+    @eps = PgSearch.multisearch(@query).where(:searchable_type => "Episode")
+    @shows = PgSearch.multisearch(@query).where(:searchable_type => "Show")
+
+    @vids = (@shows + @eps).uniq
     @posts = PgSearch.multisearch(@query).where(:searchable_type => "Post")
   end
 
