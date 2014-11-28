@@ -16,6 +16,9 @@
 @import "active_admin/chosen";
 @import "active_admin/numeric_range";
 @import "active_admin/sortable_forms";
+
+@import "select2";
+@import "select2-bootstrap";
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 

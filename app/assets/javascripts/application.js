@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bxslider
+//= require select2
 
 //= require_tree .
 

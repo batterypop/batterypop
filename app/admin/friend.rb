@@ -45,7 +45,9 @@ ActiveAdmin.register Friend do
         f.input :delete_background, as: :boolean, required: :false, label: 'Remove image'
       end
 
-      f.input :episodes, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
+    #  f.input :episodes, :class => 'select2', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
+      f.input :episodes, :class => 'bullshit', :as => :select, :multiple => true, :through => :featured_episodes
+
     end
     f.inputs "Featured" do
       f.input :features_autoplay, :label => "Features should autoplay?"
