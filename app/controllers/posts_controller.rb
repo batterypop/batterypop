@@ -16,8 +16,8 @@ class PostsController < ApplicationController
 		@updated = @posts.first.updated_at unless @posts.empty?
 		respond_to do |format|
 			format.html
-			format.atom {render :layout => false}
-			format.rss {render :layout => false }
+			format.atom {@posts = Post.published.all; render :layout => false}
+			format.rss {@posts = Post.published.all; render :layout => false }
 		end
 	end
 
@@ -34,7 +34,6 @@ class PostsController < ApplicationController
 	    end
 	end
 
-	
 
 	private
 	def set_post
