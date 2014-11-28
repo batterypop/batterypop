@@ -62,6 +62,7 @@ class EpisodesController < ApplicationController
     if current_user.nil?
       @episode.chicago = Integer(@episode.chicago.to_i) + 1
       @episode.save
+      ChicagoVote.create(:voteable => @episode)
     else
        @episode.liked_by current_user
        current_user.touch
