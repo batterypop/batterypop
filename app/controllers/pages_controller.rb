@@ -16,6 +16,7 @@ class PagesController < ApplicationController
     @showlist = Show.showlist.approved.shuffle
     # @popped = Episode.mostpopped(10) 
     @popped = Episode.mostpopped_by_month(10)
+    @monthname = Date::MONTHNAMES[Date.today.month]
 
     @promoted = Show.where(:promote => true).order('updated_at DESC')
 
