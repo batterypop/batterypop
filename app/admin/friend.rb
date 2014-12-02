@@ -46,8 +46,9 @@ ActiveAdmin.register Friend do
       end
 
     #  f.input :episodes, :class => 'select2', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
-      f.input :episodes, :class => 'bullshit', :as => :select, :multiple => true, :through => :featured_episodes
-
+      f.input :episodes,  :as => :select, :multiple => true, :through => :featured_episodes
+      # hidden_field_tag 'position' 
+      f.form_buffers.last << '<input type="hidden" id="s2_episode_hidden" style="width: 300px; display: none;" value="" tabindex="-1">'.html_safe
     end
     f.inputs "Featured" do
       f.input :features_autoplay, :label => "Features should autoplay?"
@@ -84,6 +85,44 @@ ActiveAdmin.register Friend do
       links += link_to 'Site View', friend_path(resource)
       links
     end
+  end
+
+
+  controller do
+    def update(options={}, &block)
+       puts ""; puts "";
+      puts ""; puts " $(*$($       FRIEND update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
+        # puts friend.inspect
+ puts ""; puts "";
+      # This sets the attr_accessor you want later
+      # params[:baz].merge!({ :last_foobar => current_foobar })
+      # This is taken from the active_admin code
+      super do |success, failure| 
+        block.call(success, failure) if block
+        failure.html { render :edit }
+      end
+    end
+
+    def call_after_save(friend)
+      puts ""; puts "";
+      puts ""; puts " $(*$($       FRIEND SAVED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
+        puts friend.inspect
+ puts ""; puts "";
+       puts "";
+    end
+  end
+
+  # sort do
+  #   puts ""; puts "      YEAH I GOT SOMEETHING ALRIGHT"; puts ""
+  # end
+
+  collection_action :sort, :method => :post do
+    puts ""; puts ""; puts " $$$$$$$   FRIEND    $$$$$$$$$$"
+    puts params.inspect
+    puts ""; puts "";
+    render :nothing => true
   end
 
 

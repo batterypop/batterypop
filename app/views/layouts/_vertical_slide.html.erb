@@ -1,4 +1,4 @@
-<a href="<%= slide_url %>"  <% if !(local_assigns[:slide_class].nil?) %>class="<%= slide_class %>"<% end %> <% if !(local_assigns[:slide_popover].nil?) %> data-content="<%= local_assigns[:slide_popover] %>" data-html="true" data-placement="true" data-remote="true" data-toggle="popover" data-trigger="hover" <% end %> >
+<a href="<%= slide_url %>"  <% if !(local_assigns[:slide_class].nil?) %>class="<%= slide_class %>"<% end %> <% if !(local_assigns[:slide_popover].nil?) %> title="<%= local_assigns[:slide_popover] %>" <% end %> >
 	<div class="thumb"><%= slide_image %></div>
 	<div class="summary">
 		<h4><%= slide_title %></h4>
