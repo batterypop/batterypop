@@ -1,4 +1,5 @@
 class FriendEpisode < ActiveRecord::Base
-  belongs_to :friend
-  belongs_to :episode
+	default_scope :order => "position ASC"
+	belongs_to :friend
+	belongs_to :episode
 end

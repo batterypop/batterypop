@@ -42,11 +42,5 @@ ActiveAdmin.register Episode do
 	end
 
 
-	collection_action :sort, :method => :post do
-		puts ""; puts ""; puts " $$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts params.inspect
-		puts ""; puts "";
-		render :nothing => true
-	end
 
 end

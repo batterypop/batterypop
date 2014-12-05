@@ -66,15 +66,12 @@
 		</div>
 	</div>
 
-
-
-	
 	<div class="row clearfix">
 		<div class="col-md-12 column clearfix">
-			<% if(@vids.size) %><% @vids.inspect %><br />
-				<h3><%= @vids.size %> Shows or Episodes found:</h3>
+			<% if(@shows.size) %>
+				<h3><%= @shows.size %> Shows found:</h3>
 					<div class="media-list">
-						<% @vids.each do | doc | %>
+						<% @shows.each do | doc | %>
 		
 							<% if !doc.nil?  && !doc.searchable.nil? && doc.searchable.search_valid? %>
 
@@ -96,7 +93,40 @@
 						<% end %>
 					</div>
 			<% else %>
-				<h3>No Shows or Episodes found.</h3>
+				<h3>No Shows found.</h3>
+			<% end %>
+		</div>
+	</div>
+
+	
+	<div class="row clearfix">
+		<div class="col-md-12 column clearfix">
+			<% if(@eps.size) %>
+				<h3><%= @eps.size %> Episodes found:</h3>
+					<div class="media-list">
+						<% @eps.each do | doc | %>
+		
+							<% if !doc.nil?  && !doc.searchable.nil? && doc.searchable.search_valid? %>
+
+							<div class="media">
+								<a class="clearfix" href="<%= doc.searchable.link %>">
+									<div class="pull-left thumb">
+
+									<%=	image_tag(doc.searchable.thumb, :alt => doc.searchable.title, :class => 'show-episode-image hidden-xs', :width => '125') %>
+									</div>
+									<div class="media-body">
+										<h3 class="media-heading"><%= doc.searchable.chosen_title.html_safe %></h3>
+										<%= truncate(sanitize(strip_tags(doc.content.html_safe)), :length=>350, :omission=>"  >>>") %>
+									</div>
+
+								</a>
+							</div>
+
+							<% end %>
+						<% end %>
+					</div>
+			<% else %>
+				<h3>No Episodes found.</h3>
 			<% end %>
 		</div>
 	</div>

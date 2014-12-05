@@ -39,7 +39,8 @@ class Friend < ActiveRecord::Base
 	acts_as_followable
 
 	has_many :friend_episodes
-	has_many :episodes, -> {order('episodes.created_at ASC')} , :through => :friend_episodes
+	# has_many :episodes, -> {order('episodes.created_at ASC')} , :through => :friend_episodes
+	has_many :episodes, :through => :friend_episodes
 	has_many :shows, :through => :episodes
 
 	 # -> { select('company_stores.*, customers.name').order('company_stores.id ASC').uniq },

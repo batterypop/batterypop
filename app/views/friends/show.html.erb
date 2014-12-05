@@ -90,7 +90,7 @@
 									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
 								</div>
 								<div class="media-body">
-									<h3 class="media-heading"><%= ep.title %></h3>
+									<h3 class="media-heading"><%= ep.chosen_title %></h3>
 									<h4><% if(!ep.duration.nil? && !ep.duration.empty?)%><%= ep.duration %><% end %></h4>
 									<%= ep.description.html_safe %>
 								</div>

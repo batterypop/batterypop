@@ -1,88 +1,58 @@
-// function formatSelect(state){
-// 	console.log(state);
-// 	return "<div style='width: 100%;'>" + state.text + "</div>";
-// }
-
-// jQuery(document).ready(function(){
-// 	// jQuery(".select2").select2({
-// 	//     formatResult: formatSelect,
-// 	//     formatSelection: formatSelect,
-// 	//     escapeMarkup: function(m) { return m; }
-// 	// });
-	
-// 	// jQuery("#s2_episode_hidden").select2({tags:["red", "green", "blue", "orange", "white", "black", "purple", "cyan", "teal"]});
-	
-// 	jQuery(".select2").select2();
-// 	jQuery("#s2_episode_hidden").select2("container").find("ul.select2-choices").sortable({
-// 	    containment: 'parent',
-// 	    start: function() { $("#s2_episode_hidden").select2("onSortStart"); },
-// 	    update: function() { $("#s2_episode_hidden").select2("onSortEnd"); }
-// 	});
-	
-// });
+function formatEpisode(ep){
+	return "<div class='episode_item' id=" + ep.id +">" + ep.id + " " + ep.text + "</div>";
+}
 
 
-
-// (function($){
-//     $.fn.extend({
-//         select2_sortable: function(){ 
-//             var select = $(this); console.log(select);
-//            select.select2();
-//             // var ul = $(select).prev('.select2-container').first('ul');
-//             // alert(ul);
-//             // ul.sortable();
-//         }
-//     });
-
-//     $('#friend_episode_ids').select2_sortable();
-// }(jQuery));
-
-
-// jQuery(document).ready(function(){
-// 	jQuery(".select2").select2();
-// 	// jQuery(".select2-search-choice").sortable({
-// 	jQuery(".select2-choices").sortable({
-// 		// containment: 'parent',
-// 		cursor: "move",
-// 		forcePlaceholderSize: true
-//   //       items       : 'li:not(.select2-search-field)',
-//   //       tolerance   : 'pointer',
-//         // stop: function() {
-//         //     refresh(select,ul);
-//         // }
-// 	});
-// 	// jQuery("#friend_episode_ids").prev('.select2-container').first('ul.select2-choices').sortable();
-
-// });
-
-function saveSort(){
-	alert("wee savesort called");
-	$.ajax({
-		url:"/admin/friends/sort",
-		type: 'post',
-		data: "JUST A TEST",
-		success:function(result){
-			alert("saved");
-		}
+function setSortAtStart(){
+	var order = jQuery("[name='s2_episode_order']").val().split(",");
+	// this is the order of ids  ["206", "269", "343", "788", "1017", "1080"]
+	var search = jQuery("#s2id_friend_episode_ids .select2-choices .select2-search-field");
+	var orderedItems = jQuery.map(order, function(value){
+		return jQuery("[id='"+value+"']").parent().parent();
 	});
+	orderedItems.push(search);
+console.log(orderedItems);
+	jQuery("#s2id_friend_episode_ids .select2-choices").empty().html(orderedItems);
+}
+
+
+
+function saveResort(){
+	var ids = new Array();
+	jQuery(".episode_item").each(
+		function(i, el){
+			var id = jQuery(el).attr("id");
+			ids.push(id);
+			console.log(ids);
+		}
+	);
+	jQuery("[name='s2_episode_order']").val(ids);
 }
 
 jQuery(document).ready(function(){
 	jQuery(".select2").select2();
-	jQuery(".select2-choices").sortable({
-		cursor: "move",
-		stop: function(){
-			// alert("stop");
-		},
-		change: function(){
-			// alert('change');
-		}
 
+	jQuery("#friend_episode_ids").select2({
+	    formatResult: formatEpisode,
+	    formatSelection: formatEpisode,
+	    escapeMarkup: function(m) { return m; }
 	});
 
-	jQuery("#friend_episodes_input .select2").on("change", function(e){
-		// alert(console.log(e));
-		saveSort(e);
-	})
 
+	jQuery("#s2id_friend_episode_ids .select2-choices").sortable({
+		cursor: "move",
+		stop: function(){
+			saveResort();
+		},
+		change: function(){
+			saveResort();
+		}
+	});
+
+
+	jQuery("#friend_episode_ids").on("change", function(e){
+		saveResort();
+	});
+
+	setSortAtStart();
 });

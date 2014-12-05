@@ -1,11 +1,11 @@
 ActiveAdmin.register Friend do
-
   menu :parent => "bPOP Pages", :priority => 4, :label => "Sponsored"
 
   # config.filters = false
 
   before_filter :only => [:show, :destroy, :edit, :update] do
-    @friend = Friend.friendly.find(params[:id])
+    @friend = Friend.includes(:episodes).friendly.find(params[:id])
+    @startOrder = !(@friend.nil?) ? @friend.friend_episodes.map(&:episode_id).join(',') : ""
   end
   
 
@@ -46,10 +46,14 @@ ActiveAdmin.register Friend do
       end
 
     #  f.input :episodes, :class => 'select2', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
+    #  :collection => Episode.map {|e| [e.chosen_title, e.id, e.thumb]}
+    #  
       f.input :episodes,  :as => :select, :multiple => true, :through => :featured_episodes
-      # hidden_field_tag 'position' 
-      f.form_buffers.last << '<input type="hidden" id="s2_episode_hidden" style="width: 300px; display: none;" value="" tabindex="-1">'.html_safe
+      
+      f.form_buffers.last << hidden_field_tag("s2_episode_order", !(f.object.nil?) ? f.object.friend_episodes.map(&:episode_id).join(',') : "")
+
     end
+
     f.inputs "Featured" do
       f.input :features_autoplay, :label => "Features should autoplay?"
       f.input :features_exit, :label => "Features exit on end?", :as => :select, :collection => ['automatic', 'close']
@@ -64,10 +68,7 @@ ActiveAdmin.register Friend do
     f.actions
   end
 
-  # action_item  do
-  #   link_to('View on site', friend_path(friend)) 
-  # end
-
+ 
 
   index do
     column :title
@@ -90,11 +91,8 @@ ActiveAdmin.register Friend do
 
   controller do
     def update(options={}, &block)
-       puts ""; puts "";
-      puts ""; puts " $(*$($       FRIEND update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-
-        # puts friend.inspect
- puts ""; puts "";
+      @order = params['s2_episode_order'].split(",").map(&:to_i)
+  
       # This sets the attr_accessor you want later
       # params[:baz].merge!({ :last_foobar => current_foobar })
       # This is taken from the active_admin code
@@ -102,41 +100,19 @@ ActiveAdmin.register Friend do
         block.call(success, failure) if block
         failure.html { render :edit }
       end
+
+      @order.each_with_index do |id, pos|
+        @fe = FriendEpisode.where(:friend_id => @friend.id, :episode_id => id).first
+        @fe.position = pos
+        @fe.save
+      end
+
     end
 
-    def call_after_save(friend)
-      puts ""; puts "";
-      puts ""; puts " $(*$($       FRIEND SAVED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 
-        puts friend.inspect
- puts ""; puts "";
-       puts "";
-    end
-  end
-
-  # sort do
-  #   puts ""; puts "      YEAH I GOT SOMEETHING ALRIGHT"; puts ""
-  # end
-
-  collection_action :sort, :method => :post do
-    puts ""; puts ""; puts " $$$$$$$   FRIEND    $$$$$$$$$$"
-    puts params.inspect
-    puts ""; puts "";
-    render :nothing => true
+   
   end
 
 
-  # index do
-  # 	column :username
-  # 	column :displayname
-  # 	column :bio
-  # 	column "Image" do |creator|
-  # 		link_to image_tag(creator.image(:thumb)), admin_creator_path(creator)
-  # 	end
-  # 	column "Background" do |creator|
-  # 		link_to image_tag(creator.background(:thumb)), admin_creator_path(creator)
-  # 	end
-  #   default_actions
-  # end
 
 end
