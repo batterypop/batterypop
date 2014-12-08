@@ -34,7 +34,6 @@
 								 Has #{ pluralize( user.followers.count, 'follower')} 
 								 <br />
 								 <b>Likes:</b> #{pluralize(user.find_liked_items.count, 'video')}".html_safe,
-					# :slide_image => image_tag(user.get_avatar(:thumb)),
 					:slide_image => user.thumb("100x100").html_safe,
 					:slide_url => user_path(User.friendly.find(user.id))} %>
 

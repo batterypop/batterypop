@@ -1,5 +1,5 @@
 function formatEpisode(ep){
-	return "<div class='episode_item' id=" + ep.id +">" + ep.id + " " + ep.text + "</div>";
+	return "<div class='episode_item' id=" + ep.id +">" +  ep.text + "</div>";
 }
 
 
@@ -11,8 +11,8 @@ function setSortAtStart(){
 		return jQuery("[id='"+value+"']").parent().parent();
 	});
 	orderedItems.push(search);
-console.log(orderedItems);
-	jQuery("#s2id_friend_episode_ids .select2-choices").empty().html(orderedItems);
+	jQuery("#s2id_friend_episode_ids .select2-choices .select2-search-choice").remove();
+	jQuery(search).before(orderedItems);
 }
 
 
