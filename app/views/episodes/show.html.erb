@@ -39,7 +39,7 @@
         <div class="col-lg-8 show-lower-left">
           
           <div class="media-list list-group">
-            <% @episode.show.episodes.each do |ep| %>
+            <% @episode.show.episodes_approved.each do |ep| %>
 
               <%= render partial: "layouts/horizontal_slide", :locals => {
                 :slide_active => (@episode == ep),

@@ -26,6 +26,12 @@ class EpisodesController < ApplicationController
 
      
     # need to know if this is a friend or show render
+    # 
+    # 
+  puts ""; puts ""; puts " --     HERE    IS     SHOW  PARAMS  KEY   "
+  puts params.has_key?(:show_id)
+  puts ""
+
     if params.has_key?(:show_id)
       @banner_ad = "/31902320/Shows_Leaderboard"
       @banner_id = 'div-gpt-ad-1411894829676-0'
