@@ -48,7 +48,7 @@ class Show < ActiveRecord::Base
 	has_many :episodes, :order => 'episode ASC'
 
 	# has_many :episodes_approved, :class_name => "Episode", :conditions => ["approved = ?", true]
-	has_many :episodes_approved, -> { where approved: true }, class_name: 'Episode'
+	has_many :episodes_approved, -> { where(approved: true).order('episode ASC') }, class_name: 'Episode'
 
 
 	has_many :links, as: :linkedmedia, through: :episodes

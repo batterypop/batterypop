@@ -149,6 +149,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  ransacker :youtube_and_3rdparty_videos_eq, formatter: proc { |v| puts v.inspect }
+
   private 
   def slug_candidates
     [

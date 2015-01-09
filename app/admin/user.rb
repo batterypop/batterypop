@@ -1,5 +1,7 @@
-ActiveAdmin.register User do
+ ActiveAdmin.register User do
 	menu :parent => "Users"
+
+	# config.filters = false
 
 	before_filter :only => [:show, :destroy, :edit, :update] do
 	    @user = User.friendly.find(params[:id])
