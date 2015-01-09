@@ -36,6 +36,7 @@ class EpisodesController < ApplicationController
       @banner_ad = "/31902320/Shows_Leaderboard"
       @banner_id = 'div-gpt-ad-1411894829676-0'
        @title = @episode.slide_title
+       puts "handing off to show render"
        render 'shows/show'
     elsif params.has_key?(:friend_id)
       @banner_ad = "/31902320/Friends_single_leaderboard"
@@ -46,6 +47,8 @@ class EpisodesController < ApplicationController
         @custom_background = @friend.background(:original)
       end
       render 'friends/show'
+    else
+      redirect_to @episode.link
     end
   end
 
