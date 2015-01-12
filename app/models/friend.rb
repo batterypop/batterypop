@@ -41,7 +41,7 @@ class Friend < ActiveRecord::Base
 	has_many :friend_episodes
 	# has_many :episodes, -> {order('episodes.created_at ASC')} , :through => :friend_episodes
 	has_many :episodes, :through => :friend_episodes
-	has_many :episodes_approved, :through => :friend_episodes
+	has_many :episodes_approved, :through => :friend_episodes, :source => :episode
 	has_many :shows, :through => :episodes
 
 	 # -> { select('company_stores.*, customers.name').order('company_stores.id ASC').uniq },
