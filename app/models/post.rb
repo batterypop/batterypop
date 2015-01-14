@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
-	acts_as_taggable_on :tags
+	acts_as_taggable_on :tags, :keywords
 
 	has_and_belongs_to_many :categories, :join_table => :categories_posts
 

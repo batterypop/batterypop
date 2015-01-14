@@ -51,6 +51,7 @@ ActiveAdmin.register Show do
 		        ? f.template.image_tag(f.object.background.url(:thumb))
 		        : f.template.content_tag(:span, 'No background as yet.')
 			f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
+			f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
 			f.input :position, :label => "Show Position"
 			f.input :age_range, :as => :select, :collection => get_age_ranges
 			f.input :single, :label => "Single episode?", :hint => "Set to true for short or non-episodic video."
@@ -74,6 +75,7 @@ ActiveAdmin.register Show do
 				e.input :video, :label => "Video Code"
 				e.input :approved, :label => "BatteryPOP approved."
 				e.input :tag_list, :label => "Tags (seperated by commas)"
+				e.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
 				# e.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
 		 	end
 

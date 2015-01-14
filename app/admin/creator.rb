@@ -14,6 +14,7 @@ ActiveAdmin.register Creator do
   		f.input :password,  :label => "Password", :required => true
       f.input :password_confirmation,  :label => "Password Confirm", :required => true
       f.input :bio, :as => :rich, :config => { :width => '76%', :height => '400px' }
+      f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
       f.input :image,  :hint => f.object.background.present? \
         ? f.template.image_tag(f.object.image.url(:thumb))
         : f.template.content_tag(:span, 'No image as yet.')

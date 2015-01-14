@@ -12,6 +12,7 @@ ActiveAdmin.register Page do
       f.input :slug
       f.input :content, :as => :rich, :allow_embeds => true
       # f.input :sidebars, :class => 'chosen', :as => :select, :multiple => true,  :member_label => :title, :through => :pages_sidebars
+      f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
     end
     f.actions
   end
@@ -20,6 +21,7 @@ ActiveAdmin.register Page do
     column :title
     column :slug
     column :content
+    column :keyword_list
     
     column "" do |resource|
       links = ''.html_safe

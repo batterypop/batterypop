@@ -43,6 +43,7 @@ class Show < ActiveRecord::Base
 	
 	
 	acts_as_followable
+	acts_as_taggable_on :keywords
 	belongs_to :creator
 
 	has_many :episodes, :order => 'episode ASC'

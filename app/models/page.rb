@@ -5,6 +5,8 @@ class Page < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
+	acts_as_taggable_on  :keywords
+
 
 	def should_generate_new_friendly_id?
 	  slug.blank? || title_changed?

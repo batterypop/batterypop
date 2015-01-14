@@ -37,6 +37,7 @@ class Friend < ActiveRecord::Base
 	friendly_id :slug_candidates, use: :slugged
 
 	acts_as_followable
+	acts_as_taggable_on  :keywords
 
 	has_many :friend_episodes
 	# has_many :episodes, -> {order('episodes.created_at ASC')} , :through => :friend_episodes

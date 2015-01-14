@@ -10,7 +10,7 @@ ActiveAdmin.register Post do
 			f.input :title, :label => "Title", :required => true 
 			f.input :featured_image, :label => "Featured Image"
 			f.input :body, :label => "Body", :as => :rich, :allow_embeds => true
-			f.input :tag_list, :label => "Tags (seperated by commas)"
+			f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
 		end
 		f.inputs "Categories" do
 			f.input :categories, :as => :check_boxes, :input_html => { :multiple => true } 
@@ -34,7 +34,7 @@ ActiveAdmin.register Post do
 			end
 			div :class => 'admin-post-meta' do
 		       div "Categories: #{post.categories.map { |cat| cat.title }}"
-		       div "Tags: #{post.tag_list}"
+		       div "Meta: #{post.meta_list}"
 		     end
 		end
 	end

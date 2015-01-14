@@ -18,7 +18,7 @@ ActiveAdmin.register Friend do
       f.input :hide_sponsor_listing, :label => "Hide 'SPONSOR' in Sponsor episode list?"
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
-
+      f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"
       f.input :created_at, :as => :datetime_select
 
       f.input :image,  :hint => f.object.image.present? \
@@ -44,6 +44,8 @@ ActiveAdmin.register Friend do
       if f.object.background.present? 
         f.input :delete_background, as: :boolean, required: :false, label: 'Remove image'
       end
+
+      f.input :background_full, :label => "Make background image full, not repeating."
 
     #  f.input :episodes, :class => 'select2', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
     #  :collection => Episode.map {|e| [e.chosen_title, e.id, e.thumb]}

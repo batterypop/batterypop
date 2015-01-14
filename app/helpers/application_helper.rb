@@ -15,7 +15,7 @@ module ApplicationHelper
     if @title.nil? 
       base_title
     else
-      strip_tags("#{base_title} | #{@title}")
+      strip_tags("#{@title} | #{base_title}")
     end
   end
 
@@ -34,7 +34,7 @@ module ApplicationHelper
     if @page_keywords.nil?
       base_tags
     else
-      "#{@page_keywords}, #{base_tags}"
+      "#{@page_keywords}"
     end
   end
 

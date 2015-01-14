@@ -35,7 +35,7 @@ class Creator < ActiveRecord::Base
 	friendly_id :slug_candidates, use: :slugged
 
 	acts_as_messageable
-
+	acts_as_taggable_on :keywords
 
 	devise :database_authenticatable, :registerable, :rememberable, :trackable, :authentication_keys => [:username] 
 
