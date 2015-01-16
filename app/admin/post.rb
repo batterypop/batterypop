@@ -34,7 +34,7 @@ ActiveAdmin.register Post do
 			end
 			div :class => 'admin-post-meta' do
 		       div "Categories: #{post.categories.map { |cat| cat.title }}"
-		       div "Meta: #{post.meta_list}"
+		       div "Meta: #{post.keyword_list}"
 		     end
 		end
 	end
