@@ -24,7 +24,7 @@ module ApplicationHelper
     if @description.nil? || @description.empty?
       base_description
     else
-      strip_tags("#{@description}")
+      strip_tags("#{@meta_description}")
     end
   end
 
@@ -105,8 +105,10 @@ module ApplicationHelper
     end
 
     def custom_background_override
+      @bk_class = @custom_background_full ? " bk-full" : ""
+      @bk_repeat = @custom_background_full ? "" : "repeat"
       if !@custom_background.nil?
-      "<div class='bk-extra' style='background: url(#{@custom_background}) repeat left top;'></div>".html_safe
+      "<div class='bk-extra #{@bk_class}' style='background: url(#{@custom_background}) #{@bk_repeat} left top;'></div>".html_safe
       else
         ""
       end

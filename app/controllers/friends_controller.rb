@@ -20,6 +20,8 @@ class FriendsController < ApplicationController
 			if @friend.background.present? 
 				@custom_background = @friend.background(:original)
 			end
+			@custom_background_full = @friend.background_full
+			
 			if(@episode.nil?) 
 				@episode = @friend.episodes.first
 				@show = @episode.show

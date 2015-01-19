@@ -25,27 +25,23 @@ class EpisodesController < ApplicationController
      @ga_page_params = ", {'dimension1':  '#{@episode.creator.id}', 'dimension2': '#{@episode.id}'}"
 
      
-    # need to know if this is a friend or show render
-    # 
-    # 
-  puts ""; puts ""; puts " --     HERE    IS     SHOW  PARAMS  KEY   "
-  puts params.has_key?(:show_id)
-  puts ""
+   # @page_keywords = "this is episode keywords"
 
     if params.has_key?(:show_id)
       @banner_ad = "/31902320/Shows_Leaderboard"
       @banner_id = 'div-gpt-ad-1411894829676-0'
-       @title = @episode.slide_title
-       puts "handing off to show render"
+      @title = "#{@show.title} : #{@episode.title}"
+       
        render 'shows/show'
     elsif params.has_key?(:friend_id)
       @banner_ad = "/31902320/Friends_single_leaderboard"
       @banner_id = 'div-gpt-ad-1413353029748-0'
       @friend = Friend.friendly.find(params["friend_id"])
-      @title = @friend.title
+      @title = "#{@friend.title} : #{@episode.title}"
       if @friend.background.present? 
         @custom_background = @friend.background(:original)
       end
+      @custom_background_full = @friend.background_full
       render 'friends/show'
     else
       redirect_to @episode.link

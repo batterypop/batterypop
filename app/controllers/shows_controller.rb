@@ -26,21 +26,30 @@ class ShowsController < ApplicationController
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
 
      @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
-     @description = @show.description
+     
     if(@episode.nil?) 
        @episode = @show.episodes.first
     end
 
 
+    @ga_page_params = ", {'dimension1':  '#{@episode.creator.id}', 'dimension2': '#{@episode.id}'}"
 
-    @title = @show.title + ' : ' + @episode.title
-  
-     @ga_page_params = ", {'dimension1':  '#{@episode.creator.id}', 'dimension2': '#{@episode.id}'}"
+    #we want to have different items based on single or episodic info
+    @description = @show.single? ? @show.description : @episode.description
+    @title = @show.single? ? @show.title : "#{@show.title} : #{@episode.title}"
 
+   
+
+#meta fun
+
+    # @meta_description = @show.single? ? "#{@show.title} : #{@episode.description}" : "#{@show.title} : #{@episode.title} - #{@episode.description}"
+    @meta_description = "#{@title} - #{@episode.description}"
     if(!@episode.tag_list.empty?)
-        @page_keywords =  @episode.tag_list.to_s
+        @page_keywords = "tags" + @episode.tag_list.to_s
     end
-
+    if(!@episode.keyword_list.empty?)
+        @page_keywords = "keys" +  @episode.keyword_list.to_s
+    end
     # if current user following
    if !current_user.nil? && current_user.following?(@show)
        @show_follow_status = "You are following"
