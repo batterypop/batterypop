@@ -45,7 +45,7 @@ ActiveAdmin.register Friend do
         f.input :delete_background, as: :boolean, required: :false, label: 'Remove image'
       end
 
-      f.input :background_full, :label => "Make background image full, not repeating."
+      f.input :background_full, :label => "Make background image full, not repeating.",  as: :boolean
 
     #  f.input :episodes, :class => 'select2', :as => :select, :multiple => true,  :member_label => :chosen_title, :through => :featured_episodes
     #  :collection => Episode.map {|e| [e.chosen_title, e.id, e.thumb]}
