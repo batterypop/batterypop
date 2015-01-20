@@ -132,7 +132,8 @@ left:0;
 position:fixed;
 z-index: -2;
   &.bk-full {
-    background-size: contain !important;
+    background-size: cover !important;
+    background-repeat: no-repeat;
   }
 }
 
