@@ -5,6 +5,25 @@ ActiveAdmin.register Feature do
 
 	config.sort_order = 'position_asc' # assumes you are using 'position' for your acts_as_list column
 
+
+	controller do
+		def update
+			super
+			 expire_fragment("features_home")
+		end
+
+		def destroy
+			super
+			 expire_fragment("features_home")
+		end
+
+		def create
+			super
+			 expire_fragment("features_home")
+		end
+	end
+
+
 	form do |f|
 		f.inputs "BatteryPOP Feature" do
 			f.input :position, :label => "Slide Position"

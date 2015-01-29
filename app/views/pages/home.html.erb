@@ -14,7 +14,7 @@
 
   <!-- repeat channels -->
 
-
+<% cache 'shows_channels_home', skip_digest: true do %>
 <% pos = 1 %>
 <% @channels.each do |channel| %>
 
@@ -83,10 +83,10 @@
           </ul>
         </div>
       </div>
-      </div>
+    </div>
 
 <!-- end shorts channel -->
-
+<% end %>
 
 	
 </section>

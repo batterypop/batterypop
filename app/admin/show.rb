@@ -24,18 +24,20 @@ ActiveAdmin.register Show do
 		def update
 			super
 			 expire_fragment("shows_promoted")
+			 expire_fragment("shows_channels_home")
 		end
 
 		def destroy
 			super
 			 expire_fragment("shows_promoted")
+			 expire_fragment("shows_channels_home")
 		end
 
 		def create
 			super
 			 expire_fragment("shows_promoted")
+			 expire_fragment("shows_channels_home")
 		end
-
 	end
 
 
