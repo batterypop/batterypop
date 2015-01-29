@@ -54,7 +54,7 @@ class Episode < ActiveRecord::Base
 	has_many :friends, :through => :friend_episodes
 
 	has_many :links, :as => :linkedmedia
-	has_many :visits, :through => :links
+	# has_many :visits, :through => :links  -- removing visit; no reason to track
 
 	has_many :chicago_votes, :as => :voteable
 

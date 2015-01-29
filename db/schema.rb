@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114185043) do
+ActiveRecord::Schema.define(version: 20150129062749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,7 +267,7 @@ ActiveRecord::Schema.define(version: 20150114185043) do
     t.datetime "sidebar_image_updated_at"
     t.string   "sidebar_image_link"
     t.boolean  "hide_sponsor_listing"
-    t.boolean  "background_full",            default: true, null: false
+    t.boolean  "background_full",            default: false, null: false
   end
 
   create_table "linkages", force: true do |t|
@@ -291,7 +291,6 @@ ActiveRecord::Schema.define(version: 20150114185043) do
     t.string   "linkedmedia_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "visits_count",     default: 0
     t.string   "link_type"
     t.string   "title"
   end
@@ -505,19 +504,6 @@ ActiveRecord::Schema.define(version: 20150114185043) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
-
-  create_table "visits", force: true do |t|
-    t.string   "session_id"
-    t.string   "http_user_agent"
-    t.string   "http_accept_language"
-    t.string   "remote_addr"
-    t.text     "data"
-    t.integer  "user_id"
-    t.integer  "link_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "request_uri"
-  end
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

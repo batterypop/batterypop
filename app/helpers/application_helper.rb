@@ -218,31 +218,21 @@ module ApplicationHelper
 
         #  now must see if episode.embed needs perms or not
         #  
-puts "---  WE're not viddler"      
 
         if(episode.embed.needs_permission?)
 
-puts "--   Episode needs perms"
           # needs perms; is the user signed in first?
           if(!current_user.present?)  # not signed in
-puts "--   sorry buddy you have to sign in (show message)"
             return "<div class='fluid-width-video-wrapper' style='padding-top: 50%; background-color: black; color: white;'><h2 class='text-center lead'>You need to create an account and have permissions to view.</h2></div>"
           else
-puts " -- there IS a current user "
             # there is a current user, but perms?
             if(current_user.present?  && current_user.youtube_and_3rdparty_videos?)
-puts "ok current user present && current_user can view"
-puts @ret
               return @ret
             else
-puts " you need permissions (message)"
               return "<div class='fluid-width-video-wrapper' style='padding-top: 50%; background-color: black; color: white;'><h2 class='text-center lead'>Sorry; you don't have permissions to view.</h2></div>"
             end
-put " #   we're at a weird spot!!!!!"
           end
         else # anyone can see it
-puts "-- nah anyone can see this (and return)"
-puts @ret
           return @ret
         end
       end

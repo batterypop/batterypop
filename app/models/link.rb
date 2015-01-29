@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
 
 	# default_scope order('created_at DESC')
 
-	has_many :visits
+	# has_many :visits -- no need for visits no reason to track
 	has_many :sidebars
 
 
