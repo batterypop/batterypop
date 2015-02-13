@@ -45,10 +45,10 @@ class ShowsController < ApplicationController
     # @meta_description = @show.single? ? "#{@show.title} : #{@episode.description}" : "#{@show.title} : #{@episode.title} - #{@episode.description}"
     @meta_description = "#{@title} - #{@episode.description}"
     if(!@episode.tag_list.empty?)
-        @page_keywords = "tags" + @episode.tag_list.to_s
+        @page_keywords = @episode.tag_list.to_s
     end
     if(!@episode.keyword_list.empty?)
-        @page_keywords = "keys" +  @episode.keyword_list.to_s
+        @page_keywords = @episode.keyword_list.to_s
     end
     # if current user following
    if !current_user.nil? && current_user.following?(@show)
