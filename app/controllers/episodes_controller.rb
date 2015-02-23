@@ -11,6 +11,7 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.json
   def show
+   @dfp_header = "shows"
     @show = @episode.show
     @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
     @likers = @episode.votes.up.by_type(User).voters.compact
