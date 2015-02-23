@@ -11,7 +11,7 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.json
   def show
-   @dfp_header = "shows"
+
     @show = @episode.show
     @followers = @show.user_followers.offset(rand(@show.user_followers.count)).limit(5)
     @likers = @episode.votes.up.by_type(User).voters.compact
@@ -29,12 +29,14 @@ class EpisodesController < ApplicationController
    # @page_keywords = "this is episode keywords"
 
     if params.has_key?(:show_id)
+      @dfp_header = "shows"
       @banner_ad = "/31902320/Shows_Leaderboard"
       @banner_id = 'div-gpt-ad-1411894829676-0'
       @title = "#{@show.title} : #{@episode.title}"
        
        render 'shows/show'
     elsif params.has_key?(:friend_id)
+      @dfp_header = "friends"
       @banner_ad = "/31902320/Friends_single_leaderboard"
       @banner_id = 'div-gpt-ad-1413353029748-0'
       @friend = Friend.friendly.find(params["friend_id"])
