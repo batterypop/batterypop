@@ -69,7 +69,13 @@ module ApplicationHelper
       end
     end
 
-
+    def get_dfp_header
+      if( @dfp_header.nil?  ||  @dfp_header.empty?)
+        ""
+      else
+        render :partial => "layouts/ads/dfp_header_#{@dfp_header}.html.erb"
+      end
+    end
 
     def get_ga_custom
       if @ga_custom.nil? || @ga_custom.empty?

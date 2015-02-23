@@ -20,6 +20,7 @@ class ShowsController < ApplicationController
   def show
     @banner_ad = "/31902320/Shows_Leaderboard"
     @banner_id = 'div-gpt-ad-1411894829676-0'
+     @dfp_header = "shows"
      @active="shows"
      @show_follow_status = ''
      # @f = @show.user_followers.random(5)

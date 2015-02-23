@@ -18,29 +18,8 @@ googletag.cmd.push(function() {
 	
 googletag.defineSlot('<% if !(local_assigns[:banner_ad].nil?) %><%= banner_ad %><% end %>', [[728, 90], [970, 90]], '<% if !(local_assigns[:banner_id].nil?) %><%= banner_id %><% end %>').addService(googletag.pubads());
 
-googletag.defineSlot('/31902320/Shows_medium_rectangle1', [300, 250], 'div-gpt-ad-1413394859928-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/Shows_Single_300x100_1', [300, 100], 'div-gpt-ad-1413391261093-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/Shows_single_300x100_2', [300, 100], 'div-gpt-ad-1413391286254-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/shows_sinlge_300x100_3', [300, 100], 'div-gpt-ad-1413391306769-0').addService(googletag.pubads());
 
-
-googletag.defineSlot('/31902320/Friends_single_medrec', [[300, 250], [300, 600]], 'div-gpt-ad-1413390818658-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/Friends_single_300x100', [300, 100], 'div-gpt-ad-1413434995365-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/Friends_single_300x100_2', [300, 100], 'div-gpt-ad-1413390931893-0').addService(googletag.pubads());
-googletag.defineSlot('/31902320/Friends_single_300x100_3', [300, 100], 'div-gpt-ad-1413390956486-0').addService(googletag.pubads());
-
-
-googletag.defineSlot('/31902320/Blog_medrec', [[300, 250], [300, 600]], 'div-gpt-ad-1424328493989-0').addService(googletag.pubads());
-
-
-googletag.defineSlot('/31902320/Homepage_medrec2', [[300, 250], [300, 600]], 'div-gpt-ad-1413391179042-0').addService(googletag.pubads());
-
-
-googletag.defineSlot('/31902320/show_medrec2', [300, 250], 'div-gpt-ad-1413391235392-0').addService(googletag.pubads());
-
-
-
-
+<%= get_dfp_header %>
 
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();

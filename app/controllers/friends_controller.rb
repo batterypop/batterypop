@@ -16,6 +16,7 @@ class FriendsController < ApplicationController
 		if @friend.approved
 			@banner_ad = "/31902320/Friends_single_leaderboard"
    			@banner_id = 'div-gpt-ad-1413353029748-0'
+   			@dfp_header="friends"
 			@title = @friend.title
 			if @friend.background.present? 
 				@custom_background = @friend.background(:original)
