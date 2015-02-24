@@ -15,10 +15,14 @@ node.parentNode.insertBefore(gads, node);
 
 <script type='text/javascript'>
 googletag.cmd.push(function() {
+
+<% if @dfp_header_code.nil? || @dfp_header_code.empty? %>	
 	
-googletag.defineSlot('<% if !(local_assigns[:banner_ad].nil?) %><%= banner_ad %><% end %>', [[728, 90], [970, 90]], '<% if !(local_assigns[:banner_id].nil?) %><%= banner_id %><% end %>').addService(googletag.pubads());
+	googletag.defineSlot('<% if !(local_assigns[:banner_ad].nil?) %><%= banner_ad %><% end %>', [[728, 90], [970, 90]], '<% if !(local_assigns[:banner_id].nil?) %><%= banner_id %><% end %>').addService(googletag.pubads());
 
-
+<% else %>
+	<%= @dfp_header_code.html_safe %>
+<% end %>
 <%= get_dfp_header %>
 
 googletag.pubads().enableSingleRequest();

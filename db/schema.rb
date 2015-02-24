@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129062749) do
+ActiveRecord::Schema.define(version: 20150224051717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,6 +268,9 @@ ActiveRecord::Schema.define(version: 20150129062749) do
     t.string   "sidebar_image_link"
     t.boolean  "hide_sponsor_listing"
     t.boolean  "background_full",            default: false, null: false
+    t.text     "dfp_header_code"
+    t.text     "dfp_banner_ad"
+    t.text     "dfp_mid_side_ad"
   end
 
   create_table "linkages", force: true do |t|

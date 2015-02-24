@@ -67,6 +67,13 @@ ActiveAdmin.register Friend do
         e.input :active, :label => "Active?", :hint => "Select for active, unselect to hide."
       end
     end
+
+    f.inputs "Ads" do
+      f.input :dfp_header_code, :label => "DFP Custom Header Code"
+      f.input :dfp_banner_ad, :label => "DFP Banner Ad"
+      f.input :dfp_mid_side_ad, :label => "DFP Side 300x250"
+    end
+
     f.actions
   end
 
