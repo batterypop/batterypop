@@ -40,6 +40,12 @@ class EpisodesController < ApplicationController
       @banner_ad = "/31902320/Friends_single_leaderboard"
       @banner_id = 'div-gpt-ad-1413353029748-0'
       @friend = Friend.friendly.find(params["friend_id"])
+
+        # custom code if exists
+      @dfp_header_code = @friend.dfp_header_code
+      @dfp_banner_ad = @friend.dfp_banner_ad
+      @dfp_mid_side_ad = @friend.dfp_mid_side_ad
+
       @title = "#{@friend.title} : #{@episode.title}"
       if @friend.background.present? 
         @custom_background = @friend.background(:original)

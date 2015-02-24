@@ -11,9 +11,9 @@ class FriendsController < ApplicationController
 	    @banner_ad = "/31902320/Friends_Main_728x90"
    		@banner_id = 'div-gpt-ad-1413353004265-0'
    		# custom code if exists
-   		@dfp_header_code = @friend.dfp_header_code
-   		@dfp_banner_ad = @friend.dfp_banner_ad
-   		@dfp_mid_side_ad = @friend.dfp_mid_side_ad
+   		# @dfp_header_code = @friend.dfp_header_code
+   		# @dfp_banner_ad = @friend.dfp_banner_ad
+   		# @dfp_mid_side_ad = @friend.dfp_mid_side_ad
 	end
 
 	def show
