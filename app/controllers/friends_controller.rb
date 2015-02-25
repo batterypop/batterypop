@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
 		# redirect_to "/"
 		@title = "Friends"
 		@active = "friends"
-		@friends=Friend.approved.paginate(:page => params[:page], :per_page => 8)
+		@friends=Friend.approved.paginate(:page => params[:page], :per_page => 8).order(created_at: :desc) 
 	    @description = "Check out these cool videos from batteryPOP's coolest friends!"
 	    @banner_ad = "/31902320/Friends_Main_728x90"
    		@banner_id = 'div-gpt-ad-1413353004265-0'
