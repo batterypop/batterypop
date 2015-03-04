@@ -301,9 +301,6 @@ GEM
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    rack-google-analytics (1.1.0)
-      actionpack
-      activesupport
     rack-mini-profiler (0.9.0)
       rack (>= 1.1.3)
     rack-raw-upload (1.1.1)
@@ -481,7 +478,6 @@ DEPENDENCIES
   pg
   pg_search
   pry
-  rack-google-analytics
   rack-mini-profiler
   rails (~> 4.0.0)
   rails-erd

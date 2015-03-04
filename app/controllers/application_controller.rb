@@ -23,14 +23,6 @@ class ApplicationController < ActionController::Base
 
 
   def getGACode
-
-
-    # case Rails.env
-    #   when 'production'
-    #      @gacode = "UA-44486746-1"
-    #    when 'staging'
-    #      @gacode = "UA-44486746-2"
-    #  end
     if Rails.env == 'production'
       @gacode = "UA-44486746-1"
     else

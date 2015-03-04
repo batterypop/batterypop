@@ -134,7 +134,7 @@ gem 'dalli'
 # gem 'redis'
 
 # gem 'google-api-client'
-gem 'rack-google-analytics'
+# gem 'rack-google-analytics'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
