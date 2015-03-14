@@ -62,12 +62,12 @@ class Episode < ActiveRecord::Base
 
 
 	has_attached_file :image,
-	    :styles => { 
-	    	large: "864x486>", 
+	    :styles => {
+	    	large: "864x486>",
 	    	:thumb => "150x150#",
 	    	:roku_sd => "214x144^",
 	    	:roku_hd => "290x218^"
-	 
+
 	    },
 	    storage: :s3,
 	    s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
@@ -94,9 +94,14 @@ class Episode < ActiveRecord::Base
 
 
 	def self.mostpopped_by_month(lim=nil)
-		@start = Date.today.beginning_of_month
-		@end = Date.today.end_of_month
-		return Episode.joins(:chicago_votes).select("episodes.*, count(episodes.id) as total").where(:chicago_votes => {:created_at => Date.today.beginning_of_month..Date.today.end_of_month}).group("episodes.id").order("total DESC").limit(lim)
+          Episode.mostpopped_by_range Date.today.beginning_of_month, Date.today.end_of_month
+	end
+
+        def self.mostpopped_by_range(pd_start, pd_end, lim=nil)
+          Episode.joins(:chicago_votes)
+            .select("episodes.*, count(episodes.id) as total")
+            .where(:chicago_votes => {:created_at => pd_start..pd_end })
+            .group("episodes.id").order("total DESC").limit(lim)
 	end
 
 
@@ -160,7 +165,7 @@ end
 	# def self.default_scope
 	# 	approved
 	# end
-	
+
 
 
 	def self.nextup(episode, lim=nil)
@@ -191,7 +196,7 @@ end
 			else
 				# not belong to any channels so most popped?
 				@most =   Episode.mostpopped(lim).reject{|ep| ep == episode}
-				if(!@next_episode.nil?) 
+				if(!@next_episode.nil?)
 					@most.unshift(@next_episode)
 				end
 				return @most
@@ -207,7 +212,7 @@ end
 	def votes_by_age
 		DashboardUtility.users_to_census_age_count(self.votes.up.by_type(User).voters, true)
 	end
-	
+
 	def should_generate_new_friendly_id?
 	  slug.blank? || title_changed?
 	end
@@ -222,7 +227,7 @@ end
 	end
 
 
-	private  
+	private
 	def destroy_images?
 	    self.image = nil if @delete_image == "1"
 	end
@@ -246,6 +251,6 @@ end
 	def episode_params
 		params.require(:episode).permit(:title, :description, :approved, :show_id, :slug)
 	end
-	
+
 
 end

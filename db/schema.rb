@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224051717) do
+ActiveRecord::Schema.define(version: 20150314022600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -273,20 +272,6 @@ ActiveRecord::Schema.define(version: 20150224051717) do
     t.text     "dfp_mid_side_ad"
   end
 
-  create_table "linkages", force: true do |t|
-    t.string    "name"
-    t.string    "url"
-    t.string    "icon_file_name"
-    t.string    "icon_content_type"
-    t.integer   "icon_file_size"
-    t.timestamp "icon_updated_at",   precision: 6
-    t.integer   "creator_id"
-    t.timestamp "created_at",        precision: 6
-    t.timestamp "updated_at",        precision: 6
-  end
-
-  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
-
   create_table "links", force: true do |t|
     t.string   "url"
     t.text     "data"
@@ -296,6 +281,19 @@ ActiveRecord::Schema.define(version: 20150224051717) do
     t.datetime "updated_at"
     t.string   "link_type"
     t.string   "title"
+  end
+
+  create_table "matches", force: true do |t|
+    t.integer  "first_seat"
+    t.integer  "second_seat"
+    t.integer  "player_one_id"
+    t.integer  "player_two_id"
+    t.datetime "start"
+    t.datetime "finish"
+    t.integer  "tournament_id"
+    t.string   "status",        default: "scheduled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", force: true do |t|
@@ -471,6 +469,26 @@ ActiveRecord::Schema.define(version: 20150224051717) do
     t.string "name"
   end
 
+  create_table "tournaments", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "slug"
+    t.string   "subtitle"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.boolean  "promote"
+    t.boolean  "skiplist"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "username_words", force: true do |t|
     t.string   "kind"
     t.string   "word"
@@ -521,6 +539,9 @@ ActiveRecord::Schema.define(version: 20150224051717) do
 
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+
+  add_foreign_key "matches", "episodes", name: "matches_player_one_id_fk", column: "player_one_id"
+  add_foreign_key "matches", "episodes", name: "matches_player_two_id_fk", column: "player_two_id"
 
   add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
 

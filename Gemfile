@@ -6,6 +6,8 @@ gem 'bundler'
 gem 'rails', '~> 4.0.0'
 
 
+gem 'bracket_tree', github: "agoragames/bracket_tree"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
 
@@ -164,7 +166,7 @@ group :development do
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'annotate'
   gem 'pry'
-  gem 'debugger'
+  # gem 'debugger'
   gem 'rails-erd'
    # gem 'sqlite3'
 end

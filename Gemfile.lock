@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/agoragames/bracket_tree.git
+  revision: 68d90aa5c605ef2996fc7a360d4f90dcfde755ca
+  specs:
+    bracket_tree (0.1.0)
+
+GIT
   remote: git://github.com/bastiaanterhorst/rich.git
   revision: 02cec78fac2d78499222c07cf25a28a2a7257962
   specs:
@@ -191,7 +197,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    columnize (0.8.9)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -201,12 +206,6 @@ GEM
     daemons (1.1.9)
     dalli (2.7.2)
     debug_inspector (0.0.2)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     diff-lcs (1.2.5)
     docile (1.1.3)
     easy_captcha (0.6.4)
@@ -451,6 +450,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.1)
+  bracket_tree!
   browser
   bundler
   bxslider-rails!
@@ -458,7 +458,6 @@ DEPENDENCIES
   chosen-rails
   coffee-rails (~> 4.0.0)
   dalli
-  debugger
   devise!
   devise_security_extension!
   easy_captcha
