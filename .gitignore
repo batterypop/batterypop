@@ -21,4 +21,4 @@
 .DS_Store
 .env
 /config/database.yml
-/config/amazon_s3.yml
+/config/amazon_s3.yml.ruby-version

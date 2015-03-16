@@ -26,17 +26,19 @@
 #
 
 class Episode < ActiveRecord::Base
-	include PgSearch
-	# multisearchable :against => [:title, :description]
+  include PgSearch
+  # multisearchable :against => [:title, :description]
 
-	pg_search_scope :search_text,
-                  :against => [:title, :description],
-                  :using => {
-                    :tsearch => {:prefix => true}
-                  }
+  pg_search_scope :search_text,
+    :against => [:title, :description],
+    :using => {
+               :tsearch => {:prefix => true}
+              }
 
 
-	include DashboardUtility
+  include DashboardUtility
+
+  has_and_belongs_to_many :episodes
 
 
 	extend FriendlyId

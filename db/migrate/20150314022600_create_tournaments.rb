@@ -40,5 +40,10 @@ class CreateTournaments < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :episodes_tournaments , id: false do |t|
+      t.integer :episode_id, null: false, index: true
+      t.integer :tournament_id, null: false, index: true
+    end
   end
 end

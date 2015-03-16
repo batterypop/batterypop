@@ -191,6 +191,11 @@ ActiveRecord::Schema.define(version: 20150314022600) do
   add_index "episodes", ["cached_votes_up"], name: "index_episodes_on_cached_votes_up", using: :btree
   add_index "episodes", ["slug"], name: "index_episodes_on_slug", unique: true, using: :btree
 
+  create_table "episodes_tournaments", id: false, force: true do |t|
+    t.integer "episode_id",    null: false
+    t.integer "tournament_id", null: false
+  end
+
   create_table "features", force: true do |t|
     t.string   "title"
     t.text     "content"

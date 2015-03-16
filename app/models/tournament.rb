@@ -1,6 +1,8 @@
 # == Schema Information
 
 class Tournament < ActiveRecord::Base
+  after_create :create_matches
+
   include DashboardUtility
   # multisearchable :against => [:title, :description]
 
@@ -9,7 +11,10 @@ class Tournament < ActiveRecord::Base
 
   acts_as_followable
 
-  has_many :matches
+  has_many :matches, dependent: :destroy
+  accepts_nested_attributes_for :matches
+
+  has_and_belongs_to_many :episodes
 
   has_attached_file :image,
   :styles => { large: "864x486>",
@@ -66,6 +71,29 @@ class Tournament < ActiveRecord::Base
     slug.blank? || title_changed?
   end
 
+  def episodes= episodes
+    puts "episodes="
+    unless ((Math.log episodes.count, 2) % 1) == 0
+      raise ArgumentError, "Number of episodes must be power of two"
+    end
+
+    bkt = BracketTree::Bracket::SingleElimination.by_size episodes.count
+    relation = BracketTree::PositionalRelation.new(bkt)
+
+    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?})
+      .map {|pair| pair.map(&:first)}
+
+    pairs.each_with_index do |pair, idx|
+      pone, ptwo = pair
+      self.episodes << pone
+      self.episodes << ptwo
+      self.matches.create!(
+        player_one: pone, first_seat: relation.round(1).seat(2*idx + 1).position,
+        player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position)
+    end
+    self
+  end
+
   def self.with_episodes episodes, args
     unless ((Math.log episodes.count, 2) % 1) == 0
       raise ArgumentError, "Number of episodes must be power of two"
@@ -75,10 +103,13 @@ class Tournament < ActiveRecord::Base
     relation = BracketTree::PositionalRelation.new(bkt)
 
     new_tmt = create! args
-    pairs = ((episodes.each_with_index).slice_before {|x| x[1].even?}).map {|pair| pair.map &:first}
+    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?})
+      .map {|pair| pair.map(&:first)}
 
     pairs.each_with_index do |pair, idx|
       pone, ptwo = pair
+      new_tmt.episodes << pone
+      new_tmt.episodes << ptwo
       new_tmt.matches.create!(
         player_one: pone, first_seat: relation.round(1).seat(2*idx + 1).position,
         player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position)
@@ -122,6 +153,11 @@ class Tournament < ActiveRecord::Base
   scope :series, -> {where(:single => [false, nil], :approved => true)}
 
   private
+
+  def create_matches
+    puts "create_matches"
+    self.episodes = Episode.where(id: self.episodes.map(&:id))
+  end
 
   def slug_candidates
     [
