@@ -10,13 +10,13 @@ Batterypopv2::Application.routes.draw do
 
 
   mount Rich::Engine => '/rich', :as => 'rich'
-  
+
   resources :channels
 
 
   # resources :contacts
-  # 
-  
+  #
+
   # mount Split::Dashboard, :at => 'admin/split'
 
   resources :friends do
@@ -37,15 +37,17 @@ Batterypopv2::Application.routes.draw do
       get :feed
     end
   end
-  
+
   resources :categories
+
+  resources :tournaments
 
   resources :shows do
     member do
       get :follow
       get :unfollow
     end
-     resources :episodes 
+     resources :episodes
   end
 
   resources :episodes do
@@ -58,7 +60,7 @@ Batterypopv2::Application.routes.draw do
 
  post "/refresh", :to => "episodes#refresh"
 
-  resources :messages 
+  resources :messages
   resources :conversations
 
 
@@ -70,7 +72,7 @@ Batterypopv2::Application.routes.draw do
 
   get "/dashboard", :to => "creators#dashboard"
   get "/creators/sign_out", :to => "creators#dashboard"
-  
+
 
   # get "pages/search"
 
@@ -82,22 +84,22 @@ Batterypopv2::Application.routes.draw do
   # get "about-batterypop", :to => "pages#about"
   # get "investors", :to => "pages#investors"
   get "bot", :to => "pages#bot"
-  
+
   # get "test", :to => "pages#test"
-  
+
   get "search", :to => "pages#search"
 
   get "contact", :to => "contacts#new"
   post "contact", :to => "contacts#create"
- 
+
   root :to => "pages#home"
 
 
 
 
   devise_for :users,
-    :controllers => { 
-      :registrations => "devise/custom/registrations", 
+    :controllers => {
+      :registrations => "devise/custom/registrations",
       :passwords => "devise/custom/passwords",
       :sessions => "devise/custom/users"
     }
@@ -108,11 +110,11 @@ Batterypopv2::Application.routes.draw do
       # :registrations => "devise/custom/creators"
     }
 
-  # devise_for :creators, :skip => [:sessions] do 
-  #   get '/creator/login' => 'devise/sessions#new', :as => :new_creator_session 
-  #   post '/creator/login' => 'devise/sessions#create', :as => :creator_session 
-  #   get 'logout' => 'devise/sessions#destroy', :as => :destroy_creator_session 
-  # end 
+  # devise_for :creators, :skip => [:sessions] do
+  #   get '/creator/login' => 'devise/sessions#new', :as => :new_creator_session
+  #   post '/creator/login' => 'devise/sessions#create', :as => :creator_session
+  #   get 'logout' => 'devise/sessions#destroy', :as => :destroy_creator_session
+  # end
 
     #devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
@@ -130,15 +132,15 @@ resources :users do
       post :draw_chart_donut
     end
   end
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
 
   get ":id" => "pages#show"
-  
+
   get '*path' => redirect('/')
-  
+
 
 
 end

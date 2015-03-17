@@ -18,7 +18,7 @@ body {
 
 body {
   overflow-x: hidden;
-      
+
   background-size: cover;
   background-color: $lite;
 
@@ -141,7 +141,7 @@ z-index: -2;
 h1,
 h2,
 h3,
-h4, 
+h4,
 h5,
 .h1, .h2, .h3, .h4, .h5 {
   @extend %font-display;
@@ -156,7 +156,7 @@ text-rendering: optimizeLegibility;
 
 
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, 
+h1, h2, h3, h4, h5, h6, p, ul, ol,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin: 0 0 15px;
   padding: 0;
@@ -189,14 +189,14 @@ a {
     text-decoration: none;
   }
 }
-a:active, a:focus { 
- outline: none; 
+a:active, a:focus {
+ outline: none;
 
 }
 
 
 
-// bootstrap mods 
+// bootstrap mods
 .navbar {
   margin-bottom: 0;
 }
@@ -296,7 +296,7 @@ a:active, a:focus {
 
     }
     p {
-      margin: 0 auto; 
+      margin: 0 auto;
     }
     &:before, &:after {
       content: "";
@@ -308,7 +308,7 @@ a:active, a:focus {
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: 120px;
-      
+
     }
       &:before {
       top: 0;
@@ -411,7 +411,7 @@ background-color: $lite;
   display: block;
   height: 120px;
   text-align: center;
-  
+
   //position: relative;
   //z-index: 1;
   h1 {
@@ -435,8 +435,8 @@ background-color: $lite;
    display: block;
    width: 305px;
    margin: 0 auto;
-   background-size: 135px auto; 
-   position: relative; 
+   background-size: 135px auto;
+   position: relative;
    height: 120px;
 
       //content: "";
@@ -496,7 +496,7 @@ background-color: $lite;
     }
 
     a {
-      
+
     @include link-colors($blue, $blue, $blue, $blue);
     padding: 20px;
 
@@ -516,11 +516,11 @@ background-color: $lite;
       position: absolute;
       top: -3px;
       left: 0;
-      z-index: 2; 
+      z-index: 2;
 
 
       } */
-    
+
       a {
       box-shadow: 0 -3px 0 0 $blue;
       cursor: default;
@@ -583,7 +583,7 @@ position: absolute;
 top: 0;
 left: 15px;
 padding: 15px;
- 
+
 }
 
 
@@ -591,17 +591,17 @@ padding: 15px;
 .links-bpop {
 margin-bottom: 0;
 
-  
+
 
       p {
         margin-bottom: 0;
-      
+
       @include fontsize(2.0);
       font-family: $font-head;
       font-weight: normal;
         &:before {
         @extend %icon-bpop;
-        
+
         margin-right: 5px;
         font-size: 120%;
         vertical-align: text-top;
@@ -609,9 +609,9 @@ margin-bottom: 0;
       }
 
 
-  
+
 }
-  
+
 
 
 
@@ -622,7 +622,7 @@ margin-bottom: 0;
   content: "\3d";
   color: $purple;
 
-  
+
   }
 }
 
@@ -635,12 +635,12 @@ margin-bottom: 0;
 }
 
 .panel-nav {
-  
+
   padding: 15px;
 
   li {
     display: inline-block;
-    
+
     &:first-child {
       margin-right: 15px;
     }
@@ -660,10 +660,10 @@ margin-bottom: 0;
   box-shadow: none;
   border: 0;
   left: 0;
-  background: transparent; 
+  background: transparent;
 }
 
-.bx-wrapper .bx-loading { 
+.bx-wrapper .bx-loading {
 background: url("#{$image-path}/bx_loader.gif") center center no-repeat #fff;
 }
 
@@ -705,13 +705,13 @@ width: 100%;
 
 .carousel-horizontal .bx-wrapper {
   max-width: 100% !important;
-  
+
 }
 
 .bx-wrapper .bx-controls-direction a {
     height: 35px;
     width: 35px;
-     
+
     color: $lite-dim;
       &.disabled {
         display: inline;
@@ -732,8 +732,8 @@ width: 100%;
     @extend %border-circle;
     position: absolute;
     display: block;
-    text-indent: 0; 
-    line-height: 1;     
+    text-indent: 0;
+    line-height: 1;
     }
 }
 
@@ -788,7 +788,7 @@ top: -30px;
     width: 15px;
     background-color: $lite-dim;
   }
-} 
+}
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
   background-color: $blue;
@@ -823,7 +823,7 @@ top: -30px;
   @extend %font-display;
   @extend %uppercase;
 
-        
+
       }
   p {
     @include fontsize(1.2);
@@ -834,10 +834,10 @@ top: -30px;
       //border: 1px solid transparentize($lite, .2);
       border: 1px solid transparentize($dark, 1.0);
 
-      max-width: 100%; 
+      max-width: 100%;
       //overflow: visible;
       a {
-        
+
         display: block;
         width: 100%;
         @extend %box-shadow;
@@ -862,7 +862,7 @@ top: -30px;
 
   .summary {
     padding: 10px;
-    
+
   }
 
   // end carousel
@@ -959,7 +959,7 @@ top: -30px;
       height: 80px;
       overflow: hidden;
     }
-  
+
     // fix
     .summary {
       margin-left: 80px;
@@ -996,10 +996,10 @@ top: -30px;
     }
 
 
-  
+
   }
   .bx-wrapper {
-    
+
     height: inherit !important;
 
         /*&:before {
@@ -1072,7 +1072,7 @@ top: -30px;
       }
 
 
-    
+
       h4 {
       @include fontsize(2.1);
       line-height: 1.1;
@@ -1081,7 +1081,7 @@ top: -30px;
         //margin-left: 80px;
         height: 100%;
         text-align: center;
- 
+
 
 
           /*&:before {
@@ -1113,10 +1113,10 @@ top: -30px;
       }
 
 
-    
+
     }
     .bx-wrapper {
-      
+
       //height: inherit !important;
 
           /*&:before {
@@ -1132,7 +1132,7 @@ top: -30px;
           } */
     }
   // end carousel horizontal
-  
+
 }
 
 
@@ -1171,12 +1171,12 @@ top: -30px;
       width: 100%;
       position: relative;
 
-        
+
         .thumb {
           float: left;
           margin-right: 15px;
           //max-width: 200px;
-          
+
           //height: auto;
           overflow: hidden;
           display: inline-block;
@@ -1205,8 +1205,8 @@ top: -30px;
 
             h2 {
               @extend %uppercase;
-              
-              
+
+
             }
             h5 {
               font-family: $font-head;
@@ -1276,7 +1276,7 @@ border-radius: 0 !important;
       display: inline;
       @include link-colors($lite-dim-trans, $lite-dim-trans, $lite-dim-trans, $lite-dim-trans);
     }
-    
+
   }
 
 }
@@ -1292,7 +1292,7 @@ border-radius: 0 !important;
       display: inline;
       @include link-colors(tint($blue, 30%), tint($blue, 30%), tint($blue, 30%), tint($blue, 30%));
     }
-    
+
   }
 
   .panel-head {
@@ -1370,7 +1370,7 @@ border-radius: 0 !important;
 
 
 .ad {
-  
+
   text-align: center;
     .well {
         background: url("#{$image-path}/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
@@ -1400,7 +1400,7 @@ border-radius: 0 !important;
 
    .badge-amazon {
       background: url("#{$image-path}/badges-app.png") 0 bottom no-repeat;
-      
+
     }
 
     .badge {
@@ -1485,9 +1485,12 @@ border-radius: 0 !important;
 
 
 
-.videocontent {
- // max-width: 100%;
+.tournament_videocontent {
+  padding: 30px;
+}
 
+.tournament_sep {
+  margin: 7px 0;
 }
 
 .fluid-width-video-wrapper {
@@ -1512,9 +1515,9 @@ margin-top: -50px;
 
 
 
-// headcrumb 
+// headcrumb
 .headcrumb {
-  
+
   background-color: $blue;
   color: $lite;
 
@@ -1539,7 +1542,7 @@ margin-top: -50px;
     //display: inline-block;
     //vertical-align: middle;
     text-transform: uppercase;
-    
+
     margin: 0 auto;
     }
     h4 {
@@ -1568,13 +1571,13 @@ margin-top: -50px;
     > .column {
       &:first-child {
         background-color: $lite;
-        
+
         color: $blue;
 
           a {
             text-decoration: underline;
           }
-        
+
 
       }
     }
@@ -1598,7 +1601,7 @@ margin-top: -50px;
             }
             p {
               @include fontsize(1.2);
-                
+
             }
 
 
@@ -1639,7 +1642,7 @@ margin-top: -50px;
 
 
 .label-red {
-   background-color: $red; 
+   background-color: $red;
 }
 
 .pull-left, .media > .pull-left {
@@ -1654,7 +1657,7 @@ margin-top: -50px;
   //margin-bottom: 30px;
   .media {
     position: relative;
-    
+
     padding: 15px;
     background: $gray-xlite;
     margin: 0 auto 2px;
@@ -1671,7 +1674,7 @@ margin-top: -50px;
     position: relative;
     width: 100%;
     height: auto;
-    
+
 
     }
   }
@@ -1696,7 +1699,7 @@ width: 100%;
 .thumb {
   max-width: 100px;
   margin-bottom: 0;
-  
+
   img {
     max-width: 100%;
     height: 100px;
@@ -1739,7 +1742,7 @@ width: 100%;
       }
   }
   .badge-box {
-    
+
     width: 100%;
   }
   .btn-pop {
@@ -1759,7 +1762,7 @@ width: 100%;
       width: 100%;
       @extend %icon-bpop;
       content: "\2b";
-    
+
     }
   }
 }
@@ -1835,7 +1838,7 @@ margin-bottom: 10px;
       background: $red;
       @extend %border-circle;
     }
-    
+
   }
   h5 {
     position: absolute;
@@ -1879,7 +1882,7 @@ background: $navy;
 overflow: hidden;
 
 
-  
+
   a {
     width: 100%;
     height: 60px;
@@ -1908,7 +1911,7 @@ overflow: hidden;
         background: $blue;
       }
     }
-    
+
   }
   h5 {
     position: absolute;
@@ -1926,13 +1929,13 @@ overflow: hidden;
 
 
 
-// short 
+// short
 
 .short {
 
     .summary {
     padding: 10px;
-    
+
   }
 
 
@@ -1946,7 +1949,7 @@ overflow: hidden;
        overflow: hidden;
        background: $gray-xlite;
       background: linear-gradient($lite, $gray-lite);
-      
+
       border: 1px solid $gray-lite;
         position: relative;
         display: block;
@@ -1976,7 +1979,7 @@ overflow: hidden;
             color: $color-text;
           }
       }
-    
+
   }
 
       .summary {
@@ -2006,12 +2009,12 @@ overflow: hidden;
   }
 
 
-  
+
 
 }
 
 
-// pagination 
+// pagination
 
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $blue;
@@ -2026,15 +2029,15 @@ overflow: hidden;
   @extend %border-radius;
   margin: auto;
   > li {
-    
+
     > a {
-     border-color: $gray-lite; 
+     border-color: $gray-lite;
     }
   }
 }
 
 .pagination > li:last-child > a, .pagination > li:last-child > span, .pagination > li:first-child > a, .pagination > li:first-child > span {
- @extend %border-radius; 
+ @extend %border-radius;
 }
 
 // post
@@ -2081,20 +2084,20 @@ border-bottom: 1px solid $gray-xlite;
       margin-bottom: 5px;
       background: $gold;
       @extend %border-radius;
-      padding: .2em .5em; 
+      padding: .2em .5em;
     }
 
   }
 
   .thumb {
     margin-bottom: 15px;
-    
+
     a {
       display: block;
-      
+
     }
     img {
-      
+
       max-width: 100%;
     }
 
@@ -2112,7 +2115,7 @@ border-bottom: 1px solid $gray-xlite;
       font-weight: bold;
     }
     ul {
-      
+
       margin-left: 30px;
       li {
         list-style-type: disc;
@@ -2170,10 +2173,10 @@ border-bottom: 1px solid $gray-xlite;
     border: 1px solid $gray-lite;
     @extend %box-shadow;
     padding: 10px;
-    
+
       &:hover {
         background: tint($dark, 98%);
-        
+
       }
       .thumb {
       max-width: 90px;
@@ -2293,4 +2296,3 @@ right: 0;
 }
 
 .bx-wrapper .well.center-block { width: 100% !important; }
-

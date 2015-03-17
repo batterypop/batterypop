@@ -10,3 +10,6 @@
 <li class="<% if(@active=='blog') %> active<% end %>">
 	<a href="/posts"><span class="lowercase">B</span>log</a>
 </li>
+<li class="<% if(@active=='tournaments') %> active<% end %>">
+	<a href="<%= url_for(Tournament.last) %>">Tournament</a>
+</li>

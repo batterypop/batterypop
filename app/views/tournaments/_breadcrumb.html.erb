@@ -1,0 +1,60 @@
+<!-- top most / breadcrumb area -->
+<div class="row headcrumb clearfix">
+	<div class="col-md-5 arrow_box column">
+		<div class="well">
+			<div class="row clearfix">
+				<% if !(local_assigns[:crumb_thumb].nil?) %>
+					<div class="col-xs-4">
+						<div class="thumb"><%= crumb_thumb %></div>
+					</div>
+				<% end %>
+				<% if !(local_assigns[:crumb_title].nil?) %>
+					<div class="col-xs-8">
+						<% if (!(local_assigns[:crumb_sponsor].nil?) && crumb_sponsor) %>
+							<span class="sponsor label">Sponsored</span>
+						<% end %>
+						<div class="summary">
+							<h2><%= crumb_title %></h2>
+							<% if !(local_assigns[:crumb_creator].nil?) %>
+								<h4><%= crumb_creator %></h4>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<!-- col -->
+		</div>
+	</div>
+	<!-- well -->
+	<div class="col-md-7 column"   <% if !(local_assigns[:crumb_style].nil?) %>style="<%= crumb_style %>"<% end %>>
+		<div class="well well-split">
+			<div class="row clearfix">
+				<% if !(local_assigns[:crumb_text].nil?) %>
+				<div class="col-sm-6 col-xs-12">
+					<div class="description" style="text-align: center;margin-top: 15px;">
+                                          <h4 class="tournament_playertitle"><%= local_assigns[:match].player_one.title %></h4>
+                                          <p class="tournament_sep">VS</p>
+                                          <h4><%= local_assigns[:match].player_two.title %></h4>
+					  <p class="tournament_playertitle"><%= crumb_text %></p>
+                                          <h4>March 15 - March 22</h4>
+					</div>
+				</div>
+				<% end %>
+				<% if !(local_assigns[:match].nil?) %>
+					<div class="col-sm-6 col-xs-12">
+					  <div class="col-sm-6">
+		                            <%= image_tag(local_assigns[:match].player_one.image(:thumb), :alt => local_assigns[:match].player_one.title, :class => 'media-object ') %>
+	                                  </div>
+
+                                          <div class="col-sm-6">
+		                            <%= image_tag(local_assigns[:match].player_two.image(:thumb), :alt => local_assigns[:match].player_two.title, :class => 'media-object ') %>
+	                                  </div>
+					</div>
+				<% end %>
+				<!-- col -->
+			</div>
+		</div>
+		<!-- well -->
+	</div>
+	<!-- col -->
+</div>

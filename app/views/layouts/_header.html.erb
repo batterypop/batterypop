@@ -1,101 +1,88 @@
 <header class="wrapper">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<nav class="navbar navbar-default navbar-static-top" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> 
-					<h1><a class="navbar-brand" href="/">batteryPOP</a></h1>
-				</div>
-				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-	
-
-<% # render "layouts/test/navigation_#{home_display_test}" %>
-<%= render "layouts/test/navigation_new" %>
-
-
-
-					</ul>
-					<div class="visible-lg">
-						<div class="panel-left panel panel-default">
-							<a class="links-bpop" href="#" id="legend" data-toggle="modal" data-target="#modal_legend">
-								<p class="link-pop"><span class="hidden-sm">click to </span>POP it!</p>
-								<p class="link-follow"><span class="hidden-sm">click to </span>FOLLOW!</p>
-							</a>
-						</div>
-						<!-- left -->
-						<div class="panel-right panel">
-						
-							<%= render 'layouts/user_account_buttons' %>
-
-							<form class="navbar-form navbar-left" role="search" action="/search" method="get">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search" name="query">
-									<span class="input-group-btn">
-									<button class="btn btn-primary" type="submit">Go!</button>
-									</span>
-								</div>
-								<!-- /input-group -->
-							</form>
-						</div>
-						
-						<!-- panel-right -->
-					</div>
-					<!-- visible-lg -->
-					<div class="hidden-lg">
-						<div class="row clearfix">
-							<div class="panel panel-nav clearfix">
-								<div class="col-sm-4 column">
-									<a class="links-bpop" href="#">
-										<p class="link-pop"><span class="visible-xs">click to </span>POP it!</p>
-										<p class="link-follow"><span class="visible-xs">click to </span>FOLLOW!</p>
-									</a>
-								</div>
-								<!-- col -->
-								<div class="col-sm-4 column">
-									<%= render 'layouts/user_account_buttons' %>
-								</div>
-								<div class="col-sm-4 column">
-									<form class="navbar-form navbar-left" role="search" action="/search" method="get">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search" name="query">
-											<span class="input-group-btn">
-											<button class="btn btn-primary" type="submit">Go!</button>
-											</span>
-										</div>
-										<!-- /input-group -->
-									</form>
-								</div>
-								<!-- col -->
-							</div>
-							<!-- panel -->
-						</div>
-						<!-- row -->
-					</div>
-					<!-- visible-md -->
-				</div>
-			</nav>
-		</div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+	  <h1><a class="navbar-brand" href="/">batteryPOP</a></h1>
 	</div>
-
-				<!-- end wrapper header -->
-<!-- after header -->
-
-
-<% get_banner_header %>
+	<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav">
 
 
-
-	
+            <% # render "layouts/test/navigation_#{home_display_test}" %>
+            <%= render "layouts/test/navigation_new" %>
 
 
 
-<!-- 	<div class="row fill bottom margin padding"> 
-		<div class="col-lg-12">
-			 <p id="notice"><%= notice %></p> 
-			<%= render 'layouts/messages' %>
+	  </ul>
+	  <div class="visible-lg">
+	    <div class="panel-left panel panel-default">
+	      <a class="links-bpop" href="#" id="legend" data-toggle="modal" data-target="#modal_legend">
+		<p class="link-pop"><span class="hidden-sm">click to </span>POP it!</p>
+		<p class="link-follow"><span class="hidden-sm">click to </span>FOLLOW!</p>
+	      </a>
+	    </div>
+	    <!-- left -->
+	    <div class="panel-right panel">
+
+	      <%= render 'layouts/user_account_buttons' %>
+
+	      <form class="navbar-form navbar-left" role="search" action="/search" method="get">
+		<div class="input-group">
+		  <input type="text" class="form-control" placeholder="Search" name="query">
+		  <span class="input-group-btn">
+		    <button class="btn btn-primary" type="submit">Go!</button>
+		  </span>
 		</div>
-	</div> -->
+		<!-- /input-group -->
+	      </form>
+	    </div>
+
+	    <!-- panel-right -->
+	  </div>
+	  <!-- visible-lg -->
+	  <div class="hidden-lg">
+	    <div class="row clearfix">
+	      <div class="panel panel-nav clearfix">
+		<div class="col-sm-4 column">
+		  <a class="links-bpop" href="#">
+		    <p class="link-pop"><span class="visible-xs">click to </span>POP it!</p>
+		    <p class="link-follow"><span class="visible-xs">click to </span>FOLLOW!</p>
+		  </a>
+		</div>
+		<!-- col -->
+		<div class="col-sm-4 column">
+		  <%= render 'layouts/user_account_buttons' %>
+		</div>
+		<div class="col-sm-4 column">
+		  <form class="navbar-form navbar-left" role="search" action="/search" method="get">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Search" name="query">
+		      <span class="input-group-btn">
+			<button class="btn btn-primary" type="submit">Go!</button>
+		      </span>
+		    </div>
+		    <!-- /input-group -->
+		  </form>
+		</div>
+		<!-- col -->
+	      </div>
+	      <!-- panel -->
+	    </div>
+	    <!-- row -->
+	  </div>
+	  <!-- visible-md -->
+	</div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- end wrapper header -->
+  <!-- after header -->
+
+
+  <% get_banner_header %>
 
 
 
@@ -103,37 +90,50 @@
 
 
 
-<!-- signup modal -->
-
-	<div class="modal fade" id="modal_legend" tabindex="-1" role="dialog"  aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h1 class="modal-title"><small>WELCOME TO BATTERYPOP</small><br />
-					WHERE YOU’RE IN CHARGE OF WHAT POPS!</h1>
-				</div>
-				<div class="modal-body text-left">
-					<h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! <%= link_to "Sign Up Here!", kpass_new_path  %></h4>
-						
-					<h4>Step 2 – Start watching! We’ve got cartoons, comedy, music and more…every bubble on the site is something new.</h4>
-						
-					<h4>Step 3 – If you really like a video, POP it by clicking <span style="" class="pop-button"><div class="flash"></div></span>. That’s how you let your friends know what you’re watching.</h4>
-						
-					<h4>Step 4 – If you really like a show, CHARGE it by clicking <span class="pop-button"><div class="plus"></div></span>. That’s how you let us know you want more of it.</h4>
-						
-					<h4>Step 5 – Connect with FRIENDS. Click <a href="/users">[HERE]</a> to see a list of everyone on batteryPOP. Find your friends. Make new ones. And share your favorite shows and videos with them!</h4>
-						
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+  <!-- 	<div class="row fill bottom margin padding">
+	<div class="col-lg-12">
+	  <p id="notice"><%= notice %></p>
+	  <%= render 'layouts/messages' %>
+	</div>
+  </div> -->
 
 
-	
+
+
+
+
+
+  <!-- signup modal -->
+
+  <div class="modal fade" id="modal_legend" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	  <h1 class="modal-title"><small>WELCOME TO BATTERYPOP</small><br />
+	    WHERE YOU’RE IN CHARGE OF WHAT POPS!</h1>
+	</div>
+	<div class="modal-body text-left">
+	  <h4>Step 1 – Sign up! It’s free, it’s easy and it’s safe! <%= link_to "Sign Up Here!", kpass_new_path  %></h4>
+
+	  <h4>Step 2 – Start watching! We’ve got cartoons, comedy, music and more…every bubble on the site is something new.</h4>
+
+	  <h4>Step 3 – If you really like a video, POP it by clicking <span style="" class="pop-button"><div class="flash"></div></span>. That’s how you let your friends know what you’re watching.</h4>
+
+	  <h4>Step 4 – If you really like a show, CHARGE it by clicking <span class="pop-button"><div class="plus"></div></span>. That’s how you let us know you want more of it.</h4>
+
+	  <h4>Step 5 – Connect with FRIENDS. Click <a href="/users">[HERE]</a> to see a list of everyone on batteryPOP. Find your friends. Make new ones. And share your favorite shows and videos with them!</h4>
+
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	</div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
 
 
 

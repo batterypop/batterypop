@@ -1,0 +1,237 @@
+<section class="wrapper">
+
+  <%= get_banner_embed %>
+
+	<!-- badge -->
+	<% @action = "
+	#{ render :partial => "episodes/popunpop", :locals => {:episode => @episode} }
+	<div class='col-sm-12 col-xs-6'>
+	#{ render :partial => "tournaments/follow_show", :locals => {:tournament => @tournament} }
+	</div>
+	" %>
+
+
+	<%= render partial: "tournaments/breadcrumb", :locals => {
+			:crumb_creator => @tournament.subtitle,
+			:crumb_thumb  => image_tag(@tournament.image(:large),  :class => ""),
+			:crumb_title => @tournament.title,
+		 	:crumb_text => "Vote for your favorite in this head-to-head matchup!".html_safe,
+                        :match => @match
+			 	} %>
+
+<% meta_keywords %>
+
+	<div class="row clearfix row-featured">
+	<!-- video section -->
+
+	<div class="col-md-6 column">
+          <div class="media-list">
+            <div class="media active ">
+	      <a class="clearfix" href="<%= @match.player_one.link %>">
+	        <div class="pull-left thumb">
+		  <%= image_tag(@match.player_one.image(:thumb), :alt => @match.player_one.title, :class => 'media-object ') %>
+	        </div>
+	        <div class="media-body">
+		  <h3 class="media-heading"><%= @match.player_one.title %></h3>
+		  <h4><% if(!@match.player_one.duration.nil? && !@match.player_one.duration.empty?)%><%= @match.player_one.duration %><% end %></h4>
+		  <%= @match.player_one.description.html_safe %>
+	        </div>
+	      </a>
+
+
+	      <%= render :partial => "episodes/pop_badge", :locals => {:episode => @match.player_one}  %>
+	      <!-- badge -->
+	    </div> <!-- media active -->
+          </div>
+
+	  <div class="tournament_videocontent videocontent">
+	    <% if !(@match).nil? %>
+              <%= vid_embed(@match.player_one).html_safe  %>
+	    <% end %>
+	  </div>
+	</div>
+
+        <div class="col-md-6 column">
+          <div class="media-list">
+            <div class="media active ">
+	      <a class="clearfix" href="<%= @match.player_two.link %>">
+	        <div class="pull-left thumb">
+		  <%= image_tag(@match.player_two.image(:thumb), :alt => @match.player_two.title, :class => 'media-object ') %>
+	        </div>
+	        <div class="media-body">
+		  <h3 class="media-heading"><%= @match.player_two.title %></h3>
+		  <h4><% if(!@match.player_two.duration.nil? && !@match.player_two.duration.empty?)%><%= @match.player_two.duration %><% end %></h4>
+		  <%= @match.player_two.description.html_safe %>
+	        </div>
+	      </a>
+
+
+	      <%= render :partial => "episodes/pop_badge", :locals => {:episode => @match.player_two}  %>
+	      <!-- badge -->
+	    </div> <!-- media active -->
+          </div>
+	  <div class="tournament_videocontent videocontent">
+	    <% if !(@episode).nil? %>
+              <%= vid_embed(@match.player_two).html_safe  %>
+	    <% end %>
+	  </div>
+	</div>
+
+
+	<div class="corners"></div>
+
+	</div>
+
+	<!-- end video / nextup -->
+
+
+	<div class="row clearfix">
+		<!-- episode list -->
+		<div class="col-md-8 column">
+				<div class="media-list">
+					<% @tournament.episodes.each do |ep| %>
+						<div class="media <% if(@episode == ep) %>active<% end %> ">
+							<a class="clearfix" href="<%= ep.link %>">
+								<div class="pull-left thumb">
+									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
+								</div>
+								<div class="media-body">
+									<h3 class="media-heading"><%= ep.title %></h3>
+									<h4><% if(!ep.duration.nil? && !ep.duration.empty?)%><%= ep.duration %><% end %></h4>
+									<%= ep.description.html_safe %>
+								</div>
+							</a>
+
+
+							<%= render :partial => "episodes/pop_badge", :locals => {:episode => ep}  %>
+							<!-- badge -->
+						</div>
+					<% end %>
+					<!-- media -->
+				</div>
+			<!-- media list -->
+		</div>
+		<!-- end episode list -->
+
+		<!-- sidebar -->
+
+		<div class="col-md-4 column sidebar">
+
+			<!-- shows mid ads -->
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+					<!-- Shows_Single_medrec 1 -->
+						<div id='div-gpt-ad-1413394859928-0' style='width:300px; height:250px;' class="webad-side-lower">
+							<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413394859928-0'); });
+							</script>
+						</div>
+					</div>
+				</div>
+				<!-- shows mid ads end -->
+
+
+			<div class="row clearfix">
+				<!-- followed by -->
+				<div class="col-md-12 column">
+					<div class="carousel carousel-horizontal theme-green theme-invert">
+						<div class="panel">
+							<div class="panel-head">
+								<h3>Followed By</h3>
+							</div>
+						</div>
+						<% if !@followers.nil? && !@followers.empty? %>
+						<ul>
+							<% @followers.each do |user| %>
+								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
+								<li>
+								<%= render partial: "layouts/horizontal_slide", :locals => {
+									:slide_title => user.username,
+								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
+									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'),
+									:slide_url => user_path(User.friendly.find(user.id))
+								}
+								%>
+								</li>
+							<% end %>
+						</ul>
+						<% else %>
+							<div class="well">
+								<h4 class="text-center">Be the first to FOLLOW this episode!</h4>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				<!-- carousel -->
+				</div>
+				<div class="row">
+				<!-- end followed by -->
+				<!-- popped by -->
+				<div class="col-md-12 column">
+					<div class="carousel carousel-horizontal theme-purple">
+						<div class="panel">
+							<div class="panel-head">
+								<h3>Popped By</h3>
+							</div>
+						</div>
+
+						<% if !@likers.nil? && !@likers.empty? %>
+						<ul>
+							<% @likers.each do |user| %>
+								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
+								<li>
+								<%= render partial: "layouts/horizontal_slide", :locals => {
+									:slide_title => user.username,
+								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
+									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'),
+									:slide_url => user.link
+								}
+								%>
+								</li>
+							<% end %>
+						</ul>
+						<% else %>
+							<div class="well">
+								<h4 class="text-center">Be the first to POP this episode!</h4>
+							</div>
+						<% end %>
+					</div>
+
+				</div>
+				<!-- end popped by -->
+
+			</div>
+
+			<!-- small 100 stacks of 3 -->
+			<div class="row clearfix">
+				<div class="col-md-12 column ">
+					<div class="webad-side-lower-alt webad-stack">
+						<!-- Shows_single_300x100_1 -->
+						<div id='div-gpt-ad-1413391261093-0' style='width:300px; height:100px;'>
+							<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391261093-0'); });
+							</script>
+						</div>
+						<!-- Shows_single_300x100_2 -->
+						<div id='div-gpt-ad-1413391286254-0' style='width:300px; height:100px;'>
+							<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391286254-0'); });
+							</script>
+						</div>
+						<!-- Shows_single_300x100_3 -->
+						<div id='div-gpt-ad-1413391306769-0' style='width:300px; height:100px;'>
+							<script type='text/javascript'>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391306769-0'); });
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end sidebar -->
+		<!-- end lower listings -->
+	</div>
+</section>
+
+
+<%= javascript_include_tag 'refresh' %>
