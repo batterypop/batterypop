@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @banner_ad = "/31902320/Homepage_Leaderboard"
     @banner_id = 'div-gpt-ad-1411455733171-0'
-    # @banner_id = 'div-gpt-ad-1413353062754-0'
+
   
 
     @title = "Free Videos for Kids"
@@ -74,30 +74,15 @@ class PagesController < ApplicationController
     # @groups = @shorts.each_slice(4).to_a
   end
 
-  # def creators
-  #   @title = "Calling All Creators"
-  #    @active = "creators"
-  # end
-
-  # def privacy
-  #   @title = "Privacy Policy"
-  #    @active = "privacy"
-  # end
-
-  # def terms
-  #   @title = "Terms and Conditions"
-  #   @active = "terms"
-  # end
-
-  # def advertise
-  #   @title = "Advertise on batteryPOP!"
-  #    @active = "advertise"
-  # end
 
 
   def show
     @active = @page.slug
     @title = @page.title
+
+   @banner_ad = "/31902320/Shows_Leaderboard"
+    @banner_id = 'div-gpt-ad-1411894829676-0'
+    @dfp_header = "shows"
   end
 
 

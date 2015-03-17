@@ -1,5 +1,7 @@
 <section class="wrapper">
 
+	<%= get_banner_embed %>
+
 	<div class="row clearfix">
 
 
@@ -14,7 +16,7 @@
 		</div>
 
 	<% else %>
-		 <div class="col-md-3">
+		 <div class="col-md-4">
 			<%# @page.sidebars.find_each do |sidebar| %>
 				<%= render partial: 'layouts/page_sidebar_template',  :locals => {:sidebar => draw_if_sidebar} %>
 			<%# end %>
