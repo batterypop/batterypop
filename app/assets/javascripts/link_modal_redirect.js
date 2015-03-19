@@ -8,7 +8,7 @@ $(document).ready(function(){
 		$(this).attr("data-url", url);
 		$(this).click(function() {
 		  $('#btnYes').attr('data-url', url);
-		  $('#modalLinkJump').find('.modal-body').html("<h2>You're about leave us to visit another website: <br /><small>" + url + ".</small></h2><p>Are you sure you want to leave batteryPOP? (You can always come back!)</p>");
+		  $('#modalLinkJump').find('.modal-body').html("<h2>You're about leave us to visit another website: <br /></small></h2><p>Are you sure you want to leave batteryPOP? (You can always come back!)</p>");
 		  $(this).preventDefault();
 		});
 		// $(this).preventDefault();
