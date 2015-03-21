@@ -2241,6 +2241,7 @@ border-bottom: 1px solid $gray-xlite;
 }
 
 .modal {
+  z-index: 1000002;
   h1, h3 {
     @extend %uppercase;
   }
