@@ -1,0 +1,21 @@
+<li class="match theme-green">
+  <div class="panel">
+    <div class="panel-head">
+      <span class="text-center player-label">
+        <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
+      </span>
+      <span class="text-center player-separator">vs</span>
+      <span class="text-center player-label">
+        <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
+      </span>
+    </div>
+  </div>
+  <div class="well">
+    <h4 class="text-center">
+      <% if match %>
+      Pop-off runs from <%= match.start %> to <%= match.finish %></h4>
+    <% else %>
+    TODO empty matches
+    <% end %>
+  </div>
+</li>

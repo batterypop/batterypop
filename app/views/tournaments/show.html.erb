@@ -86,31 +86,68 @@
 
 
 	<div class="row clearfix">
-		<!-- episode list -->
-		<div class="col-md-8 column">
-				<div class="media-list">
-					<% @tournament.episodes.each do |ep| %>
-						<div class="media <% if(@episode == ep) %>active<% end %> ">
-							<a class="clearfix" href="<%= ep.link %>">
-								<div class="pull-left thumb">
-									<%= image_tag(ep.image(:thumb), :alt => ep.title, :class => 'media-object ') %>
-								</div>
-								<div class="media-body">
-									<h3 class="media-heading"><%= ep.title %></h3>
-									<h4><% if(!ep.duration.nil? && !ep.duration.empty?)%><%= ep.duration %><% end %></h4>
-									<%= ep.description.html_safe %>
-								</div>
-							</a>
+	  <!-- episode list -->
+	  <div class="col-md-8 column">
+	    <div class="media-list bracket_tree">
 
+              <div class="col-md-4 bracket-column round1">
+                <% @bracket = BracketTree::Bracket::SingleElimination.by_size @tournament.episodes.count
+                   seats = @bracket.round(1).all.map(&:position)
+                   bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
+                 %>
+                <ul>
+                <% bkt_matches.each do |bkt_match|
+                   match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                   %>
+                  <%= render partial: "tournaments/bracket_match",
+                             locals:  {:match => match}
+                     %>
+                <% end %>
+                </ul>
+              </div>
+	      <!-- bracket_column -->
 
-							<%= render :partial => "episodes/pop_badge", :locals => {:episode => ep}  %>
-							<!-- badge -->
-						</div>
-					<% end %>
-					<!-- media -->
-				</div>
-			<!-- media list -->
-		</div>
+              <div class="col-md-4 bracket-column round2">
+                <% seats = @bracket.round(2).all.map(&:position)
+                   bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
+                 %>
+                <ul>
+                <% bkt_matches.each do |bkt_match|
+                   match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                   %>
+                  <li class="spacer">&nbsp;</li>
+                  <li class="connector connector-top">&nbsp;</li>
+                  <%= render partial: "tournaments/bracket_match",
+                             locals:  {:match => match}
+                     %>
+                  <li class="connector connector-bottom">&nbsp;</li>
+                <% end %>
+                </ul>
+              </div>
+              <!-- bracket column -->
+
+              <div class="col-md-4 bracket-column round3">
+                <% seats = @bracket.round(3).all.map(&:position)
+                   bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
+                   %>
+                <ul>
+                  <% bkt_matches.each do |bkt_match|
+                     match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                     %>
+                  <li class="spacer">&nbsp;</li>
+                  <li class="connector connector-top">&nbsp;</li>
+                  <%= render partial: "tournaments/bracket_match",
+                             locals:  {:match => match}
+                     %>
+                  <li class="connector connector-bottom">&nbsp;</li>
+                  <% end %>
+                </ul>
+              </div>
+              <!-- bracket column -->
+
+	    </div>
+	    <!-- media list -->
+	  </div>
 		<!-- end episode list -->
 
 		<!-- sidebar -->

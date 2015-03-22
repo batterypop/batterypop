@@ -77,6 +77,12 @@ class Tournament < ActiveRecord::Base
       raise ArgumentError, "Number of episodes must be power of two"
     end
 
+    delete_matches = ActiveRecord::Base.connection.raw_connection.prepare("delete_matches", "delete from matches where matches.tournament_id = $1")
+    dissoc_episodes = ActiveRecord::Base.connection.raw_connection.prepare("dissoc_episodes", "delete from episodes_tournaments where episodes_tournaments.tournament_id = $1")
+    ["delete_matches", "dissoc_episodes"].each do |q|
+      ActiveRecord::Base.connection.raw_connection.exec_prepared q, [self.id]
+    end
+
     bkt = BracketTree::Bracket::SingleElimination.by_size episodes.count
     relation = BracketTree::PositionalRelation.new(bkt)
 
@@ -92,6 +98,10 @@ class Tournament < ActiveRecord::Base
         player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position)
     end
     self
+  end
+
+  def self.episode_choices
+    (Episode.all.includes(:show).select {|e| !e.show.nil? and !e.show.slug.nil? })
   end
 
   def self.with_episodes episodes, args
