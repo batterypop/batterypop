@@ -35,21 +35,6 @@ ActiveAdmin.register Tournament do
     f.actions
   end
 
-  index do
-    column :position
-    column :creator do |show|
-      link_to show.creator.displayname, admin_creator_path(show.creator)
-    end
-    # column (:image) {link_to image_tag(@show.image(:thumb)), admin_show_path(@show)}
-    column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
-    column  :title
-    column (:description) { |foobar| raw(foobar.description) }
-    column :single, :as => :check_box
-    column :approved
-
-    default_actions
-  end
-
   action_item :only => :show do
     # link_to('View on site', show_path(show))
     # (show_path(show)).inspect
