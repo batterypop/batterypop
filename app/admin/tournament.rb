@@ -21,6 +21,17 @@ ActiveAdmin.register Tournament do
       f.input :episodes, :class => 'chosen', :as => :select, :required => true
     end
 
+
+      f.has_many :matches do |match|
+        match.input :player_one, required: true
+        match.input :player_two, required: true
+        match.input :first_seat, required: true
+        match.input :second_seat, required: true
+        match.input :start, required: true, as: :datetime_select
+        match.input :finish, required: true, as: :datetime_select
+      end
+
+
     f.actions
   end
 

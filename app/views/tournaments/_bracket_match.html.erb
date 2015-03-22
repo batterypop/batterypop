@@ -12,8 +12,9 @@
   </div>
   <div class="well">
     <h4 class="text-center">
-      <% if match %>
-      Pop-off runs from <%= match.start %> to <%= match.finish %></h4>
+      <% if (match && match.start) %>
+      From <%= match.start.strftime "%b %d" %> to
+      <%= match.finish.strftime "%b %d" %></h4>
     <% else %>
     TODO empty matches
     <% end %>
