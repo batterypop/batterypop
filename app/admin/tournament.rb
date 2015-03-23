@@ -2,6 +2,15 @@ ActiveAdmin.register Tournament do
 
   menu :parent => "bPOP Tournaments"# , :priority => 1
 
+  before_filter :only => [:update] do
+    @tournament = Tournament.unscoped.friendly.find(params[:id])
+    eps = (params[:tournament][:episode_ids].select {|s| s && s != ""}).map {|eid| Integer(eid)}
+    unless eps == @tournament.episodes.map(&:id)
+      @tournament.episodes = Episode.find(eps)
+    end
+    @tournament.reload
+  end
+
   before_filter :only => [:show, :destroy, :edit, :update] do
     @tournament = Tournament.unscoped.friendly.find(params[:id])
   end
@@ -27,17 +36,16 @@ ActiveAdmin.register Tournament do
         match.input :player_two, required: true
         match.input :first_seat, required: true
         match.input :second_seat, required: true
-        match.input :start, required: true, as: :datetime_select
-        match.input :finish, required: true, as: :datetime_select
+        match.input :start, required: true, as: :datepicker
+        match.input :finish, required: true, as: :datepicker
       end
 
 
     f.actions
   end
 
-  action_item :only => :show do
-    # link_to('View on site', show_path(show))
-    # (show_path(show)).inspect
+  action_item only: :show do
+    link_to('View on site', tournament)
   end
 
 end
