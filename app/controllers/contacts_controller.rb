@@ -1,10 +1,16 @@
 class ContactsController < ApplicationController
 
 	def new
-		 @active = "contact"
+		@banner_ad = "/31902320/Shows_Leaderboard"
+		@banner_id = 'div-gpt-ad-1411894829676-0'
+		@dfp_header = "shows"
+		@active = "contact"
 	end
 
 	def create
+	   @banner_ad = "/31902320/Shows_Leaderboard"
+	    @banner_id = 'div-gpt-ad-1411894829676-0'
+		@dfp_header = "shows"
 		 @active = "contact"
 		# could check if anything is missing and return
 		unless current_user.nil?
