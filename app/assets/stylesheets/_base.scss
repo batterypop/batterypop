@@ -2316,6 +2316,10 @@ right: 0;
     width: 55%;
 }
 
+.bracket-column.round1.mirror ul li.match {
+    margin-left: 15px;
+}
+
 /* round 2 */
 
 .bracket-column.round2 ul li.match {
@@ -2338,9 +2342,17 @@ right: 0;
     height: 10px;
     border-right: 3px solid #684389;
 }
+
+.bracket-column.round2.mirror ul li.connector {
+    height: 10px;
+    margin-left: 51%;
+    border-right: none;
+    border-left: 3px solid #684389;
+}
+
 .bracket-column.round2 ul li.connector-bottom { border-bottom: 3px solid #684389; }
 
-div.media-list div.col-md-4.bracket-column {
+div.media-list div.col-md-3.bracket-column {
     padding-left: 0;
     padding-right: 0;
 }

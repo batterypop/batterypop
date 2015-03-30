@@ -92,13 +92,13 @@
 
 
 	<div class="row clearfix">
-	  <!-- episode list -->
-	  <div class="col-md-8 column">
+	  <!-- bracket -->
+	  <div class="col-md-12 column">
 	    <div class="media-list bracket_tree">
 
-              <div class="col-md-4 bracket-column round1">
+              <div class="col-md-3 bracket-column round1">
                 <% @bracket = BracketTree::Bracket::SingleElimination.by_size @tournament.episodes.count
-                   seats = @bracket.round(1).all.map(&:position)
+                   seats = @bracket.round(1).all.take(4).map(&:position)
                    bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
                  %>
                 <ul>
@@ -113,8 +113,8 @@
               </div>
 	      <!-- bracket_column -->
 
-              <div class="col-md-4 bracket-column round2">
-                <% seats = @bracket.round(2).all.map(&:position)
+              <div class="col-md-3 bracket-column round2">
+                <% seats = @bracket.round(2).all.take(2).map(&:position)
                    bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
                  %>
                 <ul>
@@ -132,148 +132,68 @@
               </div>
               <!-- bracket column -->
 
-              <div class="col-md-4 bracket-column round3">
-                <% seats = @bracket.round(3).all.map(&:position)
+              <div class="col-md-3 bracket-column round2 mirror">
+                <% seats = @bracket.round(2).all.drop(2).take(2).map(&:position)
                    bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
-                   %>
+                 %>
                 <ul>
-                  <% bkt_matches.each do |bkt_match|
-                     match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
-                     %>
+                <% bkt_matches.each do |bkt_match|
+                   match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                   %>
                   <li class="spacer">&nbsp;</li>
                   <li class="connector connector-top">&nbsp;</li>
                   <%= render partial: "tournaments/bracket_match",
                              locals:  {:match => match}
                      %>
                   <li class="connector connector-bottom">&nbsp;</li>
-                  <% end %>
+                <% end %>
                 </ul>
               </div>
               <!-- bracket column -->
 
+              <div class="col-md-3 bracket-column round1 mirror">
+                <% seats = @bracket.round(1).all.drop(4).take(4).map(&:position)
+                   bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
+                 %>
+                <ul>
+                <% bkt_matches.each do |bkt_match|
+                   match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                   %>
+                  <%= render partial: "tournaments/bracket_match",
+                             locals:  {:match => match}
+                     %>
+                <% end %>
+                </ul>
+              </div>
+	      <!-- bracket_column -->
+
+
+
 	    </div>
 	    <!-- media list -->
+
 	  </div>
-		<!-- end episode list -->
-
-		<!-- sidebar -->
-
-		<div class="col-md-4 column sidebar">
-
-			<!-- shows mid ads -->
-				<div class="row clearfix">
-					<div class="col-md-12 column">
-					<!-- Shows_Single_medrec 1 -->
-						<div id='div-gpt-ad-1413394859928-0' style='width:300px; height:250px;' class="webad-side-lower">
-							<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413394859928-0'); });
-							</script>
-						</div>
-					</div>
-				</div>
-				<!-- shows mid ads end -->
+	  <!-- end episode list -->
 
 
-			<div class="row clearfix">
-				<!-- followed by -->
-				<div class="col-md-12 column">
-					<div class="carousel carousel-horizontal theme-green theme-invert">
-						<div class="panel">
-							<div class="panel-head">
-								<h3>Followed By</h3>
-							</div>
-						</div>
-						<% if !@followers.nil? && !@followers.empty? %>
-						<ul>
-							<% @followers.each do |user| %>
-								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-								<li>
-								<%= render partial: "layouts/horizontal_slide", :locals => {
-									:slide_title => user.username,
-								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
-									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'),
-									:slide_url => user_path(User.friendly.find(user.id))
-								}
-								%>
-								</li>
-							<% end %>
-						</ul>
-						<% else %>
-							<div class="well">
-								<h4 class="text-center">Be the first to FOLLOW this episode!</h4>
-							</div>
-						<% end %>
-					</div>
-				</div>
-				<!-- carousel -->
-				</div>
-				<div class="row">
-				<!-- end followed by -->
-				<!-- popped by -->
-				<div class="col-md-12 column">
-					<div class="carousel carousel-horizontal theme-purple">
-						<div class="panel">
-							<div class="panel-head">
-								<h3>Popped By</h3>
-							</div>
-						</div>
-
-						<% if !@likers.nil? && !@likers.empty? %>
-						<ul>
-							<% @likers.each do |user| %>
-								<% @gender = user.gender.nil? ? "---" : user.gender.capitalize %>
-								<li>
-								<%= render partial: "layouts/horizontal_slide", :locals => {
-									:slide_title => user.username,
-								 	:slide_text => "<b>#{@gender}, #{user.age_in_years}</b>".html_safe,
-									:slide_image => image_tag(user.thumb,  :class => "img-responsive img-circle", :width => '80', :height => '80'),
-									:slide_url => user.link
-								}
-								%>
-								</li>
-							<% end %>
-						</ul>
-						<% else %>
-							<div class="well">
-								<h4 class="text-center">Be the first to POP this episode!</h4>
-							</div>
-						<% end %>
-					</div>
-
-				</div>
-				<!-- end popped by -->
-
-			</div>
-
-			<!-- small 100 stacks of 3 -->
-			<div class="row clearfix">
-				<div class="col-md-12 column ">
-					<div class="webad-side-lower-alt webad-stack">
-						<!-- Shows_single_300x100_1 -->
-						<div id='div-gpt-ad-1413391261093-0' style='width:300px; height:100px;'>
-							<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391261093-0'); });
-							</script>
-						</div>
-						<!-- Shows_single_300x100_2 -->
-						<div id='div-gpt-ad-1413391286254-0' style='width:300px; height:100px;'>
-							<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391286254-0'); });
-							</script>
-						</div>
-						<!-- Shows_single_300x100_3 -->
-						<div id='div-gpt-ad-1413391306769-0' style='width:300px; height:100px;'>
-							<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413391306769-0'); });
-							</script>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end sidebar -->
-		<!-- end lower listings -->
 	</div>
+        <div class="row clearfix">
+          <div class="col-md-3 bracket-column round3">
+            <% seats = @bracket.round(3).all.map(&:position)
+               bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
+               %>
+            <ul>
+              <% bkt_matches.each do |bkt_match|
+                 match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+                 %>
+              <%= render partial: "tournaments/bracket_match",
+                  locals:  {:match => match}
+              %>
+              <% end %>
+            </ul>
+          </div>
+	  <!-- bracket_column -->
+        </div>
 </section>
 
 

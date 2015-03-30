@@ -17,9 +17,9 @@ ActiveAdmin.register Tournament do
 
   form  do |f|
     f.inputs "Tournament Details" do
-      # f.input :creator, :class => 'chosen', :as => :select, :member_label => :displayname, :required => true
-      f.input :title, :label => "Show Title", :required => true
-      f.input :subtitle, :label => "Show Subtitle", :required => true
+      f.input :title, :label => "Tournament Title", :required => true
+      f.input :subtitle, :label => "Tournament Subtitle", :required => true
+      f.input :start_date, required: true, as: :datepicker
       f.input :image,  :hint => f.object.image.present? \
         ? f.template.image_tag(f.object.image.url(:thumb))
       : f.template.content_tag(:span, 'Main show image.')

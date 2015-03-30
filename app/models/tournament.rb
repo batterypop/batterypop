@@ -73,8 +73,10 @@ class Tournament < ActiveRecord::Base
 
   def assign_attributes attrs
     # possibly episodes= has already deleted them
-    attrs[:matches_attributes] = attrs[:matches_attributes].reject do |k, v|
-      Match.where(id: v[:id]).empty?
+    if attrs[:matches_attributes]
+      attrs[:matches_attributes] = attrs[:matches_attributes].reject do |k, v|
+        Match.where(id: v[:id]).empty?
+      end
     end
     super attrs
   end
@@ -104,8 +106,28 @@ class Tournament < ActiveRecord::Base
       self.episodes << ptwo
       self.matches.create!(
         player_one: pone, first_seat: relation.round(1).seat(2*idx + 1).position,
-        player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position)
+        player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position,
+        start: (self.start_date + (7 * idx).days), finish: ((self.start_date + (7 * (idx + 1)).days) - 5.seconds))
     end
+
+    bracket = BracketTree::Bracket::SingleElimination.by_size episodes.count
+
+    round2_seats = bracket.round(2).all.map(&:position)
+    bkt_matches = bracket.matches.select {|m| round2_seats.include? m.seats[0] }
+    round2_start = self.start_date + (episodes.count / 2).weeks
+    bkt_matches.each do |m|
+      self.matches.create!(
+        first_seat: m.seats[0], second_seat: m.seats[1], start: round2_start, finish: ((round2_start + 1.week) - 5.seconds))
+    end
+
+    round3_seats = bracket.round(3).all.map(&:position)
+    bkt_matches = bracket.matches.select {|m| round3_seats.include? m.seats[0] }
+    round3_start = self.start_date + ((episodes.count / 2) + 1).weeks
+    bkt_matches.each do |m|
+      self.matches.create!(
+        first_seat: m.seats[0], second_seat: m.seats[1], start: round3_start, finish: ((round3_start + 1.week) - 5.seconds))
+    end
+
     self.reload
   end
 
