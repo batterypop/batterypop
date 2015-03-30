@@ -25,6 +25,14 @@
 	<!-- video section -->
 
 	<div class="col-md-6 column">
+
+
+	  <div class="tournament_videocontent videocontent">
+	    <% if !(@match).nil? %>
+              <%= vid_embed(@match.player_one).html_safe  %>
+	    <% end %>
+	  </div>
+
           <div class="media-list">
             <div class="media active ">
 	      <a class="clearfix" href="<%= @match.player_one.link %>">
@@ -44,14 +52,16 @@
 	    </div> <!-- media active -->
           </div>
 
-	  <div class="tournament_videocontent videocontent">
-	    <% if !(@match).nil? %>
-              <%= vid_embed(@match.player_one).html_safe  %>
-	    <% end %>
-	  </div>
 	</div>
 
         <div class="col-md-6 column">
+
+	  <div class="tournament_videocontent videocontent">
+	    <% if !(@episode).nil? %>
+              <%= vid_embed(@match.player_two).html_safe  %>
+	    <% end %>
+	  </div>
+
           <div class="media-list">
             <div class="media active ">
 	      <a class="clearfix" href="<%= @match.player_two.link %>">
@@ -70,11 +80,7 @@
 	      <!-- badge -->
 	    </div> <!-- media active -->
           </div>
-	  <div class="tournament_videocontent videocontent">
-	    <% if !(@episode).nil? %>
-              <%= vid_embed(@match.player_two).html_safe  %>
-	    <% end %>
-	  </div>
+
 	</div>
 
 
