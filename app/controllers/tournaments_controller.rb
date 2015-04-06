@@ -16,10 +16,11 @@ class TournamentsController < ApplicationController
   end
 
   def vote
-    puts params
     match = Match.find(params[:id])
     episode = Episode.find(params[:episode_id])
-    addr = request.env['REMOTE_ADDR']
+    addr = request.env['HTTP_X_FORWARDED_FOR']
+    addr = addr && addr.split(",").last
+    puts "#{addr} voted for #{params[:id]}"
     now = Time.now
     if (!TournamentVote.where(match: match, address: addr).empty? || match.status != "active")
       head :forbidden
