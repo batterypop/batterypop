@@ -42,6 +42,8 @@ Batterypopv2::Application.routes.draw do
 
   resources :tournaments
 
+  get "matches/:id/:episode_id", :to => "tournaments#vote"
+
   resources :shows do
     member do
       get :follow
