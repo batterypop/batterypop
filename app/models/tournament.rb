@@ -13,6 +13,7 @@ class Tournament < ActiveRecord::Base
 
   has_many :matches, dependent: :destroy
   accepts_nested_attributes_for :matches
+  has_many :active_matches, -> { where "start <= ? and finish >= ?", Date.today, Date.today }, class_name: "Match"
 
   has_and_belongs_to_many :episodes
 

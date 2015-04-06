@@ -1,11 +1,14 @@
 ActiveAdmin.register Tournament do
 
   menu :parent => "bPOP Tournaments"# , :priority => 1
+  filter :title
 
   before_filter :only => [:update] do
     @tournament = Tournament.unscoped.friendly.find(params[:id])
     eps = (params[:tournament][:episode_ids].select {|s| s && s != ""}).map {|eid| Integer(eid)}
     unless eps == @tournament.episodes.map(&:id)
+      @tournament.start_date = params[:tournament][:start_date]
+      @tournament.save
       @tournament.episodes = Episode.find(eps)
     end
     @tournament.reload

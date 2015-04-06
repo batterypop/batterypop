@@ -1,0 +1,12 @@
+<%= link_to("/matches/#{local_assigns[:match].id}/#{local_assigns[:episode].id}",
+    :remote => true,
+    :class => "badge pop-over episode-badge-vote-#{episode.id} tournament_vote",
+    :data => {:toggle=>"popover", :trigger => 'hover', :placement => 'left', :html => true, :content => "Click to POP  <b>'#{episode.title}!'</b>"}
+) do %>
+
+<h5><%= match.votes(episode) %></h5>
+<div class="badge-box" >
+  <div class="btn-pop "></div>
+</div>
+
+<% end %>

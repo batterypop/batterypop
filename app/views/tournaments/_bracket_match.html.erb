@@ -1,22 +1,31 @@
-<li class="match theme-green">
-  <div class="panel">
-    <div class="panel-head">
-      <span class="text-center player-label">
-        <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
-      </span>
-      <span class="text-center player-separator">vs</span>
-      <span class="text-center player-label">
-        <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
-      </span>
-    </div>
-  </div>
-  <div class="well">
+<li class="match text-center">
+
+  <% if (match && match.player_one) %>
+    <%=  image_tag(match.player_one.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+
     <h4 class="text-center">
-      <% if (match && match.start) %>
-      From <%= match.start.strftime "%b %d" %> to
-      <%= match.finish.strftime "%b %d" %></h4>
+      <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
+    </h4>
+
     <% else %>
-    TODO empty matches
+      <h3>TBD</h3>
     <% end %>
-  </div>
+</li>
+
+<li class="connector connector-bottom">&nbsp;</li>
+<li class="spacer">&nbsp;</li>
+<li class="connector connector-top">&nbsp;</li>
+
+<li class="match text-center">
+
+  <% if (match && match.player_two) %>
+    <%=  image_tag(match.player_two.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+
+  <h4 class="text-center">
+    <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
+  </h4>
+
+  <% else %>
+    <h3>TBD</h3>
+  <% end %>
 </li>

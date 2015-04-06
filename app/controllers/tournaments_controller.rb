@@ -15,6 +15,20 @@ class TournamentsController < ApplicationController
     @description = "Vote for your favorite episode in this head-to-head matchup!"
   end
 
+  def vote
+    puts params
+    match = Match.find(params[:id])
+    episode = Episode.find(params[:episode_id])
+    addr = request.env['REMOTE_ADDR']
+    now = Time.now
+    if (!TournamentVote.where(match: match, address: addr).empty? || match.start >= now || match.finish <= now)
+      head :forbidden
+    else
+      TournamentVote.create(match: match, episode: episode, address: addr)
+      head :ok
+    end
+  end
+
 
   # GET /shows/1
   # GET /shows/1.json
@@ -32,7 +46,7 @@ class TournamentsController < ApplicationController
        @episode = @tournament.episodes.first
     end
 
-    @match = @tournament.matches.first
+    @matches = @tournament.active_matches
 
 
     @ga_page_params = ", {'dimension1':  '#{@episode.creator.id}', 'dimension2': '#{@episode.id}'}"

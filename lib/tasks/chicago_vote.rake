@@ -11,6 +11,6 @@ namespace :chicago_vote do
 			repeatCount = cachedCount - existCount
 			repeatCount.times {ChicagoVote.create(:voteable => ep)}
 			puts "#{ep.id} has #{ep.chicago} cached chicago, found #{existCount} chicago_votes, creating #{repeatCount} more"
-		end	
+		end
 	end
 end

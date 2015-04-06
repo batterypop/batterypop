@@ -1,0 +1,30 @@
+<div class="col-md-6 column">
+  <div class="tournament_videocontent videocontent"
+       id="tournament-video-<%= local_assigns[:player].id %>"
+       data-videoplayer="<%= vid_embed(local_assigns[:player]).html_safe.gsub("\"", "\\\"")  %>">
+    <div class="tournament-videoimage"
+         style="background-image: url(<%= local_assigns[:player].image(:large) %>)">
+      <i class="glyphicon glyphicon-play-circle tournament-video-play"></i>
+    </div>
+  </div>
+
+  <div class="media-list">
+    <div class="media active ">
+      <a class="clearfix" href="<%= local_assigns[:player].link %>">
+	<div class="pull-left thumb">
+	  <%= image_tag(local_assigns[:player].image(:thumb), :alt => local_assigns[:player].title, :class => 'media-object ') %>
+	</div>
+	<div class="media-body">
+	  <h3 class="media-heading"><%= local_assigns[:player].title %></h3>
+	  <h4><% if(!local_assigns[:player].duration.nil? && !local_assigns[:player].duration.empty?)%><%= local_assigns[:player].duration %><% end %></h4>
+	  <%= local_assigns[:player].description.html_safe %>
+	</div>
+      </a>
+
+
+      <%= render :partial => "tournaments/pop_badge", :locals => {:episode => local_assigns[:player], :match => local_assigns[:match] }  %>
+      <!-- badge -->
+    </div> <!-- media active -->
+  </div>
+
+</div>

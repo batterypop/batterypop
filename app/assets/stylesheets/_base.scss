@@ -1486,7 +1486,9 @@ border-radius: 0 !important;
 
 
 .tournament_videocontent {
-  padding: 30px;
+  height: 340px;
+  position: relative;
+  padding: 0;
 }
 
 .tournament_sep {
@@ -2298,18 +2300,32 @@ right: 0;
 
 .bx-wrapper .well.center-block { width: 100% !important; }
 
-.bracket-column.round1 ul li {
+/* all columns  */
+
+.bracket-column ul li.match {
     height: 140px;
     margin-bottom: 20px;
+    background-image: url(/assets/Match-ups-A-Blank.png);
+}
+
+.bracket-column ul li.match h3 {
+    padding-top: 30px;
 }
 
 .bracket-column ul li div.well {
     padding: 23px;
 }
 
-/* all columns  */
-.bracket-column ul li div.well h4 {
-    margin: 7px 0 8px;
+.tournament-bracket-thumb {
+    height: 75px;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+li.match h4 {
 }
 
 .bracket-column ul li.connector {
@@ -2320,17 +2336,20 @@ right: 0;
     margin-left: 15px;
 }
 
-/* round 2 */
+/* round 1 */
 
+.bracket-column.round1 ul li.spacer, .bracket-column.round1 ul li.connector {
+    display: none;
+}
+
+/* round 2 */
 .bracket-column.round2 ul li.match {
-    height: 140px;
-    margin-bottom: 20px;
-    margin-left: 15px;
-    margin-bottom: 0;
+    margin: 0 auto 0  15px;
+
 }
 
 .bracket-column.round2 ul li.spacer:nth-of-type(1) {
-    height: 70px;
+    height: 50px;
 }
 
 .bracket-column.round2 ul li.spacer {
@@ -2387,4 +2406,25 @@ div.media-list div.col-md-3.bracket-column {
 .player-label, .player-separator {
     display: block;
     width: 100%;
+}
+
+/* video no autoplay */
+.tournament-videoimage {
+    background-size: contain;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.tournament-video-play {
+    font-size: 75px;
+    opacity: 0.5;
+    position: absolute;
+    left: 43%;
+    top: 38%;
+}
+.tournament-final-header {
+    margin: 0;
 }

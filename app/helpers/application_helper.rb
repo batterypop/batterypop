@@ -1,4 +1,3 @@
-
 module ApplicationHelper
   include DashboardUtility
   include ActsAsTaggableOn::TagsHelper
@@ -10,9 +9,9 @@ module ApplicationHelper
     return  pluralize(2, obj.class.name.downcase) + "/LINK_HELPER"
   end
 
-  def title 
+  def title
     base_title = "batteryPOP"
-    if @title.nil? 
+    if @title.nil?
       base_title
     else
       strip_tags("#{@title} | #{base_title}")
@@ -86,7 +85,7 @@ module ApplicationHelper
     end
 
 
-    def get_ga_page_params 
+    def get_ga_page_params
       if @ga_page_params.nil? || @ga_page_params.empty?
         ""
       else
@@ -97,7 +96,7 @@ module ApplicationHelper
     def colors
      ["blue","purple","gold","orange","green","navy","red","mint"]
     end
-    
+
     def get_avatars
       Avatar.all
     end
@@ -147,7 +146,7 @@ module ApplicationHelper
   end
 
 # viddler helpers was originally it's own class
-  
+
   def viddler_files(viddler_id, episode_id)
     # @viddler ||= Viddler::Client.new(viddler_id)
     @viddler = Viddler::Client.new(viddler_id)
@@ -202,28 +201,28 @@ module ApplicationHelper
 
   end
 
-  def vid_embed(episode)
-   @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
+  def vid_embed(episode, autoplay="1")
+   @ret = episode.embed.get_embed(episode.embed, episode.video, autoplay=autoplay).html_safe
 
     if (episode.links.empty?)
       if(episode.embed.provider == 'viddler' ) # no links, need to create
-        
+
         vid_link_create(episode)
-       
+
         if episode.links.empty?
            old = Embed.where(:provider => "viddler_original").first
            @ret = old.get_embed(old, episode.video).html_safe
            return @ret
         end
       else  # this is not viddler, everyone else
-        
+
 
         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
         # just in case there's other info
         @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
 
         #  now must see if episode.embed needs perms or not
-        #  
+        #
 
         if(episode.embed.needs_permission?)
 

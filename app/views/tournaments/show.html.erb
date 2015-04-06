@@ -16,80 +16,40 @@
 			:crumb_thumb  => image_tag(@tournament.image(:large),  :class => ""),
 			:crumb_title => @tournament.title,
 		 	:crumb_text => "Vote for your favorite in this head-to-head matchup!".html_safe,
-                        :match => @match
+                        :match => @tournament.active_matches.first
 			 	} %>
 
 <% meta_keywords %>
 
-	<div class="row clearfix row-featured">
+
 	<!-- video section -->
-
-	<div class="col-md-6 column">
-
-
-	  <div class="tournament_videocontent videocontent">
-	    <% if !(@match).nil? %>
-              <%= vid_embed(@match.player_one).html_safe  %>
-	    <% end %>
-	  </div>
-
-          <div class="media-list">
-            <div class="media active ">
-	      <a class="clearfix" href="<%= @match.player_one.link %>">
-	        <div class="pull-left thumb">
-		  <%= image_tag(@match.player_one.image(:thumb), :alt => @match.player_one.title, :class => 'media-object ') %>
-	        </div>
-	        <div class="media-body">
-		  <h3 class="media-heading"><%= @match.player_one.title %></h3>
-		  <h4><% if(!@match.player_one.duration.nil? && !@match.player_one.duration.empty?)%><%= @match.player_one.duration %><% end %></h4>
-		  <%= @match.player_one.description.html_safe %>
-	        </div>
-	      </a>
-
-
-	      <%= render :partial => "episodes/pop_badge", :locals => {:episode => @match.player_one}  %>
-	      <!-- badge -->
-	    </div> <!-- media active -->
-          </div>
-
-	</div>
-
-        <div class="col-md-6 column">
-
-	  <div class="tournament_videocontent videocontent">
-	    <% if !(@episode).nil? %>
-              <%= vid_embed(@match.player_two).html_safe  %>
-	    <% end %>
-	  </div>
-
-          <div class="media-list">
-            <div class="media active ">
-	      <a class="clearfix" href="<%= @match.player_two.link %>">
-	        <div class="pull-left thumb">
-		  <%= image_tag(@match.player_two.image(:thumb), :alt => @match.player_two.title, :class => 'media-object ') %>
-	        </div>
-	        <div class="media-body">
-		  <h3 class="media-heading"><%= @match.player_two.title %></h3>
-		  <h4><% if(!@match.player_two.duration.nil? && !@match.player_two.duration.empty?)%><%= @match.player_two.duration %><% end %></h4>
-		  <%= @match.player_two.description.html_safe %>
-	        </div>
-	      </a>
-
-
-	      <%= render :partial => "episodes/pop_badge", :locals => {:episode => @match.player_two}  %>
-	      <!-- badge -->
-	    </div> <!-- media active -->
-          </div>
-
-	</div>
-
+        <% @tournament.active_matches.each do |m| %>
+        <div class="row clearfix row-featured">
+          <%= render partial: "tournaments/player", locals: {match: m, player: m.player_one} %>
+          <%= render partial: "tournaments/player", locals: {match: m, player: m.player_two} %>
 
 	<div class="corners"></div>
 
 	</div>
+        <!-- end row-featured -->
+        <% end %>
+        <script>
+          $(document).ready(function(){
+            $(".tournament_vote").bind("ajax:success", function(){
+              head = $(this).find("h5").first()
+              head.html(parseInt(head.text()) + 1);
+            });
+            $(".tournament_vote").bind("ajax:error", function(){
+              alert("Sorry, it seems you've already voted on this match");
+            });
 
-	<!-- end video / nextup -->
-
+            $(".tournament_videocontent").click(function(){
+              console.log("whatever");
+              var d = $(this);
+              d.html(d.data("videoplayer").replace(/\\/g, ""));
+            });
+          })
+        </script>
 
 	<div class="row clearfix">
 	  <!-- bracket -->
@@ -118,16 +78,16 @@
                    bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
                  %>
                 <ul>
+                  <li class="spacer"></li>
+                  <li class="connector connector-top">&nbsp;</li>
                 <% bkt_matches.each do |bkt_match|
                    match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
                    %>
-                  <li class="spacer">&nbsp;</li>
-                  <li class="connector connector-top">&nbsp;</li>
                   <%= render partial: "tournaments/bracket_match",
                              locals:  {:match => match}
                      %>
-                  <li class="connector connector-bottom">&nbsp;</li>
                 <% end %>
+                <li class="connector connector-bottom">&nbsp;</li>
                 </ul>
               </div>
               <!-- bracket column -->
@@ -178,22 +138,43 @@
 
 	</div>
         <div class="row clearfix">
-          <div class="col-md-3 bracket-column round3">
-            <% seats = @bracket.round(3).all.map(&:position)
-               bkt_matches = @bracket.matches.select {|m| seats.include? m.seats[0] }
-               %>
-            <ul>
-              <% bkt_matches.each do |bkt_match|
-                 match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
-                 %>
-              <%= render partial: "tournaments/bracket_match",
-                  locals:  {:match => match}
-              %>
-              <% end %>
-            </ul>
+          <div class="panel panel-blue">
+            <div class="panel-body">
+              <h4 class="h3 tournament-final-header text-center"> <!-- wtf I know -->
+                <i class="bpop-star"></i>
+                <%= @tournament.title %> championship
+                <i class="bpop-star"></i>
+              </h4>
+            </div>
           </div>
-	  <!-- bracket_column -->
         </div>
+        <div class="row clearfix text-center">
+          <% seats = @bracket.round(3).all.map(&:position)
+             bkt_match = (@bracket.matches.select {|m| seats.include? m.seats[0] }).first
+             final_match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+             %>
+          <div class="col-md-6 bracket-championship-column round3">
+            <% if final_match.player_one %>
+              <h3 class="tournament-final-player">
+                <%= final_match.player_one.title %>
+              </h3>
+              <%=  image_tag(match.player_one.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+            <% else %>
+              <h3 class="tournament-final-player">TBD</h3>
+            <% end %>
+          </div>
+          <div class="col-md-6 bracket-championship-column round3">
+            <% if final_match.player_two %>
+              <h3 class="tournament-final-player">
+                <%= final_match.player_two.title %>
+              </h3>
+              <%=  image_tag(match.player_two.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+            <% else %>
+              <h3 class="tournament-final-player">TBD</h3>
+            <% end %>
+          </div>
+        </div>
+        <!-- championship -->
 </section>
 
 
