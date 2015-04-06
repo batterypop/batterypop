@@ -21,7 +21,7 @@ class TournamentsController < ApplicationController
     episode = Episode.find(params[:episode_id])
     addr = request.env['REMOTE_ADDR']
     now = Time.now
-    if (!TournamentVote.where(match: match, address: addr).empty? || match.start >= now || match.finish <= now)
+    if (!TournamentVote.where(match: match, address: addr).empty? || match.status != "active")
       head :forbidden
     else
       TournamentVote.create(match: match, episode: episode, address: addr)

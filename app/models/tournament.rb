@@ -13,7 +13,8 @@ class Tournament < ActiveRecord::Base
 
   has_many :matches, dependent: :destroy
   accepts_nested_attributes_for :matches
-  has_many :active_matches, -> { where "start <= ? and finish >= ?", Date.today, Date.today }, class_name: "Match"
+  # has_many :active_matches, -> { where "start <= ? and finish >= ?", Time.now, Time.now }, class_name: "Match"
+  has_many :active_matches, -> { where "status = 'active'" }, class_name: "Match"
 
   has_and_belongs_to_many :episodes
 
@@ -199,6 +200,10 @@ class Tournament < ActiveRecord::Base
   def create_matches
     puts "create_matches"
     self.episodes = Episode.where(id: self.episodes.map(&:id))
+    now = Time.now
+    self.matches.each do |m|
+      m.advance! now
+    end
   end
 
   def slug_candidates

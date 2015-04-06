@@ -1,3 +1,5 @@
+require 'set'
+
 ActiveAdmin.register Tournament do
 
   menu :parent => "bPOP Tournaments"# , :priority => 1
@@ -5,11 +7,11 @@ ActiveAdmin.register Tournament do
 
   before_filter :only => [:update] do
     @tournament = Tournament.unscoped.friendly.find(params[:id])
-    eps = (params[:tournament][:episode_ids].select {|s| s && s != ""}).map {|eid| Integer(eid)}
-    unless eps == @tournament.episodes.map(&:id)
+    eps = Set.new((params[:tournament][:episode_ids].select {|s| s && s != ""}).map {|eid| Integer(eid)})
+    unless eps == (Set.new @tournament.episodes.map(&:id))
       @tournament.start_date = params[:tournament][:start_date]
       @tournament.save
-      @tournament.episodes = Episode.find(eps)
+      @tournament.episodes = Episode.find(eps.to_a)
     end
     @tournament.reload
   end
@@ -41,6 +43,7 @@ ActiveAdmin.register Tournament do
         match.input :second_seat, required: true
         match.input :start, required: true, as: :datepicker
         match.input :finish, required: true, as: :datepicker
+        match.input :billboard
       end
 
 

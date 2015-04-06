@@ -9,6 +9,20 @@ class Match < ActiveRecord::Base
   accepts_nested_attributes_for :player_one
   accepts_nested_attributes_for :player_one
 
+  has_attached_file :billboard,
+  styles: {
+    large: "1140x280#",
+    thumb: "150x150#"
+  },
+  storage: :s3,
+  s3_credentials: "#{Rails.root}/config/amazon_s3.yml",
+  path: "images/:class/:id/:attachment/:style/:filename",
+  bucket: S3_BUCKET,
+  default_url: "/assets/missing.png"
+
+  validates_attachment_content_type :billboard, :content_type => /\Aimage\/.*\Z/
+
+
   def votes episode
     TournamentVote.where(episode: episode, match: self).count
   end
@@ -48,7 +62,16 @@ class Match < ActiveRecord::Base
 
     match_winner_seat = self.status == "player_one_wins" ? self.first_seat : self.second_seat
     next_seat = (bkt.matches.select {|bm| bm.seats.include? match_winner_seat }).first.winner_to
-    parent_match = self.tournament.matches.where "first_seat = ? OR second_seat = ?", next_seat, next_seat
+    parent_match = (self.tournament.matches.where "first_seat = ? OR second_seat = ?", next_seat, next_seat).first
+
+    if parent_match # no parent match means we are at root
+      if parent_match.first_seat == next_seat
+        parent_match.player_one = self.winner
+      else
+        parent_match.player_two = self.winner
+      end
+      parent_match.save
+    end
 
   end
 
