@@ -1714,6 +1714,9 @@ width: 100%;
   }
 }
 }
+.media-list.tournament-media-list .media.active a:first-child {
+    min-height: 12em;
+}
 
 .badge {
   display: inline-block;
