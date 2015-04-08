@@ -130,6 +130,11 @@ class Tournament < ActiveRecord::Base
         first_seat: m.seats[0], second_seat: m.seats[1], start: round3_start, finish: ((round3_start + 1.week) - 5.seconds))
     end
 
+    now = Time.now
+    self.matches.each do |m|
+      m.advance! now
+    end
+
     self.reload
   end
 
@@ -200,10 +205,6 @@ class Tournament < ActiveRecord::Base
   def create_matches
     puts "create_matches"
     self.episodes = Episode.where(id: self.episodes.map(&:id))
-    now = Time.now
-    self.matches.each do |m|
-      m.advance! now
-    end
   end
 
   def slug_candidates
