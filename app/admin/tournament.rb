@@ -24,7 +24,7 @@ ActiveAdmin.register Tournament do
     f.inputs "Tournament Details" do
       f.input :title, :label => "Tournament Title", :required => true
       f.input :subtitle, :label => "Tournament Subtitle", :required => true
-      f.input :start_date, required: true, as: :datepicker
+      f.input :start_date, required: true, as: :datetime_picker
       f.input :image,  :hint => f.object.image.present? \
         ? f.template.image_tag(f.object.image.url(:thumb))
       : f.template.content_tag(:span, 'Main show image.')
@@ -36,16 +36,15 @@ ActiveAdmin.register Tournament do
     end
 
 
-      f.has_many :matches do |match|
-        match.input :player_one, required: true
-        match.input :player_two, required: true
-        match.input :first_seat, required: true
-        match.input :second_seat, required: true
-        match.input :start, required: true, as: :datepicker
-        match.input :finish, required: true, as: :datepicker
-        match.input :billboard
-      end
-
+    f.has_many :matches do |match|
+      match.input :player_one, required: true
+      match.input :player_two, required: true
+      match.input :first_seat, required: true
+      match.input :second_seat, required: true
+      match.input :start, required: true, as: :datetime_picker
+      match.input :finish, required: true, as: :datetime_picker
+      match.input :billboard
+    end
 
     f.actions
   end
