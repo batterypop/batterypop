@@ -1,11 +1,20 @@
 <li class="match text-center">
 
   <% if (match && match.player_one) %>
-    <%=  image_tag(match.player_one.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+    <%=  image_tag(match.player_one.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
 
-    <h4 class="text-center">
-      <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
-    </h4>
+    <div class="col-md-9">
+      <h4 class="text-center">
+        <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
+      </h4>
+    </div>
+
+    <div class="col-md-3">
+      <p class="text-center match-score">
+        <%= "#{pluralize (match.votes match.player_one), "vote"}" %>
+      </p>
+    </div>
+
 
     <% else %>
       <h3>TBD</h3>
@@ -19,11 +28,19 @@
 <li class="match text-center">
 
   <% if (match && match.player_two) %>
-    <%=  image_tag(match.player_two.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+    <%=  image_tag(match.player_two.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
 
-  <h4 class="text-center">
-    <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
-  </h4>
+    <div class="col-md-9">
+      <h4 class="text-center">
+        <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
+      </h4>
+    </div>
+
+    <div class="col-md-3">
+      <p class="text-center match-score">
+        <%= "#{pluralize (match.votes match.player_two), "vote"}" %>
+      </p>
+    </div>
 
   <% else %>
     <h3>TBD</h3>

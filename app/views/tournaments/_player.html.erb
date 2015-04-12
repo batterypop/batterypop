@@ -12,7 +12,7 @@
     <div class="media active">
       <a class="clearfix" href="<%= local_assigns[:player].link %>">
 	<div class="pull-left thumb">
-	  <%= image_tag(local_assigns[:player].image(:thumb), :alt => local_assigns[:player].title, :class => 'media-object ') %>
+	  <%= image_tag(local_assigns[:player].show.image(:thumb), :alt => local_assigns[:player].title, :class => 'media-object ') %>
 	</div>
 	<div class="media-body">
 	  <h3 class="media-heading"><%= local_assigns[:player].title %></h3>
