@@ -112,7 +112,8 @@ ActiveAdmin.register Friend do
       end
 
       @order.each_with_index do |id, pos|
-        @fe = FriendEpisode.where(:friend_id => @friend.id, :episode_id => id).first
+        # @fe = FriendEpisode.where(:friend_id => @friend.id, :episode_id => id).first
+        @fe = FriendEpisode.find_by(:friend_id => @friend.id, :episode_id => id)
         @fe.position = pos
         @fe.save
       end

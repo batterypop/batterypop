@@ -107,21 +107,31 @@ class Episode < ActiveRecord::Base
 	end
 
 def hide_sponsor_globally?
+	return self.friends.approved.where(hide_sponsor_globally: true).exists?
+	
 	# this is to control sponsor tag on most popped
 	# it's sort of a sum: if a video has ANY sponsor page that says true to hiding it
 	# then it's hidden on mostpopped - even if video is sponsored elsewhere
-	if(self.friends.approved.empty?) # no friend list so hide the tag
-		return true
-	end
-	if(!self.friends.approved.empty?) # if there's any friend page check each
-		self.friends.approved.each do |f|
-			if(f.hide_sponsor_globally)
-				return true
-			end
-		end
-		# at end of checking friends; none globally off
-		return false
-	end
+	# if(self.friends.approved.empty?) # no friend list so hide the tag
+	# 	true
+	# end
+	# 
+	# 
+	
+	# return true if(self.friends.approved.empty?)
+
+
+	# if(!self.friends.approved.empty?) # if there's any friend page check each
+	# 	puts " ----        NOT EMPTY";  
+	# 	self.friends.approved.each do |f|
+	# 		puts "hide globally:  #{f.hide_sponsor_globally}"
+	# 		return true if(f.hide_sponsor_globally)
+	# 	end
+	# 	# at end of checking friends; none globally off
+	# 	# 
+	# 	puts "----   nope you can show sponsor"
+	# 	return false
+	# end
 end
 
 
@@ -201,7 +211,7 @@ end
 			# checking if this episode's show belongs to any channels
 			if(!episode.show.channels.empty?)
 				@all_episodes = []
-				episode.channels.where(:hidden => [nil, false] ).each { |channel|  channel.episodes.joins(:show).where(:approved => true, "shows.approved" => true).each {|ep|  @all_episodes << ep } }
+				episode.channels.where(:hidden => [nil, false] ).find_each { |channel|  channel.episodes.joins(:show).where(:approved => true, "shows.approved" => true).each {|ep|  @all_episodes << ep } }
 				if(lim.nil?)
 					lim = @all_episodes.count
 				end
