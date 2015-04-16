@@ -16,6 +16,7 @@ ActiveAdmin.register Friend do
       f.input :approved, :required => true
       f.input :hide_sponsor_banner, :label => "Hide 'SPONSOR' in breadcrumb?"
       f.input :hide_sponsor_listing, :label => "Hide 'SPONSOR' in Sponsor episode list?"
+      f.input :hide_sponsor_globally, :label => "Hide 'SPONSOR' everywhere (most popped etc)"
       f.input :primary_color, :label => "Main Color:", :hint => "In hexidecimal (ie #ffffff) or 'red'."
       f.input :description,  :label => "Description", :as => :rich, :allow_embeds => true
       f.input :keyword_list, :label => "Meta Keywords (seperated by commas)"

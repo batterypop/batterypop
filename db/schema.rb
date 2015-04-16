@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314022600) do
+ActiveRecord::Schema.define(version: 20150416032431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -275,7 +276,22 @@ ActiveRecord::Schema.define(version: 20150314022600) do
     t.text     "dfp_header_code"
     t.text     "dfp_banner_ad"
     t.text     "dfp_mid_side_ad"
+    t.boolean  "hide_sponsor_globally",      default: false
   end
+
+  create_table "linkages", force: true do |t|
+    t.string    "name"
+    t.string    "url"
+    t.string    "icon_file_name"
+    t.string    "icon_content_type"
+    t.integer   "icon_file_size"
+    t.timestamp "icon_updated_at",   precision: 6
+    t.integer   "creator_id"
+    t.timestamp "created_at",        precision: 6
+    t.timestamp "updated_at",        precision: 6
+  end
+
+  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
 
   create_table "links", force: true do |t|
     t.string   "url"
@@ -296,9 +312,13 @@ ActiveRecord::Schema.define(version: 20150314022600) do
     t.datetime "start"
     t.datetime "finish"
     t.integer  "tournament_id"
-    t.string   "status",        default: "scheduled"
+    t.string   "status",                 default: "scheduled"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "billboard_file_name"
+    t.string   "billboard_content_type"
+    t.integer  "billboard_file_size"
+    t.datetime "billboard_updated_at"
   end
 
   create_table "notifications", force: true do |t|
@@ -474,6 +494,17 @@ ActiveRecord::Schema.define(version: 20150314022600) do
     t.string "name"
   end
 
+  create_table "tournament_votes", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "episode_id"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tournament_votes", ["episode_id"], name: "index_tournament_votes_on_episode_id", using: :btree
+  add_index "tournament_votes", ["match_id"], name: "index_tournament_votes_on_match_id", using: :btree
+
   create_table "tournaments", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -492,6 +523,7 @@ ActiveRecord::Schema.define(version: 20150314022600) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_date"
   end
 
   create_table "username_words", force: true do |t|
