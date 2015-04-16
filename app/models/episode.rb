@@ -106,6 +106,23 @@ class Episode < ActiveRecord::Base
             .group("episodes.id").order("total DESC").limit(lim)
 	end
 
+def hide_sponsor_globally?
+	# this is to control sponsor tag on most popped
+	# it's sort of a sum: if a video has ANY sponsor page that says true to hiding it
+	# then it's hidden on mostpopped - even if video is sponsored elsewhere
+	if(self.friends.approved.empty?) # no friend list so hide the tag
+		return true
+	end
+	if(!self.friends.approved.empty?) # if there's any friend page check each
+		self.friends.approved.each do |f|
+			if(f.hide_sponsor_globally)
+				return true
+			end
+		end
+		# at end of checking friends; none globally off
+		return false
+	end
+end
 
 
 # popping / liking with chicago voting
