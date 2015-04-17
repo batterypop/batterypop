@@ -1,4 +1,4 @@
-class ShowsController < ApplicationController
+  class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
  

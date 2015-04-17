@@ -96,7 +96,7 @@ class Episode < ActiveRecord::Base
 
 
 	def self.mostpopped_by_month(lim=nil)
-          Episode.mostpopped_by_range Date.today.beginning_of_month, Date.today.end_of_month
+          Episode.mostpopped_by_range Date.today.beginning_of_month, Date.today.end_of_month, lim
 	end
 
         def self.mostpopped_by_range(pd_start, pd_end, lim=nil)
@@ -107,6 +107,7 @@ class Episode < ActiveRecord::Base
 	end
 
 def hide_sponsor_globally?
+	return true if(self.friends.approved.empty?)
 	return self.friends.approved.where(hide_sponsor_globally: true).exists?
 	
 	# this is to control sponsor tag on most popped
