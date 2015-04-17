@@ -96,7 +96,7 @@ class Episode < ActiveRecord::Base
 
 
 	def self.mostpopped_by_month(lim=nil)
-          Episode.mostpopped_by_range Date.today.beginning_of_month, Date.today.end_of_month, lim
+          Episode.mostpopped_by_range Date.today.beginning_of_month, Date.today.end_of_month
 	end
 
         def self.mostpopped_by_range(pd_start, pd_end, lim=nil)
