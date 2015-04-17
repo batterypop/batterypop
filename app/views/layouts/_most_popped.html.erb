@@ -8,7 +8,7 @@
 			</div>
 			<ul>
 				<% cache 'shows_most_popped', skip_digest: true do %>
-				<% @popped.find_each do |episode| %>
+				<% @popped.each do |episode| %>
 					<li>
 
 						 <%= render partial: "layouts/vertical_slide", :locals => {
