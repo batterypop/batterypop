@@ -13,6 +13,7 @@ Batterypopv2::Application.routes.draw do
 
   resources :channels
 
+  resources :menus
 
   # resources :contacts
   #

@@ -4,6 +4,9 @@ module ApplicationHelper
   # include Split::Helper
 
 
+  def get_menus
+    Menu.active
+  end
 
   def link_helper(obj)
     return  pluralize(2, obj.class.name.downcase) + "/LINK_HELPER"

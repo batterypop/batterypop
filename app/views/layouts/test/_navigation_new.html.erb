@@ -1,4 +1,4 @@
-<li class="<% if(@active=='home') %> active<% end %>">
+<!-- <li class="<% if(@active=='home') %> active<% end %>">
 	<a href="/">Home</a>
 </li>
 <li class="<% if(@active=='shows') %> active<% end %>">
@@ -10,10 +10,28 @@
 <li class="<% if(@active=='blog') %> active<% end %>">
 	<a href="/posts"><span class="lowercase">B</span>log</a>
 </li>
-<!-- <li class="<% if(@active=='tournaments') %> active<% end %>">
+<li class="<% if(@active=='tournaments') %> active<% end %>">
 	<a href="<%= url_for(Tournament.last) %>">Tournament</a>
-</li> -->
+</li> 
 
 <li class="<% if(@active=='popular') %> active<% end %>">
 	<a href="/friends/the-pop-ular">The POP-ular</a>
-</li>
+</li> -->
+
+<% get_menus.each do | menu | %>
+
+	<!-- <li class="<% if(@current_menu=='menu.id') %> active<% end %>">
+		<a href="<% menu.url %>"><% menu.title %></a>
+	</li> -->
+
+	<li class="<% if( current_page?(menu.url)  )  %> active<% end %>">
+		<a href="<%= menu.url %>"><%= menu.title.html_safe %></a>
+	</li>
+
+<% end %>
+
+<!--
+#  need to work on this logic; can have 2 menus active
+if( current_page?(menu.url)  ||  ( (menu.url!="/")  &&    (request.path.include? menu.url)  )) 
+
+-->
