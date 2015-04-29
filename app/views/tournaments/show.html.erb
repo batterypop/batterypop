@@ -1,0 +1,303 @@
+<section class="wrapper">
+
+  <%= get_banner_embed %>
+
+	<!-- badge -->
+	<% @action = "
+	#{ render :partial => "episodes/popunpop", :locals => {:episode => @episode} }
+	<div class='col-sm-12 col-xs-6'>
+	#{ render :partial => "tournaments/follow_show", :locals => {:tournament => @tournament} }
+	</div>
+	" %>
+
+        <% meta_keywords %>
+
+
+        <% @bracket = BracketTree::Bracket::SingleElimination.by_size @tournament.episodes.count
+           seats = @bracket.round(3).all.map(&:position)
+           bkt_match = (@bracket.matches.select {|m| seats.include? m.seats[0] }).first
+           final_match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+           %>
+	<!-- video section -->
+        <% if final_match.winner %>
+        <div class="row clearfix row-featured">
+	  <!-- video section -->
+
+	  <div class="col-md-8 column">
+	    <div class="videocontent">
+	      <%= vid_embed(final_match.winner).html_safe  %>
+	    </div>
+	  </div>
+
+	  <!-- end video section -->
+          <div class="col-md-4 column sidebar">
+            <!-- shows mid ads -->
+	    <div class="row clearfix">
+	      <div class="col-md-12 column">
+		<!-- Shows_Single_medrec 1 -->
+		<div id='div-gpt-ad-1413394859928-0' style='width:300px; height:250px;' class="webad-side-lower">
+		  <script type='text/javascript'>
+		    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1413394859928-0'); });
+		  </script>
+		</div>
+	      </div>
+	    </div>
+	    <!-- shows mid ads end -->
+          </div>
+
+	  <div class="corners"></div>
+
+	</div>
+        <% else %>
+        <% @tournament.active_matches.each do |m| %>
+          <div class="row headcrumb clearfix"
+               style="max-height: 380px; overflow: hidden;">
+            <img style="width: 100%;" src="<%= m.billboard(:large) %>" />
+          </div>
+
+          <div class="row clearfix row-featured">
+            <%= render partial: "tournaments/player", locals: {match: m, player: m.player_one}
+%>
+            <%= render partial: "tournaments/player", locals: {match: m, player: m.player_two} %>
+
+          <div class="corners"></div>
+          </div>
+
+        <!-- end row-featured -->
+        <% end %>
+        <% end %>
+        <script>
+          $(document).ready(function(){
+            $(".tournament_vote").bind("ajax:success", function(){
+              head = $(this).find("h5").first()
+              head.html(parseInt(head.text()) + 1);
+            });
+            $(".tournament_vote").bind("ajax:error", function(){
+              alert("Sorry, it seems you've already voted on this match");
+            });
+
+            $(".tournament_videocontent").click(function(){
+              console.log("whatever");
+              var d = $(this);
+              d.html(d.data("videoplayer").replace(/\\/g, ""));
+            });
+          })
+        </script>
+<!-- line 87 - 171 -->
+	<div class="row clearfix">
+	  <!-- bracket -->
+
+    <div class="col-md-12 column">
+	    <div class="media-list tournament-list">
+          
+              <div class="col-md-3 col-bracket col-outside-left">
+
+                <ul>
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Dynamite</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Snow Day</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Gotta B You (ft MC Fireworks)</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>No Homework</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+                </ul>
+              </div>
+	      <!-- bracket_column -->
+
+              <div class="col-md-3 col-bracket col-md-push-6 col-outside-right">
+
+                <ul>
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>The Stump Hotel</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Blue Bear</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Haircut</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>The Ice Cream Song</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+                </ul>
+              </div>
+        <!-- bracket_column -->
+
+
+              <div class="col-md-3 col-bracket col-md-pull-3 col-inside-left">
+
+                <ul>
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Winner Week 1</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    <span class="bracket-wire"></span>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Winner Week 2</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+
+                </ul>
+              </div>
+        <!-- bracket_column -->
+
+
+              <div class="col-md-3 col-bracket col-md-pull-3 col-inside-right">
+
+                <ul>
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Winner Week 3</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="bracket-name">
+                      <img alt="Alphabet rockers 100x35" class="bracket-thumb" src="http://batterypop-v2-staging.s3.amazonaws.com/images/creators/219/image/images/thumb/alphabet-rockers-100x35.png?1429552478">
+                    </div>
+                    <div class="bracket-title">
+                      <div class="title-video"><h3>Winner Week 4</h3></div>
+                      <div class="title-votes"><h5 class="text-center">3 <br />votes</h5></div>
+                    </div>
+                    </li>
+
+
+                </ul>
+              </div>
+        <!-- bracket_column -->
+
+
+    </div>
+
+
+	  </div>
+	  <!-- end episode list -->
+
+
+	</div>
+        <div class="row clearfix">
+          <div class="panel panel-blue">
+            <div class="panel-body">
+              <h4 class="h3 tournament-final-header text-center"> <!-- wtf I know -->
+                <i class="bpop-star"></i>
+                <%= @tournament.title %> Championship
+                <i class="bpop-star"></i>
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix text-center">
+          <% seats = @bracket.round(3).all.map(&:position)
+             bkt_match = (@bracket.matches.select {|m| seats.include? m.seats[0] }).first
+             final_match = (@tournament.matches.where first_seat: bkt_match.seats[0]).first
+             %>
+          <% if final_match.winner %>
+          <div class="col-md-12 bracket-championship-column round3">
+            <h2><%= final_match.winner.title %> wins!</h2>
+            <%=  image_tag(final_match.winner.show.image(:thumb), class: "tournament-bracket-thumb")  %>
+          </div>
+          <% else %>
+          <div class="col-md-6 bracket-championship-column round3">
+            <% if final_match.player_one %>
+              <h3 class="tournament-final-player">
+                <%= final_match.player_one.title %>
+              </h3>
+              <%=  image_tag(final_match.player_one.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+              <p class="text-center"><%= pluralize (final_match.votes final_match.player_one), "vote" %></p>
+            <% else %>
+              <h3 class="tournament-final-player">TBD</h3>
+            <% end %>
+          </div>
+          <div class="col-md-6 bracket-championship-column round3">
+            <% if final_match.player_two %>
+              <h3 class="tournament-final-player">
+                <%= final_match.player_two.title %>
+              </h3>
+              <%=  image_tag(final_match.player_two.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+              <p class="text-center"><%= pluralize (final_match.votes final_match.player_one), "vote" %></p>
+            <% else %>
+              <h3 class="tournament-final-player">TBD</h3>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <!-- championship -->
+</section>
+
+
+<%= javascript_include_tag 'refresh' %>
