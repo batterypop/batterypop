@@ -24,7 +24,7 @@
 		<a href="<% menu.url %>"><% menu.title %></a>
 	</li> -->
 
-	<li class="<% if( current_page?(menu.url)  )  %> active<% end %>">
+	<li class="<% if( current_page?(menu.url)  ||  ( (menu.url!="/")  &&    (request.path.include? menu.url)  )) %> active<% end %>">
 		<a href="<%= menu.url %>"><%= menu.title.html_safe %></a>
 	</li>
 

@@ -22,7 +22,9 @@ class TournamentsController < ApplicationController
     addr = addr && addr.split(",").last
     puts "#{addr} voted for #{params[:id]}"
     now = Time.now
-    if (!TournamentVote.where(match: match, address: addr).empty? || match.status != "active")
+    # if (!TournamentVote.where(match: match, address: addr).empty? || match.status != "active")
+    # 
+    if (!TournamentVote.where(match: match, address: addr, :created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).empty? || match.status != "active")
       head :forbidden
     else
       TournamentVote.create(match: match, episode: episode, address: addr)
