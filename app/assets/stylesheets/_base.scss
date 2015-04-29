@@ -2431,4 +2431,182 @@ div.media-list div.col-md-3.bracket-column {
 }
 .tournament-final-header {
     margin: 0;
+    @extend %font-display-bold;
+    @extend %uppercase;
+    color: $lite;
+}
+
+// new brackets
+
+.tournament-list {
+  ul {
+    margin-bottom: 0;
+  }
+  [class*="col-md-3"] {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+[class*="col-outside-"] {
+  position: relative;
+  z-index: 1;
+}
+
+.bracket-name {
+  background: $purple;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 4px;
+  background: url("#{$image-path}/bracket-name-bk.png") right top no-repeat $purple;
+  // padding-right: 80px;
+}
+
+img.bracket-thumb {
+height: 100%;
+width: auto;
+// max-width: 100%;
+margin-left: auto;
+margin-right: auto;
+display: block;
+text-align: center;
+
+  @media (min-width: 992px){
+    display: inline-block;
+    text-align: left;
+    }
+}
+
+.bracket-title {
+  height: 60px;
+  overflow: hidden;
+  background: $purple-lite;
+  // display: table;
+  width: 100%;
+  padding: 10px;
+  background: url("#{$image-path}/bracket-title-bk.png") 10px bottom no-repeat $purple-lite;
+    h3, h5 {
+      margin-bottom: 0;
+      color: $lite;
+
+    }
+
+}
+
+.title-video {
+//display: table-cell;
+  vertical-align: middle;
+  max-height: 100%;
+  overflow: hidden;
+  width: 75%;
+  float: left;
+  @extend %vertical-align;
+  h3 {
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @extend %uppercase;
+    .text-sm {
+      @include fontsize(1.6);
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 992px){
+    .title-video h3 {
+    padding-left: 60px;
+  }
+}
+
+.title-votes {
+  //vertical-align: middle;
+ // display: table-cell;
+ float: left;
+  width: 25%;
+  h5 {
+    font-family: $font-sans;
+    @include fontsize(1.4);
+    line-height: 130%;
+  }
+
+}
+
+
+
+
+
+
+@media (min-width: 992px){
+
+.tournament-list [class*="col-inside-"] ul {
+    margin-top: 82px;
+    li:first-child {
+      margin-bottom: 185px;
+    }
+  }
+
+.col-inside-left li {
+  position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -46px;
+      right: 49%;
+      width: 100%;
+      display: block;
+      border-top: 4px solid $purple;
+      border-right: 4px solid $purple;
+      height: 47px;
+    }
+      &:after {
+      content: "";
+      position: absolute;
+      bottom: -46px;
+      right: 49%;
+      width: 100%;
+      display: block;
+      border-bottom: 4px solid $purple;
+      border-right: 4px solid $purple;
+      height: 47px;
+    }
+}
+
+
+.col-inside-right li {
+  position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -46px;
+      left: 49%;
+      width: 100%;
+      display: block;
+      border-top: 4px solid $purple;
+      border-left: 4px solid $purple;
+      height: 47px;
+    }
+      &:after {
+      content: "";
+      position: absolute;
+      bottom: -46px;
+      left: 49%;
+      width: 100%;
+      display: block;
+      border-bottom: 4px solid $purple;
+      border-left: 4px solid $purple;
+      height: 47px;
+    }
+}
+// end mediaquery
+}
+
+@media (min-width: 992px){
+.tournament-list [class*="col-outside-"] li:last-child {
+  margin-bottom: 0;
+}
 }
