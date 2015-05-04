@@ -1,48 +1,66 @@
-<li class="match text-center">
+<li>
 
   <% if (match && match.player_one) %>
-    <%=  image_tag(match.player_one.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+     <div class="bracket-name">
+      <%=  image_tag(match.player_one.show.creator.image(:thumb), class: "bracket-thumb")  %>
+      </div>
 
-    <div class="col-md-9">
-      <h4 class="text-center">
-        <%= (match && match.player_one) ? match.player_one.title : "TBD" %>
-      </h4>
-    </div>
-
-    <div class="col-md-3">
-      <p class="text-center match-score">
-        <%= "#{pluralize (match.votes match.player_one), "vote"}" %>
-      </p>
-    </div>
+      <div class="bracket-title">
+        <div class="title-video"><h3><%= (match && match.player_one) ? match.player_one.title : "TBD" %></h3></div>
+        <div class="title-votes">
+        <h5 class="text-center"><%= "#{(match.votes match.player_one)}" %><br /><%= "#{(pluralize (match.votes match.player_one), 'vote').split(' ')[1]}" %></h5>
+        </div>
+      </div>
 
 
     <% else %>
-      <h3>TBD</h3>
+
+
+
+    <div class="bracket-name"></div>
+     <div class="bracket-title">
+        <div class="title-video"><h3>TBD</h3></div>
+        <div class="title-votes">
+        <h5 class="text-center"></h5>
+        </div>
+    </div>
+
+
+
+
     <% end %>
 </li>
 
-<li class="connector connector-bottom">&nbsp;</li>
-<li class="spacer">&nbsp;</li>
-<li class="connector connector-top">&nbsp;</li>
 
-<li class="match text-center">
+
+<li>
 
   <% if (match && match.player_two) %>
-    <%=  image_tag(match.player_two.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+    <div class="bracket-name">
+      <%=  image_tag(match.player_two.show.creator.image(:thumb), class: "bracket-thumb")  %>
+      </div>
 
-    <div class="col-md-9">
-      <h4 class="text-center">
-        <%= (match && match.player_two) ? match.player_two.title : "TBD" %>
-      </h4>
-    </div>
+      <div class="bracket-title">
+        <div class="title-video"><h3><%= (match && match.player_two) ? match.player_two.title : "TBD" %></h3></div>
+        <div class="title-votes">
+        <h5 class="text-center"><%= "#{(match.votes match.player_two)}" %><br /><%= "#{(pluralize (match.votes match.player_two), "vote").split(' ')[1]}" %></h5>
+        </div>
+      </div>
 
-    <div class="col-md-3">
-      <p class="text-center match-score">
-        <%= "#{pluralize (match.votes match.player_two), "vote"}" %>
-      </p>
-    </div>
+
 
   <% else %>
-    <h3>TBD</h3>
+
+    <div class="bracket-name"></div>
+     <div class="bracket-title">
+        <div class="title-video"><h3>TBD</h3></div>
+        <div class="title-votes">
+        <h5 class="text-center"></h5>
+        </div>
+    </div>
+
+
   <% end %>
 </li>
+
+<!-- need to check on TBD outside of box-->

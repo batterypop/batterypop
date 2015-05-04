@@ -181,7 +181,7 @@ group :test do
     gem 'rspec'
     gem 'autotest'
     gem 'autotest-growl'
-    gem 'autotest-fsevent', '>= 0.2.9'
+    gem 'autotest-fsevent', '>= 0.2.10'
     # gem 'sqlite3'
 end
 

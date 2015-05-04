@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20150421054442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -279,25 +278,12 @@ ActiveRecord::Schema.define(version: 20150421054442) do
     t.boolean  "hide_sponsor_globally",      default: false
   end
 
-  create_table "linkages", force: true do |t|
-    t.string    "name"
-    t.string    "url"
-    t.string    "icon_file_name"
-    t.string    "icon_content_type"
-    t.integer   "icon_file_size"
-    t.timestamp "icon_updated_at",   precision: 6
-    t.integer   "creator_id"
-    t.timestamp "created_at",        precision: 6
-    t.timestamp "updated_at",        precision: 6
-  end
-
-  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
-
   create_table "links", force: true do |t|
     t.string   "url"
     t.text     "data"
     t.integer  "linkedmedia_id"
     t.string   "linkedmedia_type"
+    t.integer  "views",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link_type"
