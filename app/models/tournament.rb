@@ -99,10 +99,10 @@ class Tournament < ActiveRecord::Base
     bkt = BracketTree::Bracket::SingleElimination.by_size episodes.count
     relation = BracketTree::PositionalRelation.new(bkt)
 
-    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?})
-      .map {|pair| pair.map(&:first)}
+    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?}).map {|pair| pair.map(&:first)}
 
-    pairs.each_with_index do |pair, idx|
+    pairs.each_with_index do |pair, pos|
+      idx = pos / 2
       pone, ptwo = pair
       self.episodes << pone
       self.episodes << ptwo

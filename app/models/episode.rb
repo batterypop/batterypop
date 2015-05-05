@@ -150,7 +150,11 @@ end
 
 #search helpers
 	def link
-		return "/shows/" + self.show.slug + "/episodes/" + self.slug
+		if(self.show.nil?)
+			return  "/episodes/" + self.slug
+		else
+			return "/shows/" + self.show.slug + "/episodes/" + self.slug
+		end
 	end
 
 	def thumb

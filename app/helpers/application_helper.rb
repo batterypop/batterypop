@@ -222,7 +222,11 @@ module ApplicationHelper
 
         @ret = episode.embed.get_embed(episode.embed, episode.video).html_safe
         # just in case there's other info
-        @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+        if(episode.show.nil?)
+             @ret = @ret.gsub("%showepisode%", "#{episode.title}")
+           else
+          @ret = @ret.gsub("%showepisode%", "#{episode.show.title}: #{episode.title}")
+        end
 
         #  now must see if episode.embed needs perms or not
         #
