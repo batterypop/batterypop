@@ -99,17 +99,18 @@ class Tournament < ActiveRecord::Base
     bkt = BracketTree::Bracket::SingleElimination.by_size episodes.count
     relation = BracketTree::PositionalRelation.new(bkt)
 
-    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?}).map {|pair| pair.map(&:first)}
+    pairs = (episodes.each_with_index.slice_before {|x| x[1].even?})
+      .map {|pair| pair.map(&:first)}
 
-    pairs.each_with_index do |pair, pos|
-      idx = pos / 2
+    pairs.each_with_index do |pair, idx|
+      t = idx / 2
       pone, ptwo = pair
       self.episodes << pone
       self.episodes << ptwo
       self.matches.create!(
         player_one: pone, first_seat: relation.round(1).seat(2*idx + 1).position,
         player_two: ptwo, second_seat: relation.round(1).seat(2*idx + 2).position,
-        start: (self.start_date + (7 * idx).days), finish: ((self.start_date + (7 * (idx + 1)).days) - 5.seconds))
+        start: (self.start_date + (7 * t).days), finish: ((self.start_date + (7 * (t + 1)).days) - 5.seconds))
     end
 
     bracket = BracketTree::Bracket::SingleElimination.by_size episodes.count
