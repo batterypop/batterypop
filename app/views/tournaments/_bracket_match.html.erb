@@ -1,7 +1,7 @@
 <li>
   <% if (match && match.player_one) %>
      <div class="bracket-name">
-      <%=  image_tag(match.player_one.show.creator.image(:thumb), class: "bracket-thumb")  %>
+      <%=  image_tag(match.player_one.show.creator.image(:node), class: "bracket-thumb")  %>
       </div>
 
       <div class="bracket-title">
@@ -36,7 +36,7 @@
 
   <% if (match && match.player_two) %>
     <div class="bracket-name">
-      <%=  image_tag(match.player_two.show.creator.image(:thumb), class: "bracket-thumb")  %>
+      <%=  image_tag(match.player_two.show.creator.image(:node), class: "bracket-thumb")  %>
       </div>
 
       <div class="bracket-title">
