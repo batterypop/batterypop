@@ -35,6 +35,11 @@ ActiveAdmin.register Tournament do
       f.input :episodes, :class => 'chosen', :as => :select, :required => true
     end
 
+    f.inputs "Ads" do
+      f.input :dfp_header_code, :label => "DFP Custom Header Code"
+      f.input :dfp_banner_ad, :label => "DFP Banner Ad"
+    end
+
 
     f.has_many :matches do |match|
       match.input :player_one, required: true

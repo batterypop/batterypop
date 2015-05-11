@@ -43,6 +43,9 @@ class TournamentsController < ApplicationController
      @show_follow_status = ''
      # @f = @show.user_followers.random(5)
      # @followers = (@f.compact!).nil? ? @f : @f.compact!
+     # 
+    @dfp_header_code = @tournament.dfp_header_code
+    @dfp_banner_ad = @tournament.dfp_banner_ad
 
 
     if(@episode.nil?)
