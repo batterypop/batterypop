@@ -7,8 +7,7 @@ class TournamentsController < ApplicationController
     @active="tournaments"
     @title = "Tournaments"
 
-    @banner_ad = "/31902320/Shows_main_leaderboard"
-    @banner_id = 'div-gpt-ad-1411894179579-0'
+
 
     # @shows = Show.all
     @shows=Show.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
@@ -38,7 +37,7 @@ class TournamentsController < ApplicationController
   def show
     @banner_ad = "/31902320/Shows_Leaderboard"
     @banner_id = 'div-gpt-ad-1411894829676-0'
-     @dfp_header = "shows"
+     @dfp_header = "tournaments"
      @active="tournaments"
      @show_follow_status = ''
      # @f = @show.user_followers.random(5)
