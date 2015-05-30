@@ -489,7 +489,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.1)
   sdoc
-  select2-rails (~> 3.5.9.1)
+  select2-rails
   sitemap_generator
   spork
   spork-rails!

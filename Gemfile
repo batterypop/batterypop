@@ -110,7 +110,7 @@ gem 'pg'
 gem 'pg_search'
 
 gem 'chosen-rails'
-gem 'select2-rails', '~> 3.5.9.1'
+gem 'select2-rails'
 
 gem 'awesome_print'
 
