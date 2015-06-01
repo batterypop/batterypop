@@ -192,7 +192,7 @@
         <h3 class="tournament-final-player">
           <%= final_match.player_one.title %>
         </h3>
-        <%=  image_tag(final_match.player_one.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+        <%=  image_tag(final_match.player_one.show.creator.image(:node), class: "tournament-bracket-thumb")  %>
         <p class="text-center"><%= pluralize (final_match.votes final_match.player_one), "vote" %></p>
       <% else %>
         <h3 class="tournament-final-player bracket-championship-column ">TBD</h3>
@@ -203,7 +203,7 @@
         <h3 class="tournament-final-player">
           <%= final_match.player_two.title %>
         </h3>
-        <%=  image_tag(final_match.player_two.show.creator.image(:thumb), class: "tournament-bracket-thumb")  %>
+        <%=  image_tag(final_match.player_two.show.creator.image(:node), class: "tournament-bracket-thumb")  %>
         <p class="text-center"><%= pluralize (final_match.votes final_match.player_two), "vote" %></p>
       <% else %>
         <h3 class="tournament-final-player bracket-championship-column round3">TBD</h3>
