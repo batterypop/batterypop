@@ -86,7 +86,8 @@ list_class
                   :slide_text => truncate_html(strip_tags(episode.description), length: 100, omission: '<b>...(more)</b>'), 
                   :slide_image => image_tag(episode.image(:thumb), :alt => episode.title, :class => "img-responsive img-circle"),
                   :slide_url =>  item.episode_link(episode), 
-                  :slide_class => (!episode.friends.approved.empty? && !item.hide_sponsor_listing?) ? "sponsor": nil
+                  # :slide_class => (!episode.friends.approved.empty? && !item.hide_sponsor_listing?) ? "sponsor": nil
+                  :slide_class => (!episode.hide_sponsor_globally?) ? "sponsor": nil
 
                   } %>
 
