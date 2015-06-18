@@ -16,7 +16,7 @@
 
 <% cache 'shows_channels_home', skip_digest: true do %>
 <% pos = 1 %>
-<% @channels.find_each do |channel| %>
+<% @channels.each do |channel| %>
 
       <%  if(pos >= (colors.count-1)) 
             pos =0 
