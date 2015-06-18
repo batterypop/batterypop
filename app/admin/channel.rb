@@ -5,6 +5,24 @@ ActiveAdmin.register Channel do
 		@channel = Channel.friendly.find(params[:id])
 	end
 
+
+	controller do
+		def update
+			super
+			 expire_fragment("shows_channels_home")
+		end
+
+		def destroy
+			super
+			 expire_fragment("shows_channels_home")
+		end
+
+		def create
+			super
+			 expire_fragment("shows_channels_home")
+		end
+	end
+
 	form do |f|
 		f.inputs "BatteryPOP Channel" do
 			f.input :position, :label => "Channel Position", :required => true
