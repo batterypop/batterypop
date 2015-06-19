@@ -35,9 +35,9 @@ ActiveAdmin.register Episode do
 		column (:description) { |foobar| raw(foobar.description) }
 		column (:image) {|fooimg| image_tag(fooimg.image(:thumb))}
 		column :show
-		column :count, :sortable do |episode|
-			episode.visits.size
-		end
+		# column :count, :sortable do |episode|
+		# 	episode.visits.size
+		# end
 		default_actions
 	end
 
