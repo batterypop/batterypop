@@ -27,6 +27,8 @@ class Friend < ActiveRecord::Base
 	include PgSearch
 	# multisearchable :against => [:title, :description, :sponsor]
 
+	after_save :set_search_link
+
 	pg_search_scope :search_text,
                   :against => [:title, :description, :sponsor],
                   :using => {
@@ -96,6 +98,18 @@ class Friend < ActiveRecord::Base
 	def should_generate_new_friendly_id?
 	  slug.blank? || title_changed?
 	end
+
+	# pg search fixes
+def set_search_link
+	ret = PgSearchDocuments.where(searchable_id: self.id, searchable_type: self.class.name)
+	if ret.count
+		ret.each do |d|
+			d.delete
+		end
+	end
+	pd = PgSearchDocuments.new({content: self.title, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+	pd = PgSearchDocuments.new({content: self.description, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+end
 
 
 # search helpers

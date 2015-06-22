@@ -29,6 +29,8 @@ class Episode < ActiveRecord::Base
   include PgSearch
   # multisearchable :against => [:title, :description]
 
+  after_save :set_search_link
+
   pg_search_scope :search_text,
     :against => [:title, :description],
     :using => {
@@ -143,6 +145,17 @@ def pops
 	return (self.cached_votes_up + Integer(self.chicago.to_i))
 end
 
+# pg search fixes
+def set_search_link
+	ret = PgSearchDocuments.where(searchable_id: self.id, searchable_type: self.class.name)
+	if ret.count
+		ret.each do |d|
+			d.delete
+		end
+	end
+	pd = PgSearchDocuments.new({content: self.title, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+	pd = PgSearchDocuments.new({content: self.description, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+end
 
 
 def should_generate_new_friendly_id?

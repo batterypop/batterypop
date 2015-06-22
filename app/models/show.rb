@@ -30,6 +30,8 @@ class Show < ActiveRecord::Base
 	include PgSearch
 	include DashboardUtility
 	# multisearchable :against => [:title, :description]
+	# 
+	after_save :set_search_link
 
 	pg_search_scope :search_text,
 	      :against => [:title, :description],
@@ -167,6 +169,22 @@ end
 def self.created_last_year
 	created_between((Time.zone.now-1.year).beginning_of_day, Time.zone.now)
 end
+
+# pg search fixes
+def set_search_link
+	ret = PgSearchDocuments.where(searchable_id: self.id, searchable_type: self.class.name)
+	if ret.count
+		ret.each do |d|
+			d.delete
+		end
+	end
+	pd = PgSearchDocuments.new({content: self.title, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+	pd = PgSearchDocuments.new({content: self.description, searchable_id: self.id, searchable_type: self.class.name}); pd.save
+end
+
+
+
+
 
 scope :created_between, lambda { |start_time, end_time| where(:created_at => (start_time...end_time)) }
 
