@@ -52,8 +52,9 @@ class Episode < ActiveRecord::Base
 	belongs_to :embed
 	has_many :channels, :through => :show
 
-	has_many :friend_episodes
-	has_many :friends, :through => :friend_episodes
+	# has_many :friend_episodes
+	# belongs_to :friend
+	has_and_belongs_to_many :friends,  :join_table => :friend_episodes, :order => "position ASC"
 
 	has_many :links, :as => :linkedmedia
 	# has_many :visits, :through => :links  -- removing visit; no reason to track
