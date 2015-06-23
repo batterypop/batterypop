@@ -186,10 +186,15 @@ end
 
 # title function to return for slide: show + ep title or just show title if single
 	def slide_title
-		if(self.show.single? || !self.show.present?)
-			self.show.title
-		else
-			self.show.title + ' :<br />' + self.title
+		if !self.show.present?
+			return	self.title
+		end
+		if self.show.present?
+			if self.show.single? 
+				self.show.title
+			else
+				self.show.title + ' :<br />' + self.title
+			end
 		end
 	end
 
