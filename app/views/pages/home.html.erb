@@ -34,7 +34,7 @@
             <div class="panel-head">
               <h3 class="visible-xs visible-sm"><%= channel.title %></h3>
 
-              <%= image_tag(channel.icon(:original), :alt => channel.title, :class => "hidden-xs hidden-sm title-img  title-#{channel.title.downcase}") %>
+              <%= image_tag(channel.icon(:original), :alt => channel.title, :class => "hidden-xs hidden-sm title-img  title-#{channel.title.downcase.gsub(' ', '-').gsub(/[^\w-]/, '')}") %>
 
       			</div>
           </div>
