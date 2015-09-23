@@ -53,8 +53,8 @@ position: relative;
 margin: 0 auto 15px;
 
 display: inline-block;
-left: 50%;
-margin-left: -364px;
+// left: 50%;
+// margin-left: -364px;
 border: 1px solid black;
 padding-right: 15px;
 background: url("#{$image-path}/ad.png") black right 50% no-repeat;
@@ -2619,4 +2619,9 @@ text-align: center;
 .tournament-list [class*="col-outside-"] li:last-child {
   margin-bottom: 0;
 }
+}
+
+.wrapper-advert {
+  text-align: center;
+  height: auto;
 }
