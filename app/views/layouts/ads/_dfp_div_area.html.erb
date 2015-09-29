@@ -1,8 +1,10 @@
 <% if  @dfp_banner_ad.nil? || @dfp_banner_ad.empty? %>
-	<div id='<%= ad_id %>' class='webad-top-horizontal  hidden-xs'>
-		<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('<%= ad_id %>'); });
-		</script>
+	<div class="wrapper-advert">
+		<div id='<%= ad_id %>' class='webad-top-horizontal hidden-xs'>
+			<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('<%= ad_id %>'); });
+			</script>
+		</div>
 	</div>
 <% else %>
 	<%= @dfp_banner_ad.html_safe %>
