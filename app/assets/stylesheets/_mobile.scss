@@ -451,8 +451,41 @@ left: 0;
   }
 }
 
-
-
-
 //
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .container.container-friends {
+    width: 992px !important;
+  }
+
+  .container-friends .carousel-vertical {
+    height: 323px !important;
+  }
+
+  .container-friends .row-featured {
+    width: 1022px !important;
+  }
+
+}
+
+@media (min-width: 1600px) {
+  .container.container-friends {
+    width: 1170px !important;
+  }
+
+  .container-friends .carousel-vertical {
+    height: 390px !important;
+  }
+
+  .container-friends .row-featured {
+    width: 1200px !important;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .container-friends .navbar-default ul.navbar-nav li {
+    margin: 0 2%;
+  }
 }
