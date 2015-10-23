@@ -489,6 +489,11 @@ left: 0;
 //
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+.container-friends .navbar-default ul.navbar-nav li {
+  margin: 0 2%;
+}
+
 
 
 
