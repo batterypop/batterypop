@@ -36,7 +36,7 @@
 	<div class="row clearfix row-featured">		
 	<!-- video section -->
 
-		<div class="col-md-8 column">
+		<div class="col-md-8 col-md-offset-2 column">
 
 			<!-- featured area -->
 			<% unless (@friend.features.empty? || is_friend_return_view?) %>
@@ -65,7 +65,7 @@
 		</div>
 
 	<!-- end video section -->
-		<%=  render :partial => "layouts/next_up" %>
+		<%  render :partial => "layouts/next_up" %>
 
 		<div class="corners"></div>
 
