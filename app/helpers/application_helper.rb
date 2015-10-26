@@ -52,7 +52,14 @@ module ApplicationHelper
   		@devise_mapping ||= Devise.mappings[:user]
   	end
 
-
+    def get_nintendo
+      # request.fullpath.split("/").second 
+      if params[:id]=="batterypop-game-zone"
+        return "container-friends"
+      else
+        return ""
+      end
+    end
 
     # ads for swapping code
     def get_banner_header
