@@ -54,7 +54,7 @@ module ApplicationHelper
 
     def get_nintendo
       # request.fullpath.split("/").second 
-      if params[:id]=="batterypop-game-zone"
+      if params[:id]=="batterypop-gamezone"
         return "container-friends"
       else
         return ""
