@@ -1370,13 +1370,20 @@ border-radius: 0 !important;
   }
 }
 
-
+.ad-samsung{
+  text-align: center;
+    .well {
+        height: 450px;
+        background: url("#{$image-path}/ads/bPOP_Ad.jpg") $purple 50% 50% no-repeat;
+        background-size: cover;
+    }
+}
 
 .ad {
 
   text-align: center;
     .well {
-        background: url("#{$image-path}/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
+        background: url("#{$image-path}/ads/bpop_app_image_trans.png") $purple 50% 50% no-repeat;
         background-color: $purple;
         background-size: cover;
     }
