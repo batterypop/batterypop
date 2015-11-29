@@ -32,7 +32,7 @@ module ApplicationHelper
 
 
   def meta_keywords
-    base_tags = "Kids, Videos, Cartoons, Music, Funny, Safe, Comedy, Shows, Animation, Parents, Children, Web series, Webisodes, Kids Videos, Videos for Kids, Kid Safe Videos"
+    base_tags = "Videos for Kids, Kid safe videos, Funny videos for kids, Free videos for kids, Cartoons for kids, Brand new cartoons, Animation for kids, Superhero videos, Superhero Videos for kids, Minecraft videos for kids, How to play Minecraft, Minecraft for kids, Skylanders videos for kids, How to play Skylanders, Crafting videos for kids, Videos about family activities, DIY videos for kids, DC Comics videos, Batman cartoons, Rainbow Loom videos, Video game walkthroughs, Gameplay videos for kids, Twitch for kids, Kid safe Twitch videos, Mommy and Gracie The Doll Hunters, Kids toy reviews, Shopkins videos, Shopkins Unboxing, Monster High Unboxing, Blind Bags unboxing, Toy reviews for kids, Mom approved videos, Dad approved videos, Educational videos for kids, Edutainment for kids, Music videos for kids, Laurie Berkner videos"
     if @page_keywords.nil?
       base_tags
     else

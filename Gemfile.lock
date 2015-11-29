@@ -211,7 +211,7 @@ GEM
       simplecov (>= 0.3.8)
       yard (>= 0.7.0)
     erubis (2.7.0)
-    eventmachine (1.0.3)
+    eventmachine (1.0.8)
     excon (0.31.0)
     execjs (2.0.2)
     fog (1.20.0)
