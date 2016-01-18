@@ -52,9 +52,10 @@ module ApplicationHelper
   		@devise_mapping ||= Devise.mappings[:user]
   	end
 
-    def get_nintendo
+    def check_friend_div
       # request.fullpath.split("/").second 
-      if request.fullpath.split("/").third=="batterypop-gamezone"
+      # if request.fullpath.split("/").third=="batterypop-gamezone"
+      if (controller_name=="friends") && (action_name == "show") 
         return "container-friends"
       else
         return ""
