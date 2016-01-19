@@ -273,15 +273,6 @@ body {
     display: block;
     z-index: -5;
   }
-    &:before {
-    background: url("#{$image-path}/ads/Yoshi-Skin-LEFT-v2.jpg") 0 0 no-repeat;
-    left: -719px;
-
-    }
-    &:after {
-    background: url("#{$image-path}/ads/Yoshi-Skin-RIGHT-v2.jpg") 0 0 no-repeat;
-    right: -719px;
-    }
 }
 
 
