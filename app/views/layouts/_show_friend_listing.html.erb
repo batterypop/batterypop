@@ -33,10 +33,22 @@ list_class
   <div class="row clearfix">
     <div class="col-md-12">
       <div class="text-center">
-        <%= will_paginate list_items, renderer: BootstrapPagination::Rails %>
+        <%= 
+          if (local_assigns[:navigation]=='alpha')
+          render partial: "layouts/nav_shows_index"  
+          end 
+        %>
+        <%= 
+        if (local_assigns[:navigation]=='paginate')
+          will_paginate list_items, renderer: BootstrapPagination::Rails
+        end 
+        %>
       </div>
     </div>
   </div>
+  <%   if list_items.empty? && (local_assigns[:navigation]=='alpha') %>
+    <center><h2><p>Yikes! No shows start with your selection!</p><p></p><p>Please try another.</p></h2></center>
+  <%  end %>
 
   <% list_items.each do |item| %>
   <%  
@@ -108,13 +120,25 @@ list_class
   </div>
   <!-- row -->
 
+<!-- if none to be found -->
+
+
 <!-- end lower listings -->
 <% end %>
 
   <div class="row clearfix">
     <div class="col-md-12">
       <div class="text-center">
-        <%= will_paginate list_items, renderer: BootstrapPagination::Rails %>
+        <%= 
+          if (local_assigns[:navigation]=='alpha')
+          render partial: "layouts/nav_shows_index"  
+          end 
+        %>
+        <%= 
+        if (local_assigns[:navigation]=='paginate')
+          will_paginate list_items, renderer: BootstrapPagination::Rails
+        end 
+        %>
       </div>
     </div>
   </div>

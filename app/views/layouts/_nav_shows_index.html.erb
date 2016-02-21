@@ -1,0 +1,15 @@
+<ul class="pagination pagination">
+<% 
+	@navAlphas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split("")
+	@navAlphas.each do |na|
+		link = (na == "#") ? "num" : na
+%>
+	<li <% if (na==@alpha) %> class="active"<% end %>>
+	<a href='<%="/shows?alpha=#{link}"%>'><%= na.html_safe %></a>
+	</li>
+<%
+
+	end
+
+%>
+</ul>

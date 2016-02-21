@@ -1,7 +1,7 @@
   class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
-
  
+  before_action :set_index, only: [:index]
 
   def index
     @active="shows"
@@ -10,8 +10,6 @@
     @banner_ad = "/31902320/Shows_main_leaderboard"
     @banner_id = 'div-gpt-ad-1411894179579-0'
 
-    # @shows = Show.all
-    @shows=Show.series.order(:created_at).includes(:episodes).paginate(:page => params[:page], :per_page => 8)
     @description = "The best web series around! Catch the shows everyone is talking about right here, and share your favorites with your friends."
   end
 
@@ -100,11 +98,40 @@
      @show = Show.includes(:episodes).where("episodes.approved" => true).order('episodes.episode').friendly.find(params[:id])
   end
 
+  # look up list of shows based upon alpha
+  def set_index
+    # binding.pry
+    @alpha = params[:alpha]
+    if @alpha.nil? 
+      @alpha = "A"
+    end
+    if @alpha == 'num'
+      srch = ["title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ?"]
+      (0..9).each do |i|
+        srch  << "#{i}%"
+        srch  <<  "The #{i}%"
+      end
+     
+      # binding.pry
+      # there should be regex mysql to look up the numerical first rather than this lame setup, but for now
+       
+    else
+        srch = ["title LIKE ? or title LIKE ?", "#{@alpha}%", "The #{@alpha}%"]
+    end
+    @shows=Show.series.order(:title).includes(:episodes).where(srch)
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def show_params
     params.require(:show).permit(:title, :description, :approved)
   end
 
+
+#           con = ActiveRecord::Base.connection()
+
+  #           sql = "select v.link_id, l.linkedmedia_id as episode_id,  e.title as episode,  count(*) as count from visits as v, links as l, episodes as e  where v.created_at::TEXT like '#{thisday}%' and (v.link_id = l.id) and (e.id = l.linkedmedia_id)  group by e.title, v.link_id, l.id order by count desc limit 10;"
+
+  #           result = con.execute(sql)
 
 
 
