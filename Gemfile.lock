@@ -493,6 +493,3 @@ DEPENDENCIES
   viddler-ruby
   will_paginate (~> 3.0.5)
   will_paginate-bootstrap
-
-BUNDLED WITH
-   1.10.6
