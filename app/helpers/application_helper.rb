@@ -300,4 +300,14 @@ module ApplicationHelper
       # return false
     end
 
+
+    def fb_pixel
+      if !@friend.nil? then
+        if@friend.slug == "the-pop-ular" then
+          render :partial => "layouts/ads/fb_pixel_popular.html.erb"
+        end
+      end
+    end
+
+
 end
