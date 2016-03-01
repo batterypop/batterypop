@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511025104) do
+ActiveRecord::Schema.define(version: 20160229213007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 20150511025104) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "base_products", force: true do |t|
+    t.string   "name",        limit: nil
+    t.text     "description"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "categories", force: true do |t|
@@ -279,20 +286,6 @@ ActiveRecord::Schema.define(version: 20150511025104) do
     t.boolean  "hide_sponsor_globally",      default: false
   end
 
-  create_table "linkages", force: true do |t|
-    t.string    "name"
-    t.string    "url"
-    t.string    "icon_file_name"
-    t.string    "icon_content_type"
-    t.integer   "icon_file_size"
-    t.timestamp "icon_updated_at",   precision: 6
-    t.integer   "creator_id"
-    t.timestamp "created_at",        precision: 6
-    t.timestamp "updated_at",        precision: 6
-  end
-
-  add_index "linkages", ["creator_id"], name: "index_linkages_on_creator_id", using: :btree
-
   create_table "links", force: true do |t|
     t.string   "url"
     t.text     "data"
@@ -378,6 +371,14 @@ ActiveRecord::Schema.define(version: 20150511025104) do
     t.datetime "featured_image_updated_at"
   end
 
+  create_table "products", force: true do |t|
+    t.integer  "base_product_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "products", ["base_product_id"], name: "index_products_on_base_product_id", using: :btree
+
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
@@ -410,6 +411,29 @@ ActiveRecord::Schema.define(version: 20150511025104) do
     t.string "name",   null: false
   end
 
+  create_table "sensor_events", force: true do |t|
+    t.datetime "timestamp"
+    t.float    "force"
+    t.float    "xaccel"
+    t.float    "yaccel"
+    t.float    "zaccel"
+    t.float    "battery"
+    t.float    "position"
+    t.float    "tension"
+    t.integer  "sensor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sensor_events", ["sensor_id"], name: "index_sensor_events_on_sensor_id", using: :btree
+
+  create_table "sensors", force: true do |t|
+    t.string   "serial",     limit: nil
+    t.string   "model",      limit: nil
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "shows", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -432,6 +456,7 @@ ActiveRecord::Schema.define(version: 20150511025104) do
     t.boolean  "skiplist"
     t.integer  "position"
     t.string   "age_range"
+    t.string   "sort_title"
   end
 
   add_index "shows", ["slug"], name: "index_shows_on_slug", unique: true, using: :btree
@@ -593,6 +618,10 @@ ActiveRecord::Schema.define(version: 20150511025104) do
 
   add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
 
+  add_foreign_key "products", "base_products", name: "fk_rails_b033e49a6a"
+
   add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
+
+  add_foreign_key "sensor_events", "sensors", name: "fk_rails_d3ce334b08"
 
 end

@@ -31,6 +31,7 @@ class Show < ActiveRecord::Base
 	include DashboardUtility
 	# multisearchable :against => [:title, :description]
 	# 
+	before_save :set_sort_title
 	after_save :set_search_link
 
 	pg_search_scope :search_text,
@@ -183,7 +184,9 @@ def set_search_link
 end
 
 
-
+def set_sort_title
+	self.sort_title = self.slug.sub(/^the-/,'')
+end
 
 
 scope :created_between, lambda { |start_time, end_time| where(:created_at => (start_time...end_time)) }

@@ -45,6 +45,7 @@ ActiveAdmin.register Show do
 		f.inputs "Show Details" do
 			f.input :creator, :class => 'chosen', :as => :select, :member_label => :displayname, :required => true
 			f.input :title, :label => "Show Title", :required => true 
+			f.input :sort_title, :label => "Sorting Title", :hint => 'Usually automatically generated.'
 			f.input :subtitle, :label => "Show Subtitle", :required => true 
 			f.input :image,  :hint => f.object.image.present? \
 		        ? f.template.image_tag(f.object.image.url(:thumb))
