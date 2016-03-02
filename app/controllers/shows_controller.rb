@@ -118,7 +118,7 @@
     else
         srch = ["title LIKE ? or title LIKE ?", "#{@alpha}%", "The #{@alpha}%"]
     end
-    @shows=Show.series.order(:title).includes(:episodes).where(srch)
+    @shows=Show.series.order(:title).includes(:episodes).where(srch).order(:sort_title)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
