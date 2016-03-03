@@ -106,34 +106,22 @@
       @alpha = "A"
     end
     if @alpha == 'num'
-      srch = ["title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ? or title LIKE ?"]
-      (0..9).each do |i|
-        srch  << "#{i}%"
-        srch  <<  "The #{i}%"
-      end
-     
-      # binding.pry
-      # there should be regex mysql to look up the numerical first rather than this lame setup, but for now
+      @alpha = "#"
+      srch = ['sort_title ~* ?', "^\\d+"]
        
     else
         srch = ["title LIKE ? or title LIKE ?", "#{@alpha}%", "The #{@alpha}%"]
     end
-    @shows=Show.series.order(:title).includes(:episodes).where(srch).order(:sort_title)
+
+    @shows=Show.approved.includes(:episodes).where(srch).order(:sort_title)
+
+  
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def show_params
     params.require(:show).permit(:title, :description, :approved)
   end
-
-
-#           con = ActiveRecord::Base.connection()
-
-  #           sql = "select v.link_id, l.linkedmedia_id as episode_id,  e.title as episode,  count(*) as count from visits as v, links as l, episodes as e  where v.created_at::TEXT like '#{thisday}%' and (v.link_id = l.id) and (e.id = l.linkedmedia_id)  group by e.title, v.link_id, l.id order by count desc limit 10;"
-
-  #           result = con.execute(sql)
-
-
 
 
 
