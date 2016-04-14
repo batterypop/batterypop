@@ -2673,9 +2673,20 @@ text-align: center;
    content: "\e902";
 }
 
+div.text-right {
+  float: right;
+  text-align: right;
+}
+
+.text-right a {
+  text-align: center;
+  min-width: 30px;
+  display: inline-block;
+}
+
 @media screen and (max-width: 480px) {
   div.text-right {
-    float: right;
+    float: none;
     text-align: center;
     clear: both;
   }
