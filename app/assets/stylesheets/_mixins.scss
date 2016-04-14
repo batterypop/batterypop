@@ -91,6 +91,18 @@ $image-path: "/assets";
 }
 
 
+@font-face {
+  font-family: 'icomoon';
+  src:    url('#{$image-path}/icomoon.eot?dhun82');
+  src:    url('#{$image-path}/icomoon.eot?dhun82#iefix') format('embedded-opentype'),
+      url('#{$image-path}/icomoon.ttf?dhun82') format('truetype'),
+      url('#{$image-path}/icomoon.woff?dhun82') format('woff'),
+      url('#{$image-path}/icomoon.svg?dhun82#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 $font-sans: "Roboto", Arial, Helvetica, sans-serif;
 $font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
 $font-display: "Anchor Web Medium", "Roboto Condensed", "Arial Narrow", Arial, Helvetica, sans-serif;

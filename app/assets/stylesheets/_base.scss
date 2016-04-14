@@ -2632,3 +2632,45 @@ text-align: center;
   text-align: center;
   height: auto;
 }
+
+
+[class^="icon-"], [class*=" icon-"] {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'icomoon' !important;
+   speak: none;
+   font-style: normal;
+   font-weight: normal;
+   font-variant: normal;
+   text-transform: none;
+   line-height: 1;
+   color: white;
+   font-size: 1.8rem;
+
+   /* Better Font Rendering =========== */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook-official:before {
+   content: "\e904";
+}
+.icon-facebook-square:before {
+   content: "\e905";
+}
+.icon-facebook3:before {
+   content: "\e906";
+}
+.icon-twitter:before {
+   content: "\e900";
+}
+.icon-youtube:before {
+   content: "\e903";
+}
+.icon-facebook:before {
+   content: "\e901";
+}
+.icon-facebook2:before {
+   content: "\e902";
+}
+
+
