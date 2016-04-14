@@ -2644,7 +2644,7 @@ text-align: center;
    text-transform: none;
    line-height: 1;
    color: white;
-   font-size: 1.8rem;
+   font-size: 2.4rem;
 
    /* Better Font Rendering =========== */
    -webkit-font-smoothing: antialiased;
@@ -2671,6 +2671,14 @@ text-align: center;
 }
 .icon-facebook2:before {
    content: "\e902";
+}
+
+@media screen and (max-width: 480px) {
+  div.text-right {
+    float: right;
+    text-align: center;
+    clear: both;
+  }
 }
 
 
