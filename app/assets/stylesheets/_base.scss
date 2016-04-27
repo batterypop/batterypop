@@ -1717,14 +1717,14 @@ width: 100%;
 
 
 .thumb {
-  max-width: 100px;
+  max-width: 176px;
   margin-bottom: 0;
 
   img {
     max-width: 100%;
-    height: 100px;
-    width: 100px;
-    @extend %border-circle;
+  /*  height: 100px; */
+  /*  width: 100px;  */
+   /* @extend %border-circle;*/
   }
 }
 }
