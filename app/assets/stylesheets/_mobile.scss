@@ -225,11 +225,11 @@ box-shadow: none;
   //width: 100%;
 }
 
-.media-list .media-body {
-  width: 70%;
- // width: 60%;
+@media (min-width: 768px) {
+    .media-list .media-body {
+        width: 60%;
+    }
 }
-
 .col-md-12 .carousel-horizontal li {
 width: 223px !important;
 }
