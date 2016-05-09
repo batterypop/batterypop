@@ -2693,4 +2693,8 @@ div.text-right {
   }
 }
 
-
+@media screen and (max-width: 767px) { 
+  .media-list .thumb { 
+    margin-bottom: 15px; 
+  } 
+}
