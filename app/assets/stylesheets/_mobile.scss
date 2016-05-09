@@ -126,7 +126,7 @@ footer.wrapper {
 @media(min-width: 600px){
 
 .media-list .media-body {
-  width: 60%;
+//  width: 60%;
 }
     .col-md-12 .carousel-horizontal li {
 width: 223px !important;
@@ -225,11 +225,23 @@ box-shadow: none;
   //width: 100%;
 }
 
-@media (min-width: 768px) {
-    .media-list .media-body {
-        width: 60%;
-    }
+.media-list .media-body {
+  width: auto;
 }
+
+.media-list .media-body > * {
+  max-width: calc(100% - 80px);
+}
+
+.no-csscalc .media-list .media-body > * {
+  max-width: 57%;
+}
+
+.media-list .media-body {
+//  width: 70%;
+ // width: 60%;
+}
+
 .col-md-12 .carousel-horizontal li {
 width: 223px !important;
 }
@@ -289,7 +301,7 @@ body {
   @media (min-width: 992px) {
 
   .tournament-media-list .media-body {
-  width: 60%;
+ // width: 60%;
 }
 
 .headcrumb {
