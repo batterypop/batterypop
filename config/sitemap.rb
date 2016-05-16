@@ -5,6 +5,8 @@ SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
+
+
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #
@@ -35,7 +37,7 @@ SitemapGenerator::Sitemap.create do
 
   add "/shows", :changefreq => 'weekly'
   add "/channels", :changefreq => 'weekly'
-  add "/shorts", :changefreq => 'weekly'
+  # add "/shorts", :changefreq => 'weekly'
   add "/blog", :changefreq => 'daily'
 
   add "/about-batterypop"
@@ -51,7 +53,7 @@ SitemapGenerator::Sitemap.create do
   Show.approved.find_each do |show|
   	add show_path(show), :lastmod => show.updated_at
   	show.episodes.approved.find_each do |ep|
-  		add show_episode_path(show, ep), :lastmod => ep.updated_at
+  		add show_episode_path(show, ep), :lastmod => ep.updated_at, :priority => 0.9
   	end
   end
 
@@ -59,8 +61,8 @@ SitemapGenerator::Sitemap.create do
   	add creator_path(c), :lastmod => c.updated_at
   end
 
-  User.find_each do |user|
-  	add user_path(user), :lastmod => user.updated_at
-  end
+  # User.find_each do |user|
+  # 	add user_path(user), :lastmod => user.updated_at
+  # end
 
 end
