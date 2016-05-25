@@ -25,7 +25,7 @@
 			:crumb_thumb  => image_tag(@friend.image(:large), :alt => @friend.sponsor, :class => ""),
 			:crumb_title => @friend.title, 
 		 	
-		 	:crumb_text => "#{ @friend.description }<p><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</p>".html_safe,
+		 	:crumb_text => "#{ @friend.description }<h1><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</h1>".html_safe,
 			:crumb_action => "#{@action}".html_safe, 
 			:crumb_sponsor => !@friend.hide_sponsor_banner?
 			 	} %>

@@ -289,7 +289,7 @@ a:active, a:focus {
     color: $lite;
     @extend %text-shadow;
     text-align: center;
-    h3 {
+    h3, h1 {
       @extend %uppercase;
       margin-bottom: 0;
       @include fontsize(3.0);
@@ -2697,4 +2697,9 @@ div.text-right {
   .media-list .thumb { 
     margin-bottom: 15px; 
   } 
+}
+
+.description h1 {
+  font-family: $font-sans;
+  @include fontsize(1.4);
 }

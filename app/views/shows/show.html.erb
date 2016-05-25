@@ -20,7 +20,7 @@
 			:crumb_thumb  => image_tag(@show.image(:large), :alt => @show.creator.displayname, :class => ""),
 			:crumb_title => @show.title, 
 		 	
-		 	:crumb_text => "<h5>#{@show.subtitle}</h5>#{ @description }<p><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</p>".html_safe,
+		 	:crumb_text => "<h5>#{@show.subtitle}</h5>#{ @description }<h1><strong>Watching:</strong> <em>#{@episode.title}</em> #{@age_range}</h1>".html_safe,
 			:crumb_action => "#{@action}".html_safe
 			 	} %>
 
