@@ -55,7 +55,8 @@ module ApplicationHelper
     def check_friend_div
       # request.fullpath.split("/").second 
       # if request.fullpath.split("/").third=="batterypop-gamezone"
-      if (controller_name=="friends") && (action_name == "show") 
+      # if (controller_name=="friends") && (action_name == "show") 
+      if (request.fullpath.split("/").second == "friends")
         return "container-friends"
       else
         return ""
