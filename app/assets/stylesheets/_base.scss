@@ -414,7 +414,7 @@ background-color: $lite;
 
   //position: relative;
   //z-index: 1;
-  h1 {
+  .navbar-title {
           background: url("#{$image-path}/starburst.png") no-repeat 50% -55px;
       height: 160px;
       width: 305px;
